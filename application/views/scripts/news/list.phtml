@@ -1,0 +1,8 @@
+<?php foreach ($this->paginator as $newsEntry): ?>
+    <h2><?php echo $newsEntry->getTitle(); ?></h2>
+    <p><?php echo $newsEntry->getDescription(); ?></p>
+    <hr />
+<?php endforeach;
+?>
+
+<?php echo $this->paginationControl(); ?>
