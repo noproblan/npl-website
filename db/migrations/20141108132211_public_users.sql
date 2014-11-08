@@ -1,3 +1,15 @@
+-- --------------------------------------------------------
+-- Use the follwoing command in the shell to generate
+-- new migration file names:
+--
+-- date "+%Y%m%d%H%M%S"
+--
+-- --------------------------------------------------------
+
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+
+-- --------------------------------------------------------
+
 --
 -- Structure for view `npl_view_users`
 --
