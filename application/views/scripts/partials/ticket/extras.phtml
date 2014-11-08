@@ -1,0 +1,71 @@
+<?php
+foreach ($this->lans as $attendingLan) {
+	if ($attendingLan['attending'] && $attendingLan['registration_possible']) {
+		foreach ($this->tickets as $ticket) {
+			/* @var $ticket Application_Model_Ticket */
+			if ($ticket->getLanId() == $attendingLan['id']) {
+				$status = $ticket->getStatus();
+				$lanId = $ticket->getLanId();
+				$userId = $ticket->getUserId();
+				$mapperLans = new Application_Model_Mapper_LansMapper();
+				$mapperUsers = new Application_Model_Mapper_UsersMapper();
+				$lan = new Application_Model_Lan();
+				$user = new Application_Model_User();
+				$price = 40;
+				if ($status == Application_Model_Ticket::STATUS_NOTPAID) {
+					$mapperLans->find($lanId, $lan);
+					$mapperUsers->find($userId, $user);
+					$lanname = $lan->getName();
+					$lanname = str_replace(" ", "_", $lanname);
+					$username = $user->getUsername();
+					$extras = $ticket->getExtrasSplitted();
+					$form = new Application_Form_TicketExtras();
+					foreach ($extras as $key => $value) {
+						$element = $form->getElement($key);
+						if ($value == true) {
+							switch ($key) {
+								case 'breakfast': $price += 5; break;
+								case 'dinner': $price += 15; break;
+								case 'cable': $price += 10; break;
+							}
+							$element->setAttrib("checked", "checked");
+						} else {
+							$element->setAttrib("checked", "");
+						}
+					}
+					$form->getElement('ticketId')->setValue($ticket->getId());
+					$form->setAction($this->url(array('controller'=>'ticket','action'=>'changeextras','ticketid'=>$ticket->getId()),'default',true));
+					?>
+						<hr />
+						<h3>Vorauszahlung (<?= $lan->getName() ?>)</h3>
+						<b>Vorteile beim Vorauszahlen:</b>
+						<ul>
+							<li>Ermässigter Eintritt (40 CHF&sup1;)</li>
+							<li>Nachstehende Optionen vergünstigt (Preis jeweils in Klammern)</li>
+							<li>Sitzplatz garantiert</li>
+							<li>Sitzplatzreservation&sup2;</li>
+						</ul>
+						<b>Vorgehen</b>
+						<ol>
+							<li>Optionen wählen</li>
+							<li>Speichern</li>
+							<li>Einzahlungsschein nach untenstehender Vorlage ausfüllen (eBanking oder bei der Post)</li>
+							<li>Bezahlen und auf Bestätigung warten</li>
+							<li>Sitzplatz reservieren&sup2;</li>
+						</ol>
+						<small>&sup1; Vorauszahlung gilt auch für weibliche Gamer (wird an der LAN zurückerstattet).</small><br />
+						<small>&sup2; Sobald verfügbar.</small><br /><br />
+						<b>Optionen</b><br /><br />
+						<?= $form ?>
+						<br />
+						<b>Einzahlungsschein</b><br />
+						<small>Hast du auch wirklich gespeichert?</small><br /><br />
+						<a id="ezTarget" href="/img/einzahlungsschein.php?z1=<?= $lanname ?>&z2=ID%20<?= $ticket->getId() ?>&a=<?= $price ?>" target="_blank" class="ezs">
+							<img id="ezPic" src="/img/einzahlungsschein.php?z1=<?= $lanname ?>&z2=ID%20<?= $ticket->getId() ?>&a=<?= $price ?>" alt="Einzahlungsschein" width="400px" />
+						</a>
+				<?php 
+					}
+			}
+		}
+	}
+}

@@ -1,0 +1,94 @@
+<?php 
+
+?>
+
+<div id="view-content">
+	<h1>Sitzplatzreservation</h1>
+	<p>Eingang ist auf der rechten Seite ca. in der Mitte.<br />
+	Die Bühne ist oberhalb.</p>
+
+	<!-- SITZPLATZ-RESERVATION ------------------------------------------------------------>
+	<script type="text/javascript" src="<?= $this->baseUrl('js/kinetic-v4.5.5.min.js') ?>"></script>
+	<script type="text/javascript" src="<?= $this->baseUrl('js/seatmap.js?v=120928') ?>"></script>
+	<script type="text/javascript">
+	var userSeats = <?= json_encode($this->userSeats) ?>;
+	
+	window.onload = function() {
+		var stage = new Kinetic.Stage({
+			container: "seatres-container",
+			width: <?= $this->maps->getWidth() ?>,
+			height: <?= $this->maps->getHeight() ?>
+		});
+		var deskLayer = new Kinetic.Layer();
+		stage.add(deskLayer);
+		stage.setScale(0.4);
+
+		var seatOnClick = function(seatId, kineticRect) {
+			document.getElementById("seatres-form-seat").value = seatId;
+			document.getElementById("seatres-form").submit();
+		};
+		var seatOnMouseOver = function(seatId, kineticRect, e) {
+			document.getElementById("seatres-container").style.cursor = "pointer";
+
+			// toolbox
+			document.getElementById("seatres-hint").style.display = "block";
+			document.getElementById("seatres-hint").style.backgroundColor = "yellow";
+			document.getElementById("seatres-hint").style.top = e.pageY + "px";
+			document.getElementById("seatres-hint").style.left = e.pageX + 20 + "px";
+			var username = typeof(userSeats[seatId]) == 'undefined' ? "leer" : userSeats[seatId]['username'];
+			document.getElementById("seatres-hint").innerHTML = seatId + " : " + username;
+		};
+		var seatOnMouseOut = function(seatId, kineticRect) {
+			document.getElementById("seatres-container").style.cursor = null;
+			document.getElementById("seatres-hint").style.display = "none";
+		};
+
+		/* INITIALIZATION **********************************************************/
+		<?php foreach ($this->desks as $desk): /* @var $desk Application_Model_Desk */ ?>
+		<?php 
+		$seats = $desk->getSeats();
+		$leftSeat = "false";
+		$leftSeatAvailable = "true";
+		$rightSeat = "false";
+		$rightSeatAvailable = "true";
+		foreach ($seats as $seat) { /* @var $seat Application_Model_Seat */
+			switch ($seat->getSeatPositionId()) {
+				case 1: $leftSeat = $seat->getId(); $leftSeatAvailable = $seat->isAvailable(); break;
+				case 2: $rightSeat = $seat->getId(); $rightSeatAvailable = $seat->isAvailable(); break;
+			}
+		}
+		?>
+		var desk = createDesk(
+			<?= $desk->getPositionX() ?>,
+			<?= $desk->getPositionY() ?>,
+			<?= $desk->getRotation() ?>,
+			<?= $desk->getId() ?>,
+			<?= $leftSeat ?>,
+			<?= $rightSeat ?>,
+			<?= $leftSeatAvailable ? "true" : "false" ?>,
+			<?= $rightSeatAvailable ? "true" : "false" ?>);
+		desk.seatOnClick = seatOnClick;
+		desk.seatOnMouseOver = seatOnMouseOver;
+		desk.seatOnMouseOut = seatOnMouseOut;
+		deskLayer.add(desk);
+		<?php endforeach; ?>
+		deskLayer.draw();
+	};
+	</script>
+	
+	<div id="seatres">
+		<div id="seatres-container">
+		</div>
+		<div id="seatres-hint" style="position: absolute; display: none;">
+		info
+		</div>
+		<div>
+			<form id="seatres-form" action="<?= $this->baseUrl('ticket/reserveseat/') ?>" method="POST">
+				<input type="hidden" name="ticket" value="<?= $this->ticket->getId() ?>"/>
+				<input type="hidden" name="map" value="<?= $this->maps->getId() ?>"/>
+				<input id="seatres-form-seat" type="hidden" name="seat" value=""/>
+			</form>
+		</div>
+	</div>
+
+</div>

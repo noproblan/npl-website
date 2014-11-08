@@ -1,0 +1,27 @@
+<?php $albums = $this->albums; ?>
+<div id="view-content">
+	<div id="title">
+		<h1>Galerie</h1>
+	</div>
+	<div id="galerie">
+		<?php if (!empty($albums)) { ?>
+		<div id="lans-current" class="lans">
+			<h2>Alben</h2>
+			<table>
+				<tr>
+					<th class="key">Name</th>
+					<th class="key">Bilder</th>
+				</tr>
+				<?php foreach ($albums as $album) { ?>
+				<tr>
+					<td class="value"><a href="<?php echo $this->url(array('controller'=>'gallery','action'=>'album','id'=>$album['id']),'default',true) ?>"><?php echo $this->escape($album['name']) ?></a></td>
+					<td class="value"><?php echo $this->escape($album['pictures']) ?></td>
+				</tr>
+				<?php } ?>
+			</table>
+		</div>
+		<?php } else { ?>
+		<p>Derzeitig sind keine Alben vorhanden.</p>
+		<?php } ?>
+	</div>
+</div>

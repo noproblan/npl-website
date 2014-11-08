@@ -1,0 +1,118 @@
+<?php 
+	$username = $this->username;
+	$mail = $this->mail;
+	$attendingLans = $this->attendingLans;
+	$userTickets = $this->userTickets;
+?>
+<div id="view-content">
+	<div id="title">
+		<h1>Dein Account</h1>
+	</div>
+
+	<div id="information">
+		<table>
+			<tr>
+				<th class="key"><a href="http://gravatar.com">Gravatar</a></th>
+				<td class="value"><?= $this->gravatar ?></td>
+			</tr>
+			<tr>
+				<th class="key">Benutzername</th>
+				<td class="value"><?php echo $this->escape($username) ?></td>
+			</tr>
+			<tr>
+				<th class="key">Mail</th>
+				<td class="value"><?php echo $this->escape($mail) ?></td>
+			</tr>
+		</table>
+	</div>
+	<br />
+	<div id="action">
+		<a class="button" href="<?= $this->url(
+				array(
+						'controller' => 'user',
+						'action' => 'changepassword'
+				),
+				'default',
+				true) ?>">Passwort ändern</a>
+		<a class="button" href="<?= $this->url(
+				array(
+						'controller' => 'user',
+						'action' => 'changemail'
+				),
+				'default',
+				true) ?>">Mailadresse ändern</a>
+		<a class="button" href="<?= $this->url(
+				array(
+						'controller' => 'user',
+						'action' => 'delete'
+				),
+				'default',
+				true) ?>">Account löschen</a>
+	</div>
+	<br/>
+	<div id="lans-attending" class="lans">
+		<h2>Kommende LANs</h2>
+		<table>
+			<tr>
+				<th class="key">Name der LAN</th>
+				<th class="key">Start</th>
+				<th class="key">Status</th>
+			</tr>
+			<?php foreach ($attendingLans as $attendingLan): ?>
+			<tr>
+				<td class="value">
+					<a href="<?= $this->url(array(
+						'controller' => 'lan',
+						'action' => 'info',
+						'lanid' => $attendingLan["id"]),'default',true) ?>">
+					<?= $this->escape($attendingLan["name"]) ?></a>
+				</td>
+				<td>
+					<?= $this->escape($attendingLan["startdate"]) ?>
+				</td>
+				
+				<?php if ($attendingLan["paid"] == 'notpaid') { 
+					if ($attendingLan["attending"]): ?>
+				<td class="value indicate-neutral">
+					Du nimmst teil
+				</td>
+					<?php else: ?>
+				<td class="value indicate-negative">
+					Du bist nicht angemeldet
+				</td>
+					<?php endif;
+					} else {
+						if ($attendingLan["paid"] == 'prepaid' || $attendingLan["paid"] == 'paid') { ?>
+				<td class="value indicate-positive">
+					Du hast bezahlt
+				</td>	
+					<?php } else { ?>
+				<td class="value indicate-negate">
+					Ungültiger Status
+				</td>
+					<?php }
+				} ?>
+				<td>
+					<?php echo $this->partial('partials/lan/buttons.phtml', array(
+							'lanId'=>$attendingLan['id'],
+							'hasPaid'=>$attendingLan['paid'] == 'prepaid' || $attendingLan['paid'] == 'paid',
+							'hasTicket'=>$attendingLan['attending'],
+							'registrationPossible'=>$attendingLan['registration_possible'],
+					)); ?>
+				</td>
+			</tr>
+			<?php endforeach; ?>
+		</table>
+	</div>
+	
+	<?php if (!empty($userTickets)) { ?>
+	<div id="tickets" class="tickets">
+	<?php  
+			echo $this->partial('partials/ticket/extras.phtml', array(
+					'tickets'=>$userTickets,
+					'lans'=>$attendingLans,
+			)); ?>
+	</div>	
+	<?php } ?>
+	
+</div>

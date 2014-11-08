@@ -1,0 +1,40 @@
+<?php echo $this->doctype() ?>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="de" lang="de">
+	<head>
+		<?= $this->headMeta() ?>
+		<meta name="language" content="de" />
+		<?= $this->headTitle() ?>
+		<?= $this->headLink()->appendStylesheet($this->baseUrl('css/global.css?v=20120703')) ?>
+		<script type="text/javascript" charset="utf-8" src="http://code.jquery.com/jquery-1.8.0.min.js"></script>
+	</head>
+	<body class="claro">
+		<div id="header" style="background-color: #EEEEEE; height: 30px;">
+			<div id="header-logo" style="float: left">
+				<b>Header Logo</b>
+			</div>
+			<div id="logged-in-as" style="float: right">
+				<?php echo $this->loggedInAs(); ?>
+			</div>
+			<br />
+			<div id="header-navigation" style="float: left">
+			    <a href="<?php echo $this->url(
+            		array('controller'=>'index'), 'default', true) 
+            	?>">Home</a>
+        		<a href="<?php echo $this->url(
+            		array('controller'=>'user'), 'default', true) 
+            	?>">User</a>
+            	<a href="<?php echo $this->url(
+            		array('controller'=>'rights'), 'default', true) 
+            	?>">Rechte</a>
+			    <a href="<?php echo $this->url(
+            		array('controller'=>'lan'), 'default', true) 
+            	?>">LAN</a>
+            	<a href="<?php echo $this->url(
+            		array('controller'=>'srs'), 'default', true) 
+            	?>">Seats</a>
+    		</div>
+		</div>
+		<?php echo $this->layout()->content; ?>
+	</body>
+</html>
+

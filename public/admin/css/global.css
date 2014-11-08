@@ -1,0 +1,37 @@
+@CHARSET "ISO-8859-1";
+
+* {
+	font-family: sans-serif;
+	font-size: 14px;
+}
+
+.simple-box {
+	border: 1px solid grey;
+	margin: 2px;
+	padding: 4px;
+}
+
+table {
+	font-size:13px;
+	color:#333333;
+	border: 1px solid #666666;
+	border-collapse: collapse;
+}
+	table th {
+		border-width: 1px;
+		padding: 5px;
+		border: 1px solid #666666;
+		background-color: #dedede;
+	}
+	table td {
+		border-width: 1px;
+		padding: 5px;
+		border: 1px solid #666666;
+		background-color: #ffffff;
+	}
+
+hr {
+	border: 0;
+	width: 100%; 
+	border-top: dotted 2px #CCC;
+}
