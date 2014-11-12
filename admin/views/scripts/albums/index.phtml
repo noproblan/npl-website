@@ -1,0 +1,26 @@
+<div id="view-content">
+<div id="title">
+	<h1>Galerien → Übersicht</h1>
+</div>
+<?php echo $this->messages(); ?>
+<div id="information">
+	<?= $this->partial('albums/submenu.phtml') ?>
+	
+	<table>
+		<tr>
+			<th>Id</th>
+			<th>Name</th>
+			<th>Folder</th>
+		<tr>
+		<?php foreach ($this->albums as $album): ?>
+		<tr>
+			<td><?= $album->getId(); ?></td>
+			<td><?= $album->getName(); ?></td>
+			<td><?= $album->getFolder(); ?></td>
+			<td><a href="edit/<?= $album->getId() ?>">edit</a></td>
+		</tr>
+		<?php endforeach; ?>
+	</table>
+
+</div>
+</div>

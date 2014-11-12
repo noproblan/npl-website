@@ -1,0 +1,28 @@
+<div id="view-content">
+<div id="title">
+	<h1>Galerien → Übersicht</h1>
+</div>
+<?php echo $this->messages(); ?>
+<div id="information">
+	<?= $this->partial('albums/submenu.phtml') ?>
+	
+	<div>
+		<p>Neue Galerie erstellen</p>
+		<form action="create" method="post">
+			<p>
+				<label>Name</label>
+				<input type="text" name="name"/>
+			</p>
+			<p>
+				<label>Ordner</label>
+				<input type="text" name="folder"/>
+			</p>
+			<p>
+				<input type="submit" name="submit" value="Erstellen"/>
+			</p>
+		</form>
+		<p>
+	</div>
+	
+</div>
+</div>
