@@ -5,6 +5,13 @@
 	font-size: 14px;
 }
 
+#header {
+	background-color: #EEEEEE; 
+	height: 30px;
+	padding: 5px;
+	border: 1px solid black;
+}
+
 .simple-box {
 	border: 1px solid grey;
 	margin: 2px;
