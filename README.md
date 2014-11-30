@@ -25,3 +25,5 @@ GRANT ALL PRIVILEGES ON npl.* TO 'npl'@'localhost';</pre>
 ### PHPStorm
 * ...
 
+## Deployment
+For deploying the master branch to production use `bash scripts/deploy_prod.sh USER@HOST` from your developer machine.
