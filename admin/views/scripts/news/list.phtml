@@ -1,0 +1,15 @@
+<div id="view-content">
+    <div id="title">
+        <h1>News-Verwaltung → News</h1>
+    </div>
+    <?php echo $this->messages(); ?>
+    <div id="information">
+        <?= $this->partial('news/submenu.phtml') ?>
+        <?php foreach ($this->paginator as $newsEntry): ?>
+            <h2><?php echo $newsEntry->getTitle(); ?></h2>
+            <p><?php echo $newsEntry->getDescription(); ?></p>
+            <hr />
+        <?php endforeach;?>
+        <?php echo $this->paginationControl(); ?>
+    </div>
+</div>
