@@ -22,6 +22,7 @@
  */
 
 /**
+ *
  * @see Zend_Gdata_Extension
  */
 require_once 'Zend/Gdata/Extension.php';
@@ -29,30 +30,32 @@ require_once 'Zend/Gdata/Extension.php';
 /**
  * Entity primarily responsible for making the resource
  *
- * @category   Zend
- * @package    Zend_Gdata
+ * @category Zend
+ * @package Zend_Gdata
  * @subpackage DublinCore
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Gdata_DublinCore_Extension_Creator extends Zend_Gdata_Extension
 {
 
     protected $_rootNamespace = 'dc';
+
     protected $_rootElement = 'creator';
 
     /**
      * Constructor for Zend_Gdata_DublinCore_Extension_Creator which
      * Entity primarily responsible for making the resource
      *
-     * @param DOMElement $element (optional) DOMElement from which this
-     *          object should be constructed.
+     * @param DOMElement $element
+     *            (optional) DOMElement from which this
+     *            object should be constructed.
      */
-    public function __construct($value = null)
+    public function __construct ($value = null)
     {
         $this->registerAllNamespaces(Zend_Gdata_DublinCore::$namespaces);
         parent::__construct();
         $this->_text = $value;
     }
-
 }

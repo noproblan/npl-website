@@ -18,7 +18,6 @@
  * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
-
 require_once 'Zend/Cloud/AbstractFactory.php';
 
 /**
@@ -26,17 +25,20 @@ require_once 'Zend/Cloud/AbstractFactory.php';
  *
  * TODO Look into preventing a query injection attack.
  *
- * @category   Zend
- * @package    Zend_Cloud
+ * @category Zend
+ * @package Zend_Cloud
  * @subpackage DocumentService
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Cloud_DocumentService_Factory extends Zend_Cloud_AbstractFactory
 {
+
     const DOCUMENT_ADAPTER_KEY = 'document_adapter';
 
     /**
+     *
      * @var string Interface which adapter must implement to be considered valid
      */
     protected static $_adapterInterface = 'Zend_Cloud_DocumentService_Adapter';
@@ -46,7 +48,7 @@ class Zend_Cloud_DocumentService_Factory extends Zend_Cloud_AbstractFactory
      *
      * @return void
      */
-    private function __construct()
+    private function __construct ()
     {
         // private ctor - should not be used
     }
@@ -54,23 +56,21 @@ class Zend_Cloud_DocumentService_Factory extends Zend_Cloud_AbstractFactory
     /**
      * Retrieve an adapter instance
      *
-     * @param array $options
+     * @param array $options            
      * @return void
      */
-    public static function getAdapter($options = array())
+    public static function getAdapter ($options = array())
     {
         $adapter = parent::_getAdapter(self::DOCUMENT_ADAPTER_KEY, $options);
-        if (!$adapter) {
+        if (! $adapter) {
             require_once 'Zend/Cloud/DocumentService/Exception.php';
             throw new Zend_Cloud_DocumentService_Exception(
-                'Class must be specified using the \''
-                . self::DOCUMENT_ADAPTER_KEY . '\' key'
-            );
-        } elseif (!$adapter instanceof self::$_adapterInterface) {
+                    'Class must be specified using the \'' .
+                             self::DOCUMENT_ADAPTER_KEY . '\' key');
+        } elseif (! $adapter instanceof self::$_adapterInterface) {
             require_once 'Zend/Cloud/DocumentService/Exception.php';
             throw new Zend_Cloud_DocumentService_Exception(
-                'Adapter must implement \'' . self::$_adapterInterface . '\''
-            );
+                    'Adapter must implement \'' . self::$_adapterInterface . '\'');
         }
         return $adapter;
     }

@@ -19,56 +19,56 @@
  * @version    $Id: Null.php 23775 2011-03-01 17:25:24Z ralph $
  */
 
-
-/** Zend_Pdf_Element */
+/**
+ * Zend_Pdf_Element
+ */
 require_once 'Zend/Pdf/Element.php';
-
 
 /**
  * PDF file 'null' element implementation
  *
- * @category   Zend
- * @package    Zend_Pdf
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @category Zend
+ * @package Zend_Pdf
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Pdf_Element_Null extends Zend_Pdf_Element
 {
+
     /**
-     * Object value. Always null.
+     * Object value.
+     * Always null.
      *
      * @var mixed
      */
     public $value;
 
-
     /**
      * Object constructor
      */
-    public function __construct()
+    public function __construct ()
     {
         $this->value = null;
     }
-
 
     /**
      * Return type of the element.
      *
      * @return integer
      */
-    public function getType()
+    public function getType ()
     {
         return Zend_Pdf_Element::TYPE_NULL;
     }
 
-
     /**
      * Return object as string
      *
-     * @param Zend_Pdf_Factory $factory
+     * @param Zend_Pdf_Factory $factory            
      * @return string
      */
-    public function toString($factory = null)
+    public function toString ($factory = null)
     {
         return 'null';
     }

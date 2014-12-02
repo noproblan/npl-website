@@ -31,29 +31,31 @@ require_once 'Zend/Tool/Project/Context/Zf/AbstractClassFile.php';
  * A profile is a hierarchical set of resources that keep track of
  * items within a specific project.
  *
- * @category   Zend
- * @package    Zend_Tool
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @category Zend
+ * @package Zend_Tool
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Tool_Project_Context_Zf_ModelFile extends Zend_Tool_Project_Context_Zf_AbstractClassFile
 {
 
     /**
+     *
      * @var string
      */
     protected $_modelName = 'Base';
 
     /**
+     *
      * @var string
      */
     protected $_filesystemName = 'modelName';
 
     /**
      * init()
-     *
      */
-    public function init()
+    public function init ()
     {
         $this->_modelName = $this->_resource->getAttribute('modelName');
         $this->_filesystemName = ucfirst($this->_modelName) . '.php';
@@ -65,11 +67,11 @@ class Zend_Tool_Project_Context_Zf_ModelFile extends Zend_Tool_Project_Context_Z
      *
      * @return array
      */
-    public function getPersistentAttributes()
+    public function getPersistentAttributes ()
     {
         return array(
-            'modelName' => $this->getModelName()
-            );
+                'modelName' => $this->getModelName()
+        );
     }
 
     /**
@@ -77,31 +79,30 @@ class Zend_Tool_Project_Context_Zf_ModelFile extends Zend_Tool_Project_Context_Z
      *
      * @return string
      */
-    public function getName()
+    public function getName ()
     {
         return 'ModelFile';
     }
 
-    public function getModelName()
+    public function getModelName ()
     {
         return $this->_modelName;
     }
 
-    public function getContents()
+    public function getContents ()
     {
-
         $className = $this->getFullClassName($this->_modelName, 'Model');
-
-        $codeGenFile = new Zend_CodeGenerator_Php_File(array(
-            'fileName' => $this->getPath(),
-            'classes' => array(
-                new Zend_CodeGenerator_Php_Class(array(
-                    'name' => $className,
-                    ))
-                )
-            ));
+        
+        $codeGenFile = new Zend_CodeGenerator_Php_File(
+                array(
+                        'fileName' => $this->getPath(),
+                        'classes' => array(
+                                new Zend_CodeGenerator_Php_Class(
+                                        array(
+                                                'name' => $className
+                                        ))
+                        )
+                ));
         return $codeGenFile->generate();
     }
-
-
 }

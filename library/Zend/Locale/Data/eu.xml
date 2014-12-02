@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <ldml>
 	<identity>
-		<version number="$Revision: 1.78 $"/>
-		<generation date="$Date: 2009/06/15 03:46:25 $"/>
-		<language type="eu"/>
+		<version number="$Revision: 1.78 $" />
+		<generation date="$Date: 2009/06/15 03:46:25 $" />
+		<language type="eu" />
 	</identity>
 	<localeDisplayNames>
 		<localeDisplayPattern>
@@ -282,7 +282,8 @@
 			<territory type="GN">Ginea</territory>
 			<territory type="GQ">Ekuatore Ginea</territory>
 			<territory type="GR">Grezia</territory>
-			<territory type="GS">Hegoaldeko Georgia eta Hegoaldeko Sandwich uharteak</territory>
+			<territory type="GS">Hegoaldeko Georgia eta Hegoaldeko Sandwich
+				uharteak</territory>
 			<territory type="GW">Ginea-Bissau</territory>
 			<territory type="HM">Heard eta McDonald Uharteak</territory>
 			<territory type="HN">Honduras</territory>
@@ -405,7 +406,8 @@
 			<territory type="TZ">Tanzania</territory>
 			<territory type="UA">Ukraina</territory>
 			<territory type="UG">Uganda</territory>
-			<territory type="UM">Estatu Batuetatik urruti dauden uharte txikiak</territory>
+			<territory type="UM">Estatu Batuetatik urruti dauden uharte
+				txikiak</territory>
 			<territory type="US">Ameriketako Estatu Batuak</territory>
 			<territory type="UY">Uruguai</territory>
 			<territory type="UZ">Uzbekistan</territory>
@@ -440,7 +442,8 @@
 			<type type="buddhist" key="calendar">egutegi budista</type>
 			<type type="chinese" key="calendar">txinatar egutegia</type>
 			<type type="direct" key="collation">Zuzena</type>
-			<type type="gb2312han" key="collation">Txinera sinplifikatuaren alfabetoa -GB2312</type>
+			<type type="gb2312han" key="collation">Txinera sinplifikatuaren alfabetoa
+				-GB2312</type>
 			<type type="gregorian" key="calendar">egutegi gregoriarra</type>
 			<type type="hebrew" key="calendar">hebrear egutegia</type>
 			<type type="indian" key="calendar">indiar egutegia</type>

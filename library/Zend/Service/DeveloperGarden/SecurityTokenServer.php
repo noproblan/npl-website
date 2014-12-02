@@ -21,36 +21,42 @@
  */
 
 /**
+ *
  * @see Zend_Service_DeveloperGarden_SecurityTokenServer_Cache
  */
 require_once 'Zend/Service/DeveloperGarden/SecurityTokenServer/Cache.php';
 
 /**
+ *
  * @see Zend_Service_DeveloperGarden_Client_ClientAbstract
  */
 require_once 'Zend/Service/DeveloperGarden/Client/ClientAbstract.php';
 
 /**
+ *
  * @see Zend_Service_DeveloperGarden_Response_SecurityTokenServer_SecurityTokenResponse
  */
 require_once 'Zend/Service/DeveloperGarden/Response/SecurityTokenServer/SecurityTokenResponse.php';
 
 /**
+ *
  * @see Zend_Service_DeveloperGarden_Response_SecurityTokenServer_GetTokensResponse
  */
 require_once 'Zend/Service/DeveloperGarden/Response/SecurityTokenServer/GetTokensResponse.php';
 
 /**
- * @category   Zend
- * @package    Zend_Service
+ *
+ * @category Zend
+ * @package Zend_Service
  * @subpackage DeveloperGarden
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @author     Marco Kaiser
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @author Marco Kaiser
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
-class Zend_Service_DeveloperGarden_SecurityTokenServer
-    extends Zend_Service_DeveloperGarden_Client_ClientAbstract
+class Zend_Service_DeveloperGarden_SecurityTokenServer extends Zend_Service_DeveloperGarden_Client_ClientAbstract
 {
+
     /**
      * wsdl file
      *
@@ -72,8 +78,8 @@ class Zend_Service_DeveloperGarden_SecurityTokenServer
      *
      */
     protected $_classMap = array(
-        'SecurityTokenResponse' => 'Zend_Service_DeveloperGarden_Response_SecurityTokenServer_SecurityTokenResponse',
-        'getTokensResponse'     => 'Zend_Service_DeveloperGarden_Response_SecurityTokenServer_GetTokensResponse'
+            'SecurityTokenResponse' => 'Zend_Service_DeveloperGarden_Response_SecurityTokenServer_SecurityTokenResponse',
+            'getTokensResponse' => 'Zend_Service_DeveloperGarden_Response_SecurityTokenServer_GetTokensResponse'
     );
 
     /**
@@ -81,22 +87,17 @@ class Zend_Service_DeveloperGarden_SecurityTokenServer
      *
      * @return Zend_Service_DeveloperGarden_Response_SecurityTokenServer_SecurityTokenResponse
      */
-    public function getLoginToken()
+    public function getLoginToken ()
     {
         $token = Zend_Service_DeveloperGarden_SecurityTokenServer_Cache::getTokenFromCache(
-            'securityToken'
-        );
-
-        if ($token === null
-            || !$token->isValid()
-        ) {
+                'securityToken');
+        
+        if ($token === null || ! $token->isValid()) {
             $token = $this->getSoapClient()->login('login');
             Zend_Service_DeveloperGarden_SecurityTokenServer_Cache::setTokenToCache(
-                'securityToken',
-                $token
-            );
+                    'securityToken', $token);
         }
-
+        
         return $token;
     }
 
@@ -105,22 +106,18 @@ class Zend_Service_DeveloperGarden_SecurityTokenServer
      *
      * @return Zend_Service_DeveloperGarden_Response_SecurityTokenServer_GetTokensResponse
      */
-    public function getTokens()
+    public function getTokens ()
     {
         $token = Zend_Service_DeveloperGarden_SecurityTokenServer_Cache::getTokenFromCache(
-            'getTokens'
-        );
-
-        if ($token === null
-            || !$token->isValid()
-        ) {
-            $token = $this->getSoapClient()->getTokens(array(
-                'serviceId' => $this->_serviceAuthId
-            ));
+                'getTokens');
+        
+        if ($token === null || ! $token->isValid()) {
+            $token = $this->getSoapClient()->getTokens(
+                    array(
+                            'serviceId' => $this->_serviceAuthId
+                    ));
             Zend_Service_DeveloperGarden_SecurityTokenServer_Cache::setTokenToCache(
-                'getTokens',
-                $token
-            );
+                    'getTokens', $token);
         }
         return $token;
     }

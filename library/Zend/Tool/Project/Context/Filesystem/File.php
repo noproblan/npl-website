@@ -21,6 +21,7 @@
  */
 
 /**
+ *
  * @see Zend_Tool_Project_Context_Filesystem_Abstract
  */
 require_once 'Zend/Tool/Project/Context/Filesystem/Abstract.php';
@@ -31,10 +32,11 @@ require_once 'Zend/Tool/Project/Context/Filesystem/Abstract.php';
  * A profile is a hierarchical set of resources that keep track of
  * items within a specific project.
  *
- * @category   Zend
- * @package    Zend_Tool
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @category Zend
+ * @package Zend_Tool
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Tool_Project_Context_Filesystem_File extends Zend_Tool_Project_Context_Filesystem_Abstract
 {
@@ -50,7 +52,7 @@ class Zend_Tool_Project_Context_Filesystem_File extends Zend_Tool_Project_Contex
      *
      * @return string
      */
-    public function getName()
+    public function getName ()
     {
         return 'file';
     }
@@ -60,18 +62,20 @@ class Zend_Tool_Project_Context_Filesystem_File extends Zend_Tool_Project_Contex
      *
      * @return Zend_Tool_Project_Context_Filesystem_File
      */
-    public function init()
+    public function init ()
     {
         if ($this->_resource->hasAttribute('filesystemName')) {
-            $this->_filesystemName = $this->_resource->getAttribute('filesystemName');
+            $this->_filesystemName = $this->_resource->getAttribute(
+                    'filesystemName');
         }
-
+        
         // check to see if this file is
         if ($this->getName() == 'file') {
             $this->_initFileOnlyContext();
         }
-
-        // @potential-todo check to ensure that this 'file' resource has no children
+        
+        // @potential-todo check to ensure that this 'file' resource has no
+        // children
         parent::init();
         return $this;
     }
@@ -81,7 +85,7 @@ class Zend_Tool_Project_Context_Filesystem_File extends Zend_Tool_Project_Contex
      *
      * @return array
      */
-    public function getPersistentAttributes()
+    public function getPersistentAttributes ()
     {
         $returnAttrs = array();
         if ($this->_filesystemName !== null) {
@@ -93,9 +97,9 @@ class Zend_Tool_Project_Context_Filesystem_File extends Zend_Tool_Project_Contex
     /**
      * setResource()
      *
-     * @param unknown_type $resource
+     * @param unknown_type $resource            
      */
-    public function setResource(Zend_Tool_Project_Profile_Resource $resource)
+    public function setResource (Zend_Tool_Project_Profile_Resource $resource)
     {
         $this->_resource = $resource;
         $this->_resource->setAppendable(false);
@@ -107,7 +111,7 @@ class Zend_Tool_Project_Context_Filesystem_File extends Zend_Tool_Project_Contex
      *
      * @return Zend_Tool_Project_Profile_Resource
      */
-    public function getResource()
+    public function getResource ()
     {
         return $this->_resource;
     }
@@ -117,21 +121,20 @@ class Zend_Tool_Project_Context_Filesystem_File extends Zend_Tool_Project_Contex
      *
      * @return Zend_Tool_Project_Context_Filesystem_File
      */
-    public function create()
+    public function create ()
     {
         // check to ensure the parent exists, if not, call it and create it
         if (($parentResource = $this->_resource->getParentResource()) instanceof Zend_Tool_Project_Profile_Resource) {
-            if ((($parentContext = $parentResource->getContext()) instanceof Zend_Tool_Project_Context_Filesystem_Abstract)
-                && (!$parentContext->exists())) {
+            if ((($parentContext = $parentResource->getContext()) instanceof Zend_Tool_Project_Context_Filesystem_Abstract) &&
+                     (! $parentContext->exists())) {
                 $parentResource->create();
             }
         }
-
-
+        
         if (file_exists($this->getPath())) {
             // @todo propt user to determine if its ok to overwrite file
         }
-
+        
         file_put_contents($this->getPath(), $this->getContents());
         return $this;
     }
@@ -141,7 +144,7 @@ class Zend_Tool_Project_Context_Filesystem_File extends Zend_Tool_Project_Contex
      *
      * @return Zend_Tool_Project_Context_Filesystem_File
      */
-    public function delete()
+    public function delete ()
     {
         unlink($this->getPath());
         $this->_resource->setDeleted(true);
@@ -153,22 +156,25 @@ class Zend_Tool_Project_Context_Filesystem_File extends Zend_Tool_Project_Contex
      *
      * @return null
      */
-    public function getContents()
+    public function getContents ()
     {
         return $this->_content;
     }
 
-    protected function _initFileOnlyContext()
+    protected function _initFileOnlyContext ()
     {
         if ($this->_resource->hasAttribute('defaultContentCallback')) {
-            $contentFunc = $this->_resource->getAttribute('defaultContentCallback');
+            $contentFunc = $this->_resource->getAttribute(
+                    'defaultContentCallback');
             if (is_callable($contentFunc)) {
-                $this->_content = call_user_func_array($contentFunc, array($this));
+                $this->_content = call_user_func_array($contentFunc, 
+                        array(
+                                $this
+                        ));
             }
         }
         if ($this->_filesystemName == null) {
             $this->_filesystemName = 'file.txt';
         }
     }
-
 }

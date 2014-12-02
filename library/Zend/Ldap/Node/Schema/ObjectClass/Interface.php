@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -21,57 +22,60 @@
  */
 
 /**
- * Zend_Ldap_Node_Schema_ObjectClass_Interface provides a contract for schema objectClasses.
+ * Zend_Ldap_Node_Schema_ObjectClass_Interface provides a contract for schema
+ * objectClasses.
  *
- * @category   Zend
- * @package    Zend_Ldap
+ * @category Zend
+ * @package Zend_Ldap
  * @subpackage Schema
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 interface Zend_Ldap_Node_Schema_ObjectClass_Interface
 {
+
     /**
      * Gets the objectClass name
      *
      * @return string
      */
-    public function getName();
+    public function getName ();
 
     /**
      * Gets the objectClass OID
      *
      * @return string
      */
-    public function getOid();
+    public function getOid ();
 
     /**
      * Gets the attributes that this objectClass must contain
      *
      * @return array
      */
-    public function getMustContain();
+    public function getMustContain ();
 
     /**
      * Gets the attributes that this objectClass may contain
      *
      * @return array
      */
-    public function getMayContain();
+    public function getMayContain ();
 
     /**
      * Gets the objectClass description
      *
      * @return string
      */
-    public function getDescription();
+    public function getDescription ();
 
     /**
      * Gets the objectClass type
      *
      * @return integer
      */
-    public function getType();
+    public function getType ();
 
     /**
      * Returns the parent objectClasses of this class.
@@ -79,5 +83,5 @@ interface Zend_Ldap_Node_Schema_ObjectClass_Interface
      *
      * @return array
      */
-    public function getParentClasses();
+    public function getParentClasses ();
 }

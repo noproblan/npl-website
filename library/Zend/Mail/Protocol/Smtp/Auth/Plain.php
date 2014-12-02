@@ -20,31 +20,31 @@
  * @version    $Id: Plain.php 23775 2011-03-01 17:25:24Z ralph $
  */
 
-
 /**
+ *
  * @see Zend_Mail_Protocol_Smtp
  */
 require_once 'Zend/Mail/Protocol/Smtp.php';
 
-
 /**
  * Performs PLAIN authentication
  *
- * @category   Zend
- * @package    Zend_Mail
+ * @category Zend
+ * @package Zend_Mail
  * @subpackage Protocol
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Mail_Protocol_Smtp_Auth_Plain extends Zend_Mail_Protocol_Smtp
 {
+
     /**
      * PLAIN username
      *
      * @var string
      */
     protected $_username;
-
 
     /**
      * PLAIN password
@@ -53,16 +53,18 @@ class Zend_Mail_Protocol_Smtp_Auth_Plain extends Zend_Mail_Protocol_Smtp
      */
     protected $_password;
 
-
     /**
      * Constructor.
      *
-     * @param  string $host   (Default: 127.0.0.1)
-     * @param  int    $port   (Default: null)
-     * @param  array  $config Auth-specific parameters
+     * @param string $host
+     *            (Default: 127.0.0.1)
+     * @param int $port
+     *            (Default: null)
+     * @param array $config
+     *            Auth-specific parameters
      * @return void
      */
-    public function __construct($host = '127.0.0.1', $port = null, $config = null)
+    public function __construct ($host = '127.0.0.1', $port = null, $config = null)
     {
         if (is_array($config)) {
             if (isset($config['username'])) {
@@ -72,24 +74,24 @@ class Zend_Mail_Protocol_Smtp_Auth_Plain extends Zend_Mail_Protocol_Smtp
                 $this->_password = $config['password'];
             }
         }
-
+        
         parent::__construct($host, $port, $config);
     }
-
 
     /**
      * Perform PLAIN authentication with supplied credentials
      *
      * @return void
      */
-    public function auth()
+    public function auth ()
     {
         // Ensure AUTH has not already been initiated.
         parent::auth();
-
+        
         $this->_send('AUTH PLAIN');
         $this->_expect(334);
-        $this->_send(base64_encode("\0" . $this->_username . "\0" . $this->_password));
+        $this->_send(
+                base64_encode("\0" . $this->_username . "\0" . $this->_password));
         $this->_expect(235);
         $this->_auth = true;
     }

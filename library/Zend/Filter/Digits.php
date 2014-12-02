@@ -20,26 +20,29 @@
  * @version    $Id: Digits.php 23775 2011-03-01 17:25:24Z ralph $
  */
 
-
 /**
+ *
  * @see Zend_Filter_Interface
  */
 require_once 'Zend/Filter/Interface.php';
 
-
 /**
- * @category   Zend
- * @package    Zend_Filter
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ *
+ * @category Zend
+ * @package Zend_Filter
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Filter_Digits implements Zend_Filter_Interface
 {
+
     /**
      * Is PCRE is compiled with UTF-8 and Unicode support
      *
      * @var mixed
-     **/
+     *
+     */
     protected static $_unicodeEnabled;
 
     /**
@@ -49,7 +52,7 @@ class Zend_Filter_Digits implements Zend_Filter_Interface
      *
      * @return void
      */
-    public function __construct()
+    public function __construct ()
     {
         if (null === self::$_unicodeEnabled) {
             self::$_unicodeEnabled = (@preg_match('/\pL/u', 'a')) ? true : false;
@@ -61,22 +64,23 @@ class Zend_Filter_Digits implements Zend_Filter_Interface
      *
      * Returns the string $value, removing all but digit characters
      *
-     * @param  string $value
+     * @param string $value            
      * @return string
      */
-    public function filter($value)
+    public function filter ($value)
     {
-        if (!self::$_unicodeEnabled) {
+        if (! self::$_unicodeEnabled) {
             // POSIX named classes are not supported, use alternative 0-9 match
             $pattern = '/[^0-9]/';
-        } else if (extension_loaded('mbstring')) {
-            // Filter for the value with mbstring
-            $pattern = '/[^[:digit:]]/';
-        } else {
-            // Filter for the value without mbstring
-            $pattern = '/[\p{^N}]/';
-        }
-
+        } else 
+            if (extension_loaded('mbstring')) {
+                // Filter for the value with mbstring
+                $pattern = '/[^[:digit:]]/';
+            } else {
+                // Filter for the value without mbstring
+                $pattern = '/[\p{^N}]/';
+            }
+        
         return preg_replace($pattern, '', (string) $value);
     }
 }

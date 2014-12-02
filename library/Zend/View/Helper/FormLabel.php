@@ -20,53 +20,58 @@
  * @version    $Id: FormLabel.php 23775 2011-03-01 17:25:24Z ralph $
  */
 
-/** Zend_View_Helper_FormElement **/
+/**
+ * Zend_View_Helper_FormElement *
+ */
 require_once 'Zend/View/Helper/FormElement.php';
 
 /**
  * Form label helper
  *
- * @category   Zend
- * @package    Zend_View
+ * @category Zend
+ * @package Zend_View
  * @subpackage Helper
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_View_Helper_FormLabel extends Zend_View_Helper_FormElement
 {
+
     /**
      * Generates a 'label' element.
      *
-     * @param  string $name The form element name for which the label is being generated
-     * @param  string $value The label text
-     * @param  array $attribs Form element attributes (used to determine if disabled)
+     * @param string $name
+     *            The form element name for which the label is being generated
+     * @param string $value
+     *            The label text
+     * @param array $attribs
+     *            Form element attributes (used to determine if disabled)
      * @return string The element XHTML.
      */
-    public function formLabel($name, $value = null, array $attribs = null)
+    public function formLabel ($name, $value = null, array $attribs = null)
     {
         $info = $this->_getInfo($name, $value, $attribs);
-        extract($info); // name, value, attribs, options, listsep, disable, escape
-
+        extract($info); // name, value, attribs, options, listsep, disable,
+                        // escape
+                        
         // build the element
         if ($disable) {
             // disabled; display nothing
-            return  '';
+            return '';
         }
-
+        
         $value = ($escape) ? $this->view->escape($value) : $value;
-        $for   = (empty($attribs['disableFor']) || !$attribs['disableFor'])
-               ? ' for="' . $this->view->escape($id) . '"'
-               : '';
+        $for = (empty($attribs['disableFor']) || ! $attribs['disableFor']) ? ' for="' .
+                 $this->view->escape($id) . '"' : '';
         if (array_key_exists('disableFor', $attribs)) {
             unset($attribs['disableFor']);
         }
-
+        
         // enabled; display label
-        $xhtml = '<label'
-                . $for
-                . $this->_htmlAttribs($attribs)
-                . '>' . $value . '</label>';
-
+        $xhtml = '<label' . $for . $this->_htmlAttribs($attribs) . '>' . $value .
+                 '</label>';
+        
         return $xhtml;
     }
 }

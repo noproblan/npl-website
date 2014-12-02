@@ -20,46 +20,52 @@
  * @version    $Id: SearchResultSet.php 23775 2011-03-01 17:25:24Z ralph $
  */
 
-
 /**
+ *
  * @see Zend_Service_Technorati_ResultSet
  */
 require_once 'Zend/Service/Technorati/ResultSet.php';
 
-
 /**
  * Represents a Technorati Search query result set.
  *
- * @category   Zend
- * @package    Zend_Service
+ * @category Zend
+ * @package Zend_Service
  * @subpackage Technorati
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Service_Technorati_SearchResultSet extends Zend_Service_Technorati_ResultSet
 {
+
     /**
      * Number of query results.
      *
-     * @var     int
-     * @access  protected
+     * @var int
+     * @access protected
      */
     protected $_queryCount;
 
     /**
      * Parses the search response and retrieve the results for iteration.
      *
-     * @param   DomDocument $dom    the ReST fragment for this object
-     * @param   array $options      query options as associative array
+     * @param DomDocument $dom
+     *            the ReST fragment for this object
+     * @param array $options
+     *            query options as associative array
      */
-    public function __construct(DomDocument $dom, $options = array())
+    public function __construct (DomDocument $dom, $options = array())
     {
         parent::__construct($dom, $options);
-
-        $result = $this->_xpath->query('/tapi/document/result/querycount/text()');
-        if ($result->length == 1) $this->_queryCount = (int) $result->item(0)->data;
-
-        $this->_totalResultsReturned  = (int) $this->_xpath->evaluate("count(/tapi/document/item)");
+        
+        $result = $this->_xpath->query(
+                '/tapi/document/result/querycount/text()');
+        if ($result->length == 1)
+            $this->_queryCount = (int) $result->item(0)->data;
+        
+        $this->_totalResultsReturned = (int) $this->_xpath->evaluate(
+                "count(/tapi/document/item)");
         $this->_totalResultsAvailable = (int) $this->_queryCount;
     }
 
@@ -68,12 +74,14 @@ class Zend_Service_Technorati_SearchResultSet extends Zend_Service_Technorati_Re
      *
      * @return Zend_Service_Technorati_SearchResult current result
      */
-    public function current()
+    public function current ()
     {
         /**
+         *
          * @see Zend_Service_Technorati_SearchResult
          */
         require_once 'Zend/Service/Technorati/SearchResult.php';
-        return new Zend_Service_Technorati_SearchResult($this->_results->item($this->_currentIndex));
+        return new Zend_Service_Technorati_SearchResult(
+                $this->_results->item($this->_currentIndex));
     }
 }

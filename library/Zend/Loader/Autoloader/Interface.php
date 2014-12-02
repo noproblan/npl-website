@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -23,21 +24,23 @@
 /**
  * Autoloader interface
  *
- * @package    Zend_Loader
+ * @package Zend_Loader
  * @subpackage Autoloader
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 interface Zend_Loader_Autoloader_Interface
 {
+
     /**
      * Autoload a class
      *
      * @abstract
-     * @param   string $class
-     * @return  mixed
-     *          False [if unable to load $class]
-     *          get_class($class) [if $class is successfully loaded]
+     *
+     * @param string $class            
+     * @return mixed False [if unable to load $class]
+     *         get_class($class) [if $class is successfully loaded]
      */
-    public function autoload($class);
+    public function autoload ($class);
 }

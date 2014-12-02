@@ -22,19 +22,20 @@
  */
 
 /**
+ *
  * @see Zend_Gdata_Feed
  */
 require_once 'Zend/Gdata/Feed.php';
 
-
 /**
  * Data model for a Google Documents List feed of documents
  *
- * @category   Zend
- * @package    Zend_Gdata
+ * @category Zend
+ * @package Zend_Gdata
  * @subpackage Docs
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Gdata_Docs_DocumentListFeed extends Zend_Gdata_Feed
 {
@@ -56,13 +57,13 @@ class Zend_Gdata_Docs_DocumentListFeed extends Zend_Gdata_Feed
     /**
      * Create a new instance of a feed for a list of documents.
      *
-     * @param DOMElement $element (optional) DOMElement from which this
-     *          object should be constructed.
+     * @param DOMElement $element
+     *            (optional) DOMElement from which this
+     *            object should be constructed.
      */
-    public function __construct($element = null)
+    public function __construct ($element = null)
     {
         $this->registerAllNamespaces(Zend_Gdata_Docs::$namespaces);
         parent::__construct($element);
     }
-
 }

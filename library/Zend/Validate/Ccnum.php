@@ -20,25 +20,30 @@
  */
 
 /**
+ *
  * @see Zend_Validate_Abstract
  */
 require_once 'Zend/Validate/Abstract.php';
 
 /**
- * @category   Zend
- * @package    Zend_Validate
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ *
+ * @category Zend
+ * @package Zend_Validate
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Validate_Ccnum extends Zend_Validate_Abstract
 {
+
     /**
      * Validation failure message key for when the value is not of valid length
      */
-    const LENGTH   = 'ccnumLength';
+    const LENGTH = 'ccnumLength';
 
     /**
-     * Validation failure message key for when the value fails the mod-10 checksum
+     * Validation failure message key for when the value fails the mod-10
+     * checksum
      */
     const CHECKSUM = 'ccnumChecksum';
 
@@ -55,58 +60,61 @@ class Zend_Validate_Ccnum extends Zend_Validate_Abstract
      * @var array
      */
     protected $_messageTemplates = array(
-        self::LENGTH   => "'%value%' must contain between 13 and 19 digits",
-        self::CHECKSUM => "Luhn algorithm (mod-10 checksum) failed on '%value%'"
+            self::LENGTH => "'%value%' must contain between 13 and 19 digits",
+            self::CHECKSUM => "Luhn algorithm (mod-10 checksum) failed on '%value%'"
     );
 
-    public function __construct()
+    public function __construct ()
     {
-        trigger_error('Using the Ccnum validator is deprecated in favor of the CreditCard validator');
+        trigger_error(
+                'Using the Ccnum validator is deprecated in favor of the CreditCard validator');
     }
 
     /**
      * Defined by Zend_Validate_Interface
      *
-     * Returns true if and only if $value follows the Luhn algorithm (mod-10 checksum)
+     * Returns true if and only if $value follows the Luhn algorithm (mod-10
+     * checksum)
      *
-     * @param  string $value
+     * @param string $value            
      * @return boolean
      */
-    public function isValid($value)
+    public function isValid ($value)
     {
         $this->_setValue($value);
-
+        
         if (null === self::$_filter) {
             /**
+             *
              * @see Zend_Filter_Digits
              */
             require_once 'Zend/Filter/Digits.php';
             self::$_filter = new Zend_Filter_Digits();
         }
-
+        
         $valueFiltered = self::$_filter->filter($value);
-
+        
         $length = strlen($valueFiltered);
-
+        
         if ($length < 13 || $length > 19) {
             $this->_error(self::LENGTH);
             return false;
         }
-
-        $sum    = 0;
+        
+        $sum = 0;
         $weight = 2;
-
-        for ($i = $length - 2; $i >= 0; $i--) {
+        
+        for ($i = $length - 2; $i >= 0; $i --) {
             $digit = $weight * $valueFiltered[$i];
             $sum += floor($digit / 10) + $digit % 10;
             $weight = $weight % 2 + 1;
         }
-
+        
         if ((10 - $sum % 10) % 10 != $valueFiltered[$length - 1]) {
             $this->_error(self::CHECKSUM, $valueFiltered);
             return false;
         }
-
+        
         return true;
     }
 }

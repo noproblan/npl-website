@@ -21,6 +21,7 @@
  */
 
 /**
+ *
  * @var Zend_XmlRpc_Generator_GeneratorAbstract
  */
 require_once 'Zend/XmlRpc/Generator/GeneratorAbstract.php';
@@ -30,6 +31,7 @@ require_once 'Zend/XmlRpc/Generator/GeneratorAbstract.php';
  */
 class Zend_XmlRpc_Generator_XmlWriter extends Zend_XmlRpc_Generator_GeneratorAbstract
 {
+
     /**
      * XMLWriter instance
      *
@@ -42,21 +44,21 @@ class Zend_XmlRpc_Generator_XmlWriter extends Zend_XmlRpc_Generator_GeneratorAbs
      *
      * @return void
      */
-    protected function _init()
+    protected function _init ()
     {
         $this->_xmlWriter = new XMLWriter();
         $this->_xmlWriter->openMemory();
         $this->_xmlWriter->startDocument('1.0', $this->_encoding);
     }
 
-
     /**
      * Open a new XML element
      *
-     * @param string $name XML element name
+     * @param string $name
+     *            XML element name
      * @return void
      */
-    protected function _openElement($name)
+    protected function _openElement ($name)
     {
         $this->_xmlWriter->startElement($name);
     }
@@ -64,10 +66,11 @@ class Zend_XmlRpc_Generator_XmlWriter extends Zend_XmlRpc_Generator_GeneratorAbs
     /**
      * Write XML text data into the currently opened XML element
      *
-     * @param string $text XML text data
+     * @param string $text
+     *            XML text data
      * @return void
      */
-    protected function _writeTextData($text)
+    protected function _writeTextData ($text)
     {
         $this->_xmlWriter->text($text);
     }
@@ -75,17 +78,17 @@ class Zend_XmlRpc_Generator_XmlWriter extends Zend_XmlRpc_Generator_GeneratorAbs
     /**
      * Close an previously opened XML element
      *
-     * @param string $name
+     * @param string $name            
      * @return void
      */
-    protected function _closeElement($name)
+    protected function _closeElement ($name)
     {
         $this->_xmlWriter->endElement();
-
+        
         return $this;
     }
 
-    public function saveXml()
+    public function saveXml ()
     {
         $xml = $this->_xmlWriter->flush(false);
         return $xml;

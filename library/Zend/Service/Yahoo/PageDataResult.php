@@ -20,22 +20,24 @@
  * @version    $Id: PageDataResult.php 23775 2011-03-01 17:25:24Z ralph $
  */
 
-
 /**
+ *
  * @see Zend_Service_Yahoo_Result
  */
 require_once 'Zend/Service/Yahoo/Result.php';
 
-
 /**
- * @category   Zend
- * @package    Zend_Service
+ *
+ * @category Zend
+ * @package Zend_Service
  * @subpackage Yahoo
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Service_Yahoo_PageDataResult extends Zend_Service_Yahoo_Result
 {
+
     /**
      * Web result namespace
      *
@@ -43,14 +45,13 @@ class Zend_Service_Yahoo_PageDataResult extends Zend_Service_Yahoo_Result
      */
     protected $_namespace = 'urn:yahoo:srch';
 
-
     /**
      * Initializes the web result
      *
-     * @param  DOMElement $result
+     * @param DOMElement $result            
      * @return void
      */
-    public function __construct(DOMElement $result)
+    public function __construct (DOMElement $result)
     {
         $this->_fields = array();
         parent::__construct($result);

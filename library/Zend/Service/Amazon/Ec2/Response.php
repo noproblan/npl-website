@@ -21,18 +21,23 @@
  */
 
 /**
+ *
  * @see Zend_Http_Response
  */
 require_once 'Zend/Http/Response.php';
 
 /**
- * @category   Zend
- * @package    Zend_Service_Amazon
+ *
+ * @category Zend
+ * @package Zend_Service_Amazon
  * @subpackage Ec2
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
-class Zend_Service_Amazon_Ec2_Response {
+class Zend_Service_Amazon_Ec2_Response
+{
+
     /**
      * XML namespace used for EC2 responses.
      */
@@ -78,9 +83,10 @@ class Zend_Service_Amazon_Ec2_Response {
     /**
      * Creates a new high-level EC2 response object
      *
-     * @param Zend_Http_Response $httpResponse the HTTP response.
+     * @param Zend_Http_Response $httpResponse
+     *            the HTTP response.
      */
-    public function __construct(Zend_Http_Response $httpResponse)
+    public function __construct (Zend_Http_Response $httpResponse)
     {
         $this->_httpResponse = $httpResponse;
     }
@@ -90,7 +96,7 @@ class Zend_Service_Amazon_Ec2_Response {
      *
      * @return DOMXPath the XPath object for response.
      */
-    public function getXPath()
+    public function getXPath ()
     {
         if ($this->_xpath === null) {
             $document = $this->getDocument();
@@ -98,11 +104,10 @@ class Zend_Service_Amazon_Ec2_Response {
                 $this->_xpath = false;
             } else {
                 $this->_xpath = new DOMXPath($document);
-                $this->_xpath->registerNamespace('ec2',
-                    $this->getNamespace());
+                $this->_xpath->registerNamespace('ec2', $this->getNamespace());
             }
         }
-
+        
         return $this->_xpath;
     }
 
@@ -111,24 +116,24 @@ class Zend_Service_Amazon_Ec2_Response {
      *
      * @return DOMDocument the DOM Document for this response.
      */
-    public function getDocument()
+    public function getDocument ()
     {
         try {
             $body = $this->_httpResponse->getBody();
         } catch (Zend_Http_Exception $e) {
             $body = false;
         }
-
+        
         if ($this->_document === null) {
             if ($body !== false) {
                 // turn off libxml error handling
                 $errors = libxml_use_internal_errors();
-
+                
                 $this->_document = new DOMDocument();
-                if (!$this->_document->loadXML($body)) {
+                if (! $this->_document->loadXML($body)) {
                     $this->_document = false;
                 }
-
+                
                 // reset libxml error handling
                 libxml_clear_errors();
                 libxml_use_internal_errors($errors);
@@ -136,7 +141,7 @@ class Zend_Service_Amazon_Ec2_Response {
                 $this->_document = false;
             }
         }
-
+        
         return $this->_document;
     }
 
@@ -145,7 +150,7 @@ class Zend_Service_Amazon_Ec2_Response {
      *
      * @return string
      */
-    public function getNamespace()
+    public function getNamespace ()
     {
         return $this->_xmlNamespace;
     }
@@ -153,11 +158,10 @@ class Zend_Service_Amazon_Ec2_Response {
     /**
      * Set a new XML Namespace
      *
-     * @param string $namespace
+     * @param string $namespace            
      */
-    public function setNamespace($namespace)
+    public function setNamespace ($namespace)
     {
         $this->_xmlNamespace = $namespace;
     }
-
 }

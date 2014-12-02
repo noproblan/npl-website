@@ -19,7 +19,9 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
 
-/** Zend_Form_Decorator_Abstract */
+/**
+ * Zend_Form_Decorator_Abstract
+ */
 require_once 'Zend/Form/Decorator/Abstract.php';
 
 /**
@@ -27,32 +29,34 @@ require_once 'Zend/Form/Decorator/Abstract.php';
  *
  * Will translate the title attribute, if available
  *
- * @category   Zend
- * @package    Zend_Form
+ * @category Zend
+ * @package Zend_Form
  * @subpackage Decorator
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: Tooltip.php$
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
+ * @version $Id: Tooltip.php$
  */
 class Zend_Form_Decorator_Tooltip extends Zend_Form_Decorator_Abstract
 {
+
     /**
-     * Translates the title attribute if it is available, if the translator is available
+     * Translates the title attribute if it is available, if the translator is
+     * available
      * and if the translator is not disable on the element being rendered.
      *
-     * @param string $content
+     * @param string $content            
      * @return string
      */
-    public function render($content)
+    public function render ($content)
     {
         if (null !== ($title = $this->getElement()->getAttrib('title'))) {
             if (null !== ($translator = $this->getElement()->getTranslator())) {
                 $title = $translator->translate($title);
             }
         }
-
+        
         $this->getElement()->setAttrib('title', $title);
         return $content;
     }
-
 }

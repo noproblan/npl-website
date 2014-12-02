@@ -22,11 +22,13 @@
  */
 
 /**
+ *
  * @see Zend_Gdata_Extension
  */
 require_once 'Zend/Gdata/Extension.php';
 
 /**
+ *
  * @see Zend_Gdata_Extension_FeedLink
  */
 require_once 'Zend/Gdata/Extension/FeedLink.php';
@@ -34,43 +36,47 @@ require_once 'Zend/Gdata/Extension/FeedLink.php';
 /**
  * Represents the gd:comments element
  *
- * @category   Zend
- * @package    Zend_Gdata
+ * @category Zend
+ * @package Zend_Gdata
  * @subpackage Gdata
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Gdata_Extension_Comments extends Zend_Gdata_Extension
 {
 
     protected $_rootElement = 'comments';
+
     protected $_rel = null;
+
     protected $_feedLink = null;
 
-    public function __construct($rel = null, $feedLink = null)
+    public function __construct ($rel = null, $feedLink = null)
     {
         parent::__construct();
         $this->_rel = $rel;
         $this->_feedLink = $feedLink;
     }
 
-    public function getDOM($doc = null, $majorVersion = 1, $minorVersion = null)
+    public function getDOM ($doc = null, $majorVersion = 1, $minorVersion = null)
     {
         $element = parent::getDOM($doc, $majorVersion, $minorVersion);
         if ($this->_rel !== null) {
             $element->setAttribute('rel', $this->_rel);
         }
         if ($this->_feedLink !== null) {
-            $element->appendChild($this->_feedLink->getDOM($element->ownerDocument));
+            $element->appendChild(
+                    $this->_feedLink->getDOM($element->ownerDocument));
         }
         return $element;
     }
 
-    protected function takeChildFromDOM($child)
+    protected function takeChildFromDOM ($child)
     {
         $absoluteNodeName = $child->namespaceURI . ':' . $child->localName;
         switch ($absoluteNodeName) {
-            case $this->lookupNamespace('gd') . ':' . 'feedLink';
+            case $this->lookupNamespace('gd') . ':' . 'feedLink':
                 $feedLink = new Zend_Gdata_Extension_FeedLink();
                 $feedLink->transferFromDOM($child);
                 $this->_feedLink = $feedLink;
@@ -81,37 +87,36 @@ class Zend_Gdata_Extension_Comments extends Zend_Gdata_Extension
         }
     }
 
-    protected function takeAttributeFromDOM($attribute)
+    protected function takeAttributeFromDOM ($attribute)
     {
         switch ($attribute->localName) {
-        case 'rel':
-            $this->_rel = $attribute->nodeValue;
-            break;
-        default:
-            parent::takeAttributeFromDOM($attribute);
+            case 'rel':
+                $this->_rel = $attribute->nodeValue;
+                break;
+            default:
+                parent::takeAttributeFromDOM($attribute);
         }
     }
 
-    public function getRel()
+    public function getRel ()
     {
         return $this->_rel;
     }
 
-    public function setRel($value)
+    public function setRel ($value)
     {
         $this->_rel = $value;
         return $this;
     }
 
-    public function getFeedLink()
+    public function getFeedLink ()
     {
         return $this->_feedLink;
     }
 
-    public function setFeedLink($value)
+    public function setFeedLink ($value)
     {
         $this->_feedLink = $value;
         return $this;
     }
-
 }

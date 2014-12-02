@@ -21,21 +21,24 @@
  */
 
 /**
+ *
  * @see Zend_Service_DeveloperGarden_Request_SendSms_SendSmsAbstract
  */
 require_once 'Zend/Service/DeveloperGarden/Request/SendSms/SendSmsAbstract.php';
 
 /**
- * @category   Zend
- * @package    Zend_Service
+ *
+ * @category Zend
+ * @package Zend_Service
  * @subpackage DeveloperGarden
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @author     Marco Kaiser
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @author Marco Kaiser
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
-class Zend_Service_DeveloperGarden_Request_SendSms_SendFlashSMS
-    extends Zend_Service_DeveloperGarden_Request_SendSms_SendSmsAbstract
+class Zend_Service_DeveloperGarden_Request_SendSms_SendFlashSMS extends Zend_Service_DeveloperGarden_Request_SendSms_SendSmsAbstract
 {
+
     /**
      * this is the sms type
      * 2 = FlashSMS

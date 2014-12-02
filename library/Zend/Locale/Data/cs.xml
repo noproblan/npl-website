@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <ldml>
 	<identity>
-		<version number="$Revision: 1.132 $"/>
-		<generation date="$Date: 2009/06/15 03:46:23 $"/>
-		<language type="cs"/>
+		<version number="$Revision: 1.132 $" />
+		<generation date="$Date: 2009/06/15 03:46:23 $" />
+		<language type="cs" />
 	</identity>
 	<localeDisplayNames>
 		<languages>
@@ -89,9 +89,12 @@
 			<language type="cmc">čamština</language>
 			<language type="co">korsičtina</language>
 			<language type="cop">koptština</language>
-			<language type="cpe">kreolština a jiné pidginy na základě angličtiny</language>
-			<language type="cpf">kreolština a jiné pidginy na základě francouzštiny</language>
-			<language type="cpp">kreolština a jiné pidginy na základě portugalštiny</language>
+			<language type="cpe">kreolština a jiné pidginy na základě
+				angličtiny</language>
+			<language type="cpf">kreolština a jiné pidginy na základě
+				francouzštiny</language>
+			<language type="cpp">kreolština a jiné pidginy na základě
+				portugalštiny</language>
 			<language type="cr">krí</language>
 			<language type="crh">krymská turečtina</language>
 			<language type="crp">kreolština a jiné pidginy</language>
@@ -683,7 +686,8 @@
 			<territory type="GU">Guam</territory>
 			<territory type="GW">Guinea-Bissau</territory>
 			<territory type="GY">Guyana</territory>
-			<territory type="HK">Hongkong, zvláštní administrativní oblast Číny</territory>
+			<territory type="HK">Hongkong, zvláštní administrativní oblast
+				Číny</territory>
 			<territory type="HM">Ostrovy Heard a McDonald</territory>
 			<territory type="HN">Honduras</territory>
 			<territory type="HR">Chorvatsko</territory>
@@ -870,7 +874,8 @@
 		<inText type="languages">lowercase-words</inText>
 	</layout>
 	<characters>
-		<exemplarCharacters>[a á b c č d ď e é ě f-h {ch} i í j-n ň o ó p-r ř s š t ť u ú ů v-y ý z ž]</exemplarCharacters>
+		<exemplarCharacters>[a á b c č d ď e é ě f-h {ch} i í j-n ň o ó p-r ř
+			s š t ť u ú ů v-y ý z ž]</exemplarCharacters>
 	</characters>
 	<delimiters>
 		<quotationStart>„</quotationStart>
@@ -1152,7 +1157,8 @@
 						<intervalFormatItem id="yMMMEd">
 							<greatestDifference id="d">E, d. - E, d. MMM y</greatestDifference>
 							<greatestDifference id="M">E, d. MMM - E, d. MMM y</greatestDifference>
-							<greatestDifference id="y">E, d. MMM y - E, d. MMM y</greatestDifference>
+							<greatestDifference id="y">E, d. MMM y - E, d. MMM
+								y</greatestDifference>
 						</intervalFormatItem>
 						<intervalFormatItem id="yMMMM">
 							<greatestDifference id="M">LLLL-LLLL y</greatestDifference>

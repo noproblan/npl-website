@@ -21,44 +21,54 @@
  */
 
 /**
+ *
  * @see Zend_CodeGenerator_Php_Member_Abstract
  */
 require_once 'Zend/CodeGenerator/Php/Member/Abstract.php';
 
 /**
+ *
  * @see Zend_CodeGenerator_Php_Docblock
  */
 require_once 'Zend/CodeGenerator/Php/Docblock.php';
 
 /**
+ *
  * @see Zend_CodeGenerator_Php_Parameter
  */
 require_once 'Zend/CodeGenerator/Php/Parameter.php';
 
 /**
- * @category   Zend
- * @package    Zend_CodeGenerator
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ *
+ * @category Zend
+ * @package Zend_CodeGenerator
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_CodeGenerator_Php_Method extends Zend_CodeGenerator_Php_Member_Abstract
 {
+
     /**
+     *
      * @var Zend_CodeGenerator_Php_Docblock
      */
     protected $_docblock = null;
 
     /**
+     *
      * @var bool
      */
     protected $_isFinal = false;
 
     /**
+     *
      * @var array
      */
     protected $_parameters = array();
 
     /**
+     *
      * @var string
      */
     protected $_body = null;
@@ -66,22 +76,25 @@ class Zend_CodeGenerator_Php_Method extends Zend_CodeGenerator_Php_Member_Abstra
     /**
      * fromReflection()
      *
-     * @param Zend_Reflection_Method $reflectionMethod
+     * @param Zend_Reflection_Method $reflectionMethod            
      * @return Zend_CodeGenerator_Php_Method
      */
-    public static function fromReflection(Zend_Reflection_Method $reflectionMethod)
+    public static function fromReflection (
+            Zend_Reflection_Method $reflectionMethod)
     {
         $method = new self();
-
+        
         $method->setSourceContent($reflectionMethod->getContents(false));
         $method->setSourceDirty(false);
-
+        
         if ($reflectionMethod->getDocComment() != '') {
-            $method->setDocblock(Zend_CodeGenerator_Php_Docblock::fromReflection($reflectionMethod->getDocblock()));
+            $method->setDocblock(
+                    Zend_CodeGenerator_Php_Docblock::fromReflection(
+                            $reflectionMethod->getDocblock()));
         }
-
+        
         $method->setFinal($reflectionMethod->isFinal());
-
+        
         if ($reflectionMethod->isPrivate()) {
             $method->setVisibility(self::VISIBILITY_PRIVATE);
         } elseif ($reflectionMethod->isProtected()) {
@@ -89,26 +102,28 @@ class Zend_CodeGenerator_Php_Method extends Zend_CodeGenerator_Php_Member_Abstra
         } else {
             $method->setVisibility(self::VISIBILITY_PUBLIC);
         }
-
+        
         $method->setStatic($reflectionMethod->isStatic());
-
+        
         $method->setName($reflectionMethod->getName());
-
+        
         foreach ($reflectionMethod->getParameters() as $reflectionParameter) {
-            $method->setParameter(Zend_CodeGenerator_Php_Parameter::fromReflection($reflectionParameter));
+            $method->setParameter(
+                    Zend_CodeGenerator_Php_Parameter::fromReflection(
+                            $reflectionParameter));
         }
-
+        
         $method->setBody($reflectionMethod->getBody());
-
+        
         return $method;
     }
 
     /**
      * setFinal()
      *
-     * @param bool $isFinal
+     * @param bool $isFinal            
      */
-    public function setFinal($isFinal)
+    public function setFinal ($isFinal)
     {
         $this->_isFinal = ($isFinal) ? true : false;
     }
@@ -116,10 +131,10 @@ class Zend_CodeGenerator_Php_Method extends Zend_CodeGenerator_Php_Member_Abstra
     /**
      * setParameters()
      *
-     * @param array $parameters
+     * @param array $parameters            
      * @return Zend_CodeGenerator_Php_Method
      */
-    public function setParameters(Array $parameters)
+    public function setParameters (Array $parameters)
     {
         foreach ($parameters as $parameter) {
             $this->setParameter($parameter);
@@ -130,10 +145,10 @@ class Zend_CodeGenerator_Php_Method extends Zend_CodeGenerator_Php_Member_Abstra
     /**
      * setParameter()
      *
-     * @param Zend_CodeGenerator_Php_Parameter|array $parameter
+     * @param Zend_CodeGenerator_Php_Parameter|array $parameter            
      * @return Zend_CodeGenerator_Php_Method
      */
-    public function setParameter($parameter)
+    public function setParameter ($parameter)
     {
         if (is_array($parameter)) {
             $parameter = new Zend_CodeGenerator_Php_Parameter($parameter);
@@ -142,9 +157,10 @@ class Zend_CodeGenerator_Php_Method extends Zend_CodeGenerator_Php_Member_Abstra
             $parameterName = $parameter->getName();
         } else {
             require_once 'Zend/CodeGenerator/Php/Exception.php';
-            throw new Zend_CodeGenerator_Php_Exception('setParameter() expects either an array of method options or an instance of Zend_CodeGenerator_Php_Parameter');
+            throw new Zend_CodeGenerator_Php_Exception(
+                    'setParameter() expects either an array of method options or an instance of Zend_CodeGenerator_Php_Parameter');
         }
-
+        
         $this->_parameters[$parameterName] = $parameter;
         return $this;
     }
@@ -154,7 +170,7 @@ class Zend_CodeGenerator_Php_Method extends Zend_CodeGenerator_Php_Member_Abstra
      *
      * @return array Array of Zend_CodeGenerator_Php_Parameter
      */
-    public function getParameters()
+    public function getParameters ()
     {
         return $this->_parameters;
     }
@@ -162,10 +178,10 @@ class Zend_CodeGenerator_Php_Method extends Zend_CodeGenerator_Php_Member_Abstra
     /**
      * setBody()
      *
-     * @param string $body
+     * @param string $body            
      * @return Zend_CodeGenerator_Php_Method
      */
-    public function setBody($body)
+    public function setBody ($body)
     {
         $this->_body = $body;
         return $this;
@@ -176,7 +192,7 @@ class Zend_CodeGenerator_Php_Method extends Zend_CodeGenerator_Php_Member_Abstra
      *
      * @return string
      */
-    public function getBody()
+    public function getBody ()
     {
         return $this->_body;
     }
@@ -186,51 +202,51 @@ class Zend_CodeGenerator_Php_Method extends Zend_CodeGenerator_Php_Member_Abstra
      *
      * @return string
      */
-    public function generate()
+    public function generate ()
     {
         $output = '';
-
+        
         $indent = $this->getIndentation();
-
+        
         if (($docblock = $this->getDocblock()) !== null) {
             $docblock->setIndentation($indent);
             $output .= $docblock->generate();
         }
-
+        
         $output .= $indent;
-
+        
         if ($this->isAbstract()) {
             $output .= 'abstract ';
         } else {
             $output .= (($this->isFinal()) ? 'final ' : '');
         }
-
-        $output .= $this->getVisibility()
-            . (($this->isStatic()) ? ' static' : '')
-            . ' function ' . $this->getName() . '(';
-
+        
+        $output .= $this->getVisibility() .
+                 (($this->isStatic()) ? ' static' : '') . ' function ' .
+                 $this->getName() . '(';
+        
         $parameters = $this->getParameters();
-        if (!empty($parameters)) {
+        if (! empty($parameters)) {
             foreach ($parameters as $parameter) {
                 $parameterOuput[] = $parameter->generate();
             }
-
+            
             $output .= implode(', ', $parameterOuput);
         }
-
+        
         $output .= ')' . self::LINE_FEED . $indent . '{' . self::LINE_FEED;
-
+        
         if ($this->_body && $this->isSourceDirty()) {
-            $output .= '        '
-                    .  str_replace(self::LINE_FEED, self::LINE_FEED . $indent . $indent, trim($this->_body))
-                    .  self::LINE_FEED;
+            $output .= '        ' .
+                     str_replace(self::LINE_FEED, 
+                            self::LINE_FEED . $indent . $indent, 
+                            trim($this->_body)) . self::LINE_FEED;
         } elseif ($this->_body) {
             $output .= $this->_body . self::LINE_FEED;
         }
-
+        
         $output .= $indent . '}' . self::LINE_FEED;
-
+        
         return $output;
     }
-
 }

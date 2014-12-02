@@ -20,6 +20,7 @@
  */
 
 /**
+ *
  * @see Zend_Text_Exception
  */
 require_once 'Zend/Text/Exception.php';
@@ -27,11 +28,12 @@ require_once 'Zend/Text/Exception.php';
 /**
  * Exception class for Zend_Figlet
  *
- * @category  Zend
- * @package   Zend_Text_Figlet
- * @uses      Zend_Text_Exception
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license   http://framework.zend.com/license/new-bsd     New BSD License
+ * @category Zend
+ * @package Zend_Text_Figlet
+ * @uses Zend_Text_Exception
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Text_Figlet_Exception extends Zend_Text_Exception
 {

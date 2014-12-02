@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -21,40 +22,48 @@
  */
 
 /**
- * @category   Zend
- * @package    Zend_Json
+ *
+ * @category Zend
+ * @package Zend_Json
  * @subpackage Server
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Json_Server_Response
 {
+
     /**
      * Response error
+     * 
      * @var null|Zend_Json_Server_Error
      */
     protected $_error;
 
     /**
      * Request ID
+     * 
      * @var mixed
      */
     protected $_id;
 
     /**
      * Result
+     * 
      * @var mixed
      */
     protected $_result;
 
     /**
      * Service map
+     * 
      * @var Zend_Json_Server_Smd
      */
     protected $_serviceMap;
 
     /**
      * JSON-RPC version
+     * 
      * @var string
      */
     protected $_version;
@@ -62,10 +71,10 @@ class Zend_Json_Server_Response
     /**
      * Set result
      *
-     * @param  mixed $value
+     * @param mixed $value            
      * @return Zend_Json_Server_Response
      */
-    public function setResult($value)
+    public function setResult ($value)
     {
         $this->_result = $value;
         return $this;
@@ -76,19 +85,19 @@ class Zend_Json_Server_Response
      *
      * @return mixed
      */
-    public function getResult()
+    public function getResult ()
     {
         return $this->_result;
     }
-
+    
     // RPC error, if response results in fault
     /**
      * Set result error
      *
-     * @param  Zend_Json_Server_Error $error
+     * @param Zend_Json_Server_Error $error            
      * @return Zend_Json_Server_Response
      */
-    public function setError(Zend_Json_Server_Error $error)
+    public function setError (Zend_Json_Server_Error $error)
     {
         $this->_error = $error;
         return $this;
@@ -99,7 +108,7 @@ class Zend_Json_Server_Response
      *
      * @return null|Zend_Json_Server_Error
      */
-    public function getError()
+    public function getError ()
     {
         return $this->_error;
     }
@@ -109,7 +118,7 @@ class Zend_Json_Server_Response
      *
      * @return bool
      */
-    public function isError()
+    public function isError ()
     {
         return $this->getError() instanceof Zend_Json_Server_Error;
     }
@@ -117,10 +126,10 @@ class Zend_Json_Server_Response
     /**
      * Set request ID
      *
-     * @param  mixed $name
+     * @param mixed $name            
      * @return Zend_Json_Server_Response
      */
-    public function setId($name)
+    public function setId ($name)
     {
         $this->_id = $name;
         return $this;
@@ -131,7 +140,7 @@ class Zend_Json_Server_Response
      *
      * @return mixed
      */
-    public function getId()
+    public function getId ()
     {
         return $this->_id;
     }
@@ -139,10 +148,10 @@ class Zend_Json_Server_Response
     /**
      * Set JSON-RPC version
      *
-     * @param  string $version
+     * @param string $version            
      * @return Zend_Json_Server_Response
      */
-    public function setVersion($version)
+    public function setVersion ($version)
     {
         $version = (string) $version;
         if ('2.0' == $version) {
@@ -150,7 +159,7 @@ class Zend_Json_Server_Response
         } else {
             $this->_version = null;
         }
-
+        
         return $this;
     }
 
@@ -159,7 +168,7 @@ class Zend_Json_Server_Response
      *
      * @return string
      */
-    public function getVersion()
+    public function getVersion ()
     {
         return $this->_version;
     }
@@ -169,24 +178,24 @@ class Zend_Json_Server_Response
      *
      * @return string
      */
-    public function toJson()
+    public function toJson ()
     {
         if ($this->isError()) {
             $response = array(
-                'error'  => $this->getError()->toArray(),
-                'id'     => $this->getId(),
+                    'error' => $this->getError()->toArray(),
+                    'id' => $this->getId()
             );
         } else {
             $response = array(
-                'result' => $this->getResult(),
-                'id'     => $this->getId(),
+                    'result' => $this->getResult(),
+                    'id' => $this->getId()
             );
         }
-
+        
         if (null !== ($version = $this->getVersion())) {
             $response['jsonrpc'] = $version;
         }
-
+        
         require_once 'Zend/Json.php';
         return Zend_Json::encode($response);
     }
@@ -196,7 +205,7 @@ class Zend_Json_Server_Response
      *
      * @return mixed
      */
-    public function getArgs()
+    public function getArgs ()
     {
         return $this->_args;
     }
@@ -204,10 +213,10 @@ class Zend_Json_Server_Response
     /**
      * Set args
      *
-     * @param mixed $args
+     * @param mixed $args            
      * @return self
      */
-    public function setArgs($args)
+    public function setArgs ($args)
     {
         $this->_args = $args;
         return $this;
@@ -216,10 +225,10 @@ class Zend_Json_Server_Response
     /**
      * Set service map object
      *
-     * @param  Zend_Json_Server_Smd $serviceMap
+     * @param Zend_Json_Server_Smd $serviceMap            
      * @return Zend_Json_Server_Response
      */
-    public function setServiceMap($serviceMap)
+    public function setServiceMap ($serviceMap)
     {
         $this->_serviceMap = $serviceMap;
         return $this;
@@ -230,7 +239,7 @@ class Zend_Json_Server_Response
      *
      * @return Zend_Json_Server_Smd|null
      */
-    public function getServiceMap()
+    public function getServiceMap ()
     {
         return $this->_serviceMap;
     }
@@ -240,7 +249,7 @@ class Zend_Json_Server_Response
      *
      * @return string
      */
-    public function __toString()
+    public function __toString ()
     {
         return $this->toJson();
     }

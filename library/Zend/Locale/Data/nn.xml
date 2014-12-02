@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <ldml>
 	<identity>
-		<version number="$Revision: 1.100 $"/>
-		<generation date="$Date: 2009/06/15 03:46:24 $"/>
-		<language type="nn"/>
+		<version number="$Revision: 1.100 $" />
+		<generation date="$Date: 2009/06/15 03:46:24 $" />
+		<language type="nn" />
 	</identity>
 	<fallback>nb da sv en</fallback>
 	<localeDisplayNames>
@@ -997,7 +997,8 @@
 	</localeDisplayNames>
 	<characters>
 		<exemplarCharacters>[a à b-e é f-o ó ò ô p-z æ ø å]</exemplarCharacters>
-		<exemplarCharacters type="auxiliary">[á ǎ č ç đ è ê ń ñ ŋ š ŧ ü ž ä ö]</exemplarCharacters>
+		<exemplarCharacters type="auxiliary">[á ǎ č ç đ è ê ń ñ ŋ š ŧ ü
+			ž ä ö]</exemplarCharacters>
 		<exemplarCharacters type="currencySymbol">[a-z]</exemplarCharacters>
 	</characters>
 	<delimiters>
@@ -1248,7 +1249,8 @@
 						<intervalFormatItem id="yMMMEd">
 							<greatestDifference id="d">E. d.–E. d. MMM. y</greatestDifference>
 							<greatestDifference id="M">E. d. MMM.–E. d. MMM. y</greatestDifference>
-							<greatestDifference id="y">E. d. MMM. y–E. d. MMM. y</greatestDifference>
+							<greatestDifference id="y">E. d. MMM. y–E. d. MMM.
+								y</greatestDifference>
 						</intervalFormatItem>
 					</intervalFormats>
 				</dateTimeFormats>
@@ -1822,8 +1824,10 @@
 			</currency>
 			<currency type="ECV">
 				<displayName>ecuadoriansk unidad de valor constante (UVC)</displayName>
-				<displayName count="one">ecuadoriansk unidad de valor constante (UVC)</displayName>
-				<displayName count="other">ecuadorianske unidad de valor constante (UVC)</displayName>
+				<displayName count="one">ecuadoriansk unidad de valor
+					constante (UVC)</displayName>
+				<displayName count="other">ecuadorianske unidad de valor
+					constante (UVC)</displayName>
 			</currency>
 			<currency type="EEK">
 				<displayName>estisk kroon</displayName>
@@ -2604,8 +2608,10 @@
 			</currency>
 			<currency type="UYI">
 				<displayName>uruguayansk peso en unidades indexadas</displayName>
-				<displayName count="one">uruguayansk peso en unidades indexadas</displayName>
-				<displayName count="other">uruguayanske peso en unidades indexadas</displayName>
+				<displayName count="one">uruguayansk peso en unidades
+					indexadas</displayName>
+				<displayName count="other">uruguayanske peso en unidades
+					indexadas</displayName>
 			</currency>
 			<currency type="UYP">
 				<displayName>uruguayansk peso (1975-1993)</displayName>

@@ -20,20 +20,26 @@
  * @version    $Id: Message.php 23775 2011-03-01 17:25:24Z ralph $
  */
 
-/** Zend_Log_Filter_Abstract */
+/**
+ * Zend_Log_Filter_Abstract
+ */
 require_once 'Zend/Log/Filter/Abstract.php';
 
 /**
- * @category   Zend
- * @package    Zend_Log
+ *
+ * @category Zend
+ * @package Zend_Log
  * @subpackage Filter
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: Message.php 23775 2011-03-01 17:25:24Z ralph $
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
+ * @version $Id: Message.php 23775 2011-03-01 17:25:24Z ralph $
  */
 class Zend_Log_Filter_Message extends Zend_Log_Filter_Abstract
 {
+
     /**
+     *
      * @var string
      */
     protected $_regexp;
@@ -41,11 +47,12 @@ class Zend_Log_Filter_Message extends Zend_Log_Filter_Abstract
     /**
      * Filter out any log messages not matching $regexp.
      *
-     * @param  string  $regexp     Regular expression to test the log message
+     * @param string $regexp
+     *            Regular expression to test the log message
      * @return void
      * @throws Zend_Log_Exception
      */
-    public function __construct($regexp)
+    public function __construct ($regexp)
     {
         if (@preg_match($regexp, '') === false) {
             require_once 'Zend/Log/Exception.php';
@@ -57,28 +64,27 @@ class Zend_Log_Filter_Message extends Zend_Log_Filter_Abstract
     /**
      * Create a new instance of Zend_Log_Filter_Message
      *
-     * @param  array|Zend_Config $config
+     * @param array|Zend_Config $config            
      * @return Zend_Log_Filter_Message
      */
-    static public function factory($config)
+    static public function factory ($config)
     {
         $config = self::_parseConfig($config);
         $config = array_merge(array(
-            'regexp' => null
+                'regexp' => null
         ), $config);
-
-        return new self(
-            $config['regexp']
-        );
+        
+        return new self($config['regexp']);
     }
 
     /**
      * Returns TRUE to accept the message, FALSE to block it.
      *
-     * @param  array    $event    event data
-     * @return boolean            accepted?
+     * @param array $event
+     *            event data
+     * @return boolean accepted?
      */
-    public function accept($event)
+    public function accept ($event)
     {
         return preg_match($this->_regexp, $event['message']) > 0;
     }

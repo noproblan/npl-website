@@ -20,19 +20,21 @@
  * @version    $Id: Document.php 23775 2011-03-01 17:25:24Z ralph $
  */
 
-
-/** Zend_Search_Lucene_Field */
+/**
+ * Zend_Search_Lucene_Field
+ */
 require_once 'Zend/Search/Lucene/Field.php';
 
-
 /**
- * A Document is a set of fields. Each field has a name and a textual value.
+ * A Document is a set of fields.
+ * Each field has a name and a textual value.
  *
- * @category   Zend
- * @package    Zend_Search_Lucene
+ * @category Zend
+ * @package Zend_Search_Lucene
  * @subpackage Document
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Search_Lucene_Document
 {
@@ -47,7 +49,8 @@ class Zend_Search_Lucene_Document
 
     /**
      * Field boost factor
-     * It's not stored directly in the index, but affects on normalization factor
+     * It's not stored directly in the index, but affects on normalization
+     * factor
      *
      * @var float
      */
@@ -57,55 +60,53 @@ class Zend_Search_Lucene_Document
      * Proxy method for getFieldValue(), provides more convenient access to
      * the string value of a field.
      *
-     * @param  string $offset
+     * @param string $offset            
      * @return string
      */
-    public function __get($offset)
+    public function __get ($offset)
     {
         return $this->getFieldValue($offset);
     }
 
-
     /**
      * Add a field object to this document.
      *
-     * @param Zend_Search_Lucene_Field $field
+     * @param Zend_Search_Lucene_Field $field            
      * @return Zend_Search_Lucene_Document
      */
-    public function addField(Zend_Search_Lucene_Field $field)
+    public function addField (Zend_Search_Lucene_Field $field)
     {
         $this->_fields[$field->name] = $field;
-
+        
         return $this;
     }
-
 
     /**
      * Return an array with the names of the fields in this document.
      *
      * @return array
      */
-    public function getFieldNames()
+    public function getFieldNames ()
     {
         return array_keys($this->_fields);
     }
 
-
     /**
-     * Returns Zend_Search_Lucene_Field object for a named field in this document.
+     * Returns Zend_Search_Lucene_Field object for a named field in this
+     * document.
      *
-     * @param string $fieldName
+     * @param string $fieldName            
      * @return Zend_Search_Lucene_Field
      */
-    public function getField($fieldName)
+    public function getField ($fieldName)
     {
-        if (!array_key_exists($fieldName, $this->_fields)) {
+        if (! array_key_exists($fieldName, $this->_fields)) {
             require_once 'Zend/Search/Lucene/Exception.php';
-            throw new Zend_Search_Lucene_Exception("Field name \"$fieldName\" not found in document.");
+            throw new Zend_Search_Lucene_Exception(
+                    "Field name \"$fieldName\" not found in document.");
         }
         return $this->_fields[$fieldName];
     }
-
 
     /**
      * Returns the string value of a named field in this document.
@@ -113,7 +114,7 @@ class Zend_Search_Lucene_Document
      * @see __get()
      * @return string
      */
-    public function getFieldValue($fieldName)
+    public function getFieldValue ($fieldName)
     {
         return $this->getField($fieldName)->value;
     }
@@ -124,7 +125,7 @@ class Zend_Search_Lucene_Document
      * @see __get()
      * @return string
      */
-    public function getFieldUtf8Value($fieldName)
+    public function getFieldUtf8Value ($fieldName)
     {
         return $this->getField($fieldName)->getUtf8Value();
     }

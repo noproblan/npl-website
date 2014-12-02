@@ -20,19 +20,20 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
 
-
-/** Zend_View_Exception */
+/**
+ * Zend_View_Exception
+ */
 require_once 'Zend/View/Exception.php';
-
 
 /**
  * Exception for Zend_View_Helper_Placeholder_Registry class.
  *
- * @category   Zend
- * @package    Zend_View
+ * @category Zend
+ * @package Zend_View
  * @subpackage Helper
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_View_Helper_Placeholder_Registry_Exception extends Zend_View_Exception
 {

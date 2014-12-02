@@ -26,21 +26,24 @@
  *
  * This interface decribes Zend_Http_Client_Adapter which supports streaming.
  *
- * @category   Zend
- * @package    Zend_Http
+ * @category Zend
+ * @package Zend_Http
  * @subpackage Client_Adapter
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 interface Zend_Http_Client_Adapter_Stream
 {
+
     /**
      * Set output stream
      *
      * This function sets output stream where the result will be stored.
      *
-     * @param resource $stream Stream to write the output to
-     *
+     * @param resource $stream
+     *            Stream to write the output to
+     *            
      */
-    public function setOutputStream($stream);
+    public function setOutputStream ($stream);
 }

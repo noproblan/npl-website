@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <ldml>
 	<identity>
-		<version number="$Revision: 1.131 $"/>
-		<generation date="$Date: 2009/06/15 03:46:23 $"/>
-		<language type="uk"/>
+		<version number="$Revision: 1.131 $" />
+		<generation date="$Date: 2009/06/15 03:46:23 $" />
+		<language type="uk" />
 	</identity>
 	<localeDisplayNames>
 		<languages>
@@ -93,9 +93,12 @@
 			<language type="cmc">хамітські мови</language>
 			<language type="co">корсиканська</language>
 			<language type="cop">коптська</language>
-			<language type="cpe">англо-креольські та піджінізовані англійські мови</language>
-			<language type="cpf">франко-креольські та піджінізовані франкофонні мови</language>
-			<language type="cpp">португальсько-креольські та піджінізовані португальські мови</language>
+			<language type="cpe">англо-креольські та піджінізовані англійські
+				мови</language>
+			<language type="cpf">франко-креольські та піджінізовані
+				франкофонні мови</language>
+			<language type="cpp">португальсько-креольські та піджінізовані
+				португальські мови</language>
 			<language type="cr">крі</language>
 			<language type="crh">кримськотатарська</language>
 			<language type="crp">креольські та піджінізовані мови</language>
@@ -769,7 +772,8 @@
 			<territory type="GP">Гваделупа</territory>
 			<territory type="GQ">Екваторіальна Гвінея</territory>
 			<territory type="GR">Греція</territory>
-			<territory type="GS">Південна Джорджія та Південні Сандвічеві Острови</territory>
+			<territory type="GS">Південна Джорджія та Південні Сандвічеві
+				Острови</territory>
 			<territory type="GT">Гватемала</territory>
 			<territory type="GU">Гуам</territory>
 			<territory type="GW">Гвінея-Біссау</territory>
@@ -1303,9 +1307,12 @@
 							<greatestDifference id="y">dd.MM.yy – dd.MM.yy</greatestDifference>
 						</intervalFormatItem>
 						<intervalFormatItem id="yMEd">
-							<greatestDifference id="d">E, dd.MM.yy – E, dd.MM.yy</greatestDifference>
-							<greatestDifference id="M">E, dd.MM.yy – E, dd.MM.yy</greatestDifference>
-							<greatestDifference id="y">E, dd.MM.yy – E, dd.MM.yy</greatestDifference>
+							<greatestDifference id="d">E, dd.MM.yy – E,
+								dd.MM.yy</greatestDifference>
+							<greatestDifference id="M">E, dd.MM.yy – E,
+								dd.MM.yy</greatestDifference>
+							<greatestDifference id="y">E, dd.MM.yy – E,
+								dd.MM.yy</greatestDifference>
 						</intervalFormatItem>
 						<intervalFormatItem id="yMMM">
 							<greatestDifference id="M">LLL–LLL y</greatestDifference>
@@ -2937,10 +2944,14 @@
 			</currency>
 			<currency type="AOR">
 				<displayName>Ангольська кванза реаджастадо (1995-1999)</displayName>
-				<displayName count="few">ангольські кванзи реаджастадо (1995-1999)</displayName>
-				<displayName count="many">ангольських кванз реаджастадо (1995-1999)</displayName>
-				<displayName count="one">ангольська кванза реаджастадо (1995-1999)</displayName>
-				<displayName count="other">ангольської кванзи реаджастадо (1995-1999)</displayName>
+				<displayName count="few">ангольські кванзи реаджастадо
+					(1995-1999)</displayName>
+				<displayName count="many">ангольських кванз реаджастадо
+					(1995-1999)</displayName>
+				<displayName count="one">ангольська кванза реаджастадо
+					(1995-1999)</displayName>
+				<displayName count="other">ангольської кванзи реаджастадо
+					(1995-1999)</displayName>
 			</currency>
 			<currency type="ARA">
 				<displayName>Аргентинський австрал</displayName>

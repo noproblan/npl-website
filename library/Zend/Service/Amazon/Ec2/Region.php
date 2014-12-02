@@ -21,6 +21,7 @@
  */
 
 /**
+ *
  * @see Zend_Service_Amazon_Ec2_Abstract
  */
 require_once 'Zend/Service/Amazon/Ec2/Abstract.php';
@@ -28,11 +29,12 @@ require_once 'Zend/Service/Amazon/Ec2/Abstract.php';
 /**
  * An Amazon EC2 interface to query which Regions your account has access to.
  *
- * @category   Zend
- * @package    Zend_Service_Amazon
+ * @category Zend
+ * @package Zend_Service_Amazon
  * @subpackage Ec2
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Service_Amazon_Ec2_Region extends Zend_Service_Amazon_Ec2_Abstract
 {
@@ -41,37 +43,41 @@ class Zend_Service_Amazon_Ec2_Region extends Zend_Service_Amazon_Ec2_Abstract
      * Describes availability zones that are currently available to the account
      * and their states.
      *
-     * @param string|array $region              Name of an region.
-     * @return array                            An array that contains all the return items.  Keys: regionName and regionUrl.
+     * @param string|array $region
+     *            Name of an region.
+     * @return array An array that contains all the return items. Keys:
+     *         regionName and regionUrl.
      */
-    public function describe($region = null)
+    public function describe ($region = null)
     {
         $params = array();
         $params['Action'] = 'DescribeRegions';
-
-        if(is_array($region) && !empty($region)) {
-            foreach($region as $k=>$name) {
-                $params['Region.' . ($k+1)] = $name;
+        
+        if (is_array($region) && ! empty($region)) {
+            foreach ($region as $k => $name) {
+                $params['Region.' . ($k + 1)] = $name;
             }
-        } elseif($region) {
+        } elseif ($region) {
             $params['Region.1'] = $region;
         }
-
+        
         $response = $this->sendRequest($params);
-
-        $xpath  = $response->getXPath();
-        $nodes  = $xpath->query('//ec2:item');
-
+        
+        $xpath = $response->getXPath();
+        $nodes = $xpath->query('//ec2:item');
+        
         $return = array();
         foreach ($nodes as $k => $node) {
             $item = array();
-            $item['regionName']   = $xpath->evaluate('string(ec2:regionName/text())', $node);
-            $item['regionUrl']  = $xpath->evaluate('string(ec2:regionUrl/text())', $node);
-
+            $item['regionName'] = $xpath->evaluate(
+                    'string(ec2:regionName/text())', $node);
+            $item['regionUrl'] = $xpath->evaluate(
+                    'string(ec2:regionUrl/text())', $node);
+            
             $return[] = $item;
             unset($item);
         }
-
+        
         return $return;
     }
 }

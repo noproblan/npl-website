@@ -28,21 +28,26 @@ require_once 'Zend/Memory/Container/Interface.php';
  * Memory object container access controller.
  *
  * Memory manager stores a list of generated objects to control them.
- * So container objects always have at least one reference and can't be automatically destroyed.
+ * So container objects always have at least one reference and can't be
+ * automatically destroyed.
  *
  * This class is intended to be an userland proxy to memory container object.
- * It's not referenced by memory manager and class destructor is invoked immidiately after gouing
+ * It's not referenced by memory manager and class destructor is invoked
+ * immidiately after gouing
  * out of scope or unset operation.
  *
- * Class also provides Zend_Memory_Container_Interface interface and works as proxy for such cases.
+ * Class also provides Zend_Memory_Container_Interface interface and works as
+ * proxy for such cases.
  *
- * @category   Zend
- * @package    Zend_Memory
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @category Zend
+ * @package Zend_Memory
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Memory_AccessController implements Zend_Memory_Container_Interface
 {
+
     /**
      * Memory container object
      *
@@ -50,13 +55,12 @@ class Zend_Memory_AccessController implements Zend_Memory_Container_Interface
      */
     private $_memContainer;
 
-
     /**
      * Object constructor
      *
-     * @param Zend_Memory_Container_Movable $memoryManager
+     * @param Zend_Memory_Container_Movable $memoryManager            
      */
-    public function __construct(Zend_Memory_Container_Movable $memContainer)
+    public function __construct (Zend_Memory_Container_Movable $memContainer)
     {
         $this->_memContainer = $memContainer;
     }
@@ -64,11 +68,10 @@ class Zend_Memory_AccessController implements Zend_Memory_Container_Interface
     /**
      * Object destructor
      */
-    public function __destruct()
+    public function __destruct ()
     {
         $this->_memContainer->destroy();
     }
-
 
     /**
      * Get string value reference
@@ -78,7 +81,7 @@ class Zend_Memory_AccessController implements Zend_Memory_Container_Interface
      *
      * @return &string
      */
-    public function &getRef()
+    public function &getRef ()
     {
         return $this->_memContainer->getRef();
     }
@@ -88,7 +91,7 @@ class Zend_Memory_AccessController implements Zend_Memory_Container_Interface
      *
      * Should be used together with getRef()
      */
-    public function touch()
+    public function touch ()
     {
         $this->_memContainer->touch();
     }
@@ -96,16 +99,15 @@ class Zend_Memory_AccessController implements Zend_Memory_Container_Interface
     /**
      * Lock object in memory.
      */
-    public function lock()
+    public function lock ()
     {
         $this->_memContainer->lock();
     }
 
-
     /**
      * Unlock object
      */
-    public function unlock()
+    public function unlock ()
     {
         $this->_memContainer->unlock();
     }
@@ -115,7 +117,7 @@ class Zend_Memory_AccessController implements Zend_Memory_Container_Interface
      *
      * @return boolean
      */
-    public function isLocked()
+    public function isLocked ()
     {
         return $this->_memContainer->isLocked();
     }
@@ -126,11 +128,11 @@ class Zend_Memory_AccessController implements Zend_Memory_Container_Interface
      * Loads object if necessary and moves it to the top of loaded objects list.
      * Swaps objects from the bottom of loaded objects list, if necessary.
      *
-     * @param string $property
+     * @param string $property            
      * @return string
      * @throws Zend_Memory_Exception
      */
-    public function __get($property)
+    public function __get ($property)
     {
         return $this->_memContainer->$property;
     }
@@ -138,11 +140,11 @@ class Zend_Memory_AccessController implements Zend_Memory_Container_Interface
     /**
      * Set handler
      *
-     * @param string $property
-     * @param  string $value
+     * @param string $property            
+     * @param string $value            
      * @throws Zend_Exception
      */
-    public function __set($property, $value)
+    public function __set ($property, $value)
     {
         $this->_memContainer->$property = $value;
     }

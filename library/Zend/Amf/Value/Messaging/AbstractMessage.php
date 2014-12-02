@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -24,44 +25,53 @@
  * This is the default Implementation of Message, which provides
  * a convenient base for behavior and association of common endpoints
  *
- * @package    Zend_Amf
+ * @package Zend_Amf
  * @subpackage Value
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Amf_Value_Messaging_AbstractMessage
 {
+
     /**
+     *
      * @var string Client identifier
      */
     public $clientId;
 
     /**
+     *
      * @var string Destination
      */
     public $destination;
 
     /**
+     *
      * @var string Message identifier
      */
     public $messageId;
 
     /**
+     *
      * @var int Message timestamp
      */
     public $timestamp;
 
     /**
+     *
      * @var int Message TTL
      */
     public $timeToLive;
 
     /**
+     *
      * @var object Message headers
      */
     public $headers;
 
     /**
+     *
      * @var string Message body
      */
     public $body;
@@ -75,18 +85,15 @@ class Zend_Amf_Value_Messaging_AbstractMessage
      *
      * @return string
      */
-    public function generateId()
+    public function generateId ()
     {
-        return sprintf(
-            '%08X-%04X-%04X-%02X%02X-%012X',
-            mt_rand(),
-            mt_rand(0, 65535),
-            bindec(substr_replace(
-                sprintf('%016b', mt_rand(0, 65535)), '0100', 11, 4)
-            ),
-            bindec(substr_replace(sprintf('%08b', mt_rand(0, 255)), '01', 5, 2)),
-            mt_rand(0, 255),
-            mt_rand()
-        );
+        return sprintf('%08X-%04X-%04X-%02X%02X-%012X', mt_rand(), 
+                mt_rand(0, 65535), 
+                bindec(
+                        substr_replace(sprintf('%016b', mt_rand(0, 65535)), 
+                                '0100', 11, 4)), 
+                bindec(
+                        substr_replace(sprintf('%08b', mt_rand(0, 255)), '01', 
+                                5, 2)), mt_rand(0, 255), mt_rand());
     }
 }

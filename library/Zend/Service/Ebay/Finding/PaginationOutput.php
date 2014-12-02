@@ -21,20 +21,24 @@
  */
 
 /**
+ *
  * @see Zend_Service_Ebay_Finding_Abstract
  */
 require_once 'Zend/Service/Ebay/Finding/Abstract.php';
 
 /**
- * @category   Zend
- * @package    Zend_Service
+ *
+ * @category Zend
+ * @package Zend_Service
  * @subpackage Ebay
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @uses       Zend_Service_Ebay_Finding_Abstract
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
+ * @uses Zend_Service_Ebay_Finding_Abstract
  */
 class Zend_Service_Ebay_Finding_PaginationOutput extends Zend_Service_Ebay_Finding_Abstract
 {
+
     /**
      * The maximum number of items that can be returned in the response.
      *
@@ -100,16 +104,18 @@ class Zend_Service_Ebay_Finding_PaginationOutput extends Zend_Service_Ebay_Findi
     public $totalPages;
 
     /**
+     *
      * @return void
      */
-    protected function _init()
+    protected function _init ()
     {
         parent::_init();
         $ns = Zend_Service_Ebay_Finding::XMLNS_FINDING;
-
-        $this->entriesPerPage = $this->_query(".//$ns:entriesPerPage[1]", 'integer');
-        $this->pageNumber     = $this->_query(".//$ns:pageNumber[1]", 'integer');
-        $this->totalEntries   = $this->_query(".//$ns:totalEntries[1]", 'integer');
-        $this->totalPages     = $this->_query(".//$ns:totalPages[1]", 'integer');
+        
+        $this->entriesPerPage = $this->_query(".//$ns:entriesPerPage[1]", 
+                'integer');
+        $this->pageNumber = $this->_query(".//$ns:pageNumber[1]", 'integer');
+        $this->totalEntries = $this->_query(".//$ns:totalEntries[1]", 'integer');
+        $this->totalPages = $this->_query(".//$ns:totalPages[1]", 'integer');
     }
 }

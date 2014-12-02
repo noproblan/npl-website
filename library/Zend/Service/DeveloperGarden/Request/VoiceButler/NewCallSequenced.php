@@ -21,21 +21,24 @@
  */
 
 /**
+ *
  * @see Zend_Service_DeveloperGarden_VoiceButler_NewCall
  */
 require_once 'Zend/Service/DeveloperGarden/Request/VoiceButler/NewCall.php';
 
 /**
- * @category   Zend
- * @package    Zend_Service
+ *
+ * @category Zend
+ * @package Zend_Service
  * @subpackage DeveloperGarden
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @author     Marco Kaiser
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @author Marco Kaiser
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
-class Zend_Service_DeveloperGarden_Request_VoiceButler_NewCallSequenced
-    extends Zend_Service_DeveloperGarden_Request_VoiceButler_NewCall
+class Zend_Service_DeveloperGarden_Request_VoiceButler_NewCallSequenced extends Zend_Service_DeveloperGarden_Request_VoiceButler_NewCall
 {
+
     /**
      * array of second numbers to be called sequenced
      *
@@ -51,29 +54,33 @@ class Zend_Service_DeveloperGarden_Request_VoiceButler_NewCallSequenced
     public $maxWait = null;
 
     /**
+     *
      * @return array
      */
-    public function getBNumber()
+    public function getBNumber ()
     {
         return $this->bNumber;
     }
 
     /**
-     * @param array $bNumber
+     *
+     * @param array $bNumber            
      * @return Zend_Service_DeveloperGarden_Request_VoiceButler_NewCall
      */
-    /*public function setBNumber(array $bNumber)
-    {
-        $this->bNumber = $bNumber;
-        return $this;
-    }*/
-
+    /*
+     * public function setBNumber(array $bNumber)
+     * {
+     * $this->bNumber = $bNumber;
+     * return $this;
+     * }
+     */
+    
     /**
      * returns the max wait value
      *
      * @return integer
      */
-    public function getMaxWait()
+    public function getMaxWait ()
     {
         return $this->maxWait;
     }
@@ -81,10 +88,10 @@ class Zend_Service_DeveloperGarden_Request_VoiceButler_NewCallSequenced
     /**
      * sets new max wait value for next number call
      *
-     * @param integer $maxWait
+     * @param integer $maxWait            
      * @return Zend_Service_DeveloperGarden_Request_VoiceButler_NewCallSequenced
      */
-    public function setMaxWait($maxWait)
+    public function setMaxWait ($maxWait)
     {
         $this->maxWait = $maxWait;
         return $this;

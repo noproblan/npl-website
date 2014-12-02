@@ -22,11 +22,13 @@
  */
 
 /**
+ *
  * @see Zend_Gdata_Extension
  */
 require_once 'Zend/Gdata/Extension.php';
 
 /**
+ *
  * @see Zend_Gdata_Extension_Reminder
  */
 require_once 'Zend/Gdata/Extension/Reminder.php';
@@ -34,23 +36,28 @@ require_once 'Zend/Gdata/Extension/Reminder.php';
 /**
  * Represents the gd:when element
  *
- * @category   Zend
- * @package    Zend_Gdata
+ * @category Zend
+ * @package Zend_Gdata
  * @subpackage Gdata
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Gdata_Extension_When extends Zend_Gdata_Extension
 {
 
     protected $_rootElement = 'when';
+
     protected $_reminders = array();
+
     protected $_startTime = null;
+
     protected $_valueString = null;
+
     protected $_endTime = null;
 
-    public function __construct($startTime = null, $endTime = null,
-            $valueString = null, $reminders = null)
+    public function __construct ($startTime = null, $endTime = null, $valueString = null, 
+            $reminders = null)
     {
         parent::__construct();
         $this->_startTime = $startTime;
@@ -59,7 +66,7 @@ class Zend_Gdata_Extension_When extends Zend_Gdata_Extension
         $this->_reminders = $reminders;
     }
 
-    public function getDOM($doc = null, $majorVersion = 1, $minorVersion = null)
+    public function getDOM ($doc = null, $majorVersion = 1, $minorVersion = null)
     {
         $element = parent::getDOM($doc, $majorVersion, $minorVersion);
         if ($this->_startTime !== null) {
@@ -80,22 +87,22 @@ class Zend_Gdata_Extension_When extends Zend_Gdata_Extension
         return $element;
     }
 
-    protected function takeChildFromDOM($child)
+    protected function takeChildFromDOM ($child)
     {
         $absoluteNodeName = $child->namespaceURI . ':' . $child->localName;
         switch ($absoluteNodeName) {
-            case $this->lookupNamespace('gd') . ':' . 'reminder';
+            case $this->lookupNamespace('gd') . ':' . 'reminder':
                 $reminder = new Zend_Gdata_Extension_Reminder();
                 $reminder->transferFromDOM($child);
                 $this->_reminders[] = $reminder;
                 break;
-        default:
-            parent::takeChildFromDOM($child);
-            break;
+            default:
+                parent::takeChildFromDOM($child);
+                break;
         }
     }
 
-    protected function takeAttributeFromDOM($attribute)
+    protected function takeAttributeFromDOM ($attribute)
     {
         switch ($attribute->localName) {
             case 'startTime':
@@ -112,58 +119,57 @@ class Zend_Gdata_Extension_When extends Zend_Gdata_Extension
         }
     }
 
-    public function __toString()
+    public function __toString ()
     {
         if ($this->_valueString)
             return $this->_valueString;
         else {
-            return 'Starts: ' . $this->getStartTime() . ' ' .
-                   'Ends: ' .  $this->getEndTime();
+            return 'Starts: ' . $this->getStartTime() . ' ' . 'Ends: ' .
+                     $this->getEndTime();
         }
     }
 
-    public function getStartTime()
+    public function getStartTime ()
     {
         return $this->_startTime;
     }
 
-    public function setStartTime($value)
+    public function setStartTime ($value)
     {
         $this->_startTime = $value;
         return $this;
     }
 
-    public function getEndTime()
+    public function getEndTime ()
     {
         return $this->_endTime;
     }
 
-    public function setEndTime($value)
+    public function setEndTime ($value)
     {
         $this->_endTime = $value;
         return $this;
     }
 
-    public function getValueString()
+    public function getValueString ()
     {
         return $this->_valueString;
     }
 
-    public function setValueString($value)
+    public function setValueString ($value)
     {
         $this->_valueString = $value;
         return $this;
     }
 
-    public function getReminders()
+    public function getReminders ()
     {
         return $this->_reminders;
     }
 
-    public function setReminders($value)
+    public function setReminders ($value)
     {
         $this->_reminders = $value;
         return $this;
     }
-
 }

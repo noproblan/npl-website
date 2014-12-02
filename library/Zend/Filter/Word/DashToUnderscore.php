@@ -20,25 +20,30 @@
  */
 
 /**
+ *
  * @see Zend_Filter_PregReplace
  */
 require_once 'Zend/Filter/Word/SeparatorToSeparator.php';
 
 /**
- * @category   Zend
- * @package    Zend_Filter
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ *
+ * @category Zend
+ * @package Zend_Filter
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Filter_Word_DashToUnderscore extends Zend_Filter_Word_SeparatorToSeparator
 {
+
     /**
      * Constructor
      *
-     * @param  string $separator Space by default
+     * @param string $separator
+     *            Space by default
      * @return void
      */
-    public function __construct()
+    public function __construct ()
     {
         parent::__construct('-', '_');
     }

@@ -20,17 +20,19 @@
  * @version    $Id: Default.php 23775 2011-03-01 17:25:24Z ralph $
  */
 
-
-/** Zend_Search_Lucene_Search_Similarity */
+/**
+ * Zend_Search_Lucene_Search_Similarity
+ */
 require_once 'Zend/Search/Lucene/Search/Similarity.php';
 
-
 /**
- * @category   Zend
- * @package    Zend_Search_Lucene
+ *
+ * @category Zend
+ * @package Zend_Search_Lucene
  * @subpackage Search
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Search_Lucene_Search_Similarity_Default extends Zend_Search_Lucene_Search_Similarity
 {
@@ -38,37 +40,37 @@ class Zend_Search_Lucene_Search_Similarity_Default extends Zend_Search_Lucene_Se
     /**
      * Implemented as '1/sqrt(numTerms)'.
      *
-     * @param string $fieldName
-     * @param integer $numTerms
+     * @param string $fieldName            
+     * @param integer $numTerms            
      * @return float
      */
-    public function lengthNorm($fieldName, $numTerms)
+    public function lengthNorm ($fieldName, $numTerms)
     {
         if ($numTerms == 0) {
             return 1E10;
         }
-
-        return 1.0/sqrt($numTerms);
+        
+        return 1.0 / sqrt($numTerms);
     }
 
     /**
      * Implemented as '1/sqrt(sumOfSquaredWeights)'.
      *
-     * @param float $sumOfSquaredWeights
+     * @param float $sumOfSquaredWeights            
      * @return float
      */
-    public function queryNorm($sumOfSquaredWeights)
+    public function queryNorm ($sumOfSquaredWeights)
     {
-        return 1.0/sqrt($sumOfSquaredWeights);
+        return 1.0 / sqrt($sumOfSquaredWeights);
     }
 
     /**
      * Implemented as 'sqrt(freq)'.
      *
-     * @param float $freq
+     * @param float $freq            
      * @return float
      */
-    public function tf($freq)
+    public function tf ($freq)
     {
         return sqrt($freq);
     }
@@ -76,35 +78,35 @@ class Zend_Search_Lucene_Search_Similarity_Default extends Zend_Search_Lucene_Se
     /**
      * Implemented as '1/(distance + 1)'.
      *
-     * @param integer $distance
+     * @param integer $distance            
      * @return float
      */
-    public function sloppyFreq($distance)
+    public function sloppyFreq ($distance)
     {
-        return 1.0/($distance + 1);
+        return 1.0 / ($distance + 1);
     }
 
     /**
      * Implemented as 'log(numDocs/(docFreq+1)) + 1'.
      *
-     * @param integer $docFreq
-     * @param integer $numDocs
+     * @param integer $docFreq            
+     * @param integer $numDocs            
      * @return float
      */
-    public function idfFreq($docFreq, $numDocs)
+    public function idfFreq ($docFreq, $numDocs)
     {
-        return log($numDocs/(float)($docFreq+1)) + 1.0;
+        return log($numDocs / (float) ($docFreq + 1)) + 1.0;
     }
 
     /**
      * Implemented as 'overlap/maxOverlap'.
      *
-     * @param integer $overlap
-     * @param integer $maxOverlap
+     * @param integer $overlap            
+     * @param integer $maxOverlap            
      * @return float
      */
-    public function coord($overlap, $maxOverlap)
+    public function coord ($overlap, $maxOverlap)
     {
-        return $overlap/(float)$maxOverlap;
+        return $overlap / (float) $maxOverlap;
     }
 }

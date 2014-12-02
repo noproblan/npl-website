@@ -20,17 +20,20 @@
  * @version    $Id: Exception.php 23775 2011-03-01 17:25:24Z ralph $
  */
 
-
-/** Zend_Controller_Exception */
+/**
+ * Zend_Controller_Exception
+ */
 require_once 'Zend/Controller/Exception.php';
 
-
 /**
- * @package    Zend_Controller
+ *
+ * @package Zend_Controller
  * @subpackage Response
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Controller_Response_Exception extends Zend_Controller_Exception
-{}
+{
+}
 

@@ -21,6 +21,7 @@
  */
 
 /**
+ *
  * @see Zend_Loader_Exception
  */
 require_once 'Zend/Loader/Exception.php';
@@ -28,11 +29,12 @@ require_once 'Zend/Loader/Exception.php';
 /**
  * Plugin class loader exceptions
  *
- * @category   Zend
- * @package    Zend_Loader
+ * @category Zend
+ * @package Zend_Loader
  * @subpackage PluginLoader
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Loader_PluginLoader_Exception extends Zend_Loader_Exception
 {

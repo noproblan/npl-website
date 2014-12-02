@@ -20,34 +20,37 @@
  * @version    $Id: TagsResultSet.php 23775 2011-03-01 17:25:24Z ralph $
  */
 
-
 /**
+ *
  * @see Zend_Service_Technorati_ResultSet
  */
 require_once 'Zend/Service/Technorati/ResultSet.php';
 
-
 /**
  * Represents a Technorati TopTags or BlogPostTags queries result set.
  *
- * @category   Zend
- * @package    Zend_Service
+ * @category Zend
+ * @package Zend_Service
  * @subpackage Technorati
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Service_Technorati_TagsResultSet extends Zend_Service_Technorati_ResultSet
 {
+
     /**
      * Constructs a new object object from DOM Document.
      *
-     * @param   DomDocument $dom the ReST fragment for this object
+     * @param DomDocument $dom
+     *            the ReST fragment for this object
      */
-    public function __construct(DomDocument $dom, $options = array())
+    public function __construct (DomDocument $dom, $options = array())
     {
         parent::__construct($dom, $options);
-
-        $this->_totalResultsReturned  = (int) $this->_xpath->evaluate("count(/tapi/document/item)");
+        
+        $this->_totalResultsReturned = (int) $this->_xpath->evaluate(
+                "count(/tapi/document/item)");
         $this->_totalResultsAvailable = (int) $this->_totalResultsReturned;
     }
 
@@ -56,12 +59,14 @@ class Zend_Service_Technorati_TagsResultSet extends Zend_Service_Technorati_Resu
      *
      * @return Zend_Service_Technorati_TagsResult current result
      */
-    public function current()
+    public function current ()
     {
         /**
+         *
          * @see Zend_Service_Technorati_TagsResult
          */
         require_once 'Zend/Service/Technorati/TagsResult.php';
-        return new Zend_Service_Technorati_TagsResult($this->_results->item($this->_currentIndex));
+        return new Zend_Service_Technorati_TagsResult(
+                $this->_results->item($this->_currentIndex));
     }
 }

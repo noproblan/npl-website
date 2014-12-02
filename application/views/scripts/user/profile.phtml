@@ -1,50 +1,42 @@
 <?php
-	$username = $this->username;
-	$attendingLans = $this->attendingLans;
+$username = $this->username;
+$attendingLans = $this->attendingLans;
 ?>
 <div id="view-content">
-	<?php if (!is_null($username)) { ?>
-	<div id="title">
-		<h1>Profil von <?php echo $this->escape($username) ?></h1>
-	</div>
-	
-	<div id="information">
-	<?= $this->gravatar ?>
-	</div>
-	
-	<div id="lans-attending" class="lans">
-		<h2>Kommende LANs</h2>
-		<table>
-			<tr>
-				<th class="key">Name der LAN</th>
-				<th class="key">Start</th>
-				<th class="key">Status</th>
-			</tr>
-			<?php foreach ($attendingLans as $attendingLan): ?>
-			<tr>
-				<td class="value">
-					<a href="<?= $this->url(array(
-						'controller' => 'lan',
-						'action' => 'info',
-						'lanid' => $attendingLan["id"]),'default',true) ?>">
-					<?= $this->escape($attendingLan["name"]) ?></a>
-				</td>
-				<td>
-					<?= $this->escape($attendingLan["startdate"]) ?>
-				</td>
-				
-				<?php if ($attendingLan["attending"]): ?>
-				<td class="value indicate-neutral">
-					nimmt teil
-				</td>
-				<?php else: ?>
-				<td class="value indicate-negative">
-					nicht angemeldet
-				</td>
-				<?php endif; ?>
-			</tr>
-			<?php endforeach; ?>
-		</table>
-	</div>
-	<?php } ?>
+    <?php if (!is_null($username)) { ?>
+    <div id="title">
+        <h1>Profil von <?php echo $this->escape($username) ?></h1>
+    </div>
+
+    <div id="information">
+    <?= $this->gravatar?>
+    </div>
+
+    <div id="lans-attending" class="lans">
+        <h2>Kommende LANs</h2>
+        <table>
+            <tr>
+                <th class="key">Name der LAN</th>
+                <th class="key">Start</th>
+                <th class="key">Status</th>
+            </tr>
+            <?php foreach ($attendingLans as $attendingLan): ?>
+            <tr>
+                <td class="value"><a
+                    href="<?=$this->url(array('controller' => 'lan','action' => 'info','lanid' => $attendingLan["id"]), 'default', true)?>">
+                    <?= $this->escape($attendingLan["name"]) ?></a></td>
+                <td>
+                    <?= $this->escape($attendingLan["startdate"])?>
+                </td>
+                
+                <?php if ($attendingLan["attending"]): ?>
+                <td class="value indicate-neutral">nimmt teil</td>
+                <?php else: ?>
+                <td class="value indicate-negative">nicht angemeldet</td>
+                <?php endif; ?>
+            </tr>
+            <?php endforeach; ?>
+        </table>
+    </div>
+    <?php } ?>
 </div>

@@ -22,26 +22,31 @@
  */
 
 /**
+ *
  * @see Zend_Gdata
  */
 require_once 'Zend/Gdata.php';
 
 /**
+ *
  * @see Zend_Gdata_Gbase_ItemFeed
  */
 require_once 'Zend/Gdata/Gbase/ItemFeed.php';
 
 /**
+ *
  * @see Zend_Gdata_Gbase_ItemEntry
  */
 require_once 'Zend/Gdata/Gbase/ItemEntry.php';
 
 /**
+ *
  * @see Zend_Gdata_Gbase_SnippetEntry
  */
 require_once 'Zend/Gdata/Gbase/SnippetEntry.php';
 
 /**
+ *
  * @see Zend_Gdata_Gbase_SnippetFeed
  */
 require_once 'Zend/Gdata/Gbase/SnippetFeed.php';
@@ -50,12 +55,13 @@ require_once 'Zend/Gdata/Gbase/SnippetFeed.php';
  * Service class for interacting with the Google Base data API
  *
  * @link http://code.google.com/apis/base
- *
- * @category   Zend
- * @package    Zend_Gdata
+ *      
+ * @category Zend
+ * @package Zend_Gdata
  * @subpackage Gbase
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Gdata_Gbase extends Zend_Gdata
 {
@@ -88,18 +94,31 @@ class Zend_Gdata_Gbase extends Zend_Gdata
      * @var array
      */
     public static $namespaces = array(
-        array('g', 'http://base.google.com/ns/1.0', 1, 0),
-        array('batch', 'http://schemas.google.com/gdata/batch', 1, 0)
+            array(
+                    'g',
+                    'http://base.google.com/ns/1.0',
+                    1,
+                    0
+            ),
+            array(
+                    'batch',
+                    'http://schemas.google.com/gdata/batch',
+                    1,
+                    0
+            )
     );
 
     /**
      * Create Zend_Gdata_Gbase object
      *
-     * @param Zend_Http_Client $client (optional) The HTTP client to use when
-     *          when communicating with the Google Apps servers.
-     * @param string $applicationId The identity of the app in the form of Company-AppName-Version
+     * @param Zend_Http_Client $client
+     *            (optional) The HTTP client to use when
+     *            when communicating with the Google Apps servers.
+     * @param string $applicationId
+     *            The identity of the app in the form of Company-AppName-Version
      */
-    public function __construct($client = null, $applicationId = 'MyCompany-MyApp-1.0')
+    public function __construct ($client = null, 
+            $applicationId = 'MyCompany-MyApp-1.0')
     {
         $this->registerPackage('Zend_Gdata_Gbase');
         $this->registerPackage('Zend_Gdata_Gbase_Extension');
@@ -110,67 +129,76 @@ class Zend_Gdata_Gbase extends Zend_Gdata
     /**
      * Retreive feed object
      *
-     * @param mixed $location The location for the feed, as a URL or Query
+     * @param mixed $location
+     *            The location for the feed, as a URL or Query
      * @return Zend_Gdata_Gbase_ItemFeed
      */
-    public function getGbaseItemFeed($location = null)
+    public function getGbaseItemFeed ($location = null)
     {
         if ($location === null) {
             $uri = self::GBASE_ITEM_FEED_URI;
-        } else if ($location instanceof Zend_Gdata_Query) {
-            $uri = $location->getQueryUrl();
-        } else {
-            $uri = $location;
-        }
+        } else 
+            if ($location instanceof Zend_Gdata_Query) {
+                $uri = $location->getQueryUrl();
+            } else {
+                $uri = $location;
+            }
         return parent::getFeed($uri, 'Zend_Gdata_Gbase_ItemFeed');
     }
 
     /**
      * Retreive entry object
      *
-     * @param mixed $location The location for the feed, as a URL or Query
+     * @param mixed $location
+     *            The location for the feed, as a URL or Query
      * @return Zend_Gdata_Gbase_ItemEntry
      */
-    public function getGbaseItemEntry($location = null)
+    public function getGbaseItemEntry ($location = null)
     {
         if ($location === null) {
             require_once 'Zend/Gdata/App/InvalidArgumentException.php';
             throw new Zend_Gdata_App_InvalidArgumentException(
                     'Location must not be null');
-        } else if ($location instanceof Zend_Gdata_Query) {
-            $uri = $location->getQueryUrl();
-        } else {
-            $uri = $location;
-        }
+        } else 
+            if ($location instanceof Zend_Gdata_Query) {
+                $uri = $location->getQueryUrl();
+            } else {
+                $uri = $location;
+            }
         return parent::getEntry($uri, 'Zend_Gdata_Gbase_ItemEntry');
     }
 
     /**
      * Insert an entry
      *
-     * @param Zend_Gdata_Gbase_ItemEntry $entry The Base entry to upload
-     * @param boolean $dryRun Flag for the 'dry-run' parameter
+     * @param Zend_Gdata_Gbase_ItemEntry $entry
+     *            The Base entry to upload
+     * @param boolean $dryRun
+     *            Flag for the 'dry-run' parameter
      * @return Zend_Gdata_Gbase_ItemFeed
      */
-    public function insertGbaseItem($entry, $dryRun = false)
+    public function insertGbaseItem ($entry, $dryRun = false)
     {
         if ($dryRun == false) {
             $uri = $this->_defaultPostUri;
         } else {
             $uri = $this->_defaultPostUri . '?dry-run=true';
         }
-        $newitem = $this->insertEntry($entry, $uri, 'Zend_Gdata_Gbase_ItemEntry');
+        $newitem = $this->insertEntry($entry, $uri, 
+                'Zend_Gdata_Gbase_ItemEntry');
         return $newitem;
     }
 
     /**
      * Update an entry
      *
-     * @param Zend_Gdata_Gbase_ItemEntry $entry The Base entry to be updated
-     * @param boolean $dryRun Flag for the 'dry-run' parameter
+     * @param Zend_Gdata_Gbase_ItemEntry $entry
+     *            The Base entry to be updated
+     * @param boolean $dryRun
+     *            Flag for the 'dry-run' parameter
      * @return Zend_Gdata_Gbase_ItemEntry
      */
-    public function updateGbaseItem($entry, $dryRun = false)
+    public function updateGbaseItem ($entry, $dryRun = false)
     {
         $returnedEntry = $entry->save($dryRun);
         return $returnedEntry;
@@ -179,11 +207,13 @@ class Zend_Gdata_Gbase extends Zend_Gdata
     /**
      * Delete an entry
      *
-     * @param Zend_Gdata_Gbase_ItemEntry $entry The Base entry to remove
-     * @param boolean $dryRun Flag for the 'dry-run' parameter
+     * @param Zend_Gdata_Gbase_ItemEntry $entry
+     *            The Base entry to remove
+     * @param boolean $dryRun
+     *            Flag for the 'dry-run' parameter
      * @return Zend_Gdata_Gbase_ItemFeed
      */
-    public function deleteGbaseItem($entry, $dryRun = false)
+    public function deleteGbaseItem ($entry, $dryRun = false)
     {
         $entry->delete($dryRun);
         return $this;
@@ -192,18 +222,20 @@ class Zend_Gdata_Gbase extends Zend_Gdata
     /**
      * Retrieve feed object
      *
-     * @param mixed $location The location for the feed, as a URL or Query
+     * @param mixed $location
+     *            The location for the feed, as a URL or Query
      * @return Zend_Gdata_Gbase_SnippetFeed
      */
-    public function getGbaseSnippetFeed($location = null)
+    public function getGbaseSnippetFeed ($location = null)
     {
         if ($location === null) {
             $uri = self::GBASE_SNIPPET_FEED_URI;
-        } else if ($location instanceof Zend_Gdata_Query) {
-            $uri = $location->getQueryUrl();
-        } else {
-            $uri = $location;
-        }
+        } else 
+            if ($location instanceof Zend_Gdata_Query) {
+                $uri = $location->getQueryUrl();
+            } else {
+                $uri = $location;
+            }
         return parent::getFeed($uri, 'Zend_Gdata_Gbase_SnippetFeed');
     }
 }

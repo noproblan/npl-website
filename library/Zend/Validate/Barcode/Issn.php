@@ -20,32 +20,42 @@
  */
 
 /**
+ *
  * @see Zend_Validate_Barcode_AdapterAbstract
  */
 require_once 'Zend/Validate/Barcode/AdapterAbstract.php';
 
 /**
- * @category   Zend
- * @package    Zend_Validate
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ *
+ * @category Zend
+ * @package Zend_Validate
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Validate_Barcode_Issn extends Zend_Validate_Barcode_AdapterAbstract
 {
+
     /**
      * Allowed barcode lengths
+     * 
      * @var integer
      */
-    protected $_length = array(8, 13);
+    protected $_length = array(
+            8,
+            13
+    );
 
     /**
      * Allowed barcode characters
+     * 
      * @var string
      */
     protected $_characters = '0123456789X';
 
     /**
      * Checksum function
+     * 
      * @var string
      */
     protected $_checksum = '_gtin';
@@ -53,34 +63,36 @@ class Zend_Validate_Barcode_Issn extends Zend_Validate_Barcode_AdapterAbstract
     /**
      * Allows X on length of 8 chars
      *
-     * @param  string $value The barcode to check for allowed characters
+     * @param string $value
+     *            The barcode to check for allowed characters
      * @return boolean
      */
-    public function checkChars($value)
+    public function checkChars ($value)
     {
         if (strlen($value) != 8) {
             if (strpos($value, 'X') !== false) {
                 return false;
             }
         }
-
+        
         return parent::checkChars($value);
     }
 
     /**
      * Validates the checksum
      *
-     * @param  string $value The barcode to check the checksum for
+     * @param string $value
+     *            The barcode to check the checksum for
      * @return boolean
      */
-    public function checksum($value)
+    public function checksum ($value)
     {
         if (strlen($value) == 8) {
             $this->_checksum = '_issn';
         } else {
             $this->_checksum = '_gtin';
         }
-
+        
         return parent::checksum($value);
     }
 
@@ -88,32 +100,34 @@ class Zend_Validate_Barcode_Issn extends Zend_Validate_Barcode_AdapterAbstract
      * Validates the checksum ()
      * ISSN implementation (reversed mod11)
      *
-     * @param  string $value The barcode to validate
+     * @param string $value
+     *            The barcode to validate
      * @return boolean
      */
-    protected function _issn($value)
+    protected function _issn ($value)
     {
-        $checksum = substr($value, -1, 1);
-        $values   = str_split(substr($value, 0, -1));
-        $check    = 0;
-        $multi    = 8;
-        foreach($values as $token) {
+        $checksum = substr($value, - 1, 1);
+        $values = str_split(substr($value, 0, - 1));
+        $check = 0;
+        $multi = 8;
+        foreach ($values as $token) {
             if ($token == 'X') {
                 $token = 10;
             }
-
+            
             $check += ($token * $multi);
-            --$multi;
+            -- $multi;
         }
-
+        
         $check %= 11;
-        $check  = 11 - $check;
+        $check = 11 - $check;
         if ($check == $checksum) {
             return true;
-        } else if (($check == 10) && ($checksum == 'X')) {
-            return true;
-        }
-
+        } else 
+            if (($check == 10) && ($checksum == 'X')) {
+                return true;
+            }
+        
         return false;
     }
 }

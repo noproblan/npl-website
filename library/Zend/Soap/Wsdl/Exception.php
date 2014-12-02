@@ -21,6 +21,7 @@
  */
 
 /**
+ *
  * @see Zend_Exception
  */
 require_once "Zend/Exception.php";
@@ -28,10 +29,13 @@ require_once "Zend/Exception.php";
 /**
  * Zend_Soap_Wsdl_Exception
  *
- * @category   Zend
- * @package    Zend_Soap
+ * @category Zend
+ * @package Zend_Soap
  * @subpackage Wsdl
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
-class Zend_Soap_Wsdl_Exception extends Zend_Exception { }
+class Zend_Soap_Wsdl_Exception extends Zend_Exception
+{
+}

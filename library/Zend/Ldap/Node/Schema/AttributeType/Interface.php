@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -21,55 +22,58 @@
  */
 
 /**
- * Zend_Ldap_Node_Schema_AttributeType_Interface provides a contract for schema attribute-types.
+ * Zend_Ldap_Node_Schema_AttributeType_Interface provides a contract for schema
+ * attribute-types.
  *
- * @category   Zend
- * @package    Zend_Ldap
+ * @category Zend
+ * @package Zend_Ldap
  * @subpackage Schema
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 interface Zend_Ldap_Node_Schema_AttributeType_Interface
 {
+
     /**
      * Gets the attribute name
      *
      * @return string
      */
-    public function getName();
+    public function getName ();
 
     /**
      * Gets the attribute OID
      *
      * @return string
      */
-    public function getOid();
+    public function getOid ();
 
     /**
      * Gets the attribute syntax
      *
      * @return string
      */
-    public function getSyntax();
+    public function getSyntax ();
 
     /**
      * Gets the attribute maximum length
      *
      * @return int|null
      */
-    public function getMaxLength();
+    public function getMaxLength ();
 
     /**
      * Returns if the attribute is single-valued.
      *
      * @return boolean
      */
-    public function isSingleValued();
+    public function isSingleValued ();
 
     /**
      * Gets the attribute description
      *
      * @return string
      */
-    public function getDescription();
+    public function getDescription ();
 }

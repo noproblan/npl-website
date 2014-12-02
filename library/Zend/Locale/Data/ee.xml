@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <ldml>
 	<identity>
-		<version number="$Revision: 1.37 $"/>
-		<generation date="$Date: 2009/05/05 23:06:35 $"/>
-		<language type="ee"/>
+		<version number="$Revision: 1.37 $" />
+		<generation date="$Date: 2009/05/05 23:06:35 $" />
+		<language type="ee" />
 	</identity>
 	<characters>
-		<exemplarCharacters>[a b d {dz} ɖ e ɛ f ƒ g {gb} ɣ h i k {kp} l-n {ny} ŋ o ɔ p r-t {ts} u v ʋ w-z]</exemplarCharacters>
+		<exemplarCharacters>[a b d {dz} ɖ e ɛ f ƒ g {gb} ɣ h i k {kp} l-n {ny}
+			ŋ o ɔ p r-t {ts} u v ʋ w-z]</exemplarCharacters>
 		<exemplarCharacters type="auxiliary">[c j q]</exemplarCharacters>
 	</characters>
 	<dates>

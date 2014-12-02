@@ -20,30 +20,48 @@
  */
 
 /**
+ *
  * @see Zend_Filter_PregReplace
  */
 require_once 'Zend/Filter/Word/Separator/Abstract.php';
 
 /**
- * @category   Zend
- * @package    Zend_Filter
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ *
+ * @category Zend
+ * @package Zend_Filter
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Filter_Word_CamelCaseToSeparator extends Zend_Filter_Word_Separator_Abstract
 {
 
-    public function filter($value)
+    public function filter ($value)
     {
         if (self::isUnicodeSupportEnabled()) {
-            parent::setMatchPattern(array('#(?<=(?:\p{Lu}))(\p{Lu}\p{Ll})#','#(?<=(?:\p{Ll}|\p{Nd}))(\p{Lu})#'));
-            parent::setReplacement(array($this->_separator . '\1', $this->_separator . '\1'));
+            parent::setMatchPattern(
+                    array(
+                            '#(?<=(?:\p{Lu}))(\p{Lu}\p{Ll})#',
+                            '#(?<=(?:\p{Ll}|\p{Nd}))(\p{Lu})#'
+                    ));
+            parent::setReplacement(
+                    array(
+                            $this->_separator . '\1',
+                            $this->_separator . '\1'
+                    ));
         } else {
-            parent::setMatchPattern(array('#(?<=(?:[A-Z]))([A-Z]+)([A-Z][A-z])#', '#(?<=(?:[a-z0-9]))([A-Z])#'));
-            parent::setReplacement(array('\1' . $this->_separator . '\2', $this->_separator . '\1'));
+            parent::setMatchPattern(
+                    array(
+                            '#(?<=(?:[A-Z]))([A-Z]+)([A-Z][A-z])#',
+                            '#(?<=(?:[a-z0-9]))([A-Z])#'
+                    ));
+            parent::setReplacement(
+                    array(
+                            '\1' . $this->_separator . '\2',
+                            $this->_separator . '\1'
+                    ));
         }
-
+        
         return parent::filter($value);
     }
-
 }

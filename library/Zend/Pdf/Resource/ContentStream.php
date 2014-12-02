@@ -19,27 +19,30 @@
  * @version    $Id: Image.php 20096 2010-01-06 02:05:09Z bkarwin $
  */
 
-
-/** Internally used classes */
+/**
+ * Internally used classes
+ */
 require_once 'Zend/Pdf/Element/Object.php';
 require_once 'Zend/Pdf/Element/Dictionary.php';
 require_once 'Zend/Pdf/Element/Name.php';
 require_once 'Zend/Pdf/Element/Numeric.php';
 
-
-/** Zend_Pdf_Resource */
+/**
+ * Zend_Pdf_Resource
+ */
 require_once 'Zend/Pdf/Resource.php';
-
 
 /**
  * Content stream (drawing instructions container)
  *
- * @package    Zend_Pdf
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @package Zend_Pdf
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Pdf_Resource_ContentStream extends Zend_Pdf_Resource
 {
+
     /**
      * Buffered content
      *
@@ -50,29 +53,29 @@ class Zend_Pdf_Resource_ContentStream extends Zend_Pdf_Resource
     /**
      * Object constructor.
      *
-     * @param Zend_Pdf_Element_Object_Stream|string $contentStreamObject
+     * @param Zend_Pdf_Element_Object_Stream|string $contentStreamObject            
      * @throws Zend_Pdf_Exception
      */
-    public function __construct($contentStreamObject = '')
+    public function __construct ($contentStreamObject = '')
     {
         if ($contentStreamObject !== null &&
-            !$contentStreamObject instanceof Zend_Pdf_Element_Object_Stream &&
-            !is_string($contentStreamObject)
-        ) {
+                 ! $contentStreamObject instanceof Zend_Pdf_Element_Object_Stream &&
+                 ! is_string($contentStreamObject)) {
             require_once 'Zend/Pdf/Exception.php';
-            throw new Zend_Pdf_Exception('Content stream parameter must be a string or stream object');
+            throw new Zend_Pdf_Exception(
+                    'Content stream parameter must be a string or stream object');
         }
-
+        
         parent::__construct($contentStreamObject);
     }
 
     /**
      * Appends instructions to the end of the content stream
      *
-     * @param string $instructions
+     * @param string $instructions            
      * @return Zend_Pdf_Resource_ContentStream
      */
-    public function addInstructions($instructions)
+    public function addInstructions ($instructions)
     {
         $this->_bufferedContent .= $instructions;
         return $this;
@@ -83,7 +86,7 @@ class Zend_Pdf_Resource_ContentStream extends Zend_Pdf_Resource
      *
      * @return string
      */
-    public function getInstructions()
+    public function getInstructions ()
     {
         $this->flush();
         return $this->_resource->value;
@@ -94,7 +97,7 @@ class Zend_Pdf_Resource_ContentStream extends Zend_Pdf_Resource
      *
      * @return Zend_Pdf_Resource_ContentStream
      */
-    public function clear()
+    public function clear ()
     {
         $this->_resource->value = '';
         $this->_bufferedContent = '';
@@ -104,11 +107,11 @@ class Zend_Pdf_Resource_ContentStream extends Zend_Pdf_Resource
     /**
      * Flush buffered content
      */
-    public function flush()
+    public function flush ()
     {
         $this->_resource->value .= $this->_bufferedContent;
         $this->_bufferedContent = '';
-
+        
         return $this;
     }
 }

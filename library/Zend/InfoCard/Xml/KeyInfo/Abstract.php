@@ -26,11 +26,13 @@
 require_once 'Zend/InfoCard/Xml/Element.php';
 
 /**
- * @category   Zend
- * @package    Zend_InfoCard
+ *
+ * @category Zend
+ * @package Zend_InfoCard
  * @subpackage Zend_InfoCard_Xml
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 abstract class Zend_InfoCard_Xml_KeyInfo_Abstract extends Zend_InfoCard_Xml_Element
 {

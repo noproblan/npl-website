@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <ldml>
 	<identity>
-		<version number="$Revision: 1.93 $"/>
-		<generation date="$Date: 2009/06/15 04:15:33 $"/>
-		<language type="bn"/>
+		<version number="$Revision: 1.93 $" />
+		<generation date="$Date: 2009/06/15 04:15:33 $" />
+		<language type="bn" />
 	</identity>
 	<localeDisplayNames>
 		<localeDisplayPattern>
@@ -774,7 +774,8 @@
 			<territory type="GP">গুয়াদেলৌপ</territory>
 			<territory type="GQ">নিরক্ষীয় গিনি</territory>
 			<territory type="GR">গ্রীস্</territory>
-			<territory type="GS">দক্ষিণ জর্জিয়া ও দক্ষিণ স্যান্ডউইচ দ্বীপপুঞ</territory>
+			<territory type="GS">দক্ষিণ জর্জিয়া ও দক্ষিণ স্যান্ডউইচ
+				দ্বীপপুঞ</territory>
 			<territory type="GT">গোয়াটিমালা</territory>
 			<territory type="GU">গুয়াম</territory>
 			<territory type="GW">গিনি-বিসাউ</territory>
@@ -916,7 +917,8 @@
 			<territory type="TZ">তাঞ্জানিয়া</territory>
 			<territory type="UA">ইউক্রেইন</territory>
 			<territory type="UG">উগান্ডা</territory>
-			<territory type="UM">যুক্তরাষ্ট্রের ক্ষুদ্র ও পার্শ্ববর্তী দ্বীপপুঞ্জ</territory>
+			<territory type="UM">যুক্তরাষ্ট্রের ক্ষুদ্র ও পার্শ্ববর্তী
+				দ্বীপপুঞ্জ</territory>
 			<territory type="US">মার্কিন যুক্তরাষ্ট্র</territory>
 			<territory type="UY">উরুগোয়ে</territory>
 			<territory type="UZ">উজ্বেকিস্থান</territory>
@@ -970,8 +972,10 @@
 		</codePatterns>
 	</localeDisplayNames>
 	<characters>
-		<exemplarCharacters>[় ঁ-ঃ ৺ অ-ঋ ৠ ঌ ৡ এ ঐ ও-ড {ড়} ঢ {ঢ়} ণ ত ৎ থ-ন প-য {য়} র ল শ-হ ঽ-ৄ ৢ ৣ ে ৈ ো-্ ৗ]</exemplarCharacters>
-		<exemplarCharacters type="auxiliary">[\u200C \u200D ৸ ৹ ৲-৷ a d e E h l L m M q Q s v y ৰ ৱ]</exemplarCharacters>
+		<exemplarCharacters>[় ঁ-ঃ ৺ অ-ঋ ৠ ঌ ৡ এ ঐ ও-ড {ড়} ঢ {ঢ়} ণ ত ৎ থ-ন
+			প-য {য়} র ল শ-হ ঽ-ৄ ৢ ৣ ে ৈ ো-্ ৗ]</exemplarCharacters>
+		<exemplarCharacters type="auxiliary">[\u200C \u200D ৸ ৹ ৲-৷ a d
+			e E h l L m M q Q s v y ৰ ৱ]</exemplarCharacters>
 		<exemplarCharacters type="currencySymbol">[৳]</exemplarCharacters>
 	</characters>
 	<delimiters>
@@ -1209,7 +1213,7 @@
 							<greatestDifference id="M">d MMM – d MMM</greatestDifference>
 						</intervalFormatItem>
 						<intervalFormatItem id="MMMEd">
-							<greatestDifference id="d">E,  d MMM – E, d MMM</greatestDifference>
+							<greatestDifference id="d">E, d MMM – E, d MMM</greatestDifference>
 							<greatestDifference id="M">E, d MMM – E, d MMM</greatestDifference>
 						</intervalFormatItem>
 						<intervalFormatItem id="MMMM">
@@ -1244,7 +1248,8 @@
 						<intervalFormatItem id="yMMMEd">
 							<greatestDifference id="d">E, d MMM – E, d MMM, y</greatestDifference>
 							<greatestDifference id="M">E, d MMM – E, d MMM, y</greatestDifference>
-							<greatestDifference id="y">E, d MMM, y – E, d MMM, y</greatestDifference>
+							<greatestDifference id="y">E, d MMM, y – E, d MMM,
+								y</greatestDifference>
 						</intervalFormatItem>
 						<intervalFormatItem id="yMMMM">
 							<greatestDifference id="M">MM – MM -yyyy</greatestDifference>
@@ -2613,7 +2618,7 @@
 				<displayName>সুরিনাম গিল্ডার</displayName>
 			</currency>
 			<currency type="STD">
-				<displayName>সাও টোমে এবং প্রিন্সিপে  ডোবরা</displayName>
+				<displayName>সাও টোমে এবং প্রিন্সিপে ডোবরা</displayName>
 			</currency>
 			<currency type="SUR">
 				<displayName>সোভিয়েত রুবল</displayName>

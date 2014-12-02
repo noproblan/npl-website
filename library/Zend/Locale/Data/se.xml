@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <ldml>
 	<identity>
-		<version number="$Revision: 1.36 $"/>
-		<generation date="$Date: 2009/06/15 03:46:25 $"/>
-		<language type="se"/>
+		<version number="$Revision: 1.36 $" />
+		<generation date="$Date: 2009/06/15 03:46:25 $" />
+		<language type="se" />
 	</identity>
 	<fallback>nb sv en</fallback>
 	<localeDisplayNames>
@@ -375,8 +375,10 @@
 	</localeDisplayNames>
 	<characters>
 		<exemplarCharacters>[a á b c č d đ e-n ŋ o p r s š t ŧ u v z ž]</exemplarCharacters>
-		<exemplarCharacters type="auxiliary">[à å ä ã æ ç é è í ń ñ ó ò ö ø q ú ü w-y]</exemplarCharacters>
-		<exemplarCharacters type="currencySymbol">[a á à å ä æ b c č d đ e é è f-n ń ŋ o ó ò ö ø p-s š t ŧ u ú v x-z ž]</exemplarCharacters>
+		<exemplarCharacters type="auxiliary">[à å ä ã æ ç é è í ń ñ ó ò
+			ö ø q ú ü w-y]</exemplarCharacters>
+		<exemplarCharacters type="currencySymbol">[a á à å ä æ b c č d đ e é
+			è f-n ń ŋ o ó ò ö ø p-s š t ŧ u ú v x-z ž]</exemplarCharacters>
 	</characters>
 	<delimiters>
 		<quotationStart>”</quotationStart>

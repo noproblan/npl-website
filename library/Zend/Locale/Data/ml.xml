@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <ldml>
 	<identity>
-		<version number="$Revision: 1.81 $"/>
-		<generation date="$Date: 2009/06/15 04:15:33 $"/>
-		<language type="ml"/>
+		<version number="$Revision: 1.81 $" />
+		<generation date="$Date: 2009/06/15 04:15:33 $" />
+		<language type="ml" />
 	</identity>
 	<localeDisplayNames>
 		<localeDisplayPattern>
@@ -774,7 +774,8 @@
 			<territory type="GP">ഗുവാഡെലോപ്</territory>
 			<territory type="GQ">ഇക്വിറ്റോറിയല്‍ ഗ്വിനിയ</territory>
 			<territory type="GR">ഗ്രീസ്</territory>
-			<territory type="GS">ദക്ഷിണ ജോര്‍ജ്ജിയയും ദക്ഷിണ സാന്‍ഡ്‌വിച്ച് ദ്വീപുകളും</territory>
+			<territory type="GS">ദക്ഷിണ ജോര്‍ജ്ജിയയും ദക്ഷിണ സാന്‍ഡ്‌വിച്ച്
+				ദ്വീപുകളും</territory>
 			<territory type="GT">ഗ്വാട്ടിമാലാ</territory>
 			<territory type="GU">ഗ്വാം</territory>
 			<territory type="GW">ഗിനി-ബിസോ</territory>
@@ -916,7 +917,8 @@
 			<territory type="TZ">ടാന്‍സാനിയ</territory>
 			<territory type="UA">ഉക്രൈന്‍</territory>
 			<territory type="UG">ഉഗാണ്ട</territory>
-			<territory type="UM">യുണൈറ്റഡ് സ്റ്റേറ്റ്സും ചെറിയ പുറംദ്വീപുകളും</territory>
+			<territory type="UM">യുണൈറ്റഡ് സ്റ്റേറ്റ്സും ചെറിയ
+				പുറംദ്വീപുകളും</territory>
 			<territory type="US">അമേരിക്കന്‍ ഐക്യനാടുകള്‍</territory>
 			<territory type="UY">ഉറുഗ്വേ</territory>
 			<territory type="UZ">ഉസ്ബെക്കിസ്ഥാന്‍</territory>
@@ -982,7 +984,8 @@
 		</codePatterns>
 	</localeDisplayNames>
 	<characters>
-		<exemplarCharacters>[\u200C \u200D ഃ അ-ഋ ൠ ഌ ൡ എ-ഐ ഒ-ന പ-മ ം യ ര ല വ-ഹ ള ഴ റ ാ-ൃ െ-ൈ ൊ ോ ൗ ൌ \u0D4D]</exemplarCharacters>
+		<exemplarCharacters>[\u200C \u200D ഃ അ-ഋ ൠ ഌ ൡ എ-ഐ ഒ-ന പ-മ ം യ ര ല വ-ഹ
+			ള ഴ റ ാ-ൃ െ-ൈ ൊ ോ ൗ ൌ \u0D4D]</exemplarCharacters>
 		<exemplarCharacters type="auxiliary">[a-z]</exemplarCharacters>
 		<exemplarCharacters type="currencySymbol">[a-z]</exemplarCharacters>
 	</characters>
@@ -2106,7 +2109,8 @@
 			<metazone type="Australia_CentralWestern">
 				<long>
 					<generic>ഓസ്ട്രേലിയന്‍ സെന്‍ട്രല്‍ വെസ്റ്റേണ്‍ സമയം</generic>
-					<standard>ഓസ്ട്രേലിയന്‍ സെന്‍ട്രല്‍ വെസ്റ്റേണ്‍ സ്റ്റാന്‍ഡേര്‍ഡ് സമയം</standard>
+					<standard>ഓസ്ട്രേലിയന്‍ സെന്‍ട്രല്‍ വെസ്റ്റേണ്‍ സ്റ്റാന്‍ഡേര്‍ഡ്
+						സമയം</standard>
 					<daylight>ഓസ്ട്രേലിയന്‍ സെന്‍ട്രല്‍ വെസ്റ്റേണ്‍ പകല്‍ സമയം</daylight>
 				</long>
 			</metazone>
@@ -3086,8 +3090,10 @@
 			</currency>
 			<currency type="AOR">
 				<displayName>അംഗോളന്‍ ‍ക്വാന്‍സ റിയാജസ്റ്റാഡോ (1995-1999)</displayName>
-				<displayName count="one">അംഗോളന്‍ ക്വാന്‍സ റീഅഡ്ജസ്റ്റാഡോ (AOR)</displayName>
-				<displayName count="other">അംഗോളന്‍ ക്വാന്‍സാസ് റീഅഡ്ജസ്റ്റാഡോ (AOR)</displayName>
+				<displayName count="one">അംഗോളന്‍ ക്വാന്‍സ റീഅഡ്ജസ്റ്റാഡോ
+					(AOR)</displayName>
+				<displayName count="other">അംഗോളന്‍ ക്വാന്‍സാസ് റീഅഡ്ജസ്റ്റാഡോ
+					(AOR)</displayName>
 			</currency>
 			<currency type="ARA">
 				<displayName>അര്‍ജന്‍റീന്‍ ഓസ്ട്രല്‍</displayName>
@@ -3136,8 +3142,10 @@
 			</currency>
 			<currency type="BAM">
 				<displayName>ബോസ്നിയ-ഹെര്‍സഗോവിന കണ്‍വേര്‍ട്ടിബിള്‍ മാര്‍ക്ക്</displayName>
-				<displayName count="one">ബോസ്നിയ ഹെര്‍സഗോവിന കണ്‍വേര്‍ട്ടിബിള്‍ മാര്‍ക്ക്</displayName>
-				<displayName count="other">ബോസ്നിയ ഹെര്‍സഗോവിന കണ്‍വേര്‍ട്ടിബിള്‍ മാര്‍ക്സ്</displayName>
+				<displayName count="one">ബോസ്നിയ ഹെര്‍സഗോവിന
+					കണ്‍വേര്‍ട്ടിബിള്‍ മാര്‍ക്ക്</displayName>
+				<displayName count="other">ബോസ്നിയ ഹെര്‍സഗോവിന
+					കണ്‍വേര്‍ട്ടിബിള്‍ മാര്‍ക്സ്</displayName>
 			</currency>
 			<currency type="BBD">
 				<displayName>ബാര്‍ബഡോസ് ഡോളര്‍</displayName>
@@ -3151,8 +3159,10 @@
 			</currency>
 			<currency type="BEC">
 				<displayName>ബെല്‍ജിയന്‍ ഫ്രാങ്ക് (കൈമാറ്റം ചെയ്യാവുന്നത്)</displayName>
-				<displayName count="one">ബെല്‍ജിയന്‍ ഫ്രാങ്ക് (കൈമാറ്റം ചെയ്യാവുന്നത്)</displayName>
-				<displayName count="other">ബെല്‍ജിയന്‍ ഫ്രാങ്ക്സ് (കൈമാറ്റം ചെയ്യാവുന്നത്)</displayName>
+				<displayName count="one">ബെല്‍ജിയന്‍ ഫ്രാങ്ക് (കൈമാറ്റം
+					ചെയ്യാവുന്നത്)</displayName>
+				<displayName count="other">ബെല്‍ജിയന്‍ ഫ്രാങ്ക്സ് (കൈമാറ്റം
+					ചെയ്യാവുന്നത്)</displayName>
 			</currency>
 			<currency type="BEF">
 				<displayName>ബെല്‍ജിയന്‍ ഫ്രാങ്ക്</displayName>
@@ -3396,8 +3406,10 @@
 			</currency>
 			<currency type="ECV">
 				<displayName>ഇക്വഡോര്‍ യൂണിഡാഡ് വാലര്‍ കോണ്‍സ്റ്റന്‍റെ (UVC)</displayName>
-				<displayName count="one">ഇക്വഡോര്‍ യൂണിഡാഡ് ഡി വാലര്‍ കോണ്‍സ്റ്റന്‍റെ (UVC)</displayName>
-				<displayName count="other">ഇക്വഡോര്‍ യൂണിഡാഡ്സ് ഡി വാലര്‍ കോണ്‍സ്റ്റന്‍റെ (UVC)</displayName>
+				<displayName count="one">ഇക്വഡോര്‍ യൂണിഡാഡ് ഡി വാലര്‍
+					കോണ്‍സ്റ്റന്‍റെ (UVC)</displayName>
+				<displayName count="other">ഇക്വഡോര്‍ യൂണിഡാഡ്സ് ഡി വാലര്‍
+					കോണ്‍സ്റ്റന്‍റെ (UVC)</displayName>
 			</currency>
 			<currency type="EEK">
 				<displayName>എസ്റ്റൌനിയന്‍ ക്രൂണ്‍</displayName>
@@ -3421,8 +3433,10 @@
 			</currency>
 			<currency type="ESB">
 				<displayName>സ്പാനിഷ് പസെയ്റ്റ (കൈമാറ്റം ചെയ്യാവുന്ന അക്കൌണ്ട്)</displayName>
-				<displayName count="one">സ്പാനിഷ് പസെയ്റ്റ (കൈമാറ്റം ചെയ്യാവുന്ന അക്കൌണ്ട്)</displayName>
-				<displayName count="other">സ്പാനിഷ് പസെയ്റ്റാസ് (കൈമാറ്റം ചെയ്യാവുന്ന അക്കൌണ്ട്)</displayName>
+				<displayName count="one">സ്പാനിഷ് പസെയ്റ്റ (കൈമാറ്റം
+					ചെയ്യാവുന്ന അക്കൌണ്ട്)</displayName>
+				<displayName count="other">സ്പാനിഷ് പസെയ്റ്റാസ് (കൈമാറ്റം
+					ചെയ്യാവുന്ന അക്കൌണ്ട്)</displayName>
 			</currency>
 			<currency type="ESP">
 				<displayName>സ്പാനിഷ് പസെയ്റ്റ</displayName>
@@ -3707,8 +3721,10 @@
 			</currency>
 			<currency type="LUC">
 				<displayName>ലക്സംബര്‍ഗ് കണ്‍വേര്‍ട്ടിബിള്‍ ഫ്രാങ്ക്</displayName>
-				<displayName count="one">ലക്സംബര്‍ഗ് കൈമാറ്റം ചെയ്യാവുന്ന ഫ്രാങ്ക്‌</displayName>
-				<displayName count="other">ലക്സംബര്‍ഗ് കൈമാറ്റം ചെയ്യാവുന്ന ഫ്രാങ്ക്‌സ്‌</displayName>
+				<displayName count="one">ലക്സംബര്‍ഗ് കൈമാറ്റം ചെയ്യാവുന്ന
+					ഫ്രാങ്ക്‌</displayName>
+				<displayName count="other">ലക്സംബര്‍ഗ് കൈമാറ്റം ചെയ്യാവുന്ന
+					ഫ്രാങ്ക്‌സ്‌</displayName>
 			</currency>
 			<currency type="LUF">
 				<displayName>ലക്സംബര്‍ഗ് ഫ്രാങ്ക്</displayName>
@@ -3718,7 +3734,8 @@
 			<currency type="LUL">
 				<displayName>ലക്സ´ബര്‍ഗ് ഫിനാന്‍ഷ്യല്‍ ഫ്രാങ്ക്</displayName>
 				<displayName count="one">ലക്സംബര്‍ഗ് ഫിനാന്‍ഷ്യല്‍ ഫ്രാങ്ക്</displayName>
-				<displayName count="other">ലക്സംബര്‍ഗ് ഫിനാന്‍ഷ്യല്‍ ഫ്രാങ്ക്‌സ്‌</displayName>
+				<displayName count="other">ലക്സംബര്‍ഗ് ഫിനാന്‍ഷ്യല്‍
+					ഫ്രാങ്ക്‌സ്‌</displayName>
 			</currency>
 			<currency type="LVL">
 				<displayName>ലാറ്റ്വിയന്‍ ലാറ്റ്സ്</displayName>
@@ -3827,8 +3844,10 @@
 			</currency>
 			<currency type="MXV">
 				<displayName>മെക്സിക്കന്‍ യൂണിഡാഡ് ഡി ഇന്‍വെര്‍ഷന്‍ (UDI)</displayName>
-				<displayName count="one">മെക്സിക്കന്‍ യൂണിഡാഡ് ഡി ഇന്‍വെര്‍ഷന്‍ (UDI)</displayName>
-				<displayName count="other">മെക്സിക്കന്‍ യൂണിഡാഡ്സ് ഡി ഇന്‍വെര്‍ഷന്‍ (UDI)</displayName>
+				<displayName count="one">മെക്സിക്കന്‍ യൂണിഡാഡ് ഡി
+					ഇന്‍വെര്‍ഷന്‍ (UDI)</displayName>
+				<displayName count="other">മെക്സിക്കന്‍ യൂണിഡാഡ്സ് ഡി
+					ഇന്‍വെര്‍ഷന്‍ (UDI)</displayName>
 			</currency>
 			<currency type="MYR">
 				<displayName>മലേഷ്യന്‍ റിംഗിറ്റ്</displayName>
@@ -4188,8 +4207,10 @@
 			</currency>
 			<currency type="UYI">
 				<displayName>ഉറുഗ്വേ പെയ്സോ എന്‍ യൂണിഡാഡ്സ്</displayName>
-				<displayName count="one">ഉറുഗ്വേ പെയ്സോ എന്‍ യൂണിഡാഡ്സ് ഇന്‍ഡെക്സാഡാസ്</displayName>
-				<displayName count="other">ഉറുഗ്വേ പെയ്സോസ് എന്‍ യൂണിഡാഡ്സ് ഇന്‍ഡെക്സാഡാസ്</displayName>
+				<displayName count="one">ഉറുഗ്വേ പെയ്സോ എന്‍ യൂണിഡാഡ്സ്
+					ഇന്‍ഡെക്സാഡാസ്</displayName>
+				<displayName count="other">ഉറുഗ്വേ പെയ്സോസ് എന്‍ യൂണിഡാഡ്സ്
+					ഇന്‍ഡെക്സാഡാസ്</displayName>
 			</currency>
 			<currency type="UYP">
 				<displayName>ഉറുഗ്വേ പെയ്സോ (1975-1993)</displayName>
@@ -4258,13 +4279,17 @@
 			</currency>
 			<currency type="XBC">
 				<displayName>യൂറോപ്യന്‍ യൂണിറ്റ് ഓഫ് അക്കൌണ്ട് (XBC)</displayName>
-				<displayName count="one">യൂറോപ്യന്‍ യൂണിറ്റ് ഓഫ് അക്കൌണ്ട് (XBC)</displayName>
-				<displayName count="other">യൂറോപ്യന്‍ യൂണിറ്റ്സ് ഓഫ് അക്കൌണ്ട് (XBC)</displayName>
+				<displayName count="one">യൂറോപ്യന്‍ യൂണിറ്റ് ഓഫ് അക്കൌണ്ട്
+					(XBC)</displayName>
+				<displayName count="other">യൂറോപ്യന്‍ യൂണിറ്റ്സ് ഓഫ് അക്കൌണ്ട്
+					(XBC)</displayName>
 			</currency>
 			<currency type="XBD">
 				<displayName>യൂറോപ്യന്‍ യൂണിറ്റ് ഓഫ് അക്കൌണ്ട് (XBD)</displayName>
-				<displayName count="one">യൂറോപ്യന്‍ യൂണിറ്റ് ഓഫ് അക്കൌണ്ട് (XBD)</displayName>
-				<displayName count="other">യൂറോപ്യന്‍ യൂണിറ്റ്സ് ഓഫ് അക്കൌണ്ട് (XBD)</displayName>
+				<displayName count="one">യൂറോപ്യന്‍ യൂണിറ്റ് ഓഫ് അക്കൌണ്ട്
+					(XBD)</displayName>
+				<displayName count="other">യൂറോപ്യന്‍ യൂണിറ്റ്സ് ഓഫ് അക്കൌണ്ട്
+					(XBD)</displayName>
 			</currency>
 			<currency type="XCD">
 				<displayName>കിഴക്കന്‍ കരീബിയന്‍ ഡോളര്‍</displayName>
@@ -4323,8 +4348,10 @@
 			</currency>
 			<currency type="XXX">
 				<displayName>അറിയപ്പെടാത്തതോ നിലവിലില്ലാത്തതോ ആയ നാണയം</displayName>
-				<displayName count="one">അറിയപ്പെടാത്തതോ നിലവിലില്ലാത്തതോ ആയ നാണയം</displayName>
-				<displayName count="other">അറിയപ്പെടാത്തതോ നിലവിലില്ലാത്തതോ ആയ നാണയം</displayName>
+				<displayName count="one">അറിയപ്പെടാത്തതോ നിലവിലില്ലാത്തതോ ആയ
+					നാണയം</displayName>
+				<displayName count="other">അറിയപ്പെടാത്തതോ നിലവിലില്ലാത്തതോ ആയ
+					നാണയം</displayName>
 			</currency>
 			<currency type="YDD">
 				<displayName>യമനി ദിനാര്‍</displayName>
@@ -4348,13 +4375,17 @@
 			</currency>
 			<currency type="YUN">
 				<displayName>യൂഗോസ്ലേവിയന്‍ കണ്‍വേര്‍ട്ടിബിള്‍ ദിനാര്‍</displayName>
-				<displayName count="one">യൂഗോസ്ലേവിയന്‍ കണ്‍വേര്‍ട്ടിബിള്‍ ദിനാര്‍</displayName>
-				<displayName count="other">യൂഗോസ്ലേവിയന്‍ കണ്‍വേര്‍ട്ടിബിള്‍ ദിനാര്‍സ്</displayName>
+				<displayName count="one">യൂഗോസ്ലേവിയന്‍ കണ്‍വേര്‍ട്ടിബിള്‍
+					ദിനാര്‍</displayName>
+				<displayName count="other">യൂഗോസ്ലേവിയന്‍ കണ്‍വേര്‍ട്ടിബിള്‍
+					ദിനാര്‍സ്</displayName>
 			</currency>
 			<currency type="ZAL">
 				<displayName>ദക്ഷിണാഫ്രിക്കന്‍ റാന്‍ഡ് (ഫിനാന്‍ഷ്യല്‍)</displayName>
-				<displayName count="one">ദക്ഷിണാഫ്രിക്കന്‍ റാന്‍ഡ് (ഫിനാന്‍ഷ്യല്‍)</displayName>
-				<displayName count="other">ദക്ഷിണാഫ്രിക്കന്‍ റാന്‍ഡ്സ് (ഫിനാന്‍ഷ്യല്‍)</displayName>
+				<displayName count="one">ദക്ഷിണാഫ്രിക്കന്‍ റാന്‍ഡ്
+					(ഫിനാന്‍ഷ്യല്‍)</displayName>
+				<displayName count="other">ദക്ഷിണാഫ്രിക്കന്‍ റാന്‍ഡ്സ്
+					(ഫിനാന്‍ഷ്യല്‍)</displayName>
 			</currency>
 			<currency type="ZAR">
 				<displayName>ദക്ഷിണ ആഫ്രിക്കന്‍ റാന്‍ഡ്</displayName>

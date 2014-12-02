@@ -20,18 +20,20 @@
  */
 
 /**
+ *
  * @see Zend_Service_Amazon_Exception
  */
 require_once 'Zend/Service/Amazon/Exception.php';
 
 /**
- * @category   Zend
- * @package    Zend_Service_Amazon
+ *
+ * @category Zend
+ * @package Zend_Service_Amazon
  * @subpackage Authentication
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Service_Amazon_Authentication_Exception extends Zend_Service_Amazon_Exception
 {
-
 }

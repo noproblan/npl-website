@@ -20,6 +20,7 @@
  */
 
 /**
+ *
  * @see Zend_ProgressBar_Exception
  */
 require_once 'Zend/ProgressBar/Exception.php';
@@ -27,11 +28,12 @@ require_once 'Zend/ProgressBar/Exception.php';
 /**
  * Exception class for Zend_ProgressBar_Adapter
  *
- * @category  Zend
- * @package   Zend_ProgressBar
- * @uses      Zend_ProgressBar_Exception
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license   http://framework.zend.com/license/new-bsd     New BSD License
+ * @category Zend
+ * @package Zend_ProgressBar
+ * @uses Zend_ProgressBar_Exception
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_ProgressBar_Adapter_Exception extends Zend_ProgressBar_Exception
 {

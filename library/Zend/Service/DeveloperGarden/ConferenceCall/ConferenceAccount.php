@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -21,15 +22,18 @@
  */
 
 /**
- * @category   Zend
- * @package    Zend_Service
+ *
+ * @category Zend
+ * @package Zend_Service
  * @subpackage DeveloperGarden
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @author     Marco Kaiser
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @author Marco Kaiser
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Service_DeveloperGarden_ConferenceCall_ConferenceAccount
 {
+
     /**
      * type of billing
      *
@@ -45,17 +49,19 @@ class Zend_Service_DeveloperGarden_ConferenceCall_ConferenceAccount
     public $account = null;
 
     /**
+     *
      * @return integer
      */
-    public function getAccount()
+    public function getAccount ()
     {
         return $this->account;
     }
 
     /**
+     *
      * @return string
      */
-    public function getBillingType()
+    public function getBillingType ()
     {
         return $this->billingtype;
     }

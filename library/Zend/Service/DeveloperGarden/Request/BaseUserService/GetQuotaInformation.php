@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -21,15 +22,18 @@
  */
 
 /**
- * @category   Zend
- * @package    Zend_Service
+ *
+ * @category Zend
+ * @package Zend_Service
  * @subpackage DeveloperGarden
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @author     Marco Kaiser
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @author Marco Kaiser
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Service_DeveloperGarden_Request_BaseUserService_GetQuotaInformation
 {
+
     /**
      * string module id
      *
@@ -40,10 +44,10 @@ class Zend_Service_DeveloperGarden_Request_BaseUserService_GetQuotaInformation
     /**
      * constructor give them the module id
      *
-     * @param string $moduleId
+     * @param string $moduleId            
      * @return Zend_Service_DeveloperGarden_Request_BaseUserService
      */
-    public function __construct($moduleId = null)
+    public function __construct ($moduleId = null)
     {
         $this->setModuleId($moduleId);
     }
@@ -51,10 +55,10 @@ class Zend_Service_DeveloperGarden_Request_BaseUserService_GetQuotaInformation
     /**
      * sets a new moduleId
      *
-     * @param integer $moduleId
+     * @param integer $moduleId            
      * @return Zend_Service_DeveloperGarden_Request_BaseUserService
      */
-    public function setModuleId($moduleId = null)
+    public function setModuleId ($moduleId = null)
     {
         $this->moduleId = $moduleId;
         return $this;
@@ -65,7 +69,7 @@ class Zend_Service_DeveloperGarden_Request_BaseUserService_GetQuotaInformation
      *
      * @return string
      */
-    public function getModuleId()
+    public function getModuleId ()
     {
         return $this->moduleId;
     }

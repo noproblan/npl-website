@@ -21,21 +21,24 @@
  */
 
 /**
+ *
  * @see Zend_Service_DeveloperGarden_VoiceButler_VoiceButlerAbstract
  */
 require_once 'Zend/Service/DeveloperGarden/Request/VoiceButler/VoiceButlerAbstract.php';
 
 /**
- * @category   Zend
- * @package    Zend_Service
+ *
+ * @category Zend
+ * @package Zend_Service
  * @subpackage DeveloperGarden
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @author     Marco Kaiser
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @author Marco Kaiser
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
-class Zend_Service_DeveloperGarden_Request_VoiceButler_CallStatus
-    extends Zend_Service_DeveloperGarden_Request_VoiceButler_VoiceButlerAbstract
+class Zend_Service_DeveloperGarden_Request_VoiceButler_CallStatus extends Zend_Service_DeveloperGarden_Request_VoiceButler_VoiceButlerAbstract
 {
+
     /**
      * extend the keep alive for this call
      *
@@ -46,22 +49,22 @@ class Zend_Service_DeveloperGarden_Request_VoiceButler_CallStatus
     /**
      * constructor give them the environment and the sessionId
      *
-     * @param integer $environment
-     * @param string $sessionId
-     * @param integer $keepAlive
+     * @param integer $environment            
+     * @param string $sessionId            
+     * @param integer $keepAlive            
      * @return Zend_Service_DeveloperGarden_Request_RequestAbstract
      */
-    public function __construct($environment, $sessionId, $keepAlive = null)
+    public function __construct ($environment, $sessionId, $keepAlive = null)
     {
         parent::__construct($environment);
-        $this->setSessionId($sessionId)
-             ->setKeepAlive($keepAlive);
+        $this->setSessionId($sessionId)->setKeepAlive($keepAlive);
     }
 
     /**
+     *
      * @return string
      */
-    public function getSessionId()
+    public function getSessionId ()
     {
         return $this->sessionId;
     }
@@ -69,19 +72,20 @@ class Zend_Service_DeveloperGarden_Request_VoiceButler_CallStatus
     /**
      * sets new sessionId
      *
-     * @param string $sessionId
+     * @param string $sessionId            
      * @return Zend_Service_DeveloperGarden_Request_VoiceButler_CallStatus
      */
-    public function setSessionId($sessionId)
+    public function setSessionId ($sessionId)
     {
         $this->sessionId = $sessionId;
         return $this;
     }
 
     /**
+     *
      * @return integer
      */
-    public function getKeepAlive()
+    public function getKeepAlive ()
     {
         return $this->keepAlive;
     }
@@ -89,10 +93,10 @@ class Zend_Service_DeveloperGarden_Request_VoiceButler_CallStatus
     /**
      * sets new keepAlive flag
      *
-     * @param integer $keepAlive
+     * @param integer $keepAlive            
      * @return Zend_Service_DeveloperGarden_Request_VoiceButler_CallStatus
      */
-    public function setKeepAlive($keepAlive)
+    public function setKeepAlive ($keepAlive)
     {
         $this->keepAlive = $keepAlive;
         return $this;

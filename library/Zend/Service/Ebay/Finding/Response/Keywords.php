@@ -21,27 +21,33 @@
  */
 
 /**
+ *
  * @see Zend_Service_Ebay_Finding_Response_Abstract
  */
 require_once 'Zend/Service/Ebay/Finding/Response/Abstract.php';
 
 /**
+ *
  * @see Zend_Service_Ebay_Finding
  */
 require_once 'Zend/Service/Ebay/Finding.php';
 
 /**
- * @category   Zend
- * @package    Zend_Service
+ *
+ * @category Zend
+ * @package Zend_Service
  * @subpackage Ebay
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @uses       Zend_Service_Ebay_Finding_Response_Abstract
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
+ * @uses Zend_Service_Ebay_Finding_Response_Abstract
  */
 class Zend_Service_Ebay_Finding_Response_Keywords extends Zend_Service_Ebay_Finding_Response_Abstract
 {
+
     /**
-     * Contains a spell-checked version of the submitted keywords. If no
+     * Contains a spell-checked version of the submitted keywords.
+     * If no
      * recommended spelling can be identified for the submitted keywords, the
      * response contains a warning to that effect and an empty keywords field
      * is returned.
@@ -51,27 +57,29 @@ class Zend_Service_Ebay_Finding_Response_Keywords extends Zend_Service_Ebay_Find
     public $keywords;
 
     /**
+     *
      * @return void
      */
-    protected function _init()
+    protected function _init ()
     {
         parent::_init();
         $ns = Zend_Service_Ebay_Finding::XMLNS_FINDING;
-
+        
         $this->keywords = $this->_query(".//$ns:keywords[1]", 'string');
     }
 
     /**
-     * @param  Zend_Service_Ebay_Finding $proxy
-     * @param  Zend_Config|array         $options
+     *
+     * @param Zend_Service_Ebay_Finding $proxy            
+     * @param Zend_Config|array $options            
      * @return Zend_Service_Ebay_Finding_Response_Items
      */
-    public function findItems(Zend_Service_Ebay_Finding $proxy, $options = null)
+    public function findItems (Zend_Service_Ebay_Finding $proxy, $options = null)
     {
         // prepare options
         $options = Zend_Service_Ebay_Abstract::optionsToArray($options);
         $options = $options + $this->_options;
-
+        
         // find items
         return $proxy->findItemsByKeywords($this->keywords, $options);
     }

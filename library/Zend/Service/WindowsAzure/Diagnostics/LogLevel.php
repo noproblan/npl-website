@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -20,20 +21,27 @@
  * @version    $Id$
  */
 
-
 /**
- * @category   Zend
- * @package    Zend_Service_WindowsAzure
+ *
+ * @category Zend
+ * @package Zend_Service_WindowsAzure
  * @subpackage Diagnostics
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Service_WindowsAzure_Diagnostics_LogLevel
 {
-    const UNDEFINED     = 'Undefined';
-    const CRITICAL         = 'Critical';
-    const ERROR         = 'Error';
-    const WARNING         = 'Warning';
-    const INFORMATION     = 'Information';
-    const VERBOSE         = 'Verbose';
+
+    const UNDEFINED = 'Undefined';
+
+    const CRITICAL = 'Critical';
+
+    const ERROR = 'Error';
+
+    const WARNING = 'Warning';
+
+    const INFORMATION = 'Information';
+
+    const VERBOSE = 'Verbose';
 }

@@ -20,19 +20,19 @@
  * @version    $Id: Integer.php 23775 2011-03-01 17:25:24Z ralph $
  */
 
-
 /**
  * Zend_XmlRpc_Value_Scalar
  */
 require_once 'Zend/XmlRpc/Value/Scalar.php';
 
-
 /**
- * @category   Zend
- * @package    Zend_XmlRpc
+ *
+ * @category Zend
+ * @package Zend_XmlRpc
  * @subpackage Value
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_XmlRpc_Value_Integer extends Zend_XmlRpc_Value_Scalar
 {
@@ -40,25 +40,26 @@ class Zend_XmlRpc_Value_Integer extends Zend_XmlRpc_Value_Scalar
     /**
      * Set the value of an integer native type
      *
-     * @param int $value
+     * @param int $value            
      */
-    public function __construct($value)
+    public function __construct ($value)
     {
         if ($value > PHP_INT_MAX) {
             require_once 'Zend/XmlRpc/Value/Exception.php';
             throw new Zend_XmlRpc_Value_Exception('Overlong integer given');
         }
-
+        
         $this->_type = self::XMLRPC_TYPE_INTEGER;
-        $this->_value = (int)$value;    // Make sure this value is integer
+        $this->_value = (int) $value; // Make sure this value is integer
     }
 
     /**
-     * Return the value of this object, convert the XML-RPC native integer value into a PHP integer
+     * Return the value of this object, convert the XML-RPC native integer value
+     * into a PHP integer
      *
      * @return int
      */
-    public function getValue()
+    public function getValue ()
     {
         return $this->_value;
     }

@@ -20,41 +20,50 @@
  * @version    $Id: ParticipantDetail.php 23775 2011-03-01 17:25:24Z ralph $
  */
 /**
+ *
  * @see Zend_Validate_EmailAddress
  */
 require_once 'Zend/Validate/EmailAddress.php';
 
 /**
- * @category   Zend
- * @package    Zend_Service
+ *
+ * @category Zend
+ * @package Zend_Service
  * @subpackage DeveloperGarden
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @author     Marco Kaiser
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @author Marco Kaiser
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Service_DeveloperGarden_ConferenceCall_ParticipantDetail
 {
+
     /**
+     *
      * @var string
      */
     public $firstName = null;
 
     /**
+     *
      * @var string
      */
     public $lastName = null;
 
     /**
+     *
      * @var string
      */
     public $number = null;
 
     /**
+     *
      * @var string
      */
     public $email = null;
 
     /**
+     *
      * @var integer
      */
     public $flags = null;
@@ -62,19 +71,20 @@ class Zend_Service_DeveloperGarden_ConferenceCall_ParticipantDetail
     /**
      * constructor for participant object
      *
-     * @param string $firstName
-     * @param string $lastName
-     * @param string $number
-     * @param string $email
-     * @param integer $isInitiator
+     * @param string $firstName            
+     * @param string $lastName            
+     * @param string $number            
+     * @param string $email            
+     * @param integer $isInitiator            
      */
-    public function __construct($firstName, $lastName, $number, $email, $isInitiator = false)
+    public function __construct ($firstName, $lastName, $number, $email, 
+            $isInitiator = false)
     {
         $this->setFirstName($firstName)
-             ->setLastName($lastName)
-             ->setNumber($number)
-             ->setEmail($email)
-             ->setFlags((int) $isInitiator);
+            ->setLastName($lastName)
+            ->setNumber($number)
+            ->setEmail($email)
+            ->setFlags((int) $isInitiator);
     }
 
     /**
@@ -82,7 +92,7 @@ class Zend_Service_DeveloperGarden_ConferenceCall_ParticipantDetail
      *
      * @return string
      */
-    public function getFirstName()
+    public function getFirstName ()
     {
         return $this->firstName;
     }
@@ -90,10 +100,10 @@ class Zend_Service_DeveloperGarden_ConferenceCall_ParticipantDetail
     /**
      * sets $firstName
      *
-     * @param string $firstName
+     * @param string $firstName            
      * @return Zend_Service_DeveloperGarden_ConferenceCall_ParticipantDetail
      */
-    public function setFirstName($firstName)
+    public function setFirstName ($firstName)
     {
         $this->firstName = $firstName;
         return $this;
@@ -104,7 +114,7 @@ class Zend_Service_DeveloperGarden_ConferenceCall_ParticipantDetail
      *
      * @return string
      */
-    public function getLastName()
+    public function getLastName ()
     {
         return $this->lastName;
     }
@@ -112,10 +122,10 @@ class Zend_Service_DeveloperGarden_ConferenceCall_ParticipantDetail
     /**
      * sets $lastName
      *
-     * @param string $lastName
+     * @param string $lastName            
      * @return Zend_Service_DeveloperGarden_ConferenceCall_ParticipantDetail
      */
-    public function setLastName($lastName)
+    public function setLastName ($lastName)
     {
         $this->lastName = $lastName;
         return $this;
@@ -126,7 +136,7 @@ class Zend_Service_DeveloperGarden_ConferenceCall_ParticipantDetail
      *
      * @return string
      */
-    public function getNumber()
+    public function getNumber ()
     {
         return $this->number;
     }
@@ -134,10 +144,10 @@ class Zend_Service_DeveloperGarden_ConferenceCall_ParticipantDetail
     /**
      * sets $number
      *
-     * @param string $number
+     * @param string $number            
      * @return Zend_Service_DeveloperGarden_ConferenceCall_ParticipantDetail
      */
-    public function setNumber($number)
+    public function setNumber ($number)
     {
         $this->number = $number;
         return $this;
@@ -148,7 +158,7 @@ class Zend_Service_DeveloperGarden_ConferenceCall_ParticipantDetail
      *
      * @return string
      */
-    public function getEmail()
+    public function getEmail ()
     {
         return $this->email;
     }
@@ -156,16 +166,18 @@ class Zend_Service_DeveloperGarden_ConferenceCall_ParticipantDetail
     /**
      * sets $email
      *
-     * @param string email
+     * @param
+     *            string email
      * @return Zend_Service_DeveloperGarden_ConferenceCall_ParticipantDetail
      */
-    public function setEmail($email)
+    public function setEmail ($email)
     {
         $validator = new Zend_Validate_EmailAddress();
-
-        if (!$validator->isValid($email)) {
+        
+        if (! $validator->isValid($email)) {
             require_once 'Zend/Service/DeveloperGarden/Exception.php';
-            throw new Zend_Service_DeveloperGarden_Exception('Not a valid e-mail address.');
+            throw new Zend_Service_DeveloperGarden_Exception(
+                    'Not a valid e-mail address.');
         }
         $this->email = $email;
         return $this;
@@ -176,7 +188,7 @@ class Zend_Service_DeveloperGarden_ConferenceCall_ParticipantDetail
      *
      * @return integer
      */
-    public function getFlags()
+    public function getFlags ()
     {
         return $this->flags;
     }
@@ -184,10 +196,10 @@ class Zend_Service_DeveloperGarden_ConferenceCall_ParticipantDetail
     /**
      * sets $flags (ie, initiator flag)
      *
-     * @param integer $flags
+     * @param integer $flags            
      * @return Zend_Service_DeveloperGarden_ConferenceCall_ParticipantDetail
      */
-    public function setFlags($flags)
+    public function setFlags ($flags)
     {
         $this->flags = $flags;
         return $this;

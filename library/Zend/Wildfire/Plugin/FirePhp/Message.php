@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -20,85 +21,96 @@
  * @version    $Id: Message.php 23775 2011-03-01 17:25:24Z ralph $
  */
 
-
 /**
  * A message envelope that can be passed to Zend_Wildfire_Plugin_FirePhp to be
  * logged to Firebug instead of a variable.
  *
- * @category   Zend
- * @package    Zend_Wildfire
+ * @category Zend
+ * @package Zend_Wildfire
  * @subpackage Plugin
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Wildfire_Plugin_FirePhp_Message
 {
+
     /**
      * The style of the message
+     * 
      * @var string
      */
     protected $_style = null;
 
     /**
      * The label of the message
+     * 
      * @var string
      */
     protected $_label = null;
 
     /**
      * The message value
+     * 
      * @var mixed
      */
     protected $_message = null;
 
     /**
      * Flag indicating if message buffering is enabled
+     * 
      * @var boolean
      */
     protected $_buffered = false;
 
     /**
      * Flag indicating if message should be destroyed and not delivered
+     * 
      * @var boolean
      */
     protected $_destroy = false;
 
     /**
      * Random unique ID used to identify message in comparison operations
+     * 
      * @var string
      */
     protected $_ruid = false;
 
     /**
      * Options for the object
+     * 
      * @var array
      */
     protected $_options = array(
-        'traceOffset' => null, /* The offset in the trace which identifies the source of the message */
+            'traceOffset' => null, /* The offset in the trace which identifies the source of the message */
         'includeLineNumbers' => null /* Whether to include line and file info for this message */
     );
 
     /**
      * Creates a new message with the given style and message
      *
-     * @param string $style Style of the message.
-     * @param mixed $message The message
+     * @param string $style
+     *            Style of the message.
+     * @param mixed $message
+     *            The message
      * @return void
      */
-    function __construct($style, $message)
+    function __construct ($style, $message)
     {
         $this->_style = $style;
         $this->_message = $message;
-        $this->_ruid = md5(microtime().mt_rand());
+        $this->_ruid = md5(microtime() . mt_rand());
     }
 
     /**
      * Set the label of the message
      *
-     * @param string $label The label to be set
+     * @param string $label
+     *            The label to be set
      * @return void
      */
-    public function setLabel($label)
+    public function setLabel ($label)
     {
         $this->_label = $label;
     }
@@ -108,7 +120,7 @@ class Zend_Wildfire_Plugin_FirePhp_Message
      *
      * @return string The label of the message
      */
-    public function getLabel()
+    public function getLabel ()
     {
         return $this->_label;
     }
@@ -119,10 +131,11 @@ class Zend_Wildfire_Plugin_FirePhp_Message
      * If a message is buffered it can be updated for the duration of the
      * request and is only flushed at the end of the request.
      *
-     * @param boolean $buffered TRUE to enable buffering FALSE otherwise
+     * @param boolean $buffered
+     *            TRUE to enable buffering FALSE otherwise
      * @return boolean Returns previous buffering value
      */
-    public function setBuffered($buffered)
+    public function setBuffered ($buffered)
     {
         $previous = $this->_buffered;
         $this->_buffered = $buffered;
@@ -134,7 +147,7 @@ class Zend_Wildfire_Plugin_FirePhp_Message
      *
      * @return boolean Returns TRUE if buffering is enabled, FALSE otherwise.
      */
-    public function getBuffered()
+    public function getBuffered ()
     {
         return $this->_buffered;
     }
@@ -142,10 +155,11 @@ class Zend_Wildfire_Plugin_FirePhp_Message
     /**
      * Destroy the message to prevent delivery
      *
-     * @param boolean $destroy TRUE to destroy FALSE otherwise
+     * @param boolean $destroy
+     *            TRUE to destroy FALSE otherwise
      * @return boolean Returns previous destroy value
      */
-    public function setDestroy($destroy)
+    public function setDestroy ($destroy)
     {
         $previous = $this->_destroy;
         $this->_destroy = $destroy;
@@ -155,9 +169,10 @@ class Zend_Wildfire_Plugin_FirePhp_Message
     /**
      * Determine if message should be destroyed
      *
-     * @return boolean Returns TRUE if message should be destroyed, FALSE otherwise.
+     * @return boolean Returns TRUE if message should be destroyed, FALSE
+     *         otherwise.
      */
-    public function getDestroy()
+    public function getDestroy ()
     {
         return $this->_destroy;
     }
@@ -167,7 +182,7 @@ class Zend_Wildfire_Plugin_FirePhp_Message
      *
      * @return void
      */
-    public function setStyle($style)
+    public function setStyle ($style)
     {
         $this->_style = $style;
     }
@@ -177,7 +192,7 @@ class Zend_Wildfire_Plugin_FirePhp_Message
      *
      * @return string The style of the message
      */
-    public function getStyle()
+    public function getStyle ()
     {
         return $this->_style;
     }
@@ -187,7 +202,7 @@ class Zend_Wildfire_Plugin_FirePhp_Message
      *
      * @return void
      */
-    public function setMessage($message)
+    public function setMessage ($message)
     {
         $this->_message = $message;
     }
@@ -197,7 +212,7 @@ class Zend_Wildfire_Plugin_FirePhp_Message
      *
      * @return mixed Returns the message to be sent.
      */
-    public function getMessage()
+    public function getMessage ()
     {
         return $this->_message;
     }
@@ -205,32 +220,37 @@ class Zend_Wildfire_Plugin_FirePhp_Message
     /**
      * Set a single option
      *
-     * @param  string $key The name of the option
-     * @param  mixed $value The value of the option
+     * @param string $key
+     *            The name of the option
+     * @param mixed $value
+     *            The value of the option
      * @return mixed The previous value of the option
      */
-    public function setOption($key, $value)
+    public function setOption ($key, $value)
     {
-      if(!array_key_exists($key,$this->_options)) {
-        throw new Zend_Wildfire_Exception('Option with name "'.$key.'" does not exist!');
-      }
-      $previous = $this->_options[$key];
-      $this->_options[$key] = $value;
-      return $previous;
+        if (! array_key_exists($key, $this->_options)) {
+            throw new Zend_Wildfire_Exception(
+                    'Option with name "' . $key . '" does not exist!');
+        }
+        $previous = $this->_options[$key];
+        $this->_options[$key] = $value;
+        return $previous;
     }
 
     /**
      * Retrieve a single option
      *
-     * @param  string $key The name of the option
+     * @param string $key
+     *            The name of the option
      * @return mixed The value of the option
      */
-    public function getOption($key)
+    public function getOption ($key)
     {
-      if(!array_key_exists($key,$this->_options)) {
-        throw new Zend_Wildfire_Exception('Option with name "'.$key.'" does not exist!');
-      }
-      return $this->_options[$key];
+        if (! array_key_exists($key, $this->_options)) {
+            throw new Zend_Wildfire_Exception(
+                    'Option with name "' . $key . '" does not exist!');
+        }
+        return $this->_options[$key];
     }
 
     /**
@@ -238,9 +258,9 @@ class Zend_Wildfire_Plugin_FirePhp_Message
      *
      * @return array All options
      */
-    public function getOptions()
+    public function getOptions ()
     {
-      return $this->_options;
+        return $this->_options;
     }
 }
 

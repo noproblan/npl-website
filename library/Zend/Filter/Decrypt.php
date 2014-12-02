@@ -20,6 +20,7 @@
  */
 
 /**
+ *
  * @see Zend_Filter_Encrypt
  */
 require_once 'Zend/Filter/Encrypt.php';
@@ -27,22 +28,25 @@ require_once 'Zend/Filter/Encrypt.php';
 /**
  * Decrypts a given string
  *
- * @category   Zend
- * @package    Zend_Filter
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @category Zend
+ * @package Zend_Filter
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Filter_Decrypt extends Zend_Filter_Encrypt
 {
+
     /**
      * Defined by Zend_Filter_Interface
      *
      * Decrypts the content $value with the defined settings
      *
-     * @param  string $value Content to decrypt
+     * @param string $value
+     *            Content to decrypt
      * @return string The decrypted content
      */
-    public function filter($value)
+    public function filter ($value)
     {
         return $this->_adapter->decrypt($value);
     }

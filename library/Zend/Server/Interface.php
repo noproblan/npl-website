@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -22,26 +23,29 @@
  * Zend_Server_Interface
  *
  * @category Zend
- * @package  Zend_Server
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @package Zend_Server
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  * @version $Id: Interface.php 23775 2011-03-01 17:25:24Z ralph $
  */
 interface Zend_Server_Interface
 {
+
     /**
      * Attach a function as a server method
      *
      * Namespacing is primarily for xmlrpc, but may be used with other
      * implementations to prevent naming collisions.
      *
-     * @param string $function
-     * @param string $namespace
-     * @param null|array Optional array of arguments to pass to callbacks at
-     * dispatch.
+     * @param string $function            
+     * @param string $namespace            
+     * @param
+     *            null|array Optional array of arguments to pass to callbacks at
+     *            dispatch.
      * @return void
      */
-    public function addFunction($function, $namespace = '');
+    public function addFunction ($function, $namespace = '');
 
     /**
      * Attach a class to a server
@@ -53,25 +57,28 @@ interface Zend_Server_Interface
      * Namespacing is primarily for xmlrpc, but could be used for other
      * implementations as well.
      *
-     * @param mixed $class Class name or object instance to examine and attach
-     * to the server.
-     * @param string $namespace Optional namespace with which to prepend method
-     * names in the dispatch table.
-     * methods in the class will be valid callbacks.
-     * @param null|array Optional array of arguments to pass to callbacks at
-     * dispatch.
+     * @param mixed $class
+     *            Class name or object instance to examine and attach
+     *            to the server.
+     * @param string $namespace
+     *            Optional namespace with which to prepend method
+     *            names in the dispatch table.
+     *            methods in the class will be valid callbacks.
+     * @param
+     *            null|array Optional array of arguments to pass to callbacks at
+     *            dispatch.
      * @return void
      */
-    public function setClass($class, $namespace = '', $argv = null);
+    public function setClass ($class, $namespace = '', $argv = null);
 
     /**
      * Generate a server fault
      *
-     * @param mixed $fault
-     * @param int $code
+     * @param mixed $fault            
+     * @param int $code            
      * @return mixed
      */
-    public function fault($fault = null, $code = 404);
+    public function fault ($fault = null, $code = 404);
 
     /**
      * Handle a request
@@ -80,10 +87,10 @@ interface Zend_Server_Interface
      * request based on defaults. Dispatches server request to appropriate
      * method and returns a response
      *
-     * @param mixed $request
+     * @param mixed $request            
      * @return mixed
      */
-    public function handle($request = false);
+    public function handle ($request = false);
 
     /**
      * Return a server definition array
@@ -95,24 +102,25 @@ interface Zend_Server_Interface
      * @access public
      * @return array
      */
-    public function getFunctions();
+    public function getFunctions ();
 
     /**
      * Load server definition
      *
-     * Used for persistence; loads a construct as returned by {@link getFunctions()}.
+     * Used for persistence; loads a construct as returned by {@link
+     * getFunctions()}.
      *
-     * @param array $array
+     * @param array $array            
      * @return void
      */
-    public function loadFunctions($definition);
+    public function loadFunctions ($definition);
 
     /**
      * Set server persistence
      *
      * @todo Determine how to implement this
-     * @param int $mode
+     * @param int $mode            
      * @return void
      */
-    public function setPersistence($mode);
+    public function setPersistence ($mode);
 }

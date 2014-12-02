@@ -22,11 +22,13 @@
  */
 
 /**
+ *
  * @see Zend_Gdata_Extension
  */
 require_once 'Zend/Gdata/Extension.php';
 
 /**
+ *
  * @see Zend_Gdata_Geo
  */
 require_once 'Zend/Gdata/Geo.php';
@@ -34,28 +36,30 @@ require_once 'Zend/Gdata/Geo.php';
 /**
  * Represents the gml:pos element used by the Gdata Geo extensions.
  *
- * @category   Zend
- * @package    Zend_Gdata
+ * @category Zend
+ * @package Zend_Gdata
  * @subpackage Geo
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Gdata_Geo_Extension_GmlPos extends Zend_Gdata_Extension
 {
 
     protected $_rootNamespace = 'gml';
+
     protected $_rootElement = 'pos';
 
     /**
      * Constructs a new Zend_Gdata_Geo_Extension_GmlPos object.
      *
-     * @param string $text (optional) The value to use for this element.
+     * @param string $text
+     *            (optional) The value to use for this element.
      */
-    public function __construct($text = null)
+    public function __construct ($text = null)
     {
         $this->registerAllNamespaces(Zend_Gdata_Geo::$namespaces);
         parent::__construct();
         $this->setText($text);
     }
-
 }

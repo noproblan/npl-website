@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <ldml>
 	<identity>
-		<version number="$Revision: 1.111 $"/>
-		<generation date="$Date: 2009/06/15 03:46:25 $"/>
-		<language type="lt"/>
+		<version number="$Revision: 1.111 $" />
+		<generation date="$Date: 2009/06/15 03:46:25 $" />
+		<language type="lt" />
 	</identity>
 	<localeDisplayNames>
 		<languages>
@@ -910,7 +910,8 @@
 			<territory type="TZ">Tanzanija</territory>
 			<territory type="UA">Ukraina</territory>
 			<territory type="UG">Uganda</territory>
-			<territory type="UM">Jungtinių Valstijų mažosios aplinkinės salos</territory>
+			<territory type="UM">Jungtinių Valstijų mažosios aplinkinės
+				salos</territory>
 			<territory type="US">Jungtinės Valstijos</territory>
 			<territory type="UY">Urugvajus</territory>
 			<territory type="UZ">Uzbekistanas</territory>
@@ -958,9 +959,12 @@
 		</codePatterns>
 	</localeDisplayNames>
 	<characters>
-		<exemplarCharacters>[a ą b c č d e ę ė f-i į y j-p r s š t u ų ū v z ž]</exemplarCharacters>
-		<exemplarCharacters type="auxiliary">[{į\u0307} {i\u0307} {i\u0307\u0301} {i\u0307\u0300} {i\u0307\u0303} {j\u0307} q w x]</exemplarCharacters>
-		<exemplarCharacters type="currencySymbol">[a ą b c č d e ę ė f-i į y j-p r s š t u ų ū v z ž]</exemplarCharacters>
+		<exemplarCharacters>[a ą b c č d e ę ė f-i į y j-p r s š t u ų ū v z
+			ž]</exemplarCharacters>
+		<exemplarCharacters type="auxiliary">[{į\u0307} {i\u0307}
+			{i\u0307\u0301} {i\u0307\u0300} {i\u0307\u0303} {j\u0307} q w x]</exemplarCharacters>
+		<exemplarCharacters type="currencySymbol">[a ą b c č d e ę ė f-i į y
+			j-p r s š t u ų ū v z ž]</exemplarCharacters>
 	</characters>
 	<delimiters>
 		<quotationStart>„</quotationStart>
@@ -1207,7 +1211,8 @@
 						</intervalFormatItem>
 						<intervalFormatItem id="MMMEd">
 							<greatestDifference id="d">MMM d 'd'.E - d 'd'.E</greatestDifference>
-							<greatestDifference id="M">MMM d 'd'.E - MMM d 'd'.E</greatestDifference>
+							<greatestDifference id="M">MMM d 'd'.E - MMM d
+								'd'.E</greatestDifference>
 						</intervalFormatItem>
 						<intervalFormatItem id="y">
 							<greatestDifference id="y">y-y</greatestDifference>
@@ -1222,23 +1227,32 @@
 							<greatestDifference id="y">yyyy-MM-dd - yyyy-MM-dd</greatestDifference>
 						</intervalFormatItem>
 						<intervalFormatItem id="yMEd">
-							<greatestDifference id="d">yyyy-MM-ddE - yyyy-MM-ddE</greatestDifference>
-							<greatestDifference id="M">yyyy-MM-ddE - yyyy-MM-ddE</greatestDifference>
-							<greatestDifference id="y">yyyy-MM-ddE - yyyy-MM-ddE</greatestDifference>
+							<greatestDifference id="d">yyyy-MM-ddE -
+								yyyy-MM-ddE</greatestDifference>
+							<greatestDifference id="M">yyyy-MM-ddE -
+								yyyy-MM-ddE</greatestDifference>
+							<greatestDifference id="y">yyyy-MM-ddE -
+								yyyy-MM-ddE</greatestDifference>
 						</intervalFormatItem>
 						<intervalFormatItem id="yMMM">
 							<greatestDifference id="M">y 'm'. MMM-MMM</greatestDifference>
 							<greatestDifference id="y">y 'm'. MMM - y 'm'. MMM</greatestDifference>
 						</intervalFormatItem>
 						<intervalFormatItem id="yMMMd">
-							<greatestDifference id="d">y 'm'. MMM d 'd'.-d 'd'.</greatestDifference>
-							<greatestDifference id="M">y 'm'. MMM d 'd'. - MMM d 'd'.</greatestDifference>
-							<greatestDifference id="y">y 'm'. MMM d 'd'. - y 'm'. MMM d 'd'.</greatestDifference>
+							<greatestDifference id="d">y 'm'. MMM d 'd'.-d
+								'd'.</greatestDifference>
+							<greatestDifference id="M">y 'm'. MMM d 'd'. - MMM
+								d 'd'.</greatestDifference>
+							<greatestDifference id="y">y 'm'. MMM d 'd'. - y
+								'm'. MMM d 'd'.</greatestDifference>
 						</intervalFormatItem>
 						<intervalFormatItem id="yMMMEd">
-							<greatestDifference id="d">y 'm'. MMM d 'd'.,E - d 'd'.,E</greatestDifference>
-							<greatestDifference id="M">y 'm'. MMM d 'd'.,E - MMM d 'd'.,E</greatestDifference>
-							<greatestDifference id="y">y 'm'. MMM d 'd'.,E - y 'm'. MMM d 'd'.,E</greatestDifference>
+							<greatestDifference id="d">y 'm'. MMM d 'd'.,E - d
+								'd'.,E</greatestDifference>
+							<greatestDifference id="M">y 'm'. MMM d 'd'.,E -
+								MMM d 'd'.,E</greatestDifference>
+							<greatestDifference id="y">y 'm'. MMM d 'd'.,E - y
+								'm'. MMM d 'd'.,E</greatestDifference>
 						</intervalFormatItem>
 					</intervalFormats>
 				</dateTimeFormats>
@@ -1979,7 +1993,8 @@
 				<exemplarCity>Džonstonas</exemplarCity>
 			</zone>
 			<zone type="Pacific/Wake">
-				<exemplarCity>Jungtinių Valstijų mažosios aplinkinės salos (Klivateris)</exemplarCity>
+				<exemplarCity>Jungtinių Valstijų mažosios aplinkinės salos
+					(Klivateris)</exemplarCity>
 			</zone>
 			<zone type="America/Anchorage">
 				<exemplarCity>Ankoridžas</exemplarCity>
@@ -2487,9 +2502,12 @@
 			</currency>
 			<currency type="BAM">
 				<displayName>Bosnijos ir Hercegovinos konvertuojamoji markė</displayName>
-				<displayName count="few">Bosnijos ir Hercegovinos konvertuojamosios markės</displayName>
-				<displayName count="one">Bosnijos ir Hercegovinos konvertuojamoji markė</displayName>
-				<displayName count="other">Bosnijos ir Hercegovinos konvertuojamosios markės</displayName>
+				<displayName count="few">Bosnijos ir Hercegovinos
+					konvertuojamosios markės</displayName>
+				<displayName count="one">Bosnijos ir Hercegovinos
+					konvertuojamoji markė</displayName>
+				<displayName count="other">Bosnijos ir Hercegovinos
+					konvertuojamosios markės</displayName>
 			</currency>
 			<currency type="BBD">
 				<displayName>Barbadoso doleris</displayName>
@@ -2742,8 +2760,10 @@
 			</currency>
 			<currency type="GBP">
 				<displayName>Svaras sterlingų</displayName>
-				<displayName count="one">Didžiosios Britanijos svaras sterlingų</displayName>
-				<displayName count="other">Didžiosios Britanijos svarai sterlingų</displayName>
+				<displayName count="one">Didžiosios Britanijos svaras
+					sterlingų</displayName>
+				<displayName count="other">Didžiosios Britanijos svarai
+					sterlingų</displayName>
 			</currency>
 			<currency type="GEL">
 				<displayName>Gruzijos laris</displayName>

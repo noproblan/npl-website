@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -23,11 +24,12 @@
 /**
  * Zend_Session_Validator_Interface
  *
- * @category   Zend
- * @package    Zend_Session
+ * @category Zend
+ * @package Zend_Session
  * @subpackage Validator
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 interface Zend_Session_Validator_Interface
 {
@@ -38,7 +40,7 @@ interface Zend_Session_Validator_Interface
      *
      * @return void
      */
-    public function setup();
+    public function setup ();
 
     /**
      * Validate() - this method will be called at the beginning of
@@ -47,6 +49,5 @@ interface Zend_Session_Validator_Interface
      *
      * @return boolean
      */
-    public function validate();
-
+    public function validate ();
 }

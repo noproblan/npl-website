@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <ldml>
 	<identity>
-		<version number="$Revision: 1.111 $"/>
-		<generation date="$Date: 2009/06/15 03:46:23 $"/>
-		<language type="hr"/>
+		<version number="$Revision: 1.111 $" />
+		<generation date="$Date: 2009/06/15 03:46:23 $" />
+		<language type="hr" />
 	</identity>
 	<localeDisplayNames>
 		<localeDisplayPattern>
@@ -970,11 +970,13 @@
 			<key type="currency">valuta</key>
 		</keys>
 		<types>
-			<type type="big5han" key="collation">tradicionalno kinesko poredavanje - Big5</type>
+			<type type="big5han" key="collation">tradicionalno kinesko poredavanje -
+				Big5</type>
 			<type type="buddhist" key="calendar">budistički kalendar</type>
 			<type type="chinese" key="calendar">kineski kalendar</type>
 			<type type="direct" key="collation">izravno poredavanje</type>
-			<type type="gb2312han" key="collation">pojednostavljeno kinesko poredavanje - GB2312</type>
+			<type type="gb2312han" key="collation">pojednostavljeno kinesko poredavanje
+				- GB2312</type>
 			<type type="gregorian" key="calendar">gregorijanski kalendar</type>
 			<type type="hebrew" key="calendar">hebrejski kalendar</type>
 			<type type="indian" key="calendar">indijski nacionalni kalendar</type>
@@ -1007,7 +1009,8 @@
 		<inText type="variants">titlecase-firstword</inText>
 	</layout>
 	<characters>
-		<exemplarCharacters>[a-c č ć d đ {dž} e-l {lj} m n {nj} o p r s š t-v z ž]</exemplarCharacters>
+		<exemplarCharacters>[a-c č ć d đ {dž} e-l {lj} m n {nj} o p r s š t-v
+			z ž]</exemplarCharacters>
 		<exemplarCharacters type="auxiliary">[q w-y]</exemplarCharacters>
 		<exemplarCharacters type="currencySymbol">[a-z]</exemplarCharacters>
 	</characters>
@@ -1323,14 +1326,20 @@
 							<greatestDifference id="y">MM.yyyy. - MM.yyyy.</greatestDifference>
 						</intervalFormatItem>
 						<intervalFormatItem id="yMd">
-							<greatestDifference id="d">dd.MM.yyyy. - dd.MM.yyyy.</greatestDifference>
-							<greatestDifference id="M">dd.MM.yyyy. - dd.MM.yyyy.</greatestDifference>
-							<greatestDifference id="y">dd.MM.yyyy. - dd.MM.yyyy.</greatestDifference>
+							<greatestDifference id="d">dd.MM.yyyy. -
+								dd.MM.yyyy.</greatestDifference>
+							<greatestDifference id="M">dd.MM.yyyy. -
+								dd.MM.yyyy.</greatestDifference>
+							<greatestDifference id="y">dd.MM.yyyy. -
+								dd.MM.yyyy.</greatestDifference>
 						</intervalFormatItem>
 						<intervalFormatItem id="yMEd">
-							<greatestDifference id="d">E, dd.MM.yyyy. - E, dd.MM.yyyy.</greatestDifference>
-							<greatestDifference id="M">E, dd.MM.yyyy. - E, dd.MM.yyyy.</greatestDifference>
-							<greatestDifference id="y">E, dd.MM.yyyy. - E, dd.MM.yyyy.</greatestDifference>
+							<greatestDifference id="d">E, dd.MM.yyyy. - E,
+								dd.MM.yyyy.</greatestDifference>
+							<greatestDifference id="M">E, dd.MM.yyyy. - E,
+								dd.MM.yyyy.</greatestDifference>
+							<greatestDifference id="y">E, dd.MM.yyyy. - E,
+								dd.MM.yyyy.</greatestDifference>
 						</intervalFormatItem>
 						<intervalFormatItem id="yMMM">
 							<greatestDifference id="M">LLL.-LLL.y.</greatestDifference>
@@ -1343,8 +1352,10 @@
 						</intervalFormatItem>
 						<intervalFormatItem id="yMMMEd">
 							<greatestDifference id="d">E, dd. - E, dd.MMM.y.</greatestDifference>
-							<greatestDifference id="M">E, dd.MMM. - E, dd.MMM.y.</greatestDifference>
-							<greatestDifference id="y">E, dd.MMM.y. - E, dd.MMM.y.</greatestDifference>
+							<greatestDifference id="M">E, dd.MMM. - E,
+								dd.MMM.y.</greatestDifference>
+							<greatestDifference id="y">E, dd.MMM.y. - E,
+								dd.MMM.y.</greatestDifference>
 						</intervalFormatItem>
 						<intervalFormatItem id="yMMMM">
 							<greatestDifference id="M">MM. - MM.yyyy.</greatestDifference>
@@ -2257,10 +2268,14 @@
 			</currency>
 			<currency type="ECV">
 				<displayName>Ecuador Unidad de Valor Constante (UVC)</displayName>
-				<displayName count="few">ekvatorska unidad de valor constante (UVC)</displayName>
-				<displayName count="many">ekvatorskih unidad de valor constante (UVC)</displayName>
-				<displayName count="one">ekvatorski unidad de valor constante (UVC)</displayName>
-				<displayName count="other">ekvatorskih unidad de valor constante (UVC)</displayName>
+				<displayName count="few">ekvatorska unidad de valor constante
+					(UVC)</displayName>
+				<displayName count="many">ekvatorskih unidad de valor constante
+					(UVC)</displayName>
+				<displayName count="one">ekvatorski unidad de valor constante
+					(UVC)</displayName>
+				<displayName count="other">ekvatorskih unidad de valor constante
+					(UVC)</displayName>
 			</currency>
 			<currency type="EEK">
 				<displayName>estonska kruna</displayName>
@@ -2292,10 +2307,14 @@
 			</currency>
 			<currency type="ESB">
 				<displayName>španjolska pezeta (konvertibilni račun)</displayName>
-				<displayName count="few">španjolske pezete (konvertibilan račun)</displayName>
-				<displayName count="many">španjolskih pezeta (konvertibilan račun)</displayName>
-				<displayName count="one">španjolska pezeta (konvertibilan račun)</displayName>
-				<displayName count="other">španjolskih pezeta (konvertibilan račun)</displayName>
+				<displayName count="few">španjolske pezete (konvertibilan
+					račun)</displayName>
+				<displayName count="many">španjolskih pezeta (konvertibilan
+					račun)</displayName>
+				<displayName count="one">španjolska pezeta (konvertibilan
+					račun)</displayName>
+				<displayName count="other">španjolskih pezeta (konvertibilan
+					račun)</displayName>
 			</currency>
 			<currency type="ESP">
 				<displayName>španjolska pezeta</displayName>
@@ -3378,10 +3397,14 @@
 			</currency>
 			<currency type="UYI">
 				<displayName>urugvajski pezo en unidades indexadas</displayName>
-				<displayName count="few">urugvajska pesosa en unidades indexadas</displayName>
-				<displayName count="many">urugvajskih pesosa en unidades indexadas</displayName>
-				<displayName count="one">urugvajski pesos en unidades indexadas</displayName>
-				<displayName count="other">urugvajskih pesosa en unidades indexadas</displayName>
+				<displayName count="few">urugvajska pesosa en unidades
+					indexadas</displayName>
+				<displayName count="many">urugvajskih pesosa en unidades
+					indexadas</displayName>
+				<displayName count="one">urugvajski pesos en unidades
+					indexadas</displayName>
+				<displayName count="other">urugvajskih pesosa en unidades
+					indexadas</displayName>
 			</currency>
 			<currency type="UYP">
 				<displayName>urugvajski pezo (1975.-1993.)</displayName>

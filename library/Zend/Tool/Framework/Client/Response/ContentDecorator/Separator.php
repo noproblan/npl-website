@@ -21,21 +21,25 @@
  */
 
 /**
+ *
  * @see Zend_Tool_Framework_Client_Response_ContentDecorator_Interface
  */
 require_once 'Zend/Tool/Framework/Client/Response/ContentDecorator/Interface.php';
 
 /**
- * @category   Zend
- * @package    Zend_Tool
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ *
+ * @category Zend
+ * @package Zend_Tool
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
-class Zend_Tool_Framework_Client_Response_ContentDecorator_Separator
-    implements Zend_Tool_Framework_Client_Response_ContentDecorator_Interface
+class Zend_Tool_Framework_Client_Response_ContentDecorator_Separator implements 
+        Zend_Tool_Framework_Client_Response_ContentDecorator_Interface
 {
 
     /**
+     *
      * @var string
      */
     protected $_separator = PHP_EOL;
@@ -45,7 +49,7 @@ class Zend_Tool_Framework_Client_Response_ContentDecorator_Separator
      *
      * @return string
      */
-    public function getName()
+    public function getName ()
     {
         return 'separator';
     }
@@ -53,10 +57,10 @@ class Zend_Tool_Framework_Client_Response_ContentDecorator_Separator
     /**
      * setSeparator()
      *
-     * @param string $separator
+     * @param string $separator            
      * @return Zend_Tool_Framework_Client_Response_ContentDecorator_Separator
      */
-    public function setSeparator($separator)
+    public function setSeparator ($separator)
     {
         $this->_separator = $separator;
         return $this;
@@ -67,27 +71,26 @@ class Zend_Tool_Framework_Client_Response_ContentDecorator_Separator
      *
      * @return string
      */
-    public function getSeparator()
+    public function getSeparator ()
     {
         return $this->_separator;
     }
 
-    public function decorate($content, $decoratorValue)
+    public function decorate ($content, $decoratorValue)
     {
         $run = 1;
         if (is_bool($decoratorValue) && $decoratorValue === false) {
             return $content;
         }
-
+        
         if (is_int($decoratorValue)) {
             $run = $decoratorValue;
         }
-
-        for ($i = 0; $i < $run; $i++) {
+        
+        for ($i = 0; $i < $run; $i ++) {
             $content .= $this->_separator;
         }
-
+        
         return $content;
     }
-
 }

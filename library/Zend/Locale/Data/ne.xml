@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <ldml>
 	<identity>
-		<version number="$Revision: 1.35 $"/>
-		<generation date="$Date: 2009/06/15 04:15:33 $"/>
-		<language type="ne"/>
+		<version number="$Revision: 1.35 $" />
+		<generation date="$Date: 2009/06/15 04:15:33 $" />
+		<language type="ne" />
 	</identity>
 	<localeDisplayNames>
 		<languages>
@@ -524,11 +524,13 @@
 			<key type="currency">मुद्रा</key>
 		</keys>
 		<types>
-			<type type="big5han" key="collation">परम्परागत चिनिँया क्रमबद्धता पद्दति - बिग फाइभ</type>
+			<type type="big5han" key="collation">परम्परागत चिनिँया क्रमबद्धता पद्दति -
+				बिग फाइभ</type>
 			<type type="buddhist" key="calendar">बुद्धिष्ट पात्रो</type>
 			<type type="chinese" key="calendar">चिनिँया पात्रो</type>
 			<type type="direct" key="collation">प्रत्यक्ष क्रमबद्धता पद्दति</type>
-			<type type="gb2312han" key="collation">सरलिकृत चिनियाँ क्रमबद्धता पद्दति-गीबीटुथ्रीवानटु</type>
+			<type type="gb2312han" key="collation">सरलिकृत चिनियाँ क्रमबद्धता
+				पद्दति-गीबीटुथ्रीवानटु</type>
 			<type type="gregorian" key="calendar">ग्रेगोरियन पात्रो</type>
 			<type type="hebrew" key="calendar">हिब्रु पात्रो</type>
 			<type type="indian" key="calendar">भारतीय राष्ट्रिय पात्रो</type>

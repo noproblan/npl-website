@@ -20,21 +20,25 @@
  * @version    $Id: NameTree.php 23775 2011-03-01 17:25:24Z ralph $
  */
 
-/** Internally used classes */
+/**
+ * Internally used classes
+ */
 require_once 'Zend/Pdf/Element.php';
-
 
 /**
  * PDF name tree representation class
  *
- * @todo implement lazy resource loading so resources will be really loaded at access time
- *
- * @package    Zend_Pdf
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @todo implement lazy resource loading so resources will be really loaded at
+ *       access time
+ *      
+ * @package Zend_Pdf
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Pdf_NameTree implements ArrayAccess, Iterator, Countable
 {
+
     /**
      * Elements
      * Array of name => object tree entries
@@ -46,23 +50,24 @@ class Zend_Pdf_NameTree implements ArrayAccess, Iterator, Countable
     /**
      * Object constructor
      *
-     * @param Zend_Pdf_Element $rootDictionary root of name dictionary
+     * @param Zend_Pdf_Element $rootDictionary
+     *            root of name dictionary
      */
-    public function __construct(Zend_Pdf_Element $rootDictionary)
+    public function __construct (Zend_Pdf_Element $rootDictionary)
     {
         if ($rootDictionary->getType() != Zend_Pdf_Element::TYPE_DICTIONARY) {
             require_once 'Zend/Pdf/Exception.php';
             throw new Zend_Pdf_Exception('Name tree root must be a dictionary.');
         }
-
+        
         $intermediateNodes = array();
-        $leafNodes         = array();
+        $leafNodes = array();
         if ($rootDictionary->Kids !== null) {
             $intermediateNodes[] = $rootDictionary;
         } else {
             $leafNodes[] = $rootDictionary;
         }
-
+        
         while (count($intermediateNodes) != 0) {
             $newIntermediateNodes = array();
             foreach ($intermediateNodes as $node) {
@@ -76,78 +81,71 @@ class Zend_Pdf_NameTree implements ArrayAccess, Iterator, Countable
             }
             $intermediateNodes = $newIntermediateNodes;
         }
-
+        
         foreach ($leafNodes as $leafNode) {
-            $destinationsCount = count($leafNode->Names->items)/2;
-            for ($count = 0; $count < $destinationsCount; $count++) {
-                $this->_items[$leafNode->Names->items[$count*2]->value] = $leafNode->Names->items[$count*2 + 1];
+            $destinationsCount = count($leafNode->Names->items) / 2;
+            for ($count = 0; $count < $destinationsCount; $count ++) {
+                $this->_items[$leafNode->Names->items[$count * 2]->value] = $leafNode->Names->items[$count *
+                         2 + 1];
             }
         }
     }
 
-    public function current()
+    public function current ()
     {
         return current($this->_items);
     }
 
-
-    public function next()
+    public function next ()
     {
         return next($this->_items);
     }
 
-
-    public function key()
+    public function key ()
     {
         return key($this->_items);
     }
 
-
-    public function valid() {
-        return current($this->_items)!==false;
+    public function valid ()
+    {
+        return current($this->_items) !== false;
     }
 
-
-    public function rewind()
+    public function rewind ()
     {
         reset($this->_items);
     }
 
-
-    public function offsetExists($offset)
+    public function offsetExists ($offset)
     {
         return array_key_exists($offset, $this->_items);
     }
 
-
-    public function offsetGet($offset)
+    public function offsetGet ($offset)
     {
         return $this->_items[$offset];
     }
 
-
-    public function offsetSet($offset, $value)
+    public function offsetSet ($offset, $value)
     {
         if ($offset === null) {
-            $this->_items[]        = $value;
+            $this->_items[] = $value;
         } else {
             $this->_items[$offset] = $value;
         }
     }
 
-
-    public function offsetUnset($offset)
+    public function offsetUnset ($offset)
     {
         unset($this->_items[$offset]);
     }
 
-
-    public function clear()
+    public function clear ()
     {
         $this->_items = array();
     }
 
-    public function count()
+    public function count ()
     {
         return count($this->_items);
     }

@@ -19,35 +19,42 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
 
-/** Zend_Form_Element_Select */
+/**
+ * Zend_Form_Element_Select
+ */
 require_once 'Zend/Form/Element/Select.php';
 
 /**
  * Multiselect form element
  *
- * @category   Zend
- * @package    Zend_Form
+ * @category Zend
+ * @package Zend_Form
  * @subpackage Element
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: Multiselect.php 23775 2011-03-01 17:25:24Z ralph $
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
+ * @version $Id: Multiselect.php 23775 2011-03-01 17:25:24Z ralph $
  */
 class Zend_Form_Element_Multiselect extends Zend_Form_Element_Select
 {
+
     /**
      * 'multiple' attribute
+     * 
      * @var string
      */
     public $multiple = 'multiple';
 
     /**
      * Use formSelect view helper by default
+     * 
      * @var string
      */
     public $helper = 'formSelect';
 
     /**
      * Multiselect is an array of values by default
+     * 
      * @var bool
      */
     protected $_isArray = true;

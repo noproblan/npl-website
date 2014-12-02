@@ -20,6 +20,7 @@
  */
 
 /**
+ *
  * @see Zend_Filter_Compress_CompressInterface
  */
 require_once 'Zend/Filter/Compress/CompressInterface.php';
@@ -27,24 +28,28 @@ require_once 'Zend/Filter/Compress/CompressInterface.php';
 /**
  * Abstract compression adapter
  *
- * @category   Zend
- * @package    Zend_Filter
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @category Zend
+ * @package Zend_Filter
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
-abstract class Zend_Filter_Compress_CompressAbstract implements Zend_Filter_Compress_CompressInterface
+abstract class Zend_Filter_Compress_CompressAbstract implements 
+        Zend_Filter_Compress_CompressInterface
 {
+
     /**
      * Class constructor
      *
-     * @param array|Zend_Config $options (Optional) Options to set
+     * @param array|Zend_Config $options
+     *            (Optional) Options to set
      */
-    public function __construct($options = null)
+    public function __construct ($options = null)
     {
         if ($options instanceof Zend_Config) {
             $options = $options->toArray();
         }
-
+        
         if (is_array($options)) {
             $this->setOptions($options);
         }
@@ -53,29 +58,30 @@ abstract class Zend_Filter_Compress_CompressAbstract implements Zend_Filter_Comp
     /**
      * Returns one or all set options
      *
-     * @param string $option (Optional) Option to return
+     * @param string $option
+     *            (Optional) Option to return
      * @return mixed
      */
-    public function getOptions($option = null)
+    public function getOptions ($option = null)
     {
         if ($option === null) {
             return $this->_options;
         }
-
-        if (!array_key_exists($option, $this->_options)) {
+        
+        if (! array_key_exists($option, $this->_options)) {
             return null;
         }
-
+        
         return $this->_options[$option];
     }
 
     /**
      * Sets all or one option
      *
-     * @param  array $options
+     * @param array $options            
      * @return Zend_Filter_Compress_Bz2
      */
-    public function setOptions(array $options)
+    public function setOptions (array $options)
     {
         foreach ($options as $key => $option) {
             $method = 'set' . $key;
@@ -83,7 +89,7 @@ abstract class Zend_Filter_Compress_CompressAbstract implements Zend_Filter_Comp
                 $this->$method($option);
             }
         }
-
+        
         return $this;
     }
 }

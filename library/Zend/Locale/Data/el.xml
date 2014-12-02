@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <ldml>
 	<identity>
-		<version number="$Revision: 1.116 $"/>
-		<generation date="$Date: 2009/06/15 20:34:50 $"/>
-		<language type="el"/>
+		<version number="$Revision: 1.116 $" />
+		<generation date="$Date: 2009/06/15 20:34:50 $" />
+		<language type="el" />
 	</identity>
 	<localeDisplayNames>
 		<languages>
@@ -966,18 +966,21 @@
 			<key type="currency">νόμισμα</key>
 		</keys>
 		<types>
-			<type type="big5han" key="collation">Σειρά ταξινόμησης Παραδοσιακών Κινεζικών - Big5</type>
+			<type type="big5han" key="collation">Σειρά ταξινόμησης Παραδοσιακών
+				Κινεζικών - Big5</type>
 			<type type="buddhist" key="calendar">Βουδιστικό ημερολόγιο</type>
 			<type type="chinese" key="calendar">Κινεζικό ημερολόγιο</type>
 			<type type="direct" key="collation">Άμεση σειρά ταξινόμησης</type>
-			<type type="gb2312han" key="collation">Σειρά ταξινόμησης Απλουστευμένων Κινεζικών - GB2312</type>
+			<type type="gb2312han" key="collation">Σειρά ταξινόμησης Απλουστευμένων
+				Κινεζικών - GB2312</type>
 			<type type="gregorian" key="calendar">Γρηγοριανό ημερολόγιο</type>
 			<type type="hebrew" key="calendar">Εβραϊκό ημερολόγιο</type>
 			<type type="indian" key="calendar">Ινδικό εθνικό ημερολόγιο</type>
 			<type type="islamic" key="calendar">Ισλαμικό ημερολόγιο</type>
 			<type type="islamic-civil" key="calendar">Ισλαμικό αστικό ημερολόγιο</type>
 			<type type="japanese" key="calendar">Ιαπωνικό ημερολόγιο</type>
-			<type type="phonebook" key="collation">Σειρά ταξινόμησης τηλεφωνικού καταλόγου</type>
+			<type type="phonebook" key="collation">Σειρά ταξινόμησης τηλεφωνικού
+				καταλόγου</type>
 			<type type="pinyin" key="collation">Σειρά ταξινόμησης Πινγίν</type>
 			<type type="roc" key="calendar">Ημερολόγιο της Δημοκρατίας της Κίνας</type>
 			<type type="stroke" key="collation">Σειρά ταξινόμησης κινήσεων</type>
@@ -997,7 +1000,8 @@
 		<inText type="languages">lowercase-words</inText>
 	</layout>
 	<characters>
-		<exemplarCharacters>[α ά β-ε έ ζ η ή θ ι ί ϊ ΐ κ-ο ό π ρ σ ς τ υ ύ ϋ ΰ φ-ω ώ]</exemplarCharacters>
+		<exemplarCharacters>[α ά β-ε έ ζ η ή θ ι ί ϊ ΐ κ-ο ό π ρ σ ς τ υ ύ ϋ ΰ
+			φ-ω ώ]</exemplarCharacters>
 	</characters>
 	<delimiters>
 		<quotationStart>«</quotationStart>
@@ -1338,9 +1342,12 @@
 							<greatestDifference id="y">dd/MM/yyyy - dd/MM/yyyy</greatestDifference>
 						</intervalFormatItem>
 						<intervalFormatItem id="yMEd">
-							<greatestDifference id="d">E, dd/MM/yyyy - E, dd/MM/yyyy</greatestDifference>
-							<greatestDifference id="M">E, dd/MM/yyyy - E, dd/MM/yyyy</greatestDifference>
-							<greatestDifference id="y">E, dd/MM/yyyy - E, dd/MM/yyyy</greatestDifference>
+							<greatestDifference id="d">E, dd/MM/yyyy - E,
+								dd/MM/yyyy</greatestDifference>
+							<greatestDifference id="M">E, dd/MM/yyyy - E,
+								dd/MM/yyyy</greatestDifference>
+							<greatestDifference id="y">E, dd/MM/yyyy - E,
+								dd/MM/yyyy</greatestDifference>
 						</intervalFormatItem>
 						<intervalFormatItem id="yMMM">
 							<greatestDifference id="M">LLL-LLL y</greatestDifference>
@@ -1354,7 +1361,8 @@
 						<intervalFormatItem id="yMMMEd">
 							<greatestDifference id="d">E, dd - E, dd MMM y</greatestDifference>
 							<greatestDifference id="M">E, dd MMM - E, dd MMM y</greatestDifference>
-							<greatestDifference id="y">E, dd MMM y - E, dd MMM y</greatestDifference>
+							<greatestDifference id="y">E, dd MMM y - E, dd MMM
+								y</greatestDifference>
 						</intervalFormatItem>
 						<intervalFormatItem id="yMMMM">
 							<greatestDifference id="M">MM-MM/yyyy</greatestDifference>
@@ -3109,8 +3117,10 @@
 			</currency>
 			<currency type="ECV">
 				<displayName>Unidad de Valor Constante (UVC) Ισημερινού</displayName>
-				<displayName count="one">Unidad de Valor Constante (UVC) Ισημερινού</displayName>
-				<displayName count="other">Unidads de Valor Constante (UVC) Ισημερινού</displayName>
+				<displayName count="one">Unidad de Valor Constante (UVC)
+					Ισημερινού</displayName>
+				<displayName count="other">Unidads de Valor Constante (UVC)
+					Ισημερινού</displayName>
 			</currency>
 			<currency type="EEK">
 				<displayName>Κορόνα Εσθονίας</displayName>
@@ -3134,7 +3144,8 @@
 			</currency>
 			<currency type="ESB">
 				<displayName>πεσέτα Ισπανίας (μετατρέψιμος λογαριασμός)</displayName>
-				<displayName count="one">πεσέτα Ισπανίας (μετατρέψιμος λογαριασμός)</displayName>
+				<displayName count="one">πεσέτα Ισπανίας (μετατρέψιμος
+					λογαριασμός)</displayName>
 				<displayName count="other">πεσέτες Ισπανίας (μετατρέψιμες)</displayName>
 			</currency>
 			<currency type="ESP">
@@ -3913,8 +3924,10 @@
 			</currency>
 			<currency type="UYI">
 				<displayName>Peso en Unidades Indexadas Ουρουγουάης</displayName>
-				<displayName count="one">peso en unidades indexadas Ουρουγκουάης</displayName>
-				<displayName count="other">pesos en unidades indexadas Ουρουγκουάης</displayName>
+				<displayName count="one">peso en unidades indexadas
+					Ουρουγκουάης</displayName>
+				<displayName count="other">pesos en unidades indexadas
+					Ουρουγκουάης</displayName>
 			</currency>
 			<currency type="UYP">
 				<displayName>Πέσο Ουρουγουάης (1975-1993)</displayName>

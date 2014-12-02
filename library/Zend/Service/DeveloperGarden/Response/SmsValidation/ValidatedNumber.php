@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -21,23 +22,28 @@
  */
 
 /**
- * @category   Zend
- * @package    Zend_Service
+ *
+ * @category Zend
+ * @package Zend_Service
  * @subpackage DeveloperGarden
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @author     Marco Kaiser
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @author Marco Kaiser
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Service_DeveloperGarden_Response_SmsValidation_ValidatedNumber
 {
+
     /**
      * the number
+     * 
      * @var string
      */
     public $number = null;
 
     /**
      * is valid until this date
+     * 
      * @var string
      */
     public $validUntil = null;
@@ -47,7 +53,7 @@ class Zend_Service_DeveloperGarden_Response_SmsValidation_ValidatedNumber
      *
      * @return number
      */
-    public function getNumber()
+    public function getNumber ()
     {
         return $this->number;
     }
@@ -57,7 +63,7 @@ class Zend_Service_DeveloperGarden_Response_SmsValidation_ValidatedNumber
      *
      * @return string
      */
-    public function getValidUntil()
+    public function getValidUntil ()
     {
         return $this->validUntil;
     }

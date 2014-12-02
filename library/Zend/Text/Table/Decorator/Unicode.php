@@ -20,6 +20,7 @@
  */
 
 /**
+ *
  * @see Zend_Text_Table_Decorator_Interface
  */
 require_once 'Zend/Text/Table/Decorator/Interface.php';
@@ -27,20 +28,23 @@ require_once 'Zend/Text/Table/Decorator/Interface.php';
 /**
  * Unicode Decorator for Zend_Text_Table
  *
- * @category  Zend
- * @package   Zend_Text_Table
- * @uses      Zend_Text_Table_Decorator_Interface
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license   http://framework.zend.com/license/new-bsd     New BSD License
+ * @category Zend
+ * @package Zend_Text_Table
+ * @uses Zend_Text_Table_Decorator_Interface
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
-class Zend_Text_Table_Decorator_Unicode implements Zend_Text_Table_Decorator_Interface
+class Zend_Text_Table_Decorator_Unicode implements 
+        Zend_Text_Table_Decorator_Interface
 {
+
     /**
      * Defined by Zend_Text_Table_Decorator_Interface
      *
      * @return string
      */
-    public function getTopLeft()
+    public function getTopLeft ()
     {
         return $this->_uniChar(0x250C);
     }
@@ -50,7 +54,7 @@ class Zend_Text_Table_Decorator_Unicode implements Zend_Text_Table_Decorator_Int
      *
      * @return string
      */
-    public function getTopRight()
+    public function getTopRight ()
     {
         return $this->_uniChar(0x2510);
     }
@@ -60,7 +64,7 @@ class Zend_Text_Table_Decorator_Unicode implements Zend_Text_Table_Decorator_Int
      *
      * @return string
      */
-    public function getBottomLeft()
+    public function getBottomLeft ()
     {
         return $this->_uniChar(0x2514);
     }
@@ -70,7 +74,7 @@ class Zend_Text_Table_Decorator_Unicode implements Zend_Text_Table_Decorator_Int
      *
      * @return string
      */
-    public function getBottomRight()
+    public function getBottomRight ()
     {
         return $this->_uniChar(0x2518);
     }
@@ -80,7 +84,7 @@ class Zend_Text_Table_Decorator_Unicode implements Zend_Text_Table_Decorator_Int
      *
      * @return string
      */
-    public function getVertical()
+    public function getVertical ()
     {
         return $this->_uniChar(0x2502);
     }
@@ -90,7 +94,7 @@ class Zend_Text_Table_Decorator_Unicode implements Zend_Text_Table_Decorator_Int
      *
      * @return string
      */
-    public function getHorizontal()
+    public function getHorizontal ()
     {
         return $this->_uniChar(0x2500);
     }
@@ -100,7 +104,7 @@ class Zend_Text_Table_Decorator_Unicode implements Zend_Text_Table_Decorator_Int
      *
      * @return string
      */
-    public function getCross()
+    public function getCross ()
     {
         return $this->_uniChar(0x253C);
     }
@@ -110,7 +114,7 @@ class Zend_Text_Table_Decorator_Unicode implements Zend_Text_Table_Decorator_Int
      *
      * @return string
      */
-    public function getVerticalRight()
+    public function getVerticalRight ()
     {
         return $this->_uniChar(0x251C);
     }
@@ -120,7 +124,7 @@ class Zend_Text_Table_Decorator_Unicode implements Zend_Text_Table_Decorator_Int
      *
      * @return string
      */
-    public function getVerticalLeft()
+    public function getVerticalLeft ()
     {
         return $this->_uniChar(0x2524);
     }
@@ -130,7 +134,7 @@ class Zend_Text_Table_Decorator_Unicode implements Zend_Text_Table_Decorator_Int
      *
      * @return string
      */
-    public function getHorizontalDown()
+    public function getHorizontalDown ()
     {
         return $this->_uniChar(0x252C);
     }
@@ -140,7 +144,7 @@ class Zend_Text_Table_Decorator_Unicode implements Zend_Text_Table_Decorator_Int
      *
      * @return string
      */
-    public function getHorizontalUp()
+    public function getHorizontalUp ()
     {
         return $this->_uniChar(0x2534);
     }
@@ -148,29 +152,31 @@ class Zend_Text_Table_Decorator_Unicode implements Zend_Text_Table_Decorator_Int
     /**
      * Convert am unicode character code to a character
      *
-     * @param  integer $code
+     * @param integer $code            
      * @return string|false
      */
-    protected function _uniChar($code)
+    protected function _uniChar ($code)
     {
         if ($code <= 0x7F) {
             $char = chr($code);
-        } else if ($code <= 0x7FF) {
-            $char = chr(0xC0 | $code >> 6)
-                  . chr(0x80 | $code & 0x3F);
-        } else if ($code <= 0xFFFF) {
-            $char =  chr(0xE0 | $code >> 12)
-                  . chr(0x80 | $code >> 6 & 0x3F)
-                  . chr(0x80 | $code & 0x3F);
-        } else if ($code <= 0x10FFFF) {
-            $char =  chr(0xF0 | $code >> 18)
-                  . chr(0x80 | $code >> 12 & 0x3F)
-                  . chr(0x80 | $code >> 6 & 0x3F)
-                  . chr(0x80 | $code & 0x3F);
-        } else {
-            return false;
-        }
-
+        } else 
+            if ($code <= 0x7FF) {
+                $char = chr(0xC0 | $code >> 6) . chr(0x80 | $code & 0x3F);
+            } else 
+                if ($code <= 0xFFFF) {
+                    $char = chr(0xE0 | $code >> 12) .
+                             chr(0x80 | $code >> 6 & 0x3F) .
+                             chr(0x80 | $code & 0x3F);
+                } else 
+                    if ($code <= 0x10FFFF) {
+                        $char = chr(0xF0 | $code >> 18) .
+                                 chr(0x80 | $code >> 12 & 0x3F) .
+                                 chr(0x80 | $code >> 6 & 0x3F) .
+                                 chr(0x80 | $code & 0x3F);
+                    } else {
+                        return false;
+                    }
+        
         return $char;
     }
 }

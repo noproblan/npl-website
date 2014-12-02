@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <ldml>
 	<identity>
-		<version number="$Revision: 1.62 $"/>
-		<generation date="$Date: 2009/06/15 03:46:25 $"/>
-		<language type="de"/>
-		<territory type="AT"/>
+		<version number="$Revision: 1.62 $" />
+		<generation date="$Date: 2009/06/15 03:46:25 $" />
+		<language type="de" />
+		<territory type="AT" />
 	</identity>
 	<dates>
 		<calendars>
@@ -48,8 +48,10 @@
 						</intervalFormatItem>
 						<intervalFormatItem id="yMMMEd">
 							<greatestDifference id="d">E, dd. - E, dd. MMM y</greatestDifference>
-							<greatestDifference id="M">E, dd. MMM - E, dd. MMM y</greatestDifference>
-							<greatestDifference id="y">E, dd. MMM y - E, dd. MMM y</greatestDifference>
+							<greatestDifference id="M">E, dd. MMM - E, dd. MMM
+								y</greatestDifference>
+							<greatestDifference id="y">E, dd. MMM y - E, dd.
+								MMM y</greatestDifference>
 						</intervalFormatItem>
 					</intervalFormats>
 				</dateTimeFormats>

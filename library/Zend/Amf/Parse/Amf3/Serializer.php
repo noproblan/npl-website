@@ -20,46 +20,57 @@
  * @version    $Id: Serializer.php 23775 2011-03-01 17:25:24Z ralph $
  */
 
-/** Zend_Amf_Constants */
+/**
+ * Zend_Amf_Constants
+ */
 require_once 'Zend/Amf/Constants.php';
 
-
-/** Zend_Amf_Parse_Serializer */
+/**
+ * Zend_Amf_Parse_Serializer
+ */
 require_once 'Zend/Amf/Parse/Serializer.php';
 
-/** Zend_Amf_Parse_TypeLoader */
+/**
+ * Zend_Amf_Parse_TypeLoader
+ */
 require_once 'Zend/Amf/Parse/TypeLoader.php';
 
 /**
  * Detect PHP object type and convert it to a corresponding AMF3 object type
  *
- * @package    Zend_Amf
+ * @package Zend_Amf
  * @subpackage Parse_Amf3
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Amf_Parse_Amf3_Serializer extends Zend_Amf_Parse_Serializer
 {
+
     /**
      * A constant empty string
+     * 
      * @var string
      */
     protected $_strEmpty = '';
 
     /**
      * An array of reference objects per amf body
+     * 
      * @var array
      */
     protected $_referenceObjects = array();
 
     /**
      * An array of reference strings per amf body
+     * 
      * @var array
      */
     protected $_referenceStrings = array();
 
     /**
      * An array of reference class definitions, indexed by classname
+     * 
      * @var array
      */
     protected $_referenceDefinitions = array();
@@ -71,12 +82,12 @@ class Zend_Amf_Parse_Amf3_Serializer extends Zend_Amf_Parse_Serializer
      * auto negotiates the type or use the user defined markerType to
      * serialize the data from php back to AMF3
      *
-     * @param  mixed $data
-     * @param  int $markerType
-     * @param  mixed $dataByVal
+     * @param mixed $data            
+     * @param int $markerType            
+     * @param mixed $dataByVal            
      * @return void
      */
-    public function writeTypeMarker(&$data, $markerType = null, $dataByVal = false)
+    public function writeTypeMarker (&$data, $markerType = null, $dataByVal = false)
     {
         // Workaround for PHP5 with E_STRICT enabled complaining about "Only
         // variables should be passed by reference"
@@ -84,9 +95,10 @@ class Zend_Amf_Parse_Amf3_Serializer extends Zend_Amf_Parse_Serializer
             $data = &$dataByVal;
         }
         if (null !== $markerType) {
-            // Write the Type Marker to denote the following action script data type
+            // Write the Type Marker to denote the following action script data
+            // type
             $this->_stream->writeByte($markerType);
-
+            
             switch ($markerType) {
                 case Zend_Amf_Constants::AMF3_NULL:
                     break;
@@ -115,12 +127,13 @@ class Zend_Amf_Parse_Amf3_Serializer extends Zend_Amf_Parse_Serializer
                 case Zend_Amf_Constants::AMF3_BYTEARRAY:
                     $this->writeByteArray($data);
                     break;
-                case Zend_Amf_Constants::AMF3_XMLSTRING;
+                case Zend_Amf_Constants::AMF3_XMLSTRING:
                     $this->writeXml($data);
                     break;
                 default:
                     require_once 'Zend/Amf/Exception.php';
-                    throw new Zend_Amf_Exception('Unknown Type Marker: ' . $markerType);
+                    throw new Zend_Amf_Exception(
+                            'Unknown Type Marker: ' . $markerType);
             }
         } else {
             // Detect Type Marker
@@ -132,14 +145,14 @@ class Zend_Amf_Parse_Amf3_Serializer extends Zend_Amf_Parse_Serializer
                     $markerType = Zend_Amf_Constants::AMF3_NULL;
                     break;
                 case (is_bool($data)):
-                    if ($data){
+                    if ($data) {
                         $markerType = Zend_Amf_Constants::AMF3_BOOLEAN_TRUE;
                     } else {
                         $markerType = Zend_Amf_Constants::AMF3_BOOLEAN_FALSE;
                     }
                     break;
                 case (is_int($data)):
-                    if (($data > 0xFFFFFFF) || ($data < -268435456)) {
+                    if (($data > 0xFFFFFFF) || ($data < - 268435456)) {
                         $markerType = Zend_Amf_Constants::AMF3_NUMBER;
                     } else {
                         $markerType = Zend_Amf_Constants::AMF3_INTEGER;
@@ -155,20 +168,26 @@ class Zend_Amf_Parse_Amf3_Serializer extends Zend_Amf_Parse_Serializer
                     $markerType = Zend_Amf_Constants::AMF3_ARRAY;
                     break;
                 case (is_object($data)):
+                    
                     // Handle object types.
-                    if (($data instanceof DateTime) || ($data instanceof Zend_Date)) {
+                    if (($data instanceof DateTime) ||
+                             ($data instanceof Zend_Date)) {
                         $markerType = Zend_Amf_Constants::AMF3_DATE;
-                    } else if ($data instanceof Zend_Amf_Value_ByteArray) {
-                        $markerType = Zend_Amf_Constants::AMF3_BYTEARRAY;
-                    } else if (($data instanceof DOMDocument) || ($data instanceof SimpleXMLElement)) {
-                        $markerType = Zend_Amf_Constants::AMF3_XMLSTRING;
-                    } else {
-                        $markerType = Zend_Amf_Constants::AMF3_OBJECT;
-                    }
+                    } else 
+                        if ($data instanceof Zend_Amf_Value_ByteArray) {
+                            $markerType = Zend_Amf_Constants::AMF3_BYTEARRAY;
+                        } else 
+                            if (($data instanceof DOMDocument) ||
+                                     ($data instanceof SimpleXMLElement)) {
+                                $markerType = Zend_Amf_Constants::AMF3_XMLSTRING;
+                            } else {
+                                $markerType = Zend_Amf_Constants::AMF3_OBJECT;
+                            }
                     break;
                 default:
                     require_once 'Zend/Amf/Exception.php';
-                    throw new Zend_Amf_Exception('Unsupported data type: ' . gettype($data));
+                    throw new Zend_Amf_Exception(
+                            'Unsupported data type: ' . gettype($data));
             }
             $this->writeTypeMarker($data, $markerType);
         }
@@ -177,32 +196,32 @@ class Zend_Amf_Parse_Amf3_Serializer extends Zend_Amf_Parse_Serializer
     /**
      * Write an AMF3 integer
      *
-     * @param int|float $data
+     * @param int|float $data            
      * @return Zend_Amf_Parse_Amf3_Serializer
      */
-    public function writeInteger($int)
+    public function writeInteger ($int)
     {
         if (($int & 0xffffff80) == 0) {
             $this->_stream->writeByte($int & 0x7f);
             return $this;
         }
-
-        if (($int & 0xffffc000) == 0 ) {
-            $this->_stream->writeByte(($int >> 7 ) | 0x80);
+        
+        if (($int & 0xffffc000) == 0) {
+            $this->_stream->writeByte(($int >> 7) | 0x80);
             $this->_stream->writeByte($int & 0x7f);
             return $this;
         }
-
+        
         if (($int & 0xffe00000) == 0) {
-            $this->_stream->writeByte(($int >> 14 ) | 0x80);
-            $this->_stream->writeByte(($int >> 7 ) | 0x80);
+            $this->_stream->writeByte(($int >> 14) | 0x80);
+            $this->_stream->writeByte(($int >> 7) | 0x80);
             $this->_stream->writeByte($int & 0x7f);
             return $this;
         }
-
-        $this->_stream->writeByte(($int >> 22 ) | 0x80);
-        $this->_stream->writeByte(($int >> 15 ) | 0x80);
-        $this->_stream->writeByte(($int >> 8 ) | 0x80);
+        
+        $this->_stream->writeByte(($int >> 22) | 0x80);
+        $this->_stream->writeByte(($int >> 15) | 0x80);
+        $this->_stream->writeByte(($int >> 8) | 0x80);
         $this->_stream->writeByte($int & 0xff);
         return $this;
     }
@@ -211,120 +230,125 @@ class Zend_Amf_Parse_Amf3_Serializer extends Zend_Amf_Parse_Serializer
      * Send string to output stream, without trying to reference it.
      * The string is prepended with strlen($string) << 1 | 0x01
      *
-     * @param  string $string
+     * @param string $string            
      * @return Zend_Amf_Parse_Amf3_Serializer
      */
-    protected function writeBinaryString(&$string){
+    protected function writeBinaryString (&$string)
+    {
         $ref = strlen($string) << 1 | 0x01;
         $this->writeInteger($ref);
         $this->_stream->writeBytes($string);
-
+        
         return $this;
     }
 
     /**
      * Send string to output stream
      *
-     * @param  string $string
+     * @param string $string            
      * @return Zend_Amf_Parse_Amf3_Serializer
      */
-    public function writeString(&$string)
+    public function writeString (&$string)
     {
         $len = strlen($string);
-        if(!$len){
+        if (! $len) {
             $this->writeInteger(0x01);
             return $this;
         }
-
-        $ref = array_key_exists($string, $this->_referenceStrings) 
-             ? $this->_referenceStrings[$string] 
-             : false;
-        if ($ref === false){
+        
+        $ref = array_key_exists($string, $this->_referenceStrings) ? $this->_referenceStrings[$string] : false;
+        if ($ref === false) {
             $this->_referenceStrings[$string] = count($this->_referenceStrings);
             $this->writeBinaryString($string);
         } else {
             $ref <<= 1;
             $this->writeInteger($ref);
         }
-
+        
         return $this;
     }
 
     /**
      * Send ByteArray to output stream
      *
-     * @param  string|Zend_Amf_Value_ByteArray  $data
+     * @param string|Zend_Amf_Value_ByteArray $data            
      * @return Zend_Amf_Parse_Amf3_Serializer
      */
-    public function writeByteArray(&$data)
+    public function writeByteArray (&$data)
     {
         if ($this->writeObjectReference($data)) {
             return $this;
         }
-
+        
         if (is_string($data)) {
-            //nothing to do
-        } else if ($data instanceof Zend_Amf_Value_ByteArray) {
-            $data = $data->getData();
-        } else {
-            require_once 'Zend/Amf/Exception.php';
-            throw new Zend_Amf_Exception('Invalid ByteArray specified; must be a string or Zend_Amf_Value_ByteArray');
-        }
-
+            // nothing to do
+        } else 
+            if ($data instanceof Zend_Amf_Value_ByteArray) {
+                $data = $data->getData();
+            } else {
+                require_once 'Zend/Amf/Exception.php';
+                throw new Zend_Amf_Exception(
+                        'Invalid ByteArray specified; must be a string or Zend_Amf_Value_ByteArray');
+            }
+        
         $this->writeBinaryString($data);
-
+        
         return $this;
     }
 
     /**
      * Send xml to output stream
      *
-     * @param  DOMDocument|SimpleXMLElement  $xml
+     * @param DOMDocument|SimpleXMLElement $xml            
      * @return Zend_Amf_Parse_Amf3_Serializer
      */
-    public function writeXml($xml)
+    public function writeXml ($xml)
     {
         if ($this->writeObjectReference($xml)) {
             return $this;
         }
-
-        if(is_string($xml)) {
-            //nothing to do
-        } else if ($xml instanceof DOMDocument) {
-            $xml = $xml->saveXml();
-        } else if ($xml instanceof SimpleXMLElement) {
-            $xml = $xml->asXML();
-        } else {
-            require_once 'Zend/Amf/Exception.php';
-            throw new Zend_Amf_Exception('Invalid xml specified; must be a DOMDocument or SimpleXMLElement');
-        }
-
+        
+        if (is_string($xml)) {
+            // nothing to do
+        } else 
+            if ($xml instanceof DOMDocument) {
+                $xml = $xml->saveXml();
+            } else 
+                if ($xml instanceof SimpleXMLElement) {
+                    $xml = $xml->asXML();
+                } else {
+                    require_once 'Zend/Amf/Exception.php';
+                    throw new Zend_Amf_Exception(
+                            'Invalid xml specified; must be a DOMDocument or SimpleXMLElement');
+                }
+        
         $this->writeBinaryString($xml);
-
+        
         return $this;
     }
 
     /**
      * Convert DateTime/Zend_Date to AMF date
      *
-     * @param  DateTime|Zend_Date $date
+     * @param DateTime|Zend_Date $date            
      * @return Zend_Amf_Parse_Amf3_Serializer
      */
-    public function writeDate($date)
+    public function writeDate ($date)
     {
         if ($this->writeObjectReference($date)) {
             return $this;
         }
-
+        
         if ($date instanceof DateTime) {
             $dateString = $date->format('U') * 1000;
         } elseif ($date instanceof Zend_Date) {
             $dateString = $date->toString('U') * 1000;
         } else {
             require_once 'Zend/Amf/Exception.php';
-            throw new Zend_Amf_Exception('Invalid date specified; must be a string DateTime or Zend_Date object');
+            throw new Zend_Amf_Exception(
+                    'Invalid date specified; must be a string DateTime or Zend_Date object');
         }
-
+        
         $this->writeInteger(0x01);
         // write time to stream minus milliseconds
         $this->_stream->writeDouble($dateString);
@@ -334,17 +358,17 @@ class Zend_Amf_Parse_Amf3_Serializer extends Zend_Amf_Parse_Serializer
     /**
      * Write a PHP array back to the amf output stream
      *
-     * @param array $array
+     * @param array $array            
      * @return Zend_Amf_Parse_Amf3_Serializer
      */
-    public function writeArray(&$array)
+    public function writeArray (&$array)
     {
         // arrays aren't reference here but still counted
         $this->_referenceObjects[] = $array;
-
+        
         // have to seperate mixed from numberic keys.
         $numeric = array();
-        $string  = array();
+        $string = array();
         foreach ($array as $key => &$value) {
             if (is_int($key)) {
                 $numeric[] = $value;
@@ -352,49 +376,49 @@ class Zend_Amf_Parse_Amf3_Serializer extends Zend_Amf_Parse_Serializer
                 $string[$key] = $value;
             }
         }
-
+        
         // write the preamble id of the array
         $length = count($numeric);
-        $id     = ($length << 1) | 0x01;
+        $id = ($length << 1) | 0x01;
         $this->writeInteger($id);
-
-        //Write the mixed type array to the output stream
-        foreach($string as $key => &$value) {
-            $this->writeString($key)
-                 ->writeTypeMarker($value);
+        
+        // Write the mixed type array to the output stream
+        foreach ($string as $key => &$value) {
+            $this->writeString($key)->writeTypeMarker($value);
         }
         $this->writeString($this->_strEmpty);
-
+        
         // Write the numeric array to ouput stream
-        foreach($numeric as &$value) {
+        foreach ($numeric as &$value) {
             $this->writeTypeMarker($value);
         }
         return $this;
     }
 
     /**
-     * Check if the given object is in the reference table, write the reference if it exists,
+     * Check if the given object is in the reference table, write the reference
+     * if it exists,
      * otherwise add the object to the reference table
      *
-     * @param mixed $object object reference to check for reference
-     * @param mixed $objectByVal object to check for reference
+     * @param mixed $object
+     *            object reference to check for reference
+     * @param mixed $objectByVal
+     *            object to check for reference
      * @return Boolean true, if the reference was written, false otherwise
      */
-    protected function writeObjectReference(&$object, $objectByVal = false)
+    protected function writeObjectReference (&$object, $objectByVal = false)
     {
         // Workaround for PHP5 with E_STRICT enabled complaining about "Only
         // variables should be passed by reference"
         if ((null === $object) && ($objectByVal !== false)) {
             $object = &$objectByVal;
         }
-
+        
         $hash = spl_object_hash($object);
-        $ref = array_key_exists($hash, $this->_referenceObjects) 
-             ? $this->_referenceObjects[$hash] 
-             : false;
-
+        $ref = array_key_exists($hash, $this->_referenceObjects) ? $this->_referenceObjects[$hash] : false;
+        
         // quickly handle object references
-        if ($ref !== false){
+        if ($ref !== false) {
             $ref <<= 1;
             $this->writeInteger($ref);
             return true;
@@ -406,129 +430,138 @@ class Zend_Amf_Parse_Amf3_Serializer extends Zend_Amf_Parse_Serializer
     /**
      * Write object to ouput stream
      *
-     * @param  mixed $data
+     * @param mixed $data            
      * @return Zend_Amf_Parse_Amf3_Serializer
      */
-    public function writeObject($object)
+    public function writeObject ($object)
     {
-        if($this->writeObjectReference($object)){
+        if ($this->writeObjectReference($object)) {
             return $this;
         }
-
+        
         $className = '';
-
-        //Check to see if the object is a typed object and we need to change
+        
+        // Check to see if the object is a typed object and we need to change
         switch (true) {
-             // the return class mapped name back to actionscript class name.
-            case ($className = Zend_Amf_Parse_TypeLoader::getMappedClassName(get_class($object))):
+            // the return class mapped name back to actionscript class name.
+            case ($className = Zend_Amf_Parse_TypeLoader::getMappedClassName(
+                    get_class($object))):
                 break;
-
-            // Check to see if the user has defined an explicit Action Script type.
+            
+            // Check to see if the user has defined an explicit Action Script
+            // type.
             case isset($object->_explicitType):
                 $className = $object->_explicitType;
                 break;
-
-            // Check if user has defined a method for accessing the Action Script type
+            
+            // Check if user has defined a method for accessing the Action
+            // Script type
             case method_exists($object, 'getASClassName'):
                 $className = $object->getASClassName();
                 break;
-
+            
             // No return class name is set make it a generic object
             case ($object instanceof stdClass):
                 $className = '';
                 break;
-
-             // By default, use object's class name
+            
+            // By default, use object's class name
             default:
                 $className = get_class($object);
                 break;
         }
-
+        
         $writeTraits = true;
-
-        //check to see, if we have a corresponding definition
-        if(array_key_exists($className, $this->_referenceDefinitions)){
-            $traitsInfo    = $this->_referenceDefinitions[$className]['id'];
-            $encoding      = $this->_referenceDefinitions[$className]['encoding'];
+        
+        // check to see, if we have a corresponding definition
+        if (array_key_exists($className, $this->_referenceDefinitions)) {
+            $traitsInfo = $this->_referenceDefinitions[$className]['id'];
+            $encoding = $this->_referenceDefinitions[$className]['encoding'];
             $propertyNames = $this->_referenceDefinitions[$className]['propertyNames'];
-
+            
             $traitsInfo = ($traitsInfo << 2) | 0x01;
-
+            
             $writeTraits = false;
         } else {
             $propertyNames = array();
-
-            if($className == ''){
-                //if there is no className, we interpret the class as dynamic without any sealed members
+            
+            if ($className == '') {
+                // if there is no className, we interpret the class as dynamic
+                // without any sealed members
                 $encoding = Zend_Amf_Constants::ET_DYNAMIC;
             } else {
                 $encoding = Zend_Amf_Constants::ET_PROPLIST;
-
-                foreach($object as $key => $value) {
-                    if( $key[0] != "_") {
+                
+                foreach ($object as $key => $value) {
+                    if ($key[0] != "_") {
                         $propertyNames[] = $key;
                     }
                 }
             }
-
+            
             $this->_referenceDefinitions[$className] = array(
-                        'id'            => count($this->_referenceDefinitions),
-                        'encoding'      => $encoding,
-                        'propertyNames' => $propertyNames,
-                    );
-
+                    'id' => count($this->_referenceDefinitions),
+                    'encoding' => $encoding,
+                    'propertyNames' => $propertyNames
+            );
+            
             $traitsInfo = Zend_Amf_Constants::AMF3_OBJECT_ENCODING;
             $traitsInfo |= $encoding << 2;
             $traitsInfo |= (count($propertyNames) << 4);
         }
-
+        
         $this->writeInteger($traitsInfo);
-
-        if($writeTraits){
+        
+        if ($writeTraits) {
             $this->writeString($className);
             foreach ($propertyNames as $value) {
                 $this->writeString($value);
             }
         }
-
+        
         try {
-            switch($encoding) {
+            switch ($encoding) {
                 case Zend_Amf_Constants::ET_PROPLIST:
-                    //Write the sealed values to the output stream.
+                    
+                    // Write the sealed values to the output stream.
                     foreach ($propertyNames as $key) {
                         $this->writeTypeMarker($object->$key);
                     }
                     break;
                 case Zend_Amf_Constants::ET_DYNAMIC:
-                    //Write the sealed values to the output stream.
+                    
+                    // Write the sealed values to the output stream.
                     foreach ($propertyNames as $key) {
                         $this->writeTypeMarker($object->$key);
                     }
-
-                    //Write remaining properties
-                    foreach($object as $key => $value){
-                        if(!in_array($key,$propertyNames) && $key[0] != "_"){
+                    
+                    // Write remaining properties
+                    foreach ($object as $key => $value) {
+                        if (! in_array($key, $propertyNames) && $key[0] != "_") {
                             $this->writeString($key);
                             $this->writeTypeMarker($value);
                         }
                     }
-
-                    //Write an empty string to end the dynamic part
+                    
+                    // Write an empty string to end the dynamic part
                     $this->writeString($this->_strEmpty);
                     break;
                 case Zend_Amf_Constants::ET_EXTERNAL:
                     require_once 'Zend/Amf/Exception.php';
-                    throw new Zend_Amf_Exception('External Object Encoding not implemented');
+                    throw new Zend_Amf_Exception(
+                            'External Object Encoding not implemented');
                     break;
                 default:
                     require_once 'Zend/Amf/Exception.php';
-                    throw new Zend_Amf_Exception('Unknown Object Encoding type: ' . $encoding);
+                    throw new Zend_Amf_Exception(
+                            'Unknown Object Encoding type: ' . $encoding);
             }
         } catch (Exception $e) {
             require_once 'Zend/Amf/Exception.php';
-            throw new Zend_Amf_Exception('Unable to writeObject output: ' . $e->getMessage(), 0, $e);
+            throw new Zend_Amf_Exception(
+                    'Unable to writeObject output: ' . $e->getMessage(), 0, $e);
         }
-
+        
         return $this;
     }
 }

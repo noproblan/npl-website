@@ -29,36 +29,42 @@ require_once 'Zend/Server/Reflection/Method.php';
  * Proxies calls to a ReflectionClass object, and decorates getMethods() by
  * creating its own list of {@link Zend_Server_Reflection_Method}s.
  *
- * @category   Zend
- * @package    Zend_Server
+ * @category Zend
+ * @package Zend_Server
  * @subpackage Reflection
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  * @version $Id: Class.php 23775 2011-03-01 17:25:24Z ralph $
  */
 class Zend_Server_Reflection_Class
 {
+
     /**
      * Optional configuration parameters; accessible via {@link __get} and
      * {@link __set()}
+     * 
      * @var array
      */
     protected $_config = array();
 
     /**
      * Array of {@link Zend_Server_Reflection_Method}s
+     * 
      * @var array
      */
     protected $_methods = array();
 
     /**
      * Namespace
+     * 
      * @var string
      */
     protected $_namespace = null;
 
     /**
      * ReflectionClass object
+     * 
      * @var ReflectionClass
      */
     protected $_reflection;
@@ -69,25 +75,27 @@ class Zend_Server_Reflection_Class
      * Create array of dispatchable methods, each a
      * {@link Zend_Server_Reflection_Method}. Sets reflection object property.
      *
-     * @param ReflectionClass $reflection
-     * @param string $namespace
-     * @param mixed $argv
+     * @param ReflectionClass $reflection            
+     * @param string $namespace            
+     * @param mixed $argv            
      * @return void
      */
-    public function __construct(ReflectionClass $reflection, $namespace = null, $argv = false)
+    public function __construct (ReflectionClass $reflection, $namespace = null, 
+            $argv = false)
     {
         $this->_reflection = $reflection;
         $this->setNamespace($namespace);
-
+        
         foreach ($reflection->getMethods() as $method) {
             // Don't aggregate magic methods
             if ('__' == substr($method->getName(), 0, 2)) {
                 continue;
             }
-
+            
             if ($method->isPublic()) {
                 // Get signatures and description
-                $this->_methods[] = new Zend_Server_Reflection_Method($this, $method, $this->getNamespace(), $argv);
+                $this->_methods[] = new Zend_Server_Reflection_Method($this, 
+                        $method, $this->getNamespace(), $argv);
             }
         }
     }
@@ -95,16 +103,19 @@ class Zend_Server_Reflection_Class
     /**
      * Proxy reflection calls
      *
-     * @param string $method
-     * @param array $args
+     * @param string $method            
+     * @param array $args            
      * @return mixed
      */
-    public function __call($method, $args)
+    public function __call ($method, $args)
     {
         if (method_exists($this->_reflection, $method)) {
-            return call_user_func_array(array($this->_reflection, $method), $args);
+            return call_user_func_array(array(
+                    $this->_reflection,
+                    $method
+            ), $args);
         }
-
+        
         require_once 'Zend/Server/Reflection/Exception.php';
         throw new Zend_Server_Reflection_Exception('Invalid reflection method');
     }
@@ -115,15 +126,15 @@ class Zend_Server_Reflection_Class
      * Values are retrieved by key from {@link $_config}. Returns null if no
      * value found.
      *
-     * @param string $key
+     * @param string $key            
      * @return mixed
      */
-    public function __get($key)
+    public function __get ($key)
     {
         if (isset($this->_config[$key])) {
             return $this->_config[$key];
         }
-
+        
         return null;
     }
 
@@ -132,11 +143,11 @@ class Zend_Server_Reflection_Class
      *
      * Values are stored by $key in {@link $_config}.
      *
-     * @param string $key
-     * @param mixed $value
+     * @param string $key            
+     * @param mixed $value            
      * @return void
      */
-    public function __set($key, $value)
+    public function __set ($key, $value)
     {
         $this->_config[$key] = $value;
     }
@@ -147,7 +158,7 @@ class Zend_Server_Reflection_Class
      * @access public
      * @return array
      */
-    public function getMethods()
+    public function getMethods ()
     {
         return $this->_methods;
     }
@@ -157,7 +168,7 @@ class Zend_Server_Reflection_Class
      *
      * @return string
      */
-    public function getNamespace()
+    public function getNamespace ()
     {
         return $this->_namespace;
     }
@@ -165,21 +176,22 @@ class Zend_Server_Reflection_Class
     /**
      * Set namespace for this class
      *
-     * @param string $namespace
+     * @param string $namespace            
      * @return void
      */
-    public function setNamespace($namespace)
+    public function setNamespace ($namespace)
     {
         if (empty($namespace)) {
             $this->_namespace = '';
             return;
         }
-
-        if (!is_string($namespace) || !preg_match('/[a-z0-9_\.]+/i', $namespace)) {
+        
+        if (! is_string($namespace) || ! preg_match('/[a-z0-9_\.]+/i', 
+                $namespace)) {
             require_once 'Zend/Server/Reflection/Exception.php';
             throw new Zend_Server_Reflection_Exception('Invalid namespace');
         }
-
+        
         $this->_namespace = $namespace;
     }
 
@@ -191,7 +203,7 @@ class Zend_Server_Reflection_Class
      *
      * @return void
      */
-    public function __wakeup()
+    public function __wakeup ()
     {
         $this->_reflection = new ReflectionClass($this->getName());
     }

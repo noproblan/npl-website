@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -19,18 +20,19 @@
  * @version    $Id: Context.php 23775 2011-03-01 17:25:24Z ralph $
  */
 
-
 /**
  * PDF reference object context
  * Reference context is defined by PDF parser and PDF Refernce table
  *
- * @category   Zend
- * @package    Zend_Pdf
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @category Zend
+ * @package Zend_Pdf
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Pdf_Element_Reference_Context
 {
+
     /**
      * PDF parser object.
      *
@@ -48,34 +50,32 @@ class Zend_Pdf_Element_Reference_Context
     /**
      * Object constructor
      *
-     * @param Zend_Pdf_StringParser $parser
-     * @param Zend_Pdf_Element_Reference_Table $refTable
+     * @param Zend_Pdf_StringParser $parser            
+     * @param Zend_Pdf_Element_Reference_Table $refTable            
      */
-    public function __construct(Zend_Pdf_StringParser $parser,
-                                Zend_Pdf_Element_Reference_Table $refTable)
+    public function __construct (Zend_Pdf_StringParser $parser, 
+            Zend_Pdf_Element_Reference_Table $refTable)
     {
         $this->_stringParser = $parser;
-        $this->_refTable     = $refTable;
+        $this->_refTable = $refTable;
     }
-
 
     /**
      * Context parser
      *
      * @return Zend_Pdf_StringParser
      */
-    public function getParser()
+    public function getParser ()
     {
         return $this->_stringParser;
     }
-
 
     /**
      * Context reference table
      *
      * @return Zend_Pdf_Element_Reference_Table
      */
-    public function getRefTable()
+    public function getRefTable ()
     {
         return $this->_refTable;
     }

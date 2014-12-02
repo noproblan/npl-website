@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -24,17 +25,20 @@
  * Abstract cass that all deserializer must implement.
  *
  * Logic for deserialization of the AMF envelop is based on resources supplied
- * by Adobe Blaze DS. For and example of deserialization please review the BlazeDS
+ * by Adobe Blaze DS. For and example of deserialization please review the
+ * BlazeDS
  * source tree.
  *
- * @see        http://opensource.adobe.com/svn/opensource/blazeds/trunk/modules/core/src/java/flex/messaging/io/amf/
- * @package    Zend_Amf
+ * @see http://opensource.adobe.com/svn/opensource/blazeds/trunk/modules/core/src/java/flex/messaging/io/amf/
+ * @package Zend_Amf
  * @subpackage Parse
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 abstract class Zend_Amf_Parse_Deserializer
 {
+
     /**
      * The raw string that represents the AMF request.
      *
@@ -45,21 +49,22 @@ abstract class Zend_Amf_Parse_Deserializer
     /**
      * Constructor
      *
-     * @param  Zend_Amf_Parse_InputStream $stream
+     * @param Zend_Amf_Parse_InputStream $stream            
      * @return void
      */
-    public function __construct(Zend_Amf_Parse_InputStream $stream)
+    public function __construct (Zend_Amf_Parse_InputStream $stream)
     {
         $this->_stream = $stream;
     }
 
     /**
      * Checks for AMF marker types and calls the appropriate methods
-     * for deserializing those marker types. Markers are the data type of
+     * for deserializing those marker types.
+     * Markers are the data type of
      * the following value.
      *
-     * @param  int $typeMarker
+     * @param int $typeMarker            
      * @return mixed Whatever the data type is of the marker in php
      */
-    public abstract function readTypeMarker($markerType = null);
+    public abstract function readTypeMarker ($markerType = null);
 }

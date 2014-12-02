@@ -19,23 +19,28 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
 
-/** Zend_Dojo_Form_Element_DateTextBox */
+/**
+ * Zend_Dojo_Form_Element_DateTextBox
+ */
 require_once 'Zend/Dojo/Form/Element/DateTextBox.php';
 
 /**
  * TimeTextBox dijit
  *
- * @uses       Zend_Dojo_Form_Element_DateTextBox
- * @package    Zend_Dojo
+ * @uses Zend_Dojo_Form_Element_DateTextBox
+ * @package Zend_Dojo
  * @subpackage Form_Element
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: TimeTextBox.php 23775 2011-03-01 17:25:24Z ralph $
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
+ * @version $Id: TimeTextBox.php 23775 2011-03-01 17:25:24Z ralph $
  */
 class Zend_Dojo_Form_Element_TimeTextBox extends Zend_Dojo_Form_Element_DateTextBox
 {
+
     /**
      * Use TimeTextBox dijit view helper
+     * 
      * @var string
      */
     public $helper = 'TimeTextBox';
@@ -43,15 +48,18 @@ class Zend_Dojo_Form_Element_TimeTextBox extends Zend_Dojo_Form_Element_DateText
     /**
      * Validate ISO 8601 time format
      *
-     * @param  string $format
+     * @param string $format            
      * @return true
      * @throws Zend_Form_Element_Exception
      */
-    protected function _validateIso8601($format)
+    protected function _validateIso8601 ($format)
     {
-        if (!preg_match('/^T\d{2}:\d{2}:\d{2}$/', $format)) {
+        if (! preg_match('/^T\d{2}:\d{2}:\d{2}$/', $format)) {
             require_once 'Zend/Form/Element/Exception.php';
-            throw new Zend_Form_Element_Exception(sprintf('Invalid format "%s" provided; must match T:00:00:00 format', $format));
+            throw new Zend_Form_Element_Exception(
+                    sprintf(
+                            'Invalid format "%s" provided; must match T:00:00:00 format', 
+                            $format));
         }
         return true;
     }
@@ -59,10 +67,10 @@ class Zend_Dojo_Form_Element_TimeTextBox extends Zend_Dojo_Form_Element_DateText
     /**
      * Set time format pattern
      *
-     * @param  string $pattern
+     * @param string $pattern            
      * @return Zend_Dojo_Form_Element_NumberTextBox
      */
-    public function setTimePattern($pattern)
+    public function setTimePattern ($pattern)
     {
         $this->setConstraint('timePattern', (string) $pattern);
         return $this;
@@ -73,7 +81,7 @@ class Zend_Dojo_Form_Element_TimeTextBox extends Zend_Dojo_Form_Element_DateText
      *
      * @return string|null
      */
-    public function getTimePattern()
+    public function getTimePattern ()
     {
         return $this->getConstraint('timePattern');
     }
@@ -81,10 +89,10 @@ class Zend_Dojo_Form_Element_TimeTextBox extends Zend_Dojo_Form_Element_DateText
     /**
      * Set clickableIncrement
      *
-     * @param  string $format
+     * @param string $format            
      * @return Zend_Dojo_Form_Element_NumberTextBox
      */
-    public function setClickableIncrement($format)
+    public function setClickableIncrement ($format)
     {
         $format = (string) $format;
         $this->_validateIso8601($format);
@@ -97,7 +105,7 @@ class Zend_Dojo_Form_Element_TimeTextBox extends Zend_Dojo_Form_Element_DateText
      *
      * @return string|null
      */
-    public function getClickableIncrement()
+    public function getClickableIncrement ()
     {
         return $this->getConstraint('clickableIncrement');
     }
@@ -105,10 +113,10 @@ class Zend_Dojo_Form_Element_TimeTextBox extends Zend_Dojo_Form_Element_DateText
     /**
      * Set visibleIncrement
      *
-     * @param  string $format
+     * @param string $format            
      * @return Zend_Dojo_Form_Element_NumberTextBox
      */
-    public function setVisibleIncrement($format)
+    public function setVisibleIncrement ($format)
     {
         $format = (string) $format;
         $this->_validateIso8601($format);
@@ -121,7 +129,7 @@ class Zend_Dojo_Form_Element_TimeTextBox extends Zend_Dojo_Form_Element_DateText
      *
      * @return string|null
      */
-    public function getVisibleIncrement()
+    public function getVisibleIncrement ()
     {
         return $this->getConstraint('visibleIncrement');
     }
@@ -129,10 +137,10 @@ class Zend_Dojo_Form_Element_TimeTextBox extends Zend_Dojo_Form_Element_DateText
     /**
      * Set visibleRange
      *
-     * @param  string $format
+     * @param string $format            
      * @return Zend_Dojo_Form_Element_NumberTextBox
      */
-    public function setVisibleRange($format)
+    public function setVisibleRange ($format)
     {
         $format = (string) $format;
         $this->_validateIso8601($format);
@@ -145,7 +153,7 @@ class Zend_Dojo_Form_Element_TimeTextBox extends Zend_Dojo_Form_Element_DateText
      *
      * @return string|null
      */
-    public function getVisibleRange()
+    public function getVisibleRange ()
     {
         return $this->getConstraint('visibleRange');
     }

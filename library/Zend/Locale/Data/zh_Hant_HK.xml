@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <ldml>
 	<identity>
-		<version number="$Revision: 1.78 $"/>
-		<generation date="$Date: 2009/06/15 03:46:23 $"/>
-		<language type="zh"/>
-		<script type="Hant"/>
-		<territory type="HK"/>
+		<version number="$Revision: 1.78 $" />
+		<generation date="$Date: 2009/06/15 03:46:23 $" />
+		<language type="zh" />
+		<script type="Hant" />
+		<territory type="HK" />
 	</identity>
 	<localeDisplayNames>
 		<languages>

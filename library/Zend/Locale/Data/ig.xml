@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <ldml>
 	<identity>
-		<version number="$Revision: 1.31 $"/>
-		<generation date="$Date: 2009/06/15 03:46:24 $"/>
-		<language type="ig"/>
+		<version number="$Revision: 1.31 $" />
+		<generation date="$Date: 2009/06/15 03:46:24 $" />
+		<language type="ig" />
 	</identity>
 	<characters>
-		<exemplarCharacters>[a b {ch} d-g {gb} {gh} {gw} h i ị j k {kp} {kw} l-n ṅ {nw} {ny} o ọ p r s {sh} t u ụ v w y z]</exemplarCharacters>
+		<exemplarCharacters>[a b {ch} d-g {gb} {gh} {gw} h i ị j k {kp} {kw}
+			l-n ṅ {nw} {ny} o ọ p r s {sh} t u ụ v w y z]</exemplarCharacters>
 	</characters>
 	<dates>
 		<calendars>

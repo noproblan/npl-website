@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -23,22 +24,25 @@
 /**
  * The Interface used to represent an XML Data Type
  *
- * @category   Zend
- * @package    Zend_InfoCard
+ * @category Zend
+ * @package Zend_InfoCard
  * @subpackage Zend_InfoCard_Xml
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 interface Zend_InfoCard_Xml_Element_Interface
 {
+
     /**
      * Return the data within the object as an XML document
      */
-    public function asXML();
+    public function asXML ();
 
     /**
-     * Magic function which allows us to treat the object as a string to return XML
+     * Magic function which allows us to treat the object as a string to return
+     * XML
      * (same as the asXML() method)
      */
-    public function __toString();
+    public function __toString ();
 }

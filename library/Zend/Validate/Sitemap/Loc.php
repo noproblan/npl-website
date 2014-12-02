@@ -21,11 +21,13 @@
  */
 
 /**
+ *
  * @see Zend_Validate_Abstract
  */
 require_once 'Zend/Validate/Abstract.php';
 
 /**
+ *
  * @see Zend_Uri
  */
 require_once 'Zend/Uri.php';
@@ -33,22 +35,24 @@ require_once 'Zend/Uri.php';
 /**
  * Validates whether a given value is valid as a sitemap <loc> value
  *
- * @link       http://www.sitemaps.org/protocol.php Sitemaps XML format
- *
- * @category   Zend
- * @package    Zend_Validate
+ * @link http://www.sitemaps.org/protocol.php Sitemaps XML format
+ *      
+ * @category Zend
+ * @package Zend_Validate
  * @subpackage Sitemap
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Validate_Sitemap_Loc extends Zend_Validate_Abstract
 {
+
     /**
      * Validation key for not valid
-     *
      */
     const NOT_VALID = 'sitemapLocNotValid';
-    const INVALID   = 'sitemapLocInvalid';
+
+    const INVALID = 'sitemapLocInvalid';
 
     /**
      * Validation failure message template definitions
@@ -56,32 +60,33 @@ class Zend_Validate_Sitemap_Loc extends Zend_Validate_Abstract
      * @var array
      */
     protected $_messageTemplates = array(
-        self::NOT_VALID => "'%value%' is no valid sitemap location",
-        self::INVALID   => "Invalid type given. String expected",
+            self::NOT_VALID => "'%value%' is no valid sitemap location",
+            self::INVALID => "Invalid type given. String expected"
     );
 
     /**
      * Validates if a string is valid as a sitemap location
      *
      * @link http://www.sitemaps.org/protocol.php#locdef <loc>
-     *
-     * @param  string  $value  value to validate
+     *      
+     * @param string $value
+     *            value to validate
      * @return boolean
      */
-    public function isValid($value)
+    public function isValid ($value)
     {
-        if (!is_string($value)) {
+        if (! is_string($value)) {
             $this->_error(self::INVALID);
             return false;
         }
-
+        
         $this->_setValue($value);
         $result = Zend_Uri::check($value);
         if ($result !== true) {
             $this->_error(self::NOT_VALID);
             return false;
         }
-
+        
         return true;
     }
 }

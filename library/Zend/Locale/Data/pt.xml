@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <ldml>
 	<identity>
-		<version number="$Revision: 1.126 $"/>
-		<generation date="$Date: 2009/06/15 03:46:24 $"/>
-		<language type="pt"/>
+		<version number="$Revision: 1.126 $" />
+		<generation date="$Date: 2009/06/15 03:46:24 $" />
+		<language type="pt" />
 	</identity>
 	<localeDisplayNames>
 		<localeDisplayPattern>
@@ -533,7 +533,8 @@
 			<script type="Bugi">buginês</script>
 			<script type="Buhd">buhid</script>
 			<script type="Cakm">cakm</script>
-			<script type="Cans">escrita silábica unificada dos aborígenes canadenses</script>
+			<script type="Cans">escrita silábica unificada dos aborígenes
+				canadenses</script>
 			<script type="Cari">cariano</script>
 			<script type="Cham">cham</script>
 			<script type="Cher">cherokee</script>
@@ -997,8 +998,10 @@
 		</codePatterns>
 	</localeDisplayNames>
 	<characters>
-		<exemplarCharacters>[a á à â ã b c ç d e é ê f-i í j-o ó ò ô õ p-u ú v-z]</exemplarCharacters>
-		<exemplarCharacters type="auxiliary">[ă å ä ā æ è ĕ ë ē ì ĭ î ï ī ñ ŏ ö ø ō œ ß ù ŭ û ü ū ÿ]</exemplarCharacters>
+		<exemplarCharacters>[a á à â ã b c ç d e é ê f-i í j-o ó ò ô õ p-u ú
+			v-z]</exemplarCharacters>
+		<exemplarCharacters type="auxiliary">[ă å ä ā æ è ĕ ë ē ì ĭ î ï
+			ī ñ ŏ ö ø ō œ ß ù ŭ û ü ū ÿ]</exemplarCharacters>
 		<exemplarCharacters type="currencySymbol">[a-c č d-l ł m-z]</exemplarCharacters>
 	</characters>
 	<delimiters>
@@ -1282,7 +1285,8 @@
 						</intervalFormatItem>
 						<intervalFormatItem id="MMMEd">
 							<greatestDifference id="d">E, d - E, d 'de' MMM</greatestDifference>
-							<greatestDifference id="M">E, d 'de' MMM - E, d 'de' MMM</greatestDifference>
+							<greatestDifference id="M">E, d 'de' MMM - E, d
+								'de' MMM</greatestDifference>
 						</intervalFormatItem>
 						<intervalFormatItem id="MMMM">
 							<greatestDifference id="M">LLLL - LLLL</greatestDifference>
@@ -1300,9 +1304,12 @@
 							<greatestDifference id="y">dd/MM/yy - dd/MM/yy</greatestDifference>
 						</intervalFormatItem>
 						<intervalFormatItem id="yMEd">
-							<greatestDifference id="d">E, dd/MM/yy - E, dd/MM/yy</greatestDifference>
-							<greatestDifference id="M">E, dd/MM/yy - E, dd/MM/yy</greatestDifference>
-							<greatestDifference id="y">E, dd/MM/yy - E, dd/MM/yy</greatestDifference>
+							<greatestDifference id="d">E, dd/MM/yy - E,
+								dd/MM/yy</greatestDifference>
+							<greatestDifference id="M">E, dd/MM/yy - E,
+								dd/MM/yy</greatestDifference>
+							<greatestDifference id="y">E, dd/MM/yy - E,
+								dd/MM/yy</greatestDifference>
 						</intervalFormatItem>
 						<intervalFormatItem id="yMMM">
 							<greatestDifference id="M">MMM-MMM 'de' y</greatestDifference>
@@ -1310,13 +1317,18 @@
 						</intervalFormatItem>
 						<intervalFormatItem id="yMMMd">
 							<greatestDifference id="d">d-d 'de' MMM 'de' y</greatestDifference>
-							<greatestDifference id="M">d 'de' MMM - d 'de' MMM 'de' y</greatestDifference>
-							<greatestDifference id="y">d 'de' MMM 'de' y - d 'de' MMM 'de' y</greatestDifference>
+							<greatestDifference id="M">d 'de' MMM - d 'de' MMM
+								'de' y</greatestDifference>
+							<greatestDifference id="y">d 'de' MMM 'de' y - d
+								'de' MMM 'de' y</greatestDifference>
 						</intervalFormatItem>
 						<intervalFormatItem id="yMMMEd">
-							<greatestDifference id="d">E, d - E, d 'de' MMM 'de' y</greatestDifference>
-							<greatestDifference id="M">E, d 'de' MMM - E, d 'de' MMM 'de' y</greatestDifference>
-							<greatestDifference id="y">E, d 'de' MMM 'de' y - E, d 'de' MMM 'de' y</greatestDifference>
+							<greatestDifference id="d">E, d - E, d 'de' MMM
+								'de' y</greatestDifference>
+							<greatestDifference id="M">E, d 'de' MMM - E, d
+								'de' MMM 'de' y</greatestDifference>
+							<greatestDifference id="y">E, d 'de' MMM 'de' y -
+								E, d 'de' MMM 'de' y</greatestDifference>
 						</intervalFormatItem>
 						<intervalFormatItem id="yMMMM">
 							<greatestDifference id="M">MM – MM-yyyy</greatestDifference>
@@ -3041,8 +3053,10 @@
 			</currency>
 			<currency type="BAM">
 				<displayName>Marco bósnio-herzegovino conversível</displayName>
-				<displayName count="one">Marca conversível da Bósnia Herzegovina</displayName>
-				<displayName count="other">Marcas conversíveis da Bósnia Herzegovina</displayName>
+				<displayName count="one">Marca conversível da Bósnia
+					Herzegovina</displayName>
+				<displayName count="other">Marcas conversíveis da Bósnia
+					Herzegovina</displayName>
 			</currency>
 			<currency type="BBD">
 				<displayName>Dólar de Barbados</displayName>
@@ -3301,8 +3315,10 @@
 			</currency>
 			<currency type="ECV">
 				<displayName>Unidade de Valor Constante (UVC) do Equador</displayName>
-				<displayName count="one">Unidade de valor constante equatoriana (UVC)</displayName>
-				<displayName count="other">Unidades de valor constante equatorianas (UVC)</displayName>
+				<displayName count="one">Unidade de valor constante
+					equatoriana (UVC)</displayName>
+				<displayName count="other">Unidades de valor constante
+					equatorianas (UVC)</displayName>
 			</currency>
 			<currency type="EEK">
 				<displayName>Coroa estoniana</displayName>
@@ -3327,7 +3343,8 @@
 			<currency type="ESB">
 				<displayName>Peseta espanhola (conta conversível)</displayName>
 				<displayName count="one">Peseta espanhola (conta conversível)</displayName>
-				<displayName count="other">Pesetas espanholas (conta conversível)</displayName>
+				<displayName count="other">Pesetas espanholas (conta
+					conversível)</displayName>
 			</currency>
 			<currency type="ESP">
 				<displayName>Peseta espanhola</displayName>
@@ -3741,8 +3758,10 @@
 			</currency>
 			<currency type="MXV">
 				<displayName>Unidade Mexicana de Investimento (UDI)</displayName>
-				<displayName count="one">Unidade de investimento mexicana (UDI)</displayName>
-				<displayName count="other">Unidades de investimento mexicanas (UDI)</displayName>
+				<displayName count="one">Unidade de investimento mexicana
+					(UDI)</displayName>
+				<displayName count="other">Unidades de investimento mexicanas
+					(UDI)</displayName>
 			</currency>
 			<currency type="MYR">
 				<displayName>Ringgit malaio</displayName>

@@ -19,45 +19,51 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
 
-/** Zend_Dojo_Form_Element_ValidationTextBox */
+/**
+ * Zend_Dojo_Form_Element_ValidationTextBox
+ */
 require_once 'Zend/Dojo/Form/Element/ValidationTextBox.php';
 
 /**
  * NumberTextBox dijit
  *
- * @uses       Zend_Dojo_Form_Element_ValidationTextBox
- * @package    Zend_Dojo
+ * @uses Zend_Dojo_Form_Element_ValidationTextBox
+ * @package Zend_Dojo
  * @subpackage Form_Element
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: NumberTextBox.php 23775 2011-03-01 17:25:24Z ralph $
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
+ * @version $Id: NumberTextBox.php 23775 2011-03-01 17:25:24Z ralph $
  */
 class Zend_Dojo_Form_Element_NumberTextBox extends Zend_Dojo_Form_Element_ValidationTextBox
 {
+
     /**
      * Use NumberTextBox dijit view helper
+     * 
      * @var string
      */
     public $helper = 'NumberTextBox';
 
     /**
      * Allowed numeric type formats
+     * 
      * @var array
      */
     protected $_allowedTypes = array(
-        'decimal',
-        'scientific',
-        'percent',
-        'currency',
+            'decimal',
+            'scientific',
+            'percent',
+            'currency'
     );
 
     /**
      * Set locale
      *
-     * @param  string $locale
+     * @param string $locale            
      * @return Zend_Dojo_Form_Element_NumberTextBox
      */
-    public function setLocale($locale)
+    public function setLocale ($locale)
     {
         $this->setConstraint('locale', (string) $locale);
         return $this;
@@ -68,7 +74,7 @@ class Zend_Dojo_Form_Element_NumberTextBox extends Zend_Dojo_Form_Element_Valida
      *
      * @return string|null
      */
-    public function getLocale()
+    public function getLocale ()
     {
         return $this->getConstraint('locale');
     }
@@ -76,10 +82,10 @@ class Zend_Dojo_Form_Element_NumberTextBox extends Zend_Dojo_Form_Element_Valida
     /**
      * Set numeric format pattern
      *
-     * @param  string $pattern
+     * @param string $pattern            
      * @return Zend_Dojo_Form_Element_NumberTextBox
      */
-    public function setPattern($pattern)
+    public function setPattern ($pattern)
     {
         $this->setConstraint('pattern', (string) $pattern);
         return $this;
@@ -90,7 +96,7 @@ class Zend_Dojo_Form_Element_NumberTextBox extends Zend_Dojo_Form_Element_Valida
      *
      * @return string|null
      */
-    public function getPattern()
+    public function getPattern ()
     {
         return $this->getConstraint('pattern');
     }
@@ -98,18 +104,19 @@ class Zend_Dojo_Form_Element_NumberTextBox extends Zend_Dojo_Form_Element_Valida
     /**
      * Set numeric format type
      *
-     * @see    $_allowedTypes
-     * @param  string $type
+     * @see $_allowedTypes
+     * @param string $type            
      * @return Zend_Dojo_Form_Element_NumberTextBox
      */
-    public function setType($type)
+    public function setType ($type)
     {
         $type = strtolower($type);
-        if (!in_array($type, $this->_allowedTypes)) {
+        if (! in_array($type, $this->_allowedTypes)) {
             require_once 'Zend/Form/Element/Exception.php';
-            throw new Zend_Form_Element_Exception(sprintf('Invalid numeric type "%s" specified', $type));
+            throw new Zend_Form_Element_Exception(
+                    sprintf('Invalid numeric type "%s" specified', $type));
         }
-
+        
         $this->setConstraint('type', $type);
         return $this;
     }
@@ -119,7 +126,7 @@ class Zend_Dojo_Form_Element_NumberTextBox extends Zend_Dojo_Form_Element_Valida
      *
      * @return string|null
      */
-    public function getType()
+    public function getType ()
     {
         return $this->getConstraint('type');
     }
@@ -127,10 +134,10 @@ class Zend_Dojo_Form_Element_NumberTextBox extends Zend_Dojo_Form_Element_Valida
     /**
      * Set decimal places
      *
-     * @param  int $places
+     * @param int $places            
      * @return Zend_Dojo_Form_Element_NumberTextBox
      */
-    public function setPlaces($places)
+    public function setPlaces ($places)
     {
         $this->setConstraint('places', (int) $places);
         return $this;
@@ -141,7 +148,7 @@ class Zend_Dojo_Form_Element_NumberTextBox extends Zend_Dojo_Form_Element_Valida
      *
      * @return int|null
      */
-    public function getPlaces()
+    public function getPlaces ()
     {
         return $this->getConstraint('places');
     }
@@ -149,10 +156,10 @@ class Zend_Dojo_Form_Element_NumberTextBox extends Zend_Dojo_Form_Element_Valida
     /**
      * Set strict flag
      *
-     * @param  bool $strict
+     * @param bool $strict            
      * @return Zend_Dojo_Form_Element_NumberTextBox
      */
-    public function setStrict($flag)
+    public function setStrict ($flag)
     {
         $this->setConstraint('strict', (bool) $flag);
         return $this;
@@ -163,9 +170,9 @@ class Zend_Dojo_Form_Element_NumberTextBox extends Zend_Dojo_Form_Element_Valida
      *
      * @return bool
      */
-    public function getStrict()
+    public function getStrict ()
     {
-        if (!$this->hasConstraint('strict')) {
+        if (! $this->hasConstraint('strict')) {
             return false;
         }
         return ('true' == $this->getConstraint('strict'));

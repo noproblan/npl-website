@@ -1,20 +1,20 @@
 <?php $sponsors = $this->sponsors; ?>
 <div id="view-content">
-	<div id="title">
-		<h1>Sponsoren</h1>
-	</div>
-	<?php if (!empty($sponsors)) { ?>
-	<div id="sponsors">
-		<?php foreach ($sponsors as $sponsor) { ?>
-		<div class="sponsor">
-			<a href="<?= $this->escape($sponsor->getLink()) ?>" target="_blank">
-				<!-- <img src="<?= $this->baseUrl($this->escape($sponsor->getPicture())) ?>" alt="<?= $this->escape($sponsor->getName()) ?>" /> -->
-				<?= $sponsor->getPicture($this->baseUrl()) ?>
-			</a>
-		</div>
-		<?php } ?>
-	</div>
-	<?php } else { ?>
-	<p>Derzeitig sind keine Sponsoren eingetragen.</p>
-	<?php } ?>
+    <div id="title">
+        <h1>Sponsoren</h1>
+    </div>
+    <?php if (!empty($sponsors)) { ?>
+    <div id="sponsors">
+        <?php foreach ($sponsors as $sponsor) { ?>
+        <div class="sponsor">
+            <a href="<?= $this->escape($sponsor->getLink()) ?>" target="_blank">
+                <!-- <img src="<?= $this->baseUrl($this->escape($sponsor->getPicture())) ?>" alt="<?= $this->escape($sponsor->getName()) ?>" /> -->
+                <?= $sponsor->getPicture($this->baseUrl())?>
+            </a>
+        </div>
+        <?php } ?>
+    </div>
+    <?php } else { ?>
+    <p>Derzeitig sind keine Sponsoren eingetragen.</p>
+    <?php } ?>
 </div>

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <ldml>
 	<identity>
-		<version number="$Revision: 1.77 $"/>
-		<generation date="$Date: 2009/06/15 03:46:23 $"/>
-		<language type="id"/>
+		<version number="$Revision: 1.77 $" />
+		<generation date="$Date: 2009/06/15 03:46:23 $" />
+		<language type="id" />
 	</identity>
 	<localeDisplayNames>
 		<languages>
@@ -714,7 +714,8 @@
 			<territory type="GP">Guadeloupe</territory>
 			<territory type="GQ">Guinea Khatulistiwa</territory>
 			<territory type="GR">Yunani</territory>
-			<territory type="GS">Georgia Selatan dan Kepulauan Sandwich Selatan</territory>
+			<territory type="GS">Georgia Selatan dan Kepulauan Sandwich
+				Selatan</territory>
 			<territory type="GT">Guatemala</territory>
 			<territory type="GU">Guam</territory>
 			<territory type="GW">Guinea-Bissau</territory>

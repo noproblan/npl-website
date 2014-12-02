@@ -20,41 +20,50 @@
  * @version    $Id: Abstract.php 23775 2011-03-01 17:25:24Z ralph $
  */
 
-/** @see Zend_Log_Filter_Interface */
+/**
+ * @see Zend_Log_Filter_Interface
+ */
 require_once 'Zend/Log/Filter/Interface.php';
 
-/** @see Zend_Log_FactoryInterface */
+/**
+ * @see Zend_Log_FactoryInterface
+ */
 require_once 'Zend/Log/FactoryInterface.php';
 
 /**
- * @category   Zend
- * @package    Zend_Log
+ *
+ * @category Zend
+ * @package Zend_Log
  * @subpackage Filter
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: Abstract.php 23775 2011-03-01 17:25:24Z ralph $
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
+ * @version $Id: Abstract.php 23775 2011-03-01 17:25:24Z ralph $
  */
-abstract class Zend_Log_Filter_Abstract
-    implements Zend_Log_Filter_Interface, Zend_Log_FactoryInterface
+abstract class Zend_Log_Filter_Abstract implements Zend_Log_Filter_Interface, 
+        Zend_Log_FactoryInterface
 {
+
     /**
      * Validate and optionally convert the config to array
      *
-     * @param  array|Zend_Config $config Zend_Config or Array
+     * @param array|Zend_Config $config
+     *            Zend_Config or Array
      * @return array
      * @throws Zend_Log_Exception
      */
-    static protected function _parseConfig($config)
+    static protected function _parseConfig ($config)
     {
         if ($config instanceof Zend_Config) {
             $config = $config->toArray();
         }
-
-        if (!is_array($config)) {
+        
+        if (! is_array($config)) {
             require_once 'Zend/Log/Exception.php';
-            throw new Zend_Log_Exception('Configuration must be an array or instance of Zend_Config');
+            throw new Zend_Log_Exception(
+                    'Configuration must be an array or instance of Zend_Config');
         }
-
+        
         return $config;
     }
 }

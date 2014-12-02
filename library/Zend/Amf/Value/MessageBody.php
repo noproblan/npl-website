@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -22,7 +23,8 @@
 
 /**
  * An AMF Message contains information about the actual individual
- * transaction that is to be performed. It specifies the remote
+ * transaction that is to be performed.
+ * It specifies the remote
  * operation that is to be performed; a local (client) operation
  * to be invoked upon success; and, the data to be used in the
  * operation.
@@ -31,23 +33,27 @@
  * invoke a method/operation on a remote server. Additionally,
  * the response from the Server is structured identically.
  *
- * @package    Zend_Amf
+ * @package Zend_Amf
  * @subpackage Value
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Amf_Value_MessageBody
 {
+
     /**
      * A string describing which operation, function, or method
      * is to be remotley invoked.
+     * 
      * @var string
      */
     protected $_targetUri = "";
 
     /**
      * Universal Resource Identifier that uniquely targets the originator's
-     * Object that should receive the server's response. The server will
+     * Object that should receive the server's response.
+     * The server will
      * use this path specification to target the "OnResult()" or "onStatus()"
      * handlers within the client. For Flash, it specifies an ActionScript
      * Object path only. The NetResponse object pointed to by the Response Uri
@@ -64,8 +70,10 @@ class Zend_Amf_Value_MessageBody
     protected $_responseUri = "";
 
     /**
-     * Contains the actual data associated with the operation. It contains
-     * the client's parameter data that is passed to the server's operation/method.
+     * Contains the actual data associated with the operation.
+     * It contains
+     * the client's parameter data that is passed to the server's
+     * operation/method.
      * When serializing a root level data type or a parameter list array, no
      * name field is included. That is, the data is anonomously represented
      * as "Type Marker"/"Value" pairs. When serializing member data, the data is
@@ -81,12 +89,12 @@ class Zend_Amf_Value_MessageBody
     /**
      * Constructor
      *
-     * @param  string $targetUri
-     * @param  string $responseUri
-     * @param  string $data
+     * @param string $targetUri            
+     * @param string $responseUri            
+     * @param string $data            
      * @return void
      */
-    public function __construct($targetUri, $responseUri, $data)
+    public function __construct ($targetUri, $responseUri, $data)
     {
         $this->setTargetUri($targetUri);
         $this->setResponseUri($responseUri);
@@ -98,7 +106,7 @@ class Zend_Amf_Value_MessageBody
      *
      * @return string
      */
-    public function getTargetUri()
+    public function getTargetUri ()
     {
         return $this->_targetUri;
     }
@@ -106,10 +114,10 @@ class Zend_Amf_Value_MessageBody
     /**
      * Set target Uri
      *
-     * @param  string $targetUri
+     * @param string $targetUri            
      * @return Zend_Amf_Value_MessageBody
      */
-    public function setTargetUri($targetUri)
+    public function setTargetUri ($targetUri)
     {
         if (null === $targetUri) {
             $targetUri = '';
@@ -123,7 +131,7 @@ class Zend_Amf_Value_MessageBody
      *
      * @return string
      */
-    public function getResponseUri()
+    public function getResponseUri ()
     {
         return $this->_responseUri;
     }
@@ -131,10 +139,10 @@ class Zend_Amf_Value_MessageBody
     /**
      * Set response Uri
      *
-     * @param  string $responseUri
+     * @param string $responseUri            
      * @return Zend_Amf_Value_MessageBody
      */
-    public function setResponseUri($responseUri)
+    public function setResponseUri ($responseUri)
     {
         if (null === $responseUri) {
             $responseUri = '';
@@ -148,7 +156,7 @@ class Zend_Amf_Value_MessageBody
      *
      * @return string
      */
-    public function getData()
+    public function getData ()
     {
         return $this->_data;
     }
@@ -156,10 +164,10 @@ class Zend_Amf_Value_MessageBody
     /**
      * Set response data
      *
-     * @param  mixed $data
+     * @param mixed $data            
      * @return Zend_Amf_Value_MessageBody
      */
-    public function setData($data)
+    public function setData ($data)
     {
         $this->_data = $data;
         return $this;
@@ -168,12 +176,12 @@ class Zend_Amf_Value_MessageBody
     /**
      * Set reply method
      *
-     * @param  string $methodName
+     * @param string $methodName            
      * @return Zend_Amf_Value_MessageBody
      */
-    public function setReplyMethod($methodName)
+    public function setReplyMethod ($methodName)
     {
-        if (!preg_match('#^[/?]#', $methodName)) {
+        if (! preg_match('#^[/?]#', $methodName)) {
             $this->_targetUri = rtrim($this->_targetUri, '/') . '/';
         }
         $this->_targetUri = $this->_targetUri . $methodName;

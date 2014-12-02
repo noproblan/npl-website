@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <ldml>
 	<identity>
-		<version number="$Revision: 1.68 $"/>
-		<generation date="$Date: 2009/06/15 05:50:27 $"/>
-		<language type="ps"/>
+		<version number="$Revision: 1.68 $" />
+		<generation date="$Date: 2009/06/15 05:50:27 $" />
+		<language type="ps" />
 	</identity>
 	<fallback>fa_AF</fallback>
 	<localeDisplayNames>
@@ -189,10 +189,12 @@
 		</territories>
 	</localeDisplayNames>
 	<layout>
-		<orientation characters="right-to-left"/>
+		<orientation characters="right-to-left" />
 	</layout>
 	<characters>
-		<exemplarCharacters>[\u064E \u0650 \u064F \u064B \u064D \u064C \u0651 \u0652 \u0654 \u0670 آ ا أ ء ب پ ت ټ ث ج ځ چ څ ح-د ډ ذ ر ړ ز ژ ږ س ش ښ ص-غ ف ق ک ګ ل-ن ڼ ه ة و ؤ ی ي ې ۍ ئ]</exemplarCharacters>
+		<exemplarCharacters>[\u064E \u0650 \u064F \u064B \u064D \u064C \u0651
+			\u0652 \u0654 \u0670 آ ا أ ء ب پ ت ټ ث ج ځ چ څ ح-د ډ ذ ر ړ ز ژ ږ س ش
+			ښ ص-غ ف ق ک ګ ل-ن ڼ ه ة و ؤ ی ي ې ۍ ئ]</exemplarCharacters>
 		<exemplarCharacters type="auxiliary">[\u200C \u200D]</exemplarCharacters>
 	</characters>
 	<dates>

@@ -20,21 +20,27 @@
  */
 
 /**
+ *
  * @see Zend_Validate_Abstract
  */
 require_once 'Zend/Validate/Abstract.php';
 
 /**
- * @category   Zend
- * @package    Zend_Validate
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ *
+ * @category Zend
+ * @package Zend_Validate
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Validate_Digits extends Zend_Validate_Abstract
 {
-    const NOT_DIGITS   = 'notDigits';
+
+    const NOT_DIGITS = 'notDigits';
+
     const STRING_EMPTY = 'digitsStringEmpty';
-    const INVALID      = 'digitsInvalid';
+
+    const INVALID = 'digitsInvalid';
 
     /**
      * Digits filter used for validation
@@ -49,9 +55,9 @@ class Zend_Validate_Digits extends Zend_Validate_Abstract
      * @var array
      */
     protected $_messageTemplates = array(
-        self::NOT_DIGITS   => "'%value%' must contain only digits",
-        self::STRING_EMPTY => "'%value%' is an empty string",
-        self::INVALID      => "Invalid type given. String, integer or float expected",
+            self::NOT_DIGITS => "'%value%' must contain only digits",
+            self::STRING_EMPTY => "'%value%' is an empty string",
+            self::INVALID => "Invalid type given. String, integer or float expected"
     );
 
     /**
@@ -59,33 +65,33 @@ class Zend_Validate_Digits extends Zend_Validate_Abstract
      *
      * Returns true if and only if $value only contains digit characters
      *
-     * @param  string $value
+     * @param string $value            
      * @return boolean
      */
-    public function isValid($value)
+    public function isValid ($value)
     {
-        if (!is_string($value) && !is_int($value) && !is_float($value)) {
+        if (! is_string($value) && ! is_int($value) && ! is_float($value)) {
             $this->_error(self::INVALID);
             return false;
         }
-
+        
         $this->_setValue((string) $value);
-
+        
         if ('' === $this->_value) {
             $this->_error(self::STRING_EMPTY);
             return false;
         }
-
+        
         if (null === self::$_filter) {
             require_once 'Zend/Filter/Digits.php';
             self::$_filter = new Zend_Filter_Digits();
         }
-
+        
         if ($this->_value !== self::$_filter->filter($this->_value)) {
             $this->_error(self::NOT_DIGITS);
             return false;
         }
-
+        
         return true;
     }
 }

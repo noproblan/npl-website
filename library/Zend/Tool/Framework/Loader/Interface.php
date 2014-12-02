@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -23,14 +24,16 @@
 /**
  * Basic Interface for factilities that load Zend_Tool providers or manifests.
  *
- * @category   Zend
- * @package    Zend_Tool
+ * @category Zend
+ * @package Zend_Tool
  * @subpackage Framework
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 interface Zend_Tool_Framework_Loader_Interface
 {
+
     /**
      * Load Providers and Manifests
      *
@@ -38,5 +41,5 @@ interface Zend_Tool_Framework_Loader_Interface
      *
      * @return array
      */
-    public function load();
+    public function load ();
 }

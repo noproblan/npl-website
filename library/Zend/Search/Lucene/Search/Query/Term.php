@@ -20,20 +20,23 @@
  * @version    $Id: Term.php 23775 2011-03-01 17:25:24Z ralph $
  */
 
-
-/** Zend_Search_Lucene_Search_Query */
+/**
+ * Zend_Search_Lucene_Search_Query
+ */
 require_once 'Zend/Search/Lucene/Search/Query.php';
 
-
 /**
- * @category   Zend
- * @package    Zend_Search_Lucene
+ *
+ * @category Zend
+ * @package Zend_Search_Lucene
  * @subpackage Search
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Search_Lucene_Search_Query_Term extends Zend_Search_Lucene_Search_Query
 {
+
     /**
      * Term to find.
      *
@@ -56,14 +59,13 @@ class Zend_Search_Lucene_Search_Query_Term extends Zend_Search_Lucene_Search_Que
      */
     private $_termFreqs;
 
-
     /**
      * Zend_Search_Lucene_Search_Query_Term constructor
      *
-     * @param Zend_Search_Lucene_Index_Term $term
-     * @param boolean $sign
+     * @param Zend_Search_Lucene_Index_Term $term            
+     * @param boolean $sign            
      */
-    public function __construct(Zend_Search_Lucene_Index_Term $term)
+    public function __construct (Zend_Search_Lucene_Index_Term $term)
     {
         $this->_term = $term;
     }
@@ -71,10 +73,10 @@ class Zend_Search_Lucene_Search_Query_Term extends Zend_Search_Lucene_Search_Que
     /**
      * Re-write query into primitive queries in the context of specified index
      *
-     * @param Zend_Search_Lucene_Interface $index
+     * @param Zend_Search_Lucene_Interface $index            
      * @return Zend_Search_Lucene_Search_Query
      */
-    public function rewrite(Zend_Search_Lucene_Interface $index)
+    public function rewrite (Zend_Search_Lucene_Interface $index)
     {
         if ($this->_term->field != null) {
             return $this;
@@ -82,14 +84,15 @@ class Zend_Search_Lucene_Search_Query_Term extends Zend_Search_Lucene_Search_Que
             require_once 'Zend/Search/Lucene/Search/Query/MultiTerm.php';
             $query = new Zend_Search_Lucene_Search_Query_MultiTerm();
             $query->setBoost($this->getBoost());
-
+            
             require_once 'Zend/Search/Lucene/Index/Term.php';
             foreach ($index->getFieldNames(true) as $fieldName) {
-                $term = new Zend_Search_Lucene_Index_Term($this->_term->text, $fieldName);
-
+                $term = new Zend_Search_Lucene_Index_Term($this->_term->text, 
+                        $fieldName);
+                
                 $query->addTerm($term);
             }
-
+            
             return $query->rewrite($index);
         }
     }
@@ -97,31 +100,31 @@ class Zend_Search_Lucene_Search_Query_Term extends Zend_Search_Lucene_Search_Que
     /**
      * Optimize query in the context of specified index
      *
-     * @param Zend_Search_Lucene_Interface $index
+     * @param Zend_Search_Lucene_Interface $index            
      * @return Zend_Search_Lucene_Search_Query
      */
-    public function optimize(Zend_Search_Lucene_Interface $index)
+    public function optimize (Zend_Search_Lucene_Interface $index)
     {
         // Check, that index contains specified term
-        if (!$index->hasTerm($this->_term)) {
+        if (! $index->hasTerm($this->_term)) {
             require_once 'Zend/Search/Lucene/Search/Query/Empty.php';
             return new Zend_Search_Lucene_Search_Query_Empty();
         }
-
+        
         return $this;
     }
-
 
     /**
      * Constructs an appropriate Weight implementation for this query.
      *
-     * @param Zend_Search_Lucene_Interface $reader
+     * @param Zend_Search_Lucene_Interface $reader            
      * @return Zend_Search_Lucene_Search_Weight
      */
-    public function createWeight(Zend_Search_Lucene_Interface $reader)
+    public function createWeight (Zend_Search_Lucene_Interface $reader)
     {
         require_once 'Zend/Search/Lucene/Search/Weight/Term.php';
-        $this->_weight = new Zend_Search_Lucene_Search_Weight_Term($this->_term, $this, $reader);
+        $this->_weight = new Zend_Search_Lucene_Search_Weight_Term($this->_term, 
+                $this, $reader);
         return $this->_weight;
     }
 
@@ -129,14 +132,16 @@ class Zend_Search_Lucene_Search_Query_Term extends Zend_Search_Lucene_Search_Que
      * Execute query in context of index reader
      * It also initializes necessary internal structures
      *
-     * @param Zend_Search_Lucene_Interface $reader
-     * @param Zend_Search_Lucene_Index_DocsFilter|null $docsFilter
+     * @param Zend_Search_Lucene_Interface $reader            
+     * @param Zend_Search_Lucene_Index_DocsFilter|null $docsFilter            
      */
-    public function execute(Zend_Search_Lucene_Interface $reader, $docsFilter = null)
+    public function execute (Zend_Search_Lucene_Interface $reader, 
+            $docsFilter = null)
     {
-        $this->_docVector = array_flip($reader->termDocs($this->_term, $docsFilter));
+        $this->_docVector = array_flip(
+                $reader->termDocs($this->_term, $docsFilter));
         $this->_termFreqs = $reader->termFreqs($this->_term, $docsFilter);
-
+        
         // Initialize weight if it's not done yet
         $this->_initWeight($reader);
     }
@@ -148,7 +153,7 @@ class Zend_Search_Lucene_Search_Query_Term extends Zend_Search_Lucene_Search_Que
      *
      * @return array
      */
-    public function matchedDocs()
+    public function matchedDocs ()
     {
         return $this->_docVector;
     }
@@ -156,17 +161,17 @@ class Zend_Search_Lucene_Search_Query_Term extends Zend_Search_Lucene_Search_Que
     /**
      * Score specified document
      *
-     * @param integer $docId
-     * @param Zend_Search_Lucene_Interface $reader
+     * @param integer $docId            
+     * @param Zend_Search_Lucene_Interface $reader            
      * @return float
      */
-    public function score($docId, Zend_Search_Lucene_Interface $reader)
+    public function score ($docId, Zend_Search_Lucene_Interface $reader)
     {
         if (isset($this->_docVector[$docId])) {
             return $reader->getSimilarity()->tf($this->_termFreqs[$docId]) *
-                   $this->_weight->getValue() *
-                   $reader->norm($docId, $this->_term->field) *
-                   $this->getBoost();
+                     $this->_weight->getValue() *
+                     $reader->norm($docId, $this->_term->field) *
+                     $this->getBoost();
         } else {
             return 0;
         }
@@ -177,9 +182,11 @@ class Zend_Search_Lucene_Search_Query_Term extends Zend_Search_Lucene_Search_Que
      *
      * @return array
      */
-    public function getQueryTerms()
+    public function getQueryTerms ()
     {
-        return array($this->_term);
+        return array(
+                $this->_term
+        );
     }
 
     /**
@@ -187,7 +194,7 @@ class Zend_Search_Lucene_Search_Query_Term extends Zend_Search_Lucene_Search_Que
      *
      * @return Zend_Search_Lucene_Index_Term
      */
-    public function getTerm()
+    public function getTerm ()
     {
         return $this->_term;
     }
@@ -195,9 +202,11 @@ class Zend_Search_Lucene_Search_Query_Term extends Zend_Search_Lucene_Search_Que
     /**
      * Query specific matches highlighting
      *
-     * @param Zend_Search_Lucene_Search_Highlighter_Interface $highlighter  Highlighter object (also contains doc for highlighting)
+     * @param Zend_Search_Lucene_Search_Highlighter_Interface $highlighter
+     *            Highlighter object (also contains doc for highlighting)
      */
-    protected function _highlightMatches(Zend_Search_Lucene_Search_Highlighter_Interface $highlighter)
+    protected function _highlightMatches (
+            Zend_Search_Lucene_Search_Highlighter_Interface $highlighter)
     {
         $highlighter->highlight($this->_term->text);
     }
@@ -207,21 +216,22 @@ class Zend_Search_Lucene_Search_Query_Term extends Zend_Search_Lucene_Search_Que
      *
      * @return string
      */
-    public function __toString()
+    public function __toString ()
     {
-        // It's used only for query visualisation, so we don't care about characters escaping
+        // It's used only for query visualisation, so we don't care about
+        // characters escaping
         if ($this->_term->field !== null) {
             $query = $this->_term->field . ':';
         } else {
             $query = '';
         }
-
+        
         $query .= $this->_term->text;
-
+        
         if ($this->getBoost() != 1) {
             $query = $query . '^' . round($this->getBoost(), 4);
         }
-
+        
         return $query;
     }
 }

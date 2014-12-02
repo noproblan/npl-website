@@ -20,33 +20,41 @@
  */
 
 /**
+ *
  * @see Zend_Validate_Abstract
  */
 require_once 'Zend/Validate/Abstract.php';
 
 /**
+ *
  * @see Zend_Loader
  */
 require_once 'Zend/Loader.php';
 
 /**
- * @category   Zend
- * @package    Zend_Validate
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ *
+ * @category Zend
+ * @package Zend_Validate
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Validate_Barcode extends Zend_Validate_Abstract
 {
-    const INVALID        = 'barcodeInvalid';
-    const FAILED         = 'barcodeFailed';
-    const INVALID_CHARS  = 'barcodeInvalidChars';
+
+    const INVALID = 'barcodeInvalid';
+
+    const FAILED = 'barcodeFailed';
+
+    const INVALID_CHARS = 'barcodeInvalidChars';
+
     const INVALID_LENGTH = 'barcodeInvalidLength';
 
     protected $_messageTemplates = array(
-        self::FAILED         => "'%value%' failed checksum validation",
-        self::INVALID_CHARS  => "'%value%' contains invalid characters",
-        self::INVALID_LENGTH => "'%value%' should have a length of %length% characters",
-        self::INVALID        => "Invalid type given. String expected",
+            self::FAILED => "'%value%' failed checksum validation",
+            self::INVALID_CHARS => "'%value%' contains invalid characters",
+            self::INVALID_LENGTH => "'%value%' should have a length of %length% characters",
+            self::INVALID => "Invalid type given. String expected"
     );
 
     /**
@@ -55,7 +63,7 @@ class Zend_Validate_Barcode extends Zend_Validate_Abstract
      * @var array
      */
     protected $_messageVariables = array(
-        'length' => '_length'
+            'length' => '_length'
     );
 
     /**
@@ -75,28 +83,30 @@ class Zend_Validate_Barcode extends Zend_Validate_Abstract
     /**
      * Generates the standard validator object
      *
-     * @param  string|Zend_Config|
-     *         Zend_Validate_Barcode_BarcodeAdapter $adapter Barcode adapter to use
+     * @param
+     *            string|Zend_Config|
+     *            Zend_Validate_Barcode_BarcodeAdapter $adapter Barcode adapter
+     *            to use
      * @return void
      * @throws Zend_Validate_Exception
      */
-    public function __construct($adapter)
+    public function __construct ($adapter)
     {
         if ($adapter instanceof Zend_Config) {
             $adapter = $adapter->toArray();
         }
-
-        $options  = null;
+        
+        $options = null;
         $checksum = null;
         if (is_array($adapter)) {
             if (array_key_exists('options', $adapter)) {
                 $options = $adapter['options'];
             }
-
+            
             if (array_key_exists('checksum', $adapter)) {
                 $checksum = $adapter['checksum'];
             }
-
+            
             if (array_key_exists('adapter', $adapter)) {
                 $adapter = $adapter['adapter'];
             } else {
@@ -104,7 +114,7 @@ class Zend_Validate_Barcode extends Zend_Validate_Abstract
                 throw new Zend_Validate_Exception("Missing option 'adapter'");
             }
         }
-
+        
         $this->setAdapter($adapter, $options);
         if ($checksum !== null) {
             $this->setChecksum($checksum);
@@ -116,7 +126,7 @@ class Zend_Validate_Barcode extends Zend_Validate_Abstract
      *
      * @return Zend_Validate_Barcode_BarcodeAdapter
      */
-    public function getAdapter()
+    public function getAdapter ()
     {
         return $this->_adapter;
     }
@@ -124,31 +134,33 @@ class Zend_Validate_Barcode extends Zend_Validate_Abstract
     /**
      * Sets a new barcode adapter
      *
-     * @param  string|Zend_Validate_Barcode $adapter Barcode adapter to use
-     * @param  array  $options Options for this adapter
+     * @param string|Zend_Validate_Barcode $adapter
+     *            Barcode adapter to use
+     * @param array $options
+     *            Options for this adapter
      * @return void
      * @throws Zend_Validate_Exception
      */
-    public function setAdapter($adapter, $options = null)
+    public function setAdapter ($adapter, $options = null)
     {
         $adapter = ucfirst(strtolower($adapter));
         require_once 'Zend/Loader.php';
-        if (Zend_Loader::isReadable('Zend/Validate/Barcode/' . $adapter. '.php')) {
+        if (Zend_Loader::isReadable('Zend/Validate/Barcode/' . $adapter . '.php')) {
             $adapter = 'Zend_Validate_Barcode_' . $adapter;
         }
-
-        if (!class_exists($adapter)) {
+        
+        if (! class_exists($adapter)) {
             Zend_Loader::loadClass($adapter);
         }
-
+        
         $this->_adapter = new $adapter($options);
-        if (!$this->_adapter instanceof Zend_Validate_Barcode_AdapterInterface) {
+        if (! $this->_adapter instanceof Zend_Validate_Barcode_AdapterInterface) {
             require_once 'Zend/Validate/Exception.php';
             throw new Zend_Validate_Exception(
-                "Adapter " . $adapter . " does not implement Zend_Validate_Barcode_AdapterInterface"
-            );
+                    "Adapter " . $adapter .
+                             " does not implement Zend_Validate_Barcode_AdapterInterface");
         }
-
+        
         return $this;
     }
 
@@ -157,7 +169,7 @@ class Zend_Validate_Barcode extends Zend_Validate_Abstract
      *
      * @return boolean
      */
-    public function getChecksum()
+    public function getChecksum ()
     {
         return $this->getAdapter()->getCheck();
     }
@@ -165,10 +177,10 @@ class Zend_Validate_Barcode extends Zend_Validate_Abstract
     /**
      * Sets the checksum option
      *
-     * @param  boolean $checksum
+     * @param boolean $checksum            
      * @return Zend_Validate_Barcode
      */
-    public function setChecksum($checksum)
+    public function setChecksum ($checksum)
     {
         $this->getAdapter()->setCheck($checksum);
         return $this;
@@ -179,50 +191,50 @@ class Zend_Validate_Barcode extends Zend_Validate_Abstract
      *
      * Returns true if and only if $value contains a valid barcode
      *
-     * @param  string $value
+     * @param string $value            
      * @return boolean
      */
-    public function isValid($value)
+    public function isValid ($value)
     {
-        if (!is_string($value)) {
+        if (! is_string($value)) {
             $this->_error(self::INVALID);
             return false;
         }
-
+        
         $this->_setValue($value);
-        $adapter       = $this->getAdapter();
+        $adapter = $this->getAdapter();
         $this->_length = $adapter->getLength();
-        $result        = $adapter->checkLength($value);
-        if (!$result) {
+        $result = $adapter->checkLength($value);
+        if (! $result) {
             if (is_array($this->_length)) {
                 $temp = $this->_length;
                 $this->_length = "";
-                foreach($temp as $length) {
+                foreach ($temp as $length) {
                     $this->_length .= "/";
                     $this->_length .= $length;
                 }
-
+                
                 $this->_length = substr($this->_length, 1);
             }
-
+            
             $this->_error(self::INVALID_LENGTH);
             return false;
         }
-
+        
         $result = $adapter->checkChars($value);
-        if (!$result) {
+        if (! $result) {
             $this->_error(self::INVALID_CHARS);
             return false;
         }
-
+        
         if ($this->getChecksum()) {
             $result = $adapter->checksum($value);
-            if (!$result) {
+            if (! $result) {
                 $this->_error(self::FAILED);
                 return false;
             }
         }
-
+        
         return true;
     }
 }

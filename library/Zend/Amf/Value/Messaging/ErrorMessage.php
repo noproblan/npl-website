@@ -20,7 +20,9 @@
  * @version    $Id: ErrorMessage.php 23775 2011-03-01 17:25:24Z ralph $
  */
 
-/** @see Zend_Amf_Value_Messaging_AcknowledgeMessage */
+/**
+ * @see Zend_Amf_Value_Messaging_AcknowledgeMessage
+ */
 require_once 'Zend/Amf/Value/Messaging/AcknowledgeMessage.php';
 
 /**
@@ -28,39 +30,46 @@ require_once 'Zend/Amf/Value/Messaging/AcknowledgeMessage.php';
  *
  * Corresponds to flex.messaging.messages.ErrorMessage
  *
- * @package    Zend_Amf
+ * @package Zend_Amf
  * @subpackage Value
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Amf_Value_Messaging_ErrorMessage extends Zend_Amf_Value_Messaging_AcknowledgeMessage
 {
+
     /**
      * Additional data with error
+     * 
      * @var object
      */
     public $extendedData = null;
 
     /**
      * Error code number
+     * 
      * @var string
      */
     public $faultCode;
 
     /**
      * Description as to the cause of the error
+     * 
      * @var string
      */
     public $faultDetail;
 
     /**
      * Short description of error
+     * 
      * @var string
      */
     public $faultString = '';
 
     /**
      * root cause of error
+     * 
      * @var object
      */
     public $rootCause = null;

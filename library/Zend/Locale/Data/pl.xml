@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <ldml>
 	<identity>
-		<version number="$Revision: 1.122 $"/>
-		<generation date="$Date: 2009/06/15 03:46:24 $"/>
-		<language type="pl"/>
+		<version number="$Revision: 1.122 $" />
+		<generation date="$Date: 2009/06/15 03:46:24 $" />
+		<language type="pl" />
 	</identity>
 	<localeDisplayNames>
 		<localeDisplayPattern>
@@ -774,7 +774,8 @@
 			<territory type="GU">Guam</territory>
 			<territory type="GW">Gwinea Bissau</territory>
 			<territory type="GY">Gujana</territory>
-			<territory type="HK">Hongkong, Specjalny Region Administracyjny Chin</territory>
+			<territory type="HK">Hongkong, Specjalny Region Administracyjny
+				Chin</territory>
 			<territory type="HM">Wyspy Heard i McDonalda</territory>
 			<territory type="HN">Honduras</territory>
 			<territory type="HR">Chorwacja</territory>
@@ -827,7 +828,8 @@
 			<territory type="ML">Mali</territory>
 			<territory type="MM">Birma</territory>
 			<territory type="MN">Mongolia</territory>
-			<territory type="MO">Makau, Specjalny Region Administracyjny Chin</territory>
+			<territory type="MO">Makau, Specjalny Region Administracyjny
+				Chin</territory>
 			<territory type="MP">Mariany Północne</territory>
 			<territory type="MQ">Martynika</territory>
 			<territory type="MR">Mauretania</territory>
@@ -966,18 +968,22 @@
 			<key type="currency">waluta</key>
 		</keys>
 		<types>
-			<type type="big5han" key="collation">chiński tradycyjny porządek sortowania - Big5</type>
+			<type type="big5han" key="collation">chiński tradycyjny porządek sortowania
+				- Big5</type>
 			<type type="buddhist" key="calendar">kalendarz buddyjski</type>
 			<type type="chinese" key="calendar">kalendarz chiński</type>
 			<type type="direct" key="collation">bezpośredni porządek sortowania</type>
-			<type type="gb2312han" key="collation">chiński uproszczony porządek sortowania - GB2312</type>
+			<type type="gb2312han" key="collation">chiński uproszczony porządek
+				sortowania - GB2312</type>
 			<type type="gregorian" key="calendar">kalendarz gregoriański</type>
 			<type type="hebrew" key="calendar">kalendarz hebrajski</type>
 			<type type="indian" key="calendar">narodowy kalendarz hinduski</type>
 			<type type="islamic" key="calendar">kalendarz islamski (metoda wzrokowa)</type>
-			<type type="islamic-civil" key="calendar">kalendarz islamski (metoda obliczeniowa)</type>
+			<type type="islamic-civil" key="calendar">kalendarz islamski (metoda
+				obliczeniowa)</type>
 			<type type="japanese" key="calendar">kalendarz japoński</type>
-			<type type="phonebook" key="collation">porządek sortowania książki telefonicznej</type>
+			<type type="phonebook" key="collation">porządek sortowania książki
+				telefonicznej</type>
 			<type type="pinyin" key="collation">porządek sortowania pinyin</type>
 			<type type="roc" key="calendar">kalendarz Republiki Chińskiej</type>
 			<type type="stroke" key="collation">porządek akcentów</type>
@@ -994,7 +1000,8 @@
 		</codePatterns>
 	</localeDisplayNames>
 	<characters>
-		<exemplarCharacters>[a ą b c ć d e ę f-l ł m n ń o ó p r s ś t u w y z ź ż]</exemplarCharacters>
+		<exemplarCharacters>[a ą b c ć d e ę f-l ł m n ń o ó p r s ś t u w y z
+			ź ż]</exemplarCharacters>
 		<exemplarCharacters type="auxiliary">[q v x]</exemplarCharacters>
 		<exemplarCharacters type="currencySymbol">[a-z]</exemplarCharacters>
 	</characters>
@@ -1307,9 +1314,12 @@
 							<greatestDifference id="y">dd.MM.yyyy-dd.MM.yyyy</greatestDifference>
 						</intervalFormatItem>
 						<intervalFormatItem id="yMEd">
-							<greatestDifference id="d">E, dd.MM.yyyy - E, dd.MM.yyyy</greatestDifference>
-							<greatestDifference id="M">E, dd.MM.yyyy - E, dd.MM.yyyy</greatestDifference>
-							<greatestDifference id="y">E, dd-MM-yyyy-E, dd-MM-yyyy</greatestDifference>
+							<greatestDifference id="d">E, dd.MM.yyyy - E,
+								dd.MM.yyyy</greatestDifference>
+							<greatestDifference id="M">E, dd.MM.yyyy - E,
+								dd.MM.yyyy</greatestDifference>
+							<greatestDifference id="y">E, dd-MM-yyyy-E,
+								dd-MM-yyyy</greatestDifference>
 						</intervalFormatItem>
 						<intervalFormatItem id="yMMM">
 							<greatestDifference id="M">LLL-LLL y</greatestDifference>
@@ -2230,8 +2240,10 @@
 			</currency>
 			<currency type="AOR">
 				<displayName>kwanza angolańska Reajustado (1995-1999)</displayName>
-				<displayName count="few">kwanzy angolańskie Reajustado (1995-1999)</displayName>
-				<displayName count="other">kwanz angolańskich Reajustado (1995-1999)</displayName>
+				<displayName count="few">kwanzy angolańskie Reajustado
+					(1995-1999)</displayName>
+				<displayName count="other">kwanz angolańskich Reajustado
+					(1995-1999)</displayName>
 			</currency>
 			<currency type="ARA">
 				<displayName>austral argentyński</displayName>

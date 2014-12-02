@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -22,19 +23,23 @@
 /**
  * Interface for pagination adapters.
  *
- * @category   Zend
- * @package    Zend_Paginator
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @category Zend
+ * @package Zend_Paginator
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 interface Zend_Paginator_Adapter_Interface extends Countable
 {
+
     /**
      * Returns an collection of items for a page.
      *
-     * @param  integer $offset Page offset
-     * @param  integer $itemCountPerPage Number of items per page
+     * @param integer $offset
+     *            Page offset
+     * @param integer $itemCountPerPage
+     *            Number of items per page
      * @return array
      */
-    public function getItems($offset, $itemCountPerPage);
+    public function getItems ($offset, $itemCountPerPage);
 }

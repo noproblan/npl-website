@@ -21,20 +21,24 @@
  */
 
 /**
+ *
  * @see Zend_Service_Ebay_Finding_Abstract
  */
 require_once 'Zend/Service/Ebay/Finding/Abstract.php';
 
 /**
- * @category   Zend
- * @package    Zend_Service
+ *
+ * @category Zend
+ * @package Zend_Service
  * @subpackage Ebay
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @uses       Zend_Service_Ebay_Finding_Abstract
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
+ * @uses Zend_Service_Ebay_Finding_Abstract
  */
 class Zend_Service_Ebay_Finding_Category_Histogram_Container extends Zend_Service_Ebay_Finding_Abstract
 {
+
     /**
      * Response container for category histograms.
      *
@@ -46,21 +50,23 @@ class Zend_Service_Ebay_Finding_Category_Histogram_Container extends Zend_Servic
     public $categoryHistogram;
 
     /**
+     *
      * @return void
      */
-    protected function _init()
+    protected function _init ()
     {
         parent::_init();
         $ns = Zend_Service_Ebay_Finding::XMLNS_FINDING;
-
-
+        
         $nodes = $this->_xPath->query(".//$ns:categoryHistogram", $this->_dom);
         if ($nodes->length > 0) {
             /**
+             *
              * @see Zend_Service_Ebay_Finding_Category_Histogram_Set
              */
             require_once 'Zend/Service/Ebay/Finding/Category/Histogram/Set.php';
-            $this->categoryHistogram = new Zend_Service_Ebay_Finding_Category_Histogram_Set($nodes);
+            $this->categoryHistogram = new Zend_Service_Ebay_Finding_Category_Histogram_Set(
+                    $nodes);
         }
     }
 }

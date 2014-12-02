@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <ldml>
 	<identity>
-		<version number="$Revision: 1.234 $"/>
-		<generation date="$Date: 2009/06/17 16:15:14 $"/>
-		<language type="en"/>
+		<version number="$Revision: 1.234 $" />
+		<generation date="$Date: 2009/06/17 16:15:14 $" />
+		<language type="en" />
 	</identity>
 	<localeDisplayNames>
 		<localeDisplayPattern>
@@ -294,8 +294,8 @@
 			<language type="mas">Masai</language>
 			<language type="mdf">Moksha</language>
 			<language type="mdr">Mandar</language>
-            <language type="men">Mende</language>
-            <language type="mfe">Morisyen</language>
+			<language type="men">Mende</language>
+			<language type="mfe">Morisyen</language>
 			<language type="mg">Malagasy</language>
 			<language type="mga">Middle Irish</language>
 			<language type="mh">Marshallese</language>
@@ -781,7 +781,8 @@
 			<territory type="GP">Guadeloupe</territory>
 			<territory type="GQ">Equatorial Guinea</territory>
 			<territory type="GR">Greece</territory>
-			<territory type="GS">South Georgia and the South Sandwich Islands</territory>
+			<territory type="GS">South Georgia and the South Sandwich
+				Islands</territory>
 			<territory type="GT">Guatemala</territory>
 			<territory type="GU">Guam</territory>
 			<territory type="GW">Guinea-Bissau</territory>
@@ -1003,9 +1004,11 @@
 			<type type="direct" key="collation">Direct Sort Order</type>
 			<type type="ethi" key="numbers">Ethiopic Numerals</type>
 			<type type="ethiopic" key="calendar">Ethiopic Calendar</type>
-			<type type="ethiopic-amete-alem" key="calendar">Ethiopic Amete Alem Calendar</type>
+			<type type="ethiopic-amete-alem" key="calendar">Ethiopic Amete Alem
+				Calendar</type>
 			<type type="fullwide" key="numbers">Full Width Digits</type>
-			<type type="gb2312han" key="collation">Simplified Chinese Sort Order - GB2312</type>
+			<type type="gb2312han" key="collation">Simplified Chinese Sort Order -
+				GB2312</type>
 			<type type="geor" key="numbers">Georgian Numerals</type>
 			<type type="gregorian" key="calendar">Gregorian Calendar</type>
 			<type type="grek" key="numbers">Greek Numerals</type>
@@ -1057,7 +1060,8 @@
 	</localeDisplayNames>
 	<characters>
 		<exemplarCharacters>[a-z]</exemplarCharacters>
-		<exemplarCharacters type="auxiliary">[á à ă â å ä ã ā æ ç é è ĕ ê ë ē í ì ĭ î ï ī ñ ó ò ŏ ô ö ø ō œ ß ú ù ŭ û ü ū ÿ]</exemplarCharacters>
+		<exemplarCharacters type="auxiliary">[á à ă â å ä ã ā æ ç é è ĕ
+			ê ë ē í ì ĭ î ï ī ñ ó ò ŏ ô ö ø ō œ ß ú ù ŭ û ü ū ÿ]</exemplarCharacters>
 		<exemplarCharacters type="currencySymbol">[a-c č d-l ł m-z]</exemplarCharacters>
 	</characters>
 	<delimiters>
@@ -1356,7 +1360,8 @@
 						<intervalFormatItem id="yMMMEd">
 							<greatestDifference id="d">E, MMM d – E, MMM d, y</greatestDifference>
 							<greatestDifference id="M">E, MMM d – E, MMM d, y</greatestDifference>
-							<greatestDifference id="y">E, MMM d, y – E, MMM d, y</greatestDifference>
+							<greatestDifference id="y">E, MMM d, y – E, MMM d,
+								y</greatestDifference>
 						</intervalFormatItem>
 						<intervalFormatItem id="yMMMM">
 							<greatestDifference id="M">MMMM–MMMM y</greatestDifference>
@@ -3022,8 +3027,10 @@
 			</currency>
 			<currency type="ECV">
 				<displayName>Ecuadorian Unidad de Valor Constante (UVC)</displayName>
-				<displayName count="one">Ecuadorian unidad de valor Constante (UVC)</displayName>
-				<displayName count="other">Ecuadorian unidads de valor Constante (UVC)</displayName>
+				<displayName count="one">Ecuadorian unidad de valor Constante
+					(UVC)</displayName>
+				<displayName count="other">Ecuadorian unidads de valor Constante
+					(UVC)</displayName>
 			</currency>
 			<currency type="EEK">
 				<displayName>Estonian Kroon</displayName>

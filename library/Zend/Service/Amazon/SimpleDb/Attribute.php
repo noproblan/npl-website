@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -21,33 +22,40 @@
  */
 
 /**
- * @category   Zend
- * @package    Zend_Service_Amazon
+ *
+ * @category Zend
+ * @package Zend_Service_Amazon
  * @subpackage SimpleDb
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Service_Amazon_SimpleDb_Attribute
 {
+
     protected $_itemName;
+
     protected $_name;
+
     protected $_values;
 
     /**
      * Constructor
      *
-     * @param  string $itemName
-     * @param  string $name
-     * @param  array $values
+     * @param string $itemName            
+     * @param string $name            
+     * @param array $values            
      * @return void
      */
-    function __construct($itemName, $name, $values)
+    function __construct ($itemName, $name, $values)
     {
         $this->_itemName = $itemName;
-        $this->_name     = $name;
-
-        if (!is_array($values)) {
-            $this->_values = array($values);
+        $this->_name = $name;
+        
+        if (! is_array($values)) {
+            $this->_values = array(
+                    $values
+            );
         } else {
             $this->_values = $values;
         }
@@ -68,7 +76,7 @@ class Zend_Service_Amazon_SimpleDb_Attribute
      *
      * @return array
      */
-    public function getValues()
+    public function getValues ()
     {
         return $this->_values;
     }
@@ -86,22 +94,24 @@ class Zend_Service_Amazon_SimpleDb_Attribute
     /**
      * Add value
      *
-     * @param  mixed $value
+     * @param mixed $value            
      * @return void
      */
-    public function addValue($value)
+    public function addValue ($value)
     {
         if (is_array($value)) {
-             $this->_values += $value;
+            $this->_values += $value;
         } else {
             $this->_values[] = $value;
         }
     }
 
-    public function setValues($values)
+    public function setValues ($values)
     {
-        if (!is_array($values)) {
-            $values = array($values);
+        if (! is_array($values)) {
+            $values = array(
+                    $values
+            );
         }
         $this->_values = $values;
     }

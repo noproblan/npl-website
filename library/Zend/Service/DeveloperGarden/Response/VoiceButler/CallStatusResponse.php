@@ -21,26 +21,30 @@
  */
 
 /**
+ *
  * @see Zend_Service_DeveloperGarden_Response_VoiceButler_VoiceButlerAbstract
  */
 require_once 'Zend/Service/DeveloperGarden/Response/VoiceButler/VoiceButlerAbstract.php';
 
 /**
- * @category   Zend
- * @package    Zend_Service
+ *
+ * @category Zend
+ * @package Zend_Service
  * @subpackage DeveloperGarden
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @author     Marco Kaiser
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @author Marco Kaiser
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
-class Zend_Service_DeveloperGarden_Response_VoiceButler_CallStatusResponse
-    extends Zend_Service_DeveloperGarden_Response_VoiceButler_VoiceButlerAbstract
+class Zend_Service_DeveloperGarden_Response_VoiceButler_CallStatusResponse extends Zend_Service_DeveloperGarden_Response_VoiceButler_VoiceButlerAbstract
 {
+
     /**
      * returns the session id
+     * 
      * @return string
      */
-    public function getSessionId()
+    public function getSessionId ()
     {
         if (isset($this->return->sessionId)) {
             return $this->return->sessionId;
@@ -53,7 +57,7 @@ class Zend_Service_DeveloperGarden_Response_VoiceButler_CallStatusResponse
      *
      * @return integer
      */
-    public function getConnectionTimeA()
+    public function getConnectionTimeA ()
     {
         if (isset($this->return->connectiontimea)) {
             return $this->return->connectiontimea;
@@ -66,7 +70,7 @@ class Zend_Service_DeveloperGarden_Response_VoiceButler_CallStatusResponse
      *
      * @return integer
      */
-    public function getConnectionTimeB()
+    public function getConnectionTimeB ()
     {
         if (isset($this->return->connectiontimeb)) {
             return $this->return->connectiontimeb;
@@ -79,7 +83,7 @@ class Zend_Service_DeveloperGarden_Response_VoiceButler_CallStatusResponse
      *
      * @return string
      */
-    public function getDescriptionA()
+    public function getDescriptionA ()
     {
         if (isset($this->return->descriptiona)) {
             return $this->return->descriptiona;
@@ -92,7 +96,7 @@ class Zend_Service_DeveloperGarden_Response_VoiceButler_CallStatusResponse
      *
      * @return string
      */
-    public function getDescriptionB()
+    public function getDescriptionB ()
     {
         if (isset($this->return->descriptionb)) {
             return $this->return->descriptionb;
@@ -105,7 +109,7 @@ class Zend_Service_DeveloperGarden_Response_VoiceButler_CallStatusResponse
      *
      * @return integer
      */
-    public function getReasonA()
+    public function getReasonA ()
     {
         if (isset($this->return->reasona)) {
             return $this->return->reasona;
@@ -118,7 +122,7 @@ class Zend_Service_DeveloperGarden_Response_VoiceButler_CallStatusResponse
      *
      * @return integer
      */
-    public function getReasonB()
+    public function getReasonB ()
     {
         if (isset($this->return->reasonb)) {
             return $this->return->reasonb;
@@ -131,7 +135,7 @@ class Zend_Service_DeveloperGarden_Response_VoiceButler_CallStatusResponse
      *
      * @return string
      */
-    public function getStateA()
+    public function getStateA ()
     {
         if (isset($this->return->statea)) {
             return $this->return->statea;
@@ -144,7 +148,7 @@ class Zend_Service_DeveloperGarden_Response_VoiceButler_CallStatusResponse
      *
      * @return string
      */
-    public function getStateB()
+    public function getStateB ()
     {
         if (isset($this->return->stateb)) {
             return $this->return->stateb;

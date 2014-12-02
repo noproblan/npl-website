@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -26,26 +27,38 @@
  * Interface for a wrapper across any PHP extension supporting arbitrary
  * precision maths.
  *
- * @category   Zend
- * @package    Zend_Crypt
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @category Zend
+ * @package Zend_Crypt
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 interface Zend_Crypt_Math_BigInteger_Interface
 {
 
-    public function init($operand, $base = 10);
-    public function add($left_operand, $right_operand);
-    public function subtract($left_operand, $right_operand);
-    public function compare($left_operand, $right_operand);
-    public function divide($left_operand, $right_operand);
-    public function modulus($left_operand, $modulus);
-    public function multiply($left_operand, $right_operand);
-    public function pow($left_operand, $right_operand);
-    public function powmod($left_operand, $right_operand, $modulus);
-    public function sqrt($operand);
-    public function binaryToInteger($operand);
-    public function integerToBinary($operand);
-    public function hexToDecimal($operand);
+    public function init ($operand, $base = 10);
 
+    public function add ($left_operand, $right_operand);
+
+    public function subtract ($left_operand, $right_operand);
+
+    public function compare ($left_operand, $right_operand);
+
+    public function divide ($left_operand, $right_operand);
+
+    public function modulus ($left_operand, $modulus);
+
+    public function multiply ($left_operand, $right_operand);
+
+    public function pow ($left_operand, $right_operand);
+
+    public function powmod ($left_operand, $right_operand, $modulus);
+
+    public function sqrt ($operand);
+
+    public function binaryToInteger ($operand);
+
+    public function integerToBinary ($operand);
+
+    public function hexToDecimal ($operand);
 }

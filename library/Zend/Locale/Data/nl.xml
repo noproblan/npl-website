@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <ldml>
 	<identity>
-		<version number="$Revision: 1.124 $"/>
-		<generation date="$Date: 2009/06/15 03:46:24 $"/>
-		<language type="nl"/>
+		<version number="$Revision: 1.124 $" />
+		<generation date="$Date: 2009/06/15 03:46:24 $" />
+		<language type="nl" />
 	</identity>
 	<localeDisplayNames>
 		<localeDisplayPattern>
@@ -899,7 +899,8 @@
 			<territory type="SZ">Swaziland</territory>
 			<territory type="TC">Turks- en Caicoseilanden</territory>
 			<territory type="TD">Tsjaad</territory>
-			<territory type="TF">Franse Gebieden in de zuidelijke Indische Oceaan</territory>
+			<territory type="TF">Franse Gebieden in de zuidelijke Indische
+				Oceaan</territory>
 			<territory type="TG">Togo</territory>
 			<territory type="TH">Thailand</territory>
 			<territory type="TJ">Tadzjikistan</territory>

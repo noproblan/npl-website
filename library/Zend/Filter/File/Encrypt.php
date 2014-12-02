@@ -20,6 +20,7 @@
  */
 
 /**
+ *
  * @see Zend_Filter_Encrypt
  */
 require_once 'Zend/Filter/Encrypt.php';
@@ -27,13 +28,15 @@ require_once 'Zend/Filter/Encrypt.php';
 /**
  * Encrypts a given file and stores the encrypted file content
  *
- * @category   Zend
- * @package    Zend_Filter
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @category Zend
+ * @package Zend_Filter
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Filter_File_Encrypt extends Zend_Filter_Encrypt
 {
+
     /**
      * New filename to set
      *
@@ -46,7 +49,7 @@ class Zend_Filter_File_Encrypt extends Zend_Filter_Encrypt
      *
      * @return string
      */
-    public function getFilename()
+    public function getFilename ()
     {
         return $this->_filename;
     }
@@ -54,10 +57,11 @@ class Zend_Filter_File_Encrypt extends Zend_Filter_Encrypt
     /**
      * Sets the new filename where the content will be stored
      *
-     * @param  string $filename (Optional) New filename to set
+     * @param string $filename
+     *            (Optional) New filename to set
      * @return Zend_Filter_File_Encryt
      */
-    public function setFilename($filename = null)
+    public function setFilename ($filename = null)
     {
         $this->_filename = $filename;
         return $this;
@@ -68,39 +72,44 @@ class Zend_Filter_File_Encrypt extends Zend_Filter_Encrypt
      *
      * Encrypts the file $value with the defined settings
      *
-     * @param  string $value Full path of file to change
-     * @return string The filename which has been set, or false when there were errors
+     * @param string $value
+     *            Full path of file to change
+     * @return string The filename which has been set, or false when there were
+     *         errors
      */
-    public function filter($value)
+    public function filter ($value)
     {
-        if (!file_exists($value)) {
+        if (! file_exists($value)) {
             require_once 'Zend/Filter/Exception.php';
             throw new Zend_Filter_Exception("File '$value' not found");
         }
-
-        if (!isset($this->_filename)) {
+        
+        if (! isset($this->_filename)) {
             $this->_filename = $value;
         }
-
-        if (file_exists($this->_filename) and !is_writable($this->_filename)) {
+        
+        if (file_exists($this->_filename) and ! is_writable($this->_filename)) {
             require_once 'Zend/Filter/Exception.php';
-            throw new Zend_Filter_Exception("File '{$this->_filename}' is not writable");
+            throw new Zend_Filter_Exception(
+                    "File '{$this->_filename}' is not writable");
         }
-
+        
         $content = file_get_contents($value);
-        if (!$content) {
+        if (! $content) {
             require_once 'Zend/Filter/Exception.php';
-            throw new Zend_Filter_Exception("Problem while reading file '$value'");
+            throw new Zend_Filter_Exception(
+                    "Problem while reading file '$value'");
         }
-
+        
         $encrypted = parent::filter($content);
-        $result    = file_put_contents($this->_filename, $encrypted);
-
-        if (!$result) {
+        $result = file_put_contents($this->_filename, $encrypted);
+        
+        if (! $result) {
             require_once 'Zend/Filter/Exception.php';
-            throw new Zend_Filter_Exception("Problem while writing file '{$this->_filename}'");
+            throw new Zend_Filter_Exception(
+                    "Problem while writing file '{$this->_filename}'");
         }
-
+        
         return $this->_filename;
     }
 }

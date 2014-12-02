@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -20,34 +21,38 @@
  * @version    $Id: Interface.php 23775 2011-03-01 17:25:24Z ralph $
  */
 
-
 /**
- * @category   Zend
- * @package    Zend_Search_Lucene
+ *
+ * @category Zend
+ * @package Zend_Search_Lucene
  * @subpackage Search
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 interface Zend_Search_Lucene_Search_Highlighter_Interface
 {
+
     /**
      * Set document for highlighting.
      *
-     * @param Zend_Search_Lucene_Document_Html $document
+     * @param Zend_Search_Lucene_Document_Html $document            
      */
-    public function setDocument(Zend_Search_Lucene_Document_Html $document);
+    public function setDocument (Zend_Search_Lucene_Document_Html $document);
 
     /**
      * Get document for highlighting.
      *
      * @return Zend_Search_Lucene_Document_Html $document
      */
-    public function getDocument();
+    public function getDocument ();
 
     /**
      * Highlight specified words (method is invoked once per subquery)
      *
-     * @param string|array $words  Words to highlight. They could be organized using the array or string.
+     * @param string|array $words
+     *            Words to highlight. They could be organized using the array or
+     *            string.
      */
-    public function highlight($words);
+    public function highlight ($words);
 }

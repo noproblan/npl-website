@@ -19,36 +19,39 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @version    $Id: Xml.php 23775 2011-03-01 17:25:24Z ralph $
  */
-
 require_once 'Zend/Tool/Project/Profile/FileParser/Interface.php';
 require_once 'Zend/Tool/Project/Context/Repository.php';
 require_once 'Zend/Tool/Project/Profile.php';
 require_once 'Zend/Tool/Project/Profile/Resource.php';
 
 /**
- * @category   Zend
- * @package    Zend_Tool
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ *
+ * @category Zend
+ * @package Zend_Tool
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
-class Zend_Tool_Project_Profile_FileParser_Xml implements Zend_Tool_Project_Profile_FileParser_Interface
+class Zend_Tool_Project_Profile_FileParser_Xml implements 
+        Zend_Tool_Project_Profile_FileParser_Interface
 {
 
     /**
+     *
      * @var Zend_Tool_Project_Profile
      */
     protected $_profile = null;
 
     /**
+     *
      * @var Zend_Tool_Project_Context_Repository
      */
     protected $_contextRepository = null;
 
     /**
      * __construct()
-     *
      */
-    public function __construct()
+    public function __construct ()
     {
         $this->_contextRepository = Zend_Tool_Project_Context_Repository::getInstance();
     }
@@ -58,33 +61,33 @@ class Zend_Tool_Project_Profile_FileParser_Xml implements Zend_Tool_Project_Prof
      *
      * create an xml string from the provided profile
      *
-     * @param Zend_Tool_Project_Profile $profile
+     * @param Zend_Tool_Project_Profile $profile            
      * @return string
      */
-    public function serialize(Zend_Tool_Project_Profile $profile)
+    public function serialize (Zend_Tool_Project_Profile $profile)
     {
-
         $profile = clone $profile;
-
+        
         $this->_profile = $profile;
         $xmlElement = new SimpleXMLElement('<projectProfile />');
-
+        
         if ($profile->hasAttribute('type')) {
             $xmlElement->addAttribute('type', $profile->getAttribute('type'));
         }
-
+        
         if ($profile->hasAttribute('version')) {
-            $xmlElement->addAttribute('version', $profile->getAttribute('version'));
+            $xmlElement->addAttribute('version', 
+                    $profile->getAttribute('version'));
         }
-
+        
         self::_serializeRecurser($profile, $xmlElement);
-
+        
         $doc = new DOMDocument('1.0');
         $doc->formatOutput = true;
         $domnode = dom_import_simplexml($xmlElement);
         $domnode = $doc->importNode($domnode, true);
         $domnode = $doc->appendChild($domnode);
-
+        
         return $doc->saveXML();
     }
 
@@ -94,40 +97,44 @@ class Zend_Tool_Project_Profile_FileParser_Xml implements Zend_Tool_Project_Prof
      * Create a structure in the object $profile from the structure specficied
      * in the xml string provided
      *
-     * @param string xml data
-     * @param Zend_Tool_Project_Profile The profile to use as the top node
+     * @param
+     *            string xml data
+     * @param
+     *            Zend_Tool_Project_Profile The profile to use as the top node
      * @return Zend_Tool_Project_Profile
      */
-    public function unserialize($data, Zend_Tool_Project_Profile $profile)
+    public function unserialize ($data, Zend_Tool_Project_Profile $profile)
     {
         if ($data == null) {
             throw new Exception('contents not available to unserialize.');
         }
-
+        
         $this->_profile = $profile;
-
+        
         $xmlDataIterator = new SimpleXMLIterator($data);
-
+        
         if ($xmlDataIterator->getName() != 'projectProfile') {
             throw new Exception('Profiles must start with a projectProfile node');
         }
-
+        
         if (isset($xmlDataIterator['type'])) {
-            $this->_profile->setAttribute('type', (string) $xmlDataIterator['type']);
+            $this->_profile->setAttribute('type', 
+                    (string) $xmlDataIterator['type']);
         }
-
+        
         if (isset($xmlDataIterator['version'])) {
-            $this->_profile->setAttribute('version', (string) $xmlDataIterator['version']);
+            $this->_profile->setAttribute('version', 
+                    (string) $xmlDataIterator['version']);
         }
-
+        
         // start un-serialization of the xml doc
         $this->_unserializeRecurser($xmlDataIterator);
-
-        // contexts should be initialized after the unwinding of the profile structure
+        
+        // contexts should be initialized after the unwinding of the profile
+        // structure
         $this->_lazyLoadContexts();
-
+        
         return $this->_profile;
-
     }
 
     /**
@@ -136,45 +143,42 @@ class Zend_Tool_Project_Profile_FileParser_Xml implements Zend_Tool_Project_Prof
      * This method will be used to traverse the depths of the structure
      * when *serializing* an xml structure into a string
      *
-     * @param array $resources
-     * @param SimpleXmlElement $xmlNode
+     * @param array $resources            
+     * @param SimpleXmlElement $xmlNode            
      */
-    protected function _serializeRecurser($resources, SimpleXmlElement $xmlNode)
+    protected function _serializeRecurser ($resources, SimpleXmlElement $xmlNode)
     {
-        // @todo find a better way to handle concurrency.. if no clone, _position in node gets messed up
-        //if ($resources instanceof Zend_Tool_Project_Profile_Resource) {
-        //    $resources = clone $resources;
-        //}
-
+        // @todo find a better way to handle concurrency.. if no clone,
+        // _position in node gets messed up
+        // if ($resources instanceof Zend_Tool_Project_Profile_Resource) {
+        // $resources = clone $resources;
+        // }
         foreach ($resources as $resource) {
-
+            
             if ($resource->isDeleted()) {
                 continue;
             }
-
+            
             $resourceName = $resource->getContext()->getName();
             $resourceName[0] = strtolower($resourceName[0]);
-
+            
             $newNode = $xmlNode->addChild($resourceName);
-
-            //$reflectionClass = new ReflectionClass($resource->getContext());
-
+            
+            // $reflectionClass = new ReflectionClass($resource->getContext());
+            
             if ($resource->isEnabled() == false) {
                 $newNode->addAttribute('enabled', 'false');
             }
-
+            
             foreach ($resource->getPersistentAttributes() as $paramName => $paramValue) {
                 $newNode->addAttribute($paramName, $paramValue);
             }
-
+            
             if ($resource->hasChildren()) {
                 self::_serializeRecurser($resource, $newNode);
             }
-
         }
-
     }
-
 
     /**
      * _unserializeRecurser()
@@ -182,18 +186,18 @@ class Zend_Tool_Project_Profile_FileParser_Xml implements Zend_Tool_Project_Prof
      * This method will be used to traverse the depths of the structure
      * as needed to *unserialize* the profile from an xmlIterator
      *
-     * @param SimpleXMLIterator $xmlIterator
-     * @param Zend_Tool_Project_Profile_Resource $resource
+     * @param SimpleXMLIterator $xmlIterator            
+     * @param Zend_Tool_Project_Profile_Resource $resource            
      */
-    protected function _unserializeRecurser(SimpleXMLIterator $xmlIterator, Zend_Tool_Project_Profile_Resource $resource = null)
+    protected function _unserializeRecurser (SimpleXMLIterator $xmlIterator, 
+            Zend_Tool_Project_Profile_Resource $resource = null)
     {
-
         foreach ($xmlIterator as $resourceName => $resourceData) {
-
+            
             $contextName = $resourceName;
             $subResource = new Zend_Tool_Project_Profile_Resource($contextName);
             $subResource->setProfile($this->_profile);
-
+            
             if ($resourceAttributes = $resourceData->attributes()) {
                 $attributes = array();
                 foreach ($resourceAttributes as $attrName => $attrValue) {
@@ -201,19 +205,21 @@ class Zend_Tool_Project_Profile_FileParser_Xml implements Zend_Tool_Project_Prof
                 }
                 $subResource->setAttributes($attributes);
             }
-
+            
             if ($resource) {
                 $resource->append($subResource, false);
             } else {
                 $this->_profile->append($subResource);
             }
-
-            if ($this->_contextRepository->isOverwritableContext($contextName) == false) {
+            
+            if ($this->_contextRepository->isOverwritableContext($contextName) ==
+                     false) {
                 $subResource->initializeContext();
             }
-
+            
             if ($xmlIterator->hasChildren()) {
-                self::_unserializeRecurser($xmlIterator->getChildren(), $subResource);
+                self::_unserializeRecurser($xmlIterator->getChildren(), 
+                        $subResource);
             }
         }
     }
@@ -222,19 +228,18 @@ class Zend_Tool_Project_Profile_FileParser_Xml implements Zend_Tool_Project_Prof
      * _lazyLoadContexts()
      *
      * This method will call initializeContext on the resources in a profile
+     * 
      * @todo determine if this method belongs inside the profile
-     *
+     *      
      */
-    protected function _lazyLoadContexts()
+    protected function _lazyLoadContexts ()
     {
-
         foreach ($this->_profile as $topResource) {
-            $rii = new RecursiveIteratorIterator($topResource, RecursiveIteratorIterator::SELF_FIRST);
+            $rii = new RecursiveIteratorIterator($topResource, 
+                    RecursiveIteratorIterator::SELF_FIRST);
             foreach ($rii as $resource) {
                 $resource->initializeContext();
             }
         }
-
     }
-
 }

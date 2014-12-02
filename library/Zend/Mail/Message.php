@@ -19,7 +19,6 @@
  * @version    $Id: Message.php 24163 2011-06-29 15:24:10Z adamlundrigan $
  */
 
-
 /**
  * Zend_Mail_Part
  */
@@ -31,15 +30,20 @@ require_once 'Zend/Mail/Part.php';
 require_once 'Zend/Mail/Message/Interface.php';
 
 /**
- * @category   Zend
- * @package    Zend_Mail
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ *
+ * @category Zend
+ * @package Zend_Mail
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
-class Zend_Mail_Message extends Zend_Mail_Part implements Zend_Mail_Message_Interface
+class Zend_Mail_Message extends Zend_Mail_Part implements 
+        Zend_Mail_Message_Interface
 {
+
     /**
      * flags for this message
+     * 
      * @var array
      */
     protected $_flags = array();
@@ -47,20 +51,24 @@ class Zend_Mail_Message extends Zend_Mail_Part implements Zend_Mail_Message_Inte
     /**
      * Public constructor
      *
-     * In addition to the parameters of Zend_Mail_Part::__construct() this constructor supports:
-     * - file  filename or file handle of a file with raw message content
-     * - flags array with flags for message, keys are ignored, use constants defined in Zend_Mail_Storage
+     * In addition to the parameters of Zend_Mail_Part::__construct() this
+     * constructor supports:
+     * - file filename or file handle of a file with raw message content
+     * - flags array with flags for message, keys are ignored, use constants
+     * defined in Zend_Mail_Storage
      *
-     * @param  string $rawMessage  full message with or without headers
+     * @param string $rawMessage
+     *            full message with or without headers
      * @throws Zend_Mail_Exception
      */
-    public function __construct(array $params)
+    public function __construct (array $params)
     {
         if (isset($params['file'])) {
-            if (!is_resource($params['file'])) {
+            if (! is_resource($params['file'])) {
                 $params['raw'] = @file_get_contents($params['file']);
                 if ($params['raw'] === false) {
                     /**
+                     *
                      * @see Zend_Mail_Exception
                      */
                     require_once 'Zend/Mail/Exception.php';
@@ -70,12 +78,13 @@ class Zend_Mail_Message extends Zend_Mail_Part implements Zend_Mail_Message_Inte
                 $params['raw'] = stream_get_contents($params['file']);
             }
         }
-
-        if (!empty($params['flags'])) {
+        
+        if (! empty($params['flags'])) {
             // set key and value to the same value for easy lookup
-            $this->_flags = array_merge($this->_flags, array_combine($params['flags'],$params['flags']));
+            $this->_flags = array_merge($this->_flags, 
+                    array_combine($params['flags'], $params['flags']));
         }
-
+        
         parent::__construct($params);
     }
 
@@ -84,7 +93,7 @@ class Zend_Mail_Message extends Zend_Mail_Part implements Zend_Mail_Message_Inte
      *
      * @return string toplines
      */
-    public function getTopLines()
+    public function getTopLines ()
     {
         return $this->_topLines;
     }
@@ -92,10 +101,11 @@ class Zend_Mail_Message extends Zend_Mail_Part implements Zend_Mail_Message_Inte
     /**
      * check if flag is set
      *
-     * @param mixed $flag a flag name, use constants defined in Zend_Mail_Storage
+     * @param mixed $flag
+     *            a flag name, use constants defined in Zend_Mail_Storage
      * @return bool true if set, otherwise false
      */
-    public function hasFlag($flag)
+    public function hasFlag ($flag)
     {
         return isset($this->_flags[$flag]);
     }
@@ -103,9 +113,10 @@ class Zend_Mail_Message extends Zend_Mail_Part implements Zend_Mail_Message_Inte
     /**
      * get all set flags
      *
-     * @return array array with flags, key and value are the same for easy lookup
+     * @return array array with flags, key and value are the same for easy
+     *         lookup
      */
-    public function getFlags()
+    public function getFlags ()
     {
         return $this->_flags;
     }

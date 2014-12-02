@@ -22,6 +22,7 @@
  */
 
 /**
+ *
  * @see Zend_Gdata_EntryAtom
  */
 require_once 'Zend/Gdata/Entry.php';
@@ -30,11 +31,12 @@ require_once 'Zend/Gdata/Entry.php';
  * Represents a Documents List entry in the Documents List data API meta feed
  * of a user's documents.
  *
- * @category   Zend
- * @package    Zend_Gdata
+ * @category Zend
+ * @package Zend_Gdata
  * @subpackage Docs
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Gdata_Docs_DocumentListEntry extends Zend_Gdata_Entry
 {
@@ -42,13 +44,13 @@ class Zend_Gdata_Docs_DocumentListEntry extends Zend_Gdata_Entry
     /**
      * Create a new instance of an entry representing a document.
      *
-     * @param DOMElement $element (optional) DOMElement from which this
-     *          object should be constructed.
+     * @param DOMElement $element
+     *            (optional) DOMElement from which this
+     *            object should be constructed.
      */
-    public function __construct($element = null)
+    public function __construct ($element = null)
     {
         $this->registerAllNamespaces(Zend_Gdata_Docs::$namespaces);
         parent::__construct($element);
     }
-
 }

@@ -20,26 +20,30 @@
  */
 
 /**
+ *
  * @see Zend_Filter_StringToLower
  */
 require_once 'Zend/Filter/StringToLower.php';
 
 /**
- * @category   Zend
- * @package    Zend_Filter
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ *
+ * @category Zend
+ * @package Zend_Filter
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Filter_File_LowerCase extends Zend_Filter_StringToLower
 {
+
     /**
      * Adds options to the filter at initiation
      *
-     * @param string $options
+     * @param string $options            
      */
-    public function __construct($options = null)
+    public function __construct ($options = null)
     {
-        if (!empty($options)) {
+        if (! empty($options)) {
             $this->setEncoding($options);
         }
     }
@@ -49,36 +53,39 @@ class Zend_Filter_File_LowerCase extends Zend_Filter_StringToLower
      *
      * Does a lowercase on the content of the given file
      *
-     * @param  string $value Full path of file to change
+     * @param string $value
+     *            Full path of file to change
      * @return string The given $value
      * @throws Zend_Filter_Exception
      */
-    public function filter($value)
+    public function filter ($value)
     {
-        if (!file_exists($value)) {
+        if (! file_exists($value)) {
             require_once 'Zend/Filter/Exception.php';
             throw new Zend_Filter_Exception("File '$value' not found");
         }
-
-        if (!is_writable($value)) {
+        
+        if (! is_writable($value)) {
             require_once 'Zend/Filter/Exception.php';
             throw new Zend_Filter_Exception("File '$value' is not writable");
         }
-
+        
         $content = file_get_contents($value);
-        if (!$content) {
+        if (! $content) {
             require_once 'Zend/Filter/Exception.php';
-            throw new Zend_Filter_Exception("Problem while reading file '$value'");
+            throw new Zend_Filter_Exception(
+                    "Problem while reading file '$value'");
         }
-
+        
         $content = parent::filter($content);
-        $result  = file_put_contents($value, $content);
-
-        if (!$result) {
+        $result = file_put_contents($value, $content);
+        
+        if (! $result) {
             require_once 'Zend/Filter/Exception.php';
-            throw new Zend_Filter_Exception("Problem while writing file '$value'");
+            throw new Zend_Filter_Exception(
+                    "Problem while writing file '$value'");
         }
-
+        
         return $value;
     }
 }

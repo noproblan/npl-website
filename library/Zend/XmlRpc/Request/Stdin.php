@@ -27,19 +27,23 @@ require_once 'Zend/XmlRpc/Request.php';
  * XmlRpc Request object -- Request via STDIN
  *
  * Extends {@link Zend_XmlRpc_Request} to accept a request via STDIN. Request is
- * built at construction time using data from STDIN; if no data is available, the
+ * built at construction time using data from STDIN; if no data is available,
+ * the
  * request is declared a fault.
  *
  * @category Zend
- * @package  Zend_XmlRpc
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @package Zend_XmlRpc
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  * @version $Id: Stdin.php 23775 2011-03-01 17:25:24Z ralph $
  */
 class Zend_XmlRpc_Request_Stdin extends Zend_XmlRpc_Request
 {
+
     /**
      * Raw XML as received via request
+     * 
      * @var string
      */
     protected $_xml;
@@ -53,22 +57,22 @@ class Zend_XmlRpc_Request_Stdin extends Zend_XmlRpc_Request
      *
      * @return void
      */
-    public function __construct()
+    public function __construct ()
     {
         $fh = fopen('php://stdin', 'r');
-        if (!$fh) {
+        if (! $fh) {
             $this->_fault = new Zend_XmlRpc_Server_Exception(630);
             return;
         }
-
+        
         $xml = '';
-        while (!feof($fh)) {
+        while (! feof($fh)) {
             $xml .= fgets($fh);
         }
         fclose($fh);
-
+        
         $this->_xml = $xml;
-
+        
         $this->loadXml($xml);
     }
 
@@ -77,7 +81,7 @@ class Zend_XmlRpc_Request_Stdin extends Zend_XmlRpc_Request
      *
      * @return string
      */
-    public function getRawRequest()
+    public function getRawRequest ()
     {
         return $this->_xml;
     }

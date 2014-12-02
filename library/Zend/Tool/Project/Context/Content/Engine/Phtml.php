@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -26,20 +27,23 @@
  * A profile is a hierarchical set of resources that keep track of
  * items within a specific project.
  *
- * @category   Zend
- * @package    Zend_Tool
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @category Zend
+ * @package Zend_Tool
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Tool_Project_Context_Content_Engine_Phtml
 {
 
     /**
+     *
      * @var Zend_Tool_Framework_Client_Storage
      */
     protected $_storage = null;
 
     /**
+     *
      * @var string
      */
     protected $_contentPrefix = null;
@@ -47,10 +51,11 @@ class Zend_Tool_Project_Context_Content_Engine_Phtml
     /**
      * __construct()
      *
-     * @param Zend_Tool_Framework_Client_Storage $storage
-     * @param string $contentPrefix
+     * @param Zend_Tool_Framework_Client_Storage $storage            
+     * @param string $contentPrefix            
      */
-    public function __construct(Zend_Tool_Framework_Client_Storage $storage, $contentPrefix)
+    public function __construct (Zend_Tool_Framework_Client_Storage $storage, 
+            $contentPrefix)
     {
         $this->_storage = $storage;
         $this->_contentPrefix = $contentPrefix;
@@ -59,31 +64,35 @@ class Zend_Tool_Project_Context_Content_Engine_Phtml
     /**
      * hasContext()
      *
-     * @param Zend_Tool_Project_Context_Interface  $context
-     * @param string $method
+     * @param Zend_Tool_Project_Context_Interface $context            
+     * @param string $method            
      * @return string
      */
-    public function hasContent(Zend_Tool_Project_Context_Interface $context, $method)
+    public function hasContent (Zend_Tool_Project_Context_Interface $context, 
+            $method)
     {
-        return $this->_storage->has($this->_contentPrefix . '/' . $context . '/' . $method . '.phtml');
+        return $this->_storage->has(
+                $this->_contentPrefix . '/' . $context . '/' . $method . '.phtml');
     }
 
     /**
      * getContent()
      *
-     * @param Zend_Tool_Project_Context_Interface $context
-     * @param string $method
-     * @param mixed $parameters
+     * @param Zend_Tool_Project_Context_Interface $context            
+     * @param string $method            
+     * @param mixed $parameters            
      */
-    public function getContent(Zend_Tool_Project_Context_Interface $context, $method, $parameters)
+    public function getContent (Zend_Tool_Project_Context_Interface $context, 
+            $method, $parameters)
     {
-        $streamUri = $this->_storage->getStreamUri($this->_contentPrefix . '/' . $context->getName() . '/' . $method . '.phtml');
-
+        $streamUri = $this->_storage->getStreamUri(
+                $this->_contentPrefix . '/' . $context->getName() . '/' . $method .
+                         '.phtml');
+        
         ob_start();
         include $streamUri;
         $content = ob_get_clean();
-
+        
         return $content;
     }
-
 }

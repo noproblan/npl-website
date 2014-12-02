@@ -19,23 +19,29 @@
  * @version    $Id: Abstract.php 23775 2011-03-01 17:25:24Z ralph $
  */
 
-/** @see Zend_Auth_Adapter_Interface */
+/**
+ * @see Zend_Auth_Adapter_Interface
+ */
 require_once 'Zend/Auth/Adapter/Interface.php';
 
 /**
  * Base abstract class for AMF authentication implementation
  *
- * @package    Zend_Amf
+ * @package Zend_Amf
  * @subpackage Auth
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 abstract class Zend_Amf_Auth_Abstract implements Zend_Auth_Adapter_Interface
 {
+
     protected $_username;
+
     protected $_password;
 
-    public function setCredentials($username, $password) {
+    public function setCredentials ($username, $password)
+    {
         $this->_username = $username;
         $this->_password = $password;
     }

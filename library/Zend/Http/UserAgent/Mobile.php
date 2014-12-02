@@ -18,17 +18,17 @@
  * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
-
 require_once 'Zend/Http/UserAgent/AbstractDevice.php';
 
 /**
  * Mobile browser type matcher
  *
- * @category   Zend
- * @package    Zend_Http
+ * @category Zend
+ * @package Zend_Http
  * @subpackage UserAgent
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Http_UserAgent_Mobile extends Zend_Http_UserAgent_AbstractDevice
 {
@@ -43,136 +43,137 @@ class Zend_Http_UserAgent_Mobile extends Zend_Http_UserAgent_AbstractDevice
      * @var array
      */
     protected static $_uaSignatures = array(
-        'iphone',
-        'ipod',
-        'ipad',
-        'android',
-        'blackberry',
-        'opera mini',
-        'opera mobi',
-        'palm',
-        'palmos',
-        'elaine',
-        'windows ce',
-        'icab',
-        '_mms',
-        'ahong',
-        'archos',
-        'armv',
-        'astel',
-        'avantgo',
-        'benq',
-        'blazer',
-        'brew',
-        'com2',
-        'compal',
-        'danger',
-        'pocket',
-        'docomo',
-        'epoc',
-        'ericsson',
-        'eudoraweb',
-        'hiptop',
-        'htc-',
-        'htc_',
-        'iemobile',
-        'iris',
-        'j-phone',
-        'kddi',
-        'kindle',
-        'lg ',
-        'lg-',
-        'lg/',
-        'lg;lx',
-        'lge vx',
-        'lge',
-        'lge-',
-        'lge-cx',
-        'lge-lx',
-        'lge-mx',
-        'linux armv',
-        'maemo',
-        'midp',
-        'mini 9.5',
-        'minimo',
-        'mob-x',
-        'mobi',
-        'mobile',
-        'mobilephone',
-        'mot 24',
-        'mot-',
-        'motorola',
-        'n410',
-        'netfront',
-        'nintendo wii',
-        'nintendo',
-        'nitro',
-        'nokia',
-        'novarra-vision',
-        'nuvifone',
-        'openweb',
-        'opwv',
-        'palmsource',
-        'pdxgw',
-        'phone',
-        'playstation',
-        'polaris',
-        'portalmmm',
-        'qt embedded',
-        'reqwirelessweb',
-        'sagem',
-        'sam-r',
-        'samsu',
-        'samsung',
-        'sec-',
-        'sec-sgh',
-        'semc-browser',
-        'series60',
-        'series70',
-        'series80',
-        'series90',
-        'sharp',
-        'sie-m',
-        'sie-s',
-        'smartphone',
-        'sony cmd',
-        'sonyericsson',
-        'sprint',
-        'spv',
-        'symbian os',
-        'symbian',
-        'symbianos',
-        'telco',
-        'teleca',
-        'treo',
-        'up.browser',
-        'up.link',
-        'vodafone',
-        'vodaphone',
-        'webos',
-        'wml',
-        'windows phone os 7',
-        'wireless',
-        'wm5 pie',
-        'wms pie',
-        'xiino',
-        'wap',
-        'up/',
-        'psion',
-        'j2me',
-        'klondike',
-        'kbrowser'
+            'iphone',
+            'ipod',
+            'ipad',
+            'android',
+            'blackberry',
+            'opera mini',
+            'opera mobi',
+            'palm',
+            'palmos',
+            'elaine',
+            'windows ce',
+            'icab',
+            '_mms',
+            'ahong',
+            'archos',
+            'armv',
+            'astel',
+            'avantgo',
+            'benq',
+            'blazer',
+            'brew',
+            'com2',
+            'compal',
+            'danger',
+            'pocket',
+            'docomo',
+            'epoc',
+            'ericsson',
+            'eudoraweb',
+            'hiptop',
+            'htc-',
+            'htc_',
+            'iemobile',
+            'iris',
+            'j-phone',
+            'kddi',
+            'kindle',
+            'lg ',
+            'lg-',
+            'lg/',
+            'lg;lx',
+            'lge vx',
+            'lge',
+            'lge-',
+            'lge-cx',
+            'lge-lx',
+            'lge-mx',
+            'linux armv',
+            'maemo',
+            'midp',
+            'mini 9.5',
+            'minimo',
+            'mob-x',
+            'mobi',
+            'mobile',
+            'mobilephone',
+            'mot 24',
+            'mot-',
+            'motorola',
+            'n410',
+            'netfront',
+            'nintendo wii',
+            'nintendo',
+            'nitro',
+            'nokia',
+            'novarra-vision',
+            'nuvifone',
+            'openweb',
+            'opwv',
+            'palmsource',
+            'pdxgw',
+            'phone',
+            'playstation',
+            'polaris',
+            'portalmmm',
+            'qt embedded',
+            'reqwirelessweb',
+            'sagem',
+            'sam-r',
+            'samsu',
+            'samsung',
+            'sec-',
+            'sec-sgh',
+            'semc-browser',
+            'series60',
+            'series70',
+            'series80',
+            'series90',
+            'sharp',
+            'sie-m',
+            'sie-s',
+            'smartphone',
+            'sony cmd',
+            'sonyericsson',
+            'sprint',
+            'spv',
+            'symbian os',
+            'symbian',
+            'symbianos',
+            'telco',
+            'teleca',
+            'treo',
+            'up.browser',
+            'up.link',
+            'vodafone',
+            'vodaphone',
+            'webos',
+            'wml',
+            'windows phone os 7',
+            'wireless',
+            'wm5 pie',
+            'wms pie',
+            'xiino',
+            'wap',
+            'up/',
+            'psion',
+            'j2me',
+            'klondike',
+            'kbrowser'
     );
 
     /**
+     *
      * @var array
      */
     protected static $_haTerms = array(
-        'midp',
-        'wml',
-        'vnd.rim',
-        'vnd.wap',
-        'j2me',
+            'midp',
+            'wml',
+            'vnd.rim',
+            'vnd.wap',
+            'j2me'
     );
 
     /**
@@ -181,142 +182,146 @@ class Zend_Http_UserAgent_Mobile extends Zend_Http_UserAgent_AbstractDevice
      * @var array
      */
     protected static $_uaBegin = array(
-        'w3c ',
-        'acs-',
-        'alav',
-        'alca',
-        'amoi',
-        'audi',
-        'avan',
-        'benq',
-        'bird',
-        'blac',
-        'blaz',
-        'brew',
-        'cell',
-        'cldc',
-        'cmd-',
-        'dang',
-        'doco',
-        'eric',
-        'hipt',
-        'inno',
-        'ipaq',
-        'java',
-        'jigs',
-        'kddi',
-        'keji',
-        'leno',
-        'lg-c',
-        'lg-d',
-        'lg-g',
-        'lge-',
-        'maui',
-        'maxo',
-        'midp',
-        'mits',
-        'mmef',
-        'mobi',
-        'mot-',
-        'moto',
-        'mwbp',
-        'nec-',
-        'newt',
-        'noki',
-        'palm',
-        'pana',
-        'pant',
-        'phil',
-        'play',
-        'port',
-        'prox',
-        'qwap',
-        'sage',
-        'sams',
-        'sany',
-        'sch-',
-        'sec-',
-        'send',
-        'seri',
-        'sgh-',
-        'shar',
-        'sie-',
-        'siem',
-        'smal',
-        'smar',
-        'sony',
-        'sph-',
-        'symb',
-        't-mo',
-        'teli',
-        'tim-',
-        'tosh',
-        'tsm-',
-        'upg1',
-        'upsi',
-        'vk-v',
-        'voda',
-        'wap-',
-        'wapa',
-        'wapi',
-        'wapp',
-        'wapr',
-        'webc',
-        'winw',
-        'winw',
-        'xda',
-        'xda-',
+            'w3c ',
+            'acs-',
+            'alav',
+            'alca',
+            'amoi',
+            'audi',
+            'avan',
+            'benq',
+            'bird',
+            'blac',
+            'blaz',
+            'brew',
+            'cell',
+            'cldc',
+            'cmd-',
+            'dang',
+            'doco',
+            'eric',
+            'hipt',
+            'inno',
+            'ipaq',
+            'java',
+            'jigs',
+            'kddi',
+            'keji',
+            'leno',
+            'lg-c',
+            'lg-d',
+            'lg-g',
+            'lge-',
+            'maui',
+            'maxo',
+            'midp',
+            'mits',
+            'mmef',
+            'mobi',
+            'mot-',
+            'moto',
+            'mwbp',
+            'nec-',
+            'newt',
+            'noki',
+            'palm',
+            'pana',
+            'pant',
+            'phil',
+            'play',
+            'port',
+            'prox',
+            'qwap',
+            'sage',
+            'sams',
+            'sany',
+            'sch-',
+            'sec-',
+            'send',
+            'seri',
+            'sgh-',
+            'shar',
+            'sie-',
+            'siem',
+            'smal',
+            'smar',
+            'sony',
+            'sph-',
+            'symb',
+            't-mo',
+            'teli',
+            'tim-',
+            'tosh',
+            'tsm-',
+            'upg1',
+            'upsi',
+            'vk-v',
+            'voda',
+            'wap-',
+            'wapa',
+            'wapi',
+            'wapp',
+            'wapr',
+            'webc',
+            'winw',
+            'winw',
+            'xda',
+            'xda-'
     );
 
     /**
      * Comparison of the UserAgent chain and User Agent signatures
      *
-     * @param  string $userAgent User Agent chain
-     * @param  array $server $_SERVER like param
+     * @param string $userAgent
+     *            User Agent chain
+     * @param array $server
+     *            $_SERVER like param
      * @return bool
      */
-    public static function match($userAgent, $server)
+    public static function match ($userAgent, $server)
     {
-        //  To have a quick identification, try light-weight tests first
+        // To have a quick identification, try light-weight tests first
         if (isset($server['all_http'])) {
-            if (strpos(strtolower(str_replace(' ', '', $server['all_http'])), 'operam') !== false) {
+            if (strpos(strtolower(str_replace(' ', '', $server['all_http'])), 
+                    'operam') !== false) {
                 // Opera Mini or Opera Mobi
                 return true;
             }
         }
-
-        if (isset($server['http_x_wap_profile']) || isset($server['http_profile'])) {
+        
+        if (isset($server['http_x_wap_profile']) ||
+                 isset($server['http_profile'])) {
             return true;
         }
-
+        
         if (isset($server['http_accept'])) {
-            if (self::_matchAgentAgainstSignatures($server['http_accept'], self::$_haTerms)) {
+            if (self::_matchAgentAgainstSignatures($server['http_accept'], 
+                    self::$_haTerms)) {
                 return true;
             }
         }
-
+        
         if (self::userAgentStart($userAgent)) {
             return true;
         }
-
+        
         if (self::_matchAgentAgainstSignatures($userAgent, self::$_uaSignatures)) {
             return true;
         }
-
+        
         return false;
     }
 
     /**
      * Retrieve beginning clause of user agent
      *
-     * @param  string $userAgent
+     * @param string $userAgent            
      * @return string
      */
-    public static function userAgentStart($userAgent)
+    public static function userAgentStart ($userAgent)
     {
-
         $mobile_ua = strtolower(substr($userAgent, 0, 4));
-
+        
         return (in_array($mobile_ua, self::$_uaBegin));
     }
 
@@ -325,11 +330,12 @@ class Zend_Http_UserAgent_Mobile extends Zend_Http_UserAgent_AbstractDevice
      *
      * @return void
      */
-    public function __construct($userAgent = null, array $server = array(), array $config = array())
+    public function __construct ($userAgent = null, array $server = array(), 
+            array $config = array())
     {
         // For mobile detection, an adapter must be defined
         if (empty($config['mobile']['features'])) {
-            $config['mobile']['features']['path']      = self::DEFAULT_FEATURES_ADAPTER_PATH;
+            $config['mobile']['features']['path'] = self::DEFAULT_FEATURES_ADAPTER_PATH;
             $config['mobile']['features']['classname'] = self::DEFAULT_FEATURES_ADAPTER_CLASSNAME;
         }
         parent::__construct($userAgent, $server, $config);
@@ -340,7 +346,7 @@ class Zend_Http_UserAgent_Mobile extends Zend_Http_UserAgent_AbstractDevice
      *
      * @return string
      */
-    public function getType()
+    public function getType ()
     {
         return 'mobile';
     }
@@ -350,33 +356,36 @@ class Zend_Http_UserAgent_Mobile extends Zend_Http_UserAgent_AbstractDevice
      *
      * @return string
      */
-    protected function _defineFeatures()
+    protected function _defineFeatures ()
     {
         $this->setFeature('is_wireless_device', false, 'product_info');
-
+        
         parent::_defineFeatures();
-
+        
         if (isset($this->_aFeatures["mobile_browser"])) {
-            $this->setFeature("browser_name", $this->_aFeatures["mobile_browser"]);
+            $this->setFeature("browser_name", 
+                    $this->_aFeatures["mobile_browser"]);
             $this->_browser = $this->_aFeatures["mobile_browser"];
         }
         if (isset($this->_aFeatures["mobile_browser_version"])) {
-            $this->setFeature("browser_version", $this->_aFeatures["mobile_browser_version"]);
+            $this->setFeature("browser_version", 
+                    $this->_aFeatures["mobile_browser_version"]);
             $this->_browserVersion = $this->_aFeatures["mobile_browser_version"];
         }
-
+        
         // markup
-        if ($this->getFeature('device_os') == 'iPhone OS'
-            || $this->getFeature('device_os_token') == 'iPhone OS'
-        ) {
+        if ($this->getFeature('device_os') == 'iPhone OS' ||
+                 $this->getFeature('device_os_token') == 'iPhone OS') {
             $this->setFeature('markup', 'iphone');
         } else {
-            $this->setFeature('markup', $this->getMarkupLanguage($this->getFeature('preferred_markup')));
+            $this->setFeature('markup', 
+                    $this->getMarkupLanguage(
+                            $this->getFeature('preferred_markup')));
         }
-
+        
         // image format
         $this->_images = array();
-
+        
         if ($this->getFeature('png')) {
             $this->_images[] = 'png';
         }
@@ -389,7 +398,7 @@ class Zend_Http_UserAgent_Mobile extends Zend_Http_UserAgent_AbstractDevice
         if ($this->getFeature('wbmp')) {
             $this->_images[] = 'wbmp';
         }
-
+        
         return $this->_aFeatures;
     }
 
@@ -399,26 +408,27 @@ class Zend_Http_UserAgent_Mobile extends Zend_Http_UserAgent_AbstractDevice
      * @access public
      * @return __TYPE__
      */
-    public function getMarkupLanguage($preferredMarkup = null)
+    public function getMarkupLanguage ($preferredMarkup = null)
     {
         $return = '';
         switch ($preferredMarkup) {
             case 'wml_1_1':
             case 'wml_1_2':
             case 'wml_1_3':
-                $return = 'wml'; //text/vnd.wap.wml encoding="ISO-8859-15"
+                $return = 'wml'; // text/vnd.wap.wml encoding="ISO-8859-15"
             case 'html_wi_imode_compact_generic':
             case 'html_wi_imode_html_1':
             case 'html_wi_imode_html_2':
             case 'html_wi_imode_html_3':
             case 'html_wi_imode_html_4':
             case 'html_wi_imode_html_5':
-                $return = 'chtml'; //text/html
-            case 'html_wi_oma_xhtmlmp_1_0': //application/vnd.wap.xhtml+xml
-            case 'html_wi_w3_xhtmlbasic': //application/xhtml+xml DTD XHTML Basic 1.0
+                $return = 'chtml'; // text/html
+            case 'html_wi_oma_xhtmlmp_1_0': // application/vnd.wap.xhtml+xml
+            case 'html_wi_w3_xhtmlbasic': // application/xhtml+xml DTD XHTML
+                                          // Basic 1.0
                 $return = 'xhtml';
-            case 'html_web_3_2': //text/html DTD Html 3.2 Final
-            case 'html_web_4_0': //text/html DTD Html 4.01 Transitional
+            case 'html_web_3_2': // text/html DTD Html 3.2 Final
+            case 'html_web_4_0': // text/html DTD Html 4.01 Transitional
                 $return = '';
         }
         return $return;
@@ -429,7 +439,7 @@ class Zend_Http_UserAgent_Mobile extends Zend_Http_UserAgent_AbstractDevice
      *
      * @return array
      */
-    public function getImageFormatSupport()
+    public function getImageFormatSupport ()
     {
         return $this->_images;
     }
@@ -439,7 +449,7 @@ class Zend_Http_UserAgent_Mobile extends Zend_Http_UserAgent_AbstractDevice
      *
      * @return int
      */
-    public function getMaxImageHeight()
+    public function getMaxImageHeight ()
     {
         return $this->getFeature('max_image_height');
     }
@@ -449,7 +459,7 @@ class Zend_Http_UserAgent_Mobile extends Zend_Http_UserAgent_AbstractDevice
      *
      * @return int
      */
-    public function getMaxImageWidth()
+    public function getMaxImageWidth ()
     {
         return $this->getFeature('max_image_width');
     }
@@ -459,7 +469,7 @@ class Zend_Http_UserAgent_Mobile extends Zend_Http_UserAgent_AbstractDevice
      *
      * @return int
      */
-    public function getPhysicalScreenHeight()
+    public function getPhysicalScreenHeight ()
     {
         return $this->getFeature('physical_screen_height');
     }
@@ -469,7 +479,7 @@ class Zend_Http_UserAgent_Mobile extends Zend_Http_UserAgent_AbstractDevice
      *
      * @return int
      */
-    public function getPhysicalScreenWidth()
+    public function getPhysicalScreenWidth ()
     {
         return $this->getFeature('physical_screen_width');
     }
@@ -479,7 +489,7 @@ class Zend_Http_UserAgent_Mobile extends Zend_Http_UserAgent_AbstractDevice
      *
      * @return string
      */
-    public function getPreferredMarkup()
+    public function getPreferredMarkup ()
     {
         return $this->getFeature("markup");
     }
@@ -489,7 +499,7 @@ class Zend_Http_UserAgent_Mobile extends Zend_Http_UserAgent_AbstractDevice
      *
      * @return int
      */
-    public function getXhtmlSupportLevel()
+    public function getXhtmlSupportLevel ()
     {
         return $this->getFeature('xhtml_support_level');
     }
@@ -499,7 +509,7 @@ class Zend_Http_UserAgent_Mobile extends Zend_Http_UserAgent_AbstractDevice
      *
      * @return bool
      */
-    public function hasFlashSupport()
+    public function hasFlashSupport ()
     {
         return $this->getFeature('fl_browser');
     }
@@ -509,7 +519,7 @@ class Zend_Http_UserAgent_Mobile extends Zend_Http_UserAgent_AbstractDevice
      *
      * @return bool
      */
-    public function hasPdfSupport()
+    public function hasPdfSupport ()
     {
         return $this->getFeature('pdf_support');
     }
@@ -519,7 +529,7 @@ class Zend_Http_UserAgent_Mobile extends Zend_Http_UserAgent_AbstractDevice
      *
      * @return bool
      */
-    public function hasPhoneNumber()
+    public function hasPhoneNumber ()
     {
         return $this->getFeature('can_assign_phone_number');
     }
@@ -529,7 +539,7 @@ class Zend_Http_UserAgent_Mobile extends Zend_Http_UserAgent_AbstractDevice
      *
      * @return bool
      */
-    public function httpsSupport()
+    public function httpsSupport ()
     {
         return ($this->getFeature('https_support') == 'supported');
     }

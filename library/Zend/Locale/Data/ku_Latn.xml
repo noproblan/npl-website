@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <ldml>
 	<identity>
-		<version number="$Revision: 1.20 $"/>
-		<generation date="$Date: 2009/06/15 03:46:24 $"/>
-		<language type="ku"/>
-		<script type="Latn"/>
+		<version number="$Revision: 1.20 $" />
+		<generation date="$Date: 2009/06/15 03:46:24 $" />
+		<language type="ku" />
+		<script type="Latn" />
 	</identity>
 	<localeDisplayNames>
 		<languages>
@@ -30,7 +30,7 @@
 		</types>
 	</localeDisplayNames>
 	<layout>
-		<orientation/>
+		<orientation />
 	</layout>
 	<characters>
 		<exemplarCharacters>[a-c ç d e ê f-i î j-s ş t u û v-z]</exemplarCharacters>

@@ -21,16 +21,19 @@
  */
 
 /**
+ *
  * @see Zend_Tool_Project_Context_Filesystem_Directory
  */
 require_once 'Zend/Tool/Project/Context/Filesystem/Directory.php';
 
 /**
+ *
  * @see Zend_Tool_Project_Context_System_Interface
  */
 require_once 'Zend/Tool/Project/Context/System/Interface.php';
 
 /**
+ *
  * @see Zend_Tool_Project_Context_System_NotOverwritable
  */
 require_once 'Zend/Tool/Project/Context/System/NotOverwritable.php';
@@ -41,18 +44,19 @@ require_once 'Zend/Tool/Project/Context/System/NotOverwritable.php';
  * A profile is a hierarchical set of resources that keep track of
  * items within a specific project.
  *
- * @category   Zend
- * @package    Zend_Tool
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @category Zend
+ * @package Zend_Tool
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
-class Zend_Tool_Project_Context_System_ProjectProvidersDirectory
-    extends Zend_Tool_Project_Context_Filesystem_Directory
-    implements Zend_Tool_Project_Context_System_Interface,
-               Zend_Tool_Project_Context_System_NotOverwritable
+class Zend_Tool_Project_Context_System_ProjectProvidersDirectory extends Zend_Tool_Project_Context_Filesystem_Directory implements 
+        Zend_Tool_Project_Context_System_Interface, 
+        Zend_Tool_Project_Context_System_NotOverwritable
 {
 
     /**
+     *
      * @var string
      */
     protected $_filesystemName = 'providers';
@@ -62,20 +66,24 @@ class Zend_Tool_Project_Context_System_ProjectProvidersDirectory
      *
      * @return string
      */
-    public function getName()
+    public function getName ()
     {
         return 'ProjectProvidersDirectory';
     }
 
-    public function loadProviders(Zend_Tool_Framework_Registry_Interface $registry)
+    public function loadProviders (
+            Zend_Tool_Framework_Registry_Interface $registry)
     {
         if (file_exists($this->getPath())) {
-
+            
             $providerRepository = $registry->getProviderRepository();
-
+            
             foreach (new DirectoryIterator($this->getPath()) as $item) {
-                if ($item->isFile() && (($suffixStart = strpos($item->getFilename(), 'Provider.php')) !== false)) {
-                    $className = substr($item->getFilename(), 0, $suffixStart+8);
+                if ($item->isFile() &&
+                         (($suffixStart = strpos($item->getFilename(), 
+                                'Provider.php')) !== false)) {
+                    $className = substr($item->getFilename(), 0, $suffixStart +
+                     8);
                     // $loadableFiles[$className] = $item->getPathname();
                     include_once $item->getPathname();
                     $providerRepository->addProvider(new $className());
@@ -83,5 +91,4 @@ class Zend_Tool_Project_Context_System_ProjectProvidersDirectory
             }
         }
     }
-
 }

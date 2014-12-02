@@ -21,22 +21,26 @@
  * @version    $Id: EditorialReview.php 23775 2011-03-01 17:25:24Z ralph $
  */
 
-
 /**
- * @category   Zend
- * @package    Zend_Service
+ *
+ * @category Zend
+ * @package Zend_Service
  * @subpackage Amazon
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Service_Amazon_EditorialReview
 {
+
     /**
+     *
      * @var string
      */
     public $Source;
 
     /**
+     *
      * @var string
      */
     public $Content;
@@ -44,15 +48,20 @@ class Zend_Service_Amazon_EditorialReview
     /**
      * Assigns values to properties relevant to EditorialReview
      *
-     * @param  DOMElement $dom
+     * @param DOMElement $dom            
      * @return void
      */
-    public function __construct(DOMElement $dom)
+    public function __construct (DOMElement $dom)
     {
         $xpath = new DOMXPath($dom->ownerDocument);
-        $xpath->registerNamespace('az', 'http://webservices.amazon.com/AWSECommerceService/2005-10-05');
-        foreach (array('Source', 'Content') as $el) {
-            $this->$el = (string) $xpath->query("./az:$el/text()", $dom)->item(0)->data;
+        $xpath->registerNamespace('az', 
+                'http://webservices.amazon.com/AWSECommerceService/2005-10-05');
+        foreach (array(
+                'Source',
+                'Content'
+        ) as $el) {
+            $this->$el = (string) $xpath->query("./az:$el/text()", $dom)->item(
+                    0)->data;
         }
     }
 }

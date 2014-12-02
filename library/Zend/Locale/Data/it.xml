@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <ldml>
 	<identity>
-		<version number="$Revision: 1.124 $"/>
-		<generation date="$Date: 2009/06/15 20:34:50 $"/>
-		<language type="it"/>
+		<version number="$Revision: 1.124 $" />
+		<generation date="$Date: 2009/06/15 20:34:50 $" />
+		<language type="it" />
 	</identity>
 	<localeDisplayNames>
 		<localeDisplayPattern>
@@ -758,7 +758,8 @@
 			<territory type="GU">Guam</territory>
 			<territory type="GW">Guinea-Bissau</territory>
 			<territory type="GY">Guyana</territory>
-			<territory type="HK">Regione Amministrativa Speciale di Hong Kong della Repubblica Popolare Cinese</territory>
+			<territory type="HK">Regione Amministrativa Speciale di Hong
+				Kong della Repubblica Popolare Cinese</territory>
 			<territory type="HM">Isole Heard ed Isole McDonald</territory>
 			<territory type="HN">Honduras</territory>
 			<territory type="HR">Croazia</territory>
@@ -810,7 +811,8 @@
 			<territory type="ML">Mali</territory>
 			<territory type="MM">Myanmar</territory>
 			<territory type="MN">Mongolia</territory>
-			<territory type="MO">Regione Amministrativa Speciale di Macao della Repubblica Popolare Cinese</territory>
+			<territory type="MO">Regione Amministrativa Speciale di Macao
+				della Repubblica Popolare Cinese</territory>
 			<territory type="MP">Isole Marianne Settentrionali</territory>
 			<territory type="MQ">Martinica</territory>
 			<territory type="MR">Mauritania</territory>

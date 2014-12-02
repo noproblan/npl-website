@@ -22,31 +22,36 @@
  */
 
 /**
+ *
  * @see Zend_Gdata_Extension
  */
 require_once 'Zend/Gdata/Extension.php';
 
 /**
- * Data model class to represent a playlist item's position in the list (yt:position)
+ * Data model class to represent a playlist item's position in the list
+ * (yt:position)
  *
- * @category   Zend
- * @package    Zend_Gdata
+ * @category Zend
+ * @package Zend_Gdata
  * @subpackage YouTube
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Gdata_YouTube_Extension_Position extends Zend_Gdata_Extension
 {
 
     protected $_rootElement = 'position';
+
     protected $_rootNamespace = 'yt';
 
     /**
      * Constructs a new Zend_Gdata_YouTube_Extension_Position object.
      *
-     * @param string $value (optional) The 1-based position in the playlist
+     * @param string $value
+     *            (optional) The 1-based position in the playlist
      */
-    public function __construct($value = null)
+    public function __construct ($value = null)
     {
         $this->registerAllNamespaces(Zend_Gdata_YouTube::$namespaces);
         parent::__construct();
@@ -58,7 +63,7 @@ class Zend_Gdata_YouTube_Extension_Position extends Zend_Gdata_Extension
      *
      * @return int The 1-based position in the playlist
      */
-    public function getValue()
+    public function getValue ()
     {
         return $this->_text;
     }
@@ -66,10 +71,11 @@ class Zend_Gdata_YouTube_Extension_Position extends Zend_Gdata_Extension
     /**
      * Set the value for the position in the playlist
      *
-     * @param int $value The 1-based position in the playlist
+     * @param int $value
+     *            The 1-based position in the playlist
      * @return Zend_Gdata_Extension_Visibility The element being modified
      */
-    public function setValue($value)
+    public function setValue ($value)
     {
         $this->_text = $value;
         return $this;
@@ -81,10 +87,9 @@ class Zend_Gdata_YouTube_Extension_Position extends Zend_Gdata_Extension
      *
      * @return string
      */
-    public function __toString()
+    public function __toString ()
     {
         return $this->getValue();
     }
-
 }
 

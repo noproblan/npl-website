@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -21,15 +22,18 @@
  */
 
 /**
- * @category   Zend
- * @package    Zend_Service
+ *
+ * @category Zend
+ * @package Zend_Service
  * @subpackage DeveloperGarden
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @author     Marco Kaiser
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @author Marco Kaiser
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Service_DeveloperGarden_Credential
 {
+
     /**
      * Service Auth Username
      *
@@ -54,20 +58,20 @@ class Zend_Service_DeveloperGarden_Credential
     /**
      * constructor to init the internal data
      *
-     * @param string $username
-     * @param string $password
-     * @param string $realm
+     * @param string $username            
+     * @param string $password            
+     * @param string $realm            
      * @return Zend_Service_DeveloperGarden_Credential
      */
-    public function __construct($username = null, $password = null, $realm = null)
+    public function __construct ($username = null, $password = null, $realm = null)
     {
-        if (!empty($username)) {
+        if (! empty($username)) {
             $this->setUsername($username);
         }
-        if (!empty($password)) {
+        if (! empty($password)) {
             $this->setPassword($password);
         }
-        if (!empty($realm)) {
+        if (! empty($realm)) {
             $this->setRealm($realm);
         }
     }
@@ -75,22 +79,24 @@ class Zend_Service_DeveloperGarden_Credential
     /**
      * split the password into an array
      *
-     * @param string $password
+     * @param string $password            
      * @throws Zend_Service_DeveloperGarden_Client_Exception
      * @return Zend_Service_DeveloperGarden_Client_ClientAbstract
      */
-    public function setPassword($password = null)
+    public function setPassword ($password = null)
     {
         if (empty($password)) {
             require_once 'Zend/Service/DeveloperGarden/Client/Exception.php';
-            throw new Zend_Service_DeveloperGarden_Client_Exception('Empty password not permitted.');
+            throw new Zend_Service_DeveloperGarden_Client_Exception(
+                    'Empty password not permitted.');
         }
-
-        if (!is_string($password)) {
+        
+        if (! is_string($password)) {
             require_once 'Zend/Service/DeveloperGarden/Client/Exception.php';
-            throw new Zend_Service_DeveloperGarden_Client_Exception('Password must be a string.');
+            throw new Zend_Service_DeveloperGarden_Client_Exception(
+                    'Password must be a string.');
         }
-
+        
         $this->_password = $password;
         return $this;
     }
@@ -100,7 +106,7 @@ class Zend_Service_DeveloperGarden_Credential
      *
      * @return string
      */
-    public function getPassword()
+    public function getPassword ()
     {
         return $this->_password;
     }
@@ -108,22 +114,24 @@ class Zend_Service_DeveloperGarden_Credential
     /**
      * set the new login
      *
-     * @param string $username
+     * @param string $username            
      * @throws Zend_Service_DeveloperGarden_Client_Exception
      * @return Zend_Service_DeveloperGarden_Client_ClientAbstract
      */
-    public function setUsername($username = null)
+    public function setUsername ($username = null)
     {
         if (empty($username)) {
             require_once 'Zend/Service/DeveloperGarden/Client/Exception.php';
-            throw new Zend_Service_DeveloperGarden_Client_Exception('Empty username not permitted.');
+            throw new Zend_Service_DeveloperGarden_Client_Exception(
+                    'Empty username not permitted.');
         }
-
-        if (!is_string($username)) {
+        
+        if (! is_string($username)) {
             require_once 'Zend/Service/DeveloperGarden/Client/Exception.php';
-            throw new Zend_Service_DeveloperGarden_Client_Exception('Username must be a string.');
+            throw new Zend_Service_DeveloperGarden_Client_Exception(
+                    'Username must be a string.');
         }
-
+        
         $this->_username = $username;
         return $this;
     }
@@ -134,18 +142,14 @@ class Zend_Service_DeveloperGarden_Credential
      * if $withRealm == true we combine username and realm like
      * username@realm
      *
-     * @param bool $withRealm
+     * @param bool $withRealm            
      * @return string|null
      */
-    public function getUsername($withRealm = false)
+    public function getUsername ($withRealm = false)
     {
         $retValue = $this->_username;
         if ($withRealm) {
-            $retValue = sprintf(
-                '%s@%s',
-                $this->_username,
-                $this->_realm
-            );
+            $retValue = sprintf('%s@%s', $this->_username, $this->_realm);
         }
         return $retValue;
     }
@@ -153,22 +157,24 @@ class Zend_Service_DeveloperGarden_Credential
     /**
      * set the new realm
      *
-     * @param string $realm
+     * @param string $realm            
      * @throws Zend_Service_DeveloperGarden_Client_Exception
      * @return Zend_Service_DeveloperGarden_Client_ClientAbstract
      */
-    public function setRealm($realm = null)
+    public function setRealm ($realm = null)
     {
         if (empty($realm)) {
             require_once 'Zend/Service/DeveloperGarden/Client/Exception.php';
-            throw new Zend_Service_DeveloperGarden_Client_Exception('Empty realm not permitted.');
+            throw new Zend_Service_DeveloperGarden_Client_Exception(
+                    'Empty realm not permitted.');
         }
-
-        if (!is_string($realm)) {
+        
+        if (! is_string($realm)) {
             require_once 'Zend/Service/DeveloperGarden/Client/Exception.php';
-            throw new Zend_Service_DeveloperGarden_Client_Exception('Realm must be a string.');
+            throw new Zend_Service_DeveloperGarden_Client_Exception(
+                    'Realm must be a string.');
         }
-
+        
         $this->_realm = $realm;
         return $this;
     }
@@ -178,7 +184,7 @@ class Zend_Service_DeveloperGarden_Credential
      *
      * @return string|null
      */
-    public function getRealm()
+    public function getRealm ()
     {
         return $this->_realm;
     }

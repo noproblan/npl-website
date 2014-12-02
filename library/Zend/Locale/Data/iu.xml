@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <ldml>
 	<identity>
-		<version number="$Revision: 1.41 $"/>
-		<generation date="$Date: 2009/05/05 23:06:37 $"/>
-		<language type="iu"/>
+		<version number="$Revision: 1.41 $" />
+		<generation date="$Date: 2009/05/05 23:06:37 $" />
+		<language type="iu" />
 	</identity>
 	<localeDisplayNames>
 		<languages>
@@ -11,7 +11,9 @@
 		</languages>
 	</localeDisplayNames>
 	<characters>
-		<exemplarCharacters>[ᐃ-ᐆ ᐊ ᐋ ᐱ-ᐴ ᐸ ᐹ ᑉ ᑎ-ᑑ ᑕ ᑖ ᑦ ᑭ-ᑰ ᑲ ᑳ ᒃ ᒋ-ᒎ ᒐ ᒑ ᒡ ᒥ-ᒨ ᒪ ᒫ ᒻ ᓂ-ᓅ ᓇ ᓈ ᓐ ᓕ-ᓘ ᓚ ᓛ ᓪ ᓯ-ᓲ ᓴ ᓵ ᔅ ᔨ-ᔫ ᔭ ᔮ ᔾ ᕆ-ᕉ ᕋ ᕌ ᕐ ᕕ-ᕚ ᕝ ᕿ-ᖃ ᖅ ᖏ ᖑ-ᖕ ᙱ-ᙶ ᖖ ᖠ-ᖦ]</exemplarCharacters>
+		<exemplarCharacters>[ᐃ-ᐆ ᐊ ᐋ ᐱ-ᐴ ᐸ ᐹ ᑉ ᑎ-ᑑ ᑕ ᑖ ᑦ ᑭ-ᑰ ᑲ ᑳ ᒃ ᒋ-ᒎ ᒐ ᒑ ᒡ
+			ᒥ-ᒨ ᒪ ᒫ ᒻ ᓂ-ᓅ ᓇ ᓈ ᓐ ᓕ-ᓘ ᓚ ᓛ ᓪ ᓯ-ᓲ ᓴ ᓵ ᔅ ᔨ-ᔫ ᔭ ᔮ ᔾ ᕆ-ᕉ ᕋ ᕌ ᕐ ᕕ-ᕚ ᕝ ᕿ-ᖃ
+			ᖅ ᖏ ᖑ-ᖕ ᙱ-ᙶ ᖖ ᖠ-ᖦ]</exemplarCharacters>
 	</characters>
 	<dates>
 		<calendars>

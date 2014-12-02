@@ -20,19 +20,24 @@
  * @version    $Id: Db.php 23775 2011-03-01 17:25:24Z ralph $
  */
 
-/** Zend_Log_Writer_Abstract */
+/**
+ * Zend_Log_Writer_Abstract
+ */
 require_once 'Zend/Log/Writer/Abstract.php';
 
 /**
- * @category   Zend
- * @package    Zend_Log
+ *
+ * @category Zend
+ * @package Zend_Log
  * @subpackage Writer
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: Db.php 23775 2011-03-01 17:25:24Z ralph $
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
+ * @version $Id: Db.php 23775 2011-03-01 17:25:24Z ralph $
  */
 class Zend_Log_Writer_Db extends Zend_Log_Writer_Abstract
 {
+
     /**
      * Database adapter instance
      *
@@ -57,14 +62,16 @@ class Zend_Log_Writer_Db extends Zend_Log_Writer_Abstract
     /**
      * Class constructor
      *
-     * @param Zend_Db_Adapter $db   Database adapter instance
-     * @param string $table         Log table in database
-     * @param array $columnMap
+     * @param Zend_Db_Adapter $db
+     *            Database adapter instance
+     * @param string $table
+     *            Log table in database
+     * @param array $columnMap            
      * @return void
      */
-    public function __construct($db, $table, $columnMap = null)
+    public function __construct ($db, $table, $columnMap = null)
     {
-        $this->_db    = $db;
+        $this->_db = $db;
         $this->_table = $table;
         $this->_columnMap = $columnMap;
     }
@@ -72,27 +79,24 @@ class Zend_Log_Writer_Db extends Zend_Log_Writer_Abstract
     /**
      * Create a new instance of Zend_Log_Writer_Db
      *
-     * @param  array|Zend_Config $config
+     * @param array|Zend_Config $config            
      * @return Zend_Log_Writer_Db
      */
-    static public function factory($config)
+    static public function factory ($config)
     {
         $config = self::_parseConfig($config);
-        $config = array_merge(array(
-            'db'        => null,
-            'table'     => null,
-            'columnMap' => null,
-        ), $config);
-
+        $config = array_merge(
+                array(
+                        'db' => null,
+                        'table' => null,
+                        'columnMap' => null
+                ), $config);
+        
         if (isset($config['columnmap'])) {
             $config['columnMap'] = $config['columnmap'];
         }
-
-        return new self(
-            $config['db'],
-            $config['table'],
-            $config['columnMap']
-        );
+        
+        return new self($config['db'], $config['table'], $config['columnMap']);
     }
 
     /**
@@ -101,10 +105,11 @@ class Zend_Log_Writer_Db extends Zend_Log_Writer_Abstract
      * @return void
      * @throws Zend_Log_Exception
      */
-    public function setFormatter(Zend_Log_Formatter_Interface $formatter)
+    public function setFormatter (Zend_Log_Formatter_Interface $formatter)
     {
         require_once 'Zend/Log/Exception.php';
-        throw new Zend_Log_Exception(get_class($this) . ' does not support formatting');
+        throw new Zend_Log_Exception(
+                get_class($this) . ' does not support formatting');
     }
 
     /**
@@ -112,7 +117,7 @@ class Zend_Log_Writer_Db extends Zend_Log_Writer_Abstract
      *
      * @return void
      */
-    public function shutdown()
+    public function shutdown ()
     {
         $this->_db = null;
     }
@@ -120,17 +125,18 @@ class Zend_Log_Writer_Db extends Zend_Log_Writer_Abstract
     /**
      * Write a message to the log.
      *
-     * @param  array  $event  event data
+     * @param array $event
+     *            event data
      * @return void
      * @throws Zend_Log_Exception
      */
-    protected function _write($event)
+    protected function _write ($event)
     {
         if ($this->_db === null) {
             require_once 'Zend/Log/Exception.php';
             throw new Zend_Log_Exception('Database adapter is null');
         }
-
+        
         if ($this->_columnMap === null) {
             $dataToInsert = $event;
         } else {
@@ -139,7 +145,7 @@ class Zend_Log_Writer_Db extends Zend_Log_Writer_Abstract
                 $dataToInsert[$columnName] = $event[$fieldKey];
             }
         }
-
+        
         $this->_db->insert($this->_table, $dataToInsert);
     }
 }

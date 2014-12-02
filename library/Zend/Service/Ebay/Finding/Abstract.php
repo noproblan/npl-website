@@ -21,44 +21,53 @@
  */
 
 /**
+ *
  * @see Zend_Service_Ebay_Abstract
  */
 require_once 'Zend/Service/Ebay/Abstract.php';
 
 /**
+ *
  * @see Zend_Service_Ebay_Finding
  */
 require_once 'Zend/Service/Ebay/Finding.php';
 
 /**
- * @category   Zend
- * @package    Zend_Service
+ *
+ * @category Zend
+ * @package Zend_Service
  * @subpackage Ebay
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 abstract class Zend_Service_Ebay_Finding_Abstract
 {
+
     /**
+     *
      * @var DOMElement
      */
     protected $_dom;
 
     /**
+     *
      * @var DOMXPath
      */
     protected $_xPath;
 
     /**
+     *
      * @var array
      */
     protected $_attributes = array();
 
     /**
-     * @param  DOMElement $dom
+     *
+     * @param DOMElement $dom            
      * @return void
      */
-    public function __construct(DOMElement $dom)
+    public function __construct (DOMElement $dom)
     {
         $this->_dom = $dom;
         $this->_initXPath();
@@ -66,11 +75,12 @@ abstract class Zend_Service_Ebay_Finding_Abstract
     }
 
     /**
-     * @param  string $tag
-     * @param  string $attribute
+     *
+     * @param string $tag            
+     * @param string $attribute            
      * @return mixed
      */
-    public function attributes($tag, $attribute = null)
+    public function attributes ($tag, $attribute = null)
     {
         if (null === $attribute) {
             // all attributes
@@ -79,7 +89,7 @@ abstract class Zend_Service_Ebay_Finding_Abstract
             }
             return array();
         }
-
+        
         // a specific attribute
         if (isset($this->_attributes[$tag][$attribute])) {
             return $this->_attributes[$tag][$attribute];
@@ -95,20 +105,19 @@ abstract class Zend_Service_Ebay_Finding_Abstract
      *
      * @return void
      */
-    protected function _init()
-    {
-    }
+    protected function _init ()
+    {}
 
     /**
      * Load DOMXPath for current DOM object.
      *
-     * @see    Zend_Service_Ebay_Finding::_parseResponse()
+     * @see Zend_Service_Ebay_Finding::_parseResponse()
      * @return void
      */
-    protected function _initXPath()
+    protected function _initXPath ()
     {
         $document = $this->_dom->ownerDocument;
-        if (!isset($document->ebayFindingXPath)) {
+        if (! isset($document->ebayFindingXPath)) {
             $xpath = new DOMXPath($document);
             foreach (Zend_Service_Ebay_Finding::getXmlNamespaces() as $alias => $uri) {
                 $xpath->registerNamespace($alias, $uri);
@@ -119,50 +128,54 @@ abstract class Zend_Service_Ebay_Finding_Abstract
     }
 
     /**
+     *
      * @return DOMElement
      */
-    public function getDom()
+    public function getDom ()
     {
         return $this->_dom;
     }
 
     /**
+     *
      * @return DOMXPath
      */
-    public function getXPath()
+    public function getXPath ()
     {
         return $this->_xPath;
     }
 
     /**
-     * @param  string $path
-     * @param  string $type
-     * @param  string $array When true means it expects more than one node occurence
+     *
+     * @param string $path            
+     * @param string $type            
+     * @param string $array
+     *            When true means it expects more than one node occurence
      * @return mixed
      */
-    protected function _query($path, $type, $array = false)
+    protected function _query ($path, $type, $array = false)
     {
         // find values
         $values = array();
-        $nodes  = $this->_xPath->query($path, $this->_dom);
+        $nodes = $this->_xPath->query($path, $this->_dom);
         foreach ($nodes as $node) {
-            $value    = (string) $node->nodeValue;
+            $value = (string) $node->nodeValue;
             $values[] = Zend_Service_Ebay_Abstract::toPhpValue($value, $type);
-            if (!$array) {
+            if (! $array) {
                 break;
             }
         }
-
+        
         // array
         if ($array) {
             return $values;
         }
-
+        
         // single value
         if (count($values)) {
             return reset($values);
         }
-
+        
         // no nodes fount
         return null;
     }

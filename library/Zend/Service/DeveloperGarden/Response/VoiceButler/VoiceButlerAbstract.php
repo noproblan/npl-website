@@ -21,21 +21,24 @@
  */
 
 /**
+ *
  * @see Zend_Service_DeveloperGarden_Response_ResponseAbstract
  */
 require_once 'Zend/Service/DeveloperGarden/Response/ResponseAbstract.php';
 
 /**
- * @category   Zend
- * @package    Zend_Service
+ *
+ * @category Zend
+ * @package Zend_Service
  * @subpackage DeveloperGarden
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @author     Marco Kaiser
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @author Marco Kaiser
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
-abstract class Zend_Service_DeveloperGarden_Response_VoiceButler_VoiceButlerAbstract
-    extends Zend_Service_DeveloperGarden_Response_ResponseAbstract
+abstract class Zend_Service_DeveloperGarden_Response_VoiceButler_VoiceButlerAbstract extends Zend_Service_DeveloperGarden_Response_ResponseAbstract
 {
+
     /**
      * the return from the sms request
      *
@@ -48,7 +51,7 @@ abstract class Zend_Service_DeveloperGarden_Response_VoiceButler_VoiceButlerAbst
      *
      * @return stdClass
      */
-    public function getReturn()
+    public function getReturn ()
     {
         return $this->return;
     }
@@ -59,15 +62,13 @@ abstract class Zend_Service_DeveloperGarden_Response_VoiceButler_VoiceButlerAbst
      * @throws Zend_Service_DeveloperGarden_Response_Exception
      * @return Zend_Service_DeveloperGarden_Response_ResponseAbstract
      */
-    public function parse()
+    public function parse ()
     {
         if ($this->hasError()) {
             throw new Zend_Service_DeveloperGarden_Response_Exception(
-                $this->getErrorMessage(),
-                $this->getErrorCode()
-            );
+                    $this->getErrorMessage(), $this->getErrorCode());
         }
-
+        
         return $this;
     }
 
@@ -76,7 +77,7 @@ abstract class Zend_Service_DeveloperGarden_Response_VoiceButler_VoiceButlerAbst
      *
      * @return string|null
      */
-    public function getErrorCode()
+    public function getErrorCode ()
     {
         $retValue = null;
         if ($this->return instanceof stdClass) {
@@ -90,7 +91,7 @@ abstract class Zend_Service_DeveloperGarden_Response_VoiceButler_VoiceButlerAbst
      *
      * @return string
      */
-    public function getErrorMessage()
+    public function getErrorMessage ()
     {
         $retValue = null;
         if ($this->return instanceof stdClass) {
@@ -104,10 +105,9 @@ abstract class Zend_Service_DeveloperGarden_Response_VoiceButler_VoiceButlerAbst
      *
      * @return boolean
      */
-    public function isValid()
+    public function isValid ()
     {
-        return ($this->return === null
-                || $this->return->status == '0000');
+        return ($this->return === null || $this->return->status == '0000');
     }
 
     /**
@@ -115,12 +115,10 @@ abstract class Zend_Service_DeveloperGarden_Response_VoiceButler_VoiceButlerAbst
      *
      * @return boolean
      */
-    public function hasError()
+    public function hasError ()
     {
         $retValue = false;
-        if ($this->return instanceof stdClass
-            && $this->return->status != '0000'
-        ) {
+        if ($this->return instanceof stdClass && $this->return->status != '0000') {
             $retValue = true;
         }
         return $retValue;

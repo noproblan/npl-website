@@ -22,16 +22,19 @@
  */
 
 /**
+ *
  * @see Zend_Gdata_Entry
  */
 require_once 'Zend/Gdata/Entry.php';
 
 /**
+ *
  * @see Zend_Gdata_Exif
  */
 require_once 'Zend/Gdata/Exif.php';
 
 /**
+ *
  * @see Zend_Gdata_Exif_Extension_Tags
  */
 require_once 'Zend/Gdata/Exif/Extension/Tags.php';
@@ -39,14 +42,16 @@ require_once 'Zend/Gdata/Exif/Extension/Tags.php';
 /**
  * An Atom entry containing EXIF metadata.
  *
- * @category   Zend
- * @package    Zend_Gdata
+ * @category Zend
+ * @package Zend_Gdata
  * @subpackage Exif
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Gdata_Exif_Entry extends Zend_Gdata_Entry
 {
+
     /**
      * The classname for individual feed elements.
      *
@@ -64,10 +69,11 @@ class Zend_Gdata_Exif_Entry extends Zend_Gdata_Entry
     /**
      * Create a new instance.
      *
-     * @param DOMElement $element (optional) DOMElement from which this
-     *          object should be constructed.
+     * @param DOMElement $element
+     *            (optional) DOMElement from which this
+     *            object should be constructed.
      */
-    public function __construct($element = null)
+    public function __construct ($element = null)
     {
         $this->registerAllNamespaces(Zend_Gdata_Exif::$namespaces);
         parent::__construct($element);
@@ -75,15 +81,17 @@ class Zend_Gdata_Exif_Entry extends Zend_Gdata_Entry
 
     /**
      * Retrieves a DOMElement which corresponds to this element and all
-     * child properties.  This is used to build an entry back into a DOM
+     * child properties.
+     * This is used to build an entry back into a DOM
      * and eventually XML text for sending to the server upon updates, or
      * for application storage/persistence.
      *
-     * @param DOMDocument $doc The DOMDocument used to construct DOMElements
+     * @param DOMDocument $doc
+     *            The DOMDocument used to construct DOMElements
      * @return DOMElement The DOMElement representing this element and all
-     * child properties.
+     *         child properties.
      */
-    public function getDOM($doc = null, $majorVersion = 1, $minorVersion = null)
+    public function getDOM ($doc = null, $majorVersion = 1, $minorVersion = null)
     {
         $element = parent::getDOM($doc, $majorVersion, $minorVersion);
         if ($this->_tags != null) {
@@ -96,20 +104,21 @@ class Zend_Gdata_Exif_Entry extends Zend_Gdata_Entry
      * Creates individual Entry objects of the appropriate type and
      * stores them as members of this entry based upon DOM data.
      *
-     * @param DOMNode $child The DOMNode to process
+     * @param DOMNode $child
+     *            The DOMNode to process
      */
-    protected function takeChildFromDOM($child)
+    protected function takeChildFromDOM ($child)
     {
         $absoluteNodeName = $child->namespaceURI . ':' . $child->localName;
         switch ($absoluteNodeName) {
-        case $this->lookupNamespace('exif') . ':' . 'tags':
-            $tags = new Zend_Gdata_Exif_Extension_Tags();
-            $tags->transferFromDOM($child);
-            $this->_tags = $tags;
-            break;
-        default:
-            parent::takeChildFromDOM($child);
-            break;
+            case $this->lookupNamespace('exif') . ':' . 'tags':
+                $tags = new Zend_Gdata_Exif_Extension_Tags();
+                $tags->transferFromDOM($child);
+                $this->_tags = $tags;
+                break;
+            default:
+                parent::takeChildFromDOM($child);
+                break;
         }
     }
 
@@ -118,28 +127,29 @@ class Zend_Gdata_Exif_Entry extends Zend_Gdata_Entry
      *
      * @see setTags
      * @return Zend_Gdata_Exif_Extension_Tags The requested object
-     *              or null if not set.
+     *         or null if not set.
      */
-    public function getTags()
+    public function getTags ()
     {
         return $this->_tags;
     }
 
     /**
-     * Set the tags property for this entry. This property contains
+     * Set the tags property for this entry.
+     * This property contains
      * various Exif data.
      *
      * This corresponds to the <exif:tags> property in the Google Data
      * protocol.
      *
-     * @param Zend_Gdata_Exif_Extension_Tags $value The desired value
-     *              this element, or null to unset.
+     * @param Zend_Gdata_Exif_Extension_Tags $value
+     *            The desired value
+     *            this element, or null to unset.
      * @return Zend_Gdata_Exif_Entry Provides a fluent interface
      */
-    public function setTags($value)
+    public function setTags ($value)
     {
         $this->_tags = $value;
         return $this;
     }
-
 }

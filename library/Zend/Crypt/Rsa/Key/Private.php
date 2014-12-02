@@ -21,36 +21,41 @@
  */
 
 /**
+ *
  * @see Zend_Crypt_Rsa_Key
  */
 require_once 'Zend/Crypt/Rsa/Key.php';
 
 /**
- * @category   Zend
- * @package    Zend_Crypt
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ *
+ * @category Zend
+ * @package Zend_Crypt
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Crypt_Rsa_Key_Private extends Zend_Crypt_Rsa_Key
 {
 
     protected $_publicKey = null;
 
-    public function __construct($pemString, $passPhrase = null)
+    public function __construct ($pemString, $passPhrase = null)
     {
         $this->_pemString = $pemString;
         $this->_parse($passPhrase);
     }
 
     /**
-     * @param string $passPhrase
+     *
+     * @param string $passPhrase            
      * @throws Zend_Crypt_Exception
      */
-    protected function _parse($passPhrase)
+    protected function _parse ($passPhrase)
     {
         $result = openssl_get_privatekey($this->_pemString, $passPhrase);
-        if (!$result) {
+        if (! $result) {
             /**
+             *
              * @see Zend_Crypt_Exception
              */
             require_once 'Zend/Crypt/Exception.php';
@@ -60,16 +65,17 @@ class Zend_Crypt_Rsa_Key_Private extends Zend_Crypt_Rsa_Key
         $this->_details = openssl_pkey_get_details($this->_opensslKeyResource);
     }
 
-    public function getPublicKey()
+    public function getPublicKey ()
     {
         if ($this->_publicKey === null) {
             /**
+             *
              * @see Zend_Crypt_Rsa_Key_Public
              */
             require_once 'Zend/Crypt/Rsa/Key/Public.php';
-            $this->_publicKey = new Zend_Crypt_Rsa_Key_Public($this->_details['key']);
+            $this->_publicKey = new Zend_Crypt_Rsa_Key_Public(
+                    $this->_details['key']);
         }
         return $this->_publicKey;
     }
-
 }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -20,27 +21,32 @@
  */
 
 /**
- * @category   Zend
- * @package    Zend_Service_Amazon
+ *
+ * @category Zend
+ * @package Zend_Service_Amazon
  * @subpackage Authentication
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 abstract class Zend_Service_Amazon_Authentication
 {
+
     protected $_accessKey;
+
     protected $_secretKey;
+
     protected $_apiVersion;
 
     /**
      * Constructor
      *
-     * @param  string $accessKey
-     * @param  string $secretKey
-     * @param  string $apiVersion
+     * @param string $accessKey            
+     * @param string $secretKey            
+     * @param string $apiVersion            
      * @return void
      */
-    public function __construct($accessKey, $secretKey, $apiVersion)
+    public function __construct ($accessKey, $secretKey, $apiVersion)
     {
         $this->setAccessKey($accessKey);
         $this->setSecretKey($secretKey);
@@ -50,10 +56,10 @@ abstract class Zend_Service_Amazon_Authentication
     /**
      * Set access key
      *
-     * @param  string $accessKey
+     * @param string $accessKey            
      * @return void
      */
-    public function setAccessKey($accessKey)
+    public function setAccessKey ($accessKey)
     {
         $this->_accessKey = $accessKey;
     }
@@ -61,10 +67,10 @@ abstract class Zend_Service_Amazon_Authentication
     /**
      * Set secret key
      *
-     * @param  string $secretKey
+     * @param string $secretKey            
      * @return void
      */
-    public function setSecretKey($secretKey)
+    public function setSecretKey ($secretKey)
     {
         $this->_secretKey = $secretKey;
     }
@@ -72,10 +78,10 @@ abstract class Zend_Service_Amazon_Authentication
     /**
      * Set API version
      *
-     * @param  string $apiVersion
+     * @param string $apiVersion            
      * @return void
      */
-    public function setApiVersion($apiVersion)
+    public function setApiVersion ($apiVersion)
     {
         $this->_apiVersion = $apiVersion;
     }

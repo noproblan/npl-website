@@ -20,21 +20,23 @@
  * @version    $Id: Text.php 23775 2011-03-01 17:25:24Z ralph $
  */
 
-
-/** Zend_Search_Lucene_Analysis_Analyzer_Common */
+/**
+ * Zend_Search_Lucene_Analysis_Analyzer_Common
+ */
 require_once 'Zend/Search/Lucene/Analysis/Analyzer/Common.php';
 
-
 /**
- * @category   Zend
- * @package    Zend_Search_Lucene
+ *
+ * @category Zend
+ * @package Zend_Search_Lucene
  * @subpackage Analysis
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
-
 class Zend_Search_Lucene_Analysis_Analyzer_Common_Text extends Zend_Search_Lucene_Analysis_Analyzer_Common
 {
+
     /**
      * Current position in a stream
      *
@@ -45,17 +47,18 @@ class Zend_Search_Lucene_Analysis_Analyzer_Common_Text extends Zend_Search_Lucen
     /**
      * Reset token stream
      */
-    public function reset()
+    public function reset ()
     {
         $this->_position = 0;
-
+        
         if ($this->_input === null) {
             return;
         }
-
+        
         // convert input into ascii
         if (PHP_OS != 'AIX') {
-            $this->_input = iconv($this->_encoding, 'ASCII//TRANSLIT', $this->_input);
+            $this->_input = iconv($this->_encoding, 'ASCII//TRANSLIT', 
+                    $this->_input);
         }
         $this->_encoding = 'ASCII';
     }
@@ -67,29 +70,31 @@ class Zend_Search_Lucene_Analysis_Analyzer_Common_Text extends Zend_Search_Lucen
      *
      * @return Zend_Search_Lucene_Analysis_Token|null
      */
-    public function nextToken()
+    public function nextToken ()
     {
         if ($this->_input === null) {
             return null;
         }
-
-
+        
         do {
-            if (! preg_match('/[a-zA-Z]+/', $this->_input, $match, PREG_OFFSET_CAPTURE, $this->_position)) {
-                // It covers both cases a) there are no matches (preg_match(...) === 0)
+            if (! preg_match('/[a-zA-Z]+/', $this->_input, $match, 
+                    PREG_OFFSET_CAPTURE, $this->_position)) {
+                // It covers both cases a) there are no matches (preg_match(...)
+                // === 0)
                 // b) error occured (preg_match(...) === FALSE)
                 return null;
             }
-
+            
             $str = $match[0][0];
             $pos = $match[0][1];
             $endpos = $pos + strlen($str);
-
+            
             $this->_position = $endpos;
-
-            $token = $this->normalize(new Zend_Search_Lucene_Analysis_Token($str, $pos, $endpos));
+            
+            $token = $this->normalize(
+                    new Zend_Search_Lucene_Analysis_Token($str, $pos, $endpos));
         } while ($token === null); // try again if token is skipped
-
+        
         return $token;
     }
 }

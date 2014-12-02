@@ -21,16 +21,18 @@
  * @version    $Id: Link.php 23775 2011-03-01 17:25:24Z ralph $
  */
 
-
 /**
- * @category   Zend
- * @package    Zend_Service
+ *
+ * @category Zend
+ * @package Zend_Service
  * @subpackage Simpy
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Service_Simpy_Link
 {
+
     /**
      * Private access type
      *
@@ -43,7 +45,7 @@ class Zend_Service_Simpy_Link
      *
      * @var string
      */
-    const ACCESSTYPE_PUBLIC  = '1';
+    const ACCESSTYPE_PUBLIC = '1';
 
     /**
      * Access type assigned to the link
@@ -104,29 +106,30 @@ class Zend_Service_Simpy_Link
     /**
      * Constructor to initialize the object with data
      *
-     * @param  DOMNode $node Individual <link> node from a parsed response from
-     *                       a GetLinks operation
+     * @param DOMNode $node
+     *            Individual <link> node from a parsed response from
+     *            a GetLinks operation
      * @return void
      */
-    public function __construct($node)
+    public function __construct ($node)
     {
         $this->_accessType = $node->attributes->getNamedItem('accessType')->nodeValue;
-
+        
         $doc = new DOMDocument();
         $doc->appendChild($doc->importNode($node, true));
         $xpath = new DOMXPath($doc);
-
+        
         $this->_url = $xpath->evaluate('/link/url')->item(0)->nodeValue;
         $this->_modDate = $xpath->evaluate('/link/modDate')->item(0)->nodeValue;
         $this->_addDate = $xpath->evaluate('/link/addDate')->item(0)->nodeValue;
         $this->_title = $xpath->evaluate('/link/title')->item(0)->nodeValue;
         $this->_nickname = $xpath->evaluate('/link/nickname')->item(0)->nodeValue;
         $this->_note = $xpath->evaluate('/link/note')->item(0)->nodeValue;
-
+        
         $list = $xpath->query('/link/tags/tag');
         $this->_tags = array();
-
-        for ($x = 0; $x < $list->length; $x++) {
+        
+        for ($x = 0; $x < $list->length; $x ++) {
             $this->_tags[$x] = $list->item($x)->nodeValue;
         }
     }
@@ -138,7 +141,7 @@ class Zend_Service_Simpy_Link
      * @see ACCESSTYPE_PUBLIC
      * @return string
      */
-    public function getAccessType()
+    public function getAccessType ()
     {
         return $this->_accessType;
     }
@@ -148,7 +151,7 @@ class Zend_Service_Simpy_Link
      *
      * @return string
      */
-    public function getUrl()
+    public function getUrl ()
     {
         return $this->_url;
     }
@@ -158,7 +161,7 @@ class Zend_Service_Simpy_Link
      *
      * @return string
      */
-    public function getModDate()
+    public function getModDate ()
     {
         return $this->_modDate;
     }
@@ -168,7 +171,7 @@ class Zend_Service_Simpy_Link
      *
      * @return string
      */
-    public function getAddDate()
+    public function getAddDate ()
     {
         return $this->_addDate;
     }
@@ -178,7 +181,7 @@ class Zend_Service_Simpy_Link
      *
      * @return string
      */
-    public function getTitle()
+    public function getTitle ()
     {
         return $this->_title;
     }
@@ -188,7 +191,7 @@ class Zend_Service_Simpy_Link
      *
      * @return string
      */
-    public function getNickname()
+    public function getNickname ()
     {
         return $this->_nickname;
     }
@@ -198,7 +201,7 @@ class Zend_Service_Simpy_Link
      *
      * @return array
      */
-    public function getTags()
+    public function getTags ()
     {
         return $this->_tags;
     }
@@ -208,7 +211,7 @@ class Zend_Service_Simpy_Link
      *
      * @return string
      */
-    public function getNote()
+    public function getNote ()
     {
         return $this->_note;
     }

@@ -20,82 +20,84 @@
  * @version    $Id: Weblog.php 23775 2011-03-01 17:25:24Z ralph $
  */
 
-
 /**
+ *
  * @see Zend_Service_Technorati_Author
  */
 require_once 'Zend/Service/Technorati/Author.php';
 
 /**
+ *
  * @see Zend_Service_Technorati_Utils
  */
 require_once 'Zend/Service/Technorati/Utils.php';
 
-
 /**
  * Represents a Weblog object successful recognized by Technorati.
  *
- * @category   Zend
- * @package    Zend_Service
+ * @category Zend
+ * @package Zend_Service
  * @subpackage Technorati
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Service_Technorati_Weblog
 {
+
     /**
      * Blog name as written in the feed.
      *
-     * @var     string
-     * @access  protected
+     * @var string
+     * @access protected
      */
     protected $_name;
 
     /**
      * Base blog URL.
      *
-     * @var     Zend_Uri_Http
-     * @access  protected
+     * @var Zend_Uri_Http
+     * @access protected
      */
     protected $_url;
 
     /**
      * RSS feed URL, if any.
      *
-     * @var     null|Zend_Uri_Http
-     * @access  protected
+     * @var null|Zend_Uri_Http
+     * @access protected
      */
     protected $_rssUrl;
 
     /**
      * Atom feed URL, if any.
      *
-     * @var     null|Zend_Uri_Http
-     * @access  protected
+     * @var null|Zend_Uri_Http
+     * @access protected
      */
     protected $_atomUrl;
 
     /**
      * Number of unique blogs linking this blog.
      *
-     * @var     integer
-     * @access  protected
+     * @var integer
+     * @access protected
      */
     protected $_inboundBlogs;
 
     /**
      * Number of incoming links to this blog.
      *
-     * @var     integer
-     * @access  protected
+     * @var integer
+     * @access protected
      */
     protected $_inboundLinks;
 
     /**
      * Last blog update UNIX timestamp.
      *
-     * @var     null|Zend_Date
-     * @access  protected
+     * @var null|Zend_Date
+     * @access protected
      */
     protected $_lastUpdate;
 
@@ -104,8 +106,8 @@ class Zend_Service_Technorati_Weblog
      *
      * Note. This property has no official documentation.
      *
-     * @var     integer
-     * @access  protected
+     * @var integer
+     * @access protected
      */
     protected $_rank;
 
@@ -114,8 +116,8 @@ class Zend_Service_Technorati_Weblog
      *
      * Note. This property has no official documentation.
      *
-     * @var     float
-     * @access  protected
+     * @var float
+     * @access protected
      */
     protected $_lat;
 
@@ -124,8 +126,8 @@ class Zend_Service_Technorati_Weblog
      *
      * Note. This property has no official documentation.
      *
-     * @var     float
-     * @access  protected
+     * @var float
+     * @access protected
      */
     protected $_lon;
 
@@ -134,87 +136,98 @@ class Zend_Service_Technorati_Weblog
      *
      * Note. This property has no official documentation.
      *
-     * @var     bool
-     * @access  protected
-     * @see     Zend_Service_Technorati_Author::$thumbnailPicture
+     * @var bool
+     * @access protected
+     * @see Zend_Service_Technorati_Author::$thumbnailPicture
      */
     protected $_hasPhoto = false;
 
     /**
      * An array of Zend_Service_Technorati_Author who claimed this blog
      *
-     * @var     array
-     * @access  protected
+     * @var array
+     * @access protected
      */
     protected $_authors = array();
-
 
     /**
      * Constructs a new object from DOM Element.
      *
-     * @param  DomElement $dom the ReST fragment for this object
+     * @param DomElement $dom
+     *            the ReST fragment for this object
      */
-    public function __construct(DomElement $dom)
+    public function __construct (DomElement $dom)
     {
         $xpath = new DOMXPath($dom->ownerDocument);
-
+        
         $result = $xpath->query('./name/text()', $dom);
-        if ($result->length == 1) $this->setName($result->item(0)->data);
-
+        if ($result->length == 1)
+            $this->setName($result->item(0)->data);
+        
         $result = $xpath->query('./url/text()', $dom);
-        if ($result->length == 1) $this->setUrl($result->item(0)->data);
-
+        if ($result->length == 1)
+            $this->setUrl($result->item(0)->data);
+        
         $result = $xpath->query('./inboundblogs/text()', $dom);
-        if ($result->length == 1) $this->setInboundBlogs($result->item(0)->data);
-
+        if ($result->length == 1)
+            $this->setInboundBlogs($result->item(0)->data);
+        
         $result = $xpath->query('./inboundlinks/text()', $dom);
-        if ($result->length == 1) $this->setInboundLinks($result->item(0)->data);
-
+        if ($result->length == 1)
+            $this->setInboundLinks($result->item(0)->data);
+        
         $result = $xpath->query('./lastupdate/text()', $dom);
-        if ($result->length == 1) $this->setLastUpdate($result->item(0)->data);
-
-        /* The following elements need more attention */
-
+        if ($result->length == 1)
+            $this->setLastUpdate($result->item(0)->data);
+            
+            /* The following elements need more attention */
+        
         $result = $xpath->query('./rssurl/text()', $dom);
-        if ($result->length == 1) $this->setRssUrl($result->item(0)->data);
-
+        if ($result->length == 1)
+            $this->setRssUrl($result->item(0)->data);
+        
         $result = $xpath->query('./atomurl/text()', $dom);
-        if ($result->length == 1) $this->setAtomUrl($result->item(0)->data);
-
+        if ($result->length == 1)
+            $this->setAtomUrl($result->item(0)->data);
+        
         $result = $xpath->query('./author', $dom);
         if ($result->length >= 1) {
             foreach ($result as $author) {
                 $this->_authors[] = new Zend_Service_Technorati_Author($author);
             }
         }
-
+        
         /**
          * The following are optional elements
          *
-         * I can't find any official documentation about the following properties
+         * I can't find any official documentation about the following
+         * properties
          * however they are included in response DTD and/or test responses.
          */
-
+        
         $result = $xpath->query('./rank/text()', $dom);
-        if ($result->length == 1) $this->setRank($result->item(0)->data);
-
+        if ($result->length == 1)
+            $this->setRank($result->item(0)->data);
+        
         $result = $xpath->query('./lat/text()', $dom);
-        if ($result->length == 1) $this->setLat($result->item(0)->data);
-
+        if ($result->length == 1)
+            $this->setLat($result->item(0)->data);
+        
         $result = $xpath->query('./lon/text()', $dom);
-        if ($result->length == 1) $this->setLon($result->item(0)->data);
-
+        if ($result->length == 1)
+            $this->setLon($result->item(0)->data);
+        
         $result = $xpath->query('./hasphoto/text()', $dom);
-        if ($result->length == 1) $this->setHasPhoto($result->item(0)->data);
+        if ($result->length == 1)
+            $this->setHasPhoto($result->item(0)->data);
     }
-
 
     /**
      * Returns weblog name.
      *
-     * @return  string  Weblog name
+     * @return string Weblog name
      */
-    public function getName()
+    public function getName ()
     {
         return $this->_name;
     }
@@ -222,9 +235,9 @@ class Zend_Service_Technorati_Weblog
     /**
      * Returns weblog URL.
      *
-     * @return  null|Zend_Uri_Http object representing weblog base URL
+     * @return null|Zend_Uri_Http object representing weblog base URL
      */
-    public function getUrl()
+    public function getUrl ()
     {
         return $this->_url;
     }
@@ -232,9 +245,9 @@ class Zend_Service_Technorati_Weblog
     /**
      * Returns number of unique blogs linking this blog.
      *
-     * @return  integer the number of inbound blogs
+     * @return integer the number of inbound blogs
      */
-    public function getInboundBlogs()
+    public function getInboundBlogs ()
     {
         return $this->_inboundBlogs;
     }
@@ -242,9 +255,9 @@ class Zend_Service_Technorati_Weblog
     /**
      * Returns number of incoming links to this blog.
      *
-     * @return  integer the number of inbound links
+     * @return integer the number of inbound links
      */
-    public function getInboundLinks()
+    public function getInboundLinks ()
     {
         return $this->_inboundLinks;
     }
@@ -252,10 +265,10 @@ class Zend_Service_Technorati_Weblog
     /**
      * Returns weblog Rss URL.
      *
-     * @return  null|Zend_Uri_Http object representing the URL
-     *          of the RSS feed for given blog
+     * @return null|Zend_Uri_Http object representing the URL
+     *         of the RSS feed for given blog
      */
-    public function getRssUrl()
+    public function getRssUrl ()
     {
         return $this->_rssUrl;
     }
@@ -263,10 +276,10 @@ class Zend_Service_Technorati_Weblog
     /**
      * Returns weblog Atom URL.
      *
-     * @return  null|Zend_Uri_Http object representing the URL
-     *          of the Atom feed for given blog
+     * @return null|Zend_Uri_Http object representing the URL
+     *         of the Atom feed for given blog
      */
-    public function getAtomUrl()
+    public function getAtomUrl ()
     {
         return $this->_atomUrl;
     }
@@ -274,9 +287,9 @@ class Zend_Service_Technorati_Weblog
     /**
      * Returns UNIX timestamp of the last weblog update.
      *
-     * @return  integer UNIX timestamp of the last weblog update
+     * @return integer UNIX timestamp of the last weblog update
      */
-    public function getLastUpdate()
+    public function getLastUpdate ()
     {
         return $this->_lastUpdate;
     }
@@ -286,9 +299,9 @@ class Zend_Service_Technorati_Weblog
      *
      * Note. This property is not documented.
      *
-     * @return  integer weblog rank value
+     * @return integer weblog rank value
      */
-    public function getRank()
+    public function getRank ()
     {
         return $this->_rank;
     }
@@ -298,9 +311,10 @@ class Zend_Service_Technorati_Weblog
      *
      * Note. This property is not documented.
      *
-     * @return  float   weblog latitude coordinate
+     * @return float weblog latitude coordinate
      */
-    public function getLat() {
+    public function getLat ()
+    {
         return $this->_lat;
     }
 
@@ -309,9 +323,9 @@ class Zend_Service_Technorati_Weblog
      *
      * Note. This property is not documented.
      *
-     * @return  float   weblog longitude coordinate
+     * @return float weblog longitude coordinate
      */
-    public function getLon()
+    public function getLon ()
     {
         return $this->_lon;
     }
@@ -321,10 +335,10 @@ class Zend_Service_Technorati_Weblog
      *
      * Note. This property is not documented.
      *
-     * @return  bool    TRUE if the author who claimed this weblog has a photo,
-     *                  FALSE otherwise.
+     * @return bool TRUE if the author who claimed this weblog has a photo,
+     *         FALSE otherwise.
      */
-    public function hasPhoto()
+    public function hasPhoto ()
     {
         return (bool) $this->_hasPhoto;
     }
@@ -332,21 +346,20 @@ class Zend_Service_Technorati_Weblog
     /**
      * Returns the array of weblog authors.
      *
-     * @return  array of Zend_Service_Technorati_Author authors
+     * @return array of Zend_Service_Technorati_Author authors
      */
-    public function getAuthors()
+    public function getAuthors ()
     {
         return (array) $this->_authors;
     }
 
-
     /**
      * Sets weblog name.
      *
-     * @param   string $name
-     * @return  Zend_Service_Technorati_Weblog $this instance
+     * @param string $name            
+     * @return Zend_Service_Technorati_Weblog $this instance
      */
-    public function setName($name)
+    public function setName ($name)
     {
         $this->_name = (string) $name;
         return $this;
@@ -355,12 +368,12 @@ class Zend_Service_Technorati_Weblog
     /**
      * Sets weblog URL.
      *
-     * @param   string|Zend_Uri_Http $url
-     * @return  void
-     * @throws  Zend_Service_Technorati_Exception if $input is an invalid URI
-     *          (via Zend_Service_Technorati_Utils::normalizeUriHttp)
+     * @param string|Zend_Uri_Http $url            
+     * @return void
+     * @throws Zend_Service_Technorati_Exception if $input is an invalid URI
+     *         (via Zend_Service_Technorati_Utils::normalizeUriHttp)
      */
-    public function setUrl($url)
+    public function setUrl ($url)
     {
         $this->_url = Zend_Service_Technorati_Utils::normalizeUriHttp($url);
         return $this;
@@ -369,10 +382,10 @@ class Zend_Service_Technorati_Weblog
     /**
      * Sets number of inbound blogs.
      *
-     * @param   integer $number
-     * @return  Zend_Service_Technorati_Weblog $this instance
+     * @param integer $number            
+     * @return Zend_Service_Technorati_Weblog $this instance
      */
-    public function setInboundBlogs($number)
+    public function setInboundBlogs ($number)
     {
         $this->_inboundBlogs = (int) $number;
         return $this;
@@ -381,10 +394,10 @@ class Zend_Service_Technorati_Weblog
     /**
      * Sets number of Iinbound links.
      *
-     * @param   integer $number
-     * @return  Zend_Service_Technorati_Weblog $this instance
+     * @param integer $number            
+     * @return Zend_Service_Technorati_Weblog $this instance
      */
-    public function setInboundLinks($number)
+    public function setInboundLinks ($number)
     {
         $this->_inboundLinks = (int) $number;
         return $this;
@@ -393,12 +406,12 @@ class Zend_Service_Technorati_Weblog
     /**
      * Sets weblog Rss URL.
      *
-     * @param   string|Zend_Uri_Http $url
-     * @return  Zend_Service_Technorati_Weblog $this instance
-     * @throws  Zend_Service_Technorati_Exception if $input is an invalid URI
-     *          (via Zend_Service_Technorati_Utils::normalizeUriHttp)
+     * @param string|Zend_Uri_Http $url            
+     * @return Zend_Service_Technorati_Weblog $this instance
+     * @throws Zend_Service_Technorati_Exception if $input is an invalid URI
+     *         (via Zend_Service_Technorati_Utils::normalizeUriHttp)
      */
-    public function setRssUrl($url)
+    public function setRssUrl ($url)
     {
         $this->_rssUrl = Zend_Service_Technorati_Utils::normalizeUriHttp($url);
         return $this;
@@ -407,12 +420,12 @@ class Zend_Service_Technorati_Weblog
     /**
      * Sets weblog Atom URL.
      *
-     * @param   string|Zend_Uri_Http $url
-     * @return  Zend_Service_Technorati_Weblog $this instance
-     * @throws  Zend_Service_Technorati_Exception if $input is an invalid URI
-     *          (via Zend_Service_Technorati_Utils::normalizeUriHttp)
+     * @param string|Zend_Uri_Http $url            
+     * @return Zend_Service_Technorati_Weblog $this instance
+     * @throws Zend_Service_Technorati_Exception if $input is an invalid URI
+     *         (via Zend_Service_Technorati_Utils::normalizeUriHttp)
      */
-    public function setAtomUrl($url)
+    public function setAtomUrl ($url)
     {
         $this->_atomUrl = Zend_Service_Technorati_Utils::normalizeUriHttp($url);
         return $this;
@@ -424,24 +437,26 @@ class Zend_Service_Technorati_Weblog
      * $datetime can be any value supported by
      * Zend_Service_Technorati_Utils::normalizeDate().
      *
-     * @param   mixed $datetime A string representing the last update date time
-     *                          in a valid date time format
-     * @return  Zend_Service_Technorati_Weblog $this instance
-     * @throws  Zend_Service_Technorati_Exception
+     * @param mixed $datetime
+     *            A string representing the last update date time
+     *            in a valid date time format
+     * @return Zend_Service_Technorati_Weblog $this instance
+     * @throws Zend_Service_Technorati_Exception
      */
-    public function setLastUpdate($datetime)
+    public function setLastUpdate ($datetime)
     {
-        $this->_lastUpdate = Zend_Service_Technorati_Utils::normalizeDate($datetime);
+        $this->_lastUpdate = Zend_Service_Technorati_Utils::normalizeDate(
+                $datetime);
         return $this;
     }
 
     /**
      * Sets weblog Rank.
      *
-     * @param   integer $rank
-     * @return  Zend_Service_Technorati_Weblog $this instance
+     * @param integer $rank            
+     * @return Zend_Service_Technorati_Weblog $this instance
      */
-    public function setRank($rank)
+    public function setRank ($rank)
     {
         $this->_rank = (int) $rank;
         return $this;
@@ -450,10 +465,10 @@ class Zend_Service_Technorati_Weblog
     /**
      * Sets weblog latitude coordinate.
      *
-     * @param   float $coordinate
-     * @return  Zend_Service_Technorati_Weblog $this instance
+     * @param float $coordinate            
+     * @return Zend_Service_Technorati_Weblog $this instance
      */
-    public function setLat($coordinate)
+    public function setLat ($coordinate)
     {
         $this->_lat = (float) $coordinate;
         return $this;
@@ -462,10 +477,10 @@ class Zend_Service_Technorati_Weblog
     /**
      * Sets weblog longitude coordinate.
      *
-     * @param   float $coordinate
-     * @return  Zend_Service_Technorati_Weblog $this instance
+     * @param float $coordinate            
+     * @return Zend_Service_Technorati_Weblog $this instance
      */
-    public function setLon($coordinate)
+    public function setLon ($coordinate)
     {
         $this->_lon = (float) $coordinate;
         return $this;
@@ -474,13 +489,12 @@ class Zend_Service_Technorati_Weblog
     /**
      * Sets hasPhoto property.
      *
-     * @param   bool $hasPhoto
-     * @return  Zend_Service_Technorati_Weblog $this instance
+     * @param bool $hasPhoto            
+     * @return Zend_Service_Technorati_Weblog $this instance
      */
-    public function setHasPhoto($hasPhoto)
+    public function setHasPhoto ($hasPhoto)
     {
         $this->_hasPhoto = (bool) $hasPhoto;
         return $this;
     }
-
 }

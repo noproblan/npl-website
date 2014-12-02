@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <ldml>
 	<identity>
-		<version number="$Revision: 1.41 $"/>
-		<generation date="$Date: 2009/06/15 04:15:33 $"/>
-		<language type="my"/>
+		<version number="$Revision: 1.41 $" />
+		<generation date="$Date: 2009/06/15 04:15:33 $" />
+		<language type="my" />
 	</identity>
 	<localeDisplayNames>
 		<localeDisplayPattern>
@@ -25,7 +25,8 @@
 			<language type="cau">ကောက်ကေးရှပ် ဘာသာစကား</language>
 			<language type="ce">ချေချင်း</language>
 			<language type="chr">ချာရိုကီ</language>
-			<language type="cpp">ပေါ်တူဂီ အခြေခံ အနောက်အိန္ဒြိယ ကျွန်းစုသား သို့မဟုတ် ဗန်းစကား</language>
+			<language type="cpp">ပေါ်တူဂီ အခြေခံ အနောက်အိန္ဒြိယ ကျွန်းစုသား
+				သို့မဟုတ် ဗန်းစကား</language>
 			<language type="cr">ခရီး</language>
 			<language type="crp">အနောက်အိန္ဒြိယ ကျွန်းစုသား သို့မဟုတ် ဗန်းစကား</language>
 			<language type="cs">ချက်</language>
@@ -288,7 +289,8 @@
 			<territory type="GN">ဂီရာနာ</territory>
 			<territory type="GQ">အီကွေတာ ဂီရာနာ</territory>
 			<territory type="GR">ဂရိ</territory>
-			<territory type="GS">တောင် ဂျော်ဂျီယာ နှင့် တောင် ဆင်းဒဝစ်ဂျ် ကျွန်းစုများ</territory>
+			<territory type="GS">တောင် ဂျော်ဂျီယာ နှင့် တောင် ဆင်းဒဝစ်ဂျ်
+				ကျွန်းစုများ</territory>
 			<territory type="GT">ဂွာတီမာလာ</territory>
 			<territory type="GU">ဂူအမ်</territory>
 			<territory type="HK">တရုတ်၏ အထူးအုပ်ချုပ်ခွင့်ရ ဟောင်ကောင်</territory>
@@ -390,7 +392,8 @@
 			<territory type="TZ">တန်ဇန်နီးယား</territory>
 			<territory type="UA">ယူကရိန်း</territory>
 			<territory type="UG">ယူဂန္ဒာ</territory>
-			<territory type="UM">ယူနိုက်တက်စတိတ် အပြင်ထွက် နေသည့် သေးငယ်သောကျွန်းများ</territory>
+			<territory type="UM">ယူနိုက်တက်စတိတ် အပြင်ထွက် နေသည့်
+				သေးငယ်သောကျွန်းများ</territory>
 			<territory type="US">ယူနိုက်တက်စတိတ်</territory>
 			<territory type="UY">ဥရုဂွေး</territory>
 			<territory type="UZ">ဥဘက်ကစ္စတန်</territory>
@@ -446,7 +449,8 @@
 	</localeDisplayNames>
 	<characters>
 		<exemplarCharacters>[က-အ ဣ-ဧ ဩ ဪ]</exemplarCharacters>
-		<exemplarCharacters type="auxiliary">[\u1036-း ျ-\u103E ာ ါ \u102D-\u1032 \u1039 \u103A]</exemplarCharacters>
+		<exemplarCharacters type="auxiliary">[\u1036-း ျ-\u103E ာ ါ
+			\u102D-\u1032 \u1039 \u103A]</exemplarCharacters>
 		<exemplarCharacters type="currencySymbol">[a-z]</exemplarCharacters>
 	</characters>
 	<delimiters>
@@ -689,8 +693,10 @@
 							<greatestDifference id="M">EEEE၊ d/M – EEEE၊ d/M</greatestDifference>
 						</intervalFormatItem>
 						<intervalFormatItem id="MMMEd">
-							<greatestDifference id="d">MMM d၊ EEEE – MMM d၊ EEEE</greatestDifference>
-							<greatestDifference id="M">MMM d၊ EEEE – MMM d၊ EEEE</greatestDifference>
+							<greatestDifference id="d">MMM d၊ EEEE – MMM d၊
+								EEEE</greatestDifference>
+							<greatestDifference id="M">MMM d၊ EEEE – MMM d၊
+								EEEE</greatestDifference>
 						</intervalFormatItem>
 						<intervalFormatItem id="y">
 							<greatestDifference id="y">y-y</greatestDifference>
@@ -701,18 +707,24 @@
 							<greatestDifference id="y">d/M/yy – d/M/yy</greatestDifference>
 						</intervalFormatItem>
 						<intervalFormatItem id="yMEd">
-							<greatestDifference id="d">EEEE၊ d/M/yy – EEEE၊ d/M/yy</greatestDifference>
-							<greatestDifference id="M">EEEE၊ d/M/yy – EEEE၊ d/M/yy</greatestDifference>
-							<greatestDifference id="y">EEEE၊ d-M-yyyy – EEEE၊ d-M-yyyy</greatestDifference>
+							<greatestDifference id="d">EEEE၊ d/M/yy – EEEE၊
+								d/M/yy</greatestDifference>
+							<greatestDifference id="M">EEEE၊ d/M/yy – EEEE၊
+								d/M/yy</greatestDifference>
+							<greatestDifference id="y">EEEE၊ d-M-yyyy – EEEE၊
+								d-M-yyyy</greatestDifference>
 						</intervalFormatItem>
 						<intervalFormatItem id="yMMMd">
 							<greatestDifference id="M">y၊ MMM d – MMM d</greatestDifference>
 							<greatestDifference id="y">y MMM d – y MMM d</greatestDifference>
 						</intervalFormatItem>
 						<intervalFormatItem id="yMMMEd">
-							<greatestDifference id="d">y၊ MMM d၊ EEEE – MMM d၊ EEEE</greatestDifference>
-							<greatestDifference id="M">y၊ MMM d၊ EEEE – MMM d၊ EEEE</greatestDifference>
-							<greatestDifference id="y">y၊ MMM d၊ EEEE – y၊ MMM d၊ EEEE</greatestDifference>
+							<greatestDifference id="d">y၊ MMM d၊ EEEE – MMM d၊
+								EEEE</greatestDifference>
+							<greatestDifference id="M">y၊ MMM d၊ EEEE – MMM d၊
+								EEEE</greatestDifference>
+							<greatestDifference id="y">y၊ MMM d၊ EEEE – y၊ MMM
+								d၊ EEEE</greatestDifference>
 						</intervalFormatItem>
 					</intervalFormats>
 				</dateTimeFormats>

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -21,21 +22,26 @@
  */
 
 /**
- * @category   Zend
- * @package    Zend_Service
+ *
+ * @category Zend
+ * @package Zend_Service
  * @subpackage DeveloperGarden
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @author     Marco Kaiser
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @author Marco Kaiser
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Service_DeveloperGarden_BaseUserService_AccountBalance
 {
+
     /**
+     *
      * @var integer
      */
     public $Account = null;
 
     /**
+     *
      * @var integer $Credits
      */
     public $Credits = null;
@@ -45,7 +51,7 @@ class Zend_Service_DeveloperGarden_BaseUserService_AccountBalance
      *
      * @return integer
      */
-    public function getAccount()
+    public function getAccount ()
     {
         return $this->Account;
     }
@@ -55,7 +61,7 @@ class Zend_Service_DeveloperGarden_BaseUserService_AccountBalance
      *
      * @return integer
      */
-    public function getCredits()
+    public function getCredits ()
     {
         return $this->Credits;
     }

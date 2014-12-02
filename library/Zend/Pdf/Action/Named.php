@@ -20,18 +20,20 @@
  * @version    $Id: Named.php 23775 2011-03-01 17:25:24Z ralph $
  */
 
-/** Zend_Pdf_Action */
+/**
+ * Zend_Pdf_Action
+ */
 require_once 'Zend/Pdf/Action.php';
-
 
 /**
  * PDF 'Execute an action predefined by the viewer application' action
  * PDF 1.2+ feature
  *
- * @package    Zend_Pdf
+ * @package Zend_Pdf
  * @subpackage Actions
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Pdf_Action_Named extends Zend_Pdf_Action
 {

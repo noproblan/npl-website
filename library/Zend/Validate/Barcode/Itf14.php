@@ -20,32 +20,39 @@
  */
 
 /**
+ *
  * @see Zend_Validate_Barcode_AdapterAbstract
  */
 require_once 'Zend/Validate/Barcode/AdapterAbstract.php';
 
 /**
- * @category   Zend
- * @package    Zend_Validate
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ *
+ * @category Zend
+ * @package Zend_Validate
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Validate_Barcode_Itf14 extends Zend_Validate_Barcode_AdapterAbstract
 {
+
     /**
      * Allowed barcode lengths
+     * 
      * @var integer
      */
     protected $_length = 14;
 
     /**
      * Allowed barcode characters
+     * 
      * @var string
      */
     protected $_characters = '0123456789';
 
     /**
      * Checksum function
+     * 
      * @var string
      */
     protected $_checksum = '_gtin';

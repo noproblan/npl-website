@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -22,101 +23,119 @@
 /**
  * Provide Layout support for MVC applications
  *
- * @category   Zend
- * @package    Zend_Layout
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @category Zend
+ * @package Zend_Layout
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Layout
 {
+
     /**
      * Placeholder container for layout variables
+     * 
      * @var Zend_View_Helper_Placeholder_Container
      */
     protected $_container;
 
     /**
      * Key used to store content from 'default' named response segment
+     * 
      * @var string
      */
     protected $_contentKey = 'content';
 
     /**
      * Are layouts enabled?
+     * 
      * @var bool
      */
     protected $_enabled = true;
 
     /**
      * Helper class
+     * 
      * @var string
      */
     protected $_helperClass = 'Zend_Layout_Controller_Action_Helper_Layout';
 
     /**
      * Inflector used to resolve layout script
+     * 
      * @var Zend_Filter_Inflector
      */
     protected $_inflector;
 
     /**
      * Flag: is inflector enabled?
+     * 
      * @var bool
      */
     protected $_inflectorEnabled = true;
 
     /**
      * Inflector target
+     * 
      * @var string
      */
     protected $_inflectorTarget = ':script.:suffix';
 
     /**
      * Layout view
+     * 
      * @var string
      */
     protected $_layout = 'layout';
 
     /**
      * Layout view script path
+     * 
      * @var string
      */
     protected $_viewScriptPath = null;
 
     protected $_viewBasePath = null;
+
     protected $_viewBasePrefix = 'Layout_View';
 
     /**
      * Flag: is MVC integration enabled?
+     * 
      * @var bool
      */
     protected $_mvcEnabled = true;
 
     /**
      * Instance registered with MVC, if any
+     * 
      * @var Zend_Layout
      */
     protected static $_mvcInstance;
 
     /**
      * Flag: is MVC successful action only flag set?
+     * 
      * @var bool
      */
     protected $_mvcSuccessfulActionOnly = true;
 
     /**
      * Plugin class
+     * 
      * @var string
      */
     protected $_pluginClass = 'Zend_Layout_Controller_Plugin_Layout';
 
     /**
+     *
      * @var Zend_View_Interface
      */
     protected $_view;
 
     /**
      * View script suffix for layout script
+     * 
      * @var string
      */
     protected $_viewSuffix = 'phtml';
@@ -136,10 +155,10 @@ class Zend_Layout
      * Otherwise, also instantiates and registers action helper and controller
      * plugin.
      *
-     * @param  string|array|Zend_Config $options
+     * @param string|array|Zend_Config $options            
      * @return void
      */
-    public function __construct($options = null, $initMvc = false)
+    public function __construct ($options = null, $initMvc = false)
     {
         if (null !== $options) {
             if (is_string($options)) {
@@ -150,12 +169,13 @@ class Zend_Layout
                 $this->setConfig($options);
             } else {
                 require_once 'Zend/Layout/Exception.php';
-                throw new Zend_Layout_Exception('Invalid option provided to constructor');
+                throw new Zend_Layout_Exception(
+                        'Invalid option provided to constructor');
             }
         }
-
+        
         $this->_initVarContainer();
-
+        
         if ($initMvc) {
             $this->_setMvcEnabled(true);
             $this->_initMvc();
@@ -167,21 +187,21 @@ class Zend_Layout
     /**
      * Static method for initialization with MVC support
      *
-     * @param  string|array|Zend_Config $options
+     * @param string|array|Zend_Config $options            
      * @return Zend_Layout
      */
-    public static function startMvc($options = null)
+    public static function startMvc ($options = null)
     {
         if (null === self::$_mvcInstance) {
             self::$_mvcInstance = new self($options, true);
         }
-
+        
         if (is_string($options)) {
             self::$_mvcInstance->setLayoutPath($options);
         } elseif (is_array($options) || $options instanceof Zend_Config) {
             self::$_mvcInstance->setOptions($options);
         }
-
+        
         return self::$_mvcInstance;
     }
 
@@ -190,7 +210,7 @@ class Zend_Layout
      *
      * @return Zend_Layout|null
      */
-    public static function getMvcInstance()
+    public static function getMvcInstance ()
     {
         return self::$_mvcInstance;
     }
@@ -202,7 +222,7 @@ class Zend_Layout
      *
      * @return void
      */
-    public static function resetMvcInstance()
+    public static function resetMvcInstance ()
     {
         if (null !== self::$_mvcInstance) {
             $layout = self::$_mvcInstance;
@@ -211,11 +231,11 @@ class Zend_Layout
             if ($front->hasPlugin($pluginClass)) {
                 $front->unregisterPlugin($pluginClass);
             }
-
+            
             if (Zend_Controller_Action_HelperBroker::hasHelper('layout')) {
                 Zend_Controller_Action_HelperBroker::removeHelper('layout');
             }
-
+            
             unset($layout);
             self::$_mvcInstance = null;
         }
@@ -224,18 +244,19 @@ class Zend_Layout
     /**
      * Set options en masse
      *
-     * @param  array|Zend_Config $options
+     * @param array|Zend_Config $options            
      * @return void
      */
-    public function setOptions($options)
+    public function setOptions ($options)
     {
         if ($options instanceof Zend_Config) {
             $options = $options->toArray();
-        } elseif (!is_array($options)) {
+        } elseif (! is_array($options)) {
             require_once 'Zend/Layout/Exception.php';
-            throw new Zend_Layout_Exception('setOptions() expects either an array or a Zend_Config object');
+            throw new Zend_Layout_Exception(
+                    'setOptions() expects either an array or a Zend_Config object');
         }
-
+        
         foreach ($options as $key => $value) {
             $method = 'set' . ucfirst($key);
             if (method_exists($this, $method)) {
@@ -249,7 +270,7 @@ class Zend_Layout
      *
      * @return void
      */
-    protected function _initMvc()
+    protected function _initMvc ()
     {
         $this->_initPlugin();
         $this->_initHelper();
@@ -260,21 +281,20 @@ class Zend_Layout
      *
      * @return void
      */
-    protected function _initPlugin()
+    protected function _initPlugin ()
     {
         $pluginClass = $this->getPluginClass();
         require_once 'Zend/Controller/Front.php';
         $front = Zend_Controller_Front::getInstance();
-        if (!$front->hasPlugin($pluginClass)) {
-            if (!class_exists($pluginClass)) {
+        if (! $front->hasPlugin($pluginClass)) {
+            if (! class_exists($pluginClass)) {
                 require_once 'Zend/Loader.php';
                 Zend_Loader::loadClass($pluginClass);
             }
             $front->registerPlugin(
-                // register to run last | BUT before the ErrorHandler (if its available)
-                new $pluginClass($this),
-                99
-            );
+                    // register to run last | BUT before the ErrorHandler (if
+                    // its available)
+                    new $pluginClass($this), 99);
         }
     }
 
@@ -283,26 +303,27 @@ class Zend_Layout
      *
      * @return void
      */
-    protected function _initHelper()
+    protected function _initHelper ()
     {
         $helperClass = $this->getHelperClass();
         require_once 'Zend/Controller/Action/HelperBroker.php';
-        if (!Zend_Controller_Action_HelperBroker::hasHelper('layout')) {
-            if (!class_exists($helperClass)) {
+        if (! Zend_Controller_Action_HelperBroker::hasHelper('layout')) {
+            if (! class_exists($helperClass)) {
                 require_once 'Zend/Loader.php';
                 Zend_Loader::loadClass($helperClass);
             }
-            Zend_Controller_Action_HelperBroker::getStack()->offsetSet(-90, new $helperClass($this));
+            Zend_Controller_Action_HelperBroker::getStack()->offsetSet(- 90, 
+                    new $helperClass($this));
         }
     }
 
     /**
      * Set options from a config object
      *
-     * @param  Zend_Config $config
+     * @param Zend_Config $config            
      * @return Zend_Layout
      */
-    public function setConfig(Zend_Config $config)
+    public function setConfig (Zend_Config $config)
     {
         $this->setOptions($config->toArray());
         return $this;
@@ -313,13 +334,14 @@ class Zend_Layout
      *
      * @return Zend_View_Helper_Placeholder_Container
      */
-    protected function _initVarContainer()
+    protected function _initVarContainer ()
     {
         if (null === $this->_container) {
             require_once 'Zend/View/Helper/Placeholder/Registry.php';
-            $this->_container = Zend_View_Helper_Placeholder_Registry::getRegistry()->getContainer(__CLASS__);
+            $this->_container = Zend_View_Helper_Placeholder_Registry::getRegistry()->getContainer(
+                    __CLASS__);
         }
-
+        
         return $this->_container;
     }
 
@@ -328,11 +350,11 @@ class Zend_Layout
      *
      * Note: enables layout by default, can be disabled
      *
-     * @param  string $name
-     * @param  boolean $enabled
+     * @param string $name            
+     * @param boolean $enabled            
      * @return Zend_Layout
      */
-    public function setLayout($name, $enabled = true)
+    public function setLayout ($name, $enabled = true)
     {
         $this->_layout = (string) $name;
         if ($enabled) {
@@ -346,7 +368,7 @@ class Zend_Layout
      *
      * @return string
      */
-    public function getLayout()
+    public function getLayout ()
     {
         return $this->_layout;
     }
@@ -356,7 +378,7 @@ class Zend_Layout
      *
      * @return Zend_Layout
      */
-    public function disableLayout()
+    public function disableLayout ()
     {
         $this->_enabled = false;
         return $this;
@@ -367,7 +389,7 @@ class Zend_Layout
      *
      * @return Zend_Layout
      */
-    public function enableLayout()
+    public function enableLayout ()
     {
         $this->_enabled = true;
         return $this;
@@ -378,31 +400,30 @@ class Zend_Layout
      *
      * @return bool
      */
-    public function isEnabled()
+    public function isEnabled ()
     {
         return $this->_enabled;
     }
 
-
-    public function setViewBasePath($path, $prefix = 'Layout_View')
+    public function setViewBasePath ($path, $prefix = 'Layout_View')
     {
         $this->_viewBasePath = $path;
         $this->_viewBasePrefix = $prefix;
         return $this;
     }
 
-    public function getViewBasePath()
+    public function getViewBasePath ()
     {
         return $this->_viewBasePath;
     }
 
-    public function setViewScriptPath($path)
+    public function setViewScriptPath ($path)
     {
         $this->_viewScriptPath = $path;
         return $this;
     }
 
-    public function getViewScriptPath()
+    public function getViewScriptPath ()
     {
         return $this->_viewScriptPath;
     }
@@ -410,10 +431,10 @@ class Zend_Layout
     /**
      * Set layout script path
      *
-     * @param  string $path
+     * @param string $path            
      * @return Zend_Layout
      */
-    public function setLayoutPath($path)
+    public function setLayoutPath ($path)
     {
         return $this->setViewScriptPath($path);
     }
@@ -423,7 +444,7 @@ class Zend_Layout
      *
      * @return string
      */
-    public function getLayoutPath()
+    public function getLayoutPath ()
     {
         return $this->getViewScriptPath();
     }
@@ -433,10 +454,10 @@ class Zend_Layout
      *
      * Key in namespace container denoting default content
      *
-     * @param  string $contentKey
+     * @param string $contentKey            
      * @return Zend_Layout
      */
-    public function setContentKey($contentKey)
+    public function setContentKey ($contentKey)
     {
         $this->_contentKey = (string) $contentKey;
         return $this;
@@ -447,7 +468,7 @@ class Zend_Layout
      *
      * @return string
      */
-    public function getContentKey()
+    public function getContentKey ()
     {
         return $this->_contentKey;
     }
@@ -455,10 +476,10 @@ class Zend_Layout
     /**
      * Set MVC enabled flag
      *
-     * @param  bool $mvcEnabled
+     * @param bool $mvcEnabled            
      * @return Zend_Layout
      */
-    protected function _setMvcEnabled($mvcEnabled)
+    protected function _setMvcEnabled ($mvcEnabled)
     {
         $this->_mvcEnabled = ($mvcEnabled) ? true : false;
         return $this;
@@ -469,7 +490,7 @@ class Zend_Layout
      *
      * @return bool
      */
-    public function getMvcEnabled()
+    public function getMvcEnabled ()
     {
         return $this->_mvcEnabled;
     }
@@ -477,10 +498,10 @@ class Zend_Layout
     /**
      * Set MVC Successful Action Only flag
      *
-     * @param bool $successfulActionOnly
+     * @param bool $successfulActionOnly            
      * @return Zend_Layout
      */
-    public function setMvcSuccessfulActionOnly($successfulActionOnly)
+    public function setMvcSuccessfulActionOnly ($successfulActionOnly)
     {
         $this->_mvcSuccessfulActionOnly = ($successfulActionOnly) ? true : false;
         return $this;
@@ -491,7 +512,7 @@ class Zend_Layout
      *
      * @return bool
      */
-    public function getMvcSuccessfulActionOnly()
+    public function getMvcSuccessfulActionOnly ()
     {
         return $this->_mvcSuccessfulActionOnly;
     }
@@ -499,10 +520,10 @@ class Zend_Layout
     /**
      * Set view object
      *
-     * @param  Zend_View_Interface $view
+     * @param Zend_View_Interface $view            
      * @return Zend_Layout
      */
-    public function setView(Zend_View_Interface $view)
+    public function setView (Zend_View_Interface $view)
     {
         $this->_view = $view;
         return $this;
@@ -513,7 +534,7 @@ class Zend_Layout
      *
      * @return string
      */
-    public function getHelperClass()
+    public function getHelperClass ()
     {
         return $this->_helperClass;
     }
@@ -521,10 +542,10 @@ class Zend_Layout
     /**
      * Set helper class
      *
-     * @param  string $helperClass
+     * @param string $helperClass            
      * @return Zend_Layout
      */
-    public function setHelperClass($helperClass)
+    public function setHelperClass ($helperClass)
     {
         $this->_helperClass = (string) $helperClass;
         return $this;
@@ -535,7 +556,7 @@ class Zend_Layout
      *
      * @return string
      */
-    public function getPluginClass()
+    public function getPluginClass ()
     {
         return $this->_pluginClass;
     }
@@ -543,10 +564,10 @@ class Zend_Layout
     /**
      * Set plugin class
      *
-     * @param  string $pluginClass
+     * @param string $pluginClass            
      * @return Zend_Layout
      */
-    public function setPluginClass($pluginClass)
+    public function setPluginClass ($pluginClass)
     {
         $this->_pluginClass = (string) $pluginClass;
         return $this;
@@ -560,11 +581,12 @@ class Zend_Layout
      * @todo Set inflector from view renderer at same time
      * @return Zend_View_Interface
      */
-    public function getView()
+    public function getView ()
     {
         if (null === $this->_view) {
             require_once 'Zend/Controller/Action/HelperBroker.php';
-            $viewRenderer = Zend_Controller_Action_HelperBroker::getStaticHelper('viewRenderer');
+            $viewRenderer = Zend_Controller_Action_HelperBroker::getStaticHelper(
+                    'viewRenderer');
             if (null === $viewRenderer->view) {
                 $viewRenderer->initView();
             }
@@ -576,10 +598,10 @@ class Zend_Layout
     /**
      * Set layout view script suffix
      *
-     * @param  string $viewSuffix
+     * @param string $viewSuffix            
      * @return Zend_Layout
      */
-    public function setViewSuffix($viewSuffix)
+    public function setViewSuffix ($viewSuffix)
     {
         $this->_viewSuffix = (string) $viewSuffix;
         return $this;
@@ -590,7 +612,7 @@ class Zend_Layout
      *
      * @return string
      */
-    public function getViewSuffix()
+    public function getViewSuffix ()
     {
         return $this->_viewSuffix;
     }
@@ -600,7 +622,7 @@ class Zend_Layout
      *
      * @return string
      */
-    public function getInflectorTarget()
+    public function getInflectorTarget ()
     {
         return $this->_inflectorTarget;
     }
@@ -608,10 +630,10 @@ class Zend_Layout
     /**
      * Set inflector target
      *
-     * @param  string $inflectorTarget
+     * @param string $inflectorTarget            
      * @return Zend_Layout
      */
-    public function setInflectorTarget($inflectorTarget)
+    public function setInflectorTarget ($inflectorTarget)
     {
         $this->_inflectorTarget = (string) $inflectorTarget;
         return $this;
@@ -620,10 +642,10 @@ class Zend_Layout
     /**
      * Set inflector to use when resolving layout names
      *
-     * @param  Zend_Filter_Inflector $inflector
+     * @param Zend_Filter_Inflector $inflector            
      * @return Zend_Layout
      */
-    public function setInflector(Zend_Filter_Inflector $inflector)
+    public function setInflector (Zend_Filter_Inflector $inflector)
     {
         $this->_inflector = $inflector;
         return $this;
@@ -634,17 +656,23 @@ class Zend_Layout
      *
      * @return Zend_Filter_Inflector
      */
-    public function getInflector()
+    public function getInflector ()
     {
         if (null === $this->_inflector) {
             require_once 'Zend/Filter/Inflector.php';
             $inflector = new Zend_Filter_Inflector();
             $inflector->setTargetReference($this->_inflectorTarget)
-                      ->addRules(array(':script' => array('Word_CamelCaseToDash', 'StringToLower')))
-                      ->setStaticRuleReference('suffix', $this->_viewSuffix);
+                ->addRules(
+                    array(
+                            ':script' => array(
+                                    'Word_CamelCaseToDash',
+                                    'StringToLower'
+                            )
+                    ))
+                ->setStaticRuleReference('suffix', $this->_viewSuffix);
             $this->setInflector($inflector);
         }
-
+        
         return $this->_inflector;
     }
 
@@ -653,7 +681,7 @@ class Zend_Layout
      *
      * @return Zend_Layout
      */
-    public function enableInflector()
+    public function enableInflector ()
     {
         $this->_inflectorEnabled = true;
         return $this;
@@ -664,7 +692,7 @@ class Zend_Layout
      *
      * @return Zend_Layout
      */
-    public function disableInflector()
+    public function disableInflector ()
     {
         $this->_inflectorEnabled = false;
         return $this;
@@ -675,7 +703,7 @@ class Zend_Layout
      *
      * @return bool
      */
-    public function inflectorEnabled()
+    public function inflectorEnabled ()
     {
         return $this->_inflectorEnabled;
     }
@@ -683,11 +711,11 @@ class Zend_Layout
     /**
      * Set layout variable
      *
-     * @param  string $key
-     * @param  mixed $value
+     * @param string $key            
+     * @param mixed $value            
      * @return void
      */
-    public function __set($key, $value)
+    public function __set ($key, $value)
     {
         $this->_container[$key] = $value;
     }
@@ -695,25 +723,25 @@ class Zend_Layout
     /**
      * Get layout variable
      *
-     * @param  string $key
+     * @param string $key            
      * @return mixed
      */
-    public function __get($key)
+    public function __get ($key)
     {
         if (isset($this->_container[$key])) {
             return $this->_container[$key];
         }
-
+        
         return null;
     }
 
     /**
      * Is a layout variable set?
      *
-     * @param  string $key
+     * @param string $key            
      * @return bool
      */
-    public function __isset($key)
+    public function __isset ($key)
     {
         return (isset($this->_container[$key]));
     }
@@ -721,10 +749,10 @@ class Zend_Layout
     /**
      * Unset a layout variable?
      *
-     * @param  string $key
+     * @param string $key            
      * @return void
      */
-    public function __unset($key)
+    public function __unset ($key)
     {
         if (isset($this->_container[$key])) {
             unset($this->_container[$key]);
@@ -734,13 +762,15 @@ class Zend_Layout
     /**
      * Assign one or more layout variables
      *
-     * @param  mixed $spec Assoc array or string key; if assoc array, sets each
-     * key as a layout variable
-     * @param  mixed $value Value if $spec is a key
+     * @param mixed $spec
+     *            Assoc array or string key; if assoc array, sets each
+     *            key as a layout variable
+     * @param mixed $value
+     *            Value if $spec is a key
      * @return Zend_Layout
      * @throws Zend_Layout_Exception if non-array/string value passed to $spec
      */
-    public function assign($spec, $value = null)
+    public function assign ($spec, $value = null)
     {
         if (is_array($spec)) {
             $orig = $this->_container->getArrayCopy();
@@ -748,12 +778,12 @@ class Zend_Layout
             $this->_container->exchangeArray($merged);
             return $this;
         }
-
+        
         if (is_string($spec)) {
             $this->_container[$spec] = $value;
             return $this;
         }
-
+        
         require_once 'Zend/Layout/Exception.php';
         throw new Zend_Layout_Exception('Invalid values passed to assign()');
     }
@@ -767,22 +797,24 @@ class Zend_Layout
      *
      * $name will be passed to the inflector as the key 'script'.
      *
-     * @param  mixed $name
+     * @param mixed $name            
      * @return mixed
      */
-    public function render($name = null)
+    public function render ($name = null)
     {
         if (null === $name) {
             $name = $this->getLayout();
         }
-
-        if ($this->inflectorEnabled() && (null !== ($inflector = $this->getInflector())))
-        {
-            $name = $this->_inflector->filter(array('script' => $name));
+        
+        if ($this->inflectorEnabled() &&
+                 (null !== ($inflector = $this->getInflector()))) {
+            $name = $this->_inflector->filter(array(
+                    'script' => $name
+            ));
         }
-
+        
         $view = $this->getView();
-
+        
         if (null !== ($path = $this->getViewScriptPath())) {
             if (method_exists($view, 'addScriptPath')) {
                 $view->addScriptPath($path);
@@ -792,7 +824,7 @@ class Zend_Layout
         } elseif (null !== ($path = $this->getViewBasePath())) {
             $view->addBasePath($path, $this->_viewBasePrefix);
         }
-
+        
         return $view->render($name);
     }
 }

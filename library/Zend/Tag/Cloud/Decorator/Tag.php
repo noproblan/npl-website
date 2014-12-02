@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -23,34 +24,36 @@
 /**
  * Abstract class for tag decorators
  *
- * @category  Zend
- * @package   Zend_Tag
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license   http://framework.zend.com/license/new-bsd     New BSD License
+ * @category Zend
+ * @package Zend_Tag
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 abstract class Zend_Tag_Cloud_Decorator_Tag
 {
+
     /**
      * Option keys to skip when calling setOptions()
      *
      * @var array
      */
     protected $_skipOptions = array(
-        'options',
-        'config',
+            'options',
+            'config'
     );
 
     /**
      * Create a new cloud decorator with options
      *
-     * @param mixed $options
+     * @param mixed $options            
      */
-    public function __construct($options = null)
+    public function __construct ($options = null)
     {
         if ($options instanceof Zend_Config) {
             $options = $options->toArray();
         }
-
+        
         if (is_array($options)) {
             $this->setOptions($options);
         }
@@ -59,30 +62,31 @@ abstract class Zend_Tag_Cloud_Decorator_Tag
     /**
      * Set options from array
      *
-     * @param  array $options Configuration for the decorator
+     * @param array $options
+     *            Configuration for the decorator
      * @return Zend_Tag_Cloud
      */
-    public function setOptions(array $options)
+    public function setOptions (array $options)
     {
         foreach ($options as $key => $value) {
             if (in_array(strtolower($key), $this->_skipOptions)) {
                 continue;
             }
-
+            
             $method = 'set' . $key;
             if (method_exists($this, $method)) {
                 $this->$method($value);
             }
         }
-
+        
         return $this;
     }
 
     /**
      * Render a list of tags
      *
-     * @param  Zend_Tag_ItemList $tags
+     * @param Zend_Tag_ItemList $tags            
      * @return array
      */
-    abstract public function render(Zend_Tag_ItemList $tags);
+    abstract public function render (Zend_Tag_ItemList $tags);
 }

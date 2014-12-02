@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <ldml>
 	<identity>
-		<version number="$Revision: 1.58 $"/>
-		<generation date="$Date: 2009/06/15 03:46:25 $"/>
-		<language type="as"/>
+		<version number="$Revision: 1.58 $" />
+		<generation date="$Date: 2009/06/15 03:46:25 $" />
+		<language type="as" />
 	</identity>
 	<localeDisplayNames>
 		<languages>
@@ -39,11 +39,13 @@
 			<key type="currency">মুদ্ৰা</key>
 		</keys>
 		<types>
-			<type type="big5han" key="collation">পৰম্পৰাগত চীনা শৃঙ্খলাবদ্ধ কৰাৰ ক্ৰম - Big5</type>
+			<type type="big5han" key="collation">পৰম্পৰাগত চীনা শৃঙ্খলাবদ্ধ কৰাৰ ক্ৰম -
+				Big5</type>
 			<type type="buddhist" key="calendar">বৌদ্ধ পঞ্জিকা</type>
 			<type type="chinese" key="calendar">চীনা পঞ্জিকা</type>
 			<type type="direct" key="collation">পোনপটীয়াকৈ শৃঙ্খলাবদ্ধ কৰাৰ ক্ৰম</type>
-			<type type="gb2312han" key="collation">সৰল চীনা শৃঙ্খলাবদ্ধ কৰাৰ ক্ৰম - GB2312</type>
+			<type type="gb2312han" key="collation">সৰল চীনা শৃঙ্খলাবদ্ধ কৰাৰ ক্ৰম -
+				GB2312</type>
 			<type type="gregorian" key="calendar">গ্ৰিগোৰীয় পঞ্জিকা</type>
 			<type type="hebrew" key="calendar">হীব্ৰু পঞ্জিকা</type>
 			<type type="indian" key="calendar">ভাৰতীয় ৰাষ্ট্ৰীয় পঞ্জিকা</type>
@@ -58,7 +60,8 @@
 		</types>
 	</localeDisplayNames>
 	<characters>
-		<exemplarCharacters>[় অ-ঋ ৠ ঌ ৡ এ ঐ ও ঔ ং ঁ ঃ ক-ড {ড়} ঢ {ঢ়} ণ ত ৎ থ-ন প-য {য়} ৰ ল ৱ শ-হ ঽ-ৄ ৢ ৣ ে ৈ ো-্ ৗ]</exemplarCharacters>
+		<exemplarCharacters>[় অ-ঋ ৠ ঌ ৡ এ ঐ ও ঔ ং ঁ ঃ ক-ড {ড়} ঢ {ঢ়} ণ ত ৎ
+			থ-ন প-য {য়} ৰ ল ৱ শ-হ ঽ-ৄ ৢ ৣ ে ৈ ো-্ ৗ]</exemplarCharacters>
 		<exemplarCharacters type="auxiliary">[\u200C \u200D ৲]</exemplarCharacters>
 	</characters>
 	<dates>

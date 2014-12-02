@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <ldml>
 	<identity>
-		<version number="$Revision: 1.137 $"/>
-		<generation date="$Date: 2009/06/15 03:46:25 $"/>
-		<language type="fi"/>
+		<version number="$Revision: 1.137 $" />
+		<generation date="$Date: 2009/06/15 03:46:25 $" />
+		<language type="fi" />
 	</identity>
 	<localeDisplayNames>
 		<localeDisplayPattern>
@@ -99,7 +99,8 @@
 			<language type="cop">kopti</language>
 			<language type="cpe">englantiin perustuva kreoli- tai pidgin-kieli</language>
 			<language type="cpf">ranskaan perustuva kreoli- tai pidgin-kieli</language>
-			<language type="cpp">portugaliin perustuva kreoli- tai pidgin-kieli</language>
+			<language type="cpp">portugaliin perustuva kreoli- tai
+				pidgin-kieli</language>
 			<language type="cr">cree</language>
 			<language type="crh">krimintataari</language>
 			<language type="crp">kreoli- tai pidgin-kieli</language>
@@ -533,7 +534,8 @@
 			<script type="Bugi">bugilainen</script>
 			<script type="Buhd">buhidilainen</script>
 			<script type="Cakm">chakmalainen</script>
-			<script type="Cans">Kanadan alkuperäiskansojen yhtenäistetty tavukirjoitus</script>
+			<script type="Cans">Kanadan alkuperäiskansojen yhtenäistetty
+				tavukirjoitus</script>
 			<script type="Cari">kaarialainen</script>
 			<script type="Cham">tšamilainen</script>
 			<script type="Cher">cherokeelainen</script>
@@ -937,14 +939,16 @@
 		</territories>
 		<variants>
 			<variant type="1901">saksan perinteinen oikeinkirjoitus</variant>
-			<variant type="1994">sloveenin resian murteen yhdenmukaistettu oikeinkirjoitus</variant>
+			<variant type="1994">sloveenin resian murteen yhdenmukaistettu
+				oikeinkirjoitus</variant>
 			<variant type="1996">saksan uusi oikeinkirjoitus</variant>
 			<variant type="1606NICT">myöhäiskeskiranska</variant>
 			<variant type="1694ACAD">varhaisnykyranska</variant>
 			<variant type="1959ACAD">valkovenäjän virallinen oikeinkirjoitus</variant>
 			<variant type="AREVELA">itäarmenialainen</variant>
 			<variant type="AREVMDA">länsiarmenialainen</variant>
-			<variant type="BAKU1926">yhtenäistetty turkkilainen latinalainen aakkosto</variant>
+			<variant type="BAKU1926">yhtenäistetty turkkilainen latinalainen
+				aakkosto</variant>
 			<variant type="BISKE">sloveenin resian San Giorgion/Bilan alamurre</variant>
 			<variant type="BOONT">englannin boontling-murre</variant>
 			<variant type="FONIPA">kansainvälinen foneettinen aakkosto IPA</variant>
@@ -980,7 +984,8 @@
 			<type type="buddhist" key="calendar">buddhalainen kalenteri</type>
 			<type type="chinese" key="calendar">kiinalainen kalenteri</type>
 			<type type="direct" key="collation">suora järjestys</type>
-			<type type="gb2312han" key="collation">yksinkertaistettu kiinalainen järjestys GB2312</type>
+			<type type="gb2312han" key="collation">yksinkertaistettu kiinalainen
+				järjestys GB2312</type>
 			<type type="gregorian" key="calendar">gregoriaaninen kalenteri</type>
 			<type type="hebrew" key="calendar">juutalainen kalenteri</type>
 			<type type="indian" key="calendar">intialainen kalenteri</type>
@@ -1008,7 +1013,8 @@
 	</layout>
 	<characters>
 		<exemplarCharacters>[a-s š t-z ž å ä ö]</exemplarCharacters>
-		<exemplarCharacters type="auxiliary">[á à â ã č ç đ é è ë ǧ ǥ ȟ í ï ǩ ń ñ ŋ ô õ œ ř ŧ ú ü ʒ ǯ æ ø]</exemplarCharacters>
+		<exemplarCharacters type="auxiliary">[á à â ã č ç đ é è ë ǧ ǥ ȟ
+			í ï ǩ ń ñ ŋ ô õ œ ř ŧ ú ü ʒ ǯ æ ø]</exemplarCharacters>
 		<exemplarCharacters type="currencySymbol">[a-z]</exemplarCharacters>
 	</characters>
 	<delimiters>
@@ -1330,7 +1336,8 @@
 						<intervalFormatItem id="yMMMEd">
 							<greatestDifference id="d">E d. – E d. MMMM y</greatestDifference>
 							<greatestDifference id="M">E d. MMMM – E d. MMMM y</greatestDifference>
-							<greatestDifference id="y">E d. MMMM y – E d. MMMM y</greatestDifference>
+							<greatestDifference id="y">E d. MMMM y – E d. MMMM
+								y</greatestDifference>
 						</intervalFormatItem>
 						<intervalFormatItem id="yMMMM">
 							<greatestDifference id="M">LLL–LLLL y</greatestDifference>
@@ -2308,7 +2315,8 @@
 			<currency type="AOR">
 				<displayName>Angolan kwanza reajustado (1995–1999)</displayName>
 				<displayName count="one">Angolan kwanza reajustado (1995–1999)</displayName>
-				<displayName count="other">Angolan kwanza reajustadoa (1995–1999)</displayName>
+				<displayName count="other">Angolan kwanza reajustadoa
+					(1995–1999)</displayName>
 			</currency>
 			<currency type="ARA">
 				<displayName>Argentiinan austral</displayName>
@@ -2368,8 +2376,10 @@
 			</currency>
 			<currency type="BAM">
 				<displayName>Bosnia-Hertsegovinan vaihdettava markka</displayName>
-				<displayName count="one">Bosnia-Hertsegovinan vaihdettava markka</displayName>
-				<displayName count="other">Bosnia-Hertsegovinan vaihdettavaa markkaa</displayName>
+				<displayName count="one">Bosnia-Hertsegovinan vaihdettava
+					markka</displayName>
+				<displayName count="other">Bosnia-Hertsegovinan vaihdettavaa
+					markkaa</displayName>
 				<symbol>BAM</symbol>
 			</currency>
 			<currency type="BBD">
@@ -2515,7 +2525,8 @@
 			<currency type="BYB">
 				<displayName>Valko-Venäjän uusi rupla (1994–1999)</displayName>
 				<displayName count="one">Valko-Venäjän uusi rupla (1994–1999)</displayName>
-				<displayName count="other">Valko-Venäjän uutta ruplaa (1994–1999)</displayName>
+				<displayName count="other">Valko-Venäjän uutta ruplaa
+					(1994–1999)</displayName>
 			</currency>
 			<currency type="BYR">
 				<displayName>Valko-Venäjän rupla</displayName>
@@ -2794,7 +2805,8 @@
 			<currency type="GQE">
 				<displayName>Päiväntasaajan Guinean ekwele (–1986)</displayName>
 				<displayName count="one">Päiväntasaajan Guinean ekwele (–1986)</displayName>
-				<displayName count="other">Päiväntasaajan Guinean ekweleä (–1986)</displayName>
+				<displayName count="other">Päiväntasaajan Guinean ekweleä
+					(–1986)</displayName>
 			</currency>
 			<currency type="GRD">
 				<displayName>Kreikan drakma</displayName>
@@ -3562,7 +3574,8 @@
 			<currency type="USN">
 				<displayName>Yhdysvaltain dollari (seuraava päivä)</displayName>
 				<displayName count="one">Yhdysvaltain dollari (seuraava päivä)</displayName>
-				<displayName count="other">Yhdysvaltain dollaria (seuraava päivä)</displayName>
+				<displayName count="other">Yhdysvaltain dollaria (seuraava
+					päivä)</displayName>
 			</currency>
 			<currency type="USS">
 				<displayName>Yhdysvaltain dollari (sama päivä)</displayName>
@@ -3708,13 +3721,17 @@
 			</currency>
 			<currency type="XTS">
 				<displayName>testaustarkoitukseen varattu valuuttakoodi</displayName>
-				<displayName count="one">testaustarkoitukseen varattu valuuttakoodi</displayName>
-				<displayName count="other">testaustarkoitukseen varattua valuuttakoodia</displayName>
+				<displayName count="one">testaustarkoitukseen varattu
+					valuuttakoodi</displayName>
+				<displayName count="other">testaustarkoitukseen varattua
+					valuuttakoodia</displayName>
 			</currency>
 			<currency type="XXX">
 				<displayName>tuntematon tai virheellinen rahayksikkö</displayName>
-				<displayName count="one">tuntematon tai virheellinen rahayksikkö</displayName>
-				<displayName count="other">tuntematonta tai virheellistä rahayksikköä</displayName>
+				<displayName count="one">tuntematon tai virheellinen
+					rahayksikkö</displayName>
+				<displayName count="other">tuntematonta tai virheellistä
+					rahayksikköä</displayName>
 			</currency>
 			<currency type="YDD">
 				<displayName>Jemenin dinaari</displayName>

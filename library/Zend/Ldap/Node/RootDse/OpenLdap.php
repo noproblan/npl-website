@@ -21,28 +21,32 @@
  */
 
 /**
+ *
  * @see Zend_Ldap_Node_RootDse
  */
 require_once 'Zend/Ldap/Node/RootDse.php';
 
 /**
- * Zend_Ldap_Node_RootDse provides a simple data-container for the RootDSE node of
+ * Zend_Ldap_Node_RootDse provides a simple data-container for the RootDSE node
+ * of
  * an OpenLDAP server.
  *
- * @category   Zend
- * @package    Zend_Ldap
+ * @category Zend
+ * @package Zend_Ldap
  * @subpackage RootDSE
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Ldap_Node_RootDse_OpenLdap extends Zend_Ldap_Node_RootDse
 {
+
     /**
      * Gets the configContext.
      *
      * @return string|null
      */
-    public function getConfigContext()
+    public function getConfigContext ()
     {
         return $this->getAttribute('configContext', 0);
     }
@@ -52,7 +56,7 @@ class Zend_Ldap_Node_RootDse_OpenLdap extends Zend_Ldap_Node_RootDse
      *
      * @return string|null
      */
-    public function getMonitorContext()
+    public function getMonitorContext ()
     {
         return $this->getAttribute('monitorContext', 0);
     }
@@ -60,10 +64,11 @@ class Zend_Ldap_Node_RootDse_OpenLdap extends Zend_Ldap_Node_RootDse
     /**
      * Determines if the control is supported
      *
-     * @param  string|array $oids control oid(s) to check
+     * @param string|array $oids
+     *            control oid(s) to check
      * @return boolean
      */
-    public function supportsControl($oids)
+    public function supportsControl ($oids)
     {
         return $this->attributeHasValue('supportedControl', $oids);
     }
@@ -71,10 +76,11 @@ class Zend_Ldap_Node_RootDse_OpenLdap extends Zend_Ldap_Node_RootDse
     /**
      * Determines if the extension is supported
      *
-     * @param  string|array $oids oid(s) to check
+     * @param string|array $oids
+     *            oid(s) to check
      * @return boolean
      */
-    public function supportsExtension($oids)
+    public function supportsExtension ($oids)
     {
         return $this->attributeHasValue('supportedExtension', $oids);
     }
@@ -82,10 +88,11 @@ class Zend_Ldap_Node_RootDse_OpenLdap extends Zend_Ldap_Node_RootDse
     /**
      * Determines if the feature is supported
      *
-     * @param  string|array $oids feature oid(s) to check
+     * @param string|array $oids
+     *            feature oid(s) to check
      * @return boolean
      */
-    public function supportsFeature($oids)
+    public function supportsFeature ($oids)
     {
         return $this->attributeHasValue('supportedFeatures', $oids);
     }
@@ -95,7 +102,7 @@ class Zend_Ldap_Node_RootDse_OpenLdap extends Zend_Ldap_Node_RootDse
      *
      * @return int
      */
-    public function getServerType()
+    public function getServerType ()
     {
         return self::SERVER_TYPE_OPENLDAP;
     }

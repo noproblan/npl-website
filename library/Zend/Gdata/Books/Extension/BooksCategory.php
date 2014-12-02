@@ -22,6 +22,7 @@
  */
 
 /**
+ *
  * @see Zend_Gdata_App_Extension_Category
  */
 require_once 'Zend/Gdata/App/Extension/Category.php';
@@ -29,31 +30,33 @@ require_once 'Zend/Gdata/App/Extension/Category.php';
 /**
  * Describes a books category
  *
- * @category   Zend
- * @package    Zend_Gdata
+ * @category Zend
+ * @package Zend_Gdata
  * @subpackage Books
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
-class Zend_Gdata_Books_Extension_BooksCategory extends
-    Zend_Gdata_App_Extension_Category
+class Zend_Gdata_Books_Extension_BooksCategory extends Zend_Gdata_App_Extension_Category
 {
 
     /**
      * Constructor for Zend_Gdata_Books_Extension_BooksCategory which
      * Describes a books category
      *
-     * @param string|null $term An identifier representing the category within
-     *        the categorization scheme.
-     * @param string|null $scheme A string containing a URI identifying the
-     *        categorization scheme.
-     * @param string|null $label A human-readable label for display in
-     *        end-user applications.
+     * @param string|null $term
+     *            An identifier representing the category within
+     *            the categorization scheme.
+     * @param string|null $scheme
+     *            A string containing a URI identifying the
+     *            categorization scheme.
+     * @param string|null $label
+     *            A human-readable label for display in
+     *            end-user applications.
      */
-    public function __construct($term = null, $scheme = null, $label = null)
+    public function __construct ($term = null, $scheme = null, $label = null)
     {
         $this->registerAllNamespaces(Zend_Gdata_Books::$namespaces);
         parent::__construct($term, $scheme, $label);
     }
-
 }

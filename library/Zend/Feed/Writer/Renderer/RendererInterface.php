@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -20,92 +21,98 @@
  */
 
 /**
- * @category   Zend
- * @package    Zend_Feed_Writer
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ *
+ * @category Zend
+ * @package Zend_Feed_Writer
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 interface Zend_Feed_Writer_Renderer_RendererInterface
 {
+
     /**
      * Render feed/entry
      *
      * @return void
      */
-    public function render();
+    public function render ();
 
     /**
      * Save feed and/or entry to XML and return string
      *
      * @return string
      */
-    public function saveXml();
+    public function saveXml ();
 
     /**
      * Get DOM document
      *
      * @return DOMDocument
      */
-    public function getDomDocument();
+    public function getDomDocument ();
 
     /**
      * Get document element from DOM
      *
      * @return DOMElement
      */
-    public function getElement();
+    public function getElement ();
 
     /**
      * Get data container containing feed items
      *
      * @return mixed
      */
-    public function getDataContainer();
+    public function getDataContainer ();
 
     /**
      * Should exceptions be ignored?
      *
      * @return mixed
      */
-    public function ignoreExceptions();
+    public function ignoreExceptions ();
 
     /**
      * Get list of thrown exceptions
      *
      * @return array
      */
-    public function getExceptions();
+    public function getExceptions ();
 
     /**
-     * Set the current feed type being exported to "rss" or "atom". This allows
+     * Set the current feed type being exported to "rss" or "atom".
+     * This allows
      * other objects to gracefully choose whether to execute or not, depending
      * on their appropriateness for the current type, e.g. renderers.
      *
-     * @param string $type
+     * @param string $type            
      */
-    public function setType($type);
+    public function setType ($type);
 
     /**
      * Retrieve the current or last feed type exported.
      *
      * @return string Value will be "rss" or "atom"
      */
-    public function getType();
+    public function getType ();
 
     /**
-     * Sets the absolute root element for the XML feed being generated. This
+     * Sets the absolute root element for the XML feed being generated.
+     * This
      * helps simplify the appending of namespace declarations, but also ensures
-     * namespaces are added to the root element - not scattered across the entire
+     * namespaces are added to the root element - not scattered across the
+     * entire
      * XML file - may assist namespace unsafe parsers and looks pretty ;).
      *
-     * @param DOMElement $root
+     * @param DOMElement $root            
      */
-    public function setRootElement(DOMElement $root);
+    public function setRootElement (DOMElement $root);
 
     /**
      * Retrieve the absolute root element for the XML feed being generated.
      *
      * @return DOMElement
      */
-    public function getRootElement();
+    public function getRootElement ();
 }

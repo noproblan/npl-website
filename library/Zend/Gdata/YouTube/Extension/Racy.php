@@ -22,6 +22,7 @@
  */
 
 /**
+ *
  * @see Zend_Gdata_Extension
  */
 require_once 'Zend/Gdata/Extension.php';
@@ -29,24 +30,29 @@ require_once 'Zend/Gdata/Extension.php';
 /**
  * Represents the yt:racy element used by the YouTube data API
  *
- * @category   Zend
- * @package    Zend_Gdata
+ * @category Zend
+ * @package Zend_Gdata
  * @subpackage YouTube
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Gdata_YouTube_Extension_Racy extends Zend_Gdata_Extension
 {
 
     protected $_rootNamespace = 'yt';
+
     protected $_rootElement = 'racy';
+
     protected $_state = null;
 
     /**
      * Constructs a new Zend_Gdata_YouTube_Extension_Racy object.
-     * @param bool $state(optional) The state value of the element.
+     * 
+     * @param bool $state(optional)
+     *            The state value of the element.
      */
-    public function __construct($state = null)
+    public function __construct ($state = null)
     {
         $this->registerAllNamespaces(Zend_Gdata_YouTube::$namespaces);
         parent::__construct();
@@ -55,15 +61,17 @@ class Zend_Gdata_YouTube_Extension_Racy extends Zend_Gdata_Extension
 
     /**
      * Retrieves a DOMElement which corresponds to this element and all
-     * child properties.  This is used to build an entry back into a DOM
+     * child properties.
+     * This is used to build an entry back into a DOM
      * and eventually XML text for sending to the server upon updates, or
      * for application storage/persistence.
      *
-     * @param DOMDocument $doc The DOMDocument used to construct DOMElements
+     * @param DOMDocument $doc
+     *            The DOMDocument used to construct DOMElements
      * @return DOMElement The DOMElement representing this element and all
-     * child properties.
+     *         child properties.
      */
-    public function getDOM($doc = null, $majorVersion = 1, $minorVersion = null)
+    public function getDOM ($doc = null, $majorVersion = 1, $minorVersion = null)
     {
         $element = parent::getDOM($doc, $majorVersion, $minorVersion);
         if ($this->_state !== null) {
@@ -74,19 +82,21 @@ class Zend_Gdata_YouTube_Extension_Racy extends Zend_Gdata_Extension
 
     /**
      * Given a DOMNode representing an attribute, tries to map the data into
-     * instance members.  If no mapping is defined, the name and value are
+     * instance members.
+     * If no mapping is defined, the name and value are
      * stored in an array.
      *
-     * @param DOMNode $attribute The DOMNode attribute needed to be handled
+     * @param DOMNode $attribute
+     *            The DOMNode attribute needed to be handled
      */
-    protected function takeAttributeFromDOM($attribute)
+    protected function takeAttributeFromDOM ($attribute)
     {
         switch ($attribute->localName) {
-        case 'state':
-            $this->_state = $attribute->nodeValue;
-            break;
-        default:
-            parent::takeAttributeFromDOM($attribute);
+            case 'state':
+                $this->_state = $attribute->nodeValue;
+                break;
+            default:
+                parent::takeAttributeFromDOM($attribute);
         }
     }
 
@@ -95,7 +105,7 @@ class Zend_Gdata_YouTube_Extension_Racy extends Zend_Gdata_Extension
      *
      * @return bool The value associated with this attribute.
      */
-    public function getState()
+    public function getState ()
     {
         return $this->_state;
     }
@@ -103,10 +113,11 @@ class Zend_Gdata_YouTube_Extension_Racy extends Zend_Gdata_Extension
     /**
      * Set the value for this element's state attribute.
      *
-     * @param bool $value The desired value for this attribute.
+     * @param bool $value
+     *            The desired value for this attribute.
      * @return Zend_Gdata_YouTube_Extension_Racy The element being modified.
      */
-    public function setState($value)
+    public function setState ($value)
     {
         $this->_state = $value;
         return $this;
@@ -116,9 +127,8 @@ class Zend_Gdata_YouTube_Extension_Racy extends Zend_Gdata_Extension
      * Magic toString method allows using this directly via echo
      * Works best in PHP >= 4.2.0
      */
-    public function __toString()
+    public function __toString ()
     {
         return $this->_state;
     }
-
 }

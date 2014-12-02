@@ -21,22 +21,24 @@
  * @version    $Id: WebResult.php 23775 2011-03-01 17:25:24Z ralph $
  */
 
-
 /**
+ *
  * @see Zend_Service_Yahoo_Result
  */
 require_once 'Zend/Service/Yahoo/Result.php';
 
-
 /**
- * @category   Zend
- * @package    Zend_Service
+ *
+ * @category Zend
+ * @package Zend_Service
  * @subpackage Yahoo
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Service_Yahoo_WebResult extends Zend_Service_Yahoo_Result
 {
+
     /**
      * A summary of the result
      *
@@ -79,30 +81,33 @@ class Zend_Service_Yahoo_WebResult extends Zend_Service_Yahoo_Result
      */
     protected $_namespace = 'urn:yahoo:srch';
 
-
     /**
      * Initializes the web result
      *
-     * @param  DOMElement $result
+     * @param DOMElement $result            
      * @return void
      */
-    public function __construct(DOMElement $result)
+    public function __construct (DOMElement $result)
     {
-        $this->_fields = array('Summary', 'MimeType', 'ModificationDate');
+        $this->_fields = array(
+                'Summary',
+                'MimeType',
+                'ModificationDate'
+        );
         parent::__construct($result);
-
+        
         $this->_xpath = new DOMXPath($result->ownerDocument);
         $this->_xpath->registerNamespace('yh', $this->_namespace);
-
+        
         // check if the cache section exists
-        $cacheUrl = $this->_xpath->query('./yh:Cache/yh:Url/text()', $result)->item(0);
-        if ($cacheUrl instanceof DOMNode)
-        {
+        $cacheUrl = $this->_xpath->query('./yh:Cache/yh:Url/text()', $result)->item(
+                0);
+        if ($cacheUrl instanceof DOMNode) {
             $this->CacheUrl = $cacheUrl->data;
         }
-        $cacheSize = $this->_xpath->query('./yh:Cache/yh:Size/text()', $result)->item(0);
-        if ($cacheSize instanceof DOMNode)
-        {
+        $cacheSize = $this->_xpath->query('./yh:Cache/yh:Size/text()', $result)->item(
+                0);
+        if ($cacheSize instanceof DOMNode) {
             $this->CacheSize = (int) $cacheSize->data;
         }
     }

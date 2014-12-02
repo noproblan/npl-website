@@ -20,60 +20,62 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
 
-/** Zend_View_Helper_FormElement */
+/**
+ * Zend_View_Helper_FormElement
+ */
 require_once 'Zend/View/Helper/FormElement.php';
 
 /**
  * Helper for rendering fieldsets
  *
- * @package    Zend_View
+ * @package Zend_View
  * @subpackage Helper
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_View_Helper_Fieldset extends Zend_View_Helper_FormElement
 {
+
     /**
      * Render HTML form
      *
-     * @param  string $name Form name
-     * @param  string $content Form content
-     * @param  array $attribs HTML form attributes
+     * @param string $name
+     *            Form name
+     * @param string $content
+     *            Form content
+     * @param array $attribs
+     *            HTML form attributes
      * @return string
      */
-    public function fieldset($name, $content, $attribs = null)
+    public function fieldset ($name, $content, $attribs = null)
     {
         $info = $this->_getInfo($name, $content, $attribs);
         extract($info);
-
+        
         // get legend
         $legend = '';
         if (isset($attribs['legend'])) {
             $legendString = trim($attribs['legend']);
-            if (!empty($legendString)) {
-                $legend = '<legend>'
-                        . (($escape) ? $this->view->escape($legendString) : $legendString)
-                        . '</legend>' . PHP_EOL;
+            if (! empty($legendString)) {
+                $legend = '<legend>' .
+                         (($escape) ? $this->view->escape($legendString) : $legendString) .
+                         '</legend>' . PHP_EOL;
             }
             unset($attribs['legend']);
         }
-
+        
         // get id
-        if (!empty($id)) {
+        if (! empty($id)) {
             $id = ' id="' . $this->view->escape($id) . '"';
         } else {
             $id = '';
         }
-
+        
         // render fieldset
-        $xhtml = '<fieldset'
-               . $id
-               . $this->_htmlAttribs($attribs)
-               . '>'
-               . $legend
-               . $content
-               . '</fieldset>';
-
+        $xhtml = '<fieldset' . $id . $this->_htmlAttribs($attribs) . '>' .
+                 $legend . $content . '</fieldset>';
+        
         return $xhtml;
     }
 }
