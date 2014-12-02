@@ -289,9 +289,9 @@ INSERT INTO `npl_rights` (`id`, `role_id`, `resource_id`, `written_datetime`) VA
 --
 
 INSERT INTO `npl_sponsors` (`id`, `name`, `picture_name`, `link`, `written_datetime`) VALUES
-(1, 'Brack', 'brack.jpg', 'http://www.brack.ch', '2012-09-30 18:53:15'),
-(3, 'Raiffeisen', 'raiffeisen.jpg', 'http://www.raiffeisen.ch', '2012-09-30 18:54:04'),
-(4, 'Bolliger', 'bolliger.jpg', 'http://www.bollimetzg.ch', '2012-10-08 22:59:15');
+(1, 'Brack', 'brack.jpg', '//www.brack.ch', '2012-09-30 18:53:15'),
+(3, 'Raiffeisen', 'raiffeisen.jpg', '//www.raiffeisen.ch', '2012-09-30 18:54:04'),
+(4, 'Bolliger', 'bolliger.jpg', '//www.bollimetzg.ch', '2012-10-08 22:59:15');
 
 --
 -- Dumping data for table `npl_sponsors_log`
