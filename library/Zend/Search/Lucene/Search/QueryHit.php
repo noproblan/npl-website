@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -20,89 +21,91 @@
  * @version    $Id: QueryHit.php 23775 2011-03-01 17:25:24Z ralph $
  */
 
-
 /**
- * @category   Zend
- * @package    Zend_Search_Lucene
+ *
+ * @category Zend
+ * @package Zend_Search_Lucene
  * @subpackage Search
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Search_Lucene_Search_QueryHit
 {
+
     /**
      * Object handle of the index
+     * 
      * @var Zend_Search_Lucene_Interface
      */
     protected $_index = null;
 
     /**
      * Object handle of the document associated with this hit
+     * 
      * @var Zend_Search_Lucene_Document
      */
     protected $_document = null;
 
     /**
      * Number of the document in the index
+     * 
      * @var integer
      */
     public $id;
 
     /**
      * Score of the hit
+     * 
      * @var float
      */
     public $score;
 
-
     /**
-     * Constructor - pass object handle of Zend_Search_Lucene_Interface index that produced
+     * Constructor - pass object handle of Zend_Search_Lucene_Interface index
+     * that produced
      * the hit so the document can be retrieved easily from the hit.
      *
-     * @param Zend_Search_Lucene_Interface $index
+     * @param Zend_Search_Lucene_Interface $index            
      */
-
-    public function __construct(Zend_Search_Lucene_Interface $index)
+    public function __construct (Zend_Search_Lucene_Interface $index)
     {
         require_once 'Zend/Search/Lucene/Proxy.php';
         $this->_index = new Zend_Search_Lucene_Proxy($index);
     }
 
-
     /**
      * Convenience function for getting fields from the document
      * associated with this hit.
      *
-     * @param string $offset
+     * @param string $offset            
      * @return string
      */
-    public function __get($offset)
+    public function __get ($offset)
     {
         return $this->getDocument()->getFieldValue($offset);
     }
-
 
     /**
      * Return the document object for this hit
      *
      * @return Zend_Search_Lucene_Document
      */
-    public function getDocument()
+    public function getDocument ()
     {
-        if (!$this->_document instanceof Zend_Search_Lucene_Document) {
+        if (! $this->_document instanceof Zend_Search_Lucene_Document) {
             $this->_document = $this->_index->getDocument($this->id);
         }
-
+        
         return $this->_document;
     }
-
 
     /**
      * Return the index object for this hit
      *
      * @return Zend_Search_Lucene_Interface
      */
-    public function getIndex()
+    public function getIndex ()
     {
         return $this->_index;
     }

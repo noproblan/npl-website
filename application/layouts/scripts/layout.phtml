@@ -1,135 +1,155 @@
-<?= $this->doctype() ?>
+<?= $this->doctype()?>
 <head>
-	<?php echo $this->headMeta()->appendName('keywords', $this->keywords) ?>
-	<meta name="language" content="de" />
-	<?php echo $this->headTitle() ?>
-	<?php echo $this->headLink()->appendStylesheet($this->baseUrl('css/global.css')) ?>
-	<link rel="icon" href="<?= $this->baseUrl('img/favicon/wurfel_red_32.ico') ?>" type="image/x-icon" sizes="32x32" />
-	<link rel="icon" href="<?= $this->baseUrl('img/favicon/wurfel_red_16.ico') ?>" type="image/x-icon" sizes="16x16" />
-	<link rel="shortcut icon" href="<?= $this->baseUrl('img/favicon/wurfel_red_32.ico') ?>" type="image/x-icon" sizes="32x32" />
-	<link rel="shortcut icon" href="<?= $this->baseUrl('img/favicon/wurfel_red_16.ico') ?>" type="image/x-icon" sizes="16x16" />
-	<link rel="apple-touch-icon" href="<?= $this->baseUrl('img/favicon/wurfel_red_128.ico') ?>" sizes="128x128" />
-	<script type="text/javascript" charset="utf-8" src="//code.jquery.com/jquery-1.8.0.min.js"></script>
-	<script type="text/javascript" charset="utf-8" src="<?= $this->baseUrl('js/slides.min.jquery.js') ?>"></script>
-	<script type="text/javascript" charset="utf-8" src="<?= $this->baseUrl('js/Lightbox.js') ?>"></script>
-	<script type="text/javascript" charset="utf-8" src="<?= $this->baseUrl('js/npl.js?v=20120814') ?>"></script>
-    
+    <?php echo $this->headMeta()->appendName('keywords', $this->keywords)?>
+    <meta name="language" content="de" />
+    <?php echo $this->headTitle()?>
+    <?php echo $this->headLink()->appendStylesheet($this->baseUrl('css/global.css'))?>
+    <link rel="icon"
+    href="<?= $this->baseUrl('img/favicon/wurfel_red_32.ico') ?>"
+    type="image/x-icon" sizes="32x32" />
+<link rel="icon"
+    href="<?= $this->baseUrl('img/favicon/wurfel_red_16.ico') ?>"
+    type="image/x-icon" sizes="16x16" />
+<link rel="shortcut icon"
+    href="<?= $this->baseUrl('img/favicon/wurfel_red_32.ico') ?>"
+    type="image/x-icon" sizes="32x32" />
+<link rel="shortcut icon"
+    href="<?= $this->baseUrl('img/favicon/wurfel_red_16.ico') ?>"
+    type="image/x-icon" sizes="16x16" />
+<link rel="apple-touch-icon"
+    href="<?= $this->baseUrl('img/favicon/wurfel_red_128.ico') ?>"
+    sizes="128x128" />
+<script type="text/javascript" charset="utf-8"
+    src="//code.jquery.com/jquery-1.8.0.min.js"></script>
+<script type="text/javascript" charset="utf-8"
+    src="<?= $this->baseUrl('js/slides.min.jquery.js') ?>"></script>
+<script type="text/javascript" charset="utf-8"
+    src="<?= $this->baseUrl('js/Lightbox.js') ?>"></script>
+<script type="text/javascript" charset="utf-8"
+    src="<?= $this->baseUrl('js/npl.js?v=20120814') ?>"></script>
+
 </head>
 <body>
-<div id="front-card">
-	<header>
-		<div id="header-logo">
-			<div id="header-text">noprobLAN</div>
-			<div id="header-login"><?= $this->loggedInAs() ?></div>
-		</div>
-		
-		<script>
-		$(function(){
-		      $("#header-slideshow").slides({
-		        preload: true,
-		        fadeSpeed: 2000,
-		        crossfade: true,
-		        effect: "fade",
-		        play: 8000,
-		        randomize: true,
-		        preloadImage: '<?= $this->baseUrl('img/blank.gif') ?>',
-		        generatePagination: false
-		      });
-		    });
-		</script>
-		<div id="header-slideshow">
-			<noscript>
-            <div style="width: 1000px; height: 234px; background-image: url('<?= $this->baseUrl("img/noscript.jpg") ?>'); background-size: cover; background-position: center;">
-				<div class="infobox">
-					<h2 style="color: white">privacy ftw!1!!</h2>
-					Da Du kein Javascript verwendest, können wir
-					Dich leider nicht auf Schritt und Tritt verfolgen :-(
-					<p><em>
-					Bei eingeschränkter Funktionalität wende dich bitte an 
-					webmaster [at] npl.ch
-					</em></p>
-				</div>
+    <div id="front-card">
+        <header>
+            <div id="header-logo">
+                <div id="header-text">noprobLAN</div>
+                <div id="header-login"><?= $this->loggedInAs() ?></div>
             </div>
-			</noscript>
-			
-			<div class="slides_container">
-				<?php foreach ($this->randomGalleryPics(20) as $path): ?>
-                <div style="width: 1000px; height: 234px; ">
-                	<div style="background-image: url('<?= $this->baseUrl($path) ?>'); background-size: cover; background-position: center;"></div>
-                </div>
+
+            <script>
+        $(function(){
+              $("#header-slideshow").slides({
+                preload: true,
+                fadeSpeed: 2000,
+                crossfade: true,
+                effect: "fade",
+                play: 8000,
+                randomize: true,
+                preloadImage: '<?= $this->baseUrl('img/blank.gif') ?>',
+                generatePagination: false
+              });
+            });
+        </script>
+            <div id="header-slideshow">
+                <noscript>
+                    <div style="width: 1000px; height: 234px; background-image: url('<?= $this->baseUrl("img/noscript.jpg") ?>'); background-size: cover; background-position: center;">
+                        <div class="infobox">
+                            <h2 style="color: white">privacy ftw!1!!</h2>
+                            Da Du kein Javascript verwendest, können wir Dich leider nicht
+                            auf Schritt und Tritt verfolgen :-(
+                            <p>
+                                <em> Bei eingeschränkter Funktionalität wende dich bitte an
+                                    webmaster [at] npl.ch </em>
+                            </p>
+                        </div>
+                    </div>
+                </noscript>
+
+                <div class="slides_container">
+                <?php foreach ($this->randomGalleryPics(20) as $path): ?>
+                <div style="width: 1000px; height: 234px;">
+                        <div style="background-image: url('<?= $this->baseUrl($path) ?>'); background-size: cover; background-position: center;"></div>
+                    </div>
                 <?php endforeach; ?>
             </div>
-		</div>
-		
-		<div id="header-navigation">
-			<div id="navigation">
-				<div class="navigation-item">
-		        	<a href="<?php echo $this->url(
-		            	array('controller'=>'index'),
-		            	'default',
-		            	true) ?>">Home</a>
-	            </div>
-	            <?= $this->nextLanMenuEntry() ?>
-	            <div class="navigation-item">
-		        	<a href="<?php echo $this->url(
-		            	array('controller'=>'lan'),
-		            	'default',
-		            	true) ?>">LAN-Parties</a>
-	            </div>
-	            <div class="navigation-item">
-		        	<a href="<?php echo $this->url(
-		            	array('controller'=>'gallery'),
-		            	'default',
-		            	true) ?>">Galerie</a>
-	            </div>
-	            <div class="navigation-item">
-		        	<a href="<?php echo $this->url(
-		            	array('controller'=>'sponsor'),
-		            	'default',
-		            	true) ?>">Sponsoren</a>
-	            </div>
-	            <div class="navigation-item">
-		        	<a href="https://www.facebook.com/noproblan" target="_blank">"Forum"</a>
-	            </div>
-	    	</div>
-		</div>
-	</header>
+            </div>
 
-	<div id="body-area">
-		<div id="sidebar">
-			
-		</div>
-		<div id="content">
-			<div id="messages">
-				<?php echo $this->messages(); ?>
-			</div>
-			<?php echo $this->layout()->content; ?>
-		</div>
-	</div>
-	
-	<footer>
-		<span id="footer-copyright">&copy; 2012 LAN-Verein Berg</span>
-		<span id="footer-misc">
-			<a href="<?= $this->baseUrl('index/about') ?>">Über uns</a> | 
-			<a href="<?= $this->baseUrl('index/contact') ?>" title="Impressum">Kontakt</a>
-		</span>
-	</footer>
+            <div id="header-navigation">
+                <div id="navigation">
+                    <div class="navigation-item">
+                        <a
+                            href="<?php
+    
+echo $this->url(array(
+            'controller' => 'index'
+    ), 'default', true)?>">Home</a>
+                    </div>
+                <?= $this->nextLanMenuEntry()?>
+                <div class="navigation-item">
+                        <a
+                            href="<?php
+    
+echo $this->url(array(
+            'controller' => 'lan'
+    ), 'default', true)?>">LAN-Parties</a>
+                    </div>
+                    <div class="navigation-item">
+                        <a
+                            href="<?php
+    
+echo $this->url(array(
+            'controller' => 'gallery'
+    ), 'default', true)?>">Galerie</a>
+                    </div>
+                    <div class="navigation-item">
+                        <a
+                            href="<?php
+    
+echo $this->url(array(
+            'controller' => 'sponsor'
+    ), 'default', true)?>">Sponsoren</a>
+                    </div>
+                    <div class="navigation-item">
+                        <a href="https://www.facebook.com/noproblan" target="_blank">"Forum"</a>
+                    </div>
+                </div>
+            </div>
+        </header>
 
-</div>
+        <div id="body-area">
+            <div id="sidebar"></div>
+            <div id="content">
+                <div id="messages">
+                <?php echo $this->messages(); ?>
+            </div>
+            <?php echo $this->layout()->content; ?>
+        </div>
+        </div>
 
-<!-- Google Analytics -->
-<script type="text/javascript">
+        <footer>
+            <span id="footer-copyright">&copy; 2012 LAN-Verein Berg</span> <span
+                id="footer-misc"> <a href="<?= $this->baseUrl('index/about') ?>">Über
+                    uns</a> | <a href="<?= $this->baseUrl('index/contact') ?>"
+                title="Impressum">Kontakt</a>
+            </span>
+        </footer>
+
+    </div>
+
+    <!-- Google Analytics -->
+    <script type="text/javascript">
 var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
 document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
 </script>
 
-<script type="text/javascript">
+    <script type="text/javascript">
 try{
 var pageTracker = _gat._getTracker("UA-5436068-2");
 pageTracker._trackPageview();
 } catch(err) {}
 </script>
-<!-- Google Analytics Ende -->
+    <!-- Google Analytics Ende -->
 </body>
 </html>
 

@@ -20,19 +20,23 @@
  * @version    $Id: Currency.php 23775 2011-03-01 17:25:24Z ralph $
  */
 
-/** Zend_View_Helper_Abstract.php */
+/**
+ * Zend_View_Helper_Abstract.php
+ */
 require_once 'Zend/View/Helper/Abstract.php';
 
 /**
  * Currency view helper
  *
- * @category  Zend
- * @package   Zend_View
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license   http://framework.zend.com/license/new-bsd     New BSD License
+ * @category Zend
+ * @package Zend_View
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_View_Helper_Currency extends Zend_View_Helper_Abstract
 {
+
     /**
      * Currency object
      *
@@ -43,10 +47,11 @@ class Zend_View_Helper_Currency extends Zend_View_Helper_Abstract
     /**
      * Constructor for manually handling
      *
-     * @param  Zend_Currency $currency Instance of Zend_Currency
+     * @param Zend_Currency $currency
+     *            Instance of Zend_Currency
      * @return void
      */
-    public function __construct($currency = null)
+    public function __construct ($currency = null)
     {
         if ($currency === null) {
             require_once 'Zend/Registry.php';
@@ -54,56 +59,63 @@ class Zend_View_Helper_Currency extends Zend_View_Helper_Abstract
                 $currency = Zend_Registry::get('Zend_Currency');
             }
         }
-
+        
         $this->setCurrency($currency);
     }
 
     /**
      * Output a formatted currency
      *
-     * @param  integer|float                    $value    Currency value to output
-     * @param  string|Zend_Locale|Zend_Currency $currency OPTIONAL Currency to use for this call
+     * @param integer|float $value
+     *            Currency value to output
+     * @param string|Zend_Locale|Zend_Currency $currency
+     *            OPTIONAL Currency to use for this call
      * @return string Formatted currency
      */
-    public function currency($value = null, $currency = null)
+    public function currency ($value = null, $currency = null)
     {
         if ($value === null) {
             return $this;
         }
-
+        
         if (is_string($currency) || ($currency instanceof Zend_Locale)) {
             require_once 'Zend/Locale.php';
             if (Zend_Locale::isLocale($currency)) {
-                $currency = array('locale' => $currency);
+                $currency = array(
+                        'locale' => $currency
+                );
             }
         }
-
+        
         if (is_string($currency)) {
-            $currency = array('currency' => $currency);
+            $currency = array(
+                    'currency' => $currency
+            );
         }
-
+        
         if (is_array($currency)) {
             return $this->_currency->toCurrency($value, $currency);
         }
-
+        
         return $this->_currency->toCurrency($value);
     }
 
     /**
      * Sets a currency to use
      *
-     * @param  Zend_Currency|String|Zend_Locale $currency Currency to use
+     * @param Zend_Currency|String|Zend_Locale $currency
+     *            Currency to use
      * @throws Zend_View_Exception When no or a false currency was set
      * @return Zend_View_Helper_Currency
      */
-    public function setCurrency($currency = null)
+    public function setCurrency ($currency = null)
     {
-        if (!$currency instanceof Zend_Currency) {
+        if (! $currency instanceof Zend_Currency) {
             require_once 'Zend/Currency.php';
             $currency = new Zend_Currency($currency);
         }
         $this->_currency = $currency;
-
+        
         return $this;
     }
 
@@ -112,7 +124,7 @@ class Zend_View_Helper_Currency extends Zend_View_Helper_Abstract
      *
      * @return Zend_Currency|null
      */
-    public function getCurrency()
+    public function getCurrency ()
     {
         return $this->_currency;
     }

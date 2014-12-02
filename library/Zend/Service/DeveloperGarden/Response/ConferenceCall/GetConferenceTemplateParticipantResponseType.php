@@ -21,21 +21,24 @@
  */
 
 /**
+ *
  * @see Zend_Service_DeveloperGarden_Response_BaseType
  */
 require_once 'Zend/Service/DeveloperGarden/Response/BaseType.php';
 
 /**
- * @category   Zend
- * @package    Zend_Service
+ *
+ * @category Zend
+ * @package Zend_Service
  * @subpackage DeveloperGarden
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @author     Marco Kaiser
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @author Marco Kaiser
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
-class Zend_Service_DeveloperGarden_Response_ConferenceCall_GetConferenceTemplateParticipantResponseType
-    extends Zend_Service_DeveloperGarden_Response_BaseType
+class Zend_Service_DeveloperGarden_Response_ConferenceCall_GetConferenceTemplateParticipantResponseType extends Zend_Service_DeveloperGarden_Response_BaseType
 {
+
     /**
      * the participant
      *
@@ -48,7 +51,7 @@ class Zend_Service_DeveloperGarden_Response_ConferenceCall_GetConferenceTemplate
      *
      * @return Zend_Service_DeveloperGarden_ConferenceCall_ParticipantDetail
      */
-    public function getParticipant()
+    public function getParticipant ()
     {
         return $this->participant;
     }

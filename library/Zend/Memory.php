@@ -19,40 +19,54 @@
  * @version    $Id: Memory.php 23775 2011-03-01 17:25:24Z ralph $
  */
 
-/** Zend_Memory_Exception */
+/**
+ * Zend_Memory_Exception
+ */
 require_once 'Zend/Memory/Manager.php';
 
-/** Zend_Memory_Value */
+/**
+ * Zend_Memory_Value
+ */
 require_once 'Zend/Memory/Value.php';
 
-/** Zend_Memory_Container */
+/**
+ * Zend_Memory_Container
+ */
 require_once 'Zend/Memory/Container.php';
 
-/** Zend_Memory_Exception */
+/**
+ * Zend_Memory_Exception
+ */
 require_once 'Zend/Cache.php';
 
 /**
- * @category   Zend
- * @package    Zend_Memory
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ *
+ * @category Zend
+ * @package Zend_Memory
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Memory
 {
+
     /**
      * Factory
      *
-     * @param string $backend backend name
-     * @param array $backendOptions associative array of options for the corresponding backend constructor
+     * @param string $backend
+     *            backend name
+     * @param array $backendOptions
+     *            associative array of options for the corresponding backend
+     *            constructor
      * @return Zend_Memory_Manager
      * @throws Zend_Memory_Exception
      */
-    public static function factory($backend, $backendOptions = array())
+    public static function factory ($backend, $backendOptions = array())
     {
         if (strcasecmp($backend, 'none') == 0) {
             return new Zend_Memory_Manager();
         }
-
+        
         // Look through available backendsand
         // (that allows to specify it in any case)
         $backendIsFound = false;
@@ -63,20 +77,21 @@ class Zend_Memory
                 break;
             }
         }
-
-        if (!$backendIsFound) {
+        
+        if (! $backendIsFound) {
             require_once 'Zend/Memory/Exception.php';
             throw new Zend_Memory_Exception("Incorrect backend ($backend)");
         }
-
+        
         $backendClass = 'Zend_Cache_Backend_' . $backend;
-
+        
         // For perfs reasons, we do not use the Zend_Loader::loadClass() method
         // (security controls are explicit)
-        require_once str_replace('_', DIRECTORY_SEPARATOR, $backendClass) . '.php';
-
+        require_once str_replace('_', DIRECTORY_SEPARATOR, $backendClass) .
+                 '.php';
+        
         $backendObject = new $backendClass($backendOptions);
-
+        
         return new Zend_Memory_Manager($backendObject);
     }
 }

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <ldml>
 	<identity>
-		<version number="$Revision: 1.67 $"/>
-		<generation date="$Date: 2009/06/15 03:46:25 $"/>
-		<language type="ka"/>
+		<version number="$Revision: 1.67 $" />
+		<generation date="$Date: 2009/06/15 03:46:25 $" />
+		<language type="ka" />
 	</identity>
 	<localeDisplayNames>
 		<localeDisplayPattern>
@@ -329,7 +329,8 @@
 			<territory type="GP">გვადელუპე</territory>
 			<territory type="GQ">ეკვატორული გვინეა</territory>
 			<territory type="GR">საბერძნეთი</territory>
-			<territory type="GS">სამხრეთი ჯორჯია და სამხრეთ სენდვიჩის კუნძულები</territory>
+			<territory type="GS">სამხრეთი ჯორჯია და სამხრეთ სენდვიჩის
+				კუნძულები</territory>
 			<territory type="GT">გვატემალა</territory>
 			<territory type="GU">გუამი</territory>
 			<territory type="GW">გვინეა-ბისაუ</territory>
@@ -464,7 +465,8 @@
 			<territory type="TZ">ტანზანია</territory>
 			<territory type="UA">უკრაინა</territory>
 			<territory type="UG">უგანდა</territory>
-			<territory type="UM">შეერთებული შტატების მცირე დაშორებული კუნძულები</territory>
+			<territory type="UM">შეერთებული შტატების მცირე დაშორებული
+				კუნძულები</territory>
 			<territory type="US">ამერიკის შეერთებული შტატები</territory>
 			<territory type="UY">ურუგვაი</territory>
 			<territory type="UZ">უზბეკეთი</territory>
@@ -507,7 +509,9 @@
 		</measurementSystemNames>
 	</localeDisplayNames>
 	<characters>
-		<exemplarCharacters>[ა ⴀ ბ ⴁ გ ⴂ დ ⴃ ე ⴄ ვ ⴅ ზ ⴆ ჱ ⴡ თ ⴇ ი ⴈ კ ⴉ ლ ⴊ მ ⴋ ნ ⴌ ჲ ⴢ ო ⴍ პ ⴎ ჟ ⴏ რ ⴐ ს ⴑ ტ ⴒ ჳ ⴣ უ ⴓ ფ ⴔ ქ ⴕ ღ ⴖ ყ ⴗ შ ⴘ ჩ ⴙ ც ⴚ ძ ⴛ წ ⴜ ჭ ⴝ ხ ⴞ ჴ ⴤ ჯ ⴟ ჰ ⴠ ჵ ⴥ ჶ-ჺ]</exemplarCharacters>
+		<exemplarCharacters>[ა ⴀ ბ ⴁ გ ⴂ დ ⴃ ე ⴄ ვ ⴅ ზ ⴆ ჱ ⴡ თ ⴇ ი ⴈ კ ⴉ ლ ⴊ მ
+			ⴋ ნ ⴌ ჲ ⴢ ო ⴍ პ ⴎ ჟ ⴏ რ ⴐ ს ⴑ ტ ⴒ ჳ ⴣ უ ⴓ ფ ⴔ ქ ⴕ ღ ⴖ ყ ⴗ შ ⴘ ჩ ⴙ ც ⴚ
+			ძ ⴛ წ ⴜ ჭ ⴝ ხ ⴞ ჴ ⴤ ჯ ⴟ ჰ ⴠ ჵ ⴥ ჶ-ჺ]</exemplarCharacters>
 	</characters>
 	<delimiters>
 		<quotationStart>“</quotationStart>

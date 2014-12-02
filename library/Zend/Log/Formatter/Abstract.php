@@ -20,21 +20,27 @@
  * @version    $Id: Abstract.php 23775 2011-03-01 17:25:24Z ralph $
  */
 
-/** @see Zend_Log_Formatter_Interface */
+/**
+ * @see Zend_Log_Formatter_Interface
+ */
 require_once 'Zend/Log/Formatter/Interface.php';
 
-/** @see Zend_Log_FactoryInterface */
+/**
+ * @see Zend_Log_FactoryInterface
+ */
 require_once 'Zend/Log/FactoryInterface.php';
 
 /**
- * @category   Zend
- * @package    Zend_Log
+ *
+ * @category Zend
+ * @package Zend_Log
  * @subpackage Formatter
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: Abstract.php 23775 2011-03-01 17:25:24Z ralph $
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
+ * @version $Id: Abstract.php 23775 2011-03-01 17:25:24Z ralph $
  */
-abstract class Zend_Log_Formatter_Abstract
-    implements Zend_Log_Formatter_Interface, Zend_Log_FactoryInterface
+abstract class Zend_Log_Formatter_Abstract implements 
+        Zend_Log_Formatter_Interface, Zend_Log_FactoryInterface
 {
 }

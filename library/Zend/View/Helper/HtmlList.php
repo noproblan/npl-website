@@ -20,7 +20,6 @@
  * @version    $Id: HtmlList.php 23775 2011-03-01 17:25:24Z ralph $
  */
 
-
 /**
  * Zend_View_Helper_FormELement
  */
@@ -30,11 +29,12 @@ require_once 'Zend/View/Helper/FormElement.php';
  * Helper for ordered and unordered lists
  *
  * @uses Zend_View_Helper_FormElement
- * @category   Zend
- * @package    Zend_View
+ * @category Zend
+ * @package Zend_View
  * @subpackage Helper
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_View_Helper_HtmlList extends Zend_View_Helper_FormElement
 {
@@ -42,49 +42,57 @@ class Zend_View_Helper_HtmlList extends Zend_View_Helper_FormElement
     /**
      * Generates a 'List' element.
      *
-     * @param array   $items   Array with the elements of the list
-     * @param boolean $ordered Specifies ordered/unordered list; default unordered
-     * @param array   $attribs Attributes for the ol/ul tag.
+     * @param array $items
+     *            Array with the elements of the list
+     * @param boolean $ordered
+     *            Specifies ordered/unordered list; default unordered
+     * @param array $attribs
+     *            Attributes for the ol/ul tag.
      * @return string The list XHTML.
      */
-    public function htmlList(array $items, $ordered = false, $attribs = false, $escape = true)
+    public function htmlList (array $items, $ordered = false, $attribs = false, 
+            $escape = true)
     {
-        if (!is_array($items)) {
+        if (! is_array($items)) {
             require_once 'Zend/View/Exception.php';
             $e = new Zend_View_Exception('First param must be an array');
             $e->setView($this->view);
             throw $e;
         }
-
+        
         $list = '';
-
+        
         foreach ($items as $item) {
-            if (!is_array($item)) {
+            if (! is_array($item)) {
                 if ($escape) {
                     $item = $this->view->escape($item);
                 }
                 $list .= '<li>' . $item . '</li>' . self::EOL;
             } else {
                 if (6 < strlen($list)) {
-                    $list = substr($list, 0, strlen($list) - 6)
-                     . $this->htmlList($item, $ordered, $attribs, $escape) . '</li>' . self::EOL;
+                    $list = substr($list, 0, strlen($list) - 6) .
+                             $this->htmlList($item, $ordered, $attribs, $escape) .
+                             '</li>' . self::EOL;
                 } else {
-                    $list .= '<li>' . $this->htmlList($item, $ordered, $attribs, $escape) . '</li>' . self::EOL;
+                    $list .= '<li>' .
+                             $this->htmlList($item, $ordered, $attribs, $escape) .
+                             '</li>' . self::EOL;
                 }
             }
         }
-
+        
         if ($attribs) {
             $attribs = $this->_htmlAttribs($attribs);
         } else {
             $attribs = '';
         }
-
+        
         $tag = 'ul';
         if ($ordered) {
             $tag = 'ol';
         }
-
-        return '<' . $tag . $attribs . '>' . self::EOL . $list . '</' . $tag . '>' . self::EOL;
+        
+        return '<' . $tag . $attribs . '>' . self::EOL . $list . '</' . $tag .
+                 '>' . self::EOL;
     }
 }

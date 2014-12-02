@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <ldml>
 	<identity>
-		<version number="$Revision: 1.95 $"/>
-		<generation date="$Date: 2009/06/15 03:46:26 $"/>
-		<language type="et"/>
+		<version number="$Revision: 1.95 $" />
+		<generation date="$Date: 2009/06/15 03:46:26 $" />
+		<language type="et" />
 	</identity>
 	<fallback>en fi</fallback>
 	<localeDisplayNames>
@@ -95,8 +95,10 @@
 			<language type="co">korsika</language>
 			<language type="cop">kopti</language>
 			<language type="cpe">muud inglispõhjalised kreool- ja pidžinkeeled</language>
-			<language type="cpf">muud prantsuspõhjalised kreool- ja pidžinkeeled</language>
-			<language type="cpp">muud portugalipõhjalised kreool- ja pidžinkeeled</language>
+			<language type="cpf">muud prantsuspõhjalised kreool- ja
+				pidžinkeeled</language>
+			<language type="cpp">muud portugalipõhjalised kreool- ja
+				pidžinkeeled</language>
 			<language type="cr">krii</language>
 			<language type="crh">krimmitatari</language>
 			<language type="crp">muud kreool- ja pidžinkeeled</language>
@@ -923,7 +925,8 @@
 	</localeDisplayNames>
 	<characters>
 		<exemplarCharacters>[a-s š z ž t-w õ ä ö ü x y]</exemplarCharacters>
-		<exemplarCharacters type="auxiliary">[á à â å ā æ ç é è ê ë ē í ì î ï ī ñ ó ò ŏ ô ø ō œ ß ú ù û ū]</exemplarCharacters>
+		<exemplarCharacters type="auxiliary">[á à â å ā æ ç é è ê ë ē í
+			ì î ï ī ñ ó ò ŏ ô ø ō œ ß ú ù û ū]</exemplarCharacters>
 	</characters>
 	<delimiters>
 		<quotationStart>„</quotationStart>
@@ -1151,9 +1154,12 @@
 							<greatestDifference id="y">dd.MM.yy - dd.MM.yy</greatestDifference>
 						</intervalFormatItem>
 						<intervalFormatItem id="yMEd">
-							<greatestDifference id="d">E, dd.MM.yy - E, dd.MM.yy</greatestDifference>
-							<greatestDifference id="M">E, dd.MM.yy - E, dd.MM.yy</greatestDifference>
-							<greatestDifference id="y">E, dd.MM.yy - E, dd.MM.yy</greatestDifference>
+							<greatestDifference id="d">E, dd.MM.yy - E,
+								dd.MM.yy</greatestDifference>
+							<greatestDifference id="M">E, dd.MM.yy - E,
+								dd.MM.yy</greatestDifference>
+							<greatestDifference id="y">E, dd.MM.yy - E,
+								dd.MM.yy</greatestDifference>
 						</intervalFormatItem>
 						<intervalFormatItem id="yMMM">
 							<greatestDifference id="M">MMM-MMM y</greatestDifference>
@@ -1167,7 +1173,8 @@
 						<intervalFormatItem id="yMMMEd">
 							<greatestDifference id="d">E, d - E, d, MMM y</greatestDifference>
 							<greatestDifference id="M">E, d, MMM - E, d, MMM y</greatestDifference>
-							<greatestDifference id="y">E, d, MMM y - E, d, MMM y</greatestDifference>
+							<greatestDifference id="y">E, d, MMM y - E, d, MMM
+								y</greatestDifference>
 						</intervalFormatItem>
 					</intervalFormats>
 				</dateTimeFormats>

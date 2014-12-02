@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -21,14 +22,18 @@
  */
 
 /**
- * @category   Zend
- * @package    Zend_Db
+ *
+ * @category Zend
+ * @package Zend_Db
  * @subpackage Table
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
-abstract class Zend_Db_Table_Rowset_Abstract implements SeekableIterator, Countable, ArrayAccess
+abstract class Zend_Db_Table_Rowset_Abstract implements SeekableIterator, 
+        Countable, ArrayAccess
 {
+
     /**
      * The original data for each row.
      *
@@ -88,11 +93,13 @@ abstract class Zend_Db_Table_Rowset_Abstract implements SeekableIterator, Counta
     protected $_rows = array();
 
     /**
+     *
      * @var boolean
      */
     protected $_stored = false;
 
     /**
+     *
      * @var boolean
      */
     protected $_readOnly = false;
@@ -100,34 +107,34 @@ abstract class Zend_Db_Table_Rowset_Abstract implements SeekableIterator, Counta
     /**
      * Constructor.
      *
-     * @param array $config
+     * @param array $config            
      */
-    public function __construct(array $config)
+    public function __construct (array $config)
     {
         if (isset($config['table'])) {
-            $this->_table      = $config['table'];
+            $this->_table = $config['table'];
             $this->_tableClass = get_class($this->_table);
         }
         if (isset($config['rowClass'])) {
-            $this->_rowClass   = $config['rowClass'];
+            $this->_rowClass = $config['rowClass'];
         }
-        if (!class_exists($this->_rowClass)) {
+        if (! class_exists($this->_rowClass)) {
             require_once 'Zend/Loader.php';
             Zend_Loader::loadClass($this->_rowClass);
         }
         if (isset($config['data'])) {
-            $this->_data       = $config['data'];
+            $this->_data = $config['data'];
         }
         if (isset($config['readOnly'])) {
-            $this->_readOnly   = $config['readOnly'];
+            $this->_readOnly = $config['readOnly'];
         }
         if (isset($config['stored'])) {
-            $this->_stored     = $config['stored'];
+            $this->_stored = $config['stored'];
         }
-
+        
         // set the count of rows
         $this->_count = count($this->_data);
-
+        
         $this->init();
     }
 
@@ -136,10 +143,18 @@ abstract class Zend_Db_Table_Rowset_Abstract implements SeekableIterator, Counta
      *
      * @return array
      */
-    public function __sleep()
+    public function __sleep ()
     {
-        return array('_data', '_tableClass', '_rowClass', '_pointer', '_count', '_rows', '_stored',
-                     '_readOnly');
+        return array(
+                '_data',
+                '_tableClass',
+                '_rowClass',
+                '_pointer',
+                '_count',
+                '_rows',
+                '_stored',
+                '_readOnly'
+        );
     }
 
     /**
@@ -149,7 +164,7 @@ abstract class Zend_Db_Table_Rowset_Abstract implements SeekableIterator, Counta
      *
      * @return void
      */
-    public function __wakeup()
+    public function __wakeup ()
     {
         $this->_connected = false;
     }
@@ -161,16 +176,15 @@ abstract class Zend_Db_Table_Rowset_Abstract implements SeekableIterator, Counta
      *
      * @return void
      */
-    public function init()
-    {
-    }
+    public function init ()
+    {}
 
     /**
      * Return the connected state of the rowset.
      *
      * @return boolean
      */
-    public function isConnected()
+    public function isConnected ()
     {
         return $this->_connected;
     }
@@ -180,7 +194,7 @@ abstract class Zend_Db_Table_Rowset_Abstract implements SeekableIterator, Counta
      *
      * @return Zend_Db_Table_Abstract
      */
-    public function getTable()
+    public function getTable ()
     {
         return $this->_table;
     }
@@ -189,11 +203,11 @@ abstract class Zend_Db_Table_Rowset_Abstract implements SeekableIterator, Counta
      * Set the table object, to re-establish a live connection
      * to the database for a Rowset that has been de-serialized.
      *
-     * @param Zend_Db_Table_Abstract $table
+     * @param Zend_Db_Table_Abstract $table            
      * @return boolean
      * @throws Zend_Db_Table_Row_Exception
      */
-    public function setTable(Zend_Db_Table_Abstract $table)
+    public function setTable (Zend_Db_Table_Abstract $table)
     {
         $this->_table = $table;
         $this->_connected = false;
@@ -214,7 +228,7 @@ abstract class Zend_Db_Table_Rowset_Abstract implements SeekableIterator, Counta
      *
      * @return string
      */
-    public function getTableClass()
+    public function getTableClass ()
     {
         return $this->_tableClass;
     }
@@ -226,7 +240,7 @@ abstract class Zend_Db_Table_Rowset_Abstract implements SeekableIterator, Counta
      *
      * @return Zend_Db_Table_Rowset_Abstract Fluent interface.
      */
-    public function rewind()
+    public function rewind ()
     {
         $this->_pointer = 0;
         return $this;
@@ -239,12 +253,12 @@ abstract class Zend_Db_Table_Rowset_Abstract implements SeekableIterator, Counta
      *
      * @return Zend_Db_Table_Row_Abstract current element from the collection
      */
-    public function current()
+    public function current ()
     {
         if ($this->valid() === false) {
             return null;
         }
-
+        
         // return the row object
         return $this->_loadAndReturnRow($this->_pointer);
     }
@@ -256,7 +270,7 @@ abstract class Zend_Db_Table_Rowset_Abstract implements SeekableIterator, Counta
      *
      * @return int
      */
-    public function key()
+    public function key ()
     {
         return $this->_pointer;
     }
@@ -268,9 +282,9 @@ abstract class Zend_Db_Table_Rowset_Abstract implements SeekableIterator, Counta
      *
      * @return void
      */
-    public function next()
+    public function next ()
     {
-        ++$this->_pointer;
+        ++ $this->_pointer;
     }
 
     /**
@@ -280,7 +294,7 @@ abstract class Zend_Db_Table_Rowset_Abstract implements SeekableIterator, Counta
      *
      * @return bool False if there's nothing more to iterate over
      */
-    public function valid()
+    public function valid ()
     {
         return $this->_pointer >= 0 && $this->_pointer < $this->_count;
     }
@@ -292,7 +306,7 @@ abstract class Zend_Db_Table_Rowset_Abstract implements SeekableIterator, Counta
      *
      * @return int
      */
-    public function count()
+    public function count ()
     {
         return $this->_count;
     }
@@ -301,11 +315,12 @@ abstract class Zend_Db_Table_Rowset_Abstract implements SeekableIterator, Counta
      * Take the Iterator to position $position
      * Required by interface SeekableIterator.
      *
-     * @param int $position the position to seek to
+     * @param int $position
+     *            the position to seek to
      * @return Zend_Db_Table_Rowset_Abstract
      * @throws Zend_Db_Table_Rowset_Exception
      */
-    public function seek($position)
+    public function seek ($position)
     {
         $position = (int) $position;
         if ($position < 0 || $position >= $this->_count) {
@@ -320,10 +335,10 @@ abstract class Zend_Db_Table_Rowset_Abstract implements SeekableIterator, Counta
      * Check if an offset exists
      * Required by the ArrayAccess implementation
      *
-     * @param string $offset
+     * @param string $offset            
      * @return boolean
      */
-    public function offsetExists($offset)
+    public function offsetExists ($offset)
     {
         return isset($this->_data[(int) $offset]);
     }
@@ -332,10 +347,10 @@ abstract class Zend_Db_Table_Rowset_Abstract implements SeekableIterator, Counta
      * Get the row for the given offset
      * Required by the ArrayAccess implementation
      *
-     * @param string $offset
+     * @param string $offset            
      * @return Zend_Db_Table_Row_Abstract
      */
-    public function offsetGet($offset)
+    public function offsetGet ($offset)
     {
         $offset = (int) $offset;
         if ($offset < 0 || $offset >= $this->_count) {
@@ -343,7 +358,7 @@ abstract class Zend_Db_Table_Rowset_Abstract implements SeekableIterator, Counta
             throw new Zend_Db_Table_Rowset_Exception("Illegal index $offset");
         }
         $this->_pointer = $offset;
-
+        
         return $this->current();
     }
 
@@ -351,44 +366,46 @@ abstract class Zend_Db_Table_Rowset_Abstract implements SeekableIterator, Counta
      * Does nothing
      * Required by the ArrayAccess implementation
      *
-     * @param string $offset
-     * @param mixed $value
+     * @param string $offset            
+     * @param mixed $value            
      */
-    public function offsetSet($offset, $value)
-    {
-    }
+    public function offsetSet ($offset, $value)
+    {}
 
     /**
      * Does nothing
      * Required by the ArrayAccess implementation
      *
-     * @param string $offset
+     * @param string $offset            
      */
-    public function offsetUnset($offset)
-    {
-    }
+    public function offsetUnset ($offset)
+    {}
 
     /**
      * Returns a Zend_Db_Table_Row from a known position into the Iterator
      *
-     * @param int $position the position of the row expected
-     * @param bool $seek wether or not seek the iterator to that position after
+     * @param int $position
+     *            the position of the row expected
+     * @param bool $seek
+     *            wether or not seek the iterator to that position after
      * @return Zend_Db_Table_Row
      * @throws Zend_Db_Table_Rowset_Exception
      */
-    public function getRow($position, $seek = false)
+    public function getRow ($position, $seek = false)
     {
         try {
             $row = $this->_loadAndReturnRow($position);
         } catch (Zend_Db_Table_Rowset_Exception $e) {
             require_once 'Zend/Db/Table/Rowset/Exception.php';
-            throw new Zend_Db_Table_Rowset_Exception('No row could be found at position ' . (int) $position, 0, $e);
+            throw new Zend_Db_Table_Rowset_Exception(
+                    'No row could be found at position ' . (int) $position, 0, 
+                    $e);
         }
-
+        
         if ($seek == true) {
             $this->seek($position);
         }
-
+        
         return $row;
     }
 
@@ -399,7 +416,7 @@ abstract class Zend_Db_Table_Rowset_Abstract implements SeekableIterator, Counta
      *
      * @return array
      */
-    public function toArray()
+    public function toArray ()
     {
         // @todo This works only if we have iterated through
         // the result set once to instantiate the rows.
@@ -409,27 +426,26 @@ abstract class Zend_Db_Table_Rowset_Abstract implements SeekableIterator, Counta
         return $this->_data;
     }
 
-    protected function _loadAndReturnRow($position)
+    protected function _loadAndReturnRow ($position)
     {
-        if (!isset($this->_data[$position])) {
+        if (! isset($this->_data[$position])) {
             require_once 'Zend/Db/Table/Rowset/Exception.php';
-            throw new Zend_Db_Table_Rowset_Exception("Data for provided position does not exist");
+            throw new Zend_Db_Table_Rowset_Exception(
+                    "Data for provided position does not exist");
         }
-
+        
         // do we already have a row object for this position?
         if (empty($this->_rows[$position])) {
             $this->_rows[$position] = new $this->_rowClass(
-                array(
-                    'table'    => $this->_table,
-                    'data'     => $this->_data[$position],
-                    'stored'   => $this->_stored,
-                    'readOnly' => $this->_readOnly
-                )
-            );
+                    array(
+                            'table' => $this->_table,
+                            'data' => $this->_data[$position],
+                            'stored' => $this->_stored,
+                            'readOnly' => $this->_readOnly
+                    ));
         }
-
+        
         // return the row object
         return $this->_rows[$position];
     }
-
 }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -20,59 +21,62 @@
  * @version    $Id: GetInfoResult.php 23775 2011-03-01 17:25:24Z ralph $
  */
 
-
 /**
  * Represents a single Technorati GetInfo query result object.
  *
- * @category   Zend
- * @package    Zend_Service
+ * @category Zend
+ * @package Zend_Service
  * @subpackage Technorati
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Service_Technorati_GetInfoResult
 {
+
     /**
      * Technorati author
      *
-     * @var     Zend_Service_Technorati_Author
-     * @access  protected
+     * @var Zend_Service_Technorati_Author
+     * @access protected
      */
     protected $_author;
 
     /**
      * A list of weblogs claimed by this author
      *
-     * @var     array
-     * @access  protected
+     * @var array
+     * @access protected
      */
     protected $_weblogs = array();
-
 
     /**
      * Constructs a new object object from DOM Document.
      *
-     * @param   DomDocument $dom the ReST fragment for this object
+     * @param DomDocument $dom
+     *            the ReST fragment for this object
      */
-    public function __construct(DomDocument $dom)
+    public function __construct (DomDocument $dom)
     {
         $xpath = new DOMXPath($dom);
-
+        
         /**
+         *
          * @see Zend_Service_Technorati_Author
          */
         require_once 'Zend/Service/Technorati/Author.php';
-
+        
         $result = $xpath->query('//result');
         if ($result->length == 1) {
             $this->_author = new Zend_Service_Technorati_Author($result->item(0));
         }
-
+        
         /**
+         *
          * @see Zend_Service_Technorati_Weblog
          */
         require_once 'Zend/Service/Technorati/Weblog.php';
-
+        
         $result = $xpath->query('//item/weblog');
         if ($result->length >= 1) {
             foreach ($result as $weblog) {
@@ -81,23 +85,23 @@ class Zend_Service_Technorati_GetInfoResult
         }
     }
 
-
     /**
      * Returns the author associated with queried username.
      *
-     * @return  Zend_Service_Technorati_Author
+     * @return Zend_Service_Technorati_Author
      */
-    public function getAuthor() {
+    public function getAuthor ()
+    {
         return $this->_author;
     }
 
     /**
      * Returns the collection of weblogs authored by queried username.
      *
-     * @return  array of Zend_Service_Technorati_Weblog
+     * @return array of Zend_Service_Technorati_Weblog
      */
-    public function getWeblogs() {
+    public function getWeblogs ()
+    {
         return $this->_weblogs;
     }
-
 }

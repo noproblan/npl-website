@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -21,29 +22,36 @@
  */
 
 /**
- * @category   Zend
- * @package    Zend_Service
+ *
+ * @category Zend
+ * @package Zend_Service
  * @subpackage Ebay
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
-abstract class Zend_Service_Ebay_Finding_Set_Abstract implements SeekableIterator, Countable
+abstract class Zend_Service_Ebay_Finding_Set_Abstract implements 
+        SeekableIterator, Countable
 {
+
     /**
+     *
      * @var DOMNodeList
      */
     protected $_nodes;
 
     /**
+     *
      * @var integer
      */
     protected $_key = 0;
 
     /**
-     * @param  DOMNodeList $nodes
+     *
+     * @param DOMNodeList $nodes            
      * @return void
      */
-    public function __construct(DOMNodeList $nodes)
+    public function __construct (DOMNodeList $nodes)
     {
         $this->_nodes = $nodes;
         $this->_init();
@@ -56,18 +64,17 @@ abstract class Zend_Service_Ebay_Finding_Set_Abstract implements SeekableIterato
      *
      * @return void
      */
-    protected function _init()
-    {
-    }
+    protected function _init ()
+    {}
 
     /**
      * Implement SeekableIterator::seek()
      *
-     * @param  integer $key
+     * @param integer $key            
      * @throws OutOfBoundsException When $key is not seekable
      * @return void
      */
-    public function seek($key)
+    public function seek ($key)
     {
         if ($key < 0 || $key >= $this->count()) {
             $message = "Position '{$key}' is not seekable.";
@@ -81,7 +88,7 @@ abstract class Zend_Service_Ebay_Finding_Set_Abstract implements SeekableIterato
      *
      * @return integer
      */
-    public function key()
+    public function key ()
     {
         return $this->_key;
     }
@@ -91,9 +98,9 @@ abstract class Zend_Service_Ebay_Finding_Set_Abstract implements SeekableIterato
      *
      * @return void
      */
-    public function next()
+    public function next ()
     {
-        $this->_key++;
+        $this->_key ++;
     }
 
     /**
@@ -101,7 +108,7 @@ abstract class Zend_Service_Ebay_Finding_Set_Abstract implements SeekableIterato
      *
      * @return void
      */
-    public function rewind()
+    public function rewind ()
     {
         $this->_key = 0;
     }
@@ -111,7 +118,7 @@ abstract class Zend_Service_Ebay_Finding_Set_Abstract implements SeekableIterato
      *
      * @return boolean
      */
-    public function valid()
+    public function valid ()
     {
         return $this->_key >= 0 && $this->_key < $this->count();
     }
@@ -121,7 +128,7 @@ abstract class Zend_Service_Ebay_Finding_Set_Abstract implements SeekableIterato
      *
      * @return integer
      */
-    public function count()
+    public function count ()
     {
         return $this->_nodes ? $this->_nodes->length : 0;
     }

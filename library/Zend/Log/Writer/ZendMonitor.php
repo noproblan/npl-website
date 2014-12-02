@@ -20,19 +20,24 @@
  * @version    $Id: ZendMonitor.php 23775 2011-03-01 17:25:24Z ralph $
  */
 
-/** Zend_Log_Writer_Abstract */
+/**
+ * Zend_Log_Writer_Abstract
+ */
 require_once 'Zend/Log/Writer/Abstract.php';
 
 /**
- * @category   Zend
- * @package    Zend_Log
+ *
+ * @category Zend
+ * @package Zend_Log
  * @subpackage Writer
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: ZendMonitor.php 23775 2011-03-01 17:25:24Z ralph $
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
+ * @version $Id: ZendMonitor.php 23775 2011-03-01 17:25:24Z ralph $
  */
 class Zend_Log_Writer_ZendMonitor extends Zend_Log_Writer_Abstract
 {
+
     /**
      * Is Zend Monitor enabled?
      *
@@ -48,11 +53,12 @@ class Zend_Log_Writer_ZendMonitor extends Zend_Log_Writer_Abstract
     protected $_isZendServer = false;
 
     /**
+     *
      * @return void
      */
-    public function __construct()
+    public function __construct ()
     {
-        if (!function_exists('monitor_custom_event')) {
+        if (! function_exists('monitor_custom_event')) {
             $this->_isEnabled = false;
         }
         if (function_exists('zend_monitor_custom_event')) {
@@ -63,10 +69,10 @@ class Zend_Log_Writer_ZendMonitor extends Zend_Log_Writer_Abstract
     /**
      * Create a new instance of Zend_Log_Writer_ZendMonitor
      *
-     * @param  array|Zend_Config $config
+     * @param array|Zend_Config $config            
      * @return Zend_Log_Writer_ZendMonitor
      */
-    static public function factory($config)
+    static public function factory ($config)
     {
         return new self();
     }
@@ -80,7 +86,7 @@ class Zend_Log_Writer_ZendMonitor extends Zend_Log_Writer_Abstract
      *
      * @return boolean
      */
-    public function isEnabled()
+    public function isEnabled ()
     {
         return $this->_isEnabled;
     }
@@ -88,31 +94,33 @@ class Zend_Log_Writer_ZendMonitor extends Zend_Log_Writer_Abstract
     /**
      * Log a message to this writer.
      *
-     * @param  array $event log data event
+     * @param array $event
+     *            log data event
      * @return void
      */
-    public function write($event)
+    public function write ($event)
     {
-        if (!$this->isEnabled()) {
+        if (! $this->isEnabled()) {
             return;
         }
-
+        
         parent::write($event);
     }
 
     /**
      * Write a message to the log.
      *
-     * @param  array  $event log data event
+     * @param array $event
+     *            log data event
      * @return void
      */
-    protected function _write($event)
+    protected function _write ($event)
     {
         $priority = $event['priority'];
-        $message  = $event['message'];
+        $message = $event['message'];
         unset($event['priority'], $event['message']);
-
-        if (!empty($event)) {
+        
+        if (! empty($event)) {
             if ($this->_isZendServer) {
                 // On Zend Server; third argument should be the event
                 zend_monitor_custom_event($priority, $message, $event);
@@ -122,7 +130,8 @@ class Zend_Log_Writer_ZendMonitor extends Zend_Log_Writer_Abstract
                 // Severity is either 0 (normal) or 1 (severe); classifying
                 // notice, info, and debug as "normal", and all others as
                 // "severe"
-                monitor_custom_event($priority, $message, ($priority > 4) ? 0 : 1, $event);
+                monitor_custom_event($priority, $message, 
+                        ($priority > 4) ? 0 : 1, $event);
             }
         } else {
             monitor_custom_event($priority, $message);

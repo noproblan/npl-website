@@ -19,29 +19,35 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
 
-/** Zend_Dojo_Form_Element_DijitMulti */
+/**
+ * Zend_Dojo_Form_Element_DijitMulti
+ */
 require_once 'Zend/Dojo/Form/Element/DijitMulti.php';
 
 /**
  * ComboBox dijit
  *
- * @uses       Zend_Dojo_Form_Element_DijitMulti
- * @package    Zend_Dojo
+ * @uses Zend_Dojo_Form_Element_DijitMulti
+ * @package Zend_Dojo
  * @subpackage Form_Element
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: ComboBox.php 23775 2011-03-01 17:25:24Z ralph $
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
+ * @version $Id: ComboBox.php 23775 2011-03-01 17:25:24Z ralph $
  */
 class Zend_Dojo_Form_Element_ComboBox extends Zend_Dojo_Form_Element_DijitMulti
 {
+
     /**
      * Use ComboBox dijit view helper
+     * 
      * @var string
      */
     public $helper = 'ComboBox';
 
     /**
      * Flag: autoregister inArray validator?
+     * 
      * @var bool
      */
     protected $_registerInArrayValidator = false;
@@ -51,9 +57,9 @@ class Zend_Dojo_Form_Element_ComboBox extends Zend_Dojo_Form_Element_DijitMulti
      *
      * @return array
      */
-    public function getStoreInfo()
+    public function getStoreInfo ()
     {
-        if (!$this->hasDijitParam('store')) {
+        if (! $this->hasDijitParam('store')) {
             $this->dijitParams['store'] = array();
         }
         return $this->dijitParams['store'];
@@ -62,10 +68,10 @@ class Zend_Dojo_Form_Element_ComboBox extends Zend_Dojo_Form_Element_DijitMulti
     /**
      * Set datastore identifier
      *
-     * @param  string $identifier
+     * @param string $identifier            
      * @return Zend_Dojo_Form_Element_ComboBox
      */
-    public function setStoreId($identifier)
+    public function setStoreId ($identifier)
     {
         $store = $this->getStoreInfo();
         $store['store'] = (string) $identifier;
@@ -78,7 +84,7 @@ class Zend_Dojo_Form_Element_ComboBox extends Zend_Dojo_Form_Element_DijitMulti
      *
      * @return string|null
      */
-    public function getStoreId()
+    public function getStoreId ()
     {
         $store = $this->getStoreInfo();
         if (array_key_exists('store', $store)) {
@@ -90,10 +96,10 @@ class Zend_Dojo_Form_Element_ComboBox extends Zend_Dojo_Form_Element_DijitMulti
     /**
      * Set datastore dijit type
      *
-     * @param  string $dojoType
+     * @param string $dojoType            
      * @return Zend_Dojo_Form_Element_ComboBox
      */
-    public function setStoreType($dojoType)
+    public function setStoreType ($dojoType)
     {
         $store = $this->getStoreInfo();
         $store['type'] = (string) $dojoType;
@@ -106,7 +112,7 @@ class Zend_Dojo_Form_Element_ComboBox extends Zend_Dojo_Form_Element_DijitMulti
      *
      * @return string|null
      */
-    public function getStoreType()
+    public function getStoreType ()
     {
         $store = $this->getStoreInfo();
         if (array_key_exists('type', $store)) {
@@ -118,10 +124,10 @@ class Zend_Dojo_Form_Element_ComboBox extends Zend_Dojo_Form_Element_DijitMulti
     /**
      * Set datastore parameters
      *
-     * @param  array $params
+     * @param array $params            
      * @return Zend_Dojo_Form_Element_ComboBox
      */
-    public function setStoreParams(array $params)
+    public function setStoreParams (array $params)
     {
         $store = $this->getStoreInfo();
         $store['params'] = $params;
@@ -134,7 +140,7 @@ class Zend_Dojo_Form_Element_ComboBox extends Zend_Dojo_Form_Element_DijitMulti
      *
      * @return array
      */
-    public function getStoreParams()
+    public function getStoreParams ()
     {
         $store = $this->getStoreInfo();
         if (array_key_exists('params', $store)) {
@@ -146,10 +152,10 @@ class Zend_Dojo_Form_Element_ComboBox extends Zend_Dojo_Form_Element_DijitMulti
     /**
      * Set autocomplete flag
      *
-     * @param  bool $flag
+     * @param bool $flag            
      * @return Zend_Dojo_Form_Element_ComboBox
      */
-    public function setAutocomplete($flag)
+    public function setAutocomplete ($flag)
     {
         $this->setDijitParam('autocomplete', (bool) $flag);
         return $this;
@@ -160,9 +166,9 @@ class Zend_Dojo_Form_Element_ComboBox extends Zend_Dojo_Form_Element_DijitMulti
      *
      * @return bool
      */
-    public function getAutocomplete()
+    public function getAutocomplete ()
     {
-        if (!$this->hasDijitParam('autocomplete')) {
+        if (! $this->hasDijitParam('autocomplete')) {
             return false;
         }
         return $this->getDijitParam('autocomplete');
@@ -171,14 +177,14 @@ class Zend_Dojo_Form_Element_ComboBox extends Zend_Dojo_Form_Element_DijitMulti
     /**
      * Is the value valid?
      *
-     * @param  string $value
-     * @param  mixed $context
+     * @param string $value            
+     * @param mixed $context            
      * @return bool
      */
-    public function isValid($value, $context = null)
+    public function isValid ($value, $context = null)
     {
         $storeInfo = $this->getStoreInfo();
-        if (!empty($storeInfo)) {
+        if (! empty($storeInfo)) {
             $this->setRegisterInArrayValidator(false);
         }
         return parent::isValid($value, $context);

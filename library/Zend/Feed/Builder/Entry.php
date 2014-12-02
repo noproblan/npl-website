@@ -20,29 +20,31 @@
  * @version    $Id: Entry.php 23775 2011-03-01 17:25:24Z ralph $
  */
 
-
 /**
  * An entry of a custom build feed
  *
  * Classes implementing the Zend_Feed_Builder_Interface interface
  * uses this class to describe an entry of a feed
  *
- * @category   Zend
- * @package    Zend_Feed
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @category Zend
+ * @package Zend_Feed
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Feed_Builder_Entry extends ArrayObject
 {
+
     /**
      * Create a new builder entry
      *
-     * @param  string $title
-     * @param  string $link
-     * @param  string $description short version of the entry, no html
+     * @param string $title            
+     * @param string $link            
+     * @param string $description
+     *            short version of the entry, no html
      * @return void
      */
-    public function __construct($title, $link, $description)
+    public function __construct ($title, $link, $description)
     {
         $this->offsetSet('title', $title);
         $this->offsetSet('link', $link);
@@ -53,26 +55,29 @@ class Zend_Feed_Builder_Entry extends ArrayObject
     /**
      * Read only properties accessor
      *
-     * @param  string $name property to read
+     * @param string $name
+     *            property to read
      * @return mixed
      */
-    public function __get($name)
+    public function __get ($name)
     {
-        if (!$this->offsetExists($name)) {
+        if (! $this->offsetExists($name)) {
             return NULL;
         }
-
+        
         return $this->offsetGet($name);
     }
 
     /**
      * Write properties accessor
      *
-     * @param  string $name name of the property to set
-     * @param  mixed $value value to set
+     * @param string $name
+     *            name of the property to set
+     * @param mixed $value
+     *            value to set
      * @return void
      */
-    public function __set($name, $value)
+    public function __set ($name, $value)
     {
         $this->offsetSet($name, $value);
     }
@@ -80,10 +85,10 @@ class Zend_Feed_Builder_Entry extends ArrayObject
     /**
      * Isset accessor
      *
-     * @param  string $key
+     * @param string $key            
      * @return boolean
      */
-    public function __isset($key)
+    public function __isset ($key)
     {
         return $this->offsetExists($key);
     }
@@ -91,10 +96,10 @@ class Zend_Feed_Builder_Entry extends ArrayObject
     /**
      * Unset accessor
      *
-     * @param  string $key
+     * @param string $key            
      * @return void
      */
-    public function __unset($key)
+    public function __unset ($key)
     {
         if ($this->offsetExists($key)) {
             $this->offsetUnset($key);
@@ -104,10 +109,10 @@ class Zend_Feed_Builder_Entry extends ArrayObject
     /**
      * Sets the author of the entry
      *
-     * @param  string $author
+     * @param string $author            
      * @return Zend_Feed_Builder_Entry
      */
-    public function setAuthor($author)
+    public function setAuthor ($author)
     {
         $this->offsetSet('author', $author);
         return $this;
@@ -116,10 +121,10 @@ class Zend_Feed_Builder_Entry extends ArrayObject
     /**
      * Sets the id/guid of the entry
      *
-     * @param  string $id
+     * @param string $id            
      * @return Zend_Feed_Builder_Entry
      */
-    public function setId($id)
+    public function setId ($id)
     {
         $this->offsetSet('guid', $id);
         return $this;
@@ -128,10 +133,10 @@ class Zend_Feed_Builder_Entry extends ArrayObject
     /**
      * Sets the full html content of the entry
      *
-     * @param  string $content
+     * @param string $content            
      * @return Zend_Feed_Builder_Entry
      */
-    public function setContent($content)
+    public function setContent ($content)
     {
         $this->offsetSet('content', $content);
         return $this;
@@ -140,10 +145,10 @@ class Zend_Feed_Builder_Entry extends ArrayObject
     /**
      * Timestamp of the update date
      *
-     * @param  int $lastUpdate
+     * @param int $lastUpdate            
      * @return Zend_Feed_Builder_Entry
      */
-    public function setLastUpdate($lastUpdate)
+    public function setLastUpdate ($lastUpdate)
     {
         $this->offsetSet('lastUpdate', $lastUpdate);
         return $this;
@@ -152,10 +157,10 @@ class Zend_Feed_Builder_Entry extends ArrayObject
     /**
      * Sets the url of the commented page associated to the entry
      *
-     * @param  string $comments
+     * @param string $comments            
      * @return Zend_Feed_Builder_Entry
      */
-    public function setCommentsUrl($comments)
+    public function setCommentsUrl ($comments)
     {
         $this->offsetSet('comments', $comments);
         return $this;
@@ -164,10 +169,10 @@ class Zend_Feed_Builder_Entry extends ArrayObject
     /**
      * Sets the url of the comments feed link
      *
-     * @param  string $commentRss
+     * @param string $commentRss            
      * @return Zend_Feed_Builder_Entry
      */
-    public function setCommentsRssUrl($commentRss)
+    public function setCommentsRssUrl ($commentRss)
     {
         $this->offsetSet('commentRss', $commentRss);
         return $this;
@@ -176,14 +181,17 @@ class Zend_Feed_Builder_Entry extends ArrayObject
     /**
      * Defines a reference to the original source
      *
-     * @param  string $title
-     * @param  string $url
+     * @param string $title            
+     * @param string $url            
      * @return Zend_Feed_Builder_Entry
      */
-    public function setSource($title, $url)
+    public function setSource ($title, $url)
     {
-        $this->offsetSet('source', array('title' => $title,
-                                         'url' => $url));
+        $this->offsetSet('source', 
+                array(
+                        'title' => $title,
+                        'url' => $url
+                ));
         return $this;
     }
 
@@ -192,18 +200,18 @@ class Zend_Feed_Builder_Entry extends ArrayObject
      * Format of the array:
      * <code>
      * array(
-     *   array(
-     *         'term' => 'first category label',
-     *         'scheme' => 'url that identifies a categorization scheme' // optional
-     *        ),
-     *   // second category and so one
+     * array(
+     * 'term' => 'first category label',
+     * 'scheme' => 'url that identifies a categorization scheme' // optional
+     * ),
+     * // second category and so one
      * )
      * </code>
      *
-     * @param  array $categories
+     * @param array $categories            
      * @return Zend_Feed_Builder_Entry
      */
-    public function setCategories(array $categories)
+    public function setCategories (array $categories)
     {
         foreach ($categories as $category) {
             $this->addCategory($category);
@@ -214,22 +222,27 @@ class Zend_Feed_Builder_Entry extends ArrayObject
     /**
      * Add a category to the entry
      *
-     * @param  array $category see Zend_Feed_Builder_Entry::setCategories() for format
+     * @param array $category
+     *            see Zend_Feed_Builder_Entry::setCategories() for format
      * @return Zend_Feed_Builder_Entry
      * @throws Zend_Feed_Builder_Exception
      */
-    public function addCategory(array $category)
+    public function addCategory (array $category)
     {
         if (empty($category['term'])) {
             /**
+             *
              * @see Zend_Feed_Builder_Exception
              */
             require_once 'Zend/Feed/Builder/Exception.php';
-            throw new Zend_Feed_Builder_Exception("you have to define the name of the category");
+            throw new Zend_Feed_Builder_Exception(
+                    "you have to define the name of the category");
         }
-
-        if (!$this->offsetExists('category')) {
-            $categories = array($category);
+        
+        if (! $this->offsetExists('category')) {
+            $categories = array(
+                    $category
+            );
         } else {
             $categories = $this->offsetGet('category');
             $categories[] = $category;
@@ -243,28 +256,30 @@ class Zend_Feed_Builder_Entry extends ArrayObject
      * Format of the array:
      * <code>
      * array(
-     *   array(
-     *         'url' => 'url of the linked enclosure',
-     *         'type' => 'mime type of the enclosure' // optional
-     *         'length' => 'length of the linked content in octets' // optional
-     *        ),
-     *   // second enclosure and so one
+     * array(
+     * 'url' => 'url of the linked enclosure',
+     * 'type' => 'mime type of the enclosure' // optional
+     * 'length' => 'length of the linked content in octets' // optional
+     * ),
+     * // second enclosure and so one
      * )
      * </code>
      *
-     * @param  array $enclosures
+     * @param array $enclosures            
      * @return Zend_Feed_Builder_Entry
      * @throws Zend_Feed_Builder_Exception
      */
-    public function setEnclosures(array $enclosures)
+    public function setEnclosures (array $enclosures)
     {
         foreach ($enclosures as $enclosure) {
             if (empty($enclosure['url'])) {
                 /**
+                 *
                  * @see Zend_Feed_Builder_Exception
                  */
                 require_once 'Zend/Feed/Builder/Exception.php';
-                throw new Zend_Feed_Builder_Exception("you have to supply an url for your enclosure");
+                throw new Zend_Feed_Builder_Exception(
+                        "you have to supply an url for your enclosure");
             }
             $type = isset($enclosure['type']) ? $enclosure['type'] : '';
             $length = isset($enclosure['length']) ? $enclosure['length'] : '';
@@ -276,21 +291,23 @@ class Zend_Feed_Builder_Entry extends ArrayObject
     /**
      * Add an enclosure to the entry
      *
-     * @param  string $url
-     * @param  string $type
-     * @param  string $length
+     * @param string $url            
+     * @param string $type            
+     * @param string $length            
      * @return Zend_Feed_Builder_Entry
      */
-    public function addEnclosure($url, $type = '', $length = '')
+    public function addEnclosure ($url, $type = '', $length = '')
     {
-        if (!$this->offsetExists('enclosure')) {
+        if (! $this->offsetExists('enclosure')) {
             $enclosure = array();
         } else {
             $enclosure = $this->offsetGet('enclosure');
         }
-        $enclosure[] = array('url' => $url,
-                             'type' => $type,
-                             'length' => $length);
+        $enclosure[] = array(
+                'url' => $url,
+                'type' => $type,
+                'length' => $length
+        );
         $this->offsetSet('enclosure', $enclosure);
         return $this;
     }

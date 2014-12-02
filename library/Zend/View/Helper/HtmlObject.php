@@ -21,60 +21,77 @@
  */
 
 /**
+ *
  * @see Zend_View_Helper_HtmlElement
  */
 require_once 'Zend/View/Helper/HtmlElement.php';
 
 /**
- * @category   Zend
- * @package    Zend_View
+ *
+ * @category Zend
+ * @package Zend_View
  * @subpackage Helper
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_View_Helper_HtmlObject extends Zend_View_Helper_HtmlElement
 {
+
     /**
      * Output an object set
      *
-     * @param string $data The data file
-     * @param string $type Data file type
-     * @param array  $attribs Attribs for the object tag
-     * @param array  $params Params for in the object tag
-     * @param string $content Alternative content for object
+     * @param string $data
+     *            The data file
+     * @param string $type
+     *            Data file type
+     * @param array $attribs
+     *            Attribs for the object tag
+     * @param array $params
+     *            Params for in the object tag
+     * @param string $content
+     *            Alternative content for object
      * @return string
      */
-    public function htmlObject($data, $type, array $attribs = array(), array $params = array(), $content = null)
+    public function htmlObject ($data, $type, array $attribs = array(), 
+            array $params = array(), $content = null)
     {
         // Merge data and type
-        $attribs = array_merge(array('data' => $data,
-                                     'type' => $type), $attribs);
-
+        $attribs = array_merge(
+                array(
+                        'data' => $data,
+                        'type' => $type
+                ), $attribs);
+        
         // Params
         $paramHtml = array();
         $closingBracket = $this->getClosingBracket();
-
+        
         foreach ($params as $param => $options) {
             if (is_string($options)) {
-                $options = array('value' => $options);
+                $options = array(
+                        'value' => $options
+                );
             }
-
-            $options = array_merge(array('name' => $param), $options);
-
-            $paramHtml[] = '<param' . $this->_htmlAttribs($options) . $closingBracket;
+            
+            $options = array_merge(array(
+                    'name' => $param
+            ), $options);
+            
+            $paramHtml[] = '<param' . $this->_htmlAttribs($options) .
+                     $closingBracket;
         }
-
+        
         // Content
         if (is_array($content)) {
             $content = implode(self::EOL, $content);
         }
-
+        
         // Object header
-        $xhtml = '<object' . $this->_htmlAttribs($attribs) . '>' . self::EOL
-                 . implode(self::EOL, $paramHtml) . self::EOL
-                 . ($content ? $content . self::EOL : '')
-                 . '</object>';
-
+        $xhtml = '<object' . $this->_htmlAttribs($attribs) . '>' . self::EOL .
+                 implode(self::EOL, $paramHtml) . self::EOL .
+                 ($content ? $content . self::EOL : '') . '</object>';
+        
         return $xhtml;
     }
 }

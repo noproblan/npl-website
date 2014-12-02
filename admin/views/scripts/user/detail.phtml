@@ -1,27 +1,27 @@
 <div id="view-content">
-	<div id="title">
-		<h1>Benutzerverwaltung → Detailansicht</h1>
-	</div>
-	<?php echo $this->messages(); ?>
-	<div id="information">
-		<?= $this->partial('user/submenu.phtml') ?>
-		<?php if (!empty($this->user)): ?>
-		<table border=1>
-			<tr>
-				<td class="key">ID</td>
-				<td class="value"><?= $this->user['id'] ?></td>
-			</tr>
-			<tr>
-				<td class="key">Login</td>
-				<td class="value"><?= $this->user['username'] ?></td>
-			</tr>
-			<tr>
-				<td class="key">Email</td>
-				<td class="value"><?= $this->user['mail'] ?></td>
-			</tr>
-		</table>
-		<?php else: ?>
-		Es wurde kein Benutzer gefunden
-		<?php endif; ?>
-	</div>
+    <div id="title">
+        <h1>Benutzerverwaltung → Detailansicht</h1>
+    </div>
+    <?php echo $this->messages(); ?>
+    <div id="information">
+        <?= $this->partial('user/submenu.phtml')?>
+        <?php if (!empty($this->user)): ?>
+        <table border=1>
+            <tr>
+                <td class="key">ID</td>
+                <td class="value"><?= $this->user['id'] ?></td>
+            </tr>
+            <tr>
+                <td class="key">Login</td>
+                <td class="value"><?= $this->user['username'] ?></td>
+            </tr>
+            <tr>
+                <td class="key">Email</td>
+                <td class="value"><?= $this->user['mail'] ?></td>
+            </tr>
+        </table>
+        <?php else: ?>
+        Es wurde kein Benutzer gefunden
+        <?php endif; ?>
+    </div>
 </div>

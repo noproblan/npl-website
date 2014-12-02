@@ -21,58 +21,65 @@
  */
 
 /**
+ *
  * @see Zend_Db_Table_Rowset_Abstract
  */
 require_once "Zend/Db/Table/Rowset/Abstract.php";
 
 /**
+ *
  * @see PHPUnit_Extensions_Database_DataSet_AbstractTable
  */
 require_once "PHPUnit/Extensions/Database/DataSet/AbstractTable.php";
 
 /**
- * Use a Zend_Db Rowset as a datatable for assertions with other PHPUnit Database extension tables.
+ * Use a Zend_Db Rowset as a datatable for assertions with other PHPUnit
+ * Database extension tables.
  *
- * @uses       PHPUnit_Extensions_Database_DataSet_AbstractTable
- * @category   Zend
- * @package    Zend_Test
+ * @uses PHPUnit_Extensions_Database_DataSet_AbstractTable
+ * @category Zend
+ * @package Zend_Test
  * @subpackage PHPUnit
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Test_PHPUnit_Db_DataSet_DbRowset extends PHPUnit_Extensions_Database_DataSet_AbstractTable
 {
+
     /**
      * Construct Table object from a Zend_Db_Table_Rowset
      *
-     * @param Zend_Db_Table_Rowset_Abstract $rowset
-     * @param string $tableName
+     * @param Zend_Db_Table_Rowset_Abstract $rowset            
+     * @param string $tableName            
      */
-    public function __construct(Zend_Db_Table_Rowset_Abstract $rowset, $tableName = null)
+    public function __construct (Zend_Db_Table_Rowset_Abstract $rowset, 
+            $tableName = null)
     {
-        if($tableName == null) {
+        if ($tableName == null) {
             $table = $rowset->getTable();
-            if($table !== null) {
+            if ($table !== null) {
                 $tableName = $table->info('name');
             } else {
                 require_once "Zend/Test/PHPUnit/Db/Exception.php";
                 throw new Zend_Test_PHPUnit_Db_Exception(
-                    'No table name was given to Rowset Table and table name cannot be infered from the table, '.
-                    'because the rowset is disconnected from database.'
-                );
+                        'No table name was given to Rowset Table and table name cannot be infered from the table, ' .
+                                 'because the rowset is disconnected from database.');
             }
         }
-
+        
         $this->data = $rowset->toArray();
-
+        
         $columns = array();
-        if(isset($this->data[0]) > 0) {
+        if (isset($this->data[0]) > 0) {
             $columns = array_keys($this->data[0]);
-        } else if($rowset->getTable() != null) {
-            $columns = $rowset->getTable()->info('cols');
-        }
-
+        } else 
+            if ($rowset->getTable() != null) {
+                $columns = $rowset->getTable()->info('cols');
+            }
+        
         $this->tableName = $tableName;
-        $this->tableMetaData = new PHPUnit_Extensions_Database_DataSet_DefaultTableMetaData($this->tableName, $columns);
+        $this->tableMetaData = new PHPUnit_Extensions_Database_DataSet_DefaultTableMetaData(
+                $this->tableName, $columns);
     }
 }

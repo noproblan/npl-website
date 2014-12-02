@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -19,35 +20,37 @@
  * @version    $Id: Color.php 23775 2011-03-01 17:25:24Z ralph $
  */
 
-
 /**
- * PDF provides a powerfull facilities for specifying the colors of graphics objects.
+ * PDF provides a powerfull facilities for specifying the colors of graphics
+ * objects.
  * This class encapsulates color behaviour.
  *
  * Some colors interact with PDF document (create additional objects in a PDF),
  * others don't do it. That is defined in a subclasses.
  *
- * @package    Zend_Pdf
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @package Zend_Pdf
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 abstract class Zend_Pdf_Color
 {
+
     /**
      * Instructions, which can be directly inserted into content stream
      * to switch color.
      * Color set instructions differ for stroking and nonstroking operations.
      *
-     * @param boolean $stroking
+     * @param boolean $stroking            
      * @return string
      */
-    abstract public function instructions($stroking);
+    abstract public function instructions ($stroking);
 
     /**
      * Get color components (color space dependent)
      *
      * @return array
      */
-    abstract public function getComponents();
+    abstract public function getComponents ();
 }
 

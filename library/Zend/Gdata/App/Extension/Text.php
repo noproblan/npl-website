@@ -22,6 +22,7 @@
  */
 
 /**
+ *
  * @see Zend_Gdata_App_Extension
  */
 require_once 'Zend/Gdata/App/Extension.php';
@@ -30,26 +31,28 @@ require_once 'Zend/Gdata/App/Extension.php';
  * Abstract class for data models that require only text and type-- such as:
  * title, summary, etc.
  *
- * @category   Zend
- * @package    Zend_Gdata
+ * @category Zend
+ * @package Zend_Gdata
  * @subpackage App
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 abstract class Zend_Gdata_App_Extension_Text extends Zend_Gdata_App_Extension
 {
 
     protected $_rootElement = null;
+
     protected $_type = 'text';
 
-    public function __construct($text = null, $type = 'text')
+    public function __construct ($text = null, $type = 'text')
     {
         parent::__construct();
         $this->_text = $text;
         $this->_type = $type;
     }
 
-    public function getDOM($doc = null, $majorVersion = 1, $minorVersion = null)
+    public function getDOM ($doc = null, $majorVersion = 1, $minorVersion = null)
     {
         $element = parent::getDOM($doc, $majorVersion, $minorVersion);
         if ($this->_type !== null) {
@@ -58,33 +61,32 @@ abstract class Zend_Gdata_App_Extension_Text extends Zend_Gdata_App_Extension
         return $element;
     }
 
-    protected function takeAttributeFromDOM($attribute)
+    protected function takeAttributeFromDOM ($attribute)
     {
         switch ($attribute->localName) {
-        case 'type':
-            $this->_type = $attribute->nodeValue;
-            break;
-        default:
-            parent::takeAttributeFromDOM($attribute);
+            case 'type':
+                $this->_type = $attribute->nodeValue;
+                break;
+            default:
+                parent::takeAttributeFromDOM($attribute);
         }
     }
-
+    
     /*
      * @return Zend_Gdata_App_Extension_Type
      */
-    public function getType()
+    public function getType ()
     {
         return $this->_type;
     }
-
+    
     /*
      * @param string $value
      * @return Zend_Gdata_App_Extension_Text Provides a fluent interface
      */
-    public function setType($value)
+    public function setType ($value)
     {
         $this->_type = $value;
         return $this;
     }
-
 }

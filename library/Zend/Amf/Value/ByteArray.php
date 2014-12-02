@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -23,14 +24,17 @@
 /**
  * Wrapper class to store an AMF3 flash.utils.ByteArray
  *
- * @package    Zend_Amf
+ * @package Zend_Amf
  * @subpackage Value
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Amf_Value_ByteArray
 {
+
     /**
+     *
      * @var string ByteString Data
      */
     protected $_data = '';
@@ -38,10 +42,10 @@ class Zend_Amf_Value_ByteArray
     /**
      * Create a ByteArray
      *
-     * @param  string $data
+     * @param string $data            
      * @return void
      */
-    public function __construct($data)
+    public function __construct ($data)
     {
         $this->_data = $data;
     }
@@ -51,7 +55,7 @@ class Zend_Amf_Value_ByteArray
      *
      * @return string
      */
-    public function getData()
+    public function getData ()
     {
         return $this->_data;
     }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -20,118 +21,121 @@
  */
 
 /**
- * @category   Zend
- * @package    Zend_Tool
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ *
+ * @category Zend
+ * @package Zend_Tool
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 interface Zend_Tool_Framework_Registry_Interface
 {
 
-
     /**
      * setClient()
      *
-     * @param Zend_Tool_Framework_Client_Abstract $client
+     * @param Zend_Tool_Framework_Client_Abstract $client            
      * @return Zend_Tool_Framework_Registry
      */
-    public function setClient(Zend_Tool_Framework_Client_Abstract $client);
+    public function setClient (Zend_Tool_Framework_Client_Abstract $client);
 
     /**
      * getClient() return the client in the registry
      *
      * @return Zend_Tool_Framework_Client_Abstract
      */
-    public function getClient();
+    public function getClient ();
 
     /**
      * setLoader()
      *
-     * @param Zend_Tool_Framework_Loader_Abstract $loader
+     * @param Zend_Tool_Framework_Loader_Abstract $loader            
      * @return Zend_Tool_Framework_Registry
      */
-    public function setLoader(Zend_Tool_Framework_Loader_Interface $loader);
+    public function setLoader (Zend_Tool_Framework_Loader_Interface $loader);
 
     /**
      * getLoader()
      *
      * @return Zend_Tool_Framework_Loader_Abstract
      */
-    public function getLoader();
+    public function getLoader ();
 
     /**
      * setActionRepository()
      *
-     * @param Zend_Tool_Framework_Action_Repository $actionRepository
+     * @param Zend_Tool_Framework_Action_Repository $actionRepository            
      * @return Zend_Tool_Framework_Registry
      */
-    public function setActionRepository(Zend_Tool_Framework_Action_Repository $actionRepository);
+    public function setActionRepository (
+            Zend_Tool_Framework_Action_Repository $actionRepository);
 
     /**
      * getActionRepository()
      *
      * @return Zend_Tool_Framework_Action_Repository
      */
-    public function getActionRepository();
+    public function getActionRepository ();
 
     /**
      * setProviderRepository()
      *
-     * @param Zend_Tool_Framework_Provider_Repository $providerRepository
+     * @param Zend_Tool_Framework_Provider_Repository $providerRepository            
      * @return Zend_Tool_Framework_Registry
      */
-    public function setProviderRepository(Zend_Tool_Framework_Provider_Repository $providerRepository);
+    public function setProviderRepository (
+            Zend_Tool_Framework_Provider_Repository $providerRepository);
 
     /**
      * getProviderRepository()
      *
      * @return Zend_Tool_Framework_Provider_Repository
      */
-    public function getProviderRepository();
+    public function getProviderRepository ();
 
     /**
      * setManifestRepository()
      *
-     * @param Zend_Tool_Framework_Manifest_Repository $manifestRepository
+     * @param Zend_Tool_Framework_Manifest_Repository $manifestRepository            
      * @return Zend_Tool_Framework_Registry
      */
-    public function setManifestRepository(Zend_Tool_Framework_Manifest_Repository $manifestRepository);
+    public function setManifestRepository (
+            Zend_Tool_Framework_Manifest_Repository $manifestRepository);
 
     /**
      * getManifestRepository()
      *
      * @return Zend_Tool_Framework_Manifest_Repository
      */
-    public function getManifestRepository();
+    public function getManifestRepository ();
 
     /**
      * setRequest()
      *
-     * @param Zend_Tool_Framework_Client_Request $request
+     * @param Zend_Tool_Framework_Client_Request $request            
      * @return Zend_Tool_Framework_Registry
      */
-    public function setRequest(Zend_Tool_Framework_Client_Request $request);
+    public function setRequest (Zend_Tool_Framework_Client_Request $request);
 
     /**
      * getRequest()
      *
      * @return Zend_Tool_Framework_Client_Request
      */
-    public function getRequest();
+    public function getRequest ();
 
     /**
      * setResponse()
      *
-     * @param Zend_Tool_Framework_Client_Response $response
+     * @param Zend_Tool_Framework_Client_Response $response            
      * @return Zend_Tool_Framework_Registry
      */
-    public function setResponse(Zend_Tool_Framework_Client_Response $response);
+    public function setResponse (Zend_Tool_Framework_Client_Response $response);
 
     /**
      * getResponse()
      *
      * @return Zend_Tool_Framework_Client_Response
      */
-    public function getResponse();
-
+    public function getResponse ();
 }

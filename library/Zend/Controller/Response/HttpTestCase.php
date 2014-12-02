@@ -20,6 +20,7 @@
  */
 
 /**
+ *
  * @see Zend_Controller_Response_Http
  */
 require_once 'Zend/Controller/Response/Http.php';
@@ -33,12 +34,13 @@ require_once 'Zend/Controller/Response/Http.php';
  */
 class Zend_Controller_Response_HttpTestCase extends Zend_Controller_Response_Http
 {
+
     /**
      * "send" headers by returning array of all headers that would be sent
      *
      * @return array
      */
-    public function sendHeaders()
+    public function sendHeaders ()
     {
         $headers = array();
         foreach ($this->_headersRaw as $header) {
@@ -46,7 +48,7 @@ class Zend_Controller_Response_HttpTestCase extends Zend_Controller_Response_Htt
         }
         foreach ($this->_headers as $header) {
             $name = $header['name'];
-            $key  = strtolower($name);
+            $key = strtolower($name);
             if (array_key_exists($name, $headers)) {
                 if ($header['replace']) {
                     $headers[$key] = $header['name'] . ': ' . $header['value'];
@@ -61,10 +63,10 @@ class Zend_Controller_Response_HttpTestCase extends Zend_Controller_Response_Htt
     /**
      * Can we send headers?
      *
-     * @param  bool $throw
+     * @param bool $throw            
      * @return void
      */
-    public function canSendHeaders($throw = false)
+    public function canSendHeaders ($throw = false)
     {
         return true;
     }
@@ -74,7 +76,7 @@ class Zend_Controller_Response_HttpTestCase extends Zend_Controller_Response_Htt
      *
      * @return string
      */
-    public function outputBody()
+    public function outputBody ()
     {
         $fullContent = '';
         foreach ($this->_body as $content) {
@@ -86,10 +88,10 @@ class Zend_Controller_Response_HttpTestCase extends Zend_Controller_Response_Htt
     /**
      * Get body and/or body segments
      *
-     * @param  bool|string $spec
+     * @param bool|string $spec            
      * @return string|array|null
      */
-    public function getBody($spec = false)
+    public function getBody ($spec = false)
     {
         if (false === $spec) {
             return $this->outputBody();
@@ -98,7 +100,7 @@ class Zend_Controller_Response_HttpTestCase extends Zend_Controller_Response_Htt
         } elseif (is_string($spec) && isset($this->_body[$spec])) {
             return $this->_body[$spec];
         }
-
+        
         return null;
     }
 
@@ -110,11 +112,11 @@ class Zend_Controller_Response_HttpTestCase extends Zend_Controller_Response_Htt
      *
      * @return string
      */
-    public function sendResponse()
+    public function sendResponse ()
     {
         $headers = $this->sendHeaders();
         $content = implode("\n", $headers) . "\n\n";
-
+        
         if ($this->isException() && $this->renderExceptions()) {
             $exceptions = '';
             foreach ($this->getException() as $e) {
@@ -124,7 +126,7 @@ class Zend_Controller_Response_HttpTestCase extends Zend_Controller_Response_Htt
         } else {
             $content .= $this->outputBody();
         }
-
+        
         return $content;
     }
 }

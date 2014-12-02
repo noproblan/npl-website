@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -21,23 +22,29 @@
  */
 
 /**
- * @category   Zend
- * @package    Zend_Feed_Pubsubhubbub
+ *
+ * @category Zend
+ * @package Zend_Feed_Pubsubhubbub
  * @subpackage Callback
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 interface Zend_Feed_Pubsubhubbub_CallbackInterface
 {
+
     /**
      * Handle any callback from a Hub Server responding to a subscription or
-     * unsubscription request. This should be the Hub Server confirming the
+     * unsubscription request.
+     * This should be the Hub Server confirming the
      * the request prior to taking action on it.
      *
-     * @param array $httpData GET/POST data if available and not in $_GET/POST
-     * @param bool $sendResponseNow Whether to send response now or when asked
+     * @param array $httpData
+     *            GET/POST data if available and not in $_GET/POST
+     * @param bool $sendResponseNow
+     *            Whether to send response now or when asked
      */
-    public function handle(array $httpData = null, $sendResponseNow = false);
+    public function handle (array $httpData = null, $sendResponseNow = false);
 
     /**
      * Send the response, including all headers.
@@ -47,23 +54,27 @@ interface Zend_Feed_Pubsubhubbub_CallbackInterface
      *
      * @return void
      */
-    public function sendResponse();
+    public function sendResponse ();
 
     /**
-     * An instance of a class handling Http Responses. This is implemented in
-     * Zend_Feed_Pubsubhubbub_HttpResponse which shares an unenforced interface with
+     * An instance of a class handling Http Responses.
+     * This is implemented in
+     * Zend_Feed_Pubsubhubbub_HttpResponse which shares an unenforced interface
+     * with
      * (i.e. not inherited from) Zend_Controller_Response_Http.
      *
-     * @param Zend_Feed_Pubsubhubbub_HttpResponse|Zend_Controller_Response_Http $httpResponse
+     * @param Zend_Feed_Pubsubhubbub_HttpResponse|Zend_Controller_Response_Http $httpResponse            
      */
-    public function setHttpResponse($httpResponse);
+    public function setHttpResponse ($httpResponse);
 
     /**
-     * An instance of a class handling Http Responses. This is implemented in
-     * Zend_Feed_Pubsubhubbub_HttpResponse which shares an unenforced interface with
+     * An instance of a class handling Http Responses.
+     * This is implemented in
+     * Zend_Feed_Pubsubhubbub_HttpResponse which shares an unenforced interface
+     * with
      * (i.e. not inherited from) Zend_Controller_Response_Http.
      *
      * @return Zend_Feed_Pubsubhubbub_HttpResponse|Zend_Controller_Response_Http
      */
-    public function getHttpResponse();
+    public function getHttpResponse ();
 }

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <ldml>
 	<identity>
-		<version number="$Revision: 1.59 $"/>
-		<generation date="$Date: 2009/06/15 04:15:33 $"/>
-		<language type="or"/>
+		<version number="$Revision: 1.59 $" />
+		<generation date="$Date: 2009/06/15 04:15:33 $" />
+		<language type="or" />
 	</identity>
 	<localeDisplayNames>
 		<languages>
@@ -770,7 +770,8 @@
 			<territory type="GP">ଗୌଡେଲୌପେ</territory>
 			<territory type="GQ">ଇକ୍ବାଟେରିଆଲ୍ ଗୁଇନିଆ</territory>
 			<territory type="GR">ଗ୍ରୀସ୍</territory>
-			<territory type="GS">ଦକ୍ଷିଣ ଜର୍ଜିଆ ଏବଂ ଦକ୍ଷିଣ ସାଣ୍ଡୱିଚ୍ ଦ୍ବୀପପୁଞ୍ଜ</territory>
+			<territory type="GS">ଦକ୍ଷିଣ ଜର୍ଜିଆ ଏବଂ ଦକ୍ଷିଣ ସାଣ୍ଡୱିଚ୍
+				ଦ୍ବୀପପୁଞ୍ଜ</territory>
 			<territory type="GT">ଗୁଏତମାଲା</territory>
 			<territory type="GU">ଗୁଆମ୍</territory>
 			<territory type="GW">ଗୁଇନିଆ-ବିସାଉ</territory>
@@ -934,7 +935,8 @@
 		</territories>
 	</localeDisplayNames>
 	<characters>
-		<exemplarCharacters>[୦-୯ ଅ-ଋ ଏ ଐ ଓ-ନ ପ-ର ଲ ଳ ଶ-ହ {ଡ\u0B3C}ଡ଼ {ଢ\u0B3C}ଢ଼ ୟ ୱ ଵ ଂ ଃ ଁ ୍ ଼ ା-ୃ େ ୈ ୋ ୌ]</exemplarCharacters>
+		<exemplarCharacters>[୦-୯ ଅ-ଋ ଏ ଐ ଓ-ନ ପ-ର ଲ ଳ ଶ-ହ {ଡ\u0B3C}ଡ଼ {ଢ\u0B3C}ଢ଼
+			ୟ ୱ ଵ ଂ ଃ ଁ ୍ ଼ ା-ୃ େ ୈ ୋ ୌ]</exemplarCharacters>
 		<exemplarCharacters type="auxiliary">[\u200C \u200D]</exemplarCharacters>
 	</characters>
 	<dates>

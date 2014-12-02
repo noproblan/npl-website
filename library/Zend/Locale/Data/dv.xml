@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <ldml>
 	<identity>
-		<version number="$Revision: 1.54 $"/>
-		<generation date="$Date: 2009/06/15 04:15:33 $"/>
-		<language type="dv"/>
+		<version number="$Revision: 1.54 $" />
+		<generation date="$Date: 2009/06/15 04:15:33 $" />
+		<language type="dv" />
 	</identity>
 	<localeDisplayNames>
 		<languages>
@@ -14,11 +14,12 @@
 		</territories>
 	</localeDisplayNames>
 	<layout>
-		<orientation characters="right-to-left"/>
+		<orientation characters="right-to-left" />
 	</layout>
 	<characters>
 		<exemplarCharacters>[ހ-ޗ \u07A6-\u07B0]</exemplarCharacters>
-		<exemplarCharacters type="auxiliary">[\u200C \u200D ޙ ޚ ޜ ޢ ޣ ޥ ޛ ޘ ޠ ޡ ޤ ޝ-ޟ ޱ]</exemplarCharacters>
+		<exemplarCharacters type="auxiliary">[\u200C \u200D ޙ ޚ ޜ ޢ ޣ ޥ
+			ޛ ޘ ޠ ޡ ޤ ޝ-ޟ ޱ]</exemplarCharacters>
 	</characters>
 	<dates>
 		<calendars>

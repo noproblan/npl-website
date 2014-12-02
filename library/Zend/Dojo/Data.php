@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -22,35 +23,41 @@
 /**
  * dojo.data support for Zend Framework
  *
- * @uses       ArrayAccess
- * @uses       Iterator
- * @uses       Countable
- * @package    Zend_Dojo
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @uses ArrayAccess
+ * @uses Iterator
+ * @uses Countable
+ * @package Zend_Dojo
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
-class Zend_Dojo_Data implements ArrayAccess,Iterator,Countable
+class Zend_Dojo_Data implements ArrayAccess, Iterator, Countable
 {
+
     /**
      * Identifier field of item
+     * 
      * @var string|int
      */
     protected $_identifier;
 
     /**
      * Collected items
+     * 
      * @var array
      */
     protected $_items = array();
 
     /**
      * Label field of item
+     * 
      * @var string
      */
     protected $_label;
 
     /**
      * Data container metadata
+     * 
      * @var array
      */
     protected $_metadata = array();
@@ -58,12 +65,12 @@ class Zend_Dojo_Data implements ArrayAccess,Iterator,Countable
     /**
      * Constructor
      *
-     * @param  string|null $identifier
-     * @param  array|Traversable|null $items
-     * @param  string|null $label
+     * @param string|null $identifier            
+     * @param array|Traversable|null $items            
+     * @param string|null $label            
      * @return void
      */
-    public function __construct($identifier = null, $items = null, $label = null)
+    public function __construct ($identifier = null, $items = null, $label = null)
     {
         if (null !== $identifier) {
             $this->setIdentifier($identifier);
@@ -79,10 +86,10 @@ class Zend_Dojo_Data implements ArrayAccess,Iterator,Countable
     /**
      * Set the items to collect
      *
-     * @param array|Traversable $items
+     * @param array|Traversable $items            
      * @return Zend_Dojo_Data
      */
-    public function setItems($items)
+    public function setItems ($items)
     {
         $this->clearItems();
         return $this->addItems($items);
@@ -91,11 +98,11 @@ class Zend_Dojo_Data implements ArrayAccess,Iterator,Countable
     /**
      * Set an individual item, optionally by identifier (overwrites)
      *
-     * @param  array|object $item
-     * @param  string|null $identifier
+     * @param array|object $item            
+     * @param string|null $identifier            
      * @return Zend_Dojo_Data
      */
-    public function setItem($item, $id = null)
+    public function setItem ($item, $id = null)
     {
         $item = $this->_normalizeItem($item, $id);
         $this->_items[$item['id']] = $item['data'];
@@ -105,41 +112,45 @@ class Zend_Dojo_Data implements ArrayAccess,Iterator,Countable
     /**
      * Add an individual item, optionally by identifier
      *
-     * @param  array|object $item
-     * @param  string|null $id
+     * @param array|object $item            
+     * @param string|null $id            
      * @return Zend_Dojo_Data
      */
-    public function addItem($item, $id = null)
+    public function addItem ($item, $id = null)
     {
         $item = $this->_normalizeItem($item, $id);
-
+        
         if ($this->hasItem($item['id'])) {
             require_once 'Zend/Dojo/Exception.php';
-            throw new Zend_Dojo_Exception('Overwriting items using addItem() is not allowed');
+            throw new Zend_Dojo_Exception(
+                    'Overwriting items using addItem() is not allowed');
         }
-
+        
         $this->_items[$item['id']] = $item['data'];
-
+        
         return $this;
     }
 
     /**
      * Add multiple items at once
      *
-     * @param  array|Traversable $items
+     * @param array|Traversable $items            
      * @return Zend_Dojo_Data
      */
-    public function addItems($items)
+    public function addItems ($items)
     {
-        if (!is_array($items) && (!is_object($items) || !($items instanceof Traversable))) {
+        if (! is_array($items) &&
+                 (! is_object($items) || ! ($items instanceof Traversable))) {
             require_once 'Zend/Dojo/Exception.php';
-            throw new Zend_Dojo_Exception('Only arrays and Traversable objects may be added to ' . __CLASS__);
+            throw new Zend_Dojo_Exception(
+                    'Only arrays and Traversable objects may be added to ' .
+                             __CLASS__);
         }
-
+        
         foreach ($items as $item) {
             $this->addItem($item);
         }
-
+        
         return $this;
     }
 
@@ -150,7 +161,7 @@ class Zend_Dojo_Data implements ArrayAccess,Iterator,Countable
      *
      * @return array
      */
-    public function getItems()
+    public function getItems ()
     {
         return $this->_items;
     }
@@ -158,10 +169,10 @@ class Zend_Dojo_Data implements ArrayAccess,Iterator,Countable
     /**
      * Does an item with the given identifier exist?
      *
-     * @param  string|int $id
+     * @param string|int $id            
      * @return bool
      */
-    public function hasItem($id)
+    public function hasItem ($id)
     {
         return array_key_exists($id, $this->_items);
     }
@@ -171,30 +182,30 @@ class Zend_Dojo_Data implements ArrayAccess,Iterator,Countable
      *
      * Item retrieved will be flattened to an array.
      *
-     * @param  string $id
+     * @param string $id            
      * @return array
      */
-    public function getItem($id)
+    public function getItem ($id)
     {
-        if (!$this->hasItem($id)) {
+        if (! $this->hasItem($id)) {
             return null;
         }
-
+        
         return $this->_items[$id];
     }
 
     /**
      * Remove item by identifier
      *
-     * @param  string $id
+     * @param string $id            
      * @return Zend_Dojo_Data
      */
-    public function removeItem($id)
+    public function removeItem ($id)
     {
         if ($this->hasItem($id)) {
             unset($this->_items[$id]);
         }
-
+        
         return $this;
     }
 
@@ -203,20 +214,19 @@ class Zend_Dojo_Data implements ArrayAccess,Iterator,Countable
      *
      * @return Zend_Dojo_Data
      */
-    public function clearItems()
+    public function clearItems ()
     {
         $this->_items = array();
         return $this;
     }
 
-
     /**
      * Set identifier for item lookups
      *
-     * @param  string|int|null $identifier
+     * @param string|int|null $identifier            
      * @return Zend_Dojo_Data
      */
-    public function setIdentifier($identifier)
+    public function setIdentifier ($identifier)
     {
         if (null === $identifier) {
             $this->_identifier = null;
@@ -226,9 +236,10 @@ class Zend_Dojo_Data implements ArrayAccess,Iterator,Countable
             $this->_identifier = (int) $identifier;
         } else {
             require_once 'Zend/Dojo/Exception.php';
-            throw new Zend_Dojo_Exception('Invalid identifier; please use a string or integer');
+            throw new Zend_Dojo_Exception(
+                    'Invalid identifier; please use a string or integer');
         }
-
+        
         return $this;
     }
 
@@ -237,19 +248,18 @@ class Zend_Dojo_Data implements ArrayAccess,Iterator,Countable
      *
      * @return string|int|null
      */
-    public function getIdentifier()
+    public function getIdentifier ()
     {
         return $this->_identifier;
     }
 
-
     /**
      * Set label to use for displaying item associations
      *
-     * @param  string|null $label
+     * @param string|null $label            
      * @return Zend_Dojo_Data
      */
-    public function setLabel($label)
+    public function setLabel ($label)
     {
         if (null === $label) {
             $this->_label = null;
@@ -264,7 +274,7 @@ class Zend_Dojo_Data implements ArrayAccess,Iterator,Countable
      *
      * @return string|null
      */
-    public function getLabel()
+    public function getLabel ()
     {
         return $this->_label;
     }
@@ -272,11 +282,11 @@ class Zend_Dojo_Data implements ArrayAccess,Iterator,Countable
     /**
      * Set metadata by key or en masse
      *
-     * @param  string|array $spec
-     * @param  mixed $value
+     * @param string|array $spec            
+     * @param mixed $value            
      * @return Zend_Dojo_Data
      */
-    public function setMetadata($spec, $value = null)
+    public function setMetadata ($spec, $value = null)
     {
         if (is_string($spec) && (null !== $value)) {
             $this->_metadata[$spec] = $value;
@@ -291,29 +301,30 @@ class Zend_Dojo_Data implements ArrayAccess,Iterator,Countable
     /**
      * Get metadata item or all metadata
      *
-     * @param  null|string $key Metadata key when pulling single metadata item
+     * @param null|string $key
+     *            Metadata key when pulling single metadata item
      * @return mixed
      */
-    public function getMetadata($key = null)
+    public function getMetadata ($key = null)
     {
         if (null === $key) {
             return $this->_metadata;
         }
-
+        
         if (array_key_exists($key, $this->_metadata)) {
             return $this->_metadata[$key];
         }
-
+        
         return null;
     }
 
     /**
      * Clear individual or all metadata item(s)
      *
-     * @param  null|string $key
+     * @param null|string $key            
      * @return Zend_Dojo_Data
      */
-    public function clearMetadata($key = null)
+    public function clearMetadata ($key = null)
     {
         if (null === $key) {
             $this->_metadata = array();
@@ -326,10 +337,10 @@ class Zend_Dojo_Data implements ArrayAccess,Iterator,Countable
     /**
      * Load object from array
      *
-     * @param  array $data
+     * @param array $data            
      * @return Zend_Dojo_Data
      */
-    public function fromArray(array $data)
+    public function fromArray (array $data)
     {
         if (array_key_exists('identifier', $data)) {
             $this->setIdentifier($data['identifier']);
@@ -348,12 +359,12 @@ class Zend_Dojo_Data implements ArrayAccess,Iterator,Countable
     /**
      * Load object from JSON
      *
-     * @param  string $json
+     * @param string $json            
      * @return Zend_Dojo_Data
      */
-    public function fromJson($json)
+    public function fromJson ($json)
     {
-        if (!is_string($json)) {
+        if (! is_string($json)) {
             require_once 'Zend/Dojo/Exception.php';
             throw new Zend_Dojo_Exception('fromJson() expects JSON input');
         }
@@ -367,29 +378,30 @@ class Zend_Dojo_Data implements ArrayAccess,Iterator,Countable
      *
      * @return array
      */
-    public function toArray()
+    public function toArray ()
     {
         if (null === ($identifier = $this->getIdentifier())) {
             require_once 'Zend/Dojo/Exception.php';
-            throw new Zend_Dojo_Exception('Serialization requires that an identifier be present in the object; first call setIdentifier()');
+            throw new Zend_Dojo_Exception(
+                    'Serialization requires that an identifier be present in the object; first call setIdentifier()');
         }
-
+        
         $array = array(
-            'identifier' => $identifier,
-            'items'      => array_values($this->getItems()),
+                'identifier' => $identifier,
+                'items' => array_values($this->getItems())
         );
-
+        
         $metadata = $this->getMetadata();
-        if (!empty($metadata)) {
+        if (! empty($metadata)) {
             foreach ($metadata as $key => $value) {
                 $array[$key] = $value;
             }
         }
-
+        
         if (null !== ($label = $this->getLabel())) {
             $array['label'] = $label;
         }
-
+        
         return $array;
     }
 
@@ -398,7 +410,7 @@ class Zend_Dojo_Data implements ArrayAccess,Iterator,Countable
      *
      * @return string
      */
-    public function toJson()
+    public function toJson ()
     {
         require_once 'Zend/Json.php';
         return Zend_Json::encode($this->toArray());
@@ -409,7 +421,7 @@ class Zend_Dojo_Data implements ArrayAccess,Iterator,Countable
      *
      * @return string
      */
-    public function __toString()
+    public function __toString ()
     {
         return $this->toJson();
     }
@@ -417,10 +429,10 @@ class Zend_Dojo_Data implements ArrayAccess,Iterator,Countable
     /**
      * ArrayAccess: does offset exist?
      *
-     * @param  string|int $offset
+     * @param string|int $offset            
      * @return bool
      */
-    public function offsetExists($offset)
+    public function offsetExists ($offset)
     {
         return (null !== $this->getItem($offset));
     }
@@ -428,10 +440,10 @@ class Zend_Dojo_Data implements ArrayAccess,Iterator,Countable
     /**
      * ArrayAccess: retrieve by offset
      *
-     * @param  string|int $offset
+     * @param string|int $offset            
      * @return array
      */
-    public function offsetGet($offset)
+    public function offsetGet ($offset)
     {
         return $this->getItem($offset);
     }
@@ -439,11 +451,11 @@ class Zend_Dojo_Data implements ArrayAccess,Iterator,Countable
     /**
      * ArrayAccess: set value by offset
      *
-     * @param  string $offset
-     * @param  array|object|null $value
+     * @param string $offset            
+     * @param array|object|null $value            
      * @return void
      */
-    public function offsetSet($offset, $value)
+    public function offsetSet ($offset, $value)
     {
         $this->setItem($value, $offset);
     }
@@ -451,10 +463,10 @@ class Zend_Dojo_Data implements ArrayAccess,Iterator,Countable
     /**
      * ArrayAccess: unset value by offset
      *
-     * @param  string $offset
+     * @param string $offset            
      * @return void
      */
-    public function offsetUnset($offset)
+    public function offsetUnset ($offset)
     {
         $this->removeItem($offset);
     }
@@ -464,7 +476,7 @@ class Zend_Dojo_Data implements ArrayAccess,Iterator,Countable
      *
      * @return array
      */
-    public function current()
+    public function current ()
     {
         return current($this->_items);
     }
@@ -474,7 +486,7 @@ class Zend_Dojo_Data implements ArrayAccess,Iterator,Countable
      *
      * @return string|int
      */
-    public function key()
+    public function key ()
     {
         return key($this->_items);
     }
@@ -484,7 +496,7 @@ class Zend_Dojo_Data implements ArrayAccess,Iterator,Countable
      *
      * @return void
      */
-    public function next()
+    public function next ()
     {
         return next($this->_items);
     }
@@ -494,7 +506,7 @@ class Zend_Dojo_Data implements ArrayAccess,Iterator,Countable
      *
      * @return void
      */
-    public function rewind()
+    public function rewind ()
     {
         return reset($this->_items);
     }
@@ -504,7 +516,7 @@ class Zend_Dojo_Data implements ArrayAccess,Iterator,Countable
      *
      * @return bool
      */
-    public function valid()
+    public function valid ()
     {
         return (bool) $this->current();
     }
@@ -514,7 +526,7 @@ class Zend_Dojo_Data implements ArrayAccess,Iterator,Countable
      *
      * @return int
      */
-    public function count()
+    public function count ()
     {
         return count($this->_items);
     }
@@ -522,22 +534,24 @@ class Zend_Dojo_Data implements ArrayAccess,Iterator,Countable
     /**
      * Normalize an item to attach to the collection
      *
-     * @param  array|object $item
-     * @param  string|int|null $id
+     * @param array|object $item            
+     * @param string|int|null $id            
      * @return array
      */
-    protected function _normalizeItem($item, $id)
+    protected function _normalizeItem ($item, $id)
     {
         if (null === ($identifier = $this->getIdentifier())) {
             require_once 'Zend/Dojo/Exception.php';
-            throw new Zend_Dojo_Exception('You must set an identifier prior to adding items');
+            throw new Zend_Dojo_Exception(
+                    'You must set an identifier prior to adding items');
         }
-
-        if (!is_object($item) && !is_array($item)) {
+        
+        if (! is_object($item) && ! is_array($item)) {
             require_once 'Zend/Dojo/Exception.php';
-            throw new Zend_Dojo_Exception('Only arrays and objects may be attached');
+            throw new Zend_Dojo_Exception(
+                    'Only arrays and objects may be attached');
         }
-
+        
         if (is_object($item)) {
             if (method_exists($item, 'toArray')) {
                 $item = $item->toArray();
@@ -545,19 +559,20 @@ class Zend_Dojo_Data implements ArrayAccess,Iterator,Countable
                 $item = get_object_vars($item);
             }
         }
-
-        if ((null === $id) && !array_key_exists($identifier, $item)) {
+        
+        if ((null === $id) && ! array_key_exists($identifier, $item)) {
             require_once 'Zend/Dojo/Exception.php';
-            throw new Zend_Dojo_Exception('Item must contain a column matching the currently set identifier');
+            throw new Zend_Dojo_Exception(
+                    'Item must contain a column matching the currently set identifier');
         } elseif (null === $id) {
             $id = $item[$identifier];
         } else {
             $item[$identifier] = $id;
         }
-
+        
         return array(
-            'id'   => $id,
-            'data' => $item,
+                'id' => $id,
+                'data' => $item
         );
     }
 }

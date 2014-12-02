@@ -21,19 +21,23 @@
  */
 
 /**
+ *
  * @see Zend_View_Helper_Interface
  */
 require_once 'Zend/View/Helper/Interface.php';
 
 /**
- * @category   Zend
- * @package    Zend_View
+ *
+ * @category Zend
+ * @package Zend_View
  * @subpackage Helper
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 abstract class Zend_View_Helper_Abstract implements Zend_View_Helper_Interface
 {
+
     /**
      * View object
      *
@@ -44,10 +48,10 @@ abstract class Zend_View_Helper_Abstract implements Zend_View_Helper_Interface
     /**
      * Set the View object
      *
-     * @param  Zend_View_Interface $view
+     * @param Zend_View_Interface $view            
      * @return Zend_View_Helper_Abstract
      */
-    public function setView(Zend_View_Interface $view)
+    public function setView (Zend_View_Interface $view)
     {
         $this->view = $view;
         return $this;
@@ -58,7 +62,6 @@ abstract class Zend_View_Helper_Abstract implements Zend_View_Helper_Interface
      *
      * @return void
      */
-    public function direct()
-    {
-    }
+    public function direct ()
+    {}
 }

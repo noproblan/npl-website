@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <ldml>
 	<identity>
-		<version number="$Revision: 1.125 $"/>
-		<generation date="$Date: 2009/06/15 17:12:26 $"/>
-		<language type="sr"/>
+		<version number="$Revision: 1.125 $" />
+		<generation date="$Date: 2009/06/15 17:12:26 $" />
+		<language type="sr" />
 	</identity>
 	<localeDisplayNames>
 		<localeDisplayPattern>
@@ -998,7 +998,9 @@
 	</localeDisplayNames>
 	<characters>
 		<exemplarCharacters>[а-д ђ е-и ј к л љ м н њ о-т ћ у-ч џ ш]</exemplarCharacters>
-		<exemplarCharacters type="auxiliary">[a á à ă â å ä ā æ b c ç d e é è ĕ ê ë ē f-i í ì ĭ î ï ī j-n ñ o ó ò ŏ ô ö ø ō œ p-s ß t u ú ù ŭ û ü ū v-y ÿ z]</exemplarCharacters>
+		<exemplarCharacters type="auxiliary">[a á à ă â å ä ā æ b c ç d
+			e é è ĕ ê ë ē f-i í ì ĭ î ï ī j-n ñ o ó ò ŏ ô ö ø ō œ p-s ß t u ú ù ŭ
+			û ü ū v-y ÿ z]</exemplarCharacters>
 		<exemplarCharacters type="currencySymbol">[a-c č d-l ł m-o º p-z]</exemplarCharacters>
 	</characters>
 	<delimiters>
@@ -1347,8 +1349,10 @@
 						</intervalFormatItem>
 						<intervalFormatItem id="yMMMEd">
 							<greatestDifference id="d">E, dd. - E, dd. MMM y.</greatestDifference>
-							<greatestDifference id="M">E, dd. MMM - E, dd. MMM y.</greatestDifference>
-							<greatestDifference id="y">E, dd. MMM y. - E, dd. MMM y.</greatestDifference>
+							<greatestDifference id="M">E, dd. MMM - E, dd. MMM
+								y.</greatestDifference>
+							<greatestDifference id="y">E, dd. MMM y. - E, dd.
+								MMM y.</greatestDifference>
 						</intervalFormatItem>
 						<intervalFormatItem id="yMMMM">
 							<greatestDifference id="M">yyyy-MM – MM</greatestDifference>
@@ -4134,10 +4138,14 @@
 			</currency>
 			<currency type="BAM">
 				<displayName>Конвертибилна марка</displayName>
-				<displayName count="few">босанско-херцеговачке конвертибилне марк</displayName>
-				<displayName count="many">босанско-херцеговачких конвертабилних марака</displayName>
-				<displayName count="one">босанско-херцеговачка конвертибилна марка</displayName>
-				<displayName count="other">босанско-херцеговачких конвертибилних марака</displayName>
+				<displayName count="few">босанско-херцеговачке конвертибилне
+					марк</displayName>
+				<displayName count="many">босанско-херцеговачких конвертабилних
+					марака</displayName>
+				<displayName count="one">босанско-херцеговачка конвертибилна
+					марка</displayName>
+				<displayName count="other">босанско-херцеговачких конвертибилних
+					марака</displayName>
 			</currency>
 			<currency type="BBD">
 				<displayName>Барбадошки долар</displayName>
@@ -5621,10 +5629,14 @@
 			</currency>
 			<currency type="UYI">
 				<displayName>Уругвајски пезо ен унидадес индексадас</displayName>
-				<displayName count="few">уругвајска пезоса ен унидадес индексадеса</displayName>
-				<displayName count="many">уругвајских пезоса ен унидадес индексадеса</displayName>
-				<displayName count="one">уругвајски пезо ен унида΀´ес индексадес</displayName>
-				<displayName count="other">угвајских пезоса ен унидадес индексадеса</displayName>
+				<displayName count="few">уругвајска пезоса ен унидадес
+					индексадеса</displayName>
+				<displayName count="many">уругвајских пезоса ен унидадес
+					индексадеса</displayName>
+				<displayName count="one">уругвајски пезо ен унида΀´ес
+					индексадес</displayName>
+				<displayName count="other">угвајских пезоса ен унидадес
+					индексадеса</displayName>
 			</currency>
 			<currency type="UYP">
 				<displayName>Уругвајски пезо (1975-1993)</displayName>

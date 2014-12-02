@@ -21,20 +21,24 @@
  */
 
 /**
+ *
  * @see Zend_Service_Ebay_Finding_Abstract
  */
 require_once 'Zend/Service/Ebay/Finding/Abstract.php';
 
 /**
- * @category   Zend
- * @package    Zend_Service
+ *
+ * @category Zend
+ * @package Zend_Service
  * @subpackage Ebay
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @uses       Zend_Service_Ebay_Finding_Abstract
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
+ * @uses Zend_Service_Ebay_Finding_Abstract
  */
 class Zend_Service_Ebay_Finding_ListingInfo extends Zend_Service_Ebay_Finding_Abstract
 {
+
     /**
      * Shows whether or not the seller will accept a best offer for the
      * associated item.
@@ -122,48 +126,48 @@ class Zend_Service_Ebay_Finding_ListingInfo extends Zend_Service_Ebay_Finding_Ab
      *
      * Applicable values:
      *
-     *     AdFormat
-     *     Advertisement to solicit inquiries on listings such as real estate.
-     *     Permits no bidding on that item, service, or property. To express
-     *     interest, a buyer fills out a contact form that eBay forwards to the
-     *     seller as a lead. This format does not enable buyers and sellers to
-     *     transact online through eBay and eBay Feedback is not available for
-     *     ad format listings.
+     * AdFormat
+     * Advertisement to solicit inquiries on listings such as real estate.
+     * Permits no bidding on that item, service, or property. To express
+     * interest, a buyer fills out a contact form that eBay forwards to the
+     * seller as a lead. This format does not enable buyers and sellers to
+     * transact online through eBay and eBay Feedback is not available for
+     * ad format listings.
      *
-     *     Auction
-     *     Competitive-bid online auction format. Buyers engage in competitive
-     *     bidding, although Buy It Now may be offered as long as no valid bids
-     *     have been placed. Online auctions are listed on eBay.com; they can
-     *     also be listed in a seller's eBay Store if the seller is a Store
-     *     owner.
+     * Auction
+     * Competitive-bid online auction format. Buyers engage in competitive
+     * bidding, although Buy It Now may be offered as long as no valid bids
+     * have been placed. Online auctions are listed on eBay.com; they can
+     * also be listed in a seller's eBay Store if the seller is a Store
+     * owner.
      *
-     *     AuctionWithBIN
-     *     Same as Auction format, but Buy It Now is enabled. AuctionWithBIN
-     *     changes to Auction if a valid bid has been placed on the item. Valid
-     *     bids include bids that are equal to or above any specified reserve
-     *     price.
+     * AuctionWithBIN
+     * Same as Auction format, but Buy It Now is enabled. AuctionWithBIN
+     * changes to Auction if a valid bid has been placed on the item. Valid
+     * bids include bids that are equal to or above any specified reserve
+     * price.
      *
-     *     Classified
-     *     Classified Ads connect buyers and sellers, who then complete the sale
-     *     outside of eBay. This format does not enable buyers and sellers to
-     *     transact online through eBay and eBay Feedback is not available for
-     *     these listing types.
+     * Classified
+     * Classified Ads connect buyers and sellers, who then complete the sale
+     * outside of eBay. This format does not enable buyers and sellers to
+     * transact online through eBay and eBay Feedback is not available for
+     * these listing types.
      *
-     *     FixedPrice
-     *     A fixed-price listing. Auction-style bidding is not allowed. On some
-     *     sites, this auction format is also known as "Buy It Now Only" (not to
-     *     be confused with the Buy It Now option available with
-     *     competitive-bidding auctions). Fixed-price listings appear on
-     *     eBay.com; they can also be listed in a seller's eBay Store if the
-     *     seller is a Store owner.
+     * FixedPrice
+     * A fixed-price listing. Auction-style bidding is not allowed. On some
+     * sites, this auction format is also known as "Buy It Now Only" (not to
+     * be confused with the Buy It Now option available with
+     * competitive-bidding auctions). Fixed-price listings appear on
+     * eBay.com; they can also be listed in a seller's eBay Store if the
+     * seller is a Store owner.
      *
-     *     StoreInventory
-     *     A fixed-price format for eBay Store sellers. Store Inventory listings
-     *     appear after other listings in regular browse and search item
-     *     listings on eBay. Store items have a lower Insertion Fee and longer
-     *     listing durations. This selling type can only be specified by sellers
-     *     who have an eBay Store. Store Inventory listings are listed on
-     *     eBay.com as well as in the seller's eBay Store.
+     * StoreInventory
+     * A fixed-price format for eBay Store sellers. Store Inventory listings
+     * appear after other listings in regular browse and search item
+     * listings on eBay. Store items have a lower Insertion Fee and longer
+     * listing durations. This selling type can only be specified by sellers
+     * who have an eBay Store. Store Inventory listings are listed on
+     * eBay.com as well as in the seller's eBay Store.
      *
      * @var string
      */
@@ -184,28 +188,35 @@ class Zend_Service_Ebay_Finding_ListingInfo extends Zend_Service_Ebay_Finding_Ab
     public $startTime;
 
     /**
+     *
      * @return void
      */
-    protected function _init()
+    protected function _init ()
     {
         parent::_init();
         $ns = Zend_Service_Ebay_Finding::XMLNS_FINDING;
-
-        $this->bestOfferEnabled       = $this->_query(".//$ns:bestOfferEnabled[1]", 'boolean');
-        $this->buyItNowAvailable      = $this->_query(".//$ns:buyItNowAvailable[1]", 'boolean');
-        $this->buyItNowPrice          = $this->_query(".//$ns:buyItNowPrice[1]", 'float');
-        $this->convertedBuyItNowPrice = $this->_query(".//$ns:convertedBuyItNowPrice[1]", 'float');
-        $this->endTime                = $this->_query(".//$ns:endTime[1]", 'string');
-        $this->gift                   = $this->_query(".//$ns:gift[1]", 'boolean');
-        $this->listingType            = $this->_query(".//$ns:listingType[1]", 'string');
-        $this->startTime              = $this->_query(".//$ns:startTime[1]", 'string');
-
+        
+        $this->bestOfferEnabled = $this->_query(".//$ns:bestOfferEnabled[1]", 
+                'boolean');
+        $this->buyItNowAvailable = $this->_query(".//$ns:buyItNowAvailable[1]", 
+                'boolean');
+        $this->buyItNowPrice = $this->_query(".//$ns:buyItNowPrice[1]", 'float');
+        $this->convertedBuyItNowPrice = $this->_query(
+                ".//$ns:convertedBuyItNowPrice[1]", 'float');
+        $this->endTime = $this->_query(".//$ns:endTime[1]", 'string');
+        $this->gift = $this->_query(".//$ns:gift[1]", 'boolean');
+        $this->listingType = $this->_query(".//$ns:listingType[1]", 'string');
+        $this->startTime = $this->_query(".//$ns:startTime[1]", 'string');
+        
         $this->_attributes['buyItNowPrice'] = array(
-            'currencyId' => $this->_query(".//$ns:buyItNowPrice[1]/@currencyId[1]", 'string')
+                'currencyId' => $this->_query(
+                        ".//$ns:buyItNowPrice[1]/@currencyId[1]", 'string')
         );
-
+        
         $this->_attributes['convertedBuyItNowPrice'] = array(
-            'currencyId' => $this->_query(".//$ns:convertedBuyItNowPrice[1]/@currencyId[1]", 'string')
+                'currencyId' => $this->_query(
+                        ".//$ns:convertedBuyItNowPrice[1]/@currencyId[1]", 
+                        'string')
         );
     }
 }

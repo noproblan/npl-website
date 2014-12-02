@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -21,15 +22,18 @@
  */
 
 /**
- * @category   Zend
- * @package    Zend_Service
+ *
+ * @category Zend
+ * @package Zend_Service
  * @subpackage DeveloperGarden
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @author     Marco Kaiser
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @author Marco Kaiser
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Service_DeveloperGarden_Request_BaseUserService_GetAccountBalance
 {
+
     /**
      * array of accounts
      *
@@ -40,10 +44,10 @@ class Zend_Service_DeveloperGarden_Request_BaseUserService_GetAccountBalance
     /**
      * constructor give them the account ids or an empty array
      *
-     * @param array $Account
+     * @param array $Account            
      * @return Zend_Service_DeveloperGarden_Request_GetAccountBalance
      */
-    public function __construct(array $Account = array())
+    public function __construct (array $Account = array())
     {
         $this->setAccount($Account);
     }
@@ -51,10 +55,10 @@ class Zend_Service_DeveloperGarden_Request_BaseUserService_GetAccountBalance
     /**
      * sets a new Account array
      *
-     * @param array $Account
+     * @param array $Account            
      * @return Zend_Service_DeveloperGarden_Request_BaseUserService
      */
-    public function setAccount(array $Account = array())
+    public function setAccount (array $Account = array())
     {
         $this->Account = $Account;
         return $this;
@@ -65,7 +69,7 @@ class Zend_Service_DeveloperGarden_Request_BaseUserService_GetAccountBalance
      *
      * @return string
      */
-    public function getAccount()
+    public function getAccount ()
     {
         return $this->Account;
     }

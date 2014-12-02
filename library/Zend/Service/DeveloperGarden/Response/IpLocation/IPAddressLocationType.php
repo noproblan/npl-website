@@ -21,121 +21,135 @@
  */
 
 /**
+ *
  * @see Zend_Service_DeveloperGarden_Response_BaseType
  */
 require_once 'Zend/Service/DeveloperGarden/Response/BaseType.php';
 
 /**
- * @category   Zend
- * @package    Zend_Service
+ *
+ * @category Zend
+ * @package Zend_Service
  * @subpackage DeveloperGarden
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @author     Marco Kaiser
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @author Marco Kaiser
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
-class Zend_Service_DeveloperGarden_Response_IpLocation_IPAddressLocationType
-    extends Zend_Service_DeveloperGarden_Response_BaseType
+class Zend_Service_DeveloperGarden_Response_IpLocation_IPAddressLocationType extends Zend_Service_DeveloperGarden_Response_BaseType
 {
+
     /**
+     *
      * @var Zend_Service_DeveloperGarden_Response_IpLocation_RegionType
      */
     public $isInRegion = null;
 
     /**
+     *
      * @var Zend_Service_DeveloperGarden_Response_IpLocation_GeoCoordinatesType
      */
     public $isInGeo = null;
 
     /**
+     *
      * @var Zend_Service_DeveloperGarden_Response_IpLocation_CityType
      */
     public $isInCity = null;
 
     /**
+     *
      * @var integer
      */
     public $ipType = null;
 
     /**
+     *
      * @var string
      */
     public $ipAddress = null;
 
     /**
+     *
      * @var integer
      */
     public $radius = 0;
 
     /**
+     *
      * @return Zend_Service_DeveloperGarden_Response_IpLocation_RegionType
      */
-    public function getRegion()
+    public function getRegion ()
     {
         return $this->isInRegion;
     }
 
     /**
+     *
      * @return Zend_Service_DeveloperGarden_Response_IpLocation_GeoCoordinatesType
      */
-    public function getGeoCoordinates()
+    public function getGeoCoordinates ()
     {
         return $this->isInGeo;
     }
 
     /**
+     *
      * @return Zend_Service_DeveloperGarden_Response_IpLocation_CityType
      */
-    public function getCity()
+    public function getCity ()
     {
         return $this->isInCity;
     }
 
     /**
+     *
      * @return integer
      */
-    public function getIpType()
+    public function getIpType ()
     {
         return $this->ipType;
     }
 
     /**
+     *
      * @return string
      */
-    public function getIpAddress()
+    public function getIpAddress ()
     {
         return $this->ipAddress;
     }
 
     /**
+     *
      * @return integer
      */
-    public function getRadius()
+    public function getRadius ()
     {
         return $this->radius;
     }
 
     /**
      * implement parsing
-     *
      */
-    public function parse()
+    public function parse ()
     {
         parent::parse();
         if ($this->isInCity === null) {
             require_once 'Zend/Service/DeveloperGarden/Response/IpLocation/CityType.php';
             $this->isInCity = new Zend_Service_DeveloperGarden_Response_IpLocation_CityType();
         }
-
+        
         if ($this->isInRegion === null) {
             require_once 'Zend/Service/DeveloperGarden/Response/IpLocation/RegionType.php';
             $this->isInRegion = new Zend_Service_DeveloperGarden_Response_IpLocation_RegionType();
         }
-
+        
         if ($this->isInGeo === null) {
             require_once 'Zend/Service/DeveloperGarden/Response/IpLocation/GeoCoordinatesType.php';
             $this->isInGeo = new Zend_Service_DeveloperGarden_Response_IpLocation_GeoCoordinatesType();
         }
-
+        
         return $this;
     }
 }

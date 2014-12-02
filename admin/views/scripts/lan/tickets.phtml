@@ -1,93 +1,88 @@
 <div id="view-content">
-	<div id="title">
-		<h1>LAN-Verwaltung → Vorauszahlungen verwalten</h1>
-	</div>
-	<?php echo $this->messages(); ?>
-	<div id="information">
-		<?= $this->partial('lan/submenu.phtml') ?>
-		<?php foreach($this->lanTickets as $lans): ?>
-		
-		<h2><?= $lans['name'] ?></h2>
-		
-		<div class="ticketview">
-			<form action="" method="POST">
-			<div>
-				<?= count($lans['tickets']) ?> Anmeldungen
-			</div>
-			<table>
-			<tr>
-				<th>Id</th>
-				<th>UserID</th>
-				<th>Username</th>
-				<th>Email</th>
-				<th>Extras</th>
-				<th>Betrag</th>
-				<th>Bezahlt</th>
-			</tr>
-			<?php foreach($lans['tickets'] as $ticket): ?>
-			<tr>
-				<td><?= $ticket['id'] ?></td>
-				<td><?= $ticket['userid'] ?></td>
-				<td><?= $ticket['username'] ?></td>
-				<td><?= $ticket['email'] ?></td>
-				<td><?= $ticket['extras'] ?></td>
-				<td><?= $ticket['bill'] ?></td>
-				<td>
-					<input type="checkbox" 
-					  id="ticketstatus-button-<?= $ticket['id'] ?>" 
-					  class="ticketstatus" 
-					  name="prepaid[]" 
-					  value="<?= $ticket['id'] ?>" 
-					<?php if($ticket['status'] != 'notpaid' ): ?>
-					  checked="checked"
-					<?php endif; ?>
-					/>
-				</td>
-			</tr>
-			<?php endforeach; ?>
-			</table>
-			</form>
-		</div>	
-			
-		<?php endforeach; ?>
-	</div>
-	
-	<script type="text/javascript">
-	  $(document).ready(function() {
-		  $(".ticketstatus").click(function(event) {
-			  event.preventDefault();
-			  var newstatus = 'notpaid';
-			  if (this.checked) {
-				newstatus = 'prepaid';
-			  }
-			  var checkbox = this;
-			  $.ajax({
-				  type: 'GET',
-				  url: '<?= $this->baseUrl('lan/ajaxticket/') ?>',
-				  data: "id="+this.value+"&newstatus="+newstatus,
-				  success: function (data) {
-					  if (newstatus == 'notpaid') {
-					 	 checkbox.checked = false;
-					  } else {
-						 checkbox.checked = true;
-					  }
-					  var el = document.createElement('span');
-					  el.style.color = "green";
-					  el.style.fontWeight = "bold";
-					  $(el).html("ok")
-					      .insertAfter($(checkbox))
-					      .delay(1000)
-					      .fadeOut(1500)
-				      	  .queue(function(){
-							$(this).remove();
-					      });
-				  },
-				  error: function () {
-					  alert("Fehler! Hast du Netz? Ist der Server erreichbar?");
-				  }
-			  });
-	      });
+    <div id="title">
+        <h1>LAN-Verwaltung → Vorauszahlungen verwalten</h1>
+    </div>
+    <?php echo $this->messages(); ?>
+    <div id="information">
+        <?= $this->partial('lan/submenu.phtml')?>
+        <?php foreach($this->lanTickets as $lans): ?>
+        
+        <h2><?= $lans['name'] ?></h2>
 
-	  });
-	</script>
+        <div class="ticketview">
+            <form action="" method="POST">
+                <div>
+                <?= count($lans['tickets']) ?> Anmeldungen
+            </div>
+                <table>
+                    <tr>
+                        <th>Id</th>
+                        <th>UserID</th>
+                        <th>Username</th>
+                        <th>Email</th>
+                        <th>Extras</th>
+                        <th>Betrag</th>
+                        <th>Bezahlt</th>
+                    </tr>
+            <?php foreach($lans['tickets'] as $ticket): ?>
+            <tr>
+                        <td><?= $ticket['id'] ?></td>
+                        <td><?= $ticket['userid'] ?></td>
+                        <td><?= $ticket['username'] ?></td>
+                        <td><?= $ticket['email'] ?></td>
+                        <td><?= $ticket['extras'] ?></td>
+                        <td><?= $ticket['bill'] ?></td>
+                        <td><input type="checkbox"
+                            id="ticketstatus-button-<?= $ticket['id'] ?>"
+                            class="ticketstatus" name="prepaid[]"
+                            value="<?= $ticket['id'] ?>"
+                            <?php if($ticket['status'] != 'notpaid' ): ?> checked="checked"
+                            <?php endif; ?> /></td>
+                    </tr>
+            <?php endforeach; ?>
+            </table>
+            </form>
+        </div>    
+            
+        <?php endforeach; ?>
+    </div>
+
+    <script type="text/javascript">
+      $(document).ready(function() {
+          $(".ticketstatus").click(function(event) {
+              event.preventDefault();
+              var newstatus = 'notpaid';
+              if (this.checked) {
+                newstatus = 'prepaid';
+              }
+              var checkbox = this;
+              $.ajax({
+                  type: 'GET',
+                  url: '<?= $this->baseUrl('lan/ajaxticket/') ?>',
+                  data: "id="+this.value+"&newstatus="+newstatus,
+                  success: function (data) {
+                      if (newstatus == 'notpaid') {
+                          checkbox.checked = false;
+                      } else {
+                         checkbox.checked = true;
+                      }
+                      var el = document.createElement('span');
+                      el.style.color = "green";
+                      el.style.fontWeight = "bold";
+                      $(el).html("ok")
+                          .insertAfter($(checkbox))
+                          .delay(1000)
+                          .fadeOut(1500)
+                            .queue(function(){
+                            $(this).remove();
+                          });
+                  },
+                  error: function () {
+                      alert("Fehler! Hast du Netz? Ist der Server erreichbar?");
+                  }
+              });
+          });
+
+      });
+    </script>
 </div>

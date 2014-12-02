@@ -20,24 +20,28 @@
  */
 
 /**
+ *
  * @see Zend_Filter_CamelCaseToSeparator
  */
 require_once 'Zend/Filter/Word/CamelCaseToSeparator.php';
 
 /**
- * @category   Zend
- * @package    Zend_Filter
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ *
+ * @category Zend
+ * @package Zend_Filter
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Filter_Word_CamelCaseToUnderscore extends Zend_Filter_Word_CamelCaseToSeparator
 {
+
     /**
      * Constructor
      *
      * @return void
      */
-    public function __construct()
+    public function __construct ()
     {
         parent::__construct('_');
     }

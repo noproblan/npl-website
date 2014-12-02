@@ -27,35 +27,48 @@ require_once 'Zend/Mime.php';
 /**
  * Class representing a MIME part.
  *
- * @category   Zend
- * @package    Zend_Mime
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @category Zend
+ * @package Zend_Mime
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
-class Zend_Mime_Part {
+class Zend_Mime_Part
+{
 
     public $type = Zend_Mime::TYPE_OCTETSTREAM;
-    public $encoding = Zend_Mime::ENCODING_8BIT;
-    public $id;
-    public $disposition;
-    public $filename;
-    public $description;
-    public $charset;
-    public $boundary;
-    public $location;
-    public $language;
-    protected $_content;
-    protected $_isStream = false;
 
+    public $encoding = Zend_Mime::ENCODING_8BIT;
+
+    public $id;
+
+    public $disposition;
+
+    public $filename;
+
+    public $description;
+
+    public $charset;
+
+    public $boundary;
+
+    public $location;
+
+    public $language;
+
+    protected $_content;
+
+    protected $_isStream = false;
 
     /**
      * create a new Mime Part.
      * The (unencoded) content of the Part as passed
      * as a string or stream
      *
-     * @param mixed $content  String or Stream containing the content
+     * @param mixed $content
+     *            String or Stream containing the content
      */
-    public function __construct($content)
+    public function __construct ($content)
     {
         $this->_content = $content;
         if (is_resource($content)) {
@@ -64,11 +77,12 @@ class Zend_Mime_Part {
     }
 
     /**
+     *
      * @todo setters/getters
      * @todo error checking for setting $type
      * @todo error checking for setting $encoding
      */
-
+    
     /**
      * check if this part can be read as a stream.
      * if true, getEncodedStream can be called, otherwise
@@ -77,55 +91,53 @@ class Zend_Mime_Part {
      *
      * @return bool
      */
-    public function isStream()
+    public function isStream ()
     {
-      return $this->_isStream;
+        return $this->_isStream;
     }
 
     /**
      * if this was created with a stream, return a filtered stream for
-     * reading the content. very useful for large file attachments.
+     * reading the content.
+     * very useful for large file attachments.
      *
      * @return stream
      * @throws Zend_Mime_Exception if not a stream or unable to append filter
      */
-    public function getEncodedStream()
+    public function getEncodedStream ()
     {
-        if (!$this->_isStream) {
+        if (! $this->_isStream) {
             require_once 'Zend/Mime/Exception.php';
-            throw new Zend_Mime_Exception('Attempt to get a stream from a string part');
+            throw new Zend_Mime_Exception(
+                    'Attempt to get a stream from a string part');
         }
-
-        //stream_filter_remove(); // ??? is that right?
+        
+        // stream_filter_remove(); // ??? is that right?
         switch ($this->encoding) {
             case Zend_Mime::ENCODING_QUOTEDPRINTABLE:
-                $filter = stream_filter_append(
-                    $this->_content,
-                    'convert.quoted-printable-encode',
-                    STREAM_FILTER_READ,
-                    array(
-                        'line-length'      => 76,
-                        'line-break-chars' => Zend_Mime::LINEEND
-                    )
-                );
-                if (!is_resource($filter)) {
+                $filter = stream_filter_append($this->_content, 
+                        'convert.quoted-printable-encode', STREAM_FILTER_READ, 
+                        array(
+                                'line-length' => 76,
+                                'line-break-chars' => Zend_Mime::LINEEND
+                        ));
+                if (! is_resource($filter)) {
                     require_once 'Zend/Mime/Exception.php';
-                    throw new Zend_Mime_Exception('Failed to append quoted-printable filter');
+                    throw new Zend_Mime_Exception(
+                            'Failed to append quoted-printable filter');
                 }
                 break;
             case Zend_Mime::ENCODING_BASE64:
-                $filter = stream_filter_append(
-                    $this->_content,
-                    'convert.base64-encode',
-                    STREAM_FILTER_READ,
-                    array(
-                        'line-length'      => 76,
-                        'line-break-chars' => Zend_Mime::LINEEND
-                    )
-                );
-                if (!is_resource($filter)) {
+                $filter = stream_filter_append($this->_content, 
+                        'convert.base64-encode', STREAM_FILTER_READ, 
+                        array(
+                                'line-length' => 76,
+                                'line-break-chars' => Zend_Mime::LINEEND
+                        ));
+                if (! is_resource($filter)) {
                     require_once 'Zend/Mime/Exception.php';
-                    throw new Zend_Mime_Exception('Failed to append base64 filter');
+                    throw new Zend_Mime_Exception(
+                            'Failed to append base64 filter');
                 }
                 break;
             default:
@@ -138,7 +150,7 @@ class Zend_Mime_Part {
      *
      * @return String
      */
-    public function getContent($EOL = Zend_Mime::LINEEND)
+    public function getContent ($EOL = Zend_Mime::LINEEND)
     {
         if ($this->_isStream) {
             return stream_get_contents($this->getEncodedStream());
@@ -146,12 +158,13 @@ class Zend_Mime_Part {
             return Zend_Mime::encode($this->_content, $this->encoding, $EOL);
         }
     }
-    
+
     /**
      * Get the RAW unencoded content from this part
+     * 
      * @return string
      */
-    public function getRawContent()
+    public function getRawContent ()
     {
         if ($this->_isStream) {
             return stream_get_contents($this->_content);
@@ -166,50 +179,70 @@ class Zend_Mime_Part {
      * @access public
      * @return array
      */
-    public function getHeadersArray($EOL = Zend_Mime::LINEEND)
+    public function getHeadersArray ($EOL = Zend_Mime::LINEEND)
     {
         $headers = array();
-
+        
         $contentType = $this->type;
         if ($this->charset) {
             $contentType .= '; charset=' . $this->charset;
         }
-
+        
         if ($this->boundary) {
-            $contentType .= ';' . $EOL
-                          . " boundary=\"" . $this->boundary . '"';
+            $contentType .= ';' . $EOL . " boundary=\"" . $this->boundary . '"';
         }
-
-        $headers[] = array('Content-Type', $contentType);
-
+        
+        $headers[] = array(
+                'Content-Type',
+                $contentType
+        );
+        
         if ($this->encoding) {
-            $headers[] = array('Content-Transfer-Encoding', $this->encoding);
+            $headers[] = array(
+                    'Content-Transfer-Encoding',
+                    $this->encoding
+            );
         }
-
+        
         if ($this->id) {
-            $headers[]  = array('Content-ID', '<' . $this->id . '>');
+            $headers[] = array(
+                    'Content-ID',
+                    '<' . $this->id . '>'
+            );
         }
-
+        
         if ($this->disposition) {
             $disposition = $this->disposition;
             if ($this->filename) {
                 $disposition .= '; filename="' . $this->filename . '"';
             }
-            $headers[] = array('Content-Disposition', $disposition);
+            $headers[] = array(
+                    'Content-Disposition',
+                    $disposition
+            );
         }
-
+        
         if ($this->description) {
-            $headers[] = array('Content-Description', $this->description);
+            $headers[] = array(
+                    'Content-Description',
+                    $this->description
+            );
         }
-
+        
         if ($this->location) {
-            $headers[] = array('Content-Location', $this->location);
+            $headers[] = array(
+                    'Content-Location',
+                    $this->location
+            );
         }
-
-        if ($this->language){
-            $headers[] = array('Content-Language', $this->language);
+        
+        if ($this->language) {
+            $headers[] = array(
+                    'Content-Language',
+                    $this->language
+            );
         }
-
+        
         return $headers;
     }
 
@@ -218,13 +251,13 @@ class Zend_Mime_Part {
      *
      * @return String
      */
-    public function getHeaders($EOL = Zend_Mime::LINEEND)
+    public function getHeaders ($EOL = Zend_Mime::LINEEND)
     {
         $res = '';
         foreach ($this->getHeadersArray($EOL) as $header) {
             $res .= $header[0] . ': ' . $header[1] . $EOL;
         }
-
+        
         return $res;
     }
 }

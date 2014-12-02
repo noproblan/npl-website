@@ -21,31 +21,38 @@
  */
 
 /**
+ *
  * @see Zend_Validate_Ip
  */
 require_once 'Zend/Validate/Ip.php';
 
 /**
- * @category   Zend
- * @package    Zend_Service
+ *
+ * @category Zend
+ * @package Zend_Service
  * @subpackage DeveloperGarden
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @author     Marco Kaiser
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @author Marco Kaiser
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Service_DeveloperGarden_ConferenceCall_Participant
 {
+
     /**
+     *
      * @var Zend_Service_DeveloperGarden_ConferenceCall_ParticipantDetail
      */
     public $detail = null;
 
     /**
+     *
      * @var string
      */
     public $participantId = null;
 
     /**
+     *
      * @var array
      */
     public $status = null;
@@ -55,7 +62,7 @@ class Zend_Service_DeveloperGarden_ConferenceCall_Participant
      *
      * @return Zend_Service_DeveloperGarden_ConferenceCall_ParticipantDetail
      */
-    public function getDetail()
+    public function getDetail ()
     {
         return $this->detail;
     }
@@ -65,7 +72,7 @@ class Zend_Service_DeveloperGarden_ConferenceCall_Participant
      *
      * @return string
      */
-    public function getParticipantId()
+    public function getParticipantId ()
     {
         return $this->participantId;
     }
@@ -77,7 +84,7 @@ class Zend_Service_DeveloperGarden_ConferenceCall_Participant
      *
      * @return array
      */
-    public function getStatus()
+    public function getStatus ()
     {
         return $this->status;
     }

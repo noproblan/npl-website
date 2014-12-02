@@ -21,34 +21,39 @@
  * @version    $Id: SimplePost.php 23775 2011-03-01 17:25:24Z ralph $
  */
 
-
 /**
  * Represents a publicly available post
  *
- * @category   Zend
- * @package    Zend_Service
+ * @category Zend
+ * @package Zend_Service
  * @subpackage Delicious
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Service_Delicious_SimplePost
 {
+
     /**
+     *
      * @var string Post url
      */
     protected $_url;
 
     /**
+     *
      * @var string Post title
      */
     protected $_title;
 
     /**
+     *
      * @var string Post notes
      */
     protected $_notes;
 
     /**
+     *
      * @var array Post tags
      */
     protected $_tags = array();
@@ -56,23 +61,25 @@ class Zend_Service_Delicious_SimplePost
     /**
      * Constructor
      *
-     * @param   array $post Post data
-     * @return  void
-     * @throws  Zend_Service_Delicious_Exception
+     * @param array $post
+     *            Post data
+     * @return void
+     * @throws Zend_Service_Delicious_Exception
      */
-    public function __construct(array $post)
+    public function __construct (array $post)
     {
-        if (!isset($post['u']) || !isset($post['d'])) {
+        if (! isset($post['u']) || ! isset($post['d'])) {
             /**
+             *
              * @see Zend_Service_Delicious_Exception
              */
             require_once 'Zend/Service/Delicious/Exception.php';
             throw new Zend_Service_Delicious_Exception('Title and URL not set.');
         }
-
-        $this->_url   = $post['u'];
+        
+        $this->_url = $post['u'];
         $this->_title = $post['d'];
-
+        
         if (isset($post['t'])) {
             $this->_tags = $post['t'];
         }
@@ -86,7 +93,7 @@ class Zend_Service_Delicious_SimplePost
      *
      * @return string
      */
-    public function getUrl()
+    public function getUrl ()
     {
         return $this->_url;
     }
@@ -96,7 +103,7 @@ class Zend_Service_Delicious_SimplePost
      *
      * @return string
      */
-    public function getTitle()
+    public function getTitle ()
     {
         return $this->_title;
     }
@@ -106,7 +113,7 @@ class Zend_Service_Delicious_SimplePost
      *
      * @return string
      */
-    public function getNotes()
+    public function getNotes ()
     {
         return $this->_notes;
     }
@@ -116,7 +123,7 @@ class Zend_Service_Delicious_SimplePost
      *
      * @return array
      */
-    public function getTags()
+    public function getTags ()
     {
         return $this->_tags;
     }

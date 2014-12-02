@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <ldml>
 	<identity>
-		<version number="$Revision: 1.85 $"/>
-		<generation date="$Date: 2009/06/15 03:46:25 $"/>
-		<language type="pt"/>
-		<territory type="PT"/>
+		<version number="$Revision: 1.85 $" />
+		<generation date="$Date: 2009/06/15 03:46:25 $" />
+		<language type="pt" />
+		<territory type="PT" />
 	</identity>
 	<localeDisplayNames>
 		<languages>
@@ -138,7 +138,8 @@
 			<territory type="FO">Ilhas Faroé</territory>
 			<territory type="GL">Gronelândia</territory>
 			<territory type="GW">Guiné-Bissau</territory>
-			<territory type="HK">Hong Kong - Região Administrativa Especial da China</territory>
+			<territory type="HK">Hong Kong - Região Administrativa Especial
+				da China</territory>
 			<territory type="IR">Irão</territory>
 			<territory type="KE">Quénia</territory>
 			<territory type="KG">Quirguizistão</territory>
@@ -152,7 +153,8 @@
 			<territory type="MD">Moldávia, República da</territory>
 			<territory type="MG">Madagáscar</territory>
 			<territory type="MK">Macedónia, República da</territory>
-			<territory type="MO">Macau - Região Administrativa Especial da China</territory>
+			<territory type="MO">Macau - Região Administrativa Especial da
+				China</territory>
 			<territory type="MP">Ilhas Mariana do Norte</territory>
 			<territory type="MS">Monserrate</territory>
 			<territory type="MU">Maurícias</territory>
@@ -218,7 +220,8 @@
 		</measurementSystemNames>
 	</localeDisplayNames>
 	<characters>
-		<exemplarCharacters type="auxiliary">[ª ă å ä ā æ è ĕ ë ē ì ĭ î ï ī ñ º ŏ ö ø ō œ ß ù ŭ û ü ū ÿ]</exemplarCharacters>
+		<exemplarCharacters type="auxiliary">[ª ă å ä ā æ è ĕ ë ē ì ĭ î
+			ï ī ñ º ŏ ö ø ō œ ß ù ŭ û ü ū ÿ]</exemplarCharacters>
 	</characters>
 	<dates>
 		<calendars>
@@ -981,12 +984,14 @@
 			</metazone>
 			<metazone type="Hong_Kong">
 				<long>
-					<generic>Hora de Hong Kong - Região Administrativa Especial da China</generic>
+					<generic>Hora de Hong Kong - Região Administrativa Especial da
+						China</generic>
 					<standard>Hora de Hong Kong</standard>
 					<daylight>Hora de Verão de Hong Kong</daylight>
 				</long>
 				<short>
-					<generic>Hora de Hong Kong - Região Administrativa Especial da China</generic>
+					<generic>Hora de Hong Kong - Região Administrativa Especial da
+						China</generic>
 				</short>
 				<commonlyUsed>true</commonlyUsed>
 			</metazone>

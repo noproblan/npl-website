@@ -19,39 +19,46 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
 
-/** Zend_Form_Element_Xhtml */
+/**
+ * Zend_Form_Element_Xhtml
+ */
 require_once 'Zend/Form/Element/Xhtml.php';
 
 /**
  * Password form element
  *
- * @category   Zend
- * @package    Zend_Form
+ * @category Zend
+ * @package Zend_Form
  * @subpackage Element
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: Password.php 23775 2011-03-01 17:25:24Z ralph $
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
+ * @version $Id: Password.php 23775 2011-03-01 17:25:24Z ralph $
  */
 class Zend_Form_Element_Password extends Zend_Form_Element_Xhtml
 {
+
     /**
      * Use formPassword view helper by default
+     * 
      * @var string
      */
     public $helper = 'formPassword';
 
     /**
      * Whether or not to render the password
+     * 
      * @var bool
      */
     public $renderPassword = false;
 
     /**
      * Set flag indicating whether or not to render the password
-     * @param  bool $flag
+     * 
+     * @param bool $flag            
      * @return Zend_Form_Element_Password
      */
-    public function setRenderPassword($flag)
+    public function setRenderPassword ($flag)
     {
         $this->renderPassword = (bool) $flag;
         return $this;
@@ -62,7 +69,7 @@ class Zend_Form_Element_Password extends Zend_Form_Element_Xhtml
      *
      * @return bool
      */
-    public function renderPassword()
+    public function renderPassword ()
     {
         return $this->renderPassword;
     }
@@ -72,11 +79,11 @@ class Zend_Form_Element_Password extends Zend_Form_Element_Xhtml
      *
      * Ensure that validation error messages mask password value.
      *
-     * @param  string $value
-     * @param  mixed $context
+     * @param string $value            
+     * @param mixed $context            
      * @return bool
      */
-    public function isValid($value, $context = null)
+    public function isValid ($value, $context = null)
     {
         foreach ($this->getValidators() as $validator) {
             if ($validator instanceof Zend_Validate_Abstract) {

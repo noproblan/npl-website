@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -25,14 +26,14 @@
  * setResource() is an optional method that if the context supports
  * will be set with the resource at construction time
  *
- * @category   Zend
- * @package    Zend_Tool
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @category Zend
+ * @package Zend_Tool
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 interface Zend_Tool_Project_Context_Interface
 {
 
-    public function getName();
-
+    public function getName ();
 }

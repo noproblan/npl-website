@@ -20,56 +20,61 @@
  * @version    $Id: Subscription.php 23775 2011-03-01 17:25:24Z ralph $
  */
 
-/** @see Zend_Feed_Pubsubhubbub_Model_ModelAbstract */
+/**
+ * @see Zend_Feed_Pubsubhubbub_Model_ModelAbstract
+ */
 require_once 'Zend/Feed/Pubsubhubbub/Model/ModelAbstract.php';
 
-/** @see Zend_Feed_Pubsubhubbub_Model_SubscriptionInterface */
+/**
+ * @see Zend_Feed_Pubsubhubbub_Model_SubscriptionInterface
+ */
 require_once 'Zend/Feed/Pubsubhubbub/Model/SubscriptionInterface.php';
 
-/** @see Zend_Date */
+/**
+ * @see Zend_Date
+ */
 require_once 'Zend/Date.php';
 
 /**
- * @category   Zend
- * @package    Zend_Feed_Pubsubhubbub
+ *
+ * @category Zend
+ * @package Zend_Feed_Pubsubhubbub
  * @subpackage Entity
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
-class Zend_Feed_Pubsubhubbub_Model_Subscription
-    extends Zend_Feed_Pubsubhubbub_Model_ModelAbstract
-    implements Zend_Feed_Pubsubhubbub_Model_SubscriptionInterface
+class Zend_Feed_Pubsubhubbub_Model_Subscription extends Zend_Feed_Pubsubhubbub_Model_ModelAbstract implements 
+        Zend_Feed_Pubsubhubbub_Model_SubscriptionInterface
 {
 
     /**
      * Save subscription to RDMBS
      *
-     * @param array $data
+     * @param array $data            
      * @return bool
      */
-    public function setSubscription(array $data)
+    public function setSubscription (array $data)
     {
-        if (!isset($data['id'])) {
+        if (! isset($data['id'])) {
             require_once 'Zend/Feed/Pubsubhubbub/Exception.php';
             throw new Zend_Feed_Pubsubhubbub_Exception(
-                'ID must be set before attempting a save'
-            );
+                    'ID must be set before attempting a save');
         }
         $result = $this->_db->find($data['id']);
         if (count($result)) {
             $data['created_time'] = $result->current()->created_time;
-            $now = new Zend_Date;
+            $now = new Zend_Date();
             if (isset($data['lease_seconds'])) {
-                $data['expiration_time'] = $now->add($data['lease_seconds'], Zend_Date::SECOND)
-                ->get('yyyy-MM-dd HH:mm:ss');
+                $data['expiration_time'] = $now->add($data['lease_seconds'], 
+                        Zend_Date::SECOND)->get('yyyy-MM-dd HH:mm:ss');
             }
-            $this->_db->update(
-                $data,
-                $this->_db->getAdapter()->quoteInto('id = ?', $data['id'])
-            );
+            $this->_db->update($data, 
+                    $this->_db->getAdapter()
+                        ->quoteInto('id = ?', $data['id']));
             return false;
         }
-
+        
         $this->_db->insert($data);
         return true;
     }
@@ -77,15 +82,16 @@ class Zend_Feed_Pubsubhubbub_Model_Subscription
     /**
      * Get subscription by ID/key
      *
-     * @param  string $key
+     * @param string $key            
      * @return array
      */
-    public function getSubscription($key)
+    public function getSubscription ($key)
     {
-        if (empty($key) || !is_string($key)) {
+        if (empty($key) || ! is_string($key)) {
             require_once 'Zend/Feed/Pubsubhubbub/Exception.php';
-            throw new Zend_Feed_Pubsubhubbub_Exception('Invalid parameter "key"'
-                .' of "' . $key . '" must be a non-empty string');
+            throw new Zend_Feed_Pubsubhubbub_Exception(
+                    'Invalid parameter "key"' . ' of "' . $key .
+                             '" must be a non-empty string');
         }
         $result = $this->_db->find($key);
         if (count($result)) {
@@ -97,15 +103,16 @@ class Zend_Feed_Pubsubhubbub_Model_Subscription
     /**
      * Determine if a subscription matching the key exists
      *
-     * @param  string $key
+     * @param string $key            
      * @return bool
      */
-    public function hasSubscription($key)
+    public function hasSubscription ($key)
     {
-        if (empty($key) || !is_string($key)) {
+        if (empty($key) || ! is_string($key)) {
             require_once 'Zend/Feed/Pubsubhubbub/Exception.php';
-            throw new Zend_Feed_Pubsubhubbub_Exception('Invalid parameter "key"'
-                .' of "' . $key . '" must be a non-empty string');
+            throw new Zend_Feed_Pubsubhubbub_Exception(
+                    'Invalid parameter "key"' . ' of "' . $key .
+                             '" must be a non-empty string');
         }
         $result = $this->_db->find($key);
         if (count($result)) {
@@ -117,19 +124,18 @@ class Zend_Feed_Pubsubhubbub_Model_Subscription
     /**
      * Delete a subscription
      *
-     * @param string $key
+     * @param string $key            
      * @return bool
      */
-    public function deleteSubscription($key)
+    public function deleteSubscription ($key)
     {
         $result = $this->_db->find($key);
         if (count($result)) {
             $this->_db->delete(
-                $this->_db->getAdapter()->quoteInto('id = ?', $key)
-            );
+                    $this->_db->getAdapter()
+                        ->quoteInto('id = ?', $key));
             return true;
         }
         return false;
     }
-
 }

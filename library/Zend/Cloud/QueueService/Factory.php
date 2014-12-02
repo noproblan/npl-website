@@ -18,21 +18,24 @@
  * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
-
 require_once 'Zend/Cloud/AbstractFactory.php';
 
 /**
- * @category   Zend
- * @package    Zend_Cloud
+ *
+ * @category Zend
+ * @package Zend_Cloud
  * @subpackage QueueService
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Cloud_QueueService_Factory extends Zend_Cloud_AbstractFactory
 {
+
     const QUEUE_ADAPTER_KEY = 'queue_adapter';
 
     /**
+     *
      * @var string Interface which adapter must implement to be considered valid
      */
     protected static $_adapterInterface = 'Zend_Cloud_QueueService_Adapter';
@@ -42,7 +45,7 @@ class Zend_Cloud_QueueService_Factory extends Zend_Cloud_AbstractFactory
      *
      * @return void
      */
-    private function __construct()
+    private function __construct ()
     {
         // private ctor - should not be used
     }
@@ -50,21 +53,21 @@ class Zend_Cloud_QueueService_Factory extends Zend_Cloud_AbstractFactory
     /**
      * Retrieve QueueService adapter
      *
-     * @param  array $options
+     * @param array $options            
      * @return void
      */
-    public static function getAdapter($options = array())
+    public static function getAdapter ($options = array())
     {
         $adapter = parent::_getAdapter(self::QUEUE_ADAPTER_KEY, $options);
-        if (!$adapter) {
-            require_once 'Zend/Cloud/QueueService/Exception.php';
-            throw new Zend_Cloud_QueueService_Exception('Class must be specified using the \'' .
-            self::QUEUE_ADAPTER_KEY . '\' key');
-        } elseif (!$adapter instanceof self::$_adapterInterface) {
+        if (! $adapter) {
             require_once 'Zend/Cloud/QueueService/Exception.php';
             throw new Zend_Cloud_QueueService_Exception(
-                'Adapter must implement \'' . self::$_adapterInterface . '\''
-            );
+                    'Class must be specified using the \'' .
+                             self::QUEUE_ADAPTER_KEY . '\' key');
+        } elseif (! $adapter instanceof self::$_adapterInterface) {
+            require_once 'Zend/Cloud/QueueService/Exception.php';
+            throw new Zend_Cloud_QueueService_Exception(
+                    'Adapter must implement \'' . self::$_adapterInterface . '\'');
         }
         return $adapter;
     }

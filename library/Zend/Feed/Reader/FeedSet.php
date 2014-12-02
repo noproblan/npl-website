@@ -20,20 +20,24 @@
  */
 
 /**
+ *
  * @see Zend_Feed_Reader
  */
 require_once 'Zend/Feed/Reader.php';
 
 /**
+ *
  * @see Zend_Uri
  */
 require_once 'Zend/Uri.php';
 
 /**
- * @category   Zend
- * @package    Zend_Feed_Reader
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ *
+ * @category Zend
+ * @package Zend_Feed_Reader
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Feed_Reader_FeedSet extends ArrayObject
 {
@@ -56,47 +60,57 @@ class Zend_Feed_Reader_FeedSet extends ArrayObject
      * Note that feeds are not loaded at this point, but will be lazy
      * loaded automatically when each links 'feed' array key is accessed.
      *
-     * @param DOMNodeList $links
-     * @param string $uri
+     * @param DOMNodeList $links            
+     * @param string $uri            
      * @return void
      */
-    public function addLinks(DOMNodeList $links, $uri)
+    public function addLinks (DOMNodeList $links, $uri)
     {
         foreach ($links as $link) {
-            if (strtolower($link->getAttribute('rel')) !== 'alternate'
-                || !$link->getAttribute('type') || !$link->getAttribute('href')) {
+            if (strtolower($link->getAttribute('rel')) !== 'alternate' ||
+                     ! $link->getAttribute('type') ||
+                     ! $link->getAttribute('href')) {
                 continue;
             }
-            if (!isset($this->rss) && $link->getAttribute('type') == 'application/rss+xml') {
-                $this->rss = $this->_absolutiseUri(trim($link->getAttribute('href')), $uri);
-            } elseif(!isset($this->atom) && $link->getAttribute('type') == 'application/atom+xml') {
-                $this->atom = $this->_absolutiseUri(trim($link->getAttribute('href')), $uri);
-            } elseif(!isset($this->rdf) && $link->getAttribute('type') == 'application/rdf+xml') {
-                $this->rdf = $this->_absolutiseUri(trim($link->getAttribute('href')), $uri);
+            if (! isset($this->rss) &&
+                     $link->getAttribute('type') == 'application/rss+xml') {
+                $this->rss = $this->_absolutiseUri(
+                        trim($link->getAttribute('href')), $uri);
+            } elseif (! isset($this->atom) &&
+                     $link->getAttribute('type') == 'application/atom+xml') {
+                $this->atom = $this->_absolutiseUri(
+                        trim($link->getAttribute('href')), $uri);
+            } elseif (! isset($this->rdf) &&
+                     $link->getAttribute('type') == 'application/rdf+xml') {
+                $this->rdf = $this->_absolutiseUri(
+                        trim($link->getAttribute('href')), $uri);
             }
-            $this[] = new self(array(
-                'rel' => 'alternate',
-                'type' => $link->getAttribute('type'),
-                'href' => $this->_absolutiseUri(trim($link->getAttribute('href')), $uri),
-            ));
+            $this[] = new self(
+                    array(
+                            'rel' => 'alternate',
+                            'type' => $link->getAttribute('type'),
+                            'href' => $this->_absolutiseUri(
+                                    trim($link->getAttribute('href')), $uri)
+                    ));
         }
     }
 
     /**
-     *  Attempt to turn a relative URI into an absolute URI
+     * Attempt to turn a relative URI into an absolute URI
      */
-    protected function _absolutiseUri($link, $uri = null)
+    protected function _absolutiseUri ($link, $uri = null)
     {
-        if (!Zend_Uri::check($link)) {
+        if (! Zend_Uri::check($link)) {
             if ($uri !== null) {
                 $uri = Zend_Uri::factory($uri);
-
+                
                 if ($link[0] !== '/') {
                     $link = $uri->getPath() . '/' . $link;
                 }
-
-                $link = $uri->getScheme() . '://' . $uri->getHost() . '/' . $this->_canonicalizePath($link);
-                if (!Zend_Uri::check($link)) {
+                
+                $link = $uri->getScheme() . '://' . $uri->getHost() . '/' .
+                         $this->_canonicalizePath($link);
+                if (! Zend_Uri::check($link)) {
                     $link = null;
                 }
             }
@@ -105,9 +119,9 @@ class Zend_Feed_Reader_FeedSet extends ArrayObject
     }
 
     /**
-     *  Canonicalize relative path
+     * Canonicalize relative path
      */
-    protected function _canonicalizePath($path)
+    protected function _canonicalizePath ($path)
     {
         $parts = array_filter(explode('/', $path));
         $absolutes = array();
@@ -128,14 +142,14 @@ class Zend_Feed_Reader_FeedSet extends ArrayObject
      * Supports lazy loading of feeds using Zend_Feed_Reader::import() but
      * delegates any other operations to the parent class.
      *
-     * @param string $offset
+     * @param string $offset            
      * @return mixed
      * @uses Zend_Feed_Reader
      */
-    public function offsetGet($offset)
+    public function offsetGet ($offset)
     {
-        if ($offset == 'feed' && !$this->offsetExists('feed')) {
-            if (!$this->offsetExists('href')) {
+        if ($offset == 'feed' && ! $this->offsetExists('feed')) {
+            if (! $this->offsetExists('href')) {
                 return null;
             }
             $feed = Zend_Feed_Reader::import($this->offsetGet('href'));
@@ -144,5 +158,4 @@ class Zend_Feed_Reader_FeedSet extends ArrayObject
         }
         return parent::offsetGet($offset);
     }
-
 }

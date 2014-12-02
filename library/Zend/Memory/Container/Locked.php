@@ -19,7 +19,9 @@
  * @version    $Id: Locked.php 23775 2011-03-01 17:25:24Z ralph $
  */
 
-/** Zend_Memory_Container */
+/**
+ * Zend_Memory_Container
+ */
 require_once 'Zend/Memory/Container.php';
 
 /**
@@ -27,13 +29,15 @@ require_once 'Zend/Memory/Container.php';
  *
  * Locked (always stored in memory).
  *
- * @category   Zend
- * @package    Zend_Memory
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @category Zend
+ * @package Zend_Memory
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Memory_Container_Locked extends Zend_Memory_Container
 {
+
     /**
      * Value object
      *
@@ -41,15 +45,14 @@ class Zend_Memory_Container_Locked extends Zend_Memory_Container
      */
     public $value;
 
-
     /**
      * Object constructor
      *
-     * @param Zend_Memory_Manager $memoryManager
-     * @param integer $id
-     * @param string $value
+     * @param Zend_Memory_Manager $memoryManager            
+     * @param integer $id            
+     * @param string $value            
      */
-    public function __construct($value)
+    public function __construct ($value)
     {
         $this->value = $value;
     }
@@ -57,7 +60,7 @@ class Zend_Memory_Container_Locked extends Zend_Memory_Container
     /**
      * Lock object in memory.
      */
-    public function lock()
+    public function lock ()
     {
         /* Do nothing */
     }
@@ -65,7 +68,7 @@ class Zend_Memory_Container_Locked extends Zend_Memory_Container
     /**
      * Unlock object
      */
-    public function unlock()
+    public function unlock ()
     {
         /* Do nothing */
     }
@@ -75,7 +78,7 @@ class Zend_Memory_Container_Locked extends Zend_Memory_Container
      *
      * @return boolean
      */
-    public function isLocked()
+    public function isLocked ()
     {
         return true;
     }
@@ -88,7 +91,7 @@ class Zend_Memory_Container_Locked extends Zend_Memory_Container
      *
      * @return &string
      */
-    public function &getRef()
+    public function &getRef ()
     {
         return $this->value;
     }
@@ -98,7 +101,7 @@ class Zend_Memory_Container_Locked extends Zend_Memory_Container
      *
      * Should be used together with getRef()
      */
-    public function touch()
+    public function touch ()
     {
         /* Do nothing */
     }
@@ -106,7 +109,7 @@ class Zend_Memory_Container_Locked extends Zend_Memory_Container
     /**
      * Destroy memory container and remove it from memory manager list
      */
-    public function destroy()
+    public function destroy ()
     {
         /* Do nothing */
     }

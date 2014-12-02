@@ -22,20 +22,22 @@
  */
 
 /**
+ *
  * @see Zend_Gdata_Query
  */
-require_once('Zend/Gdata/Query.php');
+require_once ('Zend/Gdata/Query.php');
 
 /**
  * Assists in constructing queries for Google Base
  *
  * @link http://code.google.com/apis/base
- *
- * @category   Zend
- * @package    Zend_Gdata
+ *      
+ * @category Zend
+ * @package Zend_Gdata
  * @subpackage Gbase
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Gdata_Gbase_Query extends Zend_Gdata_Query
 {
@@ -58,10 +60,11 @@ class Zend_Gdata_Gbase_Query extends Zend_Gdata_Query
     protected $_defaultFeedUri = self::GBASE_ITEM_FEED_URI;
 
     /**
-     * @param string $value
+     *
+     * @param string $value            
      * @return Zend_Gdata_Gbase_Query Provides a fluent interface
      */
-    public function setKey($value)
+    public function setKey ($value)
     {
         if ($value !== null) {
             $this->_params['key'] = $value;
@@ -72,10 +75,11 @@ class Zend_Gdata_Gbase_Query extends Zend_Gdata_Query
     }
 
     /**
-     * @param string $value
+     *
+     * @param string $value            
      * @return Zend_Gdata_Gbase_ItemQuery Provides a fluent interface
      */
-    public function setBq($value)
+    public function setBq ($value)
     {
         if ($value !== null) {
             $this->_params['bq'] = $value;
@@ -86,10 +90,11 @@ class Zend_Gdata_Gbase_Query extends Zend_Gdata_Query
     }
 
     /**
-     * @param string $value
+     *
+     * @param string $value            
      * @return Zend_Gdata_Gbase_ItemQuery Provides a fluent interface
      */
-    public function setRefine($value)
+    public function setRefine ($value)
     {
         if ($value !== null) {
             $this->_params['refine'] = $value;
@@ -100,10 +105,11 @@ class Zend_Gdata_Gbase_Query extends Zend_Gdata_Query
     }
 
     /**
-     * @param string $value
+     *
+     * @param string $value            
      * @return Zend_Gdata_Gbase_ItemQuery Provides a fluent interface
      */
-    public function setContent($value)
+    public function setContent ($value)
     {
         if ($value !== null) {
             $this->_params['content'] = $value;
@@ -114,10 +120,11 @@ class Zend_Gdata_Gbase_Query extends Zend_Gdata_Query
     }
 
     /**
-     * @param string $value
+     *
+     * @param string $value            
      * @return Zend_Gdata_Gbase_ItemQuery Provides a fluent interface
      */
-    public function setOrderBy($value)
+    public function setOrderBy ($value)
     {
         if ($value !== null) {
             $this->_params['orderby'] = $value;
@@ -128,10 +135,11 @@ class Zend_Gdata_Gbase_Query extends Zend_Gdata_Query
     }
 
     /**
-     * @param string $value
+     *
+     * @param string $value            
      * @return Zend_Gdata_Gbase_ItemQuery Provides a fluent interface
      */
-    public function setSortOrder($value)
+    public function setSortOrder ($value)
     {
         if ($value !== null) {
             $this->_params['sortorder'] = $value;
@@ -142,10 +150,11 @@ class Zend_Gdata_Gbase_Query extends Zend_Gdata_Query
     }
 
     /**
-     * @param string $value
+     *
+     * @param string $value            
      * @return Zend_Gdata_Gbase_ItemQuery Provides a fluent interface
      */
-    public function setCrowdBy($value)
+    public function setCrowdBy ($value)
     {
         if ($value !== null) {
             $this->_params['crowdby'] = $value;
@@ -156,10 +165,11 @@ class Zend_Gdata_Gbase_Query extends Zend_Gdata_Query
     }
 
     /**
-     * @param string $value
+     *
+     * @param string $value            
      * @return Zend_Gdata_Gbase_ItemQuery Provides a fluent interface
      */
-    public function setAdjust($value)
+    public function setAdjust ($value)
     {
         if ($value !== null) {
             $this->_params['adjust'] = $value;
@@ -170,9 +180,10 @@ class Zend_Gdata_Gbase_Query extends Zend_Gdata_Query
     }
 
     /**
+     *
      * @return string key
      */
-    public function getKey()
+    public function getKey ()
     {
         if (array_key_exists('key', $this->_params)) {
             return $this->_params['key'];
@@ -182,9 +193,10 @@ class Zend_Gdata_Gbase_Query extends Zend_Gdata_Query
     }
 
     /**
+     *
      * @return string bq
      */
-    public function getBq()
+    public function getBq ()
     {
         if (array_key_exists('bq', $this->_params)) {
             return $this->_params['bq'];
@@ -194,9 +206,10 @@ class Zend_Gdata_Gbase_Query extends Zend_Gdata_Query
     }
 
     /**
+     *
      * @return string refine
      */
-    public function getRefine()
+    public function getRefine ()
     {
         if (array_key_exists('refine', $this->_params)) {
             return $this->_params['refine'];
@@ -206,9 +219,10 @@ class Zend_Gdata_Gbase_Query extends Zend_Gdata_Query
     }
 
     /**
+     *
      * @return string content
      */
-    public function getContent()
+    public function getContent ()
     {
         if (array_key_exists('content', $this->_params)) {
             return $this->_params['content'];
@@ -218,9 +232,10 @@ class Zend_Gdata_Gbase_Query extends Zend_Gdata_Query
     }
 
     /**
+     *
      * @return string orderby
      */
-    public function getOrderBy()
+    public function getOrderBy ()
     {
         if (array_key_exists('orderby', $this->_params)) {
             return $this->_params['orderby'];
@@ -230,9 +245,10 @@ class Zend_Gdata_Gbase_Query extends Zend_Gdata_Query
     }
 
     /**
+     *
      * @return string sortorder
      */
-    public function getSortOrder()
+    public function getSortOrder ()
     {
         if (array_key_exists('sortorder', $this->_params)) {
             return $this->_params['sortorder'];
@@ -242,9 +258,10 @@ class Zend_Gdata_Gbase_Query extends Zend_Gdata_Query
     }
 
     /**
+     *
      * @return string crowdby
      */
-    public function getCrowdBy()
+    public function getCrowdBy ()
     {
         if (array_key_exists('crowdby', $this->_params)) {
             return $this->_params['crowdby'];
@@ -254,9 +271,10 @@ class Zend_Gdata_Gbase_Query extends Zend_Gdata_Query
     }
 
     /**
+     *
      * @return string adjust
      */
-    public function getAdjust()
+    public function getAdjust ()
     {
         if (array_key_exists('adjust', $this->_params)) {
             return $this->_params['adjust'];
@@ -264,5 +282,4 @@ class Zend_Gdata_Gbase_Query extends Zend_Gdata_Query
             return null;
         }
     }
-
 }

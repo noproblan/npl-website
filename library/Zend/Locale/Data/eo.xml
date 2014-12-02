@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <ldml>
 	<identity>
-		<version number="$Revision: 1.76 $"/>
-		<generation date="$Date: 2009/06/15 03:46:25 $"/>
-		<language type="eo"/>
+		<version number="$Revision: 1.76 $" />
+		<generation date="$Date: 2009/06/15 03:46:25 $" />
+		<language type="eo" />
 	</identity>
 	<localeDisplayNames>
 		<languages>
@@ -594,9 +594,12 @@
 							<greatestDifference id="y">yy-MM-dd - yy-MM-dd</greatestDifference>
 						</intervalFormatItem>
 						<intervalFormatItem id="yMEd">
-							<greatestDifference id="d">E, yy-MM-dd - E, yy-MM-dd</greatestDifference>
-							<greatestDifference id="M">E, yy-MM-dd - E, yy-MM-dd</greatestDifference>
-							<greatestDifference id="y">E, yy-MM-dd - E, yy-MM-dd</greatestDifference>
+							<greatestDifference id="d">E, yy-MM-dd - E,
+								yy-MM-dd</greatestDifference>
+							<greatestDifference id="M">E, yy-MM-dd - E,
+								yy-MM-dd</greatestDifference>
+							<greatestDifference id="y">E, yy-MM-dd - E,
+								yy-MM-dd</greatestDifference>
 						</intervalFormatItem>
 						<intervalFormatItem id="yMMM">
 							<greatestDifference id="M">y-MMM - y-MMM</greatestDifference>
@@ -608,9 +611,12 @@
 							<greatestDifference id="y">y-MMM-dd - y-MMM-dd</greatestDifference>
 						</intervalFormatItem>
 						<intervalFormatItem id="yMMMEd">
-							<greatestDifference id="d">E, d-'a' - E, d-'a' 'de' MMM y</greatestDifference>
-							<greatestDifference id="M">E, d-'a' 'de' MMM - E, d-'a' 'de' MMM y</greatestDifference>
-							<greatestDifference id="y">E, d-'a' 'de' MMM y - E, d-'a' 'de' MMM y</greatestDifference>
+							<greatestDifference id="d">E, d-'a' - E, d-'a'
+								'de' MMM y</greatestDifference>
+							<greatestDifference id="M">E, d-'a' 'de' MMM - E,
+								d-'a' 'de' MMM y</greatestDifference>
+							<greatestDifference id="y">E, d-'a' 'de' MMM y -
+								E, d-'a' 'de' MMM y</greatestDifference>
 						</intervalFormatItem>
 					</intervalFormats>
 				</dateTimeFormats>

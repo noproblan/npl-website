@@ -19,42 +19,54 @@
  * @version    $Id: RendererAbstract.php 23775 2011-03-01 17:25:24Z ralph $
  */
 
-/** @see Zend_Feed_Writer */
+/**
+ * @see Zend_Feed_Writer
+ */
 require_once 'Zend/Feed/Writer.php';
 
-/** @see Zend_Version */
+/**
+ * @see Zend_Version
+ */
 require_once 'Zend/Version.php';
 
 /**
- * @category   Zend
- * @package    Zend_Feed_Writer
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ *
+ * @category Zend
+ * @package Zend_Feed_Writer
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Feed_Writer_Renderer_RendererAbstract
 {
+
     /**
      * Extensions
+     * 
      * @var array
      */
     protected $_extensions = array();
 
     /**
+     *
      * @var mixed
      */
     protected $_container = null;
 
     /**
+     *
      * @var DOMDocument
      */
     protected $_dom = null;
 
     /**
+     *
      * @var bool
      */
     protected $_ignoreExceptions = false;
 
     /**
+     *
      * @var array
      */
     protected $_exceptions = array();
@@ -75,6 +87,7 @@ class Zend_Feed_Writer_Renderer_RendererAbstract
     protected $_type = null;
 
     /**
+     *
      * @var DOMElement
      */
     protected $_rootElement = null;
@@ -82,10 +95,10 @@ class Zend_Feed_Writer_Renderer_RendererAbstract
     /**
      * Constructor
      *
-     * @param  mixed $container
+     * @param mixed $container            
      * @return void
      */
-    public function __construct($container)
+    public function __construct ($container)
     {
         $this->_container = $container;
         $this->setType($container->getType());
@@ -97,7 +110,7 @@ class Zend_Feed_Writer_Renderer_RendererAbstract
      *
      * @return string
      */
-    public function saveXml()
+    public function saveXml ()
     {
         return $this->getDomDocument()->saveXml();
     }
@@ -107,7 +120,7 @@ class Zend_Feed_Writer_Renderer_RendererAbstract
      *
      * @return DOMDocument
      */
-    public function getDomDocument()
+    public function getDomDocument ()
     {
         return $this->_dom;
     }
@@ -117,7 +130,7 @@ class Zend_Feed_Writer_Renderer_RendererAbstract
      *
      * @return DOMElement
      */
-    public function getElement()
+    public function getElement ()
     {
         return $this->getDomDocument()->documentElement;
     }
@@ -127,7 +140,7 @@ class Zend_Feed_Writer_Renderer_RendererAbstract
      *
      * @return mixed
      */
-    public function getDataContainer()
+    public function getDataContainer ()
     {
         return $this->_container;
     }
@@ -135,10 +148,10 @@ class Zend_Feed_Writer_Renderer_RendererAbstract
     /**
      * Set feed encoding
      *
-     * @param  string $enc
+     * @param string $enc            
      * @return Zend_Feed_Writer_Renderer_RendererAbstract
      */
-    public function setEncoding($enc)
+    public function setEncoding ($enc)
     {
         $this->_encoding = $enc;
         return $this;
@@ -149,7 +162,7 @@ class Zend_Feed_Writer_Renderer_RendererAbstract
      *
      * @return string
      */
-    public function getEncoding()
+    public function getEncoding ()
     {
         return $this->_encoding;
     }
@@ -157,14 +170,15 @@ class Zend_Feed_Writer_Renderer_RendererAbstract
     /**
      * Indicate whether or not to ignore exceptions
      *
-     * @param  bool $bool
+     * @param bool $bool            
      * @return Zend_Feed_Writer_Renderer_RendererAbstract
      */
-    public function ignoreExceptions($bool = true)
+    public function ignoreExceptions ($bool = true)
     {
-        if (!is_bool($bool)) {
+        if (! is_bool($bool)) {
             require_once 'Zend/Feed/Exception.php';
-            throw new Zend_Feed_Exception('Invalid parameter: $bool. Should be TRUE or FALSE (defaults to TRUE if null)');
+            throw new Zend_Feed_Exception(
+                    'Invalid parameter: $bool. Should be TRUE or FALSE (defaults to TRUE if null)');
         }
         $this->_ignoreExceptions = $bool;
         return $this;
@@ -175,19 +189,20 @@ class Zend_Feed_Writer_Renderer_RendererAbstract
      *
      * @return array
      */
-    public function getExceptions()
+    public function getExceptions ()
     {
         return $this->_exceptions;
     }
 
     /**
-     * Set the current feed type being exported to "rss" or "atom". This allows
+     * Set the current feed type being exported to "rss" or "atom".
+     * This allows
      * other objects to gracefully choose whether to execute or not, depending
      * on their appropriateness for the current type, e.g. renderers.
      *
-     * @param string $type
+     * @param string $type            
      */
-    public function setType($type)
+    public function setType ($type)
     {
         $this->_type = $type;
     }
@@ -197,20 +212,22 @@ class Zend_Feed_Writer_Renderer_RendererAbstract
      *
      * @return string Value will be "rss" or "atom"
      */
-    public function getType()
+    public function getType ()
     {
         return $this->_type;
     }
 
     /**
-     * Sets the absolute root element for the XML feed being generated. This
+     * Sets the absolute root element for the XML feed being generated.
+     * This
      * helps simplify the appending of namespace declarations, but also ensures
-     * namespaces are added to the root element - not scattered across the entire
+     * namespaces are added to the root element - not scattered across the
+     * entire
      * XML file - may assist namespace unsafe parsers and looks pretty ;).
      *
-     * @param DOMElement $root
+     * @param DOMElement $root            
      */
-    public function setRootElement(DOMElement $root)
+    public function setRootElement (DOMElement $root)
     {
         $this->_rootElement = $root;
     }
@@ -220,7 +237,7 @@ class Zend_Feed_Writer_Renderer_RendererAbstract
      *
      * @return DOMElement
      */
-    public function getRootElement()
+    public function getRootElement ()
     {
         return $this->_rootElement;
     }
@@ -230,7 +247,7 @@ class Zend_Feed_Writer_Renderer_RendererAbstract
      *
      * @return void
      */
-    protected function _loadExtensions()
+    protected function _loadExtensions ()
     {
         Zend_Feed_Writer::registerCoreExtensions();
         $all = Zend_Feed_Writer::getExtensions();
@@ -240,10 +257,10 @@ class Zend_Feed_Writer_Renderer_RendererAbstract
             $exts = $all['feedRenderer'];
         }
         foreach ($exts as $extension) {
-            $className = Zend_Feed_Writer::getPluginLoader()->getClassName($extension);
+            $className = Zend_Feed_Writer::getPluginLoader()->getClassName(
+                    $extension);
             $this->_extensions[$extension] = new $className(
-                $this->getDataContainer()
-            );
+                    $this->getDataContainer());
             $this->_extensions[$extension]->setEncoding($this->getEncoding());
         }
     }

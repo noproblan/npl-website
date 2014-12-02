@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <ldml>
 	<identity>
-		<version number="$Revision: 1.78 $"/>
-		<generation date="$Date: 2009/06/15 17:12:26 $"/>
-		<language type="ga"/>
+		<version number="$Revision: 1.78 $" />
+		<generation date="$Date: 2009/06/15 17:12:26 $" />
+		<language type="ga" />
 	</identity>
 	<fallback>en_IE</fallback>
 	<localeDisplayNames>
@@ -295,7 +295,8 @@
 			<territory type="GP">Guadalúip</territory>
 			<territory type="GQ">An Ghuine Mheánchriosach</territory>
 			<territory type="GR">An Ghréig</territory>
-			<territory type="GS">An tSeoirsia Theas agus Oileáin Sandwich Theas</territory>
+			<territory type="GS">An tSeoirsia Theas agus Oileáin Sandwich
+				Theas</territory>
 			<territory type="GT">Guatamala</territory>
 			<territory type="GU">Guam</territory>
 			<territory type="GW">An Ghuine-Bhissau</territory>
@@ -466,7 +467,8 @@
 			<type type="buddhist" key="calendar">Féilire Búdaíoch</type>
 			<type type="chinese" key="calendar">Féilire Síneach</type>
 			<type type="direct" key="collation">Ord sórtála díreach</type>
-			<type type="gb2312han" key="collation">Ord sórtála Síneach simplithe - GB 2312</type>
+			<type type="gb2312han" key="collation">Ord sórtála Síneach simplithe - GB
+				2312</type>
 			<type type="gregorian" key="calendar">Féilire Greagórach</type>
 			<type type="hebrew" key="calendar">Féilire Eabhrach</type>
 			<type type="islamic" key="calendar">Féilire Ioslamach</type>

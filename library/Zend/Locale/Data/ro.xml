@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <ldml>
 	<identity>
-		<version number="$Revision: 1.116 $"/>
-		<generation date="$Date: 2009/06/15 03:46:25 $"/>
-		<language type="ro"/>
+		<version number="$Revision: 1.116 $" />
+		<generation date="$Date: 2009/06/15 03:46:25 $" />
+		<language type="ro" />
 	</identity>
 	<localeDisplayNames>
 		<localeDisplayPattern>
@@ -568,7 +568,8 @@
 			<territory type="TZ">Tanzania</territory>
 			<territory type="UA">Ucraina</territory>
 			<territory type="UG">Uganda</territory>
-			<territory type="UM">Insulele mici îndepărtate ale Statelor Unite ale Americii</territory>
+			<territory type="UM">Insulele mici îndepărtate ale Statelor
+				Unite ale Americii</territory>
 			<territory type="US">Statele Unite ale Americii</territory>
 			<territory type="UY">Uruguay</territory>
 			<territory type="UZ">Uzbekistan</territory>
@@ -593,11 +594,13 @@
 			<key type="currency">monedă</key>
 		</keys>
 		<types>
-			<type type="big5han" key="collation">sortare pentru chineza tradițională - Big5</type>
+			<type type="big5han" key="collation">sortare pentru chineza tradițională -
+				Big5</type>
 			<type type="buddhist" key="calendar">calendar budist</type>
 			<type type="chinese" key="calendar">calendar chinezesc</type>
 			<type type="direct" key="collation">sortare directă</type>
-			<type type="gb2312han" key="collation">sortare pentru chineza simplificată - GB2312</type>
+			<type type="gb2312han" key="collation">sortare pentru chineza simplificată -
+				GB2312</type>
 			<type type="gregorian" key="calendar">calendar gregorian</type>
 			<type type="hebrew" key="calendar">calendar ebraic</type>
 			<type type="indian" key="calendar">calendar național indian</type>
@@ -629,8 +632,10 @@
 	</layout>
 	<characters>
 		<exemplarCharacters>[a ă â b-i î j-p r s ș t ț u v x z]</exemplarCharacters>
-		<exemplarCharacters type="auxiliary">[á à å ä ç é è ê ë ñ ö q ş ţ ü w y]</exemplarCharacters>
-		<exemplarCharacters type="currencySymbol">[a ă â b-i î j-s ș t ț u-z]</exemplarCharacters>
+		<exemplarCharacters type="auxiliary">[á à å ä ç é è ê ë ñ ö q ş
+			ţ ü w y]</exemplarCharacters>
+		<exemplarCharacters type="currencySymbol">[a ă â b-i î j-s ș t ț
+			u-z]</exemplarCharacters>
 	</characters>
 	<delimiters>
 		<quotationStart>„</quotationStart>
@@ -977,9 +982,12 @@
 							<greatestDifference id="y">dd.MM.yyyy - dd.MM.yyyy</greatestDifference>
 						</intervalFormatItem>
 						<intervalFormatItem id="yMEd">
-							<greatestDifference id="d">E, dd.MM.yyyy - E, dd.MM.yyyy</greatestDifference>
-							<greatestDifference id="M">E, dd.MM.yyyy - E, dd.MM.yyyy</greatestDifference>
-							<greatestDifference id="y">E, dd.MM.yyyy - E, dd.MM.yyyy</greatestDifference>
+							<greatestDifference id="d">E, dd.MM.yyyy - E,
+								dd.MM.yyyy</greatestDifference>
+							<greatestDifference id="M">E, dd.MM.yyyy - E,
+								dd.MM.yyyy</greatestDifference>
+							<greatestDifference id="y">E, dd.MM.yyyy - E,
+								dd.MM.yyyy</greatestDifference>
 						</intervalFormatItem>
 						<intervalFormatItem id="yMMM">
 							<greatestDifference id="M">MMM-MMM y</greatestDifference>

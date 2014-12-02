@@ -22,6 +22,7 @@
  */
 
 /**
+ *
  * @see Zend_Gdata_Entry
  */
 require_once 'Zend/Gdata/Entry.php';
@@ -29,11 +30,12 @@ require_once 'Zend/Gdata/Entry.php';
 /**
  * Describes an entry in a feed of collections
  *
- * @category   Zend
- * @package    Zend_Gdata
+ * @category Zend
+ * @package Zend_Gdata
  * @subpackage Books
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Gdata_Books_CollectionEntry extends Zend_Gdata_Entry
 {
@@ -42,15 +44,14 @@ class Zend_Gdata_Books_CollectionEntry extends Zend_Gdata_Entry
      * Constructor for Zend_Gdata_Books_CollectionEntry which
      * Describes an entry in a feed of collections
      *
-     * @param DOMElement $element (optional) DOMElement from which this
-     *          object should be constructed.
+     * @param DOMElement $element
+     *            (optional) DOMElement from which this
+     *            object should be constructed.
      */
-    public function __construct($element = null)
+    public function __construct ($element = null)
     {
         $this->registerAllNamespaces(Zend_Gdata_Books::$namespaces);
         parent::__construct($element);
     }
-
-
 }
 

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -21,46 +22,56 @@
  */
 
 /**
- * @category   Zend
- * @package    Zend_Service
+ *
+ * @category Zend
+ * @package Zend_Service
  * @subpackage DeveloperGarden
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @author     Marco Kaiser
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @author Marco Kaiser
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Service_DeveloperGarden_ConferenceCall_ConferenceSchedule
 {
+
     /**
+     *
      * @var integer
      */
     public $minute = null;
 
     /**
+     *
      * @var integer
      */
     public $hour = null;
 
     /**
+     *
      * @var integer
      */
     public $dayOfMonth = null;
 
     /**
+     *
      * @var integer
      */
     public $month = null;
 
     /**
+     *
      * @var integer
      */
     public $year = null;
 
     /**
+     *
      * @var integer
      */
     public $recurring = 0;
 
     /**
+     *
      * @var integer
      */
     public $notify = 0;
@@ -71,33 +82,34 @@ class Zend_Service_DeveloperGarden_ConferenceCall_ConferenceSchedule
      * @var array
      */
     private $_recurringValues = array(
-        0 => 'no recurring',
-        1 => 'hourly',
-        2 => 'daily',
-        3 => 'weekly',
-        4 => 'monthly',
+            0 => 'no recurring',
+            1 => 'hourly',
+            2 => 'daily',
+            3 => 'weekly',
+            4 => 'monthly'
     );
 
     /**
      * constructor for schedule object, all times are in UTC
      *
-     * @param integer $minute
-     * @param integer $hour
-     * @param integer $dayOfMonth
-     * @param integer $month
-     * @param integer $year
-     * @param integer $recurring
-     * @param integer $notify
+     * @param integer $minute            
+     * @param integer $hour            
+     * @param integer $dayOfMonth            
+     * @param integer $month            
+     * @param integer $year            
+     * @param integer $recurring            
+     * @param integer $notify            
      */
-    public function __construct($minute, $hour, $dayOfMonth, $month, $year, $recurring = 0, $notify = 0)
+    public function __construct ($minute, $hour, $dayOfMonth, $month, $year, 
+            $recurring = 0, $notify = 0)
     {
         $this->setMinute($minute)
-             ->setHour($hour)
-             ->setDayOfMonth($dayOfMonth)
-             ->setMonth($month)
-             ->setYear($year)
-             ->setRecurring($recurring)
-             ->setNotify($notify);
+            ->setHour($hour)
+            ->setDayOfMonth($dayOfMonth)
+            ->setMonth($month)
+            ->setYear($year)
+            ->setRecurring($recurring)
+            ->setNotify($notify);
     }
 
     /**
@@ -105,7 +117,7 @@ class Zend_Service_DeveloperGarden_ConferenceCall_ConferenceSchedule
      *
      * @return integer
      */
-    public function getMinute()
+    public function getMinute ()
     {
         return $this->minute;
     }
@@ -113,10 +125,10 @@ class Zend_Service_DeveloperGarden_ConferenceCall_ConferenceSchedule
     /**
      * sets $minute
      *
-     * @param integer $minute
+     * @param integer $minute            
      * @return Zend_Service_DeveloperGarden_ConferenceCall_ConferenceSchedule
      */
-    public function setMinute($minute)
+    public function setMinute ($minute)
     {
         $this->minute = $minute;
         return $this;
@@ -127,7 +139,7 @@ class Zend_Service_DeveloperGarden_ConferenceCall_ConferenceSchedule
      *
      * @return integer
      */
-    public function getHour()
+    public function getHour ()
     {
         return $this->hour;
     }
@@ -135,10 +147,10 @@ class Zend_Service_DeveloperGarden_ConferenceCall_ConferenceSchedule
     /**
      * sets $hour
      *
-     * @param integer $hour
+     * @param integer $hour            
      * @return Zend_Service_DeveloperGarden_ConferenceCall_ConferenceSchedule
      */
-    public function setHour($hour)
+    public function setHour ($hour)
     {
         $this->hour = $hour;
         return $this;
@@ -149,7 +161,7 @@ class Zend_Service_DeveloperGarden_ConferenceCall_ConferenceSchedule
      *
      * @return integer
      */
-    public function getDayOfMonth()
+    public function getDayOfMonth ()
     {
         return $this->dayOfMonth;
     }
@@ -157,10 +169,10 @@ class Zend_Service_DeveloperGarden_ConferenceCall_ConferenceSchedule
     /**
      * sets $dayOfMonth
      *
-     * @param integer $dayOfMonth
+     * @param integer $dayOfMonth            
      * @return Zend_Service_DeveloperGarden_ConferenceCall_ConferenceSchedule
      */
-    public function setDayOfMonth($dayOfMonth)
+    public function setDayOfMonth ($dayOfMonth)
     {
         $this->dayOfMonth = $dayOfMonth;
         return $this;
@@ -171,7 +183,7 @@ class Zend_Service_DeveloperGarden_ConferenceCall_ConferenceSchedule
      *
      * @return integer
      */
-    public function getMonth()
+    public function getMonth ()
     {
         return $this->month;
     }
@@ -179,10 +191,10 @@ class Zend_Service_DeveloperGarden_ConferenceCall_ConferenceSchedule
     /**
      * sets $month
      *
-     * @param integer $month
+     * @param integer $month            
      * @return Zend_Service_DeveloperGarden_ConferenceCall_ConferenceSchedule
      */
-    public function setMonth($month)
+    public function setMonth ($month)
     {
         $this->month = $month;
         return $this;
@@ -193,7 +205,7 @@ class Zend_Service_DeveloperGarden_ConferenceCall_ConferenceSchedule
      *
      * @return integer
      */
-    public function getYear()
+    public function getYear ()
     {
         return $this->year;
     }
@@ -201,10 +213,10 @@ class Zend_Service_DeveloperGarden_ConferenceCall_ConferenceSchedule
     /**
      * sets $year
      *
-     * @param integer $year
+     * @param integer $year            
      * @return Zend_Service_DeveloperGarden_ConferenceCall_ConferenceSchedule
      */
-    public function setYear($year)
+    public function setYear ($year)
     {
         $this->year = $year;
         return $this;
@@ -215,7 +227,7 @@ class Zend_Service_DeveloperGarden_ConferenceCall_ConferenceSchedule
      *
      * @return integer
      */
-    public function getRecurring()
+    public function getRecurring ()
     {
         return $this->recurring;
     }
@@ -223,16 +235,15 @@ class Zend_Service_DeveloperGarden_ConferenceCall_ConferenceSchedule
     /**
      * sets $recurring
      *
-     * @param integer $recurring
+     * @param integer $recurring            
      * @return Zend_Service_DeveloperGarden_ConferenceCall_ConferenceSchedule
      */
-    public function setRecurring($recurring)
+    public function setRecurring ($recurring)
     {
-        if (!array_key_exists($recurring, $this->_recurringValues)) {
+        if (! array_key_exists($recurring, $this->_recurringValues)) {
             require_once 'Zend/Service/DeveloperGarden/ConferenceCall/Exception.php';
             throw new Zend_Service_DeveloperGarden_ConferenceCall_Exception(
-                'Unknown ConferenceCall recurring mode.'
-            );
+                    'Unknown ConferenceCall recurring mode.');
         }
         $this->recurring = $recurring;
         return $this;
@@ -243,7 +254,7 @@ class Zend_Service_DeveloperGarden_ConferenceCall_ConferenceSchedule
      *
      * @return integer
      */
-    public function getNotify()
+    public function getNotify ()
     {
         return $this->notify;
     }
@@ -251,10 +262,10 @@ class Zend_Service_DeveloperGarden_ConferenceCall_ConferenceSchedule
     /**
      * sets $notify
      *
-     * @param integer $notify
+     * @param integer $notify            
      * @return Zend_Service_DeveloperGarden_ConferenceCall_ConferenceSchedule
      */
-    public function setNotify($notify)
+    public function setNotify ($notify)
     {
         $this->notify = $notify;
         return $this;

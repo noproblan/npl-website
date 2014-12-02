@@ -19,54 +19,61 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
 
-/** Zend_Dojo_Form_Element_ValidationTextBox */
+/**
+ * Zend_Dojo_Form_Element_ValidationTextBox
+ */
 require_once 'Zend/Dojo/Form/Element/ValidationTextBox.php';
 
 /**
  * DateTextBox dijit
  *
- * @uses       Zend_Dojo_Form_Element_ValidationTextBox
- * @package    Zend_Dojo
+ * @uses Zend_Dojo_Form_Element_ValidationTextBox
+ * @package Zend_Dojo
  * @subpackage Form_Element
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: DateTextBox.php 23775 2011-03-01 17:25:24Z ralph $
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
+ * @version $Id: DateTextBox.php 23775 2011-03-01 17:25:24Z ralph $
  */
 class Zend_Dojo_Form_Element_DateTextBox extends Zend_Dojo_Form_Element_ValidationTextBox
 {
+
     /**
      * Use DateTextBox dijit view helper
+     * 
      * @var string
      */
     public $helper = 'DateTextBox';
 
     /**
      * Allowed formatLength types
+     * 
      * @var array
      */
     protected $_allowedFormatTypes = array(
-        'long',
-        'short',
-        'medium',
-        'full',
+            'long',
+            'short',
+            'medium',
+            'full'
     );
 
     /**
      * Allowed selector types
+     * 
      * @var array
      */
     protected $_allowedSelectorTypes = array(
-        'time',
-        'date',
+            'time',
+            'date'
     );
 
     /**
      * Set am,pm flag
      *
-     * @param  bool $am,pm
+     * @param bool $am,pm            
      * @return Zend_Dojo_Form_Element_DateTextBox
      */
-    public function setAmPm($flag)
+    public function setAmPm ($flag)
     {
         $this->setConstraint('am,pm', (bool) $flag);
         return $this;
@@ -77,21 +84,21 @@ class Zend_Dojo_Form_Element_DateTextBox extends Zend_Dojo_Form_Element_Validati
      *
      * @return bool
      */
-    public function getAmPm()
+    public function getAmPm ()
     {
-        if (!$this->hasConstraint('am,pm')) {
+        if (! $this->hasConstraint('am,pm')) {
             return false;
         }
-        return ('true' ==$this->getConstraint('am,pm'));
+        return ('true' == $this->getConstraint('am,pm'));
     }
 
     /**
      * Set strict flag
      *
-     * @param  bool $strict
+     * @param bool $strict            
      * @return Zend_Dojo_Form_Element_DateTextBox
      */
-    public function setStrict($flag)
+    public function setStrict ($flag)
     {
         $this->setConstraint('strict', (bool) $flag);
         return $this;
@@ -102,9 +109,9 @@ class Zend_Dojo_Form_Element_DateTextBox extends Zend_Dojo_Form_Element_Validati
      *
      * @return bool
      */
-    public function getStrict()
+    public function getStrict ()
     {
-        if (!$this->hasConstraint('strict')) {
+        if (! $this->hasConstraint('strict')) {
             return false;
         }
         return ('true' == $this->getConstraint('strict'));
@@ -113,10 +120,10 @@ class Zend_Dojo_Form_Element_DateTextBox extends Zend_Dojo_Form_Element_Validati
     /**
      * Set locale
      *
-     * @param  string $locale
+     * @param string $locale            
      * @return Zend_Dojo_Form_Element_DateTextBox
      */
-    public function setLocale($locale)
+    public function setLocale ($locale)
     {
         $this->setConstraint('locale', (string) $locale);
         return $this;
@@ -127,7 +134,7 @@ class Zend_Dojo_Form_Element_DateTextBox extends Zend_Dojo_Form_Element_Validati
      *
      * @return string|null
      */
-    public function getLocale()
+    public function getLocale ()
     {
         return $this->getConstraint('locale');
     }
@@ -135,10 +142,10 @@ class Zend_Dojo_Form_Element_DateTextBox extends Zend_Dojo_Form_Element_Validati
     /**
      * Set date format pattern
      *
-     * @param  string $pattern
+     * @param string $pattern            
      * @return Zend_Dojo_Form_Element_NumberTextBox
      */
-    public function setDatePattern($pattern)
+    public function setDatePattern ($pattern)
     {
         $this->setConstraint('datePattern', (string) $pattern);
         return $this;
@@ -149,7 +156,7 @@ class Zend_Dojo_Form_Element_DateTextBox extends Zend_Dojo_Form_Element_Validati
      *
      * @return string|null
      */
-    public function getDatePattern()
+    public function getDatePattern ()
     {
         return $this->getConstraint('datePattern');
     }
@@ -157,18 +164,20 @@ class Zend_Dojo_Form_Element_DateTextBox extends Zend_Dojo_Form_Element_Validati
     /**
      * Set numeric format formatLength
      *
-     * @see    $_allowedFormatTypes
-     * @param  string $formatLength
+     * @see $_allowedFormatTypes
+     * @param string $formatLength            
      * @return Zend_Dojo_Form_Element_NumberTextBox
      */
-    public function setFormatLength($formatLength)
+    public function setFormatLength ($formatLength)
     {
         $formatLength = strtolower($formatLength);
-        if (!in_array($formatLength, $this->_allowedFormatTypes)) {
+        if (! in_array($formatLength, $this->_allowedFormatTypes)) {
             require_once 'Zend/Form/Element/Exception.php';
-            throw new Zend_Form_Element_Exception(sprintf('Invalid formatLength "%s" specified', $formatLength));
+            throw new Zend_Form_Element_Exception(
+                    sprintf('Invalid formatLength "%s" specified', 
+                            $formatLength));
         }
-
+        
         $this->setConstraint('formatLength', $formatLength);
         return $this;
     }
@@ -178,7 +187,7 @@ class Zend_Dojo_Form_Element_DateTextBox extends Zend_Dojo_Form_Element_Validati
      *
      * @return string|null
      */
-    public function getFormatLength()
+    public function getFormatLength ()
     {
         return $this->getConstraint('formatLength');
     }
@@ -186,18 +195,19 @@ class Zend_Dojo_Form_Element_DateTextBox extends Zend_Dojo_Form_Element_Validati
     /**
      * Set numeric format Selector
      *
-     * @see    $_allowedSelectorTypes
-     * @param  string $selector
+     * @see $_allowedSelectorTypes
+     * @param string $selector            
      * @return Zend_Dojo_Form_Element_NumberTextBox
      */
-    public function setSelector($selector)
+    public function setSelector ($selector)
     {
         $selector = strtolower($selector);
-        if (!in_array($selector, $this->_allowedSelectorTypes)) {
+        if (! in_array($selector, $this->_allowedSelectorTypes)) {
             require_once 'Zend/Form/Element/Exception.php';
-            throw new Zend_Form_Element_Exception(sprintf('Invalid Selector "%s" specified', $selector));
+            throw new Zend_Form_Element_Exception(
+                    sprintf('Invalid Selector "%s" specified', $selector));
         }
-
+        
         $this->setConstraint('selector', $selector);
         return $this;
     }
@@ -207,7 +217,7 @@ class Zend_Dojo_Form_Element_DateTextBox extends Zend_Dojo_Form_Element_Validati
      *
      * @return string|null
      */
-    public function getSelector()
+    public function getSelector ()
     {
         return $this->getConstraint('selector');
     }

@@ -20,69 +20,79 @@
  * @version    $Id: Pdf.php 23775 2011-03-01 17:25:24Z ralph $
  */
 
-/** @see Zend_Barcode_Renderer_RendererAbstract */
+/**
+ * @see Zend_Barcode_Renderer_RendererAbstract
+ */
 require_once 'Zend/Barcode/Renderer/RendererAbstract.php';
 
-/** @see Zend_Pdf */
+/**
+ * @see Zend_Pdf
+ */
 require_once 'Zend/Pdf.php';
 
-/** @see Zend_Pdf_Page */
+/**
+ * @see Zend_Pdf_Page
+ */
 require_once 'Zend/Pdf/Page.php';
 
-/** @see Zend_Pdf_Color_Rgb */
+/**
+ * @see Zend_Pdf_Color_Rgb
+ */
 require_once 'Zend/Pdf/Color/Rgb.php';
 
 /**
  * Class for rendering the barcode in PDF resource
  *
- * @category   Zend
- * @package    Zend_Barcode
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @category Zend
+ * @package Zend_Barcode
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Barcode_Renderer_Pdf extends Zend_Barcode_Renderer_RendererAbstract
 {
+
     /**
      * PDF resource
+     * 
      * @var Zend_Pdf
      */
     protected $_resource = null;
 
     /**
      * Page number in PDF resource
+     * 
      * @var integer
      */
     protected $_page = 0;
 
     /**
      * Module size rendering
+     * 
      * @var float
      */
     protected $_moduleSize = 0.5;
 
     /**
      * Set an image resource to draw the barcode inside
-     * @param resource $value
-     * @return Zend_Barcode_Renderer
-     * @throw Zend_Barcode_Renderer_Exception
+     * 
+     * @param resource $value            
+     * @return Zend_Barcode_Renderer @throw Zend_Barcode_Renderer_Exception
      */
-    public function setResource($pdf, $page = 0)
+    public function setResource ($pdf, $page = 0)
     {
-        if (!$pdf instanceof Zend_Pdf) {
+        if (! $pdf instanceof Zend_Pdf) {
             require_once 'Zend/Barcode/Renderer/Exception.php';
             throw new Zend_Barcode_Renderer_Exception(
-                'Invalid Zend_Pdf resource provided to setResource()'
-            );
+                    'Invalid Zend_Pdf resource provided to setResource()');
         }
-
+        
         $this->_resource = $pdf;
-        $this->_page     = intval($page);
-
-        if (!count($this->_resource->pages)) {
+        $this->_page = intval($page);
+        
+        if (! count($this->_resource->pages)) {
             $this->_page = 0;
-            $this->_resource->pages[] = new Zend_Pdf_Page(
-                Zend_Pdf_Page::SIZE_A4
-            );
+            $this->_resource->pages[] = new Zend_Pdf_Page(Zend_Pdf_Page::SIZE_A4);
         }
         return $this;
     }
@@ -92,15 +102,15 @@ class Zend_Barcode_Renderer_Pdf extends Zend_Barcode_Renderer_RendererAbstract
      *
      * @return void
      */
-    protected function _checkParams()
-    {
-    }
+    protected function _checkParams ()
+    {}
 
     /**
      * Draw the barcode in the PDF, send headers and the PDF
+     * 
      * @return mixed
      */
-    public function render()
+    public function render ()
     {
         $this->draw();
         header("Content-Type: application/pdf");
@@ -109,33 +119,34 @@ class Zend_Barcode_Renderer_Pdf extends Zend_Barcode_Renderer_RendererAbstract
 
     /**
      * Initialize the PDF resource
+     * 
      * @return void
      */
-    protected function _initRenderer()
+    protected function _initRenderer ()
     {
         if ($this->_resource === null) {
             $this->_resource = new Zend_Pdf();
-            $this->_resource->pages[] = new Zend_Pdf_Page(
-                Zend_Pdf_Page::SIZE_A4
-            );
+            $this->_resource->pages[] = new Zend_Pdf_Page(Zend_Pdf_Page::SIZE_A4);
         }
-
+        
         $pdfPage = $this->_resource->pages[$this->_page];
         $this->_adjustPosition($pdfPage->getHeight(), $pdfPage->getWidth());
     }
 
     /**
      * Draw a polygon in the rendering resource
-     * @param array $points
-     * @param integer $color
-     * @param boolean $filled
+     * 
+     * @param array $points            
+     * @param integer $color            
+     * @param boolean $filled            
      */
-    protected function _drawPolygon($points, $color, $filled = true)
+    protected function _drawPolygon ($points, $color, $filled = true)
     {
         $page = $this->_resource->pages[$this->_page];
         foreach ($points as $point) {
             $x[] = $point[0] * $this->_moduleSize + $this->_leftOffset;
-            $y[] = $page->getHeight() - $point[1] * $this->_moduleSize - $this->_topOffset;
+            $y[] = $page->getHeight() - $point[1] * $this->_moduleSize -
+                     $this->_topOffset;
         }
         if (count($y) == 4) {
             if ($x[0] != $x[3] && $y[0] == $y[3]) {
@@ -147,68 +158,54 @@ class Zend_Barcode_Renderer_Pdf extends Zend_Barcode_Renderer_RendererAbstract
                 $y[2] += ($this->_moduleSize / 2);
             }
         }
-
-        $color = new Zend_Pdf_Color_Rgb(
-            (($color & 0xFF0000) >> 16) / 255.0,
-            (($color & 0x00FF00) >> 8) / 255.0,
-            ($color & 0x0000FF) / 255.0
-        );
-
+        
+        $color = new Zend_Pdf_Color_Rgb((($color & 0xFF0000) >> 16) / 255.0, 
+                (($color & 0x00FF00) >> 8) / 255.0, ($color & 0x0000FF) / 255.0);
+        
         $page->setLineColor($color);
         $page->setFillColor($color);
         $page->setLineWidth($this->_moduleSize);
-
-        $fillType = ($filled)
-                  ? Zend_Pdf_Page::SHAPE_DRAW_FILL_AND_STROKE
-                  : Zend_Pdf_Page::SHAPE_DRAW_STROKE;
-
+        
+        $fillType = ($filled) ? Zend_Pdf_Page::SHAPE_DRAW_FILL_AND_STROKE : Zend_Pdf_Page::SHAPE_DRAW_STROKE;
+        
         $page->drawPolygon($x, $y, $fillType);
     }
 
     /**
      * Draw a text in the rendering resource
-     * @param string $text
-     * @param float $size
-     * @param array $position
-     * @param string $font
-     * @param integer $color
-     * @param string $alignment
-     * @param float $orientation
+     * 
+     * @param string $text            
+     * @param float $size            
+     * @param array $position            
+     * @param string $font            
+     * @param integer $color            
+     * @param string $alignment            
+     * @param float $orientation            
      */
-    protected function _drawText(
-        $text,
-        $size,
-        $position,
-        $font,
-        $color,
-        $alignment = 'center',
-        $orientation = 0
-    ) {
-        $page  = $this->_resource->pages[$this->_page];
-        $color = new Zend_Pdf_Color_Rgb(
-            (($color & 0xFF0000) >> 16) / 255.0,
-            (($color & 0x00FF00) >> 8) / 255.0,
-            ($color & 0x0000FF) / 255.0
-        );
-
+    protected function _drawText ($text, $size, $position, $font, $color, 
+            $alignment = 'center', $orientation = 0)
+    {
+        $page = $this->_resource->pages[$this->_page];
+        $color = new Zend_Pdf_Color_Rgb((($color & 0xFF0000) >> 16) / 255.0, 
+                (($color & 0x00FF00) >> 8) / 255.0, ($color & 0x0000FF) / 255.0);
+        
         $page->setLineColor($color);
         $page->setFillColor($color);
-        $page->setFont(Zend_Pdf_Font::fontWithPath($font), $size * $this->_moduleSize * 1.2);
-
-        $width = $this->widthForStringUsingFontSize(
-            $text,
-            Zend_Pdf_Font::fontWithPath($font),
-            $size * $this->_moduleSize
-        );
-
+        $page->setFont(Zend_Pdf_Font::fontWithPath($font), 
+                $size * $this->_moduleSize * 1.2);
+        
+        $width = $this->widthForStringUsingFontSize($text, 
+                Zend_Pdf_Font::fontWithPath($font), $size * $this->_moduleSize);
+        
         $angle = pi() * $orientation / 180;
         $left = $position[0] * $this->_moduleSize + $this->_leftOffset;
-        $top  = $page->getHeight() - $position[1] * $this->_moduleSize - $this->_topOffset;
-
+        $top = $page->getHeight() - $position[1] * $this->_moduleSize -
+                 $this->_topOffset;
+        
         switch ($alignment) {
             case 'center':
                 $left -= ($width / 2) * cos($angle);
-                $top  -= ($width / 2) * sin($angle);
+                $top -= ($width / 2) * sin($angle);
                 break;
             case 'right':
                 $left -= $width;
@@ -222,17 +219,19 @@ class Zend_Barcode_Renderer_Pdf extends Zend_Barcode_Renderer_RendererAbstract
     /**
      * Calculate the width of a string:
      * in case of using alignment parameter in drawText
-     * @param string $text
-     * @param Zend_Pdf_Font $font
-     * @param float $fontSize
+     * 
+     * @param string $text            
+     * @param Zend_Pdf_Font $font            
+     * @param float $fontSize            
      * @return float
      */
-    public function widthForStringUsingFontSize($text, $font, $fontSize)
+    public function widthForStringUsingFontSize ($text, $font, $fontSize)
     {
         $drawingString = iconv('UTF-8', 'UTF-16BE//IGNORE', $text);
-        $characters    = array();
+        $characters = array();
         for ($i = 0; $i < strlen($drawingString); $i ++) {
-            $characters[] = (ord($drawingString[$i ++]) << 8) | ord($drawingString[$i]);
+            $characters[] = (ord($drawingString[$i ++]) << 8) |
+                     ord($drawingString[$i]);
         }
         $glyphs = $font->glyphNumbersForCharacters($characters);
         $widths = $font->widthsForGlyphs($glyphs);

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <ldml>
 	<identity>
-		<version number="$Revision: 1.31 $"/>
-		<generation date="$Date: 2009/05/05 23:06:41 $"/>
-		<language type="zu"/>
+		<version number="$Revision: 1.31 $" />
+		<generation date="$Date: 2009/05/05 23:06:41 $" />
+		<language type="zu" />
 	</identity>
 	<fallback>en_ZA</fallback>
 	<localeDisplayNames>
@@ -119,7 +119,10 @@
 		</territories>
 	</localeDisplayNames>
 	<characters>
-		<exemplarCharacters>[a b {bh} c {ch} d {dl} {dy} e-g {gc} {gq} {gx} h {hh} {hl} i-k {kh} {kl} {kp} l-n {nc} {ngc} {ngq} {ngx} {nhl} {nk} {nkc} {nkq} {nkx} {nq} {ntsh} {nx} {ny} o p {ph} q {qh} r {rh} s {sh} t {th} {tl} {ts} {tsh} u-x {xh} y z]</exemplarCharacters>
+		<exemplarCharacters>[a b {bh} c {ch} d {dl} {dy} e-g {gc} {gq} {gx} h
+			{hh} {hl} i-k {kh} {kl} {kp} l-n {nc} {ngc} {ngq} {ngx} {nhl} {nk}
+			{nkc} {nkq} {nkx} {nq} {ntsh} {nx} {ny} o p {ph} q {qh} r {rh} s {sh}
+			t {th} {tl} {ts} {tsh} u-x {xh} y z]</exemplarCharacters>
 		<exemplarCharacters type="currencySymbol">[a-z]</exemplarCharacters>
 	</characters>
 	<delimiters>

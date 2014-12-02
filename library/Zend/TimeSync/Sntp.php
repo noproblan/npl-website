@@ -27,13 +27,15 @@ require_once 'Zend/TimeSync/Protocol.php';
 /**
  * SNTP Protocol handling class
  *
- * @category  Zend
- * @package   Zend_TimeSync
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license   http://framework.zend.com/license/new-bsd     New BSD License
+ * @category Zend
+ * @package Zend_TimeSync
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_TimeSync_Sntp extends Zend_TimeSync_Protocol
 {
+
     /**
      * Port number for this timeserver
      *
@@ -51,10 +53,12 @@ class Zend_TimeSync_Sntp extends Zend_TimeSync_Protocol
     /**
      * Class constructor, sets the timeserver and port number
      *
-     * @param string  $timeserver Timeserver to connect to
-     * @param integer $port       Port of the timeserver when it differs from the default port
+     * @param string $timeserver
+     *            Timeserver to connect to
+     * @param integer $port
+     *            Port of the timeserver when it differs from the default port
      */
-    public function __construct($timeserver, $port)
+    public function __construct ($timeserver, $port)
     {
         $this->_timeserver = 'udp://' . $timeserver;
         if ($port !== null) {
@@ -67,7 +71,7 @@ class Zend_TimeSync_Sntp extends Zend_TimeSync_Protocol
      *
      * @return array
      */
-    protected function _prepare()
+    protected function _prepare ()
     {
         return "\n";
     }
@@ -77,21 +81,22 @@ class Zend_TimeSync_Sntp extends Zend_TimeSync_Protocol
      *
      * @return string
      */
-    protected function _read()
+    protected function _read ()
     {
-        $result       = fread($this->_socket, 49);
+        $result = fread($this->_socket, 49);
         $this->_delay = (($this->_delay - time()) / 2);
-
+        
         return $result;
     }
 
     /**
      * Writes data to to the timeserver
      *
-     * @param  string $data Data to write to the timeserver
+     * @param string $data
+     *            Data to write to the timeserver
      * @return void
      */
-    protected function _write($data)
+    protected function _write ($data)
     {
         $this->_connect();
         $this->_delay = time();
@@ -101,19 +106,20 @@ class Zend_TimeSync_Sntp extends Zend_TimeSync_Protocol
     /**
      * Extracts the data returned from the timeserver
      *
-     * @param  string $result Data to extract
+     * @param string $result
+     *            Data to extract
      * @return integer
      */
-    protected function _extract($result)
+    protected function _extract ($result)
     {
-        $dec   = hexdec('7fffffff');
-        $time  = abs(($dec - hexdec(bin2hex($result))) - $dec);
+        $dec = hexdec('7fffffff');
+        $time = abs(($dec - hexdec(bin2hex($result))) - $dec);
         $time -= 2208988800;
         // Socket delay
         $time -= $this->_delay;
-
+        
         $this->_info['offset'] = $this->_delay;
-
+        
         return $time;
     }
 }

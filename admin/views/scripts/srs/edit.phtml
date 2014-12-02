@@ -1,345 +1,344 @@
 <div id="view-content">
-<div id="title">
-	<h1>Seat Reservation System → Seateditor</h1>
-</div>
+    <div id="title">
+        <h1>Seat Reservation System → Seateditor</h1>
+    </div>
 <?php echo $this->messages(); ?>
 <div id="information">
-<?= $this->partial('srs/submenu.phtml') ?>
+<?= $this->partial('srs/submenu.phtml')?>
 
-<script type="text/javascript" src="<?= $this->baseUrl('js/kinetic-v4.5.5.min.js') ?>"></script>
-<script type="text/javascript" src="<?= $this->baseUrl('js/seatmap.js?v=120928') ?>"></script>
+<script type="text/javascript"
+            src="<?= $this->baseUrl('js/kinetic-v4.5.5.min.js') ?>"></script>
+        <script type="text/javascript"
+            src="<?= $this->baseUrl('js/seatmap.js?v=120928') ?>"></script>
 
 <?php $this->headLink()->appendStylesheet($this->baseUrl('css/seateditor.css')); ?>
 <script>
 var selectedDesk = {
-	_desk: null,
-	set: function(desk) {
-		this.onDeselect();
-		this._desk = desk;
-		this.onSelect();
-		this._desk.getParent().draw();
-	},
-	get: function() {
-		return this._desk;
-	},
-	onSelect: function() {
-		this._desk.getChildren()[0].setStroke('red');
-	},
-	onDeselect: function() {
-		if (this._desk) {
-			this._desk.getChildren()[0].setStroke('black');
-		}
-	}
+    _desk: null,
+    set: function(desk) {
+        this.onDeselect();
+        this._desk = desk;
+        this.onSelect();
+        this._desk.getParent().draw();
+    },
+    get: function() {
+        return this._desk;
+    },
+    onSelect: function() {
+        this._desk.getChildren()[0].setStroke('red');
+    },
+    onDeselect: function() {
+        if (this._desk) {
+            this._desk.getChildren()[0].setStroke('black');
+        }
+    }
 };
 
 var updatePropertyList = function(desk) {
-	document.getElementById('current-index').value = desk.index;
-	document.getElementById('current-x').value = desk.getPosition().x;
-	document.getElementById('current-y').value = desk.getPosition().y;
-	document.getElementById('current-rotation').value = desk.getRotationDeg();
-	document.getElementById('current-left').checked = desk.leftseat ? true : false;
-	document.getElementById('current-right').checked = desk.rightseat ? true : false;
+    document.getElementById('current-index').value = desk.index;
+    document.getElementById('current-x').value = desk.getPosition().x;
+    document.getElementById('current-y').value = desk.getPosition().y;
+    document.getElementById('current-rotation').value = desk.getRotationDeg();
+    document.getElementById('current-left').checked = desk.leftseat ? true : false;
+    document.getElementById('current-right').checked = desk.rightseat ? true : false;
 };
 
 var updateDeskList = function(kineticsLayer) {
-	var oldValue = $('#desklist').val();
-	$('#desklist').empty();
-	$.each(kineticsLayer.getChildren(), function(index, kineticGroup) {
-	  document.getElementById('desklist').innerHTML += '<option value="'+index+'">'+kineticGroup.getName()+'</option>';
-	});
-	if (oldValue !== null) {
-		$('#desklist').val(oldValue);
-	}
+    var oldValue = $('#desklist').val();
+    $('#desklist').empty();
+    $.each(kineticsLayer.getChildren(), function(index, kineticGroup) {
+      document.getElementById('desklist').innerHTML += '<option value="'+index+'">'+kineticGroup.getName()+'</option>';
+    });
+    if (oldValue !== null) {
+        $('#desklist').val(oldValue);
+    }
 };
 
 window.onload = function() {
-	var stage = new Kinetic.Stage({
-		container: "canvas-container",
-		width: 1000,
-		height: 500
-	});
-	var deskLayer = new Kinetic.Layer();
-	stage.add(deskLayer);
-	stage.setScale(0.5);
-	
-	/* EVENTS *******************************************************************/
-	stage.on("click dragend", function(e) {
-		updateDeskList(deskLayer);
-		var currentDesk = selectedDesk.get();
-		if (currentDesk) {
-			document.getElementById('desklist').options[currentDesk.index].selected = true;
-			updatePropertyList(currentDesk);
-		}
-	});
-	
-	// Desk Movement
-	window.onkeydown = function(e) {
-		var key = {w: 87, a: 65, s: 83, d: 68, q: 81, e: 69, del: 46};
-		switch (e.keyCode) { // check, ob mich die gedrückte Taste was angeht
-			case key.w: // nach oben
-			case key.a: // nach links
-			case key.s: // nach unten
-			case key.d: // nach rechts
-			case key.q: // drehen im Gegenuhrzeigersinn
-			case key.e: // drehen im Uhrzeigersinn
-			case key.del: // löschen eines objektes
-				var desk = selectedDesk.get();
-				if (desk) {
-					switch(e.keyCode) {
-						case key.w:
-							var y = Math.round(desk.getPosition().y/10)*10;
-							desk.setY(y-10);
-						break;
-						case key.a:
-							var x = Math.round(desk.getPosition().x/10)*10;
-							desk.setX(x-10);
-						break;
-						case key.s:
-							var y = Math.round(desk.getPosition().y/10)*10;
-							desk.setY(y+10);
-						break;
-						case key.d:
-							var x = Math.round(desk.getPosition().x/10)*10;
-							desk.setX(x+10);
-						break;
-						case key.q:
-							var rot = Math.round(desk.getRotationDeg()/10)*10;
-							desk.setRotationDeg((rot-15)%360);
-						break;
-						case key.e:
-							var rot = Math.round(desk.getRotationDeg()/10)*10;
-							desk.setRotationDeg((rot+15)%360);
-						break;
-						case key.del:
-							alert("del");
-							$.ajax({
-								type: 'POST',
-					  			url: '<?= $this->baseUrl('srs/ajaxremove/') ?>',
-								data: {desk: parseInt(desk.getName())},
-							  	success: function (data) {
-								  	selectedDesk._desk = null;
-								  	deskLayer.remove(desk);
-								  	deskLayer.draw();
-							  	},
-							  	error: function (data) {
-							  		alert("Fehler! Hast du Netz? Ist der Server erreichbar?");
-							  	}
-							});
-						break;
-					}
-					updatePropertyList(desk);
-					desk.getParent().draw();
-				}
-			break;
-		}
-	};
-	
-	document.getElementById('desklist').onchange = function() {
-		var oldDesk = selectedDesk.get();
-		if (oldDesk) {
-			var index = parseInt($(this).val());
-			var newDesk = oldDesk.getParent().getChildren()[index];
-			selectedDesk.set(newDesk);
-			updatePropertyList(newDesk);
-		}
-	};
-	
-	document.getElementById('current-x').onchange = function() {
-		var desk = selectedDesk.get();
-		if (desk) {
-			desk.setX(parseInt(this.value));
-			desk.getParent().draw();
-		}
-	};
-	document.getElementById('current-y').onchange = function() {
-		var desk = selectedDesk.get();
-		if (desk) {
-			desk.setY(parseInt(this.value));
-			desk.getParent().draw();
-		}
-	};
-	document.getElementById('current-rotation').onchange = function() {
-		var desk = selectedDesk.get();
-		if (desk) {
-			desk.setRotationDeg(parseFloat(this.value));
-			desk.getParent().draw();
-		}
-	};
-	var updateSeats = function(desk) {
-		var layer = desk.getParent();
-		var newDesk = createDesk(
-			desk.getX(), 
-			desk.getY(), 
-			desk.getRotationDeg(), 
-			desk.getName(), 
-			document.getElementById('current-left').checked,
-			document.getElementById('current-right').checked
-		);
-		layer.add(newDesk);
-		selectedDesk.set(newDesk);
-		layer.remove(desk);
-		layer.draw();
-	};
-	document.getElementById('current-left').onchange = function() {
-		var desk = selectedDesk.get();
-		if (desk) {
-			updateSeats(desk);
-		}
-	};
-	document.getElementById('current-right').onchange = function() {
-		var desk = selectedDesk.get();
-		if (desk) {
-			updateSeats(desk);
-		}
-	};
-	document.getElementById('add-2-button').onclick = function() {
-		var desk = createDesk(5,5,0, "new", true, true);
-		deskLayer.add(desk);
-		deskLayer.draw();
-	};
-	document.getElementById('add-1-button').onclick = function() {
-		var desk = createDesk(5,5,0, "new", true, false);
-		deskLayer.add(desk);
-		deskLayer.draw();
-	};
+    var stage = new Kinetic.Stage({
+        container: "canvas-container",
+        width: 1000,
+        height: 500
+    });
+    var deskLayer = new Kinetic.Layer();
+    stage.add(deskLayer);
+    stage.setScale(0.5);
+    
+    /* EVENTS *******************************************************************/
+    stage.on("click dragend", function(e) {
+        updateDeskList(deskLayer);
+        var currentDesk = selectedDesk.get();
+        if (currentDesk) {
+            document.getElementById('desklist').options[currentDesk.index].selected = true;
+            updatePropertyList(currentDesk);
+        }
+    });
+    
+    // Desk Movement
+    window.onkeydown = function(e) {
+        var key = {w: 87, a: 65, s: 83, d: 68, q: 81, e: 69, del: 46};
+        switch (e.keyCode) { // check, ob mich die gedrückte Taste was angeht
+            case key.w: // nach oben
+            case key.a: // nach links
+            case key.s: // nach unten
+            case key.d: // nach rechts
+            case key.q: // drehen im Gegenuhrzeigersinn
+            case key.e: // drehen im Uhrzeigersinn
+            case key.del: // löschen eines objektes
+                var desk = selectedDesk.get();
+                if (desk) {
+                    switch(e.keyCode) {
+                        case key.w:
+                            var y = Math.round(desk.getPosition().y/10)*10;
+                            desk.setY(y-10);
+                        break;
+                        case key.a:
+                            var x = Math.round(desk.getPosition().x/10)*10;
+                            desk.setX(x-10);
+                        break;
+                        case key.s:
+                            var y = Math.round(desk.getPosition().y/10)*10;
+                            desk.setY(y+10);
+                        break;
+                        case key.d:
+                            var x = Math.round(desk.getPosition().x/10)*10;
+                            desk.setX(x+10);
+                        break;
+                        case key.q:
+                            var rot = Math.round(desk.getRotationDeg()/10)*10;
+                            desk.setRotationDeg((rot-15)%360);
+                        break;
+                        case key.e:
+                            var rot = Math.round(desk.getRotationDeg()/10)*10;
+                            desk.setRotationDeg((rot+15)%360);
+                        break;
+                        case key.del:
+                            alert("del");
+                            $.ajax({
+                                type: 'POST',
+                                  url: '<?= $this->baseUrl('srs/ajaxremove/') ?>',
+                                data: {desk: parseInt(desk.getName())},
+                                  success: function (data) {
+                                      selectedDesk._desk = null;
+                                      deskLayer.remove(desk);
+                                      deskLayer.draw();
+                                  },
+                                  error: function (data) {
+                                      alert("Fehler! Hast du Netz? Ist der Server erreichbar?");
+                                  }
+                            });
+                        break;
+                    }
+                    updatePropertyList(desk);
+                    desk.getParent().draw();
+                }
+            break;
+        }
+    };
+    
+    document.getElementById('desklist').onchange = function() {
+        var oldDesk = selectedDesk.get();
+        if (oldDesk) {
+            var index = parseInt($(this).val());
+            var newDesk = oldDesk.getParent().getChildren()[index];
+            selectedDesk.set(newDesk);
+            updatePropertyList(newDesk);
+        }
+    };
+    
+    document.getElementById('current-x').onchange = function() {
+        var desk = selectedDesk.get();
+        if (desk) {
+            desk.setX(parseInt(this.value));
+            desk.getParent().draw();
+        }
+    };
+    document.getElementById('current-y').onchange = function() {
+        var desk = selectedDesk.get();
+        if (desk) {
+            desk.setY(parseInt(this.value));
+            desk.getParent().draw();
+        }
+    };
+    document.getElementById('current-rotation').onchange = function() {
+        var desk = selectedDesk.get();
+        if (desk) {
+            desk.setRotationDeg(parseFloat(this.value));
+            desk.getParent().draw();
+        }
+    };
+    var updateSeats = function(desk) {
+        var layer = desk.getParent();
+        var newDesk = createDesk(
+            desk.getX(), 
+            desk.getY(), 
+            desk.getRotationDeg(), 
+            desk.getName(), 
+            document.getElementById('current-left').checked,
+            document.getElementById('current-right').checked
+        );
+        layer.add(newDesk);
+        selectedDesk.set(newDesk);
+        layer.remove(desk);
+        layer.draw();
+    };
+    document.getElementById('current-left').onchange = function() {
+        var desk = selectedDesk.get();
+        if (desk) {
+            updateSeats(desk);
+        }
+    };
+    document.getElementById('current-right').onchange = function() {
+        var desk = selectedDesk.get();
+        if (desk) {
+            updateSeats(desk);
+        }
+    };
+    document.getElementById('add-2-button').onclick = function() {
+        var desk = createDesk(5,5,0, "new", true, true);
+        deskLayer.add(desk);
+        deskLayer.draw();
+    };
+    document.getElementById('add-1-button').onclick = function() {
+        var desk = createDesk(5,5,0, "new", true, false);
+        deskLayer.add(desk);
+        deskLayer.draw();
+    };
 
-	// Speichere Map und Desks in der Datenbank
-	document.getElementById("save-button").onclick = function(e) {
-		var collectedDesks = [];
-		$.each(deskLayer.getChildren(), function(index, kinectGroup) {
-			console.log(kinectGroup);
-			collectedDesks[index] = {
-				id: parseInt(kinectGroup.getName()),
-				x: kinectGroup.getX(),
-				y: kinectGroup.getY(),
-				rotation: kinectGroup.getRotationDeg(),
-				seats: {
-					leftseat: kinectGroup.leftseat, 
-					rightseat: kinectGroup.rightseat
-				}
-			};
-		});
-		
-		$.ajax({
-			type: 'POST',
-  			url: '<?= $this->baseUrl('srs/ajaxsave/') ?>',
-			data: {
-		  		map: {
-		  			id: <?= (int)$this->map->getId() ?>, 
-				  	name: document.getElementById('map-name').value
-				}, 
-		  		desks: collectedDesks
-		  	},
-		  	success: function (data) {
-			  	console.log(data);
-		  		//window.location.href = "<?= $this->baseUrl("srs/edit/map/") ?>" + data;
-		  	},
-		  	error: function (data) {
-		  		alert("Fehler! Hast du Netz? Ist der Server erreichbar?");
-		  	}
-		});
-  	};
+    // Speichere Map und Desks in der Datenbank
+    document.getElementById("save-button").onclick = function(e) {
+        var collectedDesks = [];
+        $.each(deskLayer.getChildren(), function(index, kinectGroup) {
+            console.log(kinectGroup);
+            collectedDesks[index] = {
+                id: parseInt(kinectGroup.getName()),
+                x: kinectGroup.getX(),
+                y: kinectGroup.getY(),
+                rotation: kinectGroup.getRotationDeg(),
+                seats: {
+                    leftseat: kinectGroup.leftseat, 
+                    rightseat: kinectGroup.rightseat
+                }
+            };
+        });
+        
+        $.ajax({
+            type: 'POST',
+              url: '<?= $this->baseUrl('srs/ajaxsave/') ?>',
+            data: {
+                  map: {
+                      id: <?= (int)$this->map->getId() ?>, 
+                      name: document.getElementById('map-name').value
+                }, 
+                  desks: collectedDesks
+              },
+              success: function (data) {
+                  console.log(data);
+                  //window.location.href = "<?= $this->baseUrl("srs/edit/map/") ?>" + data;
+              },
+              error: function (data) {
+                  alert("Fehler! Hast du Netz? Ist der Server erreichbar?");
+              }
+        });
+      };
 
-  	document.getElementById("new-button").onclick = function(e) {
-  		window.location.href = "<?= $this->baseUrl("srs/edit/") ?>";
-  	};
-	document.getElementById("map-selection").onchange = function(e) {
-		window.location.href = "<?= $this->baseUrl("srs/edit/map/") ?>" + this.value;
-	};
-	
-	/* INITIALIZATION **********************************************************/
-	<?php foreach ($this->desks as $desk): /* @var $desk Application_Model_Desk */ ?>
-	<?php 
-	$leftSeat = "false";
-	$rightSeat = "false";
-	foreach($desk->getSeats() as $seat) { /* @var $seat Application_Model_Seat */
-		switch($seat->getSeatPositionId()) {
-			case 1: $leftSeat = $seat->getId(); break;
-			case 2: $rightSeat = $seat->getId(); break;
-		}
-	}
-	?>
-	deskLayer.add(createDesk(<?= 
-		$desk->getPositionX() ?>, <?= 
-		$desk->getPositionY() ?>, <?= 
-		$desk->getRotation() ?>, <?= 
-		$desk->getId() ?>, <?= 
-		$leftSeat ?>, <?= 
-		$rightSeat ?>));
-	<?php endforeach; ?>
-	deskLayer.draw();
+      document.getElementById("new-button").onclick = function(e) {
+          window.location.href = "<?= $this->baseUrl("srs/edit/") ?>";
+      };
+    document.getElementById("map-selection").onchange = function(e) {
+        window.location.href = "<?= $this->baseUrl("srs/edit/map/") ?>" + this.value;
+    };
+    
+    /* INITIALIZATION **********************************************************/
+    <?php foreach ($this->desks as $desk): /* @var $desk Application_Model_Desk */ ?>
+    <?php
+    $leftSeat = "false";
+    $rightSeat = "false";
+    foreach ($desk->getSeats() as $seat) { /* @var $seat Application_Model_Seat */
+        switch ($seat->getSeatPositionId()) {
+            case 1:
+                $leftSeat = $seat->getId();
+                break;
+            case 2:
+                $rightSeat = $seat->getId();
+                break;
+        }
+    }
+    ?>
+    deskLayer.add(createDesk(<?=$desk->getPositionX()?>, <?=$desk->getPositionY()?>, <?=$desk->getRotation()?>, <?=$desk->getId()?>, <?=$leftSeat?>, <?=$rightSeat?>));
+    <?php endforeach; ?>
+    deskLayer.draw();
 
-	updateDeskList(deskLayer);
+    updateDeskList(deskLayer);
 };
 </script>
 
-<div id="topmenu-container">
-	<button id="new-button" name="newMap" type="button">Neu</button>
-	<button id="save-button" name="saveMap" type="button">Speichern</button>
+        <div id="topmenu-container">
+            <button id="new-button" name="newMap" type="button">Neu</button>
+            <button id="save-button" name="saveMap" type="button">Speichern</button>
 
-	Laden:
-	<select id="map-selection">
-		<option value="0">Neu...</option>
-	<?php foreach ($this->mapIndexes as $mapIndex): ?>
-		<option value="<?= $mapIndex["id"] ?>" <?= 
-		$mapIndex["id"] == $this->map->getId() ? 'selected="selected"' : '' 
-		?>><?= $mapIndex["name"] ?></option>
-	<?php endforeach; ?>
-	</select>
-	
-	Name:
-	<input type="text" id="map-name" name="mapName" value="<?= $this->map->getName() ?>"/>
-</div>
+            Laden: <select id="map-selection">
+                <option value="0">Neu...</option>
+    <?php foreach ($this->mapIndexes as $mapIndex): ?>
+        <option value="<?= $mapIndex["id"] ?>"
+                    <?=$mapIndex["id"] == $this->map->getId() ? 'selected="selected"' : ''?>><?= $mapIndex["name"] ?></option>
+    <?php endforeach; ?>
+    </select> Name: <input type="text" id="map-name" name="mapName"
+                value="<?= $this->map->getName() ?>" />
+        </div>
 
- <div id="menu-container">
-	<div id="init-controls">
-		<button id="add-2-button" name="add2Desk" type="button">+ 2er Tisch</button><br/>
-		<button id="add-1-button" name="add1Desk" type="button">+ 1er Tisch</button>
-	</div>
-	
-	<div id="desklist-container">
-		<select id="desklist" size="19">
-		</select>
-	</div>
-	
-	<div id="properties-container">
-		<table>
-			<tr>
-				<td>Index: </td>
-				<td><input id="current-index" name="current-index" type="text" readonly="readonly"/></td>
-			</tr>
-			<tr>
-				<td>X: </td>
-				<td><input id="current-x" name="current-x" type="text"/></td>
-			</tr>
-			<tr>
-				<td>Y: </td>
-				<td><input id="current-y" name="current-y" type="text"/></td>
-			</tr>
-			<tr>
-				<td>Rot: </td>
-				<td><input id="current-rotation" name="current-rotation" type="text"/></td>
-			</tr>
-			<tr>
-				<td>Links: </td>
-				<td><input id="current-left" name="current-left" type="checkbox"/></td>
-			</tr>
-			<tr>
-				<td>Rechts: </td>
-				<td><input id="current-right" name="current-right" type="checkbox"/></td>
-			</tr>
-		</table>
-	</div>
-</div>
+        <div id="menu-container">
+            <div id="init-controls">
+                <button id="add-2-button" name="add2Desk" type="button">+ 2er Tisch</button>
+                <br />
+                <button id="add-1-button" name="add1Desk" type="button">+ 1er Tisch</button>
+            </div>
 
-<div id="canvas-container"></div>
+            <div id="desklist-container">
+                <select id="desklist" size="19">
+                </select>
+            </div>
 
-<div id="info-container">
-	<p>- Use w,a,s,d for movement and q,e for rotation.</p>
-	<p>- Double click on the canvas to create a new desk.</p>
-</div>
+            <div id="properties-container">
+                <table>
+                    <tr>
+                        <td>Index:</td>
+                        <td><input id="current-index" name="current-index" type="text"
+                            readonly="readonly" /></td>
+                    </tr>
+                    <tr>
+                        <td>X:</td>
+                        <td><input id="current-x" name="current-x" type="text" /></td>
+                    </tr>
+                    <tr>
+                        <td>Y:</td>
+                        <td><input id="current-y" name="current-y" type="text" /></td>
+                    </tr>
+                    <tr>
+                        <td>Rot:</td>
+                        <td><input id="current-rotation" name="current-rotation"
+                            type="text" /></td>
+                    </tr>
+                    <tr>
+                        <td>Links:</td>
+                        <td><input id="current-left" name="current-left" type="checkbox" /></td>
+                    </tr>
+                    <tr>
+                        <td>Rechts:</td>
+                        <td><input id="current-right" name="current-right" type="checkbox" /></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <div id="canvas-container"></div>
+
+        <div id="info-container">
+            <p>- Use w,a,s,d for movement and q,e for rotation.</p>
+            <p>- Double click on the canvas to create a new desk.</p>
+        </div>
 
 
-	
-</div>
+
+    </div>
 </div>

@@ -21,21 +21,24 @@
  */
 
 /**
+ *
  * @see Zend_Service_DeveloperGarden_Response_ResponseAbstract
  */
 require_once 'Zend/Service/DeveloperGarden/Response/ResponseAbstract.php';
 
 /**
- * @category   Zend
- * @package    Zend_Service
+ *
+ * @category Zend
+ * @package Zend_Service
  * @subpackage DeveloperGarden
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @author     Marco Kaiser
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @author Marco Kaiser
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
-class Zend_Service_DeveloperGarden_Response_BaseUserService_GetQuotaInformationResponse
-    extends Zend_Service_DeveloperGarden_Response_ResponseAbstract
+class Zend_Service_DeveloperGarden_Response_BaseUserService_GetQuotaInformationResponse extends Zend_Service_DeveloperGarden_Response_ResponseAbstract
 {
+
     /**
      * System defined limit of quota points per day
      *
@@ -63,7 +66,7 @@ class Zend_Service_DeveloperGarden_Response_BaseUserService_GetQuotaInformationR
      *
      * @return integer
      */
-    public function getQuotaLevel()
+    public function getQuotaLevel ()
     {
         return $this->quotaLevel;
     }
@@ -73,7 +76,7 @@ class Zend_Service_DeveloperGarden_Response_BaseUserService_GetQuotaInformationR
      *
      * @return integer
      */
-    public function getMaxUserQuota()
+    public function getMaxUserQuota ()
     {
         return $this->maxUserQuota;
     }
@@ -83,7 +86,7 @@ class Zend_Service_DeveloperGarden_Response_BaseUserService_GetQuotaInformationR
      *
      * @return integer
      */
-    public function getMaxQuota()
+    public function getMaxQuota ()
     {
         return $this->maxQuota;
     }

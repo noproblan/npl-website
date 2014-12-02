@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <ldml>
 	<identity>
-		<version number="$Revision: 1.54 $"/>
-		<generation date="$Date: 2009/06/15 03:46:25 $"/>
-		<language type="ar"/>
-		<territory type="DZ"/>
+		<version number="$Revision: 1.54 $" />
+		<generation date="$Date: 2009/06/15 03:46:25 $" />
+		<language type="ar" />
+		<territory type="DZ" />
 	</identity>
 	<localeDisplayNames>
 		<scripts>

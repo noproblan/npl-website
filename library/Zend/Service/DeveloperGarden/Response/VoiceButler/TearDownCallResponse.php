@@ -21,26 +21,30 @@
  */
 
 /**
+ *
  * @see Zend_Service_DeveloperGarden_Response_VoiceButler_VoiceButlerAbstract
  */
 require_once 'Zend/Service/DeveloperGarden/Response/VoiceButler/VoiceButlerAbstract.php';
 
 /**
- * @category   Zend
- * @package    Zend_Service
+ *
+ * @category Zend
+ * @package Zend_Service
  * @subpackage DeveloperGarden
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @author     Marco Kaiser
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @author Marco Kaiser
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
-class Zend_Service_DeveloperGarden_Response_VoiceButler_TearDownCallResponse
-    extends Zend_Service_DeveloperGarden_Response_VoiceButler_VoiceButlerAbstract
+class Zend_Service_DeveloperGarden_Response_VoiceButler_TearDownCallResponse extends Zend_Service_DeveloperGarden_Response_VoiceButler_VoiceButlerAbstract
 {
+
     /**
      * returns the session id
+     * 
      * @return string
      */
-    public function getSessionId()
+    public function getSessionId ()
     {
         if (isset($this->return->sessionId)) {
             return $this->return->sessionId;

@@ -24,21 +24,22 @@
 /**
  * Zend_Gdata_Books
  */
-require_once('Zend/Gdata/Books.php');
+require_once ('Zend/Gdata/Books.php');
 
 /**
  * Zend_Gdata_Query
  */
-require_once('Zend/Gdata/Query.php');
+require_once ('Zend/Gdata/Query.php');
 
 /**
  * Assists in constructing queries for Books volumes
  *
- * @category   Zend
- * @package    Zend_Gdata
+ * @category Zend
+ * @package Zend_Gdata
  * @subpackage Books
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Gdata_Books_VolumeQuery extends Zend_Gdata_Query
 {
@@ -46,21 +47,24 @@ class Zend_Gdata_Books_VolumeQuery extends Zend_Gdata_Query
     /**
      * Create Gdata_Books_VolumeQuery object
      *
-     * @param string|null $url If non-null, pre-initializes the instance to
-     *        use a given URL.
+     * @param string|null $url
+     *            If non-null, pre-initializes the instance to
+     *            use a given URL.
      */
-    public function __construct($url = null)
+    public function __construct ($url = null)
     {
         parent::__construct($url);
     }
 
     /**
-     * Sets the minimum level of viewability of volumes to return in the search results
+     * Sets the minimum level of viewability of volumes to return in the search
+     * results
      *
-     * @param string|null $value The minimum viewability - 'full' or 'partial'
+     * @param string|null $value
+     *            The minimum viewability - 'full' or 'partial'
      * @return Zend_Gdata_Books_VolumeQuery Provides a fluent interface
      */
-    public function setMinViewability($value = null)
+    public function setMinViewability ($value = null)
     {
         switch ($value) {
             case 'full_view':
@@ -81,7 +85,7 @@ class Zend_Gdata_Books_VolumeQuery extends Zend_Gdata_Query
      *
      * @return string|null min-viewability
      */
-    public function getMinViewability()
+    public function getMinViewability ()
     {
         if (array_key_exists('min-viewability', $this->_params)) {
             return $this->_params['min-viewability'];
@@ -95,7 +99,7 @@ class Zend_Gdata_Books_VolumeQuery extends Zend_Gdata_Query
      *
      * @return string The URL
      */
-    public function getQueryUrl()
+    public function getQueryUrl ()
     {
         if (isset($this->_url)) {
             $url = $this->_url;
@@ -108,5 +112,4 @@ class Zend_Gdata_Books_VolumeQuery extends Zend_Gdata_Query
         $url = $url . $this->getQueryString();
         return $url;
     }
-
 }

@@ -1,50 +1,50 @@
 <div id="view-content">
-	<div id="title">
-		<h1>Benutzerverwaltung</h1>
-	</div>
-	<?php echo $this->messages(); ?>
-	<div id="information">
-		<?= $this->partial('user/submenu.phtml') ?>
-		<p>
-		Liste aller eingetragenen Benutzer (<?= count($this->users) ?>):
-		</p>
-	</div>
-	
-	<div id="user-table">
-	<table>
-		<tr>
-			<th>Id</th>
-			<th>Username</th>
-			<th>Email</th>
-			<th>Registrierung</th>
-		</tr>
-	<?php foreach($this->users as $user): ?>
-		<?php
-		$activeClass = '';
-		if (!$user['active']) {
-			$activeClass = 'inactive';
-		}
-		$idClass = '';
-		if (!$user['identified']) {
-			$idClass = 'unidentified';
-		}
-		?>
-		<tr>
-			<td><?= $user['id'] ?></td>
-			<td class="<?= $activeClass ?>"><?= $user['username'] ?></td>
-			<td class="<?= $idClass ?>"><?= $user['mail'] ?></td>
-			<td><?= $user['registerdate'] ?></td>
-		</tr>
-	<?php endforeach; ?>
-	</table>
-	</div>
-	
-	<script type="text/javascript">
-	$(document).ready(function() {
-		$(".inactive").css('color', 'red');
-		$(".inactive").addTooltip("User ist deaktiviert!");
-		$(".unidentified").css('color', 'red');
-		$(".unidentified").addTooltip("Mailadresse nicht bestätigt!");
+    <div id="title">
+        <h1>Benutzerverwaltung</h1>
+    </div>
+    <?php echo $this->messages(); ?>
+    <div id="information">
+        <?= $this->partial('user/submenu.phtml')?>
+        <p>
+        Liste aller eingetragenen Benutzer (<?= count($this->users) ?>):
+        </p>
+    </div>
+
+    <div id="user-table">
+        <table>
+            <tr>
+                <th>Id</th>
+                <th>Username</th>
+                <th>Email</th>
+                <th>Registrierung</th>
+            </tr>
+    <?php foreach($this->users as $user): ?>
+        <?php
+    $activeClass = '';
+    if (! $user['active']) {
+        $activeClass = 'inactive';
+    }
+    $idClass = '';
+    if (! $user['identified']) {
+        $idClass = 'unidentified';
+    }
+    ?>
+        <tr>
+                <td><?= $user['id'] ?></td>
+                <td class="<?= $activeClass ?>"><?= $user['username'] ?></td>
+                <td class="<?= $idClass ?>"><?= $user['mail'] ?></td>
+                <td><?= $user['registerdate'] ?></td>
+            </tr>
+    <?php endforeach; ?>
+    </table>
+    </div>
+
+    <script type="text/javascript">
+    $(document).ready(function() {
+        $(".inactive").css('color', 'red');
+        $(".inactive").addTooltip("User ist deaktiviert!");
+        $(".unidentified").css('color', 'red');
+        $(".unidentified").addTooltip("Mailadresse nicht bestätigt!");
     });
-	</script>
+    </script>
 </div>

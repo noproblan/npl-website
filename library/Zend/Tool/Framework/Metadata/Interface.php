@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -21,10 +22,12 @@
  */
 
 /**
- * @category   Zend
- * @package    Zend_Tool
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ *
+ * @category Zend
+ * @package Zend_Tool
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 interface Zend_Tool_Framework_Metadata_Interface
 {
@@ -33,20 +36,16 @@ interface Zend_Tool_Framework_Metadata_Interface
      * getType()
      *
      * The type of metadata this describes
-     *
      */
-    public function getType();
+    public function getType ();
 
     /**
      * getName()
-     *
      */
-    public function getName();
+    public function getName ();
 
     /**
      * getValue()
-     *
      */
-    public function getValue();
-
+    public function getValue ();
 }

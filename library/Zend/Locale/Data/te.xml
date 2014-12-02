@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <ldml>
 	<identity>
-		<version number="$Revision: 1.81 $"/>
-		<generation date="$Date: 2009/06/15 03:46:26 $"/>
-		<language type="te"/>
+		<version number="$Revision: 1.81 $" />
+		<generation date="$Date: 2009/06/15 03:46:26 $" />
+		<language type="te" />
 	</identity>
 	<localeDisplayNames>
 		<languages>
@@ -754,7 +754,8 @@
 			<territory type="GP">గ్వాడేలోప్</territory>
 			<territory type="GQ">ఎక్వేటోరియాల్ గినియా</territory>
 			<territory type="GR">గ్రీస్</territory>
-			<territory type="GS">దక్షిణ జార్జియా మరియు దక్షిణ సాండ్విచ్ దీవులు</territory>
+			<territory type="GS">దక్షిణ జార్జియా మరియు దక్షిణ సాండ్విచ్
+				దీవులు</territory>
 			<territory type="GT">గ్వాటిమాల</territory>
 			<territory type="GU">గ్వామ్</territory>
 			<territory type="GW">గినియా-బిస్సావ్</territory>
@@ -896,7 +897,8 @@
 			<territory type="TZ">టాంజానియా</territory>
 			<territory type="UA">యుక్రెన్</territory>
 			<territory type="UG">యుగాండా</territory>
-			<territory type="UM">సంయుక్త రాజ్య అమెరికా యునైటెడ్ స్టేట్స్ మైనర్ బయట ఉన్న దీవులు</territory>
+			<territory type="UM">సంయుక్త రాజ్య అమెరికా యునైటెడ్ స్టేట్స్
+				మైనర్ బయట ఉన్న దీవులు</territory>
 			<territory type="US">సంయుక్త రాజ్య అమెరికా</territory>
 			<territory type="UY">ఉరుగువే</territory>
 			<territory type="UZ">ఉజ్బెకిస్తాన్</territory>
@@ -924,7 +926,8 @@
 	</localeDisplayNames>
 	<characters>
 		<exemplarCharacters>[అ-ఋ ౠ ఌ ౡ ఎ-ఐ ఒ-న ప-ళ వ-హ ఁ-ః ్ ా-ౄ ె-ై ొ-ౌ ౕ ౖ]</exemplarCharacters>
-		<exemplarCharacters type="auxiliary">[\u200C \u200D ౦-౯ b c e g m q t]</exemplarCharacters>
+		<exemplarCharacters type="auxiliary">[\u200C \u200D ౦-౯ b c e g
+			m q t]</exemplarCharacters>
 	</characters>
 	<delimiters>
 		<quotationStart>'</quotationStart>

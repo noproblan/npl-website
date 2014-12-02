@@ -20,22 +20,22 @@
  * @version    $Id: Row.php 23775 2011-03-01 17:25:24Z ralph $
  */
 
-
 /**
+ *
  * @see Zend_Db_Table_Row_Abstract
  */
 require_once 'Zend/Db/Table/Row/Abstract.php';
-
 
 /**
  * Reference concrete class that extends Zend_Db_Table_Row_Abstract.
  * Developers may also create their own classes that extend the abstract class.
  *
- * @category   Zend
- * @package    Zend_Db
+ * @category Zend
+ * @package Zend_Db
  * @subpackage Table
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Db_Table_Row extends Zend_Db_Table_Row_Abstract
 {

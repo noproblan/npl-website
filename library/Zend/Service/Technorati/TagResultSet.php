@@ -20,77 +20,88 @@
  * @version    $Id: TagResultSet.php 23775 2011-03-01 17:25:24Z ralph $
  */
 
-
 /**
+ *
  * @see Zend_Service_Technorati_ResultSet
  */
 require_once 'Zend/Service/Technorati/ResultSet.php';
 
-
 /**
  * Represents a Technorati Tag query result set.
  *
- * @category   Zend
- * @package    Zend_Service
+ * @category Zend
+ * @package Zend_Service
  * @subpackage Technorati
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Service_Technorati_TagResultSet extends Zend_Service_Technorati_ResultSet
 {
+
     /**
      * Number of posts that match the tag.
      *
-     * @var     int
-     * @access  protected
+     * @var int
+     * @access protected
      */
     protected $_postsMatched;
 
     /**
      * Number of blogs that match the tag.
      *
-     * @var     int
-     * @access  protected
+     * @var int
+     * @access protected
      */
     protected $_blogsMatched;
 
     /**
      * Parses the search response and retrieve the results for iteration.
      *
-     * @param   DomDocument $dom    the ReST fragment for this object
-     * @param   array $options      query options as associative array
+     * @param DomDocument $dom
+     *            the ReST fragment for this object
+     * @param array $options
+     *            query options as associative array
      */
-    public function __construct(DomDocument $dom, $options = array())
+    public function __construct (DomDocument $dom, $options = array())
     {
         parent::__construct($dom, $options);
-
-        $result = $this->_xpath->query('/tapi/document/result/postsmatched/text()');
-        if ($result->length == 1) $this->_postsMatched = (int) $result->item(0)->data;
-
-        $result = $this->_xpath->query('/tapi/document/result/blogsmatched/text()');
-        if ($result->length == 1) $this->_blogsMatched = (int) $result->item(0)->data;
-
-        $this->_totalResultsReturned  = (int) $this->_xpath->evaluate("count(/tapi/document/item)");
-        /** @todo Validate the following assertion */
+        
+        $result = $this->_xpath->query(
+                '/tapi/document/result/postsmatched/text()');
+        if ($result->length == 1)
+            $this->_postsMatched = (int) $result->item(0)->data;
+        
+        $result = $this->_xpath->query(
+                '/tapi/document/result/blogsmatched/text()');
+        if ($result->length == 1)
+            $this->_blogsMatched = (int) $result->item(0)->data;
+        
+        $this->_totalResultsReturned = (int) $this->_xpath->evaluate(
+                "count(/tapi/document/item)");
+        /**
+         * @todo Validate the following assertion
+         */
         $this->_totalResultsAvailable = (int) $this->getPostsMatched();
     }
-
 
     /**
      * Returns the number of posts that match the tag.
      *
-     * @return  int
+     * @return int
      */
-    public function getPostsMatched() {
+    public function getPostsMatched ()
+    {
         return $this->_postsMatched;
     }
 
     /**
      * Returns the number of blogs that match the tag.
      *
-     * @return  int
+     * @return int
      */
-    public function getBlogsMatched() {
+    public function getBlogsMatched ()
+    {
         return $this->_blogsMatched;
     }
 
@@ -99,12 +110,14 @@ class Zend_Service_Technorati_TagResultSet extends Zend_Service_Technorati_Resul
      *
      * @return Zend_Service_Technorati_TagResult current result
      */
-    public function current()
+    public function current ()
     {
         /**
+         *
          * @see Zend_Service_Technorati_TagResult
          */
         require_once 'Zend/Service/Technorati/TagResult.php';
-        return new Zend_Service_Technorati_TagResult($this->_results->item($this->_currentIndex));
+        return new Zend_Service_Technorati_TagResult(
+                $this->_results->item($this->_currentIndex));
     }
 }

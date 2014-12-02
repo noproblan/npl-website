@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <ldml>
 	<identity>
-		<version number="$Revision: 1.15 $"/>
-		<generation date="$Date: 2009/06/15 04:15:33 $"/>
-		<language type="bo"/>
+		<version number="$Revision: 1.15 $" />
+		<generation date="$Date: 2009/06/15 04:15:33 $" />
+		<language type="bo" />
 	</identity>
 	<localeDisplayNames>
 		<languages>
@@ -24,12 +24,13 @@
 			<language type="la">ལེ་ཊིན་སྐད།</language>
 			<language type="ne">ནེ་པ་ལི</language>
 			<language type="pt">ཕི་ཐོ་ཡའི།</language>
-			<language type="pt_BR">པ་ཞའི་མི།  ཕི་ཐོ་ཡའི་མི།</language>
+			<language type="pt_BR">པ་ཞའི་མི། ཕི་ཐོ་ཡའི་མི།</language>
 			<language type="ru">ཨུ་རུ་སུ་སྐད་</language>
-			<language type="und">མིའི་ཤེས་རྟོགས་མ་བྱུང་བ། ཡང་ན་ཆད་ལྷག་ཅན་གྱི་སྐད་བརྡ།</language>
+			<language type="und">མིའི་ཤེས་རྟོགས་མ་བྱུང་བ།
+				ཡང་ན་ཆད་ལྷག་ཅན་གྱི་སྐད་བརྡ།</language>
 			<language type="zen">ཟེ་ན་གཱ་སྐད།</language>
 			<language type="zh">རྒྱ་སྐད་</language>
-			<language type="zh_Hans">སྟབས་བརྡའི།  ཀྲུང་གོའི།</language>
+			<language type="zh_Hans">སྟབས་བརྡའི། ཀྲུང་གོའི།</language>
 			<language type="zh_Hant">སྲོལ་རྒྱུན་གྱི།</language>
 			<language type="zu">ཟུ་ལུ་སྐད།</language>
 			<language type="zun">ཟུ་ནི་སྐད།</language>
@@ -42,8 +43,9 @@
 			<script type="Hant">གནའ་དུས་རྒྱའི་སྐད་ཡིག།</script>
 			<script type="Latn">ལ་ཏིན་སྐད་ཡིག་།</script>
 			<script type="Tibt">བོད་ཡིག་</script>
-			<script type="Zxxx">སྙན་བརྒྱུད།  ཡིག་རིགས་སུ་མ་བཀོད་པའི་ཟིན་ཐོ།་</script>
-			<script type="Zzzz">མིའི་ཤེས་རྟོགས་མ་བྱུང་བ། ཡང་ན་ཆད་ལྷག་ཅན་གྱི་ཟིན་བྲིས།</script>
+			<script type="Zxxx">སྙན་བརྒྱུད། ཡིག་རིགས་སུ་མ་བཀོད་པའི་ཟིན་ཐོ།་</script>
+			<script type="Zzzz">མིའི་ཤེས་རྟོགས་མ་བྱུང་བ།
+				ཡང་ན་ཆད་ལྷག་ཅན་གྱི་ཟིན་བྲིས།</script>
 		</scripts>
 		<territories>
 			<territory type="001">འཛམ་གླིང་།</territory>
@@ -240,7 +242,17 @@
 		</measurementSystemNames>
 	</localeDisplayNames>
 	<characters>
-		<exemplarCharacters>[\u0F7E ཿ ་ ། ༎ ༠-༩ ཀ {ཀ\u0FB5} \u0F90 {\u0F90\u0FB5} ཁ \u0F91 ག {ག\u0FB7} \u0F92 {\u0F92\u0FB7} ང \u0F94 ཅ \u0F95 ཆ \u0F96 ཇ \u0F97 ཉ \u0F99 ཊ \u0F9A ཋ \u0F9B ཌ {ཌ\u0FB7} \u0F9C {\u0F9C\u0FB7} ཎ \u0F9E ཏ \u0F9F ཐ \u0FA0 ད {ད\u0FB7} \u0FA1 {\u0FA1\u0FB7} ན \u0FA3 པ \u0FA4 ཕ \u0FA5 བ {བ\u0FB7} \u0FA6 {\u0FA6\u0FB7} མ \u0FA8 ཙ \u0FA9 ཚ \u0FAA ཛ {ཛ\u0FB7} \u0FAB {\u0FAB\u0FB7} ཝ \u0FAD \u0FBA ཞ \u0FAE ཟ \u0FAF འ \u0FB0 ཡ \u0FB1 \u0FBB ར ཪ \u0FB2 \u0FBC ལ \u0FB3 ཤ \u0FB4 ཥ \u0FB5 ས \u0FB6 ཧ \u0FB7 ཨ \u0FB8 \u0F71 \u0F72 {\u0F71\u0F72} \u0F80 {\u0F71\u0F80} \u0F74 {\u0F71\u0F74} {\u0FB2\u0F80} \u0F77 {\u0FB3\u0F80} \u0F79-\u0F7D \u0F84]</exemplarCharacters>
+		<exemplarCharacters>[\u0F7E ཿ ་ ། ༎ ༠-༩ ཀ {ཀ\u0FB5} \u0F90
+			{\u0F90\u0FB5} ཁ \u0F91 ག {ག\u0FB7} \u0F92 {\u0F92\u0FB7} ང \u0F94 ཅ
+			\u0F95 ཆ \u0F96 ཇ \u0F97 ཉ \u0F99 ཊ \u0F9A ཋ \u0F9B ཌ {ཌ\u0FB7}
+			\u0F9C {\u0F9C\u0FB7} ཎ \u0F9E ཏ \u0F9F ཐ \u0FA0 ད {ད\u0FB7} \u0FA1
+			{\u0FA1\u0FB7} ན \u0FA3 པ \u0FA4 ཕ \u0FA5 བ {བ\u0FB7} \u0FA6
+			{\u0FA6\u0FB7} མ \u0FA8 ཙ \u0FA9 ཚ \u0FAA ཛ {ཛ\u0FB7} \u0FAB
+			{\u0FAB\u0FB7} ཝ \u0FAD \u0FBA ཞ \u0FAE ཟ \u0FAF འ \u0FB0 ཡ \u0FB1
+			\u0FBB ར ཪ \u0FB2 \u0FBC ལ \u0FB3 ཤ \u0FB4 ཥ \u0FB5 ས \u0FB6 ཧ \u0FB7
+			ཨ \u0FB8 \u0F71 \u0F72 {\u0F71\u0F72} \u0F80 {\u0F71\u0F80} \u0F74
+			{\u0F71\u0F74} {\u0FB2\u0F80} \u0F77 {\u0FB3\u0F80} \u0F79-\u0F7D
+			\u0F84]</exemplarCharacters>
 		<exemplarCharacters type="auxiliary">[ༀ]</exemplarCharacters>
 	</characters>
 	<dates>
@@ -366,7 +378,7 @@
 						<displayName>གཟའ་འཁོར་གཅིག</displayName>
 					</field>
 					<field type="dayperiod">
-						<displayName>སྔ་དྲོ།   ཕྱི་དྲོ།</displayName>
+						<displayName>སྔ་དྲོ། ཕྱི་དྲོ།</displayName>
 					</field>
 					<field type="hour">
 						<displayName>ཆུ་ཙོ་</displayName>

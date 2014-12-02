@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <ldml>
 	<identity>
-		<version number="$Revision: 1.19 $"/>
-		<generation date="$Date: 2009/06/15 03:46:25 $"/>
-		<language type="to"/>
+		<version number="$Revision: 1.19 $" />
+		<generation date="$Date: 2009/06/15 03:46:25 $" />
+		<language type="to" />
 	</identity>
 	<localeDisplayNames>
 		<localeDisplayPattern>
@@ -230,8 +230,10 @@
 		</measurementSystemNames>
 	</localeDisplayNames>
 	<characters>
-		<exemplarCharacters>[a á ā e é ē f h ʻ i í ī k-n {ng} o ó ō p s-u ú ū v]</exemplarCharacters>
-		<exemplarCharacters type="auxiliary">[à ă â å ä æ b c ç d è ĕ ê ë g ì ĭ î ï j ñ ò ŏ ô ö ø œ q r ß ù ŭ û ü w-y ÿ z]</exemplarCharacters>
+		<exemplarCharacters>[a á ā e é ē f h ʻ i í ī k-n {ng} o ó ō p s-u ú ū
+			v]</exemplarCharacters>
+		<exemplarCharacters type="auxiliary">[à ă â å ä æ b c ç d è ĕ ê
+			ë g ì ĭ î ï j ñ ò ŏ ô ö ø œ q r ß ù ŭ û ü w-y ÿ z]</exemplarCharacters>
 		<exemplarCharacters type="currencySymbol">[a-z]</exemplarCharacters>
 	</characters>
 	<delimiters>

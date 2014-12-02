@@ -22,6 +22,7 @@
  */
 
 /**
+ *
  * @see Zend_Gdata_App_CaptchaRequiredException
  */
 require_once 'Zend/Gdata/App/AuthException.php';
@@ -34,14 +35,16 @@ require_once 'Zend/Gdata/App/AuthException.php';
  * challenge is a visual puzzle presented to the user to prove that they are
  * not an automated system.
  *
- * @category   Zend
- * @package    Zend_Gdata
+ * @category Zend
+ * @package Zend_Gdata
  * @subpackage App
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Gdata_App_CaptchaRequiredException extends Zend_Gdata_App_AuthException
 {
+
     /**
      * The Google Accounts URL prefix.
      */
@@ -64,12 +67,16 @@ class Zend_Gdata_App_CaptchaRequiredException extends Zend_Gdata_App_AuthExcepti
     /**
      * Constructs the exception to handle a CAPTCHA required response.
      *
-     * @param string $captchaToken The CAPTCHA token ID provided by the server.
-     * @param string $captchaUrl The URL to the CAPTCHA challenge image.
+     * @param string $captchaToken
+     *            The CAPTCHA token ID provided by the server.
+     * @param string $captchaUrl
+     *            The URL to the CAPTCHA challenge image.
      */
-    public function __construct($captchaToken, $captchaUrl) {
+    public function __construct ($captchaToken, $captchaUrl)
+    {
         $this->captchaToken = $captchaToken;
-        $this->captchaUrl = Zend_Gdata_App_CaptchaRequiredException::ACCOUNTS_URL . $captchaUrl;
+        $this->captchaUrl = Zend_Gdata_App_CaptchaRequiredException::ACCOUNTS_URL .
+                 $captchaUrl;
         parent::__construct('CAPTCHA challenge issued by server');
     }
 
@@ -78,7 +85,8 @@ class Zend_Gdata_App_CaptchaRequiredException extends Zend_Gdata_App_AuthExcepti
      *
      * @return string
      */
-    public function getCaptchaToken() {
+    public function getCaptchaToken ()
+    {
         return $this->captchaToken;
     }
 
@@ -87,8 +95,8 @@ class Zend_Gdata_App_CaptchaRequiredException extends Zend_Gdata_App_AuthExcepti
      *
      * @return string
      */
-    public function getCaptchaUrl() {
+    public function getCaptchaUrl ()
+    {
         return $this->captchaUrl;
     }
-
 }

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <ldml>
 	<identity>
-		<version number="$Revision: 1.126 $"/>
-		<generation date="$Date: 2009/06/16 21:53:37 $"/>
-		<language type="ar"/>
+		<version number="$Revision: 1.126 $" />
+		<generation date="$Date: 2009/06/16 21:53:37 $" />
+		<language type="ar" />
 	</identity>
 	<localeDisplayNames>
 		<localeDisplayPattern>
@@ -97,12 +97,16 @@
 			<language type="cmc">اللغات التشاميكية</language>
 			<language type="co">الكورسيكية</language>
 			<language type="cop">قبطية</language>
-			<language type="cpe">الكرييولى و اللغات المبسطة الأخرى للتفاهم بين الشعوب على أساس الأنجليزية</language>
-			<language type="cpf">الكرييولى و اللغات المبسطة الأخرى للتفاهم بين الشعوب على أساس الفرنسية</language>
-			<language type="cpp">الكرييولى و اللغات المبسطة الأخرى للتفاهم بين الشعوب على أساس البرتغالية</language>
+			<language type="cpe">الكرييولى و اللغات المبسطة الأخرى للتفاهم بين
+				الشعوب على أساس الأنجليزية</language>
+			<language type="cpf">الكرييولى و اللغات المبسطة الأخرى للتفاهم بين
+				الشعوب على أساس الفرنسية</language>
+			<language type="cpp">الكرييولى و اللغات المبسطة الأخرى للتفاهم بين
+				الشعوب على أساس البرتغالية</language>
 			<language type="cr">الكرى</language>
 			<language type="crh">تركى كريمين، لغة توركية كريمينية</language>
-			<language type="crp">الكرييولى و اللغات المبسطة الأخرى للتفاهم بين الشعوب - أخرى</language>
+			<language type="crp">الكرييولى و اللغات المبسطة الأخرى للتفاهم بين
+				الشعوب - أخرى</language>
 			<language type="cs">التشيكية</language>
 			<language type="csb">الكاشبايان</language>
 			<language type="cu">سلافية كنسية</language>
@@ -947,7 +951,7 @@
 		</codePatterns>
 	</localeDisplayNames>
 	<layout>
-		<orientation characters="right-to-left"/>
+		<orientation characters="right-to-left" />
 	</layout>
 	<characters>
 		<exemplarCharacters>[\u064B-\u0652 ء-غ ف-ي]</exemplarCharacters>
@@ -1290,9 +1294,12 @@
 							<greatestDifference id="y">d‏/M‏/yyyy - d‏/M‏/yyyy</greatestDifference>
 						</intervalFormatItem>
 						<intervalFormatItem id="yMEd">
-							<greatestDifference id="d">E، dd‏/MM‏/yyyy - E، dd‏/MM‏/yyyy</greatestDifference>
-							<greatestDifference id="M">E، d‏/M‏/yyyy - E، d‏/M‏/yyyy</greatestDifference>
-							<greatestDifference id="y">E، d‏/M‏/yyyy - E، d‏/M‏/yyyy</greatestDifference>
+							<greatestDifference id="d">E، dd‏/MM‏/yyyy - E،
+								dd‏/MM‏/yyyy</greatestDifference>
+							<greatestDifference id="M">E، d‏/M‏/yyyy - E،
+								d‏/M‏/yyyy</greatestDifference>
+							<greatestDifference id="y">E، d‏/M‏/yyyy - E،
+								d‏/M‏/yyyy</greatestDifference>
 						</intervalFormatItem>
 						<intervalFormatItem id="yMMM">
 							<greatestDifference id="M">MMM - MMM، y</greatestDifference>
@@ -1306,7 +1313,8 @@
 						<intervalFormatItem id="yMMMEd">
 							<greatestDifference id="d">E، d - ِE، d MMM، yyyy</greatestDifference>
 							<greatestDifference id="M">E، d MMM - E، d MMM، y</greatestDifference>
-							<greatestDifference id="y">E، d MMM، y - E، d MMM، y</greatestDifference>
+							<greatestDifference id="y">E، d MMM، y - E، d MMM،
+								y</greatestDifference>
 						</intervalFormatItem>
 						<intervalFormatItem id="yMMMM">
 							<greatestDifference id="M">MM ‏– MM‏-yyyy‏</greatestDifference>

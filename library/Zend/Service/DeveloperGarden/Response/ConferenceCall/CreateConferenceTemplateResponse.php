@@ -21,21 +21,24 @@
  */
 
 /**
+ *
  * @see Zend_Service_DeveloperGarden_Response_ConferenceCall_ConferenceCallAbstract
  */
 require_once 'Zend/Service/DeveloperGarden/Response/ConferenceCall/ConferenceCallAbstract.php';
 
 /**
- * @category   Zend
- * @package    Zend_Service
+ *
+ * @category Zend
+ * @package Zend_Service
  * @subpackage DeveloperGarden
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @author     Marco Kaiser
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @author Marco Kaiser
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
-class Zend_Service_DeveloperGarden_Response_ConferenceCall_CreateConferenceTemplateResponse
-    extends Zend_Service_DeveloperGarden_Response_ConferenceCall_ConferenceCallAbstract
+class Zend_Service_DeveloperGarden_Response_ConferenceCall_CreateConferenceTemplateResponse extends Zend_Service_DeveloperGarden_Response_ConferenceCall_ConferenceCallAbstract
 {
+
     /**
      * response data
      *

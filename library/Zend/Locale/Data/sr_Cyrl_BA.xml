@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <ldml>
 	<identity>
-		<version number="$Revision: 1.40 $"/>
-		<generation date="$Date: 2009/06/15 03:46:25 $"/>
-		<language type="sr"/>
-		<script type="Cyrl"/>
-		<territory type="BA"/>
+		<version number="$Revision: 1.40 $" />
+		<generation date="$Date: 2009/06/15 03:46:25 $" />
+		<language type="sr" />
+		<script type="Cyrl" />
+		<territory type="BA" />
 	</identity>
 	<localeDisplayNames>
 		<languages>
@@ -82,9 +82,12 @@
 							<greatestDifference id="y">yy-MM-dd - yy-MM-dd</greatestDifference>
 						</intervalFormatItem>
 						<intervalFormatItem id="yMEd">
-							<greatestDifference id="d">E, yy-MM-dd - E, yy-MM-dd</greatestDifference>
-							<greatestDifference id="M">E, yy-MM-dd - E, yy-MM-dd</greatestDifference>
-							<greatestDifference id="y">E, yy-MM-dd - E, yy-MM-dd</greatestDifference>
+							<greatestDifference id="d">E, yy-MM-dd - E,
+								yy-MM-dd</greatestDifference>
+							<greatestDifference id="M">E, yy-MM-dd - E,
+								yy-MM-dd</greatestDifference>
+							<greatestDifference id="y">E, yy-MM-dd - E,
+								yy-MM-dd</greatestDifference>
 						</intervalFormatItem>
 					</intervalFormats>
 				</dateTimeFormats>

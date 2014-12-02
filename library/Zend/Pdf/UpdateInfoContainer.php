@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -19,16 +20,17 @@
  * @version    $Id: UpdateInfoContainer.php 23775 2011-03-01 17:25:24Z ralph $
  */
 
-
 /**
  * Container which collects updated object info.
  *
- * @package    Zend_Pdf
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @package Zend_Pdf
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Pdf_UpdateInfoContainer
 {
+
     /**
      * Object number
      *
@@ -42,7 +44,6 @@ class Zend_Pdf_UpdateInfoContainer
      * @var integer
      */
     private $_genNum;
-
 
     /**
      * Flag, which signals, that object is free
@@ -61,14 +62,14 @@ class Zend_Pdf_UpdateInfoContainer
     /**
      * Object constructor
      *
-     * @param integer $objCount
+     * @param integer $objCount            
      */
-    public function __construct($objNum, $genNum, $isFree, $dump = null)
+    public function __construct ($objNum, $genNum, $isFree, $dump = null)
     {
         $this->_objNum = $objNum;
         $this->_genNum = $genNum;
         $this->_isFree = $isFree;
-
+        
         if ($dump !== null) {
             if (strlen($dump) > 1024) {
                 require_once 'Zend/Pdf.php';
@@ -79,13 +80,12 @@ class Zend_Pdf_UpdateInfoContainer
         }
     }
 
-
     /**
      * Get object number
      *
      * @return integer
      */
-    public function getObjNum()
+    public function getObjNum ()
     {
         return $this->_objNum;
     }
@@ -95,7 +95,7 @@ class Zend_Pdf_UpdateInfoContainer
      *
      * @return integer
      */
-    public function getGenNum()
+    public function getGenNum ()
     {
         return $this->_genNum;
     }
@@ -105,7 +105,7 @@ class Zend_Pdf_UpdateInfoContainer
      *
      * @return boolean
      */
-    public function isFree()
+    public function isFree ()
     {
         return $this->_isFree;
     }
@@ -115,16 +115,16 @@ class Zend_Pdf_UpdateInfoContainer
      *
      * @return string
      */
-    public function getObjectDump()
+    public function getObjectDump ()
     {
         if ($this->_dump === null) {
             return '';
         }
-
+        
         if (is_string($this->_dump)) {
             return $this->_dump;
         }
-
+        
         return $this->_dump->getRef();
     }
 }

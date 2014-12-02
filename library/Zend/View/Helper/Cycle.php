@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -23,16 +24,18 @@
 /**
  * Helper for alternating between set of values
  *
- * @package    Zend_View
+ * @package Zend_View
  * @subpackage Helper
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_View_Helper_Cycle implements Iterator
 {
 
     /**
      * Default name
+     * 
      * @var string
      */
     const DEFAULT_NAME = 'default';
@@ -42,14 +45,18 @@ class Zend_View_Helper_Cycle implements Iterator
      *
      * @var array
      */
-    protected $_pointers = array(self::DEFAULT_NAME =>-1) ;
+    protected $_pointers = array(
+            self::DEFAULT_NAME => - 1
+    );
 
     /**
      * Array of values
      *
      * @var array
      */
-    protected $_data = array(self::DEFAULT_NAME=>array());
+    protected $_data = array(
+            self::DEFAULT_NAME => array()
+    );
 
     /**
      * Actual name of cycle
@@ -61,15 +68,15 @@ class Zend_View_Helper_Cycle implements Iterator
     /**
      * Add elements to alternate
      *
-     * @param array $data
-     * @param string $name
+     * @param array $data            
+     * @param string $name            
      * @return Zend_View_Helper_Cycle
      */
-    public function cycle(array $data = array(), $name = self::DEFAULT_NAME)
+    public function cycle (array $data = array(), $name = self::DEFAULT_NAME)
     {
-        if(!empty($data))
-           $this->_data[$name] = $data;
-
+        if (! empty($data))
+            $this->_data[$name] = $data;
+        
         $this->setName($name);
         return $this;
     }
@@ -77,11 +84,11 @@ class Zend_View_Helper_Cycle implements Iterator
     /**
      * Add elements to alternate
      *
-     * @param array $data
-     * @param string $name
+     * @param array $data            
+     * @param string $name            
      * @return Zend_View_Helper_Cycle
      */
-    public function assign(Array $data , $name = self::DEFAULT_NAME)
+    public function assign (Array $data, $name = self::DEFAULT_NAME)
     {
         $this->setName($name);
         $this->_data[$name] = $data;
@@ -92,20 +99,20 @@ class Zend_View_Helper_Cycle implements Iterator
     /**
      * Sets actual name of cycle
      *
-     * @param string $name
+     * @param string $name            
      * @return Zend_View_Helper_Cycle
      */
-    public function setName($name = self::DEFAULT_NAME)
+    public function setName ($name = self::DEFAULT_NAME)
     {
-       $this->_name = $name;
-
-       if(!isset($this->_data[$this->_name]))
-         $this->_data[$this->_name] = array();
-
-       if(!isset($this->_pointers[$this->_name]))
-         $this->rewind();
-
-       return $this;
+        $this->_name = $name;
+        
+        if (! isset($this->_data[$this->_name]))
+            $this->_data[$this->_name] = array();
+        
+        if (! isset($this->_pointers[$this->_name]))
+            $this->rewind();
+        
+        return $this;
     }
 
     /**
@@ -113,18 +120,17 @@ class Zend_View_Helper_Cycle implements Iterator
      *
      * @return string
      */
-    public function getName()
+    public function getName ()
     {
         return $this->_name;
     }
-
 
     /**
      * Return all elements
      *
      * @return array
      */
-    public function getAll()
+    public function getAll ()
     {
         return $this->_data[$this->_name];
     }
@@ -134,7 +140,7 @@ class Zend_View_Helper_Cycle implements Iterator
      *
      * @return string
      */
-    public function toString()
+    public function toString ()
     {
         return (string) $this->_data[$this->_name][$this->key()];
     }
@@ -144,7 +150,7 @@ class Zend_View_Helper_Cycle implements Iterator
      *
      * @return string
      */
-    public function __toString()
+    public function __toString ()
     {
         return $this->toString();
     }
@@ -154,13 +160,13 @@ class Zend_View_Helper_Cycle implements Iterator
      *
      * @return Zend_View_Helper_Cycle
      */
-    public function next()
+    public function next ()
     {
         $count = count($this->_data[$this->_name]);
         if ($this->_pointers[$this->_name] == ($count - 1))
             $this->_pointers[$this->_name] = 0;
         else
-            $this->_pointers[$this->_name] = ++$this->_pointers[$this->_name];
+            $this->_pointers[$this->_name] = ++ $this->_pointers[$this->_name];
         return $this;
     }
 
@@ -169,13 +175,13 @@ class Zend_View_Helper_Cycle implements Iterator
      *
      * @return Zend_View_Helper_Cycle
      */
-    public function prev()
+    public function prev ()
     {
         $count = count($this->_data[$this->_name]);
         if ($this->_pointers[$this->_name] <= 0)
             $this->_pointers[$this->_name] = $count - 1;
         else
-            $this->_pointers[$this->_name] = --$this->_pointers[$this->_name];
+            $this->_pointers[$this->_name] = -- $this->_pointers[$this->_name];
         return $this;
     }
 
@@ -184,7 +190,7 @@ class Zend_View_Helper_Cycle implements Iterator
      *
      * @return int
      */
-    public function key()
+    public function key ()
     {
         if ($this->_pointers[$this->_name] < 0)
             return 0;
@@ -197,9 +203,9 @@ class Zend_View_Helper_Cycle implements Iterator
      *
      * @return Zend_View_Helper_Cycle
      */
-    public function rewind()
+    public function rewind ()
     {
-        $this->_pointers[$this->_name] = -1;
+        $this->_pointers[$this->_name] = - 1;
         return $this;
     }
 
@@ -208,17 +214,17 @@ class Zend_View_Helper_Cycle implements Iterator
      *
      * @return bool
      */
-    public function valid()
+    public function valid ()
     {
         return isset($this->_data[$this->_name][$this->key()]);
     }
 
     /**
-     * Return  current element
+     * Return current element
      *
      * @return mixed
      */
-    public function current()
+    public function current ()
     {
         return $this->_data[$this->_name][$this->key()];
     }

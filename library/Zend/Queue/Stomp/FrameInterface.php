@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -23,14 +24,16 @@
 /**
  * This class represents a Stomp Frame Interface
  *
- * @category   Zend
- * @package    Zend_Queue
+ * @category Zend
+ * @package Zend_Queue
  * @subpackage Stomp
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 interface Zend_Queue_Stomp_FrameInterface
 {
+
     /**
      * Get the status of the auto content length
      *
@@ -41,57 +44,57 @@ interface Zend_Queue_Stomp_FrameInterface
      *
      * @return boolean
      */
-    public function getAutoContentLength();
+    public function getAutoContentLength ();
 
     /**
      * setAutoContentLength()
      *
      * Set the value on or off.
      *
-     * @param boolean $auto
+     * @param boolean $auto            
      * @return $this;
      * @throws Zend_Queue_Exception
      */
-    public function setAutoContentLength($auto);
+    public function setAutoContentLength ($auto);
 
     /**
      * Get the headers
      *
      * @return array
      */
-    public function getHeaders();
+    public function getHeaders ();
 
     /**
      * Set the headers
      *
      * Throws an exception if the array values are not strings.
      *
-     * @param array $headers
+     * @param array $headers            
      * @return $this
      * @throws Zend_Queue_Exception
      */
-    public function setHeaders(array $headers);
+    public function setHeaders (array $headers);
 
     /**
      * Returns a value for a header
      * returns false if the header does not exist
      *
-     * @param string $header
+     * @param string $header            
      * @return $string
      * @throws Zend_Queue_Exception
      */
-    public function getHeader($header);
+    public function getHeader ($header);
 
     /**
      * Returns a value for a header
      * returns false if the header does not exist
      *
-     * @param string $header
-     * @param string $value
+     * @param string $header            
+     * @param string $value            
      * @return $this
      * @throws Zend_Queue_Exception
      */
-    public function setHeader($header, $value);
+    public function setHeader ($header, $value);
 
     /**
      * Return the body for this frame
@@ -99,7 +102,7 @@ interface Zend_Queue_Stomp_FrameInterface
      *
      * @return $this
      */
-    public function getBody();
+    public function getBody ();
 
     /**
      * Set the body for this frame
@@ -107,11 +110,11 @@ interface Zend_Queue_Stomp_FrameInterface
      *
      * Set to null for no body.
      *
-     * @param string|null $body
+     * @param string|null $body            
      * @return $this
      * @throws Zend_Queue_Exception
      */
-    public function setBody($body);
+    public function setBody ($body);
 
     /**
      * Return the command for this frame
@@ -119,7 +122,7 @@ interface Zend_Queue_Stomp_FrameInterface
      *
      * @return $this
      */
-    public function getCommand();
+    public function getCommand ();
 
     /**
      * Set the body for this frame
@@ -128,8 +131,7 @@ interface Zend_Queue_Stomp_FrameInterface
      * @return $this
      * @throws Zend_Queue_Exception
      */
-    public function setCommand($command);
-
+    public function setCommand ($command);
 
     /**
      * Takes the current parameters and returns a Stomp Frame
@@ -137,18 +139,20 @@ interface Zend_Queue_Stomp_FrameInterface
      * @throws Zend_Queue_Exception
      * @return string
      */
-    public function toFrame();
+    public function toFrame ();
 
     /**
+     *
      * @see toFrame()
      */
-    public function __toString();
+    public function __toString ();
 
     /**
      * Accepts a frame and deconstructs the frame into its' component parts
      *
-     * @param string $frame - a stomp frame
+     * @param string $frame
+     *            - a stomp frame
      * @return $this
      */
-    public function fromFrame($frame);
+    public function fromFrame ($frame);
 }

@@ -20,13 +20,18 @@
  */
 
 /**
+ *
  * @see Zend_Exception
  */
 require_once 'Zend/Exception.php';
 
 /**
- * @package    Zend_Cache
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ *
+ * @package Zend_Cache
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
-class Zend_Cache_Exception extends Zend_Exception {}
+class Zend_Cache_Exception extends Zend_Exception
+{
+}

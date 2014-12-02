@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <ldml>
 	<identity>
-		<version number="$Revision: 1.109 $"/>
-		<generation date="$Date: 2009/06/15 03:46:24 $"/>
-		<language type="ca"/>
+		<version number="$Revision: 1.109 $" />
+		<generation date="$Date: 2009/06/15 03:46:24 $" />
+		<language type="ca" />
 	</identity>
 	<fallback>es_ES</fallback>
 	<localeDisplayNames>
@@ -100,7 +100,8 @@
 			<language type="cop">copte</language>
 			<language type="cpe">llengua criolla o pidgin basada en l'anglès</language>
 			<language type="cpf">llengua criolla o pidgin basada en el francès</language>
-			<language type="cpp">llengua criolla o pidgin basada en el portuguès</language>
+			<language type="cpp">llengua criolla o pidgin basada en el
+				portuguès</language>
 			<language type="cr">cree</language>
 			<language type="crh">tàtar de Crimea</language>
 			<language type="crp">llengua criolla o pidgin</language>
@@ -778,7 +779,8 @@
 			<territory type="GU">Guam</territory>
 			<territory type="GW">Guinea Bissau</territory>
 			<territory type="GY">Guyana</territory>
-			<territory type="HK">Regió administrativa especial xinesa de Hong Kong</territory>
+			<territory type="HK">Regió administrativa especial xinesa de
+				Hong Kong</territory>
 			<territory type="HM">Illa Heard i Illes McDonald</territory>
 			<territory type="HN">Hondures</territory>
 			<territory type="HR">Croàcia</territory>
@@ -831,7 +833,8 @@
 			<territory type="ML">Mali</territory>
 			<territory type="MM">Myanmar</territory>
 			<territory type="MN">Mongòlia</territory>
-			<territory type="MO">Regió administrativa especial xinesa de Macau</territory>
+			<territory type="MO">Regió administrativa especial xinesa de
+				Macau</territory>
 			<territory type="MP">Illes Mariannes del Nord</territory>
 			<territory type="MQ">Martinica</territory>
 			<territory type="MR">Mauritània</territory>
@@ -998,8 +1001,10 @@
 		</codePatterns>
 	</localeDisplayNames>
 	<characters>
-		<exemplarCharacters>[a à b c ç d e é è f-i í ï j-l ŀ m-o ó ò p-u ú ü v-z]</exemplarCharacters>
-		<exemplarCharacters type="auxiliary">[á ă â å ä ã ā æ ĕ ê ë ē ì ĭ î ī ñ º ŏ ô ö ø ō œ ß ù ŭ û ū ÿ]</exemplarCharacters>
+		<exemplarCharacters>[a à b c ç d e é è f-i í ï j-l ŀ m-o ó ò p-u ú ü
+			v-z]</exemplarCharacters>
+		<exemplarCharacters type="auxiliary">[á ă â å ä ã ā æ ĕ ê ë ē ì
+			ĭ î ī ñ º ŏ ô ö ø ō œ ß ù ŭ û ū ÿ]</exemplarCharacters>
 		<exemplarCharacters type="currencySymbol">[a-c č d-l ł m-o º p-z]</exemplarCharacters>
 	</characters>
 	<delimiters>
@@ -1247,7 +1252,8 @@
 						</intervalFormatItem>
 						<intervalFormatItem id="MMMEd">
 							<greatestDifference id="d">E d - E d 'de' MMM</greatestDifference>
-							<greatestDifference id="M">E d 'de' MMM - E d 'de' MMM</greatestDifference>
+							<greatestDifference id="M">E d 'de' MMM - E d 'de'
+								MMM</greatestDifference>
 						</intervalFormatItem>
 						<intervalFormatItem id="MMMM">
 							<greatestDifference id="M">LLLL-LLLL</greatestDifference>
@@ -1275,13 +1281,18 @@
 						</intervalFormatItem>
 						<intervalFormatItem id="yMMMd">
 							<greatestDifference id="d">d-d 'de' MMM 'de' y</greatestDifference>
-							<greatestDifference id="M">d 'de' MMM - d 'de' MMM 'de' y</greatestDifference>
-							<greatestDifference id="y">d 'de' MMM 'de' y - d 'de' MMM 'de' y</greatestDifference>
+							<greatestDifference id="M">d 'de' MMM - d 'de' MMM
+								'de' y</greatestDifference>
+							<greatestDifference id="y">d 'de' MMM 'de' y - d
+								'de' MMM 'de' y</greatestDifference>
 						</intervalFormatItem>
 						<intervalFormatItem id="yMMMEd">
-							<greatestDifference id="d">E d - E d 'de' MMM 'de' y</greatestDifference>
-							<greatestDifference id="M">E d 'de' MMM - E d 'de' MMM 'de' y</greatestDifference>
-							<greatestDifference id="y">E d 'de' MMM 'de' y - E d 'de' MMM 'de' y</greatestDifference>
+							<greatestDifference id="d">E d - E d 'de' MMM 'de'
+								y</greatestDifference>
+							<greatestDifference id="M">E d 'de' MMM - E d 'de'
+								MMM 'de' y</greatestDifference>
+							<greatestDifference id="y">E d 'de' MMM 'de' y - E
+								d 'de' MMM 'de' y</greatestDifference>
 						</intervalFormatItem>
 						<intervalFormatItem id="yMMMM">
 							<greatestDifference id="M">MM – MM-yyyy</greatestDifference>
@@ -1953,8 +1964,10 @@
 			</currency>
 			<currency type="BAM">
 				<displayName>marc convertible de Bòsnia i Hercegovina</displayName>
-				<displayName count="one">marc convertible de Bòsnia i Hercegovina</displayName>
-				<displayName count="other">marcs convertibles de Bòsnia i Hercegovina</displayName>
+				<displayName count="one">marc convertible de Bòsnia i
+					Hercegovina</displayName>
+				<displayName count="other">marcs convertibles de Bòsnia i
+					Hercegovina</displayName>
 			</currency>
 			<currency type="BBD">
 				<displayName>dòlar de Barbados</displayName>
@@ -2213,8 +2226,10 @@
 			</currency>
 			<currency type="ECV">
 				<displayName>unidad de valor constante (UVC) equatoriana</displayName>
-				<displayName count="one">unidad de valor constante (UVC) equatoriana</displayName>
-				<displayName count="other">unidades de valor constante (UVC) equatorianes</displayName>
+				<displayName count="one">unidad de valor constante (UVC)
+					equatoriana</displayName>
+				<displayName count="other">unidades de valor constante (UVC)
+					equatorianes</displayName>
 			</currency>
 			<currency type="EEK">
 				<displayName>corona estoniana</displayName>
@@ -2238,8 +2253,10 @@
 			</currency>
 			<currency type="ESB">
 				<displayName>pesseta espanyola (compte convertible)</displayName>
-				<displayName count="one">pesseta espanyola (compte convertible)</displayName>
-				<displayName count="other">pessetes espanyoles (compte convertible)</displayName>
+				<displayName count="one">pesseta espanyola (compte
+					convertible)</displayName>
+				<displayName count="other">pessetes espanyoles (compte
+					convertible)</displayName>
 			</currency>
 			<currency type="ESP">
 				<pattern>¤ #,##0;-¤ #,##0</pattern>
@@ -3008,7 +3025,8 @@
 			<currency type="USN">
 				<displayName>dòlar dels Estats Units (dia següent)</displayName>
 				<displayName count="one">dòlar dels Estats Units (dia següent)</displayName>
-				<displayName count="other">dòlars dels Estats Units (dia següent)</displayName>
+				<displayName count="other">dòlars dels Estats Units (dia
+					següent)</displayName>
 			</currency>
 			<currency type="USS">
 				<displayName>dòlar dels Estats Units (mateix dia)</displayName>

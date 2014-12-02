@@ -20,12 +20,14 @@
  * @version    $Id: Standard.php 23775 2011-03-01 17:25:24Z ralph $
  */
 
-
-/** Internally used classes */
+/**
+ * Internally used classes
+ */
 require_once 'Zend/Pdf/Element/Name.php';
 
-
-/** Zend_Pdf_Resource_Font_Simple */
+/**
+ * Zend_Pdf_Resource_Font_Simple
+ */
 require_once 'Zend/Pdf/Resource/Font/Simple.php';
 
 /**
@@ -38,45 +40,55 @@ require_once 'Zend/Pdf/Resource/Font/Simple.php';
  *
  * The standard fonts and the corresponding subclasses that manage them:
  * <ul>
- *  <li>Courier - {@link Zend_Pdf_Resource_Font_Simple_Standard_Courier}
- *  <li>Courier-Bold - {@link Zend_Pdf_Resource_Font_Simple_Standard_CourierBold}
- *  <li>Courier-Oblique - {@link Zend_Pdf_Resource_Font_Simple_Standard_CourierOblique}
- *  <li>Courier-BoldOblique - {@link Zend_Pdf_Resource_Font_Simple_Standard_CourierBoldOblique}
- *  <li>Helvetica - {@link Zend_Pdf_Resource_Font_Simple_Standard_Helvetica}
- *  <li>Helvetica-Bold - {@link Zend_Pdf_Resource_Font_Simple_Standard_HelveticaBold}
- *  <li>Helvetica-Oblique - {@link Zend_Pdf_Resource_Font_Simple_Standard_HelveticaOblique}
- *  <li>Helvetica-BoldOblique - {@link Zend_Pdf_Resource_Font_Simple_Standard_HelveticaBoldOblique}
- *  <li>Symbol - {@link Zend_Pdf_Resource_Font_Simple_Standard_Symbol}
- *  <li>Times - {@link Zend_Pdf_Resource_Font_Simple_Standard_Times}
- *  <li>Times-Bold - {@link Zend_Pdf_Resource_Font_Simple_Standard_TimesBold}
- *  <li>Times-Italic - {@link Zend_Pdf_Resource_Font_Simple_Standard_TimesItalic}
- *  <li>Times-BoldItalic - {@link Zend_Pdf_Resource_Font_Simple_Standard_TimesBoldItalic}
- *  <li>ZapfDingbats - {@link Zend_Pdf_Resource_Font_Simple_Standard_ZapfDingbats}
+ * <li>Courier - {@link Zend_Pdf_Resource_Font_Simple_Standard_Courier}
+ * <li>Courier-Bold - {@link Zend_Pdf_Resource_Font_Simple_Standard_CourierBold}
+ * <li>Courier-Oblique - {@link
+ * Zend_Pdf_Resource_Font_Simple_Standard_CourierOblique}
+ * <li>Courier-BoldOblique - {@link
+ * Zend_Pdf_Resource_Font_Simple_Standard_CourierBoldOblique}
+ * <li>Helvetica - {@link Zend_Pdf_Resource_Font_Simple_Standard_Helvetica}
+ * <li>Helvetica-Bold - {@link
+ * Zend_Pdf_Resource_Font_Simple_Standard_HelveticaBold}
+ * <li>Helvetica-Oblique - {@link
+ * Zend_Pdf_Resource_Font_Simple_Standard_HelveticaOblique}
+ * <li>Helvetica-BoldOblique - {@link
+ * Zend_Pdf_Resource_Font_Simple_Standard_HelveticaBoldOblique}
+ * <li>Symbol - {@link Zend_Pdf_Resource_Font_Simple_Standard_Symbol}
+ * <li>Times - {@link Zend_Pdf_Resource_Font_Simple_Standard_Times}
+ * <li>Times-Bold - {@link Zend_Pdf_Resource_Font_Simple_Standard_TimesBold}
+ * <li>Times-Italic - {@link Zend_Pdf_Resource_Font_Simple_Standard_TimesItalic}
+ * <li>Times-BoldItalic - {@link
+ * Zend_Pdf_Resource_Font_Simple_Standard_TimesBoldItalic}
+ * <li>ZapfDingbats - {@link
+ * Zend_Pdf_Resource_Font_Simple_Standard_ZapfDingbats}
  * </ul>
  *
  * Font objects should be normally be obtained from the factory methods
  * {@link Zend_Pdf_Font::fontWithName} and {@link Zend_Pdf_Font::fontWithPath}.
  *
- * @package    Zend_Pdf
+ * @package Zend_Pdf
  * @subpackage Fonts
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 abstract class Zend_Pdf_Resource_Font_Simple_Standard extends Zend_Pdf_Resource_Font_Simple
 {
-  /**** Public Interface ****/
 
-
-  /* Object Lifecycle */
-
+    /**
+     * ** Public Interface ***
+     */
+    
+    /* Object Lifecycle */
+    
     /**
      * Object constructor
      */
-    public function __construct()
+    public function __construct ()
     {
         $this->_fontType = Zend_Pdf_Font::TYPE_STANDARD;
-
+        
         parent::__construct();
-        $this->_resource->Subtype  = new Zend_Pdf_Element_Name('Type1');
+        $this->_resource->Subtype = new Zend_Pdf_Element_Name('Type1');
     }
 }

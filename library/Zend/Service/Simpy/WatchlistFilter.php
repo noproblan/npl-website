@@ -21,16 +21,18 @@
  * @version    $Id: WatchlistFilter.php 23775 2011-03-01 17:25:24Z ralph $
  */
 
-
 /**
- * @category   Zend
- * @package    Zend_Service
+ *
+ * @category Zend
+ * @package Zend_Service
  * @subpackage Simpy
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Service_Simpy_WatchlistFilter
 {
+
     /**
      * Name of the filter
      *
@@ -48,13 +50,14 @@ class Zend_Service_Simpy_WatchlistFilter
     /**
      * Constructor to initialize the object with data
      *
-     * @param  DOMNode $node Individual <filter> node from a parsed response from
-     *                       a GetWatchlists or GetWatchlist operation
+     * @param DOMNode $node
+     *            Individual <filter> node from a parsed response from
+     *            a GetWatchlists or GetWatchlist operation
      * @return void
      */
-    public function __construct($node)
+    public function __construct ($node)
     {
-        $map =& $node->attributes;
+        $map = & $node->attributes;
         $this->_name = $map->getNamedItem('name')->nodeValue;
         $this->_query = $map->getNamedItem('query')->nodeValue;
     }
@@ -64,7 +67,7 @@ class Zend_Service_Simpy_WatchlistFilter
      *
      * @return string
      */
-    public function getName()
+    public function getName ()
     {
         return $this->_name;
     }
@@ -74,7 +77,7 @@ class Zend_Service_Simpy_WatchlistFilter
      *
      * @return string
      */
-    public function getQuery()
+    public function getQuery ()
     {
         return $this->_query;
     }

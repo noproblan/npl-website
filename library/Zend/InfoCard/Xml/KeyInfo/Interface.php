@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -21,18 +22,21 @@
  */
 
 /**
- * @category   Zend
- * @package    Zend_InfoCard
+ *
+ * @category Zend
+ * @package Zend_InfoCard
  * @subpackage Zend_InfoCard_Xml
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 interface Zend_InfoCard_Xml_KeyInfo_Interface
 {
+
     /**
      * Return an object representing a KeyInfo data type
      *
      * @return Zend_InfoCard_Xml_KeyInfo
      */
-    public function getKeyInfo();
+    public function getKeyInfo ();
 }

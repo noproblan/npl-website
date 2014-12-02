@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <ldml>
 	<identity>
-		<version number="$Revision: 1.23 $"/>
-		<generation date="$Date: 2009/05/05 23:06:36 $"/>
-		<language type="ha"/>
-		<script type="Arab"/>
+		<version number="$Revision: 1.23 $" />
+		<generation date="$Date: 2009/05/05 23:06:36 $" />
+		<language type="ha" />
+		<script type="Arab" />
 	</identity>
 	<layout>
-		<orientation characters="right-to-left"/>
+		<orientation characters="right-to-left" />
 	</layout>
 	<characters>
 		<exemplarCharacters>[ا ب ت-غ ف ڢ ك-ن]</exemplarCharacters>

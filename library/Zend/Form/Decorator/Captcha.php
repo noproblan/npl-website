@@ -19,7 +19,9 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
 
-/** @see Zend_Form_Decorator_Abstract */
+/**
+ * @see Zend_Form_Decorator_Abstract
+ */
 require_once 'Zend/Form/Decorator/Abstract.php';
 
 /**
@@ -27,41 +29,43 @@ require_once 'Zend/Form/Decorator/Abstract.php';
  *
  * Adds captcha adapter output
  *
- * @category   Zend
- * @package    Zend_Form
+ * @category Zend
+ * @package Zend_Form
  * @subpackage Decorator
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: Captcha.php 23775 2011-03-01 17:25:24Z ralph $
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
+ * @version $Id: Captcha.php 23775 2011-03-01 17:25:24Z ralph $
  */
 class Zend_Form_Decorator_Captcha extends Zend_Form_Decorator_Abstract
 {
+
     /**
      * Render captcha
      *
-     * @param  string $content
+     * @param string $content            
      * @return string
      */
-    public function render($content)
+    public function render ($content)
     {
         $element = $this->getElement();
-        if (!method_exists($element, 'getCaptcha')) {
+        if (! method_exists($element, 'getCaptcha')) {
             return $content;
         }
-
-        $view    = $element->getView();
+        
+        $view = $element->getView();
         if (null === $view) {
             return $content;
         }
-
+        
         $placement = $this->getPlacement();
         $separator = $this->getSeparator();
-
+        
         $captcha = $element->getCaptcha();
-        $markup  = $captcha->render($view, $element);
+        $markup = $captcha->render($view, $element);
         switch ($placement) {
             case 'PREPEND':
-                $content = $markup . $separator .  $content;
+                $content = $markup . $separator . $content;
                 break;
             case 'APPEND':
             default:

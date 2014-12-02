@@ -21,109 +21,135 @@
  */
 
 /**
+ *
  * @see Zend_Tool_Project_Provider_Abstract
  */
 require_once 'Zend/Tool/Project/Provider/Abstract.php';
 
 /**
- * @category   Zend
- * @package    Zend_Tool
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ *
+ * @category Zend
+ * @package Zend_Tool
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
-class Zend_Tool_Project_Provider_Project
-    extends Zend_Tool_Project_Provider_Abstract
-    //implements Zend_Tool_Framework_Provider_DocblockManifestInterface
+class Zend_Tool_Project_Provider_Project extends Zend_Tool_Project_Provider_Abstract
+// implements Zend_Tool_Framework_Provider_DocblockManifestInterface
 {
 
-    protected $_specialties = array('Info');
+    protected $_specialties = array(
+            'Info'
+    );
 
     /**
      * create()
      *
-     * @param string $path
-     * @param string $nameOfProfile shortName=n
-     * @param string $fileOfProfile shortName=f
+     * @param string $path            
+     * @param string $nameOfProfile
+     *            shortName=n
+     * @param string $fileOfProfile
+     *            shortName=f
      */
-    public function create($path, $nameOfProfile = null, $fileOfProfile = null)
+    public function create ($path, $nameOfProfile = null, $fileOfProfile = null)
     {
         if ($path == null) {
             $path = getcwd();
         } else {
             $path = trim($path);
-            if (!file_exists($path)) {
+            if (! file_exists($path)) {
                 $created = mkdir($path);
-                if (!$created) {
+                if (! $created) {
                     require_once 'Zend/Tool/Framework/Client/Exception.php';
-                    throw new Zend_Tool_Framework_Client_Exception('Could not create requested project directory \'' . $path . '\'');
+                    throw new Zend_Tool_Framework_Client_Exception(
+                            'Could not create requested project directory \'' .
+                                     $path . '\'');
                 }
             }
             $path = str_replace('\\', '/', realpath($path));
         }
-
+        
         $profile = $this->_loadProfile(self::NO_PROFILE_RETURN_FALSE, $path);
-
+        
         if ($profile !== false) {
             require_once 'Zend/Tool/Framework/Client/Exception.php';
-            throw new Zend_Tool_Framework_Client_Exception('A project already exists here');
+            throw new Zend_Tool_Framework_Client_Exception(
+                    'A project already exists here');
         }
-
+        
         $profileData = null;
-
+        
         if ($fileOfProfile != null && file_exists($fileOfProfile)) {
             $profileData = file_get_contents($fileOfProfile);
         }
-
+        
         $storage = $this->_registry->getStorage();
         if ($profileData == '' && $nameOfProfile != null && $storage->isEnabled()) {
-            $profileData = $storage->get('project/profiles/' . $nameOfProfile . '.xml');
+            $profileData = $storage->get(
+                    'project/profiles/' . $nameOfProfile . '.xml');
         }
-
+        
         if ($profileData == '') {
             $profileData = $this->_getDefaultProfile();
         }
-
-        $newProfile = new Zend_Tool_Project_Profile(array(
-            'projectDirectory' => $path,
-            'profileData' => $profileData
-            ));
-
+        
+        $newProfile = new Zend_Tool_Project_Profile(
+                array(
+                        'projectDirectory' => $path,
+                        'profileData' => $profileData
+                ));
+        
         $newProfile->loadFromData();
-
+        
         $response = $this->_registry->getResponse();
-
+        
         $response->appendContent('Creating project at ' . $path);
-        $response->appendContent('Note: ', array('separator' => false, 'color' => 'yellow'));
+        $response->appendContent('Note: ', 
+                array(
+                        'separator' => false,
+                        'color' => 'yellow'
+                ));
         $response->appendContent(
-            'This command created a web project, '
-            . 'for more information setting up your VHOST, please see docs/README');
-
-        if (!Zend_Tool_Project_Provider_Test::isPHPUnitAvailable()) {
-            $response->appendContent('Testing Note: ', array('separator' => false, 'color' => 'yellow'));
-            $response->appendContent('PHPUnit was not found in your include_path, therefore no testing actions will be created.');
+                'This command created a web project, ' .
+                         'for more information setting up your VHOST, please see docs/README');
+        
+        if (! Zend_Tool_Project_Provider_Test::isPHPUnitAvailable()) {
+            $response->appendContent('Testing Note: ', 
+                    array(
+                            'separator' => false,
+                            'color' => 'yellow'
+                    ));
+            $response->appendContent(
+                    'PHPUnit was not found in your include_path, therefore no testing actions will be created.');
         }
-            
+        
         foreach ($newProfile->getIterator() as $resource) {
             $resource->create();
         }
     }
 
-    public function show()
+    public function show ()
     {
-        $this->_registry->getResponse()->appendContent('You probably meant to run "show project.info".', array('color' => 'yellow'));
+        $this->_registry->getResponse()->appendContent(
+                'You probably meant to run "show project.info".', 
+                array(
+                        'color' => 'yellow'
+                ));
     }
 
-    public function showInfo()
+    public function showInfo ()
     {
         $profile = $this->_loadProfile(self::NO_PROFILE_RETURN_FALSE);
-        if (!$profile) {
+        if (! $profile) {
             $this->_registry->getResponse()->appendContent('No project found.');
         } else {
-            $this->_registry->getResponse()->appendContent('Working with project located at: ' . $profile->getAttribute('projectDirectory'));
+            $this->_registry->getResponse()->appendContent(
+                    'Working with project located at: ' .
+                             $profile->getAttribute('projectDirectory'));
         }
     }
 
-    protected function _getDefaultProfile()
+    protected function _getDefaultProfile ()
     {
         $testAction = '';
         if (Zend_Tool_Project_Provider_Test::isPHPUnitAvailable()) {
@@ -131,7 +157,7 @@ class Zend_Tool_Project_Provider_Project
         }
         
         $version = Zend_Version::VERSION;
-
+        
         $data = <<<EOS
 <?xml version="1.0" encoding="UTF-8"?>
 <projectProfile type="default" version="$version">
@@ -207,16 +233,20 @@ EOS;
         return $data;
     }
 
-    public static function getDefaultReadmeContents($caller = null)
+    public static function getDefaultReadmeContents ($caller = null)
     {
-        $projectDirResource = $caller->getResource()->getProfile()->search('projectDirectory');
+        $projectDirResource = $caller->getResource()
+            ->getProfile()
+            ->search('projectDirectory');
         if ($projectDirResource) {
-            $name = ltrim(strrchr($projectDirResource->getPath(), DIRECTORY_SEPARATOR), DIRECTORY_SEPARATOR);
+            $name = ltrim(
+                    strrchr($projectDirResource->getPath(), DIRECTORY_SEPARATOR), 
+                    DIRECTORY_SEPARATOR);
             $path = $projectDirResource->getPath() . '/public';
         } else {
             $path = '/path/to/public';
         }
-
+        
         return <<< EOS
 README
 ======

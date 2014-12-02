@@ -20,22 +20,25 @@
  */
 
 /**
+ *
  * @see Zend_Feed_Writer_Extension_RendererAbstract
  */
 require_once 'Zend/Feed/Writer/Extension/RendererAbstract.php';
 
 /**
- * @category   Zend
- * @package    Zend_Feed_Writer
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ *
+ * @category Zend
+ * @package Zend_Feed_Writer
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
-class Zend_Feed_Writer_Extension_Atom_Renderer_Feed
-    extends Zend_Feed_Writer_Extension_RendererAbstract
+class Zend_Feed_Writer_Extension_Atom_Renderer_Feed extends Zend_Feed_Writer_Extension_RendererAbstract
 {
 
     /**
-     * Set to TRUE if a rendering method actually renders something. This
+     * Set to TRUE if a rendering method actually renders something.
+     * This
      * is used to prevent premature appending of a XML namespace declaration
      * until an element which requires it is actually appended.
      *
@@ -48,10 +51,11 @@ class Zend_Feed_Writer_Extension_Atom_Renderer_Feed
      *
      * @return void
      */
-    public function render()
+    public function render ()
     {
         /**
-         * RSS 2.0 only. Used mainly to include Atom links and
+         * RSS 2.0 only.
+         * Used mainly to include Atom links and
          * Pubsubhubbub Hub endpoint URIs under the Atom namespace
          */
         if (strtolower($this->getType()) == 'atom') {
@@ -69,27 +73,27 @@ class Zend_Feed_Writer_Extension_Atom_Renderer_Feed
      *
      * @return void
      */
-    protected function _appendNamespaces()
+    protected function _appendNamespaces ()
     {
-        $this->getRootElement()->setAttribute('xmlns:atom',
-            'http://www.w3.org/2005/Atom');
+        $this->getRootElement()->setAttribute('xmlns:atom', 
+                'http://www.w3.org/2005/Atom');
     }
 
     /**
      * Set feed link elements
      *
-     * @param  DOMDocument $dom
-     * @param  DOMElement $root
+     * @param DOMDocument $dom            
+     * @param DOMElement $root            
      * @return void
      */
-    protected function _setFeedLinks(DOMDocument $dom, DOMElement $root)
+    protected function _setFeedLinks (DOMDocument $dom, DOMElement $root)
     {
         $flinks = $this->getDataContainer()->getFeedLinks();
-        if(!$flinks || empty($flinks)) {
+        if (! $flinks || empty($flinks)) {
             return;
         }
         foreach ($flinks as $type => $href) {
-            $mime  = 'application/' . strtolower($type) . '+xml';
+            $mime = 'application/' . strtolower($type) . '+xml';
             $flink = $dom->createElement('atom:link');
             $root->appendChild($flink);
             $flink->setAttribute('rel', 'self');
@@ -102,14 +106,14 @@ class Zend_Feed_Writer_Extension_Atom_Renderer_Feed
     /**
      * Set PuSH hubs
      *
-     * @param  DOMDocument $dom
-     * @param  DOMElement $root
+     * @param DOMDocument $dom            
+     * @param DOMElement $root            
      * @return void
      */
-    protected function _setHubs(DOMDocument $dom, DOMElement $root)
+    protected function _setHubs (DOMDocument $dom, DOMElement $root)
     {
         $hubs = $this->getDataContainer()->getHubs();
-        if (!$hubs || empty($hubs)) {
+        if (! $hubs || empty($hubs)) {
             return;
         }
         foreach ($hubs as $hubUrl) {

@@ -21,16 +21,19 @@
  */
 
 /**
+ *
  * @see Zend_InfoCard_Exception
  */
 require_once 'Zend/InfoCard/Exception.php';
 
 /**
- * @category   Zend
- * @package    Zend_InfoCard
+ *
+ * @category Zend
+ * @package Zend_InfoCard
  * @subpackage Adapter
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_InfoCard_Adapter_Exception extends Zend_InfoCard_Exception
 {

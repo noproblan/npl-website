@@ -21,27 +21,31 @@
  */
 
 /**
+ *
  * @see Zend_Service_DeveloperGarden_Response_ResponseAbstract
  */
 require_once 'Zend/Service/DeveloperGarden/Response/ResponseAbstract.php';
 
 /**
+ *
  * @see Zend_Service_DeveloperGarden_Response_SecurityTokenServer_Interface
  */
 require_once 'Zend/Service/DeveloperGarden/Response/SecurityTokenServer/Interface.php';
 
 /**
- * @category   Zend
- * @package    Zend_Service
+ *
+ * @category Zend
+ * @package Zend_Service
  * @subpackage DeveloperGarden
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @author     Marco Kaiser
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @author Marco Kaiser
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
-class Zend_Service_DeveloperGarden_Response_SecurityTokenServer_SecurityTokenResponse
-    extends Zend_Service_DeveloperGarden_Response_ResponseAbstract
-    implements Zend_Service_DeveloperGarden_Response_SecurityTokenServer_Interface
+class Zend_Service_DeveloperGarden_Response_SecurityTokenServer_SecurityTokenResponse extends Zend_Service_DeveloperGarden_Response_ResponseAbstract implements 
+        Zend_Service_DeveloperGarden_Response_SecurityTokenServer_Interface
 {
+
     /**
      * the token format, should be saml20
      *
@@ -68,13 +72,14 @@ class Zend_Service_DeveloperGarden_Response_SecurityTokenServer_SecurityTokenRes
      *
      * @return string
      */
-    public function getTokenData()
+    public function getTokenData ()
     {
         if (empty($this->tokenData)) {
             require_once 'Zend/Service/DeveloperGarden/Response/Exception.php';
-            throw new Zend_Service_DeveloperGarden_Response_Exception('No valid tokenData found.');
+            throw new Zend_Service_DeveloperGarden_Response_Exception(
+                    'No valid tokenData found.');
         }
-
+        
         return $this->tokenData;
     }
 
@@ -83,7 +88,7 @@ class Zend_Service_DeveloperGarden_Response_SecurityTokenServer_SecurityTokenRes
      *
      * @return string
      */
-    public function getTokenFormat()
+    public function getTokenFormat ()
     {
         return $this->tokenFormat;
     }
@@ -93,7 +98,7 @@ class Zend_Service_DeveloperGarden_Response_SecurityTokenServer_SecurityTokenRes
      *
      * @return string
      */
-    public function getTokenEncoding()
+    public function getTokenEncoding ()
     {
         return $this->tokenEncoding;
     }
@@ -103,12 +108,13 @@ class Zend_Service_DeveloperGarden_Response_SecurityTokenServer_SecurityTokenRes
      *
      * @return boolean
      */
-    public function isValid()
+    public function isValid ()
     {
         /**
+         *
          * @todo implement the true token validation check
          */
-        if (!empty($this->securityTokenData)) {
+        if (! empty($this->securityTokenData)) {
             return true;
         }
         return false;

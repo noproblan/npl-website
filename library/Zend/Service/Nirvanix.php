@@ -21,6 +21,7 @@
  */
 
 /**
+ *
  * @see Zend_Http_Client
  */
 require_once 'Zend/Http/Client.php';
@@ -30,51 +31,62 @@ require_once 'Zend/Http/Client.php';
  * in one place and provides a factory for returning convenience wrappers
  * around the Nirvanix web service namespaces.
  *
- * @category   Zend
- * @package    Zend_Service
+ * @category Zend
+ * @package Zend_Service
  * @subpackage Nirvanix
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Service_Nirvanix
 {
+
     /**
      * Options to pass to namespace proxies
-     * @param array
+     * 
+     * @param
+     *            array
      */
     protected $_options;
 
     /**
-     * Class constructor.  Authenticates with Nirvanix to receive a
+     * Class constructor.
+     * Authenticates with Nirvanix to receive a
      * sessionToken, which is then passed to each future request.
      *
-     * @param  array  $authParams  Authentication POST parameters.  This
-     *                             should have keys "username", "password",
-     *                             and "appKey".
-     * @param  array  $options     Options to pass to namespace proxies
+     * @param array $authParams
+     *            Authentication POST parameters. This
+     *            should have keys "username", "password",
+     *            and "appKey".
+     * @param array $options
+     *            Options to pass to namespace proxies
      */
-    public function __construct($authParams, $options = array())
+    public function __construct ($authParams, $options = array())
     {
         // merge options with default options
-        $defaultOptions = array('defaults'   => array(),
-                                'httpClient' => new Zend_Http_Client(),
-                                'host'       => 'http://services.nirvanix.com');
+        $defaultOptions = array(
+                'defaults' => array(),
+                'httpClient' => new Zend_Http_Client(),
+                'host' => 'http://services.nirvanix.com'
+        );
         $this->_options = array_merge($defaultOptions, $options);
-
+        
         // login and save sessionToken to default POST params
         $resp = $this->getService('Authentication')->login($authParams);
-        $this->_options['defaults']['sessionToken'] = (string)$resp->SessionToken;
+        $this->_options['defaults']['sessionToken'] = (string) $resp->SessionToken;
     }
 
     /**
      * Nirvanix divides its service into namespaces, with each namespace
-     * providing different functionality.  This is a factory method that
+     * providing different functionality.
+     * This is a factory method that
      * returns a preconfigured Zend_Service_Nirvanix_Namespace_Base proxy.
      *
-     * @param  string  $namespace  Name of the namespace
+     * @param string $namespace
+     *            Name of the namespace
      * @return Zend_Service_Nirvanix_Namespace_Base
      */
-    public function getService($namespace, $options = array())
+    public function getService ($namespace, $options = array())
     {
         switch ($namespace) {
             case 'IMFS':
@@ -83,11 +95,11 @@ class Zend_Service_Nirvanix
             default:
                 $class = 'Zend_Service_Nirvanix_Namespace_Base';
         }
-
+        
         $options['namespace'] = ucfirst($namespace);
         $options = array_merge($this->_options, $options);
-
-        if (!class_exists($class)) {
+        
+        if (! class_exists($class)) {
             require_once 'Zend/Loader.php';
             Zend_Loader::loadClass($class);
         }
@@ -99,9 +111,8 @@ class Zend_Service_Nirvanix
      *
      * @return array
      */
-    public function getOptions()
+    public function getOptions ()
     {
         return $this->_options;
     }
-
 }

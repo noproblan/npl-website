@@ -21,44 +21,54 @@
  */
 
 /**
+ *
  * @see Zend_CodeGenerator_Php_Abstract
  */
 require_once 'Zend/CodeGenerator/Php/Abstract.php';
 
 /**
+ *
  * @see Zend_CodeGenerator_Php_ParameterDefaultValue
  */
 require_once 'Zend/CodeGenerator/Php/Parameter/DefaultValue.php';
 
 /**
- * @category   Zend
- * @package    Zend_CodeGenerator
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ *
+ * @category Zend
+ * @package Zend_CodeGenerator
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_CodeGenerator_Php_Parameter extends Zend_CodeGenerator_Php_Abstract
 {
+
     /**
+     *
      * @var string
      */
     protected $_type = null;
 
     /**
+     *
      * @var string
      */
     protected $_name = null;
 
     /**
+     *
      * @var string
      */
     protected $_defaultValue = null;
 
     /**
+     *
      * @var int
      */
     protected $_position = null;
 
     /**
+     *
      * @var bool
      */
     protected $_passedByReference = false;
@@ -66,40 +76,42 @@ class Zend_CodeGenerator_Php_Parameter extends Zend_CodeGenerator_Php_Abstract
     /**
      * fromReflection()
      *
-     * @param Zend_Reflection_Parameter $reflectionParameter
+     * @param Zend_Reflection_Parameter $reflectionParameter            
      * @return Zend_CodeGenerator_Php_Parameter
      */
-    public static function fromReflection(Zend_Reflection_Parameter $reflectionParameter)
+    public static function fromReflection (
+            Zend_Reflection_Parameter $reflectionParameter)
     {
         $param = new Zend_CodeGenerator_Php_Parameter();
         $param->setName($reflectionParameter->getName());
-
-        if($reflectionParameter->isArray()) {
+        
+        if ($reflectionParameter->isArray()) {
             $param->setType('array');
         } else {
             $typeClass = $reflectionParameter->getClass();
-            if($typeClass !== null) {
+            if ($typeClass !== null) {
                 $param->setType($typeClass->getName());
             }
         }
-
+        
         $param->setPosition($reflectionParameter->getPosition());
-
-        if($reflectionParameter->isOptional()) {
+        
+        if ($reflectionParameter->isOptional()) {
             $param->setDefaultValue($reflectionParameter->getDefaultValue());
         }
-        $param->setPassedByReference($reflectionParameter->isPassedByReference());
-
+        $param->setPassedByReference(
+                $reflectionParameter->isPassedByReference());
+        
         return $param;
     }
 
     /**
      * setType()
      *
-     * @param string $type
+     * @param string $type            
      * @return Zend_CodeGenerator_Php_Parameter
      */
-    public function setType($type)
+    public function setType ($type)
     {
         $this->_type = $type;
         return $this;
@@ -110,7 +122,7 @@ class Zend_CodeGenerator_Php_Parameter extends Zend_CodeGenerator_Php_Abstract
      *
      * @return string
      */
-    public function getType()
+    public function getType ()
     {
         return $this->_type;
     }
@@ -118,10 +130,10 @@ class Zend_CodeGenerator_Php_Parameter extends Zend_CodeGenerator_Php_Abstract
     /**
      * setName()
      *
-     * @param string $name
+     * @param string $name            
      * @return Zend_CodeGenerator_Php_Parameter
      */
-    public function setName($name)
+    public function setName ($name)
     {
         $this->_name = $name;
         return $this;
@@ -132,7 +144,7 @@ class Zend_CodeGenerator_Php_Parameter extends Zend_CodeGenerator_Php_Abstract
      *
      * @return string
      */
-    public function getName()
+    public function getName ()
     {
         return $this->_name;
     }
@@ -142,25 +154,34 @@ class Zend_CodeGenerator_Php_Parameter extends Zend_CodeGenerator_Php_Abstract
      *
      * Certain variables are difficult to expres
      *
-     * @param null|bool|string|int|float|Zend_CodeGenerator_Php_Parameter_DefaultValue $defaultValue
+     * @param null|bool|string|int|float|Zend_CodeGenerator_Php_Parameter_DefaultValue $defaultValue            
      * @return Zend_CodeGenerator_Php_Parameter
      */
-    public function setDefaultValue($defaultValue)
+    public function setDefaultValue ($defaultValue)
     {
-        if($defaultValue === null) {
-            $this->_defaultValue = new Zend_CodeGenerator_Php_Parameter_DefaultValue("null");
-        } else if(is_array($defaultValue)) {
-            $defaultValue = str_replace(array("\r", "\n"), "", var_export($defaultValue, true));
-            $this->_defaultValue = new Zend_CodeGenerator_Php_Parameter_DefaultValue($defaultValue);
-        } else if(is_bool($defaultValue)) {
-            if($defaultValue == true) {
-                $this->_defaultValue = new Zend_CodeGenerator_Php_Parameter_DefaultValue("true");
-            } else {
-                $this->_defaultValue = new Zend_CodeGenerator_Php_Parameter_DefaultValue("false");
-            }
-        } else {
-            $this->_defaultValue = $defaultValue;
-        }
+        if ($defaultValue === null) {
+            $this->_defaultValue = new Zend_CodeGenerator_Php_Parameter_DefaultValue(
+                    "null");
+        } else 
+            if (is_array($defaultValue)) {
+                $defaultValue = str_replace(array(
+                        "\r",
+                        "\n"
+                ), "", var_export($defaultValue, true));
+                $this->_defaultValue = new Zend_CodeGenerator_Php_Parameter_DefaultValue(
+                        $defaultValue);
+            } else 
+                if (is_bool($defaultValue)) {
+                    if ($defaultValue == true) {
+                        $this->_defaultValue = new Zend_CodeGenerator_Php_Parameter_DefaultValue(
+                                "true");
+                    } else {
+                        $this->_defaultValue = new Zend_CodeGenerator_Php_Parameter_DefaultValue(
+                                "false");
+                    }
+                } else {
+                    $this->_defaultValue = $defaultValue;
+                }
         return $this;
     }
 
@@ -169,7 +190,7 @@ class Zend_CodeGenerator_Php_Parameter extends Zend_CodeGenerator_Php_Abstract
      *
      * @return string
      */
-    public function getDefaultValue()
+    public function getDefaultValue ()
     {
         return $this->_defaultValue;
     }
@@ -177,10 +198,10 @@ class Zend_CodeGenerator_Php_Parameter extends Zend_CodeGenerator_Php_Abstract
     /**
      * setPosition()
      *
-     * @param int $position
+     * @param int $position            
      * @return Zend_CodeGenerator_Php_Parameter
      */
-    public function setPosition($position)
+    public function setPosition ($position)
     {
         $this->_position = $position;
         return $this;
@@ -191,24 +212,26 @@ class Zend_CodeGenerator_Php_Parameter extends Zend_CodeGenerator_Php_Abstract
      *
      * @return int
      */
-    public function getPosition()
+    public function getPosition ()
     {
         return $this->_position;
     }
 
     /**
+     *
      * @return bool
      */
-    public function getPassedByReference()
+    public function getPassedByReference ()
     {
         return $this->_passedByReference;
     }
 
     /**
-     * @param bool $passedByReference
+     *
+     * @param bool $passedByReference            
      * @return Zend_CodeGenerator_Php_Parameter
      */
-    public function setPassedByReference($passedByReference)
+    public function setPassedByReference ($passedByReference)
     {
         $this->_passedByReference = $passedByReference;
         return $this;
@@ -219,32 +242,32 @@ class Zend_CodeGenerator_Php_Parameter extends Zend_CodeGenerator_Php_Abstract
      *
      * @return string
      */
-    public function generate()
+    public function generate ()
     {
         $output = '';
-
+        
         if ($this->_type) {
             $output .= $this->_type . ' ';
         }
-
-        if($this->_passedByReference === true) {
+        
+        if ($this->_passedByReference === true) {
             $output .= '&';
         }
-
+        
         $output .= '$' . $this->_name;
-
+        
         if ($this->_defaultValue !== null) {
             $output .= ' = ';
             if (is_string($this->_defaultValue)) {
                 $output .= '\'' . $this->_defaultValue . '\'';
-            } else if($this->_defaultValue instanceof Zend_CodeGenerator_Php_Parameter_DefaultValue) {
-                $output .= (string)$this->_defaultValue;
-            } else {
-                $output .= $this->_defaultValue;
-            }
+            } else 
+                if ($this->_defaultValue instanceof Zend_CodeGenerator_Php_Parameter_DefaultValue) {
+                    $output .= (string) $this->_defaultValue;
+                } else {
+                    $output .= $this->_defaultValue;
+                }
         }
-
+        
         return $output;
     }
-
 }

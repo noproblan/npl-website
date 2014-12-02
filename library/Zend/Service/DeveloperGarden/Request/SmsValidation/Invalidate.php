@@ -21,21 +21,24 @@
  */
 
 /**
+ *
  * @see Zend_Service_DeveloperGarden_Request_RequestAbstract
  */
 require_once 'Zend/Service/DeveloperGarden/Request/RequestAbstract.php';
 
 /**
- * @category   Zend
- * @package    Zend_Service
+ *
+ * @category Zend
+ * @package Zend_Service
  * @subpackage DeveloperGarden
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @author     Marco Kaiser
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @author Marco Kaiser
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
-class Zend_Service_DeveloperGarden_Request_SmsValidation_Invalidate
-    extends Zend_Service_DeveloperGarden_Request_RequestAbstract
+class Zend_Service_DeveloperGarden_Request_SmsValidation_Invalidate extends Zend_Service_DeveloperGarden_Request_RequestAbstract
 {
+
     /**
      * the number
      *
@@ -46,11 +49,11 @@ class Zend_Service_DeveloperGarden_Request_SmsValidation_Invalidate
     /**
      * create the class for validation a sms keyword
      *
-     * @param integer $environment
-     * @param string $keyword
-     * @param string $number
+     * @param integer $environment            
+     * @param string $keyword            
+     * @param string $number            
      */
-    public function __construct($environment, $number = null)
+    public function __construct ($environment, $number = null)
     {
         parent::__construct($environment);
         $this->setNumber($number);
@@ -61,7 +64,7 @@ class Zend_Service_DeveloperGarden_Request_SmsValidation_Invalidate
      *
      * @return string $number
      */
-    public function getNumber()
+    public function getNumber ()
     {
         return $this->number;
     }
@@ -69,10 +72,10 @@ class Zend_Service_DeveloperGarden_Request_SmsValidation_Invalidate
     /**
      * set a new number
      *
-     * @param string $number
+     * @param string $number            
      * @return Zend_Service_DeveloperGarden_Request_SmsValidation_Validate
      */
-    public function setNumber($number)
+    public function setNumber ($number)
     {
         $this->number = $number;
         return $this;

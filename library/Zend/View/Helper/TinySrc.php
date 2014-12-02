@@ -19,7 +19,9 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
 
-/** Zend_View_Helper_HtmlElement */
+/**
+ * Zend_View_Helper_HtmlElement
+ */
 require_once 'Zend/View/Helper/HtmlElement.php';
 
 /**
@@ -34,39 +36,44 @@ require_once 'Zend/View/Helper/HtmlElement.php';
  * the API:
  *
  * - image size. You may define this as:
- *   - explicit size
- *   - subtractive size (size of screen minus specified number of pixels)
- *   - percentage size (percentage of screen size))
+ * - explicit size
+ * - subtractive size (size of screen minus specified number of pixels)
+ * - percentage size (percentage of screen size))
  * - image format. This will convert the image to the given format; allowed
- *   values are "png" or "jpeg". By default, gif images are converted to png.
+ * values are "png" or "jpeg". By default, gif images are converted to png.
  *
  * This helper allows you to specify all configuration options, as well as:
  *
  * - whether or not to generate the full image tag (or just the URL)
  * - base url to images (which should include the protocol, server, and
- *   optionally port and base path)
+ * optionally port and base path)
  *
- * @see        http://tinysrc.net/
- * @package    Zend_View
+ * @see http://tinysrc.net/
+ * @package Zend_View
  * @subpackage Helper
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_View_Helper_TinySrc extends Zend_View_Helper_HtmlElement
 {
+
     const TINYSRC_BASE = 'http://i.tinysrc.mobi';
 
     /**
+     *
      * @var string Base URL for images
      */
     protected $_baseUrl;
 
     /**
+     *
      * @var bool Whether or not to create an image tag
      */
     protected $_createTagFlag = true;
 
     /**
+     *
      * @var string Default width and height
      */
     protected $_dimensions = '';
@@ -80,14 +87,15 @@ class Zend_View_Helper_TinySrc extends Zend_View_Helper_HtmlElement
      * @var array
      */
     protected $_defaultOptions = array(
-        'base_url'   => null,
-        'format'     => null,
-        'width'      => false,
-        'height'     => false,
-        'create_tag' => true,
+            'base_url' => null,
+            'format' => null,
+            'width' => false,
+            'height' => false,
+            'create_tag' => true
     );
 
     /**
+     *
      * @var string Default image format to use
      */
     protected $_format = '';
@@ -95,36 +103,35 @@ class Zend_View_Helper_TinySrc extends Zend_View_Helper_HtmlElement
     /**
      * Generate a link or image tag pointing to tinysrc.net
      *
-     * @param mixed $image
-     * @param array $options
+     * @param mixed $image            
+     * @param array $options            
      * @return void
      */
-    public function tinySrc($image = null, array $options = array())
+    public function tinySrc ($image = null, array $options = array())
     {
         if (null === $image) {
             return $this;
         }
-
+        
         $defaultOptions = $this->_defaultOptions;
         $defaultOptions['create_tag'] = $this->createTag();
         $options = array_merge($defaultOptions, $options);
-
+        
         $url = '/' . $this->_mergeBaseUrl($options) . ltrim($image, '/');
-
-        $src = self::TINYSRC_BASE
-             . $this->_mergeFormat($options)
-             . $this->_mergeDimensions($options)
-             . $url;
-
-        if (!$options['create_tag']) {
+        
+        $src = self::TINYSRC_BASE . $this->_mergeFormat($options) .
+                 $this->_mergeDimensions($options) . $url;
+        
+        if (! $options['create_tag']) {
             return $src;
         }
-
+        
         foreach (array_keys($this->_defaultOptions) as $key) {
             switch ($key) {
                 case 'width':
                 case 'height':
-                    if (!is_int($options[$key]) || !is_numeric($options[$key]) || $options[$key] < 0) {
+                    if (! is_int($options[$key]) || ! is_numeric($options[$key]) ||
+                             $options[$key] < 0) {
                         unset($options[$key]);
                     }
                     break;
@@ -133,20 +140,21 @@ class Zend_View_Helper_TinySrc extends Zend_View_Helper_HtmlElement
                     break;
             }
         }
-
+        
         $options['src'] = $src;
-
-        $tag = '<img' . $this->_htmlAttribs($options) . $this->getClosingBracket();
+        
+        $tag = '<img' . $this->_htmlAttribs($options) .
+                 $this->getClosingBracket();
         return $tag;
     }
 
     /**
      * Set base URL for images
      *
-     * @param  string $url
+     * @param string $url            
      * @return Zend_View_Helper_TinySrc
      */
-    public function setBaseUrl($url)
+    public function setBaseUrl ($url)
     {
         $this->_baseUrl = rtrim($url, '/') . '/';
         return $this;
@@ -160,7 +168,7 @@ class Zend_View_Helper_TinySrc extends Zend_View_Helper_HtmlElement
      *
      * @return string
      */
-    public function getBaseUrl()
+    public function getBaseUrl ()
     {
         if (null === $this->_baseUrl) {
             $this->setBaseUrl($this->view->serverUrl($this->view->baseUrl()));
@@ -173,21 +181,25 @@ class Zend_View_Helper_TinySrc extends Zend_View_Helper_HtmlElement
      *
      * If set, this will set the default format to use on all images.
      *
-     * @param  null|string $format
+     * @param null|string $format            
      * @return Zend_View_Helper_TinySrc
      * @throws Zend_View_Exception
      */
-    public function setDefaultFormat($format = null)
+    public function setDefaultFormat ($format = null)
     {
         if (null === $format) {
             $this->_format = '';
             return $this;
         }
-
+        
         $format = strtolower($format);
-        if (!in_array($format, array('png', 'jpeg'))) {
+        if (! in_array($format, array(
+                'png',
+                'jpeg'
+        ))) {
             require_once 'Zend/View/Exception.php';
-            throw new Zend_View_Exception('Invalid format; must be one of "jpeg" or "png"');
+            throw new Zend_View_Exception(
+                    'Invalid format; must be one of "jpeg" or "png"');
         }
         $this->_format = "/$format";
         return $this;
@@ -200,31 +212,33 @@ class Zend_View_Helper_TinySrc extends Zend_View_Helper_HtmlElement
      * only width is specified, only width will be used. If either dimension
      * fails validation, an exception is raised.
      *
-     * @param  null|int|string $width
-     * @param  null|int|string $height
+     * @param null|int|string $width            
+     * @param null|int|string $height            
      * @return Zend_View_Helper_TinySrc
      * @throws Zend_View_Exception
      */
-    public function setDefaultDimensions($width = null, $height = null)
+    public function setDefaultDimensions ($width = null, $height = null)
     {
         if (null === $width) {
             $this->_dimensions = '';
             return $this;
         }
-
-        if (!$this->_validateDimension($width)) {
+        
+        if (! $this->_validateDimension($width)) {
             require_once 'Zend/View/Exception.php';
-            throw new Zend_View_Exception('Invalid dimension; must be an integer, optionally preceded by "-" or "x"');
+            throw new Zend_View_Exception(
+                    'Invalid dimension; must be an integer, optionally preceded by "-" or "x"');
         }
-
+        
         $this->_dimensions = "/$width";
         if (null === $height) {
             return $this;
         }
-
-        if (!$this->_validateDimension($height)) {
+        
+        if (! $this->_validateDimension($height)) {
             require_once 'Zend/View/Exception.php';
-            throw new Zend_View_Exception('Invalid dimension; must be an integer, optionally preceded by "-" or "x"');
+            throw new Zend_View_Exception(
+                    'Invalid dimension; must be an integer, optionally preceded by "-" or "x"');
         }
         $this->_dimensions .= "/$height";
         return $this;
@@ -233,10 +247,10 @@ class Zend_View_Helper_TinySrc extends Zend_View_Helper_HtmlElement
     /**
      * Set state of "create tag" flag
      *
-     * @param  bool $flag
+     * @param bool $flag            
      * @return Zend_View_Helper_TinySrc
      */
-    public function setCreateTag($flag)
+    public function setCreateTag ($flag)
     {
         $this->_createTagFlag = (bool) $flag;
         return $this;
@@ -247,7 +261,7 @@ class Zend_View_Helper_TinySrc extends Zend_View_Helper_HtmlElement
      *
      * @return bool
      */
-    public function createTag()
+    public function createTag ()
     {
         return $this->_createTagFlag;
     }
@@ -257,12 +271,12 @@ class Zend_View_Helper_TinySrc extends Zend_View_Helper_HtmlElement
      *
      * Dimensions may be integers, optionally preceded by '-' or 'x'.
      *
-     * @param  string $dim
+     * @param string $dim            
      * @return bool
      */
-    protected function _validateDimension($dim)
+    protected function _validateDimension ($dim)
     {
-        if (!is_scalar($dim) || is_bool($dim)) {
+        if (! is_scalar($dim) || is_bool($dim)) {
             return false;
         }
         return preg_match('/^(-|x)?\d+$/', (string) $dim);
@@ -271,10 +285,10 @@ class Zend_View_Helper_TinySrc extends Zend_View_Helper_HtmlElement
     /**
      * Determine whether to use default base URL, or base URL from options
      *
-     * @param  array $options
+     * @param array $options            
      * @return string
      */
-    protected function _mergeBaseUrl(array $options)
+    protected function _mergeBaseUrl (array $options)
     {
         if (null === $options['base_url']) {
             return $this->getBaseUrl();
@@ -285,12 +299,15 @@ class Zend_View_Helper_TinySrc extends Zend_View_Helper_HtmlElement
     /**
      * Determine whether to use default format or format provided in options.
      *
-     * @param  array $options
+     * @param array $options            
      * @return string
      */
-    protected function _mergeFormat(array $options)
+    protected function _mergeFormat (array $options)
     {
-        if (in_array($options['format'], array('png', 'jpeg'))) {
+        if (in_array($options['format'], array(
+                'png',
+                'jpeg'
+        ))) {
             return '/' . $options['format'];
         }
         return $this->_format;
@@ -299,16 +316,16 @@ class Zend_View_Helper_TinySrc extends Zend_View_Helper_HtmlElement
     /**
      * Determine whether to use default dimensions, or those passed in options.
      *
-     * @param  array $options
+     * @param array $options            
      * @return string
      */
-    protected function _mergeDimensions(array $options)
+    protected function _mergeDimensions (array $options)
     {
-        if (!$this->_validateDimension($options['width'])) {
+        if (! $this->_validateDimension($options['width'])) {
             return $this->_dimensions;
         }
         $dimensions = '/' . $options['width'];
-        if (!$this->_validateDimension($options['height'])) {
+        if (! $this->_validateDimension($options['height'])) {
             return $dimensions;
         }
         $dimensions .= '/' . $options['height'];

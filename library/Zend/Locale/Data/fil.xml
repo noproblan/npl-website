@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <ldml>
 	<identity>
-		<version number="$Revision: 1.30 $"/>
-		<generation date="$Date: 2009/06/15 03:46:26 $"/>
-		<language type="fil"/>
+		<version number="$Revision: 1.30 $" />
+		<generation date="$Date: 2009/06/15 03:46:26 $" />
+		<language type="fil" />
 	</identity>
 	<localeDisplayNames>
 		<languages>
@@ -320,7 +320,8 @@
 			<territory type="GN">Guinea</territory>
 			<territory type="GQ">Equatorial Guinea</territory>
 			<territory type="GR">Griyego</territory>
-			<territory type="GS">South Georgia and the South Sandwich Islands</territory>
+			<territory type="GS">South Georgia and the South Sandwich
+				Islands</territory>
 			<territory type="GW">Guinea-Bissau</territory>
 			<territory type="HK">Hong Kong SAR China</territory>
 			<territory type="HM">Heard Island and McDonald Islands</territory>
@@ -471,7 +472,8 @@
 	</localeDisplayNames>
 	<characters>
 		<exemplarCharacters>[a-n ñ {ng} o-z]</exemplarCharacters>
-		<exemplarCharacters type="auxiliary">[á à â é è ê í ì î ó ò ô ú ù û]</exemplarCharacters>
+		<exemplarCharacters type="auxiliary">[á à â é è ê í ì î ó ò ô ú
+			ù û]</exemplarCharacters>
 		<exemplarCharacters type="currencySymbol">[a-z]</exemplarCharacters>
 	</characters>
 	<delimiters>

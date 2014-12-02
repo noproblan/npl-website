@@ -21,97 +21,101 @@
  */
 
 /**
+ *
  * @see Zend_Tool_Framework_Client_Storage_AdapterInterface
  */
 require_once 'Zend/Tool/Framework/Client/Storage/AdapterInterface.php';
 
 /**
- * @category   Zend
- * @package    Zend_Tool
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ *
+ * @category Zend
+ * @package Zend_Tool
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Tool_Framework_Client_Storage
 {
 
     /**
+     *
      * @var Zend_Tool_Framework_Client_Storage_AdapterInterface
      */
     protected $_adapter = null;
 
-    public function __construct($options = array())
+    public function __construct ($options = array())
     {
         if (isset($options['adapter'])) {
             $this->setAdapter($options['adapter']);
         }
     }
 
-    public function setAdapter($adapter)
+    public function setAdapter ($adapter)
     {
         if (is_string($adapter)) {
-            $storageAdapterClass = 'Zend_Tool_Framework_Client_Storage_' . ucfirst($adapter);
+            $storageAdapterClass = 'Zend_Tool_Framework_Client_Storage_' .
+                     ucfirst($adapter);
             Zend_Loader::loadClass($storageAdapterClass);
             $adapter = new $storageAdapterClass();
         }
         $this->_adapter = $adapter;
     }
 
-    public function isEnabled()
+    public function isEnabled ()
     {
         return ($this->_adapter instanceof Zend_Tool_Framework_Client_Storage_AdapterInterface);
     }
 
-    public function put($name, $value)
+    public function put ($name, $value)
     {
-        if (!$this->_adapter) {
+        if (! $this->_adapter) {
             return false;
         }
-
+        
         $this->_adapter->put($name, $value);
-
+        
         return $this;
     }
 
-    public function get($name, $defaultValue = false)
+    public function get ($name, $defaultValue = false)
     {
-        if (!$this->_adapter) {
+        if (! $this->_adapter) {
             return false;
         }
-
+        
         if ($this->_adapter->has($name)) {
             return $this->_adapter->get($name);
         } else {
             return $defaultValue;
         }
-
     }
 
-    public function has($name)
+    public function has ($name)
     {
-        if (!$this->_adapter) {
+        if (! $this->_adapter) {
             return false;
         }
-
+        
         return $this->_adapter->has($name);
     }
 
-    public function remove($name)
+    public function remove ($name)
     {
-        if (!$this->_adapter) {
+        if (! $this->_adapter) {
             return false;
         }
-
+        
         $this->_adapter->remove($name);
-
+        
         return $this;
     }
 
-    public function getStreamUri($name)
+    public function getStreamUri ($name)
     {
-        if (!$this->_adapter) {
+        if (! $this->_adapter) {
             return false;
         }
-
+        
         return $this->_adapter->getStreamUri($name);
     }
 }

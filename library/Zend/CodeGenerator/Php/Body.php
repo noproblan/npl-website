@@ -21,20 +21,24 @@
  */
 
 /**
+ *
  * @see Zend_CodeGenerator_Abstract
  */
 require_once 'Zend/CodeGenerator/Abstract.php';
 
 /**
- * @category   Zend
- * @package    Zend_CodeGenerator
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ *
+ * @category Zend
+ * @package Zend_CodeGenerator
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_CodeGenerator_Php_Body extends Zend_CodeGenerator_Abstract
 {
 
     /**
+     *
      * @var string
      */
     protected $_content = null;
@@ -42,10 +46,10 @@ class Zend_CodeGenerator_Php_Body extends Zend_CodeGenerator_Abstract
     /**
      * setContent()
      *
-     * @param string $content
+     * @param string $content            
      * @return Zend_CodeGenerator_Php_Body
      */
-    public function setContent($content)
+    public function setContent ($content)
     {
         $this->_content = $content;
         return $this;
@@ -56,7 +60,7 @@ class Zend_CodeGenerator_Php_Body extends Zend_CodeGenerator_Abstract
      *
      * @return string
      */
-    public function getContent()
+    public function getContent ()
     {
         return (string) $this->_content;
     }
@@ -66,7 +70,7 @@ class Zend_CodeGenerator_Php_Body extends Zend_CodeGenerator_Abstract
      *
      * @return string
      */
-    public function generate()
+    public function generate ()
     {
         return $this->getContent();
     }

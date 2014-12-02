@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -20,13 +21,14 @@
  * @version    $Id: Query.php 23775 2011-03-01 17:25:24Z ralph $
  */
 
-
 /**
- * @category   Zend
- * @package    Zend_Db
+ *
+ * @category Zend
+ * @package Zend_Db
  * @subpackage Profiler
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Db_Profiler_Query
 {
@@ -39,7 +41,8 @@ class Zend_Db_Profiler_Query
     protected $_query = '';
 
     /**
-     * One of the Zend_Db_Profiler constants for query type, set by $queryType argument in constructor.
+     * One of the Zend_Db_Profiler constants for query type, set by $queryType
+     * argument in constructor.
      *
      * @var integer
      */
@@ -60,23 +63,26 @@ class Zend_Db_Profiler_Query
     protected $_endedMicrotime = null;
 
     /**
+     *
      * @var array
      */
     protected $_boundParams = array();
 
     /**
+     *
      * @var array
      */
-
+    
     /**
-     * Class constructor.  A query is about to be started, save the query text ($query) and its
+     * Class constructor.
+     * A query is about to be started, save the query text ($query) and its
      * type (one of the Zend_Db_Profiler::* constants).
      *
-     * @param  string  $query
-     * @param  integer $queryType
+     * @param string $query            
+     * @param integer $queryType            
      * @return void
      */
-    public function __construct($query, $queryType)
+    public function __construct ($query, $queryType)
     {
         $this->_query = $query;
         $this->_queryType = $queryType;
@@ -86,9 +92,10 @@ class Zend_Db_Profiler_Query
 
     /**
      * Clone handler for the query object.
+     * 
      * @return void
      */
-    public function __clone()
+    public function __clone ()
     {
         $this->_boundParams = array();
         $this->_endedMicrotime = null;
@@ -98,22 +105,23 @@ class Zend_Db_Profiler_Query
     /**
      * Starts the elapsed time click ticking.
      * This can be called subsequent to object creation,
-     * to restart the clock.  For instance, this is useful
+     * to restart the clock. For instance, this is useful
      * right before executing a prepared query.
      *
      * @return void
      */
-    public function start()
+    public function start ()
     {
         $this->_startedMicrotime = microtime(true);
     }
 
     /**
-     * Ends the query and records the time so that the elapsed time can be determined later.
+     * Ends the query and records the time so that the elapsed time can be
+     * determined later.
      *
      * @return void
      */
-    public function end()
+    public function end ()
     {
         $this->_endedMicrotime = microtime(true);
     }
@@ -123,7 +131,7 @@ class Zend_Db_Profiler_Query
      *
      * @return boolean
      */
-    public function hasEnded()
+    public function hasEnded ()
     {
         return $this->_endedMicrotime !== null;
     }
@@ -133,7 +141,7 @@ class Zend_Db_Profiler_Query
      *
      * @return string
      */
-    public function getQuery()
+    public function getQuery ()
     {
         return $this->_query;
     }
@@ -143,26 +151,28 @@ class Zend_Db_Profiler_Query
      *
      * @return integer
      */
-    public function getQueryType()
+    public function getQueryType ()
     {
         return $this->_queryType;
     }
 
     /**
-     * @param string $param
-     * @param mixed $variable
+     *
+     * @param string $param            
+     * @param mixed $variable            
      * @return void
      */
-    public function bindParam($param, $variable)
+    public function bindParam ($param, $variable)
     {
         $this->_boundParams[$param] = $variable;
     }
 
     /**
-     * @param array $param
+     *
+     * @param array $param            
      * @return void
      */
-    public function bindParams(array $params)
+    public function bindParams (array $params)
     {
         if (array_key_exists(0, $params)) {
             array_unshift($params, null);
@@ -174,9 +184,10 @@ class Zend_Db_Profiler_Query
     }
 
     /**
+     *
      * @return array
      */
-    public function getQueryParams()
+    public function getQueryParams ()
     {
         return $this->_boundParams;
     }
@@ -187,12 +198,12 @@ class Zend_Db_Profiler_Query
      *
      * @return float|false
      */
-    public function getElapsedSecs()
+    public function getElapsedSecs ()
     {
         if (null === $this->_endedMicrotime) {
             return false;
         }
-
+        
         return $this->_endedMicrotime - $this->_startedMicrotime;
     }
 
@@ -201,12 +212,12 @@ class Zend_Db_Profiler_Query
      *
      * @return bool|float
      */
-    public function getStartedMicrotime()
+    public function getStartedMicrotime ()
     {
-        if(null === $this->_startedMicrotime) {
+        if (null === $this->_startedMicrotime) {
             return false;
         }
-
+        
         return $this->_startedMicrotime;
     }
 }

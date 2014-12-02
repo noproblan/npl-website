@@ -19,56 +19,66 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
 
-/** Zend_Form_Element_Xhtml */
+/**
+ * Zend_Form_Element_Xhtml
+ */
 require_once 'Zend/Form/Element/Xhtml.php';
 
 /**
  * Checkbox form element
  *
- * @category   Zend
- * @package    Zend_Form
+ * @category Zend
+ * @package Zend_Form
  * @subpackage Element
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: Checkbox.php 23775 2011-03-01 17:25:24Z ralph $
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
+ * @version $Id: Checkbox.php 23775 2011-03-01 17:25:24Z ralph $
  */
 class Zend_Form_Element_Checkbox extends Zend_Form_Element_Xhtml
 {
+
     /**
      * Is the checkbox checked?
+     * 
      * @var bool
      */
     public $checked = false;
 
     /**
      * Use formCheckbox view helper by default
+     * 
      * @var string
      */
     public $helper = 'formCheckbox';
 
     /**
      * Options that will be passed to the view helper
+     * 
      * @var array
      */
     public $options = array(
-        'checkedValue'   => '1',
-        'uncheckedValue' => '0',
+            'checkedValue' => '1',
+            'uncheckedValue' => '0'
     );
 
     /**
      * Value when checked
+     * 
      * @var string
      */
     protected $_checkedValue = '1';
 
     /**
      * Value when not checked
+     * 
      * @var string
      */
     protected $_uncheckedValue = '0';
 
     /**
      * Current value
+     * 
      * @var string 0 or 1
      */
     protected $_value = '0';
@@ -79,10 +89,10 @@ class Zend_Form_Element_Checkbox extends Zend_Form_Element_Xhtml
      * Intercept checked and unchecked values and set them early; test stored
      * value against checked and unchecked values after configuration.
      *
-     * @param  array $options
+     * @param array $options            
      * @return Zend_Form_Element_Checkbox
      */
-    public function setOptions(array $options)
+    public function setOptions (array $options)
     {
         if (array_key_exists('checkedValue', $options)) {
             $this->setCheckedValue($options['checkedValue']);
@@ -93,13 +103,16 @@ class Zend_Form_Element_Checkbox extends Zend_Form_Element_Xhtml
             unset($options['uncheckedValue']);
         }
         parent::setOptions($options);
-
+        
         $curValue = $this->getValue();
-        $test     = array($this->getCheckedValue(), $this->getUncheckedValue());
-        if (!in_array($curValue, $test)) {
+        $test = array(
+                $this->getCheckedValue(),
+                $this->getUncheckedValue()
+        );
+        if (! in_array($curValue, $test)) {
             $this->setValue($curValue);
         }
-
+        
         return $this;
     }
 
@@ -113,10 +126,10 @@ class Zend_Form_Element_Checkbox extends Zend_Form_Element_Xhtml
      * value, and the checked flag to be set as false.
      *
      *
-     * @param  mixed $value
+     * @param mixed $value            
      * @return Zend_Form_Element_Checkbox
      */
-    public function setValue($value)
+    public function setValue ($value)
     {
         if ($value == $this->getCheckedValue()) {
             parent::setValue($value);
@@ -131,10 +144,10 @@ class Zend_Form_Element_Checkbox extends Zend_Form_Element_Xhtml
     /**
      * Set checked value
      *
-     * @param  string $value
+     * @param string $value            
      * @return Zend_Form_Element_Checkbox
      */
-    public function setCheckedValue($value)
+    public function setCheckedValue ($value)
     {
         $this->_checkedValue = (string) $value;
         $this->options['checkedValue'] = $value;
@@ -146,7 +159,7 @@ class Zend_Form_Element_Checkbox extends Zend_Form_Element_Xhtml
      *
      * @return string
      */
-    public function getCheckedValue()
+    public function getCheckedValue ()
     {
         return $this->_checkedValue;
     }
@@ -154,10 +167,10 @@ class Zend_Form_Element_Checkbox extends Zend_Form_Element_Xhtml
     /**
      * Set unchecked value
      *
-     * @param  string $value
+     * @param string $value            
      * @return Zend_Form_Element_Checkbox
      */
-    public function setUncheckedValue($value)
+    public function setUncheckedValue ($value)
     {
         $this->_uncheckedValue = (string) $value;
         $this->options['uncheckedValue'] = $value;
@@ -169,7 +182,7 @@ class Zend_Form_Element_Checkbox extends Zend_Form_Element_Xhtml
      *
      * @return string
      */
-    public function getUncheckedValue()
+    public function getUncheckedValue ()
     {
         return $this->_uncheckedValue;
     }
@@ -177,10 +190,10 @@ class Zend_Form_Element_Checkbox extends Zend_Form_Element_Xhtml
     /**
      * Set checked flag
      *
-     * @param  bool $flag
+     * @param bool $flag            
      * @return Zend_Form_Element_Checkbox
      */
-    public function setChecked($flag)
+    public function setChecked ($flag)
     {
         $this->checked = (bool) $flag;
         if ($this->checked) {
@@ -196,7 +209,7 @@ class Zend_Form_Element_Checkbox extends Zend_Form_Element_Xhtml
      *
      * @return bool
      */
-    public function isChecked()
+    public function isChecked ()
     {
         return $this->checked;
     }

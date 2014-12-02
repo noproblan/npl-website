@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -23,15 +24,18 @@
 /**
  * XML-RPC system.* methods
  *
- * @category   Zend
- * @package    Zend_XmlRpc
+ * @category Zend
+ * @package Zend_XmlRpc
  * @subpackage Server
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_XmlRpc_Server_System
 {
+
     /**
+     *
      * @var Zend_XmlRpc_Server
      */
     protected $_server;
@@ -39,10 +43,10 @@ class Zend_XmlRpc_Server_System
     /**
      * Constructor
      *
-     * @param  Zend_XmlRpc_Server $server
+     * @param Zend_XmlRpc_Server $server            
      * @return void
      */
-    public function __construct(Zend_XmlRpc_Server $server)
+    public function __construct (Zend_XmlRpc_Server $server)
     {
         $this->_server = $server;
     }
@@ -54,7 +58,7 @@ class Zend_XmlRpc_Server_System
      *
      * @return array
      */
-    public function listMethods()
+    public function listMethods ()
     {
         $table = $this->_server->getDispatchTable()->getMethods();
         return array_keys($table);
@@ -63,32 +67,34 @@ class Zend_XmlRpc_Server_System
     /**
      * Display help message for an XMLRPC method
      *
-     * @param string $method
+     * @param string $method            
      * @return string
      */
-    public function methodHelp($method)
+    public function methodHelp ($method)
     {
         $table = $this->_server->getDispatchTable();
-        if (!$table->hasMethod($method)) {
+        if (! $table->hasMethod($method)) {
             require_once 'Zend/XmlRpc/Server/Exception.php';
-            throw new Zend_XmlRpc_Server_Exception('Method "' . $method . '" does not exist', 640);
+            throw new Zend_XmlRpc_Server_Exception(
+                    'Method "' . $method . '" does not exist', 640);
         }
-
+        
         return $table->getMethod($method)->getMethodHelp();
     }
 
     /**
      * Return a method signature
      *
-     * @param string $method
+     * @param string $method            
      * @return array
      */
-    public function methodSignature($method)
+    public function methodSignature ($method)
     {
         $table = $this->_server->getDispatchTable();
-        if (!$table->hasMethod($method)) {
+        if (! $table->hasMethod($method)) {
             require_once 'Zend/XmlRpc/Server/Exception.php';
-            throw new Zend_XmlRpc_Server_Exception('Method "' . $method . '" does not exist', 640);
+            throw new Zend_XmlRpc_Server_Exception(
+                    'Method "' . $method . '" does not exist', 640);
         }
         $method = $table->getMethod($method)->toArray();
         return $method['prototypes'];
@@ -108,38 +114,41 @@ class Zend_XmlRpc_Server_System
      * struct with a fault response.
      *
      * @see http://www.xmlrpc.com/discuss/msgReader$1208
-     * @param  array $methods
+     * @param array $methods            
      * @return array
      */
-    public function multicall($methods)
+    public function multicall ($methods)
     {
         $responses = array();
         foreach ($methods as $method) {
             $fault = false;
-            if (!is_array($method)) {
-                $fault = $this->_server->fault('system.multicall expects each method to be a struct', 601);
-            } elseif (!isset($method['methodName'])) {
-                $fault = $this->_server->fault('Missing methodName: ' . var_export($methods, 1), 602);
-            } elseif (!isset($method['params'])) {
+            if (! is_array($method)) {
+                $fault = $this->_server->fault(
+                        'system.multicall expects each method to be a struct', 
+                        601);
+            } elseif (! isset($method['methodName'])) {
+                $fault = $this->_server->fault(
+                        'Missing methodName: ' . var_export($methods, 1), 602);
+            } elseif (! isset($method['params'])) {
                 $fault = $this->_server->fault('Missing params', 603);
-            } elseif (!is_array($method['params'])) {
+            } elseif (! is_array($method['params'])) {
                 $fault = $this->_server->fault('Params must be an array', 604);
             } else {
                 if ('system.multicall' == $method['methodName']) {
                     // don't allow recursive calls to multicall
-                    $fault = $this->_server->fault('Recursive system.multicall forbidden', 605);
+                    $fault = $this->_server->fault(
+                            'Recursive system.multicall forbidden', 605);
                 }
             }
-
-            if (!$fault) {
+            
+            if (! $fault) {
                 try {
                     $request = new Zend_XmlRpc_Request();
                     $request->setMethod($method['methodName']);
                     $request->setParams($method['params']);
                     $response = $this->_server->handle($request);
-                    if ($response instanceof Zend_XmlRpc_Fault
-                        || $response->isFault()
-                    ) {
+                    if ($response instanceof Zend_XmlRpc_Fault ||
+                             $response->isFault()) {
                         $fault = $response;
                     } else {
                         $responses[] = $response->getReturnValue();
@@ -148,15 +157,15 @@ class Zend_XmlRpc_Server_System
                     $fault = $this->_server->fault($e);
                 }
             }
-
+            
             if ($fault) {
                 $responses[] = array(
-                    'faultCode'   => $fault->getCode(),
-                    'faultString' => $fault->getMessage()
+                        'faultCode' => $fault->getCode(),
+                        'faultString' => $fault->getMessage()
                 );
             }
         }
-
+        
         return $responses;
     }
 }

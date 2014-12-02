@@ -20,6 +20,7 @@
  */
 
 /**
+ *
  * @see Zend_Text_Table_Decorator_Interface
  */
 require_once 'Zend/Text/Table/Decorator/Interface.php';
@@ -27,20 +28,23 @@ require_once 'Zend/Text/Table/Decorator/Interface.php';
 /**
  * ASCII Decorator for Zend_Text_Table
  *
- * @category  Zend
- * @package   Zend_Text_Table
- * @uses      Zend_Text_Table_Decorator_Interface
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license   http://framework.zend.com/license/new-bsd     New BSD License
+ * @category Zend
+ * @package Zend_Text_Table
+ * @uses Zend_Text_Table_Decorator_Interface
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
-class Zend_Text_Table_Decorator_Ascii implements Zend_Text_Table_Decorator_Interface
+class Zend_Text_Table_Decorator_Ascii implements 
+        Zend_Text_Table_Decorator_Interface
 {
+
     /**
      * Defined by Zend_Text_Table_Decorator_Interface
      *
      * @return string
      */
-    public function getTopLeft()
+    public function getTopLeft ()
     {
         return '+';
     }
@@ -50,7 +54,7 @@ class Zend_Text_Table_Decorator_Ascii implements Zend_Text_Table_Decorator_Inter
      *
      * @return string
      */
-    public function getTopRight()
+    public function getTopRight ()
     {
         return '+';
     }
@@ -60,7 +64,7 @@ class Zend_Text_Table_Decorator_Ascii implements Zend_Text_Table_Decorator_Inter
      *
      * @return string
      */
-    public function getBottomLeft()
+    public function getBottomLeft ()
     {
         return '+';
     }
@@ -70,7 +74,7 @@ class Zend_Text_Table_Decorator_Ascii implements Zend_Text_Table_Decorator_Inter
      *
      * @return string
      */
-    public function getBottomRight()
+    public function getBottomRight ()
     {
         return '+';
     }
@@ -80,7 +84,7 @@ class Zend_Text_Table_Decorator_Ascii implements Zend_Text_Table_Decorator_Inter
      *
      * @return string
      */
-    public function getVertical()
+    public function getVertical ()
     {
         return '|';
     }
@@ -90,7 +94,7 @@ class Zend_Text_Table_Decorator_Ascii implements Zend_Text_Table_Decorator_Inter
      *
      * @return string
      */
-    public function getHorizontal()
+    public function getHorizontal ()
     {
         return '-';
     }
@@ -100,7 +104,7 @@ class Zend_Text_Table_Decorator_Ascii implements Zend_Text_Table_Decorator_Inter
      *
      * @return string
      */
-    public function getCross()
+    public function getCross ()
     {
         return '+';
     }
@@ -110,7 +114,7 @@ class Zend_Text_Table_Decorator_Ascii implements Zend_Text_Table_Decorator_Inter
      *
      * @return string
      */
-    public function getVerticalRight()
+    public function getVerticalRight ()
     {
         return '+';
     }
@@ -120,7 +124,7 @@ class Zend_Text_Table_Decorator_Ascii implements Zend_Text_Table_Decorator_Inter
      *
      * @return string
      */
-    public function getVerticalLeft()
+    public function getVerticalLeft ()
     {
         return '+';
     }
@@ -130,7 +134,7 @@ class Zend_Text_Table_Decorator_Ascii implements Zend_Text_Table_Decorator_Inter
      *
      * @return string
      */
-    public function getHorizontalDown()
+    public function getHorizontalDown ()
     {
         return '+';
     }
@@ -140,7 +144,7 @@ class Zend_Text_Table_Decorator_Ascii implements Zend_Text_Table_Decorator_Inter
      *
      * @return string
      */
-    public function getHorizontalUp()
+    public function getHorizontalUp ()
     {
         return '+';
     }

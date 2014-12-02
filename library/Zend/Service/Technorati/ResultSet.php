@@ -20,123 +20,126 @@
  * @version    $Id: ResultSet.php 23775 2011-03-01 17:25:24Z ralph $
  */
 
-
 /**
+ *
  * @see Zend_Service_Technorati_Result
  */
 require_once 'Zend/Service/Technorati/Result.php';
 
-
 /**
  * This is the most essential result set.
- * The scope of this class is to be extended by a query-specific child result set class,
+ * The scope of this class is to be extended by a query-specific child result
+ * set class,
  * and it should never be used to initialize a standalone object.
  *
  * Each of the specific result sets represents a collection of query-specific
  * Zend_Service_Technorati_Result objects.
  *
- * @category   Zend
- * @package    Zend_Service
+ * @category Zend
+ * @package Zend_Service
  * @subpackage Technorati
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  * @abstract
+ *
  */
 abstract class Zend_Service_Technorati_ResultSet implements SeekableIterator
 {
+
     /**
      * The total number of results available
      *
-     * @var     int
-     * @access  protected
+     * @var int
+     * @access protected
      */
     protected $_totalResultsAvailable;
 
     /**
      * The number of results in this result set
      *
-     * @var     int
-     * @access  protected
+     * @var int
+     * @access protected
      */
     protected $_totalResultsReturned;
 
     /**
      * The offset in the total result set of this search set
      *
-     * @var     int
+     * @var int
      */
-    //TODO public $firstResultPosition;
-
-
+    // TODO public $firstResultPosition;
+    
     /**
      * A DomNodeList of results
      *
-     * @var     DomNodeList
-     * @access  protected
+     * @var DomNodeList
+     * @access protected
      */
     protected $_results;
 
     /**
      * Technorati API response document
      *
-     * @var     DomDocument
-     * @access  protected
+     * @var DomDocument
+     * @access protected
      */
     protected $_dom;
 
     /**
      * Object for $this->_dom
      *
-     * @var     DOMXpath
-     * @access  protected
+     * @var DOMXpath
+     * @access protected
      */
     protected $_xpath;
 
     /**
      * XML string representation for $this->_dom
      *
-     * @var     string
-     * @access  protected
+     * @var string
+     * @access protected
      */
     protected $_xml;
 
     /**
      * Current Item
      *
-     * @var     int
-     * @access  protected
+     * @var int
+     * @access protected
      */
     protected $_currentIndex = 0;
-
 
     /**
      * Parses the search response and retrieves the results for iteration.
      *
-     * @param   DomDocument $dom    the ReST fragment for this object
-     * @param   array $options      query options as associative array
+     * @param DomDocument $dom
+     *            the ReST fragment for this object
+     * @param array $options
+     *            query options as associative array
      */
-    public function __construct(DomDocument $dom, $options = array())
+    public function __construct (DomDocument $dom, $options = array())
     {
         $this->_init($dom, $options);
-
+        
         // Technorati loves to make developer's life really hard
         // I must read query options in order to normalize a single way
         // to display start and limit.
         // The value is printed out in XML using many different tag names,
         // too hard to get it from XML
-
+        
         // Additionally, the following tags should be always available
         // according to API documentation but... this is not the truth!
         // - querytime
         // - limit
         // - start (sometimes rankingstart)
-
+        
         // query tag is only available for some requests, the same for url.
         // For now ignore them.
-
-        //$start = isset($options['start']) ? $options['start'] : 1;
-        //$limit = isset($options['limit']) ? $options['limit'] : 20;
-        //$this->_firstResultPosition = $start;
+        
+        // $start = isset($options['start']) ? $options['start'] : 1;
+        // $limit = isset($options['limit']) ? $options['limit'] : 20;
+        // $this->_firstResultPosition = $start;
     }
 
     /**
@@ -147,35 +150,36 @@ abstract class Zend_Service_Technorati_ResultSet implements SeekableIterator
      * This method is called once each time a new instance is created
      * or a serialized object is unserialized.
      *
-     * @param   DomDocument $dom the ReST fragment for this object
-     * @param   array $options   query options as associative array
-     *      * @return  void
+     * @param DomDocument $dom
+     *            the ReST fragment for this object
+     * @param array $options
+     *            query options as associative array
+     *            * @return void
      */
-    protected function _init(DomDocument $dom, $options = array())
+    protected function _init (DomDocument $dom, $options = array())
     {
-        $this->_dom     = $dom;
-        $this->_xpath   = new DOMXPath($dom);
-
+        $this->_dom = $dom;
+        $this->_xpath = new DOMXPath($dom);
+        
         $this->_results = $this->_xpath->query("//item");
     }
 
     /**
      * Number of results returned.
      *
-     * @return  int     total number of results returned
+     * @return int total number of results returned
      */
-    public function totalResults()
+    public function totalResults ()
     {
         return (int) $this->_totalResultsReturned;
     }
 
-
     /**
      * Number of available results.
      *
-     * @return  int     total number of available results
+     * @return int total number of available results
      */
-    public function totalResultsAvailable()
+    public function totalResultsAvailable ()
     {
         return (int) $this->_totalResultsAvailable;
     }
@@ -183,18 +187,19 @@ abstract class Zend_Service_Technorati_ResultSet implements SeekableIterator
     /**
      * Implements SeekableIterator::current().
      *
-     * @return  void
-     * @throws  Zend_Service_Exception
+     * @return void
+     * @throws Zend_Service_Exception
      * @abstract
+     *
      */
     // abstract public function current();
-
+    
     /**
      * Implements SeekableIterator::key().
      *
-     * @return  int
+     * @return int
      */
-    public function key()
+    public function key ()
     {
         return $this->_currentIndex;
     }
@@ -202,9 +207,9 @@ abstract class Zend_Service_Technorati_ResultSet implements SeekableIterator
     /**
      * Implements SeekableIterator::next().
      *
-     * @return  void
+     * @return void
      */
-    public function next()
+    public function next ()
     {
         $this->_currentIndex += 1;
     }
@@ -212,9 +217,9 @@ abstract class Zend_Service_Technorati_ResultSet implements SeekableIterator
     /**
      * Implements SeekableIterator::rewind().
      *
-     * @return  bool
+     * @return bool
      */
-    public function rewind()
+    public function rewind ()
     {
         $this->_currentIndex = 0;
         return true;
@@ -223,11 +228,11 @@ abstract class Zend_Service_Technorati_ResultSet implements SeekableIterator
     /**
      * Implement SeekableIterator::seek().
      *
-     * @param   int $index
-     * @return  void
-     * @throws  OutOfBoundsException
+     * @param int $index            
+     * @return void
+     * @throws OutOfBoundsException
      */
-    public function seek($index)
+    public function seek ($index)
     {
         $indexInt = (int) $index;
         if ($indexInt >= 0 && $indexInt < $this->_results->length) {
@@ -242,17 +247,18 @@ abstract class Zend_Service_Technorati_ResultSet implements SeekableIterator
      *
      * @return boolean
      */
-    public function valid()
+    public function valid ()
     {
-        return null !== $this->_results && $this->_currentIndex < $this->_results->length;
+        return null !== $this->_results &&
+                 $this->_currentIndex < $this->_results->length;
     }
 
     /**
      * Returns the response document as XML string.
      *
-     * @return string   the response document converted into XML format
+     * @return string the response document converted into XML format
      */
-    public function getXml()
+    public function getXml ()
     {
         return $this->_dom->saveXML();
     }
@@ -265,10 +271,14 @@ abstract class Zend_Service_Technorati_ResultSet implements SeekableIterator
      *
      * @return void
      */
-    public function __sleep() {
-        $this->_xml     = $this->getXml();
+    public function __sleep ()
+    {
+        $this->_xml = $this->getXml();
         $vars = array_keys(get_object_vars($this));
-        return array_diff($vars, array('_dom', '_xpath'));
+        return array_diff($vars, array(
+                '_dom',
+                '_xpath'
+        ));
     }
 
     /**
@@ -280,7 +290,8 @@ abstract class Zend_Service_Technorati_ResultSet implements SeekableIterator
      *
      * @return void
      */
-    public function __wakeup() {
+    public function __wakeup ()
+    {
         $dom = new DOMDocument();
         $dom->loadXml($this->_xml);
         $this->_init($dom);

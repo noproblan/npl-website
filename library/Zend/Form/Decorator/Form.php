@@ -19,7 +19,9 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
 
-/** Zend_Form_Decorator_Abstract */
+/**
+ * Zend_Form_Decorator_Abstract
+ */
 require_once 'Zend/Form/Decorator/Abstract.php';
 
 /**
@@ -30,21 +32,24 @@ require_once 'Zend/Form/Decorator/Abstract.php';
  * Accepts following options:
  * - separator: Separator to use between elements
  * - helper: which view helper to use when rendering form. Should accept three
- *   arguments, string content, a name, and an array of attributes.
+ * arguments, string content, a name, and an array of attributes.
  *
  * Any other options passed will be used as HTML attributes of the form tag.
  *
- * @category   Zend
- * @package    Zend_Form
+ * @category Zend
+ * @package Zend_Form
  * @subpackage Decorator
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: Form.php 23775 2011-03-01 17:25:24Z ralph $
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
+ * @version $Id: Form.php 23775 2011-03-01 17:25:24Z ralph $
  */
 class Zend_Form_Decorator_Form extends Zend_Form_Decorator_Abstract
 {
+
     /**
      * Default view helper
+     * 
      * @var string
      */
     protected $_helper = 'form';
@@ -52,10 +57,10 @@ class Zend_Form_Decorator_Form extends Zend_Form_Decorator_Abstract
     /**
      * Set view helper for rendering form
      *
-     * @param  string $helper
+     * @param string $helper            
      * @return Zend_Form_Decorator_Form
      */
-    public function setHelper($helper)
+    public function setHelper ($helper)
     {
         $this->_helper = (string) $helper;
         return $this;
@@ -66,7 +71,7 @@ class Zend_Form_Decorator_Form extends Zend_Form_Decorator_Abstract
      *
      * @return string
      */
-    public function getHelper()
+    public function getHelper ()
     {
         if (null !== ($helper = $this->getOption('helper'))) {
             $this->setHelper($helper);
@@ -83,14 +88,15 @@ class Zend_Form_Decorator_Form extends Zend_Form_Decorator_Abstract
      *
      * @return array
      */
-    public function getOptions()
+    public function getOptions ()
     {
         if (null !== ($element = $this->getElement())) {
             if ($element instanceof Zend_Form) {
                 $element->getAction();
                 $method = $element->getMethod();
                 if ($method == Zend_Form::METHOD_POST) {
-                    $this->setOption('enctype', 'application/x-www-form-urlencoded');
+                    $this->setOption('enctype', 
+                            'application/x-www-form-urlencoded');
                 }
                 foreach ($element->getAttribs() as $key => $value) {
                     $this->setOption($key, $value);
@@ -101,11 +107,11 @@ class Zend_Form_Decorator_Form extends Zend_Form_Decorator_Abstract
                 }
             }
         }
-
+        
         if (isset($this->_options['method'])) {
             $this->_options['method'] = strtolower($this->_options['method']);
         }
-
+        
         return $this->_options;
     }
 
@@ -114,20 +120,20 @@ class Zend_Form_Decorator_Form extends Zend_Form_Decorator_Abstract
      *
      * Replaces $content entirely from currently set element.
      *
-     * @param  string $content
+     * @param string $content            
      * @return string
      */
-    public function render($content)
+    public function render ($content)
     {
-        $form    = $this->getElement();
-        $view    = $form->getView();
+        $form = $this->getElement();
+        $view = $form->getView();
         if (null === $view) {
             return $content;
         }
-
-        $helper        = $this->getHelper();
-        $attribs       = $this->getOptions();
-        $name          = $form->getFullyQualifiedName();
+        
+        $helper = $this->getHelper();
+        $attribs = $this->getOptions();
+        $name = $form->getFullyQualifiedName();
         $attribs['id'] = $form->getId();
         return $view->$helper($name, $attribs, $content);
     }

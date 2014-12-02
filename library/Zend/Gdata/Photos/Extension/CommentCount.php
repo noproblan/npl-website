@@ -22,42 +22,48 @@
  */
 
 /**
+ *
  * @see Zend_Gdata_Extension
  */
 require_once 'Zend/Gdata/Extension.php';
 
 /**
+ *
  * @see Zend_Gdata_Photos
  */
 require_once 'Zend/Gdata/Photos.php';
 
 /**
- * Represents the gphoto:commentCount element used by the API. This
- * class represents the number of comments attached to an entry and is usually contained
+ * Represents the gphoto:commentCount element used by the API.
+ * This
+ * class represents the number of comments attached to an entry and is usually
+ * contained
  * within an instance of Zend_Gdata_Photos_PhotoEntry or AlbumEntry.
  *
- * @category   Zend
- * @package    Zend_Gdata
+ * @category Zend
+ * @package Zend_Gdata
  * @subpackage Photos
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Gdata_Photos_Extension_CommentCount extends Zend_Gdata_Extension
 {
 
     protected $_rootNamespace = 'gphoto';
+
     protected $_rootElement = 'commentCount';
 
     /**
      * Constructs a new Zend_Gdata_Photos_Extension_CommentCount object.
      *
-     * @param string $text (optional) The value to use for the count.
+     * @param string $text
+     *            (optional) The value to use for the count.
      */
-    public function __construct($text = null)
+    public function __construct ($text = null)
     {
         $this->registerAllNamespaces(Zend_Gdata_Photos::$namespaces);
         parent::__construct();
         $this->setText($text);
     }
-
 }

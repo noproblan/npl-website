@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -21,94 +22,112 @@
  */
 
 /**
- * @category   Zend
- * @package    Zend_Json
+ *
+ * @category Zend
+ * @package Zend_Json
  * @subpackage Server
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Json_Server_Smd
 {
+
     const ENV_JSONRPC_1 = 'JSON-RPC-1.0';
+
     const ENV_JSONRPC_2 = 'JSON-RPC-2.0';
-    const SMD_VERSION   = '2.0';
+
+    const SMD_VERSION = '2.0';
 
     /**
      * Content type
+     * 
      * @var string
      */
     protected $_contentType = 'application/json';
 
     /**
      * Content type regex
+     * 
      * @var string
      */
     protected $_contentTypeRegex = '#[a-z]+/[a-z][a-z-]+#i';
 
     /**
      * Service description
+     * 
      * @var string
      */
     protected $_description;
 
     /**
      * Generate Dojo-compatible SMD
+     * 
      * @var bool
      */
     protected $_dojoCompatible = false;
 
     /**
      * Current envelope
+     * 
      * @var string
      */
     protected $_envelope = self::ENV_JSONRPC_1;
 
     /**
      * Allowed envelope types
+     * 
      * @var array
      */
     protected $_envelopeTypes = array(
-        self::ENV_JSONRPC_1,
-        self::ENV_JSONRPC_2,
+            self::ENV_JSONRPC_1,
+            self::ENV_JSONRPC_2
     );
 
     /**
      * Service id
+     * 
      * @var string
      */
     protected $_id;
 
     /**
      * Services offerred
+     * 
      * @var array
      */
     protected $_services = array();
 
     /**
      * Service target
+     * 
      * @var string
      */
     protected $_target;
 
     /**
      * Global transport
+     * 
      * @var string
      */
     protected $_transport = 'POST';
 
     /**
      * Allowed transport types
+     * 
      * @var array
      */
-    protected $_transportTypes = array('POST');
+    protected $_transportTypes = array(
+            'POST'
+    );
 
     /**
      * Set object state via options
      *
-     * @param  array $options
+     * @param array $options            
      * @return Zend_Json_Server_Smd
      */
-    public function setOptions(array $options)
+    public function setOptions (array $options)
     {
         $methods = get_class_methods($this);
         foreach ($options as $key => $value) {
@@ -123,14 +142,15 @@ class Zend_Json_Server_Smd
     /**
      * Set transport
      *
-     * @param  string $transport
+     * @param string $transport            
      * @return Zend_Json_Server_Smd
      */
-    public function setTransport($transport)
+    public function setTransport ($transport)
     {
-        if (!in_array($transport, $this->_transportTypes)) {
+        if (! in_array($transport, $this->_transportTypes)) {
             require_once 'Zend/Json/Server/Exception.php';
-            throw new Zend_Json_Server_Exception(sprintf('Invalid transport "%s" specified', $transport));
+            throw new Zend_Json_Server_Exception(
+                    sprintf('Invalid transport "%s" specified', $transport));
         }
         $this->_transport = $transport;
         return $this;
@@ -141,7 +161,7 @@ class Zend_Json_Server_Smd
      *
      * @return string
      */
-    public function getTransport()
+    public function getTransport ()
     {
         return $this->_transport;
     }
@@ -149,14 +169,15 @@ class Zend_Json_Server_Smd
     /**
      * Set envelope
      *
-     * @param  string $envelopeType
+     * @param string $envelopeType            
      * @return Zend_Json_Server_Smd
      */
-    public function setEnvelope($envelopeType)
+    public function setEnvelope ($envelopeType)
     {
-        if (!in_array($envelopeType, $this->_envelopeTypes)) {
+        if (! in_array($envelopeType, $this->_envelopeTypes)) {
             require_once 'Zend/Json/Server/Exception.php';
-            throw new Zend_Json_Server_Exception(sprintf('Invalid envelope type "%s"', $envelopeType));
+            throw new Zend_Json_Server_Exception(
+                    sprintf('Invalid envelope type "%s"', $envelopeType));
         }
         $this->_envelope = $envelopeType;
         return $this;
@@ -167,23 +188,24 @@ class Zend_Json_Server_Smd
      *
      * @return string
      */
-    public function getEnvelope()
+    public function getEnvelope ()
     {
         return $this->_envelope;
     }
-
+    
     // Content-Type of response; default to application/json
     /**
      * Set content type
      *
-     * @param  string $type
+     * @param string $type            
      * @return Zend_Json_Server_Smd
      */
-    public function setContentType($type)
+    public function setContentType ($type)
     {
-        if (!preg_match($this->_contentTypeRegex, $type)) {
+        if (! preg_match($this->_contentTypeRegex, $type)) {
             require_once 'Zend/Json/Server/Exception.php';
-            throw new Zend_Json_Server_Exception(sprintf('Invalid content type "%s" specified', $type));
+            throw new Zend_Json_Server_Exception(
+                    sprintf('Invalid content type "%s" specified', $type));
         }
         $this->_contentType = $type;
         return $this;
@@ -194,7 +216,7 @@ class Zend_Json_Server_Smd
      *
      * @return string
      */
-    public function getContentType()
+    public function getContentType ()
     {
         return $this->_contentType;
     }
@@ -202,10 +224,10 @@ class Zend_Json_Server_Smd
     /**
      * Set service target
      *
-     * @param  string $target
+     * @param string $target            
      * @return Zend_Json_Server_Smd
      */
-    public function setTarget($target)
+    public function setTarget ($target)
     {
         $this->_target = (string) $target;
         return $this;
@@ -216,7 +238,7 @@ class Zend_Json_Server_Smd
      *
      * @return string
      */
-    public function getTarget()
+    public function getTarget ()
     {
         return $this->_target;
     }
@@ -224,10 +246,10 @@ class Zend_Json_Server_Smd
     /**
      * Set service ID
      *
-     * @param  string $Id
+     * @param string $Id            
      * @return Zend_Json_Server_Smd
      */
-    public function setId($id)
+    public function setId ($id)
     {
         $this->_id = (string) $id;
         return $this->_id;
@@ -238,7 +260,7 @@ class Zend_Json_Server_Smd
      *
      * @return string
      */
-    public function getId()
+    public function getId ()
     {
         return $this->_id;
     }
@@ -246,10 +268,10 @@ class Zend_Json_Server_Smd
     /**
      * Set service description
      *
-     * @param  string $description
+     * @param string $description            
      * @return Zend_Json_Server_Smd
      */
-    public function setDescription($description)
+    public function setDescription ($description)
     {
         $this->_description = (string) $description;
         return $this->_description;
@@ -260,7 +282,7 @@ class Zend_Json_Server_Smd
      *
      * @return string
      */
-    public function getDescription()
+    public function getDescription ()
     {
         return $this->_description;
     }
@@ -268,10 +290,10 @@ class Zend_Json_Server_Smd
     /**
      * Indicate whether or not to generate Dojo-compatible SMD
      *
-     * @param  bool $flag
+     * @param bool $flag            
      * @return Zend_Json_Server_Smd
      */
-    public function setDojoCompatible($flag)
+    public function setDojoCompatible ($flag)
     {
         $this->_dojoCompatible = (bool) $flag;
         return $this;
@@ -282,7 +304,7 @@ class Zend_Json_Server_Smd
      *
      * @return bool
      */
-    public function isDojoCompatible()
+    public function isDojoCompatible ()
     {
         return $this->_dojoCompatible;
     }
@@ -290,13 +312,13 @@ class Zend_Json_Server_Smd
     /**
      * Add Service
      *
-     * @param Zend_Json_Server_Smd_Service|array $service
+     * @param Zend_Json_Server_Smd_Service|array $service            
      * @return void
      */
-    public function addService($service)
+    public function addService ($service)
     {
         require_once 'Zend/Json/Server/Smd/Service.php';
-
+        
         if ($service instanceof Zend_Json_Server_Smd_Service) {
             $name = $service->getName();
         } elseif (is_array($service)) {
@@ -304,12 +326,14 @@ class Zend_Json_Server_Smd
             $name = $service->getName();
         } else {
             require_once 'Zend/Json/Server/Exception.php';
-            throw new Zend_Json_Server_Exception('Invalid service passed to addService()');
+            throw new Zend_Json_Server_Exception(
+                    'Invalid service passed to addService()');
         }
-
+        
         if (array_key_exists($name, $this->_services)) {
             require_once 'Zend/Json/Server/Exception.php';
-            throw new Zend_Json_Server_Exception('Attempt to register a service already registered detected');
+            throw new Zend_Json_Server_Exception(
+                    'Attempt to register a service already registered detected');
         }
         $this->_services[$name] = $service;
         return $this;
@@ -318,10 +342,10 @@ class Zend_Json_Server_Smd
     /**
      * Add many services
      *
-     * @param  array $services
+     * @param array $services            
      * @return Zend_Json_Server_Smd
      */
-    public function addServices(array $services)
+    public function addServices (array $services)
     {
         foreach ($services as $service) {
             $this->addService($service);
@@ -332,10 +356,10 @@ class Zend_Json_Server_Smd
     /**
      * Overwrite existing services with new ones
      *
-     * @param  array $services
+     * @param array $services            
      * @return Zend_Json_Server_Smd
      */
-    public function setServices(array $services)
+    public function setServices (array $services)
     {
         $this->_services = array();
         return $this->addServices($services);
@@ -344,10 +368,10 @@ class Zend_Json_Server_Smd
     /**
      * Get service object
      *
-     * @param  string $name
+     * @param string $name            
      * @return false|Zend_Json_Server_Smd_Service
      */
-    public function getService($name)
+    public function getService ($name)
     {
         if (array_key_exists($name, $this->_services)) {
             return $this->_services[$name];
@@ -360,7 +384,7 @@ class Zend_Json_Server_Smd
      *
      * @return array
      */
-    public function getServices()
+    public function getServices ()
     {
         return $this->_services;
     }
@@ -368,10 +392,10 @@ class Zend_Json_Server_Smd
     /**
      * Remove service
      *
-     * @param  string $name
+     * @param string $name            
      * @return boolean
      */
-    public function removeService($name)
+    public function removeService ($name)
     {
         if (array_key_exists($name, $this->_services)) {
             unset($this->_services[$name]);
@@ -385,27 +409,27 @@ class Zend_Json_Server_Smd
      *
      * @return array
      */
-    public function toArray()
+    public function toArray ()
     {
         if ($this->isDojoCompatible()) {
             return $this->toDojoArray();
         }
-
-        $transport   = $this->getTransport();
-        $envelope    = $this->getEnvelope();
+        
+        $transport = $this->getTransport();
+        $envelope = $this->getEnvelope();
         $contentType = $this->getContentType();
-        $SMDVersion  = self::SMD_VERSION;
+        $SMDVersion = self::SMD_VERSION;
         $service = compact('transport', 'envelope', 'contentType', 'SMDVersion');
-
+        
         if (null !== ($target = $this->getTarget())) {
-            $service['target']     = $target;
+            $service['target'] = $target;
         }
         if (null !== ($id = $this->getId())) {
             $service['id'] = $id;
         }
-
+        
         $services = $this->getServices();
-        if (!empty($services)) {
+        if (! empty($services)) {
             $service['services'] = array();
             foreach ($services as $name => $svc) {
                 $svc->setEnvelope($envelope);
@@ -413,7 +437,7 @@ class Zend_Json_Server_Smd
             }
             $service['methods'] = $service['services'];
         }
-
+        
         return $service;
     }
 
@@ -422,37 +446,37 @@ class Zend_Json_Server_Smd
      *
      * @return array
      */
-    public function toDojoArray()
+    public function toDojoArray ()
     {
-        $SMDVersion  = '.1';
+        $SMDVersion = '.1';
         $serviceType = 'JSON-RPC';
         $service = compact('SMDVersion', 'serviceType');
-
+        
         $target = $this->getTarget();
-
+        
         $services = $this->getServices();
-        if (!empty($services)) {
+        if (! empty($services)) {
             $service['methods'] = array();
             foreach ($services as $name => $svc) {
                 $method = array(
-                    'name'       => $name,
-                    'serviceURL' => $target,
+                        'name' => $name,
+                        'serviceURL' => $target
                 );
                 $params = array();
                 foreach ($svc->getParams() as $param) {
                     $paramName = array_key_exists('name', $param) ? $param['name'] : $param['type'];
                     $params[] = array(
-                        'name' => $paramName,
-                        'type' => $param['type'],
+                            'name' => $paramName,
+                            'type' => $param['type']
                     );
                 }
-                if (!empty($params)) {
+                if (! empty($params)) {
                     $method['parameters'] = $params;
                 }
                 $service['methods'][] = $method;
             }
         }
-
+        
         return $service;
     }
 
@@ -461,7 +485,7 @@ class Zend_Json_Server_Smd
      *
      * @return string
      */
-    public function toJson()
+    public function toJson ()
     {
         require_once 'Zend/Json.php';
         return Zend_Json::encode($this->toArray());
@@ -472,7 +496,7 @@ class Zend_Json_Server_Smd
      *
      * @return string
      */
-    public function __toString()
+    public function __toString ()
     {
         return $this->toJson();
     }

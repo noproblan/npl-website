@@ -20,28 +20,34 @@
  * @version    $Id: Itf14.php 23775 2011-03-01 17:25:24Z ralph $
  */
 
-/** @see Zend_Barcode_Object_Code25interleaved */
+/**
+ * @see Zend_Barcode_Object_Code25interleaved
+ */
 require_once 'Zend/Barcode/Object/Code25interleaved.php';
 
-/** @see Zend_Validate_Barcode */
+/**
+ * @see Zend_Validate_Barcode
+ */
 require_once 'Zend/Validate/Barcode.php';
 
 /**
  * Class for generate Itf14 barcode
  *
- * @category   Zend
- * @package    Zend_Barcode
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @category Zend
+ * @package Zend_Barcode
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Barcode_Object_Itf14 extends Zend_Barcode_Object_Code25interleaved
 {
 
     /**
      * Default options for Identcode barcode
+     * 
      * @return void
      */
-    protected function _getDefaultOptions()
+    protected function _getDefaultOptions ()
     {
         $this->_barcodeLength = 14;
         $this->_mandatoryChecksum = true;

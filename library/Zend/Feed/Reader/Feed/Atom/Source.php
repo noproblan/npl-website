@@ -20,15 +20,18 @@
  */
 
 /**
+ *
  * @see Zend_Feed_Reader_Feed_Atom
  */
 require_once 'Zend/Feed/Reader/Feed/Atom.php';
 
 /**
- * @category   Zend
- * @package    Zend_Feed_Reader
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ *
+ * @category Zend
+ * @package Zend_Feed_Reader
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Feed_Reader_Feed_Atom_Source extends Zend_Feed_Reader_Feed_Atom
 {
@@ -38,24 +41,32 @@ class Zend_Feed_Reader_Feed_Atom_Source extends Zend_Feed_Reader_Feed_Atom
      * Zend_Feed_Reader_FeedAbstract object only designed to retrieve feed level
      * metadata from an Atom entry's source element.
      *
-     * @param DOMElement $source
-     * @param string $xpathPrefix Passed from parent Entry object
-     * @param string $type Nearly always Atom 1.0
+     * @param DOMElement $source            
+     * @param string $xpathPrefix
+     *            Passed from parent Entry object
+     * @param string $type
+     *            Nearly always Atom 1.0
      */
-    public function __construct(DOMElement $source, $xpathPrefix, $type = Zend_Feed_Reader::TYPE_ATOM_10)
+    public function __construct (DOMElement $source, $xpathPrefix, 
+            $type = Zend_Feed_Reader::TYPE_ATOM_10)
     {
         $this->_domDocument = $source->ownerDocument;
         $this->_xpath = new DOMXPath($this->_domDocument);
         $this->_data['type'] = $type;
         $this->_registerNamespaces();
         $this->_loadExtensions();
-
-        $atomClass = Zend_Feed_Reader::getPluginLoader()->getClassName('Atom_Feed');
-        $this->_extensions['Atom_Feed'] = new $atomClass($this->_domDocument, $this->_data['type'], $this->_xpath);
-        $atomClass = Zend_Feed_Reader::getPluginLoader()->getClassName('DublinCore_Feed');
-        $this->_extensions['DublinCore_Feed'] = new $atomClass($this->_domDocument, $this->_data['type'], $this->_xpath);
+        
+        $atomClass = Zend_Feed_Reader::getPluginLoader()->getClassName(
+                'Atom_Feed');
+        $this->_extensions['Atom_Feed'] = new $atomClass($this->_domDocument, 
+                $this->_data['type'], $this->_xpath);
+        $atomClass = Zend_Feed_Reader::getPluginLoader()->getClassName(
+                'DublinCore_Feed');
+        $this->_extensions['DublinCore_Feed'] = new $atomClass(
+                $this->_domDocument, $this->_data['type'], $this->_xpath);
         foreach ($this->_extensions as $extension) {
-            $extension->setXpathPrefix(rtrim($xpathPrefix, '/') . '/atom:source');
+            $extension->setXpathPrefix(
+                    rtrim($xpathPrefix, '/') . '/atom:source');
         }
     }
 
@@ -63,40 +74,53 @@ class Zend_Feed_Reader_Feed_Atom_Source extends Zend_Feed_Reader_Feed_Atom
      * Since this is not an Entry carrier but a vehicle for Feed metadata, any
      * applicable Entry methods are stubbed out and do nothing.
      */
-
+    
     /**
+     *
      * @return void
      */
-    public function count() {}
+    public function count ()
+    {}
 
     /**
+     *
      * @return void
      */
-    public function current() {}
+    public function current ()
+    {}
 
     /**
+     *
      * @return void
      */
-    public function key() {}
+    public function key ()
+    {}
 
     /**
+     *
      * @return void
      */
-    public function next() {}
+    public function next ()
+    {}
 
     /**
+     *
      * @return void
      */
-    public function rewind() {}
+    public function rewind ()
+    {}
 
     /**
+     *
      * @return void
      */
-    public function valid() {}
+    public function valid ()
+    {}
 
     /**
+     *
      * @return void
      */
-    protected function _indexEntries() {}
-
+    protected function _indexEntries ()
+    {}
 }

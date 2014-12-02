@@ -20,30 +20,32 @@
  * @version    $Id: BaseName.php 23775 2011-03-01 17:25:24Z ralph $
  */
 
-
 /**
+ *
  * @see Zend_Filter_Interface
  */
 require_once 'Zend/Filter/Interface.php';
 
-
 /**
- * @category   Zend
- * @package    Zend_Filter
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ *
+ * @category Zend
+ * @package Zend_Filter
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Filter_BaseName implements Zend_Filter_Interface
 {
+
     /**
      * Defined by Zend_Filter_Interface
      *
      * Returns basename($value)
      *
-     * @param  string $value
+     * @param string $value            
      * @return string
      */
-    public function filter($value)
+    public function filter ($value)
     {
         return basename((string) $value);
     }

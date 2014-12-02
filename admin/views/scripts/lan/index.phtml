@@ -1,13 +1,13 @@
 <div id="view-content">
-	<div id="title">
-		<h1>LAN-Verwaltung → Info</h1>
-	</div>
-	<?php echo $this->messages(); ?>
-	<div id="information">
-		<?= $this->partial('lan/submenu.phtml') ?>
-		<?php foreach ($this->upcomingLans as $lan): ?>
-		<h2><?= $lan->getName() ?></h2>
-		Infos zu den LAN-Parties kommen noch...
-		<?php endforeach; ?>
-	</div>
+    <div id="title">
+        <h1>LAN-Verwaltung → Info</h1>
+    </div>
+    <?php echo $this->messages(); ?>
+    <div id="information">
+        <?= $this->partial('lan/submenu.phtml')?>
+        <?php foreach ($this->upcomingLans as $lan): ?>
+        <h2><?= $lan->getName() ?></h2>
+        Infos zu den LAN-Parties kommen noch...
+        <?php endforeach; ?>
+    </div>
 </div>

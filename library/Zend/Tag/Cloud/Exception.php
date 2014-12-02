@@ -27,11 +27,12 @@ require_once 'Zend/Tag/Exception.php';
 /**
  * Exception class for Zend_Tag_Cloud
  *
- * @category  Zend
- * @package   Zend_Tag
- * @uses      Zend_Exception
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license   http://framework.zend.com/license/new-bsd     New BSD License
+ * @category Zend
+ * @package Zend_Tag
+ * @uses Zend_Exception
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Tag_Cloud_Exception extends Zend_Tag_Exception
 {

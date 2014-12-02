@@ -20,29 +20,34 @@
  */
 
 /**
+ *
  * @see Zend_Feed_Reader
  */
 require_once 'Zend/Feed/Reader.php';
 
 /**
+ *
  * @see Zend_Feed_Reader_Entry_Atom
  */
 require_once 'Zend/Feed/Reader/Entry/Atom.php';
 
-
 /**
+ *
  * @see Zend_Feed_Reader_Entry_Rss
  */
 require_once 'Zend/Feed/Reader/Entry/Rss.php';
 
 /**
- * @category   Zend
- * @package    Zend_Feed_Reader
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ *
+ * @category Zend
+ * @package Zend_Feed_Reader
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 abstract class Zend_Feed_Reader_Extension_FeedAbstract
 {
+
     /**
      * Parsed feed data
      *
@@ -74,26 +79,29 @@ abstract class Zend_Feed_Reader_Extension_FeedAbstract
     /**
      * Constructor
      *
-     * @param  Zend_Feed_Abstract $feed The source Zend_Feed object
-     * @param  string $type Feed type
+     * @param Zend_Feed_Abstract $feed
+     *            The source Zend_Feed object
+     * @param string $type
+     *            Feed type
      * @return void
      */
-    public function __construct(DomDocument $dom, $type = null, DOMXPath $xpath = null)
+    public function __construct (DomDocument $dom, $type = null, 
+            DOMXPath $xpath = null)
     {
         $this->_domDocument = $dom;
-
+        
         if ($type !== null) {
             $this->_data['type'] = $type;
         } else {
             $this->_data['type'] = Zend_Feed_Reader::detectType($dom);
         }
-
+        
         if ($xpath !== null) {
             $this->_xpath = $xpath;
         } else {
             $this->_xpath = new DOMXPath($this->_domDocument);
         }
-
+        
         $this->_registerNamespaces();
     }
 
@@ -102,7 +110,7 @@ abstract class Zend_Feed_Reader_Extension_FeedAbstract
      *
      * @return DOMDocument
      */
-    public function getDomDocument()
+    public function getDomDocument ()
     {
         return $this->_domDocument;
     }
@@ -112,7 +120,7 @@ abstract class Zend_Feed_Reader_Extension_FeedAbstract
      *
      * @return string
      */
-    public function getEncoding()
+    public function getEncoding ()
     {
         $assumed = $this->getDomDocument()->encoding;
         return $assumed;
@@ -123,18 +131,17 @@ abstract class Zend_Feed_Reader_Extension_FeedAbstract
      *
      * @return string
      */
-    public function getType()
+    public function getType ()
     {
         return $this->_data['type'];
     }
-
 
     /**
      * Return the feed as an array
      *
      * @return array
      */
-    public function toArray() // untested
+    public function toArray () // untested
     {
         return $this->_data;
     }
@@ -142,10 +149,10 @@ abstract class Zend_Feed_Reader_Extension_FeedAbstract
     /**
      * Set the XPath query
      *
-     * @param  DOMXPath $xpath
+     * @param DOMXPath $xpath            
      * @return Zend_Feed_Reader_Extension_EntryAbstract
      */
-    public function setXpath(DOMXPath $xpath)
+    public function setXpath (DOMXPath $xpath)
     {
         $this->_xpath = $xpath;
         $this->_registerNamespaces();
@@ -157,7 +164,7 @@ abstract class Zend_Feed_Reader_Extension_FeedAbstract
      *
      * @return string
      */
-    public function getXpath()
+    public function getXpath ()
     {
         return $this->_xpath;
     }
@@ -167,7 +174,7 @@ abstract class Zend_Feed_Reader_Extension_FeedAbstract
      *
      * @return string
      */
-    public function getXpathPrefix()
+    public function getXpathPrefix ()
     {
         return $this->_xpathPrefix;
     }
@@ -177,7 +184,7 @@ abstract class Zend_Feed_Reader_Extension_FeedAbstract
      *
      * @return Zend_Feed_Reader_Feed_Atom
      */
-    public function setXpathPrefix($prefix)
+    public function setXpathPrefix ($prefix)
     {
         $this->_xpathPrefix = $prefix;
     }
@@ -185,5 +192,5 @@ abstract class Zend_Feed_Reader_Extension_FeedAbstract
     /**
      * Register the default namespaces for the current feed format
      */
-    abstract protected function _registerNamespaces();
+    abstract protected function _registerNamespaces ();
 }

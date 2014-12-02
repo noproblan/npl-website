@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -22,13 +23,15 @@
 /**
  * Memory value container interface
  *
- * @category   Zend
- * @package    Zend_Memory
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @category Zend
+ * @package Zend_Memory
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 interface Zend_Memory_Container_Interface
 {
+
     /**
      * Get string value reference
      *
@@ -37,30 +40,30 @@ interface Zend_Memory_Container_Interface
      *
      * @return &string
      */
-    public function &getRef();
+    public function &getRef ();
 
     /**
      * Signal, that value is updated by external code.
      *
      * Should be used together with getRef()
      */
-    public function touch();
+    public function touch ();
 
     /**
      * Lock object in memory.
      */
-    public function lock();
+    public function lock ();
 
     /**
      * Unlock object
      */
-    public function unlock();
+    public function unlock ();
 
     /**
      * Return true if object is locked
      *
      * @return boolean
      */
-    public function isLocked();
+    public function isLocked ();
 }
 

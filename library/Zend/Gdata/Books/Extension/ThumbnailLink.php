@@ -22,6 +22,7 @@
  */
 
 /**
+ *
  * @see Zend_Gdata_Books_Extension_BooksLink
  */
 require_once 'Zend/Gdata/Books/Extension/BooksLink.php';
@@ -29,32 +30,37 @@ require_once 'Zend/Gdata/Books/Extension/BooksLink.php';
 /**
  * Describes a thumbnail link
  *
- * @category   Zend
- * @package    Zend_Gdata
+ * @category Zend
+ * @package Zend_Gdata
  * @subpackage Books
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
-class Zend_Gdata_Books_Extension_ThumbnailLink extends
-    Zend_Gdata_Books_Extension_BooksLink
+class Zend_Gdata_Books_Extension_ThumbnailLink extends Zend_Gdata_Books_Extension_BooksLink
 {
 
     /**
      * Constructor for Zend_Gdata_Books_Extension_ThumbnailLink which
      * Describes a thumbnail link
      *
-     * @param string|null $href Linked resource URI
-     * @param string|null $rel Forward relationship
-     * @param string|null $type Resource MIME type
-     * @param string|null $hrefLang Resource language
-     * @param string|null $title Human-readable resource title
-     * @param string|null $length Resource length in octets
+     * @param string|null $href
+     *            Linked resource URI
+     * @param string|null $rel
+     *            Forward relationship
+     * @param string|null $type
+     *            Resource MIME type
+     * @param string|null $hrefLang
+     *            Resource language
+     * @param string|null $title
+     *            Human-readable resource title
+     * @param string|null $length
+     *            Resource length in octets
      */
-    public function __construct($href = null, $rel = null, $type = null,
-            $hrefLang = null, $title = null, $length = null)
+    public function __construct ($href = null, $rel = null, $type = null, $hrefLang = null, 
+            $title = null, $length = null)
     {
         $this->registerAllNamespaces(Zend_Gdata_Books::$namespaces);
         parent::__construct($href, $rel, $type, $hrefLang, $title, $length);
     }
-
 }

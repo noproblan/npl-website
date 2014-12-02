@@ -22,11 +22,13 @@
  */
 
 /**
+ *
  * @see Zend_Gdata_Media_Feed
  */
 require_once 'Zend/Gdata/Media/Feed.php';
 
 /**
+ *
  * @see Zend_Gdata_YouTube_ContactEntry
  */
 require_once 'Zend/Gdata/YouTube/ContactEntry.php';
@@ -36,11 +38,12 @@ require_once 'Zend/Gdata/YouTube/ContactEntry.php';
  * Represents a list of individual contacts, where each contained entry is
  * a contact.
  *
- * @category   Zend
- * @package    Zend_Gdata
+ * @category Zend
+ * @package Zend_Gdata
  * @subpackage YouTube
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Gdata_YouTube_ContactFeed extends Zend_Gdata_Media_Feed
 {
@@ -56,13 +59,13 @@ class Zend_Gdata_YouTube_ContactFeed extends Zend_Gdata_Media_Feed
      * Constructs a new YouTube Contact Feed object, to represent
      * a feed of contacts for a user
      *
-     * @param DOMElement $element (optional) DOMElement from which this
-     *          object should be constructed.
+     * @param DOMElement $element
+     *            (optional) DOMElement from which this
+     *            object should be constructed.
      */
-    public function __construct($element = null)
+    public function __construct ($element = null)
     {
         $this->registerAllNamespaces(Zend_Gdata_YouTube::$namespaces);
         parent::__construct($element);
     }
-
 }

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <ldml>
 	<identity>
-		<version number="$Revision: 1.19 $"/>
-		<generation date="$Date: 2009/06/15 17:12:26 $"/>
-		<language type="gsw"/>
+		<version number="$Revision: 1.19 $" />
+		<generation date="$Date: 2009/06/15 17:12:26 $" />
+		<language type="gsw" />
 	</identity>
 	<fallback>de_CH</fallback>
 	<localeDisplayNames>
@@ -774,7 +774,8 @@
 			<territory type="GP">Guadälup</territory>
 			<territory type="GQ">Äquatoriaalgineea</territory>
 			<territory type="GR">Griecheland</territory>
-			<territory type="GS">Süüdgeorgie und d’süüdlichi Sändwitsch-Insle</territory>
+			<territory type="GS">Süüdgeorgie und d’süüdlichi
+				Sändwitsch-Insle</territory>
 			<territory type="GT">Guatemaala</territory>
 			<territory type="GU">Guam</territory>
 			<territory type="GW">Gineea-Bissau</territory>
@@ -1006,7 +1007,8 @@
 	</layout>
 	<characters>
 		<exemplarCharacters>[a ä b-o ö p-u ü v-z]</exemplarCharacters>
-		<exemplarCharacters type="auxiliary">[á à ă â å ā æ ç é è ĕ ê ë ē í ì ĭ î ï ī ñ ó ò ŏ ô ø ō œ ß ú ù ŭ û ū ÿ]</exemplarCharacters>
+		<exemplarCharacters type="auxiliary">[á à ă â å ā æ ç é è ĕ ê ë
+			ē í ì ĭ î ï ī ñ ó ò ŏ ô ø ō œ ß ú ù ŭ û ū ÿ]</exemplarCharacters>
 		<exemplarCharacters type="currencySymbol">[a-z]</exemplarCharacters>
 	</characters>
 	<delimiters>
@@ -1320,9 +1322,12 @@
 							<greatestDifference id="y">dd.MM.yy - dd.MM.yy</greatestDifference>
 						</intervalFormatItem>
 						<intervalFormatItem id="yMEd">
-							<greatestDifference id="d">E, dd.MM.yy - E, dd.MM.yy</greatestDifference>
-							<greatestDifference id="M">E, dd.MM.yy - E, dd.MM.yy</greatestDifference>
-							<greatestDifference id="y">E, dd.MM.yy - E, dd.MM.yy</greatestDifference>
+							<greatestDifference id="d">E, dd.MM.yy - E,
+								dd.MM.yy</greatestDifference>
+							<greatestDifference id="M">E, dd.MM.yy - E,
+								dd.MM.yy</greatestDifference>
+							<greatestDifference id="y">E, dd.MM.yy - E,
+								dd.MM.yy</greatestDifference>
 						</intervalFormatItem>
 						<intervalFormatItem id="yMMM">
 							<greatestDifference id="M">MMM-MMM y</greatestDifference>
@@ -1336,7 +1341,8 @@
 						<intervalFormatItem id="yMMMEd">
 							<greatestDifference id="d">E, d. - E, d. MMM y</greatestDifference>
 							<greatestDifference id="M">E, d. MMM - E, d. MMM y</greatestDifference>
-							<greatestDifference id="y">E, d. MMM y - E, d. MMM y</greatestDifference>
+							<greatestDifference id="y">E, d. MMM y - E, d. MMM
+								y</greatestDifference>
 						</intervalFormatItem>
 						<intervalFormatItem id="yMMMM">
 							<greatestDifference id="M">MM – MM.yyyy</greatestDifference>
@@ -1949,7 +1955,8 @@
 			</currency>
 			<currency type="BRB">
 				<displayName>Brasilianische Cruzeiro Novo (1967-1986)</displayName>
-				<displayName count="other">Brasilianischi Cruzeiro Novo (1967-1986)</displayName>
+				<displayName count="other">Brasilianischi Cruzeiro Novo
+					(1967-1986)</displayName>
 			</currency>
 			<currency type="BRC">
 				<displayName>Brasilianische Cruzado</displayName>
@@ -2438,7 +2445,8 @@
 			</currency>
 			<currency type="MXV">
 				<displayName>Mexikanische Unidad de Inversion (UDI)</displayName>
-				<displayName count="other">Mexikanischi Unidad de Inversion (UDI)</displayName>
+				<displayName count="other">Mexikanischi Unidad de Inversion
+					(UDI)</displayName>
 			</currency>
 			<currency type="MYR">
 				<displayName>Malaysische Ringgit</displayName>

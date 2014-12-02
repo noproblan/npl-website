@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -20,65 +21,72 @@
  */
 
 /**
- * @category   Zend
- * @package    Zend_Crypt
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ *
+ * @category Zend
+ * @package Zend_Crypt
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Crypt
 {
 
     const TYPE_OPENSSL = 'openssl';
+
     const TYPE_HASH = 'hash';
+
     const TYPE_MHASH = 'mhash';
 
     protected static $_type = null;
 
     /**
+     *
      * @var array
      */
     protected static $_supportedAlgosOpenssl = array(
-        'md2',
-        'md4',
-        'mdc2',
-        'rmd160',
-        'sha',
-        'sha1',
-        'sha224',
-        'sha256',
-        'sha384',
-        'sha512'
+            'md2',
+            'md4',
+            'mdc2',
+            'rmd160',
+            'sha',
+            'sha1',
+            'sha224',
+            'sha256',
+            'sha384',
+            'sha512'
     );
 
     /**
+     *
      * @var array
      */
     protected static $_supportedAlgosMhash = array(
-        'adler32',
-        'crc32',
-        'crc32b',
-        'gost',
-        'haval128',
-        'haval160',
-        'haval192',
-        'haval256',
-        'md4',
-        'md5',
-        'ripemd160',
-        'sha1',
-        'sha256',
-        'tiger',
-        'tiger128',
-        'tiger160'
+            'adler32',
+            'crc32',
+            'crc32b',
+            'gost',
+            'haval128',
+            'haval160',
+            'haval192',
+            'haval256',
+            'md4',
+            'md5',
+            'ripemd160',
+            'sha1',
+            'sha256',
+            'tiger',
+            'tiger128',
+            'tiger160'
     );
 
     /**
-     * @param string $algorithm
-     * @param string $data
-     * @param bool $binaryOutput
+     *
+     * @param string $algorithm            
+     * @param string $data            
+     * @param bool $binaryOutput            
      * @return unknown
      */
-    public static function hash($algorithm, $data, $binaryOutput = false)
+    public static function hash ($algorithm, $data, $binaryOutput = false)
     {
         $algorithm = strtolower($algorithm);
         if (function_exists($algorithm)) {
@@ -91,21 +99,22 @@ class Zend_Crypt
     }
 
     /**
-     * @param string $algorithm
+     *
+     * @param string $algorithm            
      * @throws Zend_Crypt_Exception
      */
-    protected static function _detectHashSupport($algorithm)
+    protected static function _detectHashSupport ($algorithm)
     {
         if (function_exists('hash')) {
             self::$_type = self::TYPE_HASH;
             if (in_array($algorithm, hash_algos())) {
-               return;
+                return;
             }
         }
         if (function_exists('mhash')) {
             self::$_type = self::TYPE_MHASH;
             if (in_array($algorithm, self::$_supportedAlgosMhash)) {
-               return;
+                return;
             }
         }
         if (function_exists('openssl_digest')) {
@@ -114,34 +123,39 @@ class Zend_Crypt
             }
             self::$_type = self::TYPE_OPENSSL;
             if (in_array($algorithm, self::$_supportedAlgosOpenssl)) {
-               return;
+                return;
             }
         }
         /**
+         *
          * @see Zend_Crypt_Exception
          */
         require_once 'Zend/Crypt/Exception.php';
-        throw new Zend_Crypt_Exception('\'' . $algorithm . '\' is not supported by any available extension or native function');
+        throw new Zend_Crypt_Exception(
+                '\'' . $algorithm .
+                         '\' is not supported by any available extension or native function');
     }
 
     /**
-     * @param string $algorithm
-     * @param string $data
-     * @param bool $binaryOutput
+     *
+     * @param string $algorithm            
+     * @param string $data            
+     * @param bool $binaryOutput            
      * @return string
      */
-    protected static function _digestHash($algorithm, $data, $binaryOutput)
+    protected static function _digestHash ($algorithm, $data, $binaryOutput)
     {
         return hash($algorithm, $data, $binaryOutput);
     }
 
     /**
-     * @param string $algorithm
-     * @param string $data
-     * @param bool $binaryOutput
+     *
+     * @param string $algorithm            
+     * @param string $data            
+     * @param bool $binaryOutput            
      * @return string
      */
-    protected static function _digestMhash($algorithm, $data, $binaryOutput)
+    protected static function _digestMhash ($algorithm, $data, $binaryOutput)
     {
         $constant = constant('MHASH_' . strtoupper($algorithm));
         $binary = mhash($constant, $data);
@@ -152,17 +166,17 @@ class Zend_Crypt
     }
 
     /**
-     * @param string $algorithm
-     * @param string $data
-     * @param bool $binaryOutput
+     *
+     * @param string $algorithm            
+     * @param string $data            
+     * @param bool $binaryOutput            
      * @return string
      */
-    protected static function _digestOpenssl($algorithm, $data, $binaryOutput)
+    protected static function _digestOpenssl ($algorithm, $data, $binaryOutput)
     {
         if ($algorithm == 'ripemd160') {
             $algorithm = 'rmd160';
         }
         return openssl_digest($data, $algorithm, $binaryOutput);
     }
-
 }

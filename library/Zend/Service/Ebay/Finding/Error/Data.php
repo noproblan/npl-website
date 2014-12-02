@@ -21,20 +21,24 @@
  */
 
 /**
+ *
  * @see Zend_Service_Ebay_Finding_Abstract
  */
 require_once 'Zend/Service/Ebay/Finding/Abstract.php';
 
 /**
- * @category   Zend
- * @package    Zend_Service
+ *
+ * @category Zend
+ * @package Zend_Service
  * @subpackage Ebay
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @uses       Zend_Service_Ebay_Finding_Abstract
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
+ * @uses Zend_Service_Ebay_Finding_Abstract
  */
 class Zend_Service_Ebay_Finding_Error_Data extends Zend_Service_Ebay_Finding_Abstract
 {
+
     /**
      * There are three categories of errors: request errors, application errors,
      * and system errors.
@@ -59,7 +63,8 @@ class Zend_Service_Ebay_Finding_Error_Data extends Zend_Service_Ebay_Finding_Abs
 
     /**
      * A unique code that identifies the particular error condition that
-     * occurred. Your application can use error codes as identifiers in your
+     * occurred.
+     * Your application can use error codes as identifiers in your
      * customized error-handling algorithms.
      *
      * @var integer
@@ -82,7 +87,8 @@ class Zend_Service_Ebay_Finding_Error_Data extends Zend_Service_Ebay_Finding_Abs
 
     /**
      * Various warning and error messages return one or more variables that
-     * contain contextual information about the error. This is often the field
+     * contain contextual information about the error.
+     * This is often the field
      * or value that triggered the error.
      *
      * @var string[]
@@ -91,7 +97,8 @@ class Zend_Service_Ebay_Finding_Error_Data extends Zend_Service_Ebay_Finding_Abs
 
     /**
      * Indicates whether the reported problem is fatal (an error) or is
-     * less-severe (a warning). Review the error message details for information
+     * less-severe (a warning).
+     * Review the error message details for information
      * on the cause.
      *
      * This API throws an exception when a fatal error occurs. Only warning
@@ -135,24 +142,26 @@ class Zend_Service_Ebay_Finding_Error_Data extends Zend_Service_Ebay_Finding_Abs
     public $subdomain;
 
     /**
+     *
      * @return void
      */
-    protected function _init()
+    protected function _init ()
     {
         parent::_init();
         $ns = Zend_Service_Ebay_Finding::XMLNS_FINDING;
-
-        $this->category    = $this->_query(".//$ns:category[1]", 'string');
-        $this->domain      = $this->_query(".//$ns:domain[1]", 'string');
-        $this->errorId     = $this->_query(".//$ns:errorId[1]", 'integer');
+        
+        $this->category = $this->_query(".//$ns:category[1]", 'string');
+        $this->domain = $this->_query(".//$ns:domain[1]", 'string');
+        $this->errorId = $this->_query(".//$ns:errorId[1]", 'integer');
         $this->exceptionId = $this->_query(".//$ns:exceptionId[1]", 'string');
-        $this->message     = $this->_query(".//$ns:message[1]", 'string');
-        $this->parameter   = $this->_query(".//$ns:parameter", 'string', true);
-        $this->severity    = $this->_query(".//$ns:severity[1]", 'string');
-        $this->subdomain   = $this->_query(".//$ns:subdomain[1]", 'string');
-
+        $this->message = $this->_query(".//$ns:message[1]", 'string');
+        $this->parameter = $this->_query(".//$ns:parameter", 'string', true);
+        $this->severity = $this->_query(".//$ns:severity[1]", 'string');
+        $this->subdomain = $this->_query(".//$ns:subdomain[1]", 'string');
+        
         $this->_attributes['parameter'] = array(
-            'name' => $this->_query(".//$ns:parameter/@name", 'string', true)
+                'name' => $this->_query(".//$ns:parameter/@name", 'string', 
+                        true)
         );
     }
 }

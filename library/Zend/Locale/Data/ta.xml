@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <ldml>
 	<identity>
-		<version number="$Revision: 1.83 $"/>
-		<generation date="$Date: 2009/06/15 03:46:25 $"/>
-		<language type="ta"/>
+		<version number="$Revision: 1.83 $" />
+		<generation date="$Date: 2009/06/15 03:46:25 $" />
+		<language type="ta" />
 	</identity>
 	<localeDisplayNames>
 		<languages>
@@ -94,8 +94,10 @@
 			<language type="co">கார்சியன்</language>
 			<language type="cop">காப்டிக்</language>
 			<language type="cpe">ஆங்கில அடைப்படையிலான கிரியோல் மற்றும் பிஜின்</language>
-			<language type="cpf">ஃப்ரென்ச் அடைப்படையிலான கிரியோல் மற்றும் பிஜின்</language>
-			<language type="cpp">போர்சுக்கீஸ் அடைப்படையிலான கிரியோல் மற்றும் பிஜின்</language>
+			<language type="cpf">ஃப்ரென்ச் அடைப்படையிலான கிரியோல் மற்றும்
+				பிஜின்</language>
+			<language type="cpp">போர்சுக்கீஸ் அடைப்படையிலான கிரியோல் மற்றும்
+				பிஜின்</language>
 			<language type="cr">க்ரீ</language>
 			<language type="crh">கிரிமியன் துர்க்கி</language>
 			<language type="crp">கிரியோல் மற்றும் பிஜின்</language>
@@ -759,7 +761,8 @@
 			<territory type="GP">க்வாதேலோப்</territory>
 			<territory type="GQ">ஈக்குவாடோரியல் கினி</territory>
 			<territory type="GR">கிரீஸ்</territory>
-			<territory type="GS">தென் ஜியார்ஜியா மற்றும் தென் சான்ட்விச் தீவுகள்</territory>
+			<territory type="GS">தென் ஜியார்ஜியா மற்றும் தென் சான்ட்விச்
+				தீவுகள்</territory>
 			<territory type="GT">குவாத்தாமாலா</territory>
 			<territory type="GU">குவாம்</territory>
 			<territory type="GW">கினி-பிஸ்ஸாவ்</territory>
@@ -901,7 +904,8 @@
 			<territory type="TZ">டான்சானியா</territory>
 			<territory type="UA">உக்ரைன்</territory>
 			<territory type="UG">உகாண்டா</territory>
-			<territory type="UM">யுனைட்டட் ஸ்டேட்ஸும் சிறிய அவுட்லைன் தீவுகளும்</territory>
+			<territory type="UM">யுனைட்டட் ஸ்டேட்ஸும் சிறிய அவுட்லைன்
+				தீவுகளும்</territory>
 			<territory type="US">ஐக்கிய அமெரிக்க குடியரசு</territory>
 			<territory type="UY">உருகுவே</territory>
 			<territory type="UZ">உஸ்பெகிஸ்தான்</territory>
@@ -923,7 +927,8 @@
 		</territories>
 	</localeDisplayNames>
 	<characters>
-		<exemplarCharacters>[ஃ அ-ஊ எ-ஐ ஒ-க ங ச ஜ ஞ ட ண த ந-ப ம-வ ஷ-ஹ ா-ூ ெ-ை ொ-்]</exemplarCharacters>
+		<exemplarCharacters>[ஃ அ-ஊ எ-ஐ ஒ-க ங ச ஜ ஞ ட ண த ந-ப ம-வ ஷ-ஹ ா-ூ ெ-ை
+			ொ-்]</exemplarCharacters>
 		<exemplarCharacters type="auxiliary">[a g i m t]</exemplarCharacters>
 		<exemplarCharacters type="currencySymbol">[a-z]</exemplarCharacters>
 	</characters>

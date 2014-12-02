@@ -20,27 +20,33 @@
  */
 
 /**
+ *
  * @see Zend_Validate_Abstract
  */
 require_once 'Zend/Validate/Abstract.php';
 
 /**
- * @category   Zend
- * @package    Zend_Validate
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ *
+ * @category Zend
+ * @package Zend_Validate
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Validate_Ip extends Zend_Validate_Abstract
 {
-    const INVALID        = 'ipInvalid';
+
+    const INVALID = 'ipInvalid';
+
     const NOT_IP_ADDRESS = 'notIpAddress';
 
     /**
+     *
      * @var array
      */
     protected $_messageTemplates = array(
-        self::INVALID        => "Invalid type given. String expected",
-        self::NOT_IP_ADDRESS => "'%value%' does not appear to be a valid IP address",
+            self::INVALID => "Invalid type given. String expected",
+            self::NOT_IP_ADDRESS => "'%value%' does not appear to be a valid IP address"
     );
 
     /**
@@ -49,30 +55,33 @@ class Zend_Validate_Ip extends Zend_Validate_Abstract
      * @var array
      */
     protected $_options = array(
-        'allowipv6' => true,
-        'allowipv4' => true
+            'allowipv6' => true,
+            'allowipv4' => true
     );
 
     /**
      * Sets validator options
      *
-     * @param array $options OPTIONAL Options to set, see the manual for all available options
+     * @param array $options
+     *            OPTIONAL Options to set, see the manual for all available
+     *            options
      * @return void
      */
-    public function __construct($options = array())
+    public function __construct ($options = array())
     {
         if ($options instanceof Zend_Config) {
             $options = $options->toArray();
-        } else if (!is_array($options)) {
-            $options = func_get_args();
-            $temp['allowipv6'] = array_shift($options);
-            if (!empty($options)) {
-                $temp['allowipv4'] = array_shift($options);
+        } else 
+            if (! is_array($options)) {
+                $options = func_get_args();
+                $temp['allowipv6'] = array_shift($options);
+                if (! empty($options)) {
+                    $temp['allowipv4'] = array_shift($options);
+                }
+                
+                $options = $temp;
             }
-
-            $options = $temp;
-        }
-
+        
         $options += $this->_options;
         $this->setOptions($options);
     }
@@ -82,7 +91,7 @@ class Zend_Validate_Ip extends Zend_Validate_Abstract
      *
      * @return array
      */
-    public function getOptions()
+    public function getOptions ()
     {
         return $this->_options;
     }
@@ -90,24 +99,25 @@ class Zend_Validate_Ip extends Zend_Validate_Abstract
     /**
      * Sets the options for this validator
      *
-     * @param array $options
+     * @param array $options            
      * @return Zend_Validate_Ip
      */
-    public function setOptions($options)
+    public function setOptions ($options)
     {
         if (array_key_exists('allowipv6', $options)) {
             $this->_options['allowipv6'] = (boolean) $options['allowipv6'];
         }
-
+        
         if (array_key_exists('allowipv4', $options)) {
             $this->_options['allowipv4'] = (boolean) $options['allowipv4'];
         }
-
-        if (!$this->_options['allowipv4'] && !$this->_options['allowipv6']) {
+        
+        if (! $this->_options['allowipv4'] && ! $this->_options['allowipv6']) {
             require_once 'Zend/Validate/Exception.php';
-            throw new Zend_Validate_Exception('Nothing to validate. Check your options');
+            throw new Zend_Validate_Exception(
+                    'Nothing to validate. Check your options');
         }
-
+        
         return $this;
     }
 
@@ -116,76 +126,89 @@ class Zend_Validate_Ip extends Zend_Validate_Abstract
      *
      * Returns true if and only if $value is a valid IP address
      *
-     * @param  mixed $value
+     * @param mixed $value            
      * @return boolean
      */
-    public function isValid($value)
+    public function isValid ($value)
     {
-        if (!is_string($value)) {
+        if (! is_string($value)) {
             $this->_error(self::INVALID);
             return false;
         }
-
+        
         $this->_setValue($value);
-        if (($this->_options['allowipv4'] && !$this->_options['allowipv6'] && !$this->_validateIPv4($value)) ||
-            (!$this->_options['allowipv4'] && $this->_options['allowipv6'] && !$this->_validateIPv6($value)) ||
-            ($this->_options['allowipv4'] && $this->_options['allowipv6'] && !$this->_validateIPv4($value) && !$this->_validateIPv6($value))) {
+        if (($this->_options['allowipv4'] && ! $this->_options['allowipv6'] &&
+                 ! $this->_validateIPv4($value)) ||
+                 (! $this->_options['allowipv4'] && $this->_options['allowipv6'] &&
+                 ! $this->_validateIPv6($value)) ||
+                 ($this->_options['allowipv4'] && $this->_options['allowipv6'] &&
+                 ! $this->_validateIPv4($value) && ! $this->_validateIPv6(
+                        $value))) {
             $this->_error(self::NOT_IP_ADDRESS);
             return false;
         }
-
+        
         return true;
     }
 
     /**
      * Validates an IPv4 address
      *
-     * @param string $value
+     * @param string $value            
      */
-    protected function _validateIPv4($value) {
+    protected function _validateIPv4 ($value)
+    {
         $ip2long = ip2long($value);
-        if($ip2long === false) {
+        if ($ip2long === false) {
             return false;
         }
-
+        
         return $value == long2ip($ip2long);
     }
 
     /**
      * Validates an IPv6 address
      *
-     * @param  string $value Value to check against
+     * @param string $value
+     *            Value to check against
      * @return boolean True when $value is a valid ipv6 address
-     *                 False otherwise
+     *         False otherwise
      */
-    protected function _validateIPv6($value) {
+    protected function _validateIPv6 ($value)
+    {
         if (strlen($value) < 3) {
             return $value == '::';
         }
-
+        
         if (strpos($value, '.')) {
             $lastcolon = strrpos($value, ':');
-            if (!($lastcolon && $this->_validateIPv4(substr($value, $lastcolon + 1)))) {
+            if (! ($lastcolon &&
+                     $this->_validateIPv4(substr($value, $lastcolon + 1)))) {
                 return false;
             }
-
+            
             $value = substr($value, 0, $lastcolon) . ':0:0';
         }
-
+        
         if (strpos($value, '::') === false) {
-            return preg_match('/\A(?:[a-f0-9]{1,4}:){7}[a-f0-9]{1,4}\z/i', $value);
+            return preg_match('/\A(?:[a-f0-9]{1,4}:){7}[a-f0-9]{1,4}\z/i', 
+                    $value);
         }
-
+        
         $colonCount = substr_count($value, ':');
         if ($colonCount < 8) {
-            return preg_match('/\A(?::|(?:[a-f0-9]{1,4}:)+):(?:(?:[a-f0-9]{1,4}:)*[a-f0-9]{1,4})?\z/i', $value);
+            return preg_match(
+                    '/\A(?::|(?:[a-f0-9]{1,4}:)+):(?:(?:[a-f0-9]{1,4}:)*[a-f0-9]{1,4})?\z/i', 
+                    $value);
         }
-
+        
         // special case with ending or starting double colon
         if ($colonCount == 8) {
-            return preg_match('/\A(?:::)?(?:[a-f0-9]{1,4}:){6}[a-f0-9]{1,4}(?:::)?\z/i', $value);
+            return preg_match(
+                    '/\A(?:::)?(?:[a-f0-9]{1,4}:){6}[a-f0-9]{1,4}(?:::)?\z/i', 
+                    $value);
         }
-
+        
         return false;
     }
 }

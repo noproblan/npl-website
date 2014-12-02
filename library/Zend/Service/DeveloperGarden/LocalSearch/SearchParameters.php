@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -21,48 +22,53 @@
  */
 
 /**
- * @category   Zend
- * @package    Zend_Service
+ *
+ * @category Zend
+ * @package Zend_Service
  * @subpackage DeveloperGarden
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @author     Marco Kaiser
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @author Marco Kaiser
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Service_DeveloperGarden_LocalSearch_SearchParameters
 {
+
     /**
-     * possible search parameters, incl. default values
+     * possible search parameters, incl.
+     * default values
      *
      * @var array
      */
     private $_parameters = array(
-        'what'             => null,
-        'dymwhat'          => null,
-        'dymrelated'       => null,
-        'hits'             => null,
-        'collapse'         => null,
-        'where'            => null,
-        'dywhere'          => null,
-        'radius'           => null,
-        'lx'               => null,
-        'ly'               => null,
-        'rx'               => null,
-        'ry'               => null,
-        'transformgeocode' => null,
-        'sort'             => null,
-        'spatial'          => null,
-        'sepcomm'          => null,
-        'filter'           => null, // can be ONLINER or OFFLINER
-        'openingtime'      => null, // can be now or HH::MM
-        'kategorie'        => null, // @see http://www.suchen.de/kategorie-katalog
-        'site'             => null,
-        'typ'              => null,
-        'name'             => null,
-        'page'             => null,
-        'city'             => null,
-        'plz'              => null,
-        'strasse'          => null,
-        'bundesland'       => null,
+            'what' => null,
+            'dymwhat' => null,
+            'dymrelated' => null,
+            'hits' => null,
+            'collapse' => null,
+            'where' => null,
+            'dywhere' => null,
+            'radius' => null,
+            'lx' => null,
+            'ly' => null,
+            'rx' => null,
+            'ry' => null,
+            'transformgeocode' => null,
+            'sort' => null,
+            'spatial' => null,
+            'sepcomm' => null,
+            'filter' => null, // can be ONLINER or OFFLINER
+            'openingtime' => null, // can be now or HH::MM
+            'kategorie' => null, // @see
+                                        // http://www.suchen.de/kategorie-katalog
+            'site' => null,
+            'typ' => null,
+            'name' => null,
+            'page' => null,
+            'city' => null,
+            'plz' => null,
+            'strasse' => null,
+            'bundesland' => null
     );
 
     /**
@@ -71,20 +77,20 @@ class Zend_Service_DeveloperGarden_LocalSearch_SearchParameters
      * @var array
      */
     private $_possibleCollapseValues = array(
-        true,
-        false,
-        'ADDRESS_COMPANY',
-        'DOMAIN'
+            true,
+            false,
+            'ADDRESS_COMPANY',
+            'DOMAIN'
     );
 
     /**
      * sets a new search word
      * alias for setWhat
      *
-     * @param string $searchValue
+     * @param string $searchValue            
      * @return Zend_Service_DeveloperGarden_LocalSearch_SearchParameters
      */
-    public function setSearchValue($searchValue)
+    public function setSearchValue ($searchValue)
     {
         return $this->setWhat($searchValue);
     }
@@ -92,10 +98,10 @@ class Zend_Service_DeveloperGarden_LocalSearch_SearchParameters
     /**
      * sets a new search word
      *
-     * @param string $searchValue
+     * @param string $searchValue            
      * @return Zend_Service_DeveloperGarden_LocalSearch_SearchParameters
      */
-    public function setWhat($searchValue)
+    public function setWhat ($searchValue)
     {
         $this->_parameters['what'] = $searchValue;
         return $this;
@@ -106,7 +112,7 @@ class Zend_Service_DeveloperGarden_LocalSearch_SearchParameters
      *
      * @return Zend_Service_DeveloperGarden_LocalSearch_SearchParameters
      */
-    public function enableDidYouMeanWhat()
+    public function enableDidYouMeanWhat ()
     {
         $this->_parameters['dymwhat'] = 'true';
         return $this;
@@ -117,7 +123,7 @@ class Zend_Service_DeveloperGarden_LocalSearch_SearchParameters
      *
      * @return Zend_Service_DeveloperGarden_LocalSearch_SearchParameters
      */
-    public function disableDidYouMeanWhat()
+    public function disableDidYouMeanWhat ()
     {
         $this->_parameters['dymwhat'] = 'false';
         return $this;
@@ -128,7 +134,7 @@ class Zend_Service_DeveloperGarden_LocalSearch_SearchParameters
      *
      * @return Zend_Service_DeveloperGarden_LocalSearch_SearchParameters
      */
-    public function enableDidYouMeanWhere()
+    public function enableDidYouMeanWhere ()
     {
         $this->_parameters['dymwhere'] = 'true';
         return $this;
@@ -139,7 +145,7 @@ class Zend_Service_DeveloperGarden_LocalSearch_SearchParameters
      *
      * @return Zend_Service_DeveloperGarden_LocalSearch_SearchParameters
      */
-    public function disableDidYouMeanWhere()
+    public function disableDidYouMeanWhere ()
     {
         $this->_parameters['dymwhere'] = 'false';
         return $this;
@@ -150,7 +156,7 @@ class Zend_Service_DeveloperGarden_LocalSearch_SearchParameters
      *
      * @return Zend_Service_DeveloperGarden_LocalSearch_SearchParameters
      */
-    public function enableDidYouMeanRelated()
+    public function enableDidYouMeanRelated ()
     {
         $this->_parameters['dymrelated'] = 'true';
         return $this;
@@ -161,7 +167,7 @@ class Zend_Service_DeveloperGarden_LocalSearch_SearchParameters
      *
      * @return Zend_Service_DeveloperGarden_LocalSearch_SearchParameters
      */
-    public function disableDidYouMeanRelated()
+    public function disableDidYouMeanRelated ()
     {
         $this->_parameters['dymrelated'] = 'true';
         return $this;
@@ -170,17 +176,18 @@ class Zend_Service_DeveloperGarden_LocalSearch_SearchParameters
     /**
      * set the max result hits for this search
      *
-     * @param integer $hits
+     * @param integer $hits            
      * @return Zend_Service_DeveloperGarden_LocalSearch_SearchParameters
      */
-    public function setHits($hits = 10)
+    public function setHits ($hits = 10)
     {
         require_once 'Zend/Validate/Between.php';
         $validator = new Zend_Validate_Between(0, 1000);
-        if (!$validator->isValid($hits)) {
+        if (! $validator->isValid($hits)) {
             $message = $validator->getMessages();
             require_once 'Zend/Service/DeveloperGarden/LocalSearch/Exception.php';
-            throw new Zend_Service_DeveloperGarden_LocalSearch_Exception(current($message));
+            throw new Zend_Service_DeveloperGarden_LocalSearch_Exception(
+                    current($message));
         }
         $this->_parameters['hits'] = $hits;
         return $this;
@@ -193,14 +200,15 @@ class Zend_Service_DeveloperGarden_LocalSearch_SearchParameters
      * DOMAIN – to collapse by domain (same like collapse=true)
      * false
      *
-     * @param mixed $value
+     * @param mixed $value            
      * @return Zend_Service_DeveloperGarden_LocalSearch_SearchParameters
      */
-    public function setCollapse($value)
+    public function setCollapse ($value)
     {
-        if (!in_array($value, $this->_possibleCollapseValues, true)) {
+        if (! in_array($value, $this->_possibleCollapseValues, true)) {
             require_once 'Zend/Service/DeveloperGarden/LocalSearch/Exception.php';
-            throw new Zend_Service_DeveloperGarden_LocalSearch_Exception('Not a valid value provided.');
+            throw new Zend_Service_DeveloperGarden_LocalSearch_Exception(
+                    'Not a valid value provided.');
         }
         $this->_parameters['collapse'] = $value;
         return $this;
@@ -216,18 +224,19 @@ class Zend_Service_DeveloperGarden_LocalSearch_SearchParameters
      * Darmstadt
      * Berlin
      *
-     * @param string $where
+     * @param string $where            
      * @return Zend_Service_DeveloperGarden_LocalSearch_SearchParameters
      */
-    public function setWhere($where)
+    public function setWhere ($where)
     {
         require_once 'Zend/Validate/NotEmpty.php';
-
+        
         $validator = new Zend_Validate_NotEmpty();
-        if (!$validator->isValid($where)) {
+        if (! $validator->isValid($where)) {
             $message = $validator->getMessages();
             require_once 'Zend/Service/DeveloperGarden/LocalSearch/Exception.php';
-            throw new Zend_Service_DeveloperGarden_LocalSearch_Exception(current($message));
+            throw new Zend_Service_DeveloperGarden_LocalSearch_Exception(
+                    current($message));
         }
         $this->_parameters['where'] = $where;
         return $this;
@@ -238,7 +247,7 @@ class Zend_Service_DeveloperGarden_LocalSearch_SearchParameters
      *
      * @return string
      */
-    public function getWhere()
+    public function getWhere ()
     {
         return $this->_parameters['where'];
     }
@@ -248,7 +257,7 @@ class Zend_Service_DeveloperGarden_LocalSearch_SearchParameters
      *
      * @return Zend_Service_DeveloperGarden_LocalSearch_SearchParameters
      */
-    public function enableSpatial()
+    public function enableSpatial ()
     {
         $this->_parameters['spatial'] = 'true';
         return $this;
@@ -259,7 +268,7 @@ class Zend_Service_DeveloperGarden_LocalSearch_SearchParameters
      *
      * @return Zend_Service_DeveloperGarden_LocalSearch_SearchParameters
      */
-    public function disableSpatial()
+    public function disableSpatial ()
     {
         $this->_parameters['spatial'] = 'false';
         return $this;
@@ -268,22 +277,23 @@ class Zend_Service_DeveloperGarden_LocalSearch_SearchParameters
     /**
      * sets spatial and the given radius for a circle search
      *
-     * @param integer $radius
+     * @param integer $radius            
      * @return Zend_Service_DeveloperGarden_LocalSearch_SearchParameters
      */
-    public function setRadius($radius)
+    public function setRadius ($radius)
     {
         require_once 'Zend/Validate/Int.php';
-
+        
         $validator = new Zend_Validate_Int();
-        if (!$validator->isValid($radius)) {
+        if (! $validator->isValid($radius)) {
             $message = $validator->getMessages();
             require_once 'Zend/Service/DeveloperGarden/LocalSearch/Exception.php';
-            throw new Zend_Service_DeveloperGarden_LocalSearch_Exception(current($message));
+            throw new Zend_Service_DeveloperGarden_LocalSearch_Exception(
+                    current($message));
         }
         $this->_parameters['radius'] = $radius;
         $this->_parameters['transformgeocode'] = 'false';
-
+        
         return $this;
     }
 
@@ -294,19 +304,19 @@ class Zend_Service_DeveloperGarden_LocalSearch_SearchParameters
      * rx = longitude right bottom
      * ry = latitude right bottom
      *
-     * @param float $lx
-     * @param float $ly
-     * @param float $rx
-     * @param float $ry
+     * @param float $lx            
+     * @param float $ly            
+     * @param float $rx            
+     * @param float $ry            
      * @return Zend_Service_DeveloperGarden_LocalSearch_SearchParameters
      */
-    public function setRectangle($lx, $ly, $rx, $ry)
+    public function setRectangle ($lx, $ly, $rx, $ry)
     {
         $this->_parameters['lx'] = $lx;
         $this->_parameters['ly'] = $ly;
         $this->_parameters['rx'] = $rx;
         $this->_parameters['ry'] = $ry;
-
+        
         return $this;
     }
 
@@ -315,28 +325,33 @@ class Zend_Service_DeveloperGarden_LocalSearch_SearchParameters
      *
      * @return Zend_Service_DeveloperGarden_LocalSearch_SearchParameters
      */
-    public function setTransformGeoCode()
+    public function setTransformGeoCode ()
     {
         $this->_parameters['transformgeocode'] = 'true';
-        $this->_parameters['radius']           = null;
-
+        $this->_parameters['radius'] = null;
+        
         return $this;
     }
 
     /**
      * sets the sort value
-     * possible values are: 'relevance' and 'distance' (only with spatial enabled)
+     * possible values are: 'relevance' and 'distance' (only with spatial
+     * enabled)
      *
-     * @param string $sort
+     * @param string $sort            
      * @return Zend_Service_DeveloperGarden_LocalSearch_SearchParameters
      */
-    public function setSort($sort)
+    public function setSort ($sort)
     {
-        if (!in_array($sort, array('relevance', 'distance'))) {
+        if (! in_array($sort, array(
+                'relevance',
+                'distance'
+        ))) {
             require_once 'Zend/Service/DeveloperGarden/LocalSearch/Exception.php';
-            throw new Zend_Service_DeveloperGarden_LocalSearch_Exception('Not a valid sort value provided.');
+            throw new Zend_Service_DeveloperGarden_LocalSearch_Exception(
+                    'Not a valid sort value provided.');
         }
-
+        
         $this->_parameters['sort'] = $sort;
         return $this;
     }
@@ -346,7 +361,7 @@ class Zend_Service_DeveloperGarden_LocalSearch_SearchParameters
      *
      * @return Zend_Service_DeveloperGarden_LocalSearch_SearchParameters
      */
-    public function enablePhoneSeparation()
+    public function enablePhoneSeparation ()
     {
         $this->_parameters['sepcomm'] = 'true';
         return $this;
@@ -357,7 +372,7 @@ class Zend_Service_DeveloperGarden_LocalSearch_SearchParameters
      *
      * @return Zend_Service_DeveloperGarden_LocalSearch_SearchParameters
      */
-    public function disablePhoneSeparation()
+    public function disablePhoneSeparation ()
     {
         $this->_parameters['sepcomm'] = 'true';
         return $this;
@@ -368,7 +383,7 @@ class Zend_Service_DeveloperGarden_LocalSearch_SearchParameters
      *
      * @return Zend_Service_DeveloperGarden_LocalSearch_SearchParameters
      */
-    public function setFilterOnliner()
+    public function setFilterOnliner ()
     {
         $this->_parameters['filter'] = 'ONLINER';
         return $this;
@@ -379,19 +394,18 @@ class Zend_Service_DeveloperGarden_LocalSearch_SearchParameters
      *
      * @return Zend_Service_DeveloperGarden_LocalSearch_SearchParameters
      */
-    public function setFilterOffliner()
+    public function setFilterOffliner ()
     {
         $this->_parameters['filter'] = 'OFFLINER';
         return $this;
     }
-
 
     /**
      * removes the filter value
      *
      * @return Zend_Service_DeveloperGarden_LocalSearch_SearchParameters
      */
-    public function disableFilter()
+    public function disableFilter ()
     {
         $this->_parameters['filter'] = null;
         return $this;
@@ -403,10 +417,10 @@ class Zend_Service_DeveloperGarden_LocalSearch_SearchParameters
      * now = open right now
      * HH:MM = at the given time (ie 20:00)
      *
-     * @param string $time
+     * @param string $time            
      * @return Zend_Service_DeveloperGarden_LocalSearch_SearchParameters
      */
-    public function setOpeningTime($time = null)
+    public function setOpeningTime ($time = null)
     {
         $this->_parameters['openingtime'] = $time;
         return $this;
@@ -416,10 +430,10 @@ class Zend_Service_DeveloperGarden_LocalSearch_SearchParameters
      * sets a category filter
      *
      * @see http://www.suchen.de/kategorie-katalog
-     * @param string $category
+     * @param string $category            
      * @return Zend_Service_DeveloperGarden_LocalSearch_SearchParameters
      */
-    public function setCategory($category = null)
+    public function setCategory ($category = null)
     {
         $this->_parameters['kategorie'] = $category;
         return $this;
@@ -429,10 +443,10 @@ class Zend_Service_DeveloperGarden_LocalSearch_SearchParameters
      * sets the site filter
      * ie: www.developergarden.com
      *
-     * @param string $site
+     * @param string $site            
      * @return Zend_Service_DeveloperGarden_LocalSearch_SearchParameters
      */
-    public function setSite($site)
+    public function setSite ($site)
     {
         $this->_parameters['site'] = $site;
         return $this;
@@ -442,10 +456,10 @@ class Zend_Service_DeveloperGarden_LocalSearch_SearchParameters
      * sets a filter to the given document type
      * ie: pdf, html
      *
-     * @param string $type
+     * @param string $type            
      * @return Zend_Service_DeveloperGarden_LocalSearch_SearchParameters
      */
-    public function setDocumentType($type)
+    public function setDocumentType ($type)
     {
         $this->_parameters['typ'] = $type;
         return $this;
@@ -455,10 +469,10 @@ class Zend_Service_DeveloperGarden_LocalSearch_SearchParameters
      * sets a filter for the company name
      * ie: Deutsche Telekom
      *
-     * @param string $name
+     * @param string $name            
      * @return Zend_Service_DeveloperGarden_LocalSearch_SearchParameters
      */
-    public function setName($name)
+    public function setName ($name)
     {
         $this->_parameters['name'] = $name;
         return $this;
@@ -467,10 +481,10 @@ class Zend_Service_DeveloperGarden_LocalSearch_SearchParameters
     /**
      * sets a filter for the zip code
      *
-     * @param string $zip
+     * @param string $zip            
      * @return Zend_Service_DeveloperGarden_LocalSearch_SearchParameters
      */
-    public function setZipCode($zip)
+    public function setZipCode ($zip)
     {
         $this->_parameters['plz'] = $zip;
         return $this;
@@ -479,10 +493,10 @@ class Zend_Service_DeveloperGarden_LocalSearch_SearchParameters
     /**
      * sets a filter for the street
      *
-     * @param string $street
+     * @param string $street            
      * @return Zend_Service_DeveloperGarden_LocalSearch_SearchParameters
      */
-    public function setStreet($street)
+    public function setStreet ($street)
     {
         $this->_parameters['strasse'] = $street;
         return $this;
@@ -491,10 +505,10 @@ class Zend_Service_DeveloperGarden_LocalSearch_SearchParameters
     /**
      * sets a filter for the county
      *
-     * @param string $county
+     * @param string $county            
      * @return Zend_Service_DeveloperGarden_LocalSearch_SearchParameters
      */
-    public function setCounty($county)
+    public function setCounty ($county)
     {
         $this->_parameters['bundesland'] = $county;
         return $this;
@@ -503,11 +517,11 @@ class Zend_Service_DeveloperGarden_LocalSearch_SearchParameters
     /**
      * sets a raw parameter with the value
      *
-     * @param string $key
-     * @param mixed $value
+     * @param string $key            
+     * @param mixed $value            
      * @return unknown_type
      */
-    public function setRawParameter($key, $value)
+    public function setRawParameter ($key, $value)
     {
         $this->_parameters[$key] = $value;
         return $this;
@@ -518,7 +532,7 @@ class Zend_Service_DeveloperGarden_LocalSearch_SearchParameters
      *
      * @return array
      */
-    public function getSearchParameters()
+    public function getSearchParameters ()
     {
         $retVal = array();
         foreach ($this->_parameters as $key => $value) {
@@ -526,8 +540,8 @@ class Zend_Service_DeveloperGarden_LocalSearch_SearchParameters
                 continue;
             }
             $param = array(
-                'parameter' => $key,
-                'value' => $value
+                    'parameter' => $key,
+                    'value' => $value
             );
             $retVal[] = $param;
         }

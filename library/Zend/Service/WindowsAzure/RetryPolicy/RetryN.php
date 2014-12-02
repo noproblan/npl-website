@@ -21,24 +21,29 @@
  */
 
 /**
+ *
  * @see Zend_Service_WindowsAzure_RetryPolicy_RetryPolicyAbstract
  */
 require_once 'Zend/Service/WindowsAzure/RetryPolicy/RetryPolicyAbstract.php';
 
 /**
+ *
  * @see Zend_Service_WindowsAzure_RetryPolicy_Exception
  */
 require_once 'Zend/Service/WindowsAzure/RetryPolicy/Exception.php';
 
 /**
- * @category   Zend
- * @package    Zend_Service_WindowsAzure
+ *
+ * @category Zend
+ * @package Zend_Service_WindowsAzure
  * @subpackage RetryPolicy
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Service_WindowsAzure_RetryPolicy_RetryN extends Zend_Service_WindowsAzure_RetryPolicy_RetryPolicyAbstract
 {
+
     /**
      * Number of retries
      *
@@ -56,10 +61,12 @@ class Zend_Service_WindowsAzure_RetryPolicy_RetryN extends Zend_Service_WindowsA
     /**
      * Constructor
      *
-     * @param int $count                    Number of retries
-     * @param int $intervalBetweenRetries   Interval between retries (in milliseconds)
+     * @param int $count
+     *            Number of retries
+     * @param int $intervalBetweenRetries
+     *            Interval between retries (in milliseconds)
      */
-    public function __construct($count = 1, $intervalBetweenRetries = 0)
+    public function __construct ($count = 1, $intervalBetweenRetries = 0)
     {
         $this->_retryCount = $count;
         $this->_retryInterval = $intervalBetweenRetries;
@@ -68,23 +75,27 @@ class Zend_Service_WindowsAzure_RetryPolicy_RetryN extends Zend_Service_WindowsA
     /**
      * Execute function under retry policy
      *
-     * @param string|array $function       Function to execute
-     * @param array        $parameters     Parameters for function call
+     * @param string|array $function
+     *            Function to execute
+     * @param array $parameters
+     *            Parameters for function call
      * @return mixed
      */
-    public function execute($function, $parameters = array())
+    public function execute ($function, $parameters = array())
     {
         $returnValue = null;
-
-        for ($retriesLeft = $this->_retryCount; $retriesLeft >= 0; --$retriesLeft) {
+        
+        for ($retriesLeft = $this->_retryCount; $retriesLeft >= 0; -- $retriesLeft) {
             try {
                 $returnValue = call_user_func_array($function, $parameters);
                 return $returnValue;
             } catch (Exception $ex) {
                 if ($retriesLeft == 1) {
-                    throw new Zend_Service_WindowsAzure_RetryPolicy_Exception("Exceeded retry count of " . $this->_retryCount . ". " . $ex->getMessage());
+                    throw new Zend_Service_WindowsAzure_RetryPolicy_Exception(
+                            "Exceeded retry count of " . $this->_retryCount .
+                                     ". " . $ex->getMessage());
                 }
-
+                
                 usleep($this->_retryInterval * 1000);
             }
         }

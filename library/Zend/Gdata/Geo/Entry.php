@@ -22,16 +22,19 @@
  */
 
 /**
+ *
  * @see Zend_Gdata_Entry
  */
 require_once 'Zend/Gdata/Entry.php';
 
 /**
+ *
  * @see Zend_Gdata_Geo
  */
 require_once 'Zend/Gdata/Geo.php';
 
 /**
+ *
  * @see Zend_Gdata_Geo_Extension_GeoRssWhere
  */
 require_once 'Zend/Gdata/Geo/Extension/GeoRssWhere.php';
@@ -39,11 +42,12 @@ require_once 'Zend/Gdata/Geo/Extension/GeoRssWhere.php';
 /**
  * An Atom entry containing Geograpic data.
  *
- * @category   Zend
- * @package    Zend_Gdata
+ * @category Zend
+ * @package Zend_Gdata
  * @subpackage Geo
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Gdata_Geo_Entry extends Zend_Gdata_Entry
 {
@@ -52,46 +56,45 @@ class Zend_Gdata_Geo_Entry extends Zend_Gdata_Entry
 
     protected $_where = null;
 
-    public function __construct($element = null)
+    public function __construct ($element = null)
     {
         $this->registerAllNamespaces(Zend_Gdata_Geo::$namespaces);
         parent::__construct($element);
     }
 
-    public function getDOM($doc = null, $majorVersion = 1, $minorVersion = null)
+    public function getDOM ($doc = null, $majorVersion = 1, $minorVersion = null)
     {
         $element = parent::getDOM($doc, $majorVersion, $minorVersion);
         if ($this->_where != null) {
-            $element->appendChild($this->_where->getDOM($element->ownerDocument));
+            $element->appendChild(
+                    $this->_where->getDOM($element->ownerDocument));
         }
         return $element;
     }
 
-    protected function takeChildFromDOM($child)
+    protected function takeChildFromDOM ($child)
     {
         $absoluteNodeName = $child->namespaceURI . ':' . $child->localName;
         switch ($absoluteNodeName) {
-        case $this->lookupNamespace('georss') . ':' . 'where':
-            $where = new Zend_Gdata_Geo_Extension_GeoRssWhere();
-            $where->transferFromDOM($child);
-            $this->_where = $where;
-            break;
-        default:
-            parent::takeChildFromDOM($child);
-            break;
+            case $this->lookupNamespace('georss') . ':' . 'where':
+                $where = new Zend_Gdata_Geo_Extension_GeoRssWhere();
+                $where->transferFromDOM($child);
+                $this->_where = $where;
+                break;
+            default:
+                parent::takeChildFromDOM($child);
+                break;
         }
     }
 
-    public function getWhere()
+    public function getWhere ()
     {
         return $this->_where;
     }
 
-    public function setWhere($value)
+    public function setWhere ($value)
     {
         $this->_where = $value;
         return $this;
     }
-
-
 }

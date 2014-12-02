@@ -22,6 +22,7 @@
  */
 
 /**
+ *
  * @see Zend_Gdata_App_Extension
  */
 require_once 'Zend/Gdata/App/Extension.php';
@@ -29,24 +30,28 @@ require_once 'Zend/Gdata/App/Extension.php';
 /**
  * Represents the media:restriction element
  *
- * @category   Zend
- * @package    Zend_Gdata
+ * @category Zend
+ * @package Zend_Gdata
  * @subpackage Media
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Gdata_Media_Extension_MediaRestriction extends Zend_Gdata_Extension
 {
 
     protected $_rootElement = 'restriction';
+
     protected $_rootNamespace = 'media';
 
     /**
+     *
      * @var string
      */
     protected $_relationship = null;
 
     /**
+     *
      * @var string
      */
     protected $_type = null;
@@ -54,11 +59,11 @@ class Zend_Gdata_Media_Extension_MediaRestriction extends Zend_Gdata_Extension
     /**
      * Constructs a new MediaRestriction element
      *
-     * @param string $text
-     * @param string $relationship
-     * @param string $type
+     * @param string $text            
+     * @param string $relationship            
+     * @param string $type            
      */
-    public function __construct($text = null, $relationship = null,  $type = null)
+    public function __construct ($text = null, $relationship = null, $type = null)
     {
         $this->registerAllNamespaces(Zend_Gdata_Media::$namespaces);
         parent::__construct();
@@ -69,15 +74,17 @@ class Zend_Gdata_Media_Extension_MediaRestriction extends Zend_Gdata_Extension
 
     /**
      * Retrieves a DOMElement which corresponds to this element and all
-     * child properties.  This is used to build an entry back into a DOM
+     * child properties.
+     * This is used to build an entry back into a DOM
      * and eventually XML text for sending to the server upon updates, or
      * for application storage/persistence.
      *
-     * @param DOMDocument $doc The DOMDocument used to construct DOMElements
+     * @param DOMDocument $doc
+     *            The DOMDocument used to construct DOMElements
      * @return DOMElement The DOMElement representing this element and all
-     * child properties.
+     *         child properties.
      */
-    public function getDOM($doc = null, $majorVersion = 1, $minorVersion = null)
+    public function getDOM ($doc = null, $majorVersion = 1, $minorVersion = null)
     {
         $element = parent::getDOM($doc, $majorVersion, $minorVersion);
         if ($this->_relationship !== null) {
@@ -91,59 +98,66 @@ class Zend_Gdata_Media_Extension_MediaRestriction extends Zend_Gdata_Extension
 
     /**
      * Given a DOMNode representing an attribute, tries to map the data into
-     * instance members.  If no mapping is defined, the name and value are
+     * instance members.
+     * If no mapping is defined, the name and value are
      * stored in an array.
      *
-     * @param DOMNode $attribute The DOMNode attribute needed to be handled
+     * @param DOMNode $attribute
+     *            The DOMNode attribute needed to be handled
      */
-    protected function takeAttributeFromDOM($attribute)
+    protected function takeAttributeFromDOM ($attribute)
     {
         switch ($attribute->localName) {
-        case 'relationship':
-            $this->_relationship = $attribute->nodeValue;
-            break;
-        case 'type':
-            $this->_type = $attribute->nodeValue;
-            break;
-        default:
-            parent::takeAttributeFromDOM($attribute);
+            case 'relationship':
+                $this->_relationship = $attribute->nodeValue;
+                break;
+            case 'type':
+                $this->_type = $attribute->nodeValue;
+                break;
+            default:
+                parent::takeAttributeFromDOM($attribute);
         }
     }
 
     /**
+     *
      * @return string
      */
-    public function getRelationship()
+    public function getRelationship ()
     {
         return $this->_relationship;
     }
 
     /**
-     * @param string $value
-     * @return Zend_Gdata_Media_Extension_MediaRestriction Provides a fluent interface
+     *
+     * @param string $value            
+     * @return Zend_Gdata_Media_Extension_MediaRestriction Provides a fluent
+     *         interface
      */
-    public function setRelationship($value)
+    public function setRelationship ($value)
     {
         $this->_relationship = $value;
         return $this;
     }
 
     /**
+     *
      * @return string
      */
-    public function getType()
+    public function getType ()
     {
         return $this->_type;
     }
 
     /**
-     * @param string $value
-     * @return Zend_Gdata_Media_Extension_MediaRestriction Provides a fluent interface
+     *
+     * @param string $value            
+     * @return Zend_Gdata_Media_Extension_MediaRestriction Provides a fluent
+     *         interface
      */
-    public function setType($value)
+    public function setType ($value)
     {
         $this->_type = $value;
         return $this;
     }
-
 }

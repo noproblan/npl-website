@@ -20,32 +20,35 @@
  */
 
 /**
+ *
  * @see Zend_Feed_Reader_Collection_CollectionAbstract
  */
 require_once 'Zend/Feed/Reader/Collection/CollectionAbstract.php';
 
 /**
- * @category   Zend
- * @package    Zend_Feed_Reader
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ *
+ * @category Zend
+ * @package Zend_Feed_Reader
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
-class Zend_Feed_Reader_Collection_Author
-extends Zend_Feed_Reader_Collection_CollectionAbstract
+class Zend_Feed_Reader_Collection_Author extends Zend_Feed_Reader_Collection_CollectionAbstract
 {
 
     /**
      * Return a simple array of the most relevant slice of
-     * the author values, i.e. all author names.
+     * the author values, i.e.
+     * all author names.
      *
      * @return array
      */
-    public function getValues() {
+    public function getValues ()
+    {
         $authors = array();
         foreach ($this->getIterator() as $element) {
             $authors[] = $element['name'];
         }
         return array_unique($authors);
     }
-
 }

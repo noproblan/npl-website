@@ -20,14 +20,16 @@
  * @version    $Id: Fit.php 23775 2011-03-01 17:25:24Z ralph $
  */
 
-
-/** Internally used classes */
+/**
+ * Internally used classes
+ */
 require_once 'Zend/Pdf/Element/Array.php';
 require_once 'Zend/Pdf/Element/Name.php';
 require_once 'Zend/Pdf/Element/Numeric.php';
 
-
-/** Zend_Pdf_Destination_Explicit */
+/**
+ * Zend_Pdf_Destination_Explicit
+ */
 require_once 'Zend/Pdf/Destination/Explicit.php';
 
 /**
@@ -41,35 +43,40 @@ require_once 'Zend/Pdf/Destination/Explicit.php';
  * the smaller of the two, centering the page within the window in the other
  * dimension.
  *
- * @package    Zend_Pdf
+ * @package Zend_Pdf
  * @subpackage Destination
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Pdf_Destination_Fit extends Zend_Pdf_Destination_Explicit
 {
+
     /**
      * Create destination object
      *
-     * @param Zend_Pdf_Page|integer $page  Page object or page number
+     * @param Zend_Pdf_Page|integer $page
+     *            Page object or page number
      * @return Zend_Pdf_Destination_Fit
      * @throws Zend_Pdf_Exception
      */
-    public static function create($page)
+    public static function create ($page)
     {
         $destinationArray = new Zend_Pdf_Element_Array();
-
+        
         if ($page instanceof Zend_Pdf_Page) {
             $destinationArray->items[] = $page->getPageDictionary();
-        } else if (is_integer($page)) {
-            $destinationArray->items[] = new Zend_Pdf_Element_Numeric($page);
-        } else {
-            require_once 'Zend/Pdf/Exception.php';
-            throw new Zend_Pdf_Exception('Page entry must be a Zend_Pdf_Page object or a page number.');
-        }
-
+        } else 
+            if (is_integer($page)) {
+                $destinationArray->items[] = new Zend_Pdf_Element_Numeric($page);
+            } else {
+                require_once 'Zend/Pdf/Exception.php';
+                throw new Zend_Pdf_Exception(
+                        'Page entry must be a Zend_Pdf_Page object or a page number.');
+            }
+        
         $destinationArray->items[] = new Zend_Pdf_Element_Name('Fit');
-
+        
         return new Zend_Pdf_Destination_Fit($destinationArray);
     }
 }

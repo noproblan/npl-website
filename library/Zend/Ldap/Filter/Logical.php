@@ -21,27 +21,33 @@
  */
 
 /**
+ *
  * @see Zend_Ldap_Filter_Abstract
  */
 require_once 'Zend/Ldap/Filter/Abstract.php';
 /**
+ *
  * @see Zend_Ldap_Filter_String
  */
 require_once 'Zend/Ldap/Filter/String.php';
 
 /**
- * Zend_Ldap_Filter_Logical provides a base implementation for a grouping filter.
+ * Zend_Ldap_Filter_Logical provides a base implementation for a grouping
+ * filter.
  *
- * @category   Zend
- * @package    Zend_Ldap
+ * @category Zend
+ * @package Zend_Ldap
  * @subpackage Filter
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 abstract class Zend_Ldap_Filter_Logical extends Zend_Ldap_Filter_Abstract
 {
+
     const TYPE_AND = '&';
-    const TYPE_OR  = '|';
+
+    const TYPE_OR = '|';
 
     /**
      * All the sub-filters for this grouping filter.
@@ -60,20 +66,24 @@ abstract class Zend_Ldap_Filter_Logical extends Zend_Ldap_Filter_Abstract
     /**
      * Creates a new grouping filter.
      *
-     * @param array  $subfilters
-     * @param string $symbol
+     * @param array $subfilters            
+     * @param string $symbol            
      */
-    protected function __construct(array $subfilters, $symbol)
+    protected function __construct (array $subfilters, $symbol)
     {
         foreach ($subfilters as $key => $s) {
-            if (is_string($s)) $subfilters[$key] = new Zend_Ldap_Filter_String($s);
-            else if (!($s instanceof Zend_Ldap_Filter_Abstract)) {
-                /**
-                 * @see Zend_Ldap_Filter_Exception
-                 */
-                require_once 'Zend/Ldap/Filter/Exception.php';
-                throw new Zend_Ldap_Filter_Exception('Only strings or Zend_Ldap_Filter_Abstract allowed.');
-            }
+            if (is_string($s))
+                $subfilters[$key] = new Zend_Ldap_Filter_String($s);
+            else 
+                if (! ($s instanceof Zend_Ldap_Filter_Abstract)) {
+                    /**
+                     *
+                     * @see Zend_Ldap_Filter_Exception
+                     */
+                    require_once 'Zend/Ldap/Filter/Exception.php';
+                    throw new Zend_Ldap_Filter_Exception(
+                            'Only strings or Zend_Ldap_Filter_Abstract allowed.');
+                }
         }
         $this->_subfilters = $subfilters;
         $this->_symbol = $symbol;
@@ -82,10 +92,10 @@ abstract class Zend_Ldap_Filter_Logical extends Zend_Ldap_Filter_Abstract
     /**
      * Adds a filter to this grouping filter.
      *
-     * @param  Zend_Ldap_Filter_Abstract $filter
+     * @param Zend_Ldap_Filter_Abstract $filter            
      * @return Zend_Ldap_Filter_Logical
      */
-    public function addFilter(Zend_Ldap_Filter_Abstract $filter)
+    public function addFilter (Zend_Ldap_Filter_Abstract $filter)
     {
         $new = clone $this;
         $new->_subfilters[] = $filter;
@@ -97,10 +107,11 @@ abstract class Zend_Ldap_Filter_Logical extends Zend_Ldap_Filter_Abstract
      *
      * @return string
      */
-    public function toString()
+    public function toString ()
     {
         $return = '(' . $this->_symbol;
-        foreach ($this->_subfilters as $sub) $return .= $sub->toString();
+        foreach ($this->_subfilters as $sub)
+            $return .= $sub->toString();
         $return .= ')';
         return $return;
     }

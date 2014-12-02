@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -24,22 +25,26 @@
  * Decorates a StrikeIron response object returned by the SOAP extension
  * to provide more a PHP-like interface.
  *
- * @category   Zend
- * @package    Zend_Service
+ * @category Zend
+ * @package Zend_Service
  * @subpackage StrikeIron
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Service_StrikeIron_Decorator
 {
+
     /**
      * Name of the decorated object
+     * 
      * @var null|string
      */
     protected $_name = null;
 
     /**
      * Object to decorate
+     * 
      * @var object
      */
     protected $_object = null;
@@ -47,13 +52,15 @@ class Zend_Service_StrikeIron_Decorator
     /**
      * Class constructor
      *
-     * @param object       $object  Object to decorate
-     * @param null|string  $name    Name of the object
+     * @param object $object
+     *            Object to decorate
+     * @param null|string $name
+     *            Name of the object
      */
-    public function __construct($object, $name = null)
+    public function __construct ($object, $name = null)
     {
         $this->_object = $object;
-        $this->_name   = $name;
+        $this->_name = $name;
     }
 
     /**
@@ -62,17 +69,18 @@ class Zend_Service_StrikeIron_Decorator
      * If the property is not found in the decorated object, return
      * NULL as a convenience feature to avoid notices.
      *
-     * @param  string $property  Property name to retrieve
-     * @return mixed             Value of property or NULL
+     * @param string $property
+     *            Property name to retrieve
+     * @return mixed Value of property or NULL
      */
-    public function __get($property)
+    public function __get ($property)
     {
         $result = null;
-
+        
         if (! isset($this->_object->$property)) {
             $property = $this->_inflect($property);
         }
-
+        
         if (isset($this->_object->$property)) {
             $result = $this->_object->$property;
             $result = $this->_decorate($result);
@@ -81,39 +89,49 @@ class Zend_Service_StrikeIron_Decorator
     }
 
     /**
-     * Proxy method calls to the decorated object.  This will only
+     * Proxy method calls to the decorated object.
+     * This will only
      * be used when the SOAPClient returns a custom PHP object via
      * its classmap option so no inflection is done.
      *
-     * @param string  $method  Name of method called
-     * @param array   $args    Arguments for method
+     * @param string $method
+     *            Name of method called
+     * @param array $args
+     *            Arguments for method
      */
-    public function __call($method, $args)
+    public function __call ($method, $args)
     {
-        return call_user_func_array(array($this->_object, $method), $args);
+        return call_user_func_array(array(
+                $this->_object,
+                $method
+        ), $args);
     }
 
     /**
      * Inflect a property name from PHP-style to the result object's
-     * style.  The default implementation here only inflects the case
+     * style.
+     * The default implementation here only inflects the case
      * of the first letter, e.g. from "fooBar" to "FooBar".
      *
-     * @param  string $property  Property name to inflect
-     * @return string            Inflected property name
+     * @param string $property
+     *            Property name to inflect
+     * @return string Inflected property name
      */
-    protected function _inflect($property)
+    protected function _inflect ($property)
     {
         return ucfirst($property);
     }
 
     /**
-     * Decorate a value returned by the result object.  The default
+     * Decorate a value returned by the result object.
+     * The default
      * implementation here only decorates child objects.
      *
-     * @param  mixed  $result  Value to decorate
-     * @return mixed           Decorated result
+     * @param mixed $result
+     *            Value to decorate
+     * @return mixed Decorated result
      */
-    protected function _decorate($result)
+    protected function _decorate ($result)
     {
         if (is_object($result)) {
             $result = new self($result);
@@ -126,7 +144,7 @@ class Zend_Service_StrikeIron_Decorator
      *
      * @return object
      */
-    public function getDecoratedObject()
+    public function getDecoratedObject ()
     {
         return $this->_object;
     }
@@ -136,7 +154,7 @@ class Zend_Service_StrikeIron_Decorator
      *
      * @return null|string
      */
-    public function getDecoratedObjectName()
+    public function getDecoratedObjectName ()
     {
         return $this->_name;
     }

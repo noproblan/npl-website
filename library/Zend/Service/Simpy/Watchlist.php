@@ -21,22 +21,24 @@
  * @version    $Id: Watchlist.php 23775 2011-03-01 17:25:24Z ralph $
  */
 
-
 /**
+ *
  * @see Zend_Service_Simpy_WatchlistFilterSet
  */
 require_once 'Zend/Service/Simpy/WatchlistFilterSet.php';
 
-
 /**
- * @category   Zend
- * @package    Zend_Service
+ *
+ * @category Zend
+ * @package Zend_Service
  * @subpackage Simpy
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Service_Simpy_Watchlist
 {
+
     /**
      * Identifier for the watchlist
      *
@@ -89,28 +91,30 @@ class Zend_Service_Simpy_Watchlist
     /**
      * Constructor to initialize the object with data
      *
-     * @param  DOMNode $node Individual <watchlist> node from a parsed
-     *                       response from a GetWatchlists or GetWatchlist
-     *                       operation
+     * @param DOMNode $node
+     *            Individual <watchlist> node from a parsed
+     *            response from a GetWatchlists or GetWatchlist
+     *            operation
      * @return void
      */
-    public function __construct($node)
+    public function __construct ($node)
     {
-        $map =& $node->attributes;
-
+        $map = & $node->attributes;
+        
         $this->_id = $map->getNamedItem('id')->nodeValue;
         $this->_name = $map->getNamedItem('name')->nodeValue;
         $this->_description = $map->getNamedItem('description')->nodeValue;
         $this->_addDate = $map->getNamedItem('addDate')->nodeValue;
         $this->_newLinks = $map->getNamedItem('newLinks')->nodeValue;
-
+        
         $this->_users = array();
         $this->_filters = new Zend_Service_Simpy_WatchlistFilterSet();
-
+        
         $childNode = $node->firstChild;
         while ($childNode !== null) {
             if ($childNode->nodeName == 'user') {
-                $this->_users[] = $childNode->attributes->getNamedItem('username')->nodeValue;
+                $this->_users[] = $childNode->attributes->getNamedItem(
+                        'username')->nodeValue;
             } elseif ($childNode->nodeName == 'filter') {
                 $filter = new Zend_Service_Simpy_WatchlistFilter($childNode);
                 $this->_filters->add($filter);
@@ -124,7 +128,7 @@ class Zend_Service_Simpy_Watchlist
      *
      * @return int
      */
-    public function getId()
+    public function getId ()
     {
         return $this->_id;
     }
@@ -134,7 +138,7 @@ class Zend_Service_Simpy_Watchlist
      *
      * @return string
      */
-    public function getName()
+    public function getName ()
     {
         return $this->_name;
     }
@@ -144,7 +148,7 @@ class Zend_Service_Simpy_Watchlist
      *
      * @return string
      */
-    public function getDescription()
+    public function getDescription ()
     {
         return $this->_description;
     }
@@ -154,7 +158,7 @@ class Zend_Service_Simpy_Watchlist
      *
      * @return string
      */
-    public function getAddDate()
+    public function getAddDate ()
     {
         return $this->_addDate;
     }
@@ -164,7 +168,7 @@ class Zend_Service_Simpy_Watchlist
      *
      * @return int
      */
-    public function getNewLinks()
+    public function getNewLinks ()
     {
         return $this->_newLinks;
     }
@@ -174,7 +178,7 @@ class Zend_Service_Simpy_Watchlist
      *
      * @return array
      */
-    public function getUsers()
+    public function getUsers ()
     {
         return $this->_users;
     }
@@ -184,7 +188,7 @@ class Zend_Service_Simpy_Watchlist
      *
      * @return Zend_Service_Simpy_WatchlistFilterSet
      */
-    public function getFilters()
+    public function getFilters ()
     {
         return $this->_filters;
     }

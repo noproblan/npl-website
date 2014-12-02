@@ -19,10 +19,10 @@
  * @version    $Id: Cli.php 23775 2011-03-01 17:25:24Z ralph $
  */
 
-
-/** Zend_Controller_Response_Abstract */
+/**
+ * Zend_Controller_Response_Abstract
+ */
 require_once 'Zend/Controller/Response/Abstract.php';
-
 
 /**
  * Zend_Controller_Response_Cli
@@ -32,28 +32,30 @@ require_once 'Zend/Controller/Response/Abstract.php';
  * @uses Zend_Controller_Response_Abstract
  * @package Zend_Controller
  * @subpackage Response
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Controller_Response_Cli extends Zend_Controller_Response_Abstract
 {
+
     /**
      * Flag; if true, when header operations are called after headers have been
      * sent, an exception will be raised; otherwise, processing will continue
-     * as normal. Defaults to false.
+     * as normal.
+     * Defaults to false.
      *
      * @see canSendHeaders()
      * @var boolean
      */
     public $headersSentThrowsException = false;
 
-
     /**
      * Magic __toString functionality
      *
      * @return string
      */
-    public function __toString()
+    public function __toString ()
     {
         if ($this->isException() && $this->renderExceptions()) {
             $exceptions = '';
@@ -62,7 +64,7 @@ class Zend_Controller_Response_Cli extends Zend_Controller_Response_Abstract
             }
             return $exceptions;
         }
-
+        
         return $this->_body;
     }
 }

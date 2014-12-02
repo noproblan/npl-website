@@ -26,17 +26,20 @@
 require_once 'Zend/Db/Exception.php';
 
 /**
- * @category   Zend
- * @package    Zend_Db
+ *
+ * @category Zend
+ * @package Zend_Db
  * @subpackage Adapter
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Db_Adapter_Exception extends Zend_Db_Exception
 {
+
     protected $_chainedException = null;
 
-    public function __construct($message = '', $code = 0, Exception $e = null)
+    public function __construct ($message = '', $code = 0, Exception $e = null)
     {
         if ($e && (0 === $code)) {
             $code = $e->getCode();
@@ -44,14 +47,13 @@ class Zend_Db_Adapter_Exception extends Zend_Db_Exception
         parent::__construct($message, $code, $e);
     }
 
-    public function hasChainedException()
+    public function hasChainedException ()
     {
         return ($this->_previous !== null);
     }
 
-    public function getChainedException()
+    public function getChainedException ()
     {
         return $this->getPrevious();
     }
-
 }

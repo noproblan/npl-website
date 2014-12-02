@@ -21,22 +21,24 @@
  * @version    $Id: WatchlistSet.php 23775 2011-03-01 17:25:24Z ralph $
  */
 
-
 /**
+ *
  * @see Zend_Service_Simpy_Watchlist
  */
 require_once 'Zend/Service/Simpy/Watchlist.php';
 
-
 /**
- * @category   Zend
- * @package    Zend_Service
+ *
+ * @category Zend
+ * @package Zend_Service
  * @subpackage Simpy
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Service_Simpy_WatchlistSet implements IteratorAggregate
 {
+
     /**
      * List of watchlists
      *
@@ -47,16 +49,18 @@ class Zend_Service_Simpy_WatchlistSet implements IteratorAggregate
     /**
      * Constructor to initialize the object with data
      *
-     * @param  DOMDocument $doc Parsed response from a GetWatchlists operation
+     * @param DOMDocument $doc
+     *            Parsed response from a GetWatchlists operation
      * @return void
      */
-    public function __construct(DOMDocument $doc)
+    public function __construct (DOMDocument $doc)
     {
         $xpath = new DOMXPath($doc);
         $list = $xpath->query('//watchlists/watchlist');
-
-        for ($x = 0; $x < $list->length; $x++) {
-            $this->_watchlists[$x] = new Zend_Service_Simpy_Watchlist($list->item($x));
+        
+        for ($x = 0; $x < $list->length; $x ++) {
+            $this->_watchlists[$x] = new Zend_Service_Simpy_Watchlist(
+                    $list->item($x));
         }
     }
 
@@ -65,7 +69,7 @@ class Zend_Service_Simpy_WatchlistSet implements IteratorAggregate
      *
      * @return ArrayIterator
      */
-    public function getIterator()
+    public function getIterator ()
     {
         return new ArrayIterator($this->_watchlists);
     }
@@ -75,7 +79,7 @@ class Zend_Service_Simpy_WatchlistSet implements IteratorAggregate
      *
      * @return int
      */
-    public function getLength()
+    public function getLength ()
     {
         return count($this->_watchlists);
     }

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <ldml>
 	<identity>
-		<version number="$Revision: 1.122 $"/>
-		<generation date="$Date: 2009/06/15 03:46:25 $"/>
-		<language type="hu"/>
+		<version number="$Revision: 1.122 $" />
+		<generation date="$Date: 2009/06/15 03:46:25 $" />
+		<language type="hu" />
 	</identity>
 	<localeDisplayNames>
 		<localeDisplayPattern>
@@ -1007,7 +1007,9 @@
 		<inText type="variants">lowercase-words</inText>
 	</layout>
 	<characters>
-		<exemplarCharacters>[a á b c {cs} {ccs} d {dz} {ddz} {dzs} {ddzs} e é f g {gy} {ggy} h i í j-l {ly} {lly} m n {ny} {nny} o ó ö ő p r s {sz} {ssz} t {ty} {tty} u ú ü ű v z {zs} {zzs}]</exemplarCharacters>
+		<exemplarCharacters>[a á b c {cs} {ccs} d {dz} {ddz} {dzs} {ddzs} e é
+			f g {gy} {ggy} h i í j-l {ly} {lly} m n {ny} {nny} o ó ö ő p r s {sz}
+			{ssz} t {ty} {tty} u ú ü ű v z {zs} {zzs}]</exemplarCharacters>
 		<exemplarCharacters type="auxiliary">[q w-y]</exemplarCharacters>
 		<exemplarCharacters type="currencySymbol">[a-z]</exemplarCharacters>
 	</characters>
@@ -1255,12 +1257,15 @@
 						<intervalFormatItem id="yMd">
 							<greatestDifference id="d">yyyy.MM.dd-dd.</greatestDifference>
 							<greatestDifference id="M">yyyy.MM.dd. - MM.dd.</greatestDifference>
-							<greatestDifference id="y">yyyy.MM.dd. - yyyy.MM.dd.</greatestDifference>
+							<greatestDifference id="y">yyyy.MM.dd. -
+								yyyy.MM.dd.</greatestDifference>
 						</intervalFormatItem>
 						<intervalFormatItem id="yMEd">
 							<greatestDifference id="d">yyyy.MM.dd., E - dd., E</greatestDifference>
-							<greatestDifference id="M">yyyy.MM.dd., E - MM.dd., E</greatestDifference>
-							<greatestDifference id="y">yyyy.MM.dd., E - yyyy.MM.dd., E</greatestDifference>
+							<greatestDifference id="M">yyyy.MM.dd., E -
+								MM.dd., E</greatestDifference>
+							<greatestDifference id="y">yyyy.MM.dd., E -
+								yyyy.MM.dd., E</greatestDifference>
 						</intervalFormatItem>
 						<intervalFormatItem id="yMMM">
 							<greatestDifference id="M">y. MMM-MMM</greatestDifference>
@@ -1273,8 +1278,10 @@
 						</intervalFormatItem>
 						<intervalFormatItem id="yMMMEd">
 							<greatestDifference id="d">y. MMM d., E - d., E</greatestDifference>
-							<greatestDifference id="M">y. MMM d., E - MMM d., E</greatestDifference>
-							<greatestDifference id="y">y. MMM d., E - y. MMM d., E</greatestDifference>
+							<greatestDifference id="M">y. MMM d., E - MMM d.,
+								E</greatestDifference>
+							<greatestDifference id="y">y. MMM d., E - y. MMM
+								d., E</greatestDifference>
 						</intervalFormatItem>
 					</intervalFormats>
 				</dateTimeFormats>
@@ -2915,7 +2922,8 @@
 			</currency>
 			<currency type="BAM">
 				<displayName>Bozsnia-hercegovinai konvertibilis márka</displayName>
-				<displayName count="other">Bosznia-hercegovinai konvertibilis márka</displayName>
+				<displayName count="other">Bosznia-hercegovinai konvertibilis
+					márka</displayName>
 			</currency>
 			<currency type="BBD">
 				<displayName>Barbadosi dollár</displayName>

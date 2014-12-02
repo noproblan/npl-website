@@ -21,34 +21,39 @@
  */
 
 /**
+ *
  * @see Zend_Service_Ebay_Finding_Set_Abstract
  */
 require_once 'Zend/Service/Ebay/Finding/Set/Abstract.php';
 
 /**
- * @category   Zend
- * @package    Zend_Service
+ *
+ * @category Zend
+ * @package Zend_Service
  * @subpackage Ebay
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @uses       Zend_Service_Ebay_Finding_Set_Abstract
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
+ * @uses Zend_Service_Ebay_Finding_Set_Abstract
  */
 class Zend_Service_Ebay_Finding_Aspect_Set extends Zend_Service_Ebay_Finding_Set_Abstract
 {
+
     /**
      * Implement SeekableIterator::current()
      *
      * @return Zend_Service_Ebay_Finding_Aspect
      */
-    public function current()
+    public function current ()
     {
         // check node
         $node = $this->_nodes->item($this->_key);
-        if (!$node) {
+        if (! $node) {
             return null;
         }
-
+        
         /**
+         *
          * @see Zend_Service_Ebay_Finding_Aspect
          */
         require_once 'Zend/Service/Ebay/Finding/Aspect.php';

@@ -21,10 +21,12 @@
  */
 
 /**
+ *
  * @see Zend_Ldap_Node_Schema_Item
  */
 require_once 'Zend/Ldap/Node/Schema/Item.php';
 /**
+ *
  * @see Zend_Ldap_Node_Schema_ObjectClass_Interface
  */
 require_once 'Zend/Ldap/Node/Schema/ObjectClass/Interface.php';
@@ -33,21 +35,24 @@ require_once 'Zend/Ldap/Node/Schema/ObjectClass/Interface.php';
  * Zend_Ldap_Node_Schema_ObjectClass_OpenLdap provides access to the objectClass
  * schema information on an OpenLDAP server.
  *
- * @category   Zend
- * @package    Zend_Ldap
+ * @category Zend
+ * @package Zend_Ldap
  * @subpackage Schema
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
-class Zend_Ldap_Node_Schema_ObjectClass_OpenLdap extends Zend_Ldap_Node_Schema_Item
-    implements Zend_Ldap_Node_Schema_ObjectClass_Interface
+class Zend_Ldap_Node_Schema_ObjectClass_OpenLdap extends Zend_Ldap_Node_Schema_Item implements 
+        Zend_Ldap_Node_Schema_ObjectClass_Interface
 {
+
     /**
      * All inherited "MUST" attributes
      *
      * @var array
      */
     protected $_inheritedMust = null;
+
     /**
      * All inherited "MAY" attributes
      *
@@ -55,13 +60,12 @@ class Zend_Ldap_Node_Schema_ObjectClass_OpenLdap extends Zend_Ldap_Node_Schema_I
      */
     protected $_inheritedMay = null;
 
-
     /**
      * Gets the objectClass name
      *
      * @return string
      */
-    public function getName()
+    public function getName ()
     {
         return $this->name;
     }
@@ -71,7 +75,7 @@ class Zend_Ldap_Node_Schema_ObjectClass_OpenLdap extends Zend_Ldap_Node_Schema_I
      *
      * @return string
      */
-    public function getOid()
+    public function getOid ()
     {
         return $this->oid;
     }
@@ -81,7 +85,7 @@ class Zend_Ldap_Node_Schema_ObjectClass_OpenLdap extends Zend_Ldap_Node_Schema_I
      *
      * @return array
      */
-    public function getMustContain()
+    public function getMustContain ()
     {
         if ($this->_inheritedMust === null) {
             $this->_resolveInheritance();
@@ -94,7 +98,7 @@ class Zend_Ldap_Node_Schema_ObjectClass_OpenLdap extends Zend_Ldap_Node_Schema_I
      *
      * @return array
      */
-    public function getMayContain()
+    public function getMayContain ()
     {
         if ($this->_inheritedMay === null) {
             $this->_resolveInheritance();
@@ -107,7 +111,7 @@ class Zend_Ldap_Node_Schema_ObjectClass_OpenLdap extends Zend_Ldap_Node_Schema_I
      *
      * @return void
      */
-    protected function _resolveInheritance()
+    protected function _resolveInheritance ()
     {
         $must = $this->must;
         $may = $this->may;
@@ -129,7 +133,7 @@ class Zend_Ldap_Node_Schema_ObjectClass_OpenLdap extends Zend_Ldap_Node_Schema_I
      *
      * @return string
      */
-    public function getDescription()
+    public function getDescription ()
     {
         return $this->desc;
     }
@@ -139,17 +143,19 @@ class Zend_Ldap_Node_Schema_ObjectClass_OpenLdap extends Zend_Ldap_Node_Schema_I
      *
      * @return integer
      */
-    public function getType()
+    public function getType ()
     {
         if ($this->structural) {
             return Zend_Ldap_Node_Schema::OBJECTCLASS_TYPE_STRUCTURAL;
-        } else if ($this->abstract) {
-            return Zend_Ldap_Node_Schema::OBJECTCLASS_TYPE_ABSTRACT;
-        } else if ($this->auxiliary) {
-            return Zend_Ldap_Node_Schema::OBJECTCLASS_TYPE_AUXILIARY;
-        } else {
-            return Zend_Ldap_Node_Schema::OBJECTCLASS_TYPE_UNKNOWN;
-        }
+        } else 
+            if ($this->abstract) {
+                return Zend_Ldap_Node_Schema::OBJECTCLASS_TYPE_ABSTRACT;
+            } else 
+                if ($this->auxiliary) {
+                    return Zend_Ldap_Node_Schema::OBJECTCLASS_TYPE_AUXILIARY;
+                } else {
+                    return Zend_Ldap_Node_Schema::OBJECTCLASS_TYPE_UNKNOWN;
+                }
     }
 
     /**
@@ -158,7 +164,7 @@ class Zend_Ldap_Node_Schema_ObjectClass_OpenLdap extends Zend_Ldap_Node_Schema_I
      *
      * @return array
      */
-    public function getParentClasses()
+    public function getParentClasses ()
     {
         return $this->sup;
     }
@@ -168,7 +174,7 @@ class Zend_Ldap_Node_Schema_ObjectClass_OpenLdap extends Zend_Ldap_Node_Schema_I
      *
      * @return array of Zend_Ldap_Node_Schema_ObjectClass_OpenLdap
      */
-    public function getParents()
+    public function getParents ()
     {
         return $this->_parents;
     }

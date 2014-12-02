@@ -21,20 +21,24 @@
  */
 
 /**
+ *
  * @see Zend_Service_DeveloperGarden_Response_Exception
  */
 require_once 'Zend/Service/DeveloperGarden/Response/Exception.php';
 
 /**
- * @category   Zend
- * @package    Zend_Service
+ *
+ * @category Zend
+ * @package Zend_Service
  * @subpackage DeveloperGarden
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @author     Marco Kaiser
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @author Marco Kaiser
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 abstract class Zend_Service_DeveloperGarden_Response_ResponseAbstract
 {
+
     /**
      * errorCode
      *
@@ -55,15 +59,13 @@ abstract class Zend_Service_DeveloperGarden_Response_ResponseAbstract
      * @throws Zend_Service_DeveloperGarden_Response_Exception
      * @return Zend_Service_DeveloperGarden_Response_ResponseAbstract
      */
-    public function parse()
+    public function parse ()
     {
         if ($this->hasError()) {
             throw new Zend_Service_DeveloperGarden_Response_Exception(
-                $this->getErrorMessage(),
-                $this->getErrorCode()
-            );
+                    $this->getErrorMessage(), $this->getErrorCode());
         }
-
+        
         return $this;
     }
 
@@ -72,7 +74,7 @@ abstract class Zend_Service_DeveloperGarden_Response_ResponseAbstract
      *
      * @return string|null
      */
-    public function getErrorCode()
+    public function getErrorCode ()
     {
         return $this->errorCode;
     }
@@ -82,7 +84,7 @@ abstract class Zend_Service_DeveloperGarden_Response_ResponseAbstract
      *
      * @return string
      */
-    public function getErrorMessage()
+    public function getErrorMessage ()
     {
         return $this->errorMessage;
     }
@@ -92,10 +94,9 @@ abstract class Zend_Service_DeveloperGarden_Response_ResponseAbstract
      *
      * @return boolean
      */
-    public function isValid()
+    public function isValid ()
     {
-        return ($this->errorCode === null
-             || $this->errorCode == '0000');
+        return ($this->errorCode === null || $this->errorCode == '0000');
     }
 
     /**
@@ -103,9 +104,8 @@ abstract class Zend_Service_DeveloperGarden_Response_ResponseAbstract
      *
      * @return boolean
      */
-    public function hasError()
+    public function hasError ()
     {
-        return ($this->errorCode !== null
-                && $this->errorCode != '0000');
+        return ($this->errorCode !== null && $this->errorCode != '0000');
     }
 }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -20,20 +21,23 @@
  */
 
 /**
- * The interface required by all Zend_Browser_Features Adapter classes to implement.
+ * The interface required by all Zend_Browser_Features Adapter classes to
+ * implement.
  *
- * @category   Zend
- * @package    Zend_Http
+ * @category Zend
+ * @package Zend_Http
  * @subpackage UserAgent
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 interface Zend_Http_UserAgent_Features_Adapter
 {
+
     /**
      * Retrieve the browser's features from a given request object ($_SERVER)
      *
      * @return array
      */
-    public static function getFromRequest($request, array $config);
+    public static function getFromRequest ($request, array $config);
 }

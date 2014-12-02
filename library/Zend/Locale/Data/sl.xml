@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <ldml>
 	<identity>
-		<version number="$Revision: 1.114 $"/>
-		<generation date="$Date: 2009/06/15 04:15:33 $"/>
-		<language type="sl"/>
+		<version number="$Revision: 1.114 $" />
+		<generation date="$Date: 2009/06/15 04:15:33 $" />
+		<language type="sl" />
 	</identity>
 	<localeDisplayNames>
 		<localeDisplayPattern>
@@ -772,7 +772,8 @@
 			<territory type="GU">Guam</territory>
 			<territory type="GW">Gvineja Bissau</territory>
 			<territory type="GY">Gvajana</territory>
-			<territory type="HK">Posebno administrativno območje LR Kitajske Hong Kong</territory>
+			<territory type="HK">Posebno administrativno območje LR Kitajske
+				Hong Kong</territory>
 			<territory type="HM">Otok Heard in otočje McDonald</territory>
 			<territory type="HN">Honduras</territory>
 			<territory type="HR">Hrvaška</territory>
@@ -825,7 +826,8 @@
 			<territory type="ML">Mali</territory>
 			<territory type="MM">Mjanmar</territory>
 			<territory type="MN">Mongolija</territory>
-			<territory type="MO">Posebno administrativno območje LR Kitajske Macao</territory>
+			<territory type="MO">Posebno administrativno območje LR Kitajske
+				Macao</territory>
 			<territory type="MP">Severni Marianski otoki</territory>
 			<territory type="MQ">Martinik</territory>
 			<territory type="MR">Mavretanija</territory>
@@ -963,11 +965,13 @@
 			<key type="currency">valuta</key>
 		</keys>
 		<types>
-			<type type="big5han" key="collation">razvrščanje po sistemu tradicionalne kitajščine - Big5</type>
+			<type type="big5han" key="collation">razvrščanje po sistemu tradicionalne
+				kitajščine - Big5</type>
 			<type type="buddhist" key="calendar">budistični koledar</type>
 			<type type="chinese" key="calendar">kitajski koledar</type>
 			<type type="direct" key="collation">neposredno razvrščanje</type>
-			<type type="gb2312han" key="collation">razvrščanje po sistemu poenostavljene kitajščine - GB2312</type>
+			<type type="gb2312han" key="collation">razvrščanje po sistemu poenostavljene
+				kitajščine - GB2312</type>
 			<type type="gregorian" key="calendar">gregorijanski koledar</type>
 			<type type="hebrew" key="calendar">hebrejski koledar</type>
 			<type type="indian" key="calendar">indijanski koledar</type>
@@ -978,7 +982,8 @@
 			<type type="pinyin" key="collation">razvrščanje po sistemu pinjin</type>
 			<type type="roc" key="calendar">kitajski državni koledar</type>
 			<type type="stroke" key="collation">razvrščanje po zaporedju pisanja pismenk</type>
-			<type type="traditional" key="collation">razvrščanje po tradicionalnem sistemu</type>
+			<type type="traditional" key="collation">razvrščanje po tradicionalnem
+				sistemu</type>
 		</types>
 		<measurementSystemNames>
 			<measurementSystemName type="metric">metrični</measurementSystemName>
@@ -995,7 +1000,8 @@
 	</layout>
 	<characters>
 		<exemplarCharacters>[a-c č d-p r s š t-v z ž]</exemplarCharacters>
-		<exemplarCharacters type="auxiliary">[á à ă â å ä ā æ ç é è ĕ ê ë ē í ì ĭ î ï ī ñ ó ò ŏ ô ö ø ō œ q ß ú ù ŭ û ü ū w-y ÿ]</exemplarCharacters>
+		<exemplarCharacters type="auxiliary">[á à ă â å ä ā æ ç é è ĕ ê
+			ë ē í ì ĭ î ï ī ñ ó ò ŏ ô ö ø ō œ q ß ú ù ŭ û ü ū w-y ÿ]</exemplarCharacters>
 		<exemplarCharacters type="currencySymbol">[a-z]</exemplarCharacters>
 	</characters>
 	<delimiters>
@@ -1226,7 +1232,8 @@
 						</intervalFormatItem>
 						<intervalFormatItem id="MMMEd">
 							<greatestDifference id="d">E., d. – E., d. MMM.</greatestDifference>
-							<greatestDifference id="M">E., d. MMM. – E., d. MMM.</greatestDifference>
+							<greatestDifference id="M">E., d. MMM. – E., d.
+								MMM.</greatestDifference>
 						</intervalFormatItem>
 						<intervalFormatItem id="MMMM">
 							<greatestDifference id="M">LLLL–LLLL</greatestDifference>
@@ -1245,8 +1252,10 @@
 						</intervalFormatItem>
 						<intervalFormatItem id="yMEd">
 							<greatestDifference id="d">E., d. – E., d. M. yy</greatestDifference>
-							<greatestDifference id="M">E., d. M. – E., d. M. yy</greatestDifference>
-							<greatestDifference id="y">E., d. M. yy – E., d. M. yy</greatestDifference>
+							<greatestDifference id="M">E., d. M. – E., d. M.
+								yy</greatestDifference>
+							<greatestDifference id="y">E., d. M. yy – E., d.
+								M. yy</greatestDifference>
 						</intervalFormatItem>
 						<intervalFormatItem id="yMMM">
 							<greatestDifference id="M">MMM. – MMM. y</greatestDifference>
@@ -1258,9 +1267,12 @@
 							<greatestDifference id="y">d. MMM. y – d. MMM. y</greatestDifference>
 						</intervalFormatItem>
 						<intervalFormatItem id="yMMMEd">
-							<greatestDifference id="d">E., d. MMM. – E., d. MMM. y</greatestDifference>
-							<greatestDifference id="M">E., d. MMM. – E., d. MMM. y</greatestDifference>
-							<greatestDifference id="y">E., d. MMM. y – E., d. MMM. y</greatestDifference>
+							<greatestDifference id="d">E., d. MMM. – E., d.
+								MMM. y</greatestDifference>
+							<greatestDifference id="M">E., d. MMM. – E., d.
+								MMM. y</greatestDifference>
+							<greatestDifference id="y">E., d. MMM. y – E., d.
+								MMM. y</greatestDifference>
 						</intervalFormatItem>
 						<intervalFormatItem id="yMMMM">
 							<greatestDifference id="M">MM–MM yyyy</greatestDifference>

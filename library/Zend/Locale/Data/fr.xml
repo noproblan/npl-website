@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <ldml>
 	<identity>
-		<version number="$Revision: 1.148 $"/>
-		<generation date="$Date: 2009/06/15 17:12:26 $"/>
-		<language type="fr"/>
+		<version number="$Revision: 1.148 $" />
+		<generation date="$Date: 2009/06/15 17:12:26 $" />
+		<language type="fr" />
 	</identity>
 	<localeDisplayNames>
 		<localeDisplayPattern>
@@ -998,8 +998,10 @@
 		</codePatterns>
 	</localeDisplayNames>
 	<characters>
-		<exemplarCharacters>[a à â æ b c ç d e é è ê ë f-i î ï j-o ô œ p-u ù û ü v-y ÿ z]</exemplarCharacters>
-		<exemplarCharacters type="auxiliary">[á å ä ã ā ē í ì ī ñ ó ò ö ø ú ǔ]</exemplarCharacters>
+		<exemplarCharacters>[a à â æ b c ç d e é è ê ë f-i î ï j-o ô œ p-u ù û
+			ü v-y ÿ z]</exemplarCharacters>
+		<exemplarCharacters type="auxiliary">[á å ä ã ā ē í ì ī ñ ó ò ö
+			ø ú ǔ]</exemplarCharacters>
 		<exemplarCharacters type="currencySymbol">[a-z ұ Ұ]</exemplarCharacters>
 	</characters>
 	<delimiters>
@@ -1537,7 +1539,8 @@
 						</intervalFormatItem>
 						<intervalFormatItem id="MMMEd">
 							<greatestDifference id="d">'du' E d 'au' E d MMM</greatestDifference>
-							<greatestDifference id="M">'du' E d MMM 'au' E d MMM</greatestDifference>
+							<greatestDifference id="M">'du' E d MMM 'au' E d
+								MMM</greatestDifference>
 						</intervalFormatItem>
 						<intervalFormatItem id="MMMM">
 							<greatestDifference id="M">LLLL–LLLL</greatestDifference>
@@ -4054,7 +4057,8 @@
 			<currency type="AOR">
 				<displayName>kwanza angolais réajusté (1995-1999)</displayName>
 				<displayName count="one">kwanza angolais réajusté (1995–1999)</displayName>
-				<displayName count="other">kwanzas angolais réajustés (1995–1999)</displayName>
+				<displayName count="other">kwanzas angolais réajustés
+					(1995–1999)</displayName>
 			</currency>
 			<currency type="ARA">
 				<displayName>austral argentin</displayName>
@@ -4185,8 +4189,10 @@
 			</currency>
 			<currency type="BRB">
 				<displayName>nouveau cruzeiro brésilien (1967–1986)</displayName>
-				<displayName count="one">nouveau cruzeiro brésilien (1967–1986)</displayName>
-				<displayName count="other">nouveaux cruzeiros brésiliens (1967–1986)</displayName>
+				<displayName count="one">nouveau cruzeiro brésilien
+					(1967–1986)</displayName>
+				<displayName count="other">nouveaux cruzeiros brésiliens
+					(1967–1986)</displayName>
 			</currency>
 			<currency type="BRC">
 				<displayName>cruzado brésilien (1986–1989)</displayName>
@@ -4206,12 +4212,14 @@
 			<currency type="BRN">
 				<displayName>nouveau cruzado</displayName>
 				<displayName count="one">nouveau cruzado brésilien (1989–1990)</displayName>
-				<displayName count="other">nouveaux cruzados brésiliens (1989–1990)</displayName>
+				<displayName count="other">nouveaux cruzados brésiliens
+					(1989–1990)</displayName>
 			</currency>
 			<currency type="BRR">
 				<displayName>cruzeiro</displayName>
 				<displayName count="one">cruzeiro réal brésilien (1993–1994)</displayName>
-				<displayName count="other">cruzeiros réals brésiliens (1993–1994)</displayName>
+				<displayName count="other">cruzeiros réals brésiliens
+					(1993–1994)</displayName>
 			</currency>
 			<currency type="BSD">
 				<displayName>dollar bahaméen</displayName>
@@ -4237,7 +4245,8 @@
 			<currency type="BYB">
 				<displayName>nouveau rouble biélorusse (1994-1999)</displayName>
 				<displayName count="one">nouveau rouble biélorusse (1994–1999)</displayName>
-				<displayName count="other">nouveaux roubles biélorusses (1994–1999)</displayName>
+				<displayName count="other">nouveaux roubles biélorusses
+					(1994–1999)</displayName>
 			</currency>
 			<currency type="BYR">
 				<displayName>rouble biélorusse</displayName>
@@ -4382,8 +4391,10 @@
 			</currency>
 			<currency type="ECV">
 				<displayName>unité de valeur constante équatoriale (UVC)</displayName>
-				<displayName count="one">unité de valeur constante équatorienne (UVC)</displayName>
-				<displayName count="other">unités de valeur constante équatoriennes (UVC)</displayName>
+				<displayName count="one">unité de valeur constante
+					équatorienne (UVC)</displayName>
+				<displayName count="other">unités de valeur constante
+					équatoriennes (UVC)</displayName>
 			</currency>
 			<currency type="EEK">
 				<displayName>couronne estonienne</displayName>
@@ -4410,7 +4421,8 @@
 			<currency type="ESB">
 				<displayName>peseta espagnole (compte convertible)</displayName>
 				<displayName count="one">peseta espagnole (compte convertible)</displayName>
-				<displayName count="other">pesetas espagnoles (compte convertible)</displayName>
+				<displayName count="other">pesetas espagnoles (compte
+					convertible)</displayName>
 			</currency>
 			<currency type="ESP">
 				<displayName>peseta espagnole</displayName>
@@ -5290,12 +5302,15 @@
 			<currency type="XBC">
 				<displayName>unité de compte européenne (XBC)</displayName>
 				<displayName count="one">unité de compte 9 européenne (UEC-9)</displayName>
-				<displayName count="other">unités de compte 9 européennes (UEC-9)</displayName>
+				<displayName count="other">unités de compte 9 européennes
+					(UEC-9)</displayName>
 			</currency>
 			<currency type="XBD">
 				<displayName>unité de compte européenne (XBD)</displayName>
-				<displayName count="one">unité de compte 17 européenne (UEC-17)</displayName>
-				<displayName count="other">unités de compte 17 européennes (UEC-17)</displayName>
+				<displayName count="one">unité de compte 17 européenne
+					(UEC-17)</displayName>
+				<displayName count="other">unités de compte 17 européennes
+					(UEC-17)</displayName>
 			</currency>
 			<currency type="XCD">
 				<displayName>dollar des Caraïbes orientales</displayName>
@@ -5377,12 +5392,15 @@
 			<currency type="YUM">
 				<displayName>dinar yougoslave Noviy</displayName>
 				<displayName count="one">nouveau dinar yougoslave (1994–2003)</displayName>
-				<displayName count="other">nouveaux dinars yougoslaves (1994–2003)</displayName>
+				<displayName count="other">nouveaux dinars yougoslaves
+					(1994–2003)</displayName>
 			</currency>
 			<currency type="YUN">
 				<displayName>dinar yougoslave convertible</displayName>
-				<displayName count="one">dinar convertible yougoslave (1990–1992)</displayName>
-				<displayName count="other">dinars convertibles yougoslaves (1990–1992)</displayName>
+				<displayName count="one">dinar convertible yougoslave
+					(1990–1992)</displayName>
+				<displayName count="other">dinars convertibles yougoslaves
+					(1990–1992)</displayName>
 			</currency>
 			<currency type="ZAL">
 				<displayName>rand sud-africain (financier)</displayName>

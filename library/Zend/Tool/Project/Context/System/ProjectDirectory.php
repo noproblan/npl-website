@@ -21,21 +21,25 @@
  */
 
 /**
+ *
  * @see Zend_Tool_Project_Context_Filesystem_Directory
  */
 require_once 'Zend/Tool/Project/Context/Filesystem/Directory.php';
 
 /**
+ *
  * @see Zend_Tool_Project_Context_System_Interface
  */
 require_once 'Zend/Tool/Project/Context/System/Interface.php';
 
 /**
+ *
  * @see Zend_Tool_Project_Context_System_TopLevelRestrictable
  */
 require_once 'Zend/Tool/Project/Context/System/TopLevelRestrictable.php';
 
 /**
+ *
  * @see Zend_Tool_Project_Context_System_NotOverwritable
  */
 require_once 'Zend/Tool/Project/Context/System/NotOverwritable.php';
@@ -46,19 +50,20 @@ require_once 'Zend/Tool/Project/Context/System/NotOverwritable.php';
  * A profile is a hierarchical set of resources that keep track of
  * items within a specific project.
  *
- * @category   Zend
- * @package    Zend_Tool
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @category Zend
+ * @package Zend_Tool
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
-class Zend_Tool_Project_Context_System_ProjectDirectory
-    extends Zend_Tool_Project_Context_Filesystem_Directory
-    implements Zend_Tool_Project_Context_System_Interface,
-               Zend_Tool_Project_Context_System_NotOverwritable,
-               Zend_Tool_Project_Context_System_TopLevelRestrictable
+class Zend_Tool_Project_Context_System_ProjectDirectory extends Zend_Tool_Project_Context_Filesystem_Directory implements 
+        Zend_Tool_Project_Context_System_Interface, 
+        Zend_Tool_Project_Context_System_NotOverwritable, 
+        Zend_Tool_Project_Context_System_TopLevelRestrictable
 {
 
     /**
+     *
      * @var string
      */
     protected $_filesystemName = null;
@@ -68,7 +73,7 @@ class Zend_Tool_Project_Context_System_ProjectDirectory
      *
      * @return string
      */
-    public function getName()
+    public function getName ()
     {
         return 'ProjectDirectory';
     }
@@ -78,22 +83,24 @@ class Zend_Tool_Project_Context_System_ProjectDirectory
      *
      * @return Zend_Tool_Project_Context_System_ProjectDirectory
      */
-    public function init()
+    public function init ()
     {
         // get base path from attributes (would be in path attribute)
         $projectDirectory = $this->_resource->getAttribute('path');
-
+        
         // if not, get from profile
         if ($projectDirectory == null) {
-            $projectDirectory = $this->_resource->getProfile()->getAttribute('projectDirectory');
+            $projectDirectory = $this->_resource->getProfile()->getAttribute(
+                    'projectDirectory');
         }
-
+        
         // if not, exception.
         if ($projectDirectory == null) {
             require_once 'Zend/Tool/Project/Exception.php';
-            throw new Zend_Tool_Project_Exception('projectDirectory cannot find the directory for this project.');
+            throw new Zend_Tool_Project_Exception(
+                    'projectDirectory cannot find the directory for this project.');
         }
-
+        
         $this->_baseDirectory = rtrim($projectDirectory, '\\/');
         return $this;
     }
@@ -103,26 +110,26 @@ class Zend_Tool_Project_Context_System_ProjectDirectory
      *
      * @return Zend_Tool_Project_Context_System_ProjectDirectory
      */
-    public function create()
+    public function create ()
     {
         if (file_exists($this->getPath())) {
             /*
-            foreach (new DirectoryIterator($this->getPath()) as $item) {
-                if (!$item->isDot()) {
-                    if ($registry->getClient()->isInteractive()) {
-                        // @todo prompt for override
-                    } else {
-                        require_once 'Zend/Tool/Project/Context/Exception.php';
-                        throw new Zend_Tool_Project_Context_Exception('This directory is not empty, project creation aborted.');
-                    }
-                    break;
-                }
-            }
-            */
+             * foreach (new DirectoryIterator($this->getPath()) as $item) {
+             * if (!$item->isDot()) {
+             * if ($registry->getClient()->isInteractive()) {
+             * // @todo prompt for override
+             * } else {
+             * require_once 'Zend/Tool/Project/Context/Exception.php';
+             * throw new Zend_Tool_Project_Context_Exception('This directory is
+             * not empty, project creation aborted.');
+             * }
+             * break;
+             * }
+             * }
+             */
         }
-
+        
         parent::create();
         return $this;
     }
-
 }

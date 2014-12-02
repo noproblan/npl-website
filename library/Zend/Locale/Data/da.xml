@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <ldml>
 	<identity>
-		<version number="$Revision: 1.124 $"/>
-		<generation date="$Date: 2009/06/15 03:46:25 $"/>
-		<language type="da"/>
+		<version number="$Revision: 1.124 $" />
+		<generation date="$Date: 2009/06/15 03:46:25 $" />
+		<language type="da" />
 	</identity>
 	<fallback>nb nn sv en</fallback>
 	<localeDisplayNames>
@@ -789,7 +789,8 @@
 			<territory type="IL">Israel</territory>
 			<territory type="IM">Isle of Man</territory>
 			<territory type="IN">Indien</territory>
-			<territory type="IO">Det Britiske Territorium i Det Indiske Ocean</territory>
+			<territory type="IO">Det Britiske Territorium i Det Indiske
+				Ocean</territory>
 			<territory type="IQ">Irak</territory>
 			<territory type="IR">Iran</territory>
 			<territory type="IS">Island</territory>
@@ -899,7 +900,8 @@
 			<territory type="SZ">Swaziland</territory>
 			<territory type="TC">Turks- og Caicosøerne</territory>
 			<territory type="TD">Tchad</territory>
-			<territory type="TF">Franske Besiddelser i Det Sydlige Indiske Ocean</territory>
+			<territory type="TF">Franske Besiddelser i Det Sydlige Indiske
+				Ocean</territory>
 			<territory type="TG">Togo</territory>
 			<territory type="TH">Thailand</territory>
 			<territory type="TJ">Tadsjikistan</territory>
@@ -952,11 +954,13 @@
 			<key type="currency">Valuta</key>
 		</keys>
 		<types>
-			<type type="big5han" key="collation">sorteringsrækkefølge uforkortet kinesisk - Big5</type>
+			<type type="big5han" key="collation">sorteringsrækkefølge uforkortet
+				kinesisk - Big5</type>
 			<type type="buddhist" key="calendar">buddhistisk kalender</type>
 			<type type="chinese" key="calendar">kinesisk kalender</type>
 			<type type="direct" key="collation">direkte sorteringsrækkefølge</type>
-			<type type="gb2312han" key="collation">sorteringsrækkefølge forkortet kinesisk - GB2312</type>
+			<type type="gb2312han" key="collation">sorteringsrækkefølge forkortet
+				kinesisk - GB2312</type>
 			<type type="gregorian" key="calendar">gregoriansk kalender</type>
 			<type type="hebrew" key="calendar">jødisk kalender</type>
 			<type type="indian" key="calendar">indisk nationalkalender</type>
@@ -971,7 +975,8 @@
 		</types>
 		<measurementSystemNames>
 			<measurementSystemName type="metric">Det metriske system</measurementSystemName>
-			<measurementSystemName type="US">De amerikanske målesystemer</measurementSystemName>
+			<measurementSystemName type="US">De amerikanske
+				målesystemer</measurementSystemName>
 		</measurementSystemNames>
 		<codePatterns>
 			<codePattern type="language">Sprog: {0}</codePattern>
@@ -1281,8 +1286,10 @@
 							<greatestDifference id="M">d. MMM - d. MMM</greatestDifference>
 						</intervalFormatItem>
 						<intervalFormatItem id="MMMEd">
-							<greatestDifference id="d">E 'den' d. - E 'den' d. MMM</greatestDifference>
-							<greatestDifference id="M">E 'den' d. MMM - E 'den' d. MMM</greatestDifference>
+							<greatestDifference id="d">E 'den' d. - E 'den' d.
+								MMM</greatestDifference>
+							<greatestDifference id="M">E 'den' d. MMM - E
+								'den' d. MMM</greatestDifference>
 						</intervalFormatItem>
 						<intervalFormatItem id="MMMM">
 							<greatestDifference id="M">MMMM-MMMM</greatestDifference>
@@ -1314,9 +1321,12 @@
 							<greatestDifference id="y">d. MMM y - d. MMM y</greatestDifference>
 						</intervalFormatItem>
 						<intervalFormatItem id="yMMMEd">
-							<greatestDifference id="d">E 'den' d. - E 'den' d. MMM y</greatestDifference>
-							<greatestDifference id="M">E 'den' d. MMM - E 'den' d. MMM y</greatestDifference>
-							<greatestDifference id="y">E 'den' d. MMM y - E 'den' d. MMM y</greatestDifference>
+							<greatestDifference id="d">E 'den' d. - E 'den' d.
+								MMM y</greatestDifference>
+							<greatestDifference id="M">E 'den' d. MMM - E
+								'den' d. MMM y</greatestDifference>
+							<greatestDifference id="y">E 'den' d. MMM y - E
+								'den' d. MMM y</greatestDifference>
 						</intervalFormatItem>
 						<intervalFormatItem id="yMMMM">
 							<greatestDifference id="M">MM-MM yyyy</greatestDifference>
@@ -2138,7 +2148,8 @@
 			</currency>
 			<currency type="BAM">
 				<displayName>Bosnien-Hercegovinsk konvertibel mark</displayName>
-				<displayName count="other">Bosnien-Hercegovinske konvertible mark</displayName>
+				<displayName count="other">Bosnien-Hercegovinske konvertible
+					mark</displayName>
 			</currency>
 			<currency type="BBD">
 				<displayName>Barbadisk dollar</displayName>

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <ldml>
 	<identity>
-		<version number="$Revision: 1.73 $"/>
-		<generation date="$Date: 2009/06/15 03:46:25 $"/>
-		<language type="lo"/>
+		<version number="$Revision: 1.73 $" />
+		<generation date="$Date: 2009/06/15 03:46:25 $" />
+		<language type="lo" />
 	</identity>
 	<localeDisplayNames>
 		<languages>
@@ -354,7 +354,8 @@
 		</territories>
 	</localeDisplayNames>
 	<characters>
-		<exemplarCharacters>[່-ໍ ໆ ກ ຂ ຄ ງ ຈ ຊ ຍ ດ-ທ ນ-ຟ ມ-ຣ ລ ວ ສ ຫ ໜ ໝ ອ-ູ ົ-ຽ ເ-ໄ]</exemplarCharacters>
+		<exemplarCharacters>[່-ໍ ໆ ກ ຂ ຄ ງ ຈ ຊ ຍ ດ-ທ ນ-ຟ ມ-ຣ ລ ວ ສ ຫ ໜ ໝ ອ-ູ
+			ົ-ຽ ເ-ໄ]</exemplarCharacters>
 		<exemplarCharacters type="auxiliary">[\u200B ໐-໙]</exemplarCharacters>
 	</characters>
 	<delimiters>
@@ -394,7 +395,7 @@
 					</dateFormatLength>
 				</dateFormats>
 				<dateTimeFormats>
-					<default choice="medium"/>
+					<default choice="medium" />
 					<dateTimeFormatLength type="full">
 						<dateTimeFormat>
 							<pattern>{1}, {0}</pattern>

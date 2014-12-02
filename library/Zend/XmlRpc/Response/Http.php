@@ -28,24 +28,28 @@ require_once 'Zend/XmlRpc/Response.php';
  *
  * @uses Zend_XmlRpc_Response
  * @category Zend
- * @package  Zend_XmlRpc
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @package Zend_XmlRpc
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  * @version $Id: Http.php 23775 2011-03-01 17:25:24Z ralph $
  */
 class Zend_XmlRpc_Response_Http extends Zend_XmlRpc_Response
 {
+
     /**
      * Override __toString() to send HTTP Content-Type header
      *
      * @return string
      */
-    public function __toString()
+    public function __toString ()
     {
-        if (!headers_sent()) {
-            header('Content-Type: text/xml; charset=' . strtolower($this->getEncoding()));
+        if (! headers_sent()) {
+            header(
+                    'Content-Type: text/xml; charset=' .
+                             strtolower($this->getEncoding()));
         }
-
+        
         return parent::__toString();
     }
 }

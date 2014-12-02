@@ -21,16 +21,18 @@
  * @version    $Id: Image.php 23775 2011-03-01 17:25:24Z ralph $
  */
 
-
 /**
- * @category   Zend
- * @package    Zend_Service
+ *
+ * @category Zend
+ * @package Zend_Service
  * @subpackage Yahoo
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Service_Yahoo_Image
 {
+
     /**
      * Image URL
      *
@@ -52,19 +54,19 @@ class Zend_Service_Yahoo_Image
      */
     public $Width;
 
-
     /**
      * Initializes the image
      *
-     * @param  DOMNode $dom
-     * @param  string  $namespace
+     * @param DOMNode $dom            
+     * @param string $namespace            
      * @return void
      */
-    public function __construct(DOMNode $dom, $namespace)
+    public function __construct (DOMNode $dom, $namespace)
     {
         $xpath = new DOMXPath($dom->ownerDocument);
         $xpath->registerNamespace('yh', $namespace);
-        $this->Url = Zend_Uri::factory($xpath->query('./yh:Url/text()', $dom)->item(0)->data);
+        $this->Url = Zend_Uri::factory(
+                $xpath->query('./yh:Url/text()', $dom)->item(0)->data);
         $this->Height = (int) $xpath->query('./yh:Height/text()', $dom)->item(0)->data;
         $this->Width = (int) $xpath->query('./yh:Width/text()', $dom)->item(0)->data;
     }

@@ -19,21 +19,23 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @version    $Id: Cachemanager.php 23775 2011-03-01 17:25:24Z ralph $
  */
-
 require_once 'Zend/Application/Resource/ResourceAbstract.php';
 
 /**
  * Cache Manager resource
  *
- * @category   Zend
- * @package    Zend_Application
+ * @category Zend
+ * @package Zend_Application
  * @subpackage Resource
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Application_Resource_Cachemanager extends Zend_Application_Resource_ResourceAbstract
 {
+
     /**
+     *
      * @var Zend_Cache_Manager
      */
     protected $_manager = null;
@@ -43,7 +45,7 @@ class Zend_Application_Resource_Cachemanager extends Zend_Application_Resource_R
      *
      * @return Zend_Cache_Manager
      */
-    public function init()
+    public function init ()
     {
         return $this->getCacheManager();
     }
@@ -53,11 +55,11 @@ class Zend_Application_Resource_Cachemanager extends Zend_Application_Resource_R
      *
      * @return Zend_Cache_Manager
      */
-    public function getCacheManager()
+    public function getCacheManager ()
     {
         if (null === $this->_manager) {
-            $this->_manager = new Zend_Cache_Manager;
-
+            $this->_manager = new Zend_Cache_Manager();
+            
             $options = $this->getOptions();
             foreach ($options as $key => $value) {
                 if ($this->_manager->hasCacheTemplate($key)) {
@@ -67,7 +69,7 @@ class Zend_Application_Resource_Cachemanager extends Zend_Application_Resource_R
                 }
             }
         }
-
+        
         return $this->_manager;
     }
 }

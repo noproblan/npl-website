@@ -19,36 +19,41 @@
  * @version    $Id: Hmac.php 23775 2011-03-01 17:25:24Z ralph $
  */
 
-/** Zend_Oauth_Signature_SignatureAbstract */
+/**
+ * Zend_Oauth_Signature_SignatureAbstract
+ */
 require_once 'Zend/Oauth/Signature/SignatureAbstract.php';
 
-/** Zend_Crypt_Hmac */
+/**
+ * Zend_Crypt_Hmac
+ */
 require_once 'Zend/Crypt/Hmac.php';
 
 /**
- * @category   Zend
- * @package    Zend_Oauth
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ *
+ * @category Zend
+ * @package Zend_Oauth
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Oauth_Signature_Hmac extends Zend_Oauth_Signature_SignatureAbstract
 {
+
     /**
      * Sign a request
      *
-     * @param  array $params
-     * @param  mixed $method
-     * @param  mixed $url
+     * @param array $params            
+     * @param mixed $method            
+     * @param mixed $url            
      * @return string
      */
-    public function sign(array $params, $method = null, $url = null)
+    public function sign (array $params, $method = null, $url = null)
     {
-        $binaryHash = Zend_Crypt_Hmac::compute(
-            $this->_key,
-            $this->_hashAlgorithm,
-            $this->_getBaseSignatureString($params, $method, $url),
-            Zend_Crypt_Hmac::BINARY
-        );
+        $binaryHash = Zend_Crypt_Hmac::compute($this->_key, 
+                $this->_hashAlgorithm, 
+                $this->_getBaseSignatureString($params, $method, $url), 
+                Zend_Crypt_Hmac::BINARY);
         return base64_encode($binaryHash);
     }
 }

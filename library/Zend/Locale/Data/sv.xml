@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <ldml>
 	<identity>
-		<version number="$Revision: 1.151 $"/>
-		<generation date="$Date: 2009/06/15 03:46:23 $"/>
-		<language type="sv"/>
+		<version number="$Revision: 1.151 $" />
+		<generation date="$Date: 2009/06/15 03:46:23 $" />
+		<language type="sv" />
 	</identity>
 	<fallback>nn nb da en</fallback>
 	<localeDisplayNames>
@@ -1011,7 +1011,8 @@
 	</layout>
 	<characters>
 		<exemplarCharacters>[a à b-e é f-z å ä ö]</exemplarCharacters>
-		<exemplarCharacters type="auxiliary">[á â ã ā ç ë í-ï ī ñ ó ú ÿ ü æ ø]</exemplarCharacters>
+		<exemplarCharacters type="auxiliary">[á â ã ā ç ë í-ï ī ñ ó ú ÿ
+			ü æ ø]</exemplarCharacters>
 		<exemplarCharacters type="currencySymbol">[a-c č d-l ł m-z]</exemplarCharacters>
 	</characters>
 	<delimiters>
@@ -1353,9 +1354,12 @@
 							<greatestDifference id="y">yyyy-MM-dd – yyyy-MM-dd</greatestDifference>
 						</intervalFormatItem>
 						<intervalFormatItem id="yMEd">
-							<greatestDifference id="d">E, yyyy-MM-dd – E, yyyy-MM-dd</greatestDifference>
-							<greatestDifference id="M">E, yyyy-MM-dd – E, yyyy-MM-dd</greatestDifference>
-							<greatestDifference id="y">E, yyyy-MM-dd – E, yyyy-MM-dd</greatestDifference>
+							<greatestDifference id="d">E, yyyy-MM-dd – E,
+								yyyy-MM-dd</greatestDifference>
+							<greatestDifference id="M">E, yyyy-MM-dd – E,
+								yyyy-MM-dd</greatestDifference>
+							<greatestDifference id="y">E, yyyy-MM-dd – E,
+								yyyy-MM-dd</greatestDifference>
 						</intervalFormatItem>
 						<intervalFormatItem id="yMMM">
 							<greatestDifference id="M">MMM–MMM y</greatestDifference>
@@ -3213,8 +3217,10 @@
 			</currency>
 			<currency type="AOR">
 				<displayName>angolansk kwanza reajustado (1995-1999)</displayName>
-				<displayName count="one">angolansk kwanza reajustado (1995-1999)</displayName>
-				<displayName count="other">angolanska kwanza reajustado (1995-1999)</displayName>
+				<displayName count="one">angolansk kwanza reajustado
+					(1995-1999)</displayName>
+				<displayName count="other">angolanska kwanza reajustado
+					(1995-1999)</displayName>
 			</currency>
 			<currency type="ARA">
 				<displayName>argentinsk austral</displayName>
@@ -3274,8 +3280,10 @@
 			</currency>
 			<currency type="BAM">
 				<displayName>bosnisk-hercegovinsk mark (konvertibel)</displayName>
-				<displayName count="one">bosnisk-hercegovinsk mark (konvertibel)</displayName>
-				<displayName count="other">bosnisk-hercegovinska mark (konvertibla)</displayName>
+				<displayName count="one">bosnisk-hercegovinsk mark
+					(konvertibel)</displayName>
+				<displayName count="other">bosnisk-hercegovinska mark
+					(konvertibla)</displayName>
 				<symbol>BAM</symbol>
 			</currency>
 			<currency type="BBD">
@@ -3362,7 +3370,8 @@
 			<currency type="BRB">
 				<displayName>brasiliansk cruzeiro novo (1967-1986)</displayName>
 				<displayName count="one">brasiliansk cruzeiro (1967-1986)</displayName>
-				<displayName count="other">brasilianska cruzeiro novo (1967-1986)</displayName>
+				<displayName count="other">brasilianska cruzeiro novo
+					(1967-1986)</displayName>
 				<symbol>BRB</symbol>
 			</currency>
 			<currency type="BRC">
@@ -3450,7 +3459,8 @@
 			<currency type="CHE">
 				<displayName>euro (konvertibelt konto, WIR Bank, Schweiz)</displayName>
 				<displayName count="one">euro (WIR Bank)</displayName>
-				<displayName count="other">euro (konvertibelt konto, WIR Bank, Schweiz)</displayName>
+				<displayName count="other">euro (konvertibelt konto, WIR Bank,
+					Schweiz)</displayName>
 			</currency>
 			<currency type="CHF">
 				<displayName>schweizisk franc</displayName>
@@ -3461,7 +3471,8 @@
 			<currency type="CHW">
 				<displayName>franc (konvertibelt konto, WIR Bank, Schweiz)</displayName>
 				<displayName count="one">franc (WIR Bank)</displayName>
-				<displayName count="other">franc (konvertibelt konto, WIR Bank, Schweiz)</displayName>
+				<displayName count="other">franc (konvertibelt konto, WIR Bank,
+					Schweiz)</displayName>
 			</currency>
 			<currency type="CLE">
 				<symbol>CLE</symbol>
@@ -3583,8 +3594,10 @@
 			</currency>
 			<currency type="ECV">
 				<displayName>ecuadoriansk unidad de valor constante</displayName>
-				<displayName count="one">ecuadoriansk unidad de valor constante</displayName>
-				<displayName count="other">ecuadorianska unidad de valor constante</displayName>
+				<displayName count="one">ecuadoriansk unidad de valor
+					constante</displayName>
+				<displayName count="other">ecuadorianska unidad de valor
+					constante</displayName>
 			</currency>
 			<currency type="EEK">
 				<displayName>estnisk krona</displayName>
@@ -4474,8 +4487,10 @@
 			</currency>
 			<currency type="UYI">
 				<displayName>uruguayansk peso en unidades indexadas</displayName>
-				<displayName count="one">uruguayansk peso en unidades indexadas</displayName>
-				<displayName count="other">uruguayanska peso en unidades indexadas</displayName>
+				<displayName count="one">uruguayansk peso en unidades
+					indexadas</displayName>
+				<displayName count="other">uruguayanska peso en unidades
+					indexadas</displayName>
 			</currency>
 			<currency type="UYP">
 				<displayName>uruguayansk peso (1975-1993)</displayName>
@@ -4582,8 +4597,10 @@
 			</currency>
 			<currency type="XFU">
 				<displayName>French UIC-Franc</displayName>
-				<displayName count="one">internationella järnvägsunionens franc</displayName>
-				<displayName count="other">internationella järnvägsunionens franc</displayName>
+				<displayName count="one">internationella järnvägsunionens
+					franc</displayName>
+				<displayName count="other">internationella järnvägsunionens
+					franc</displayName>
 			</currency>
 			<currency type="XOF">
 				<displayName>CFA Franc BCEAO</displayName>

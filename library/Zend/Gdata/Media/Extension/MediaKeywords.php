@@ -22,6 +22,7 @@
  */
 
 /**
+ *
  * @see Zend_Gdata_App_Extension
  */
 require_once 'Zend/Gdata/App/Extension.php';
@@ -29,24 +30,26 @@ require_once 'Zend/Gdata/App/Extension.php';
 /**
  * Represents the media:keywords element
  *
- * @category   Zend
- * @package    Zend_Gdata
+ * @category Zend
+ * @package Zend_Gdata
  * @subpackage Media
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Gdata_Media_Extension_MediaKeywords extends Zend_Gdata_Extension
 {
+
     protected $_rootElement = 'keywords';
+
     protected $_rootNamespace = 'media';
 
     /**
      * Constructs a new MediaKeywords element
      */
-    public function __construct()
+    public function __construct ()
     {
         $this->registerAllNamespaces(Zend_Gdata_Media::$namespaces);
         parent::__construct();
     }
-
 }

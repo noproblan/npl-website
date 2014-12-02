@@ -1,38 +1,40 @@
 <?php $album = $this->album; ?>
 <?php $pictures = $this->pictures?>
 <div id="view-content">
-	<div id="title">
-		<h1>Galerie</h1>
-	</div>
-	<div id="Album">
-		<?php if (!empty($pictures)) { ?>
-		<div id="pictures" class="album">
-			<?php if ($album != null || $album == '') { ?>
-			<h2>Album <?php echo $this->escape($album) ?></h2>
-			<?php } else { ?>
-			<h2>Album ohne Name</h2>
-			<?php }?>
-			<?php 
-			foreach ($pictures as $picture) {
-				echo '<a href="'.$this->baseUrl($picture['path']).'" rel="lightbox"><img src="'.$this->baseUrl($picture['prev_path']).'" alt=""> </a>';
-			}
-			?>
-		</div>
-		<?php } else { ?>
-		<p>Derzeitig sind keine Bilder vorhanden.</p>
-		<?php } ?>
-	</div>
+    <div id="title">
+        <h1>Galerie</h1>
+    </div>
+    <div id="Album">
+        <?php if (!empty($pictures)) { ?>
+        <div id="pictures" class="album">
+            <?php if ($album != null || $album == '') { ?>
+            <h2>Album <?php echo $this->escape($album) ?></h2>
+            <?php } else { ?>
+            <h2>Album ohne Name</h2>
+            <?php }?>
+            <?php
+    foreach ($pictures as $picture) {
+        echo '<a href="' . $this->baseUrl($picture['path']) .
+                 '" rel="lightbox"><img src="' .
+                 $this->baseUrl($picture['prev_path']) . '" alt=""> </a>';
+    }
+    ?>
+        </div>
+        <?php } else { ?>
+        <p>Derzeitig sind keine Bilder vorhanden.</p>
+        <?php } ?>
+    </div>
 </div>
 
 <script type="text/javascript">
 $(function() {
-	// Use this example, or...
-	$('#Album a').lightBox({
-		imageLoading: "<?= $this->baseUrl('img/Lightbox/lightbox-ico-loading.gif') ?>",
-		imageBtnPrev: "<?= $this->baseUrl('img/Lightbox/lightbox-btn-prev.gif') ?>",
-		imageBtnNext: "<?= $this->baseUrl('img/Lightbox/lightbox-btn-next.gif') ?>",
-		imageBtnClose: "<?= $this->baseUrl('img/Lightbox/lightbox-btn-close.gif') ?>",
-		imageBlank: "<?= $this->baseUrl('img/Lightbox/lightbox-blank.gif') ?>"
-	});
+    // Use this example, or...
+    $('#Album a').lightBox({
+        imageLoading: "<?= $this->baseUrl('img/Lightbox/lightbox-ico-loading.gif') ?>",
+        imageBtnPrev: "<?= $this->baseUrl('img/Lightbox/lightbox-btn-prev.gif') ?>",
+        imageBtnNext: "<?= $this->baseUrl('img/Lightbox/lightbox-btn-next.gif') ?>",
+        imageBtnClose: "<?= $this->baseUrl('img/Lightbox/lightbox-btn-close.gif') ?>",
+        imageBlank: "<?= $this->baseUrl('img/Lightbox/lightbox-blank.gif') ?>"
+    });
 });
 </script>
