@@ -37,5 +37,45 @@ class NewsController extends Zend_Controller_Action
 
         return;
     }
+
+    public function newAction() {
+        $form = new Admin_Form_News_New();
+        if ($this->getRequest()->isPost()) {
+            if ($form->isValid($this->getRequest()->getPost())) {
+                $id = $this->_createNews($form->getValues());
+                $this->_flashMessenger->setNamespace('success')->addMessage(self::MSG_CREATION_SUCCESS);
+                $this->_helper->redirector('list', 'news');
+                return;
+            } else {
+                foreach ($form->getMessages() as $field => $message) {
+                    $label = $form->getElement($field)->getLabel();
+                    foreach ($message as $key => $value) {
+                        $this->_instantMessenger->addError("<b>" . $label . "</b> " . $value);
+                    }
+                }
+            }
+        }
+        $this->view->form = $form;
+        return;
+    }
+
+    /**
+     * Erstelle ein neuer Newseintrag
+     * @param string[] $data benötigte Angaben
+     * @return int Id, die von der Datenbank zugewiesen wurde
+     */
+    private function _createNews($data) {
+        $news = new Application_Model_News();
+        $newsMapper = new Application_Model_Mapper_NewsMapper();
+
+        // create news
+        $news->setTitle($data['title']);
+        $news->setDescription($data['description']);
+        $news->setAuthorId($_SESSION['id']);
+
+        $newsMapper->save($news);
+
+        return $news->getId();
+    }
 }
 
