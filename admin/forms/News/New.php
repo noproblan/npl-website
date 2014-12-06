@@ -7,9 +7,8 @@ class Admin_Form_News_New extends Zend_Form
 		$this->setAttrib('id', 'new_entry');
 		$this->setAction('');
 		$this->setMethod('post');
-		
-		$lanMapper = new Application_Model_Mapper_NewsMapper();
-        $title = new Zend_Form_Element_Text();
+
+        $title = new Zend_Form_Element_Text("title");
         $title->setLabel('Titel');
         // TODO: Check filters
         $title->addFilters(
@@ -31,7 +30,7 @@ class Admin_Form_News_New extends Zend_Form
                 ),
             )
         );
-        $description = new Zend_Form_Element_Textarea();
+        $description = new Zend_Form_Element_Textarea("description");
         $description->setLabel('Text:');
         $description->addValidators(
             array(

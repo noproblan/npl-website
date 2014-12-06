@@ -2,10 +2,17 @@
 
 class NewsController extends Zend_Controller_Action
 {
+    protected $_flashMessenger = null;
+    protected $_instantMessenger = null;
+
+    const MSG_CREATION_SUCCESS   = "Neuer Newseintrag wurde erfolgreich erstellt";
+    const MSG_DELETION_SUCCESS   = "Newseintrag wurde erfolgreich gelöscht";
+    const MSG_WRONG_PARAM_NEWSID = "Falsche Parameter: Es wurde keine gültige NewsID übergeben";
 
     public function init()
     {
-        /* Initialize action controller here */
+        $this->_flashMessenger = $this->_helper->getHelper('FlashMessenger');
+        $this->_instantMessenger = new Npl_Helper_InstantMessenger();
     }
 
     public function indexAction()
@@ -59,6 +66,22 @@ class NewsController extends Zend_Controller_Action
         return;
     }
 
+    public function deleteAction() {
+        $newsEntry = new Application_Model_News();
+        $news = new Application_Model_Mapper_NewsMapper();
+
+        $id = $this->getRequest()->getParam('id', null);
+        if ($id !== null) {
+            $news->find((int) $id, $newsEntry);
+            $news->delete($newsEntry);
+            $this->_flashMessenger->setNamespace('success')->addMessage(self::MSG_DELETION_SUCCESS);
+            return $this->_helper->redirector('list');
+        } else {
+            $this->_flashMessenger->setNamespace('error')->addMessage(self::MSG_WRONG_PARAM_NEWSID);
+            return $this->_helper->redirector('list');
+        }
+    }
+
     /**
      * Erstelle ein neuer Newseintrag
      * @param string[] $data benötigte Angaben
@@ -67,11 +90,13 @@ class NewsController extends Zend_Controller_Action
     private function _createNews($data) {
         $news = new Application_Model_News();
         $newsMapper = new Application_Model_Mapper_NewsMapper();
+        $auth = Zend_Auth::getInstance();
+        $authorId = $auth->getIdentity()->id;
 
         // create news
         $news->setTitle($data['title']);
         $news->setDescription($data['description']);
-        $news->setAuthorId($_SESSION['id']);
+        $news->setAuthorId($authorId);
 
         $newsMapper->save($news);
 

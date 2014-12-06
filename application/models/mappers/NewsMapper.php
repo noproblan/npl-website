@@ -53,6 +53,13 @@ class Application_Model_Mapper_NewsMapper
     {
         return $this->_fetch($this->getDbTable()->fetchAll(null, array('id DESC')));
     }
+
+    public function delete(Application_Model_News $news)
+    {
+        $table = $this->getDbTable();
+        $where = $table->getAdapter()->quoteInto('id = ?', $news->getId());
+        $table->delete($where);
+    }
 	
 	protected function _fetch($resultSet)
 	{
