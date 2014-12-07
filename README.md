@@ -20,3 +20,5 @@ Dieses Repo soll die aktuelle Website _npl.ch_ enthalten.
 ### PHPStorm
 * ...
 
+### Manual setup of AMPP on Mac OS X Yosemite
+There is already a lot of documentation on the internet, I recommend to use [this guide](http://coolestguidesontheplanet.com/get-apache-mysql-php-phpmyadmin-working-osx-10-10-yosemite/)
