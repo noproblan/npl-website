@@ -8,6 +8,7 @@
         <?php foreach ($this->paginator as $newsEntry): ?>
             <h2><?php echo $newsEntry->getTitle(); ?></h2>
             <p><?php echo $newsEntry->getDescription(); ?></p>
+            <a href="<?php echo $this->baseUrl('/news/edit/id/') . $newsEntry->getId() ?>">Edit</a>
             <a href="<?php echo $this->baseUrl('/news/delete/id/') . $newsEntry->getId() ?>">Delete</a>
             <hr />
         <?php endforeach;?>

@@ -6,6 +6,7 @@ class NewsController extends Zend_Controller_Action
     protected $_instantMessenger = null;
 
     const MSG_CREATION_SUCCESS   = "Neuer Newseintrag wurde erfolgreich erstellt";
+    const MSG_EDITION_SUCCESS    = "Newseintrag wurde erfolgreich bearbeitet";
     const MSG_DELETION_SUCCESS   = "Newseintrag wurde erfolgreich gelöscht";
     const MSG_WRONG_PARAM_NEWSID = "Falsche Parameter: Es wurde keine gültige NewsID übergeben";
 
@@ -66,6 +67,39 @@ class NewsController extends Zend_Controller_Action
         return;
     }
 
+    public function editAction() {
+        $form = new Admin_Form_News_Edit();
+
+        if ($this->getRequest()->isPost()) {
+            if ($form->isValid($this->getRequest()->getPost())) {
+                $id = $this->_editNews($form->getValues());
+                $this->_flashMessenger->setNamespace('success')->addMessage(self::MSG_EDITION_SUCCESS);
+                return $this->_helper->redirector('list');
+            } else {
+                foreach ($form->getMessages() as $field => $message) {
+                    $label = $form->getElement($field)->getLabel();
+                    foreach ($message as $key => $value) {
+                        $this->_instantMessenger->addError("<b>" . $label . "</b> " . $value);
+                    }
+                }
+            }
+        } else {
+            $id = $this->getRequest()->getParam('id', null);
+
+            if ($id !== null) {
+                $newsEntry = new Application_Model_News();
+                $newsMapper = new Application_Model_Mapper_NewsMapper();
+                $newsMapper->find((int)$id, $newsEntry);
+                $form->populate($newsEntry->toArray());
+            } else {
+                $this->_flashMessenger->setNamespace('error')->addMessage(self::MSG_WRONG_PARAM_NEWSID);
+                return $this->_helper->redirector('list');
+            }
+        }
+        $this->view->form = $form;
+        return;
+    }
+
     public function deleteAction() {
         $newsEntry = new Application_Model_News();
         $news = new Application_Model_Mapper_NewsMapper();
@@ -88,19 +122,49 @@ class NewsController extends Zend_Controller_Action
      * @return int Id, die von der Datenbank zugewiesen wurde
      */
     private function _createNews($data) {
-        $news = new Application_Model_News();
+        $newsEntry = new Application_Model_News();
         $newsMapper = new Application_Model_Mapper_NewsMapper();
         $auth = Zend_Auth::getInstance();
         $authorId = $auth->getIdentity()->id;
 
         // create news
-        $news->setTitle($data['title']);
-        $news->setDescription($data['description']);
-        $news->setAuthorId($authorId);
+        $newsEntry->setTitle($data['title']);
+        $newsEntry->setDescription($data['description']);
+        $newsEntry->setAuthorId($authorId);
 
-        $newsMapper->save($news);
+        $newsMapper->save($newsEntry);
 
-        return $news->getId();
+        return $newsEntry->getId();
+    }
+
+    /**
+     * Bearbeitet ein Newseintrag
+     * @param string[] $data benötigte Angaben
+     * @return int Id, die von der Datenbank zugewiesen wurde
+     */
+    private function _editNews($data) {
+        $newsEntry = new Application_Model_News();
+        $newsMapper = new Application_Model_Mapper_NewsMapper();
+        $auth = Zend_Auth::getInstance();
+        $authorId = $auth->getIdentity()->id;
+
+        $newsMapper->find((int) $data['id'], $newsEntry);
+
+        // create news
+        $newsEntry->setTitle($data['title']);
+        $newsEntry->setDescription($data['description']);
+        $newsEntry->setAuthorId($authorId);
+
+        $newsMapper->save($newsEntry);
+
+        return $newsEntry->getId();
+    }
+
+    private function _newsToArray(Application_Model_News $newsEntry) {
+        $data = array();
+        $data['id'] = $newsEntry->getId();
+        $data['title'] = $newsEntry->getTitle();
+        $data['description'] = $newsEntry->getDescription();
     }
 }
 

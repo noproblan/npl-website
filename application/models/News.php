@@ -97,4 +97,15 @@ class Application_Model_News
 	public function getWrittenDatetime() {
 		return $this->_writtenDatetime;
 	}
+
+    public function toArray() {
+        $array = array(
+            'id'                => $this->getId(),
+            'title'             => $this->getTitle(),
+            'author_id'         => $this->getAuthorId(),
+            'description'       => $this->getDescription(),
+            'written_datetime'  => $this->getWrittenDatetime()
+        );
+        return $array;
+    }
 }
