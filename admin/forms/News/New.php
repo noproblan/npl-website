@@ -25,7 +25,7 @@ class Admin_Form_News_New extends Zend_Form
                 new Zend_Validate_StringLength(
                     array(
                         'min' => 3,
-                        'max' => 20
+                        'max' => 255
                     )
                 ),
             )
