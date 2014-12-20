@@ -25,5 +25,9 @@ GRANT ALL PRIVILEGES ON npl.* TO 'npl'@'localhost';</pre>
 ### PHPStorm
 * ...
 
+### Manual setup of AMPP on Mac OS X Yosemite
+There is already a lot of documentation on the internet, I recommend to use [this guide](http://coolestguidesontheplanet.com/get-apache-mysql-php-phpmyadmin-working-osx-10-10-yosemite/)
+
 ## Deployment
 For deploying the master branch to production use `bash scripts/deploy_prod.sh USER@HOST` from your developer machine.
+

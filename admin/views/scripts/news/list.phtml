@@ -1,0 +1,25 @@
+<section id="news" class="view-content">
+    <header id="title">
+        <h1>News-Verwaltung → News</h1>
+        <?= $this->partial('news/submenu.phtml') ?>
+    </header>
+    <div class="messages">
+        <?php echo $this->messages(); ?>
+    </div>
+    <?php foreach ($this->paginator as $newsEntry): ?>
+        <article id="<?php echo "news-entry-" . $newsEntry->getId(); ?>" class="news-entry">
+            <header class="news-title">
+                <h1><?php echo $newsEntry->getTitle(); ?></h1>
+            </header>
+            <p><?php echo $newsEntry->getDescription(); ?></p>
+            <footer>
+                Written by <?php echo $newsEntry->getAuthorId(); ?>
+            </footer>
+            <aside>
+                <a href="<?php echo $this->baseUrl('/news/edit/id/') . $newsEntry->getId() ?>">Edit</a>
+                <a href="<?php echo $this->baseUrl('/news/delete/id/') . $newsEntry->getId() ?>">Delete</a>
+            </aside>
+        </article>
+    <?php endforeach;?>
+    <?php echo $this->paginationControl(); ?>
+</section>
