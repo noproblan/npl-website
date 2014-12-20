@@ -19,23 +19,28 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
 
-/** Zend_Dojo_Form_Element_Dijit */
+/**
+ * Zend_Dojo_Form_Element_Dijit
+ */
 require_once 'Zend/Dojo/Form/Element/Dijit.php';
 
 /**
  * Button dijit
  *
- * @category   Zend
- * @package    Zend_Dojo
+ * @category Zend
+ * @package Zend_Dojo
  * @subpackage Form_Element
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: Button.php 23775 2011-03-01 17:25:24Z ralph $
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
+ * @version $Id: Button.php 23775 2011-03-01 17:25:24Z ralph $
  */
 class Zend_Dojo_Form_Element_Button extends Zend_Dojo_Form_Element_Dijit
 {
+
     /**
      * Use Button dijit view helper
+     * 
      * @var string
      */
     public $helper = 'Button';
@@ -43,16 +48,20 @@ class Zend_Dojo_Form_Element_Button extends Zend_Dojo_Form_Element_Dijit
     /**
      * Constructor
      *
-     * @param  string|array|Zend_Config $spec Element name or configuration
-     * @param  string|array|Zend_Config $options Element value or configuration
+     * @param string|array|Zend_Config $spec
+     *            Element name or configuration
+     * @param string|array|Zend_Config $options
+     *            Element value or configuration
      * @return void
      */
-    public function __construct($spec, $options = null)
+    public function __construct ($spec, $options = null)
     {
         if (is_string($spec) && ((null !== $options) && is_string($options))) {
-            $options = array('label' => $options);
+            $options = array(
+                    'label' => $options
+            );
         }
-
+        
         parent::__construct($spec, $options);
     }
 
@@ -65,18 +74,18 @@ class Zend_Dojo_Form_Element_Button extends Zend_Dojo_Form_Element_Dijit
      *
      * @return string
      */
-    public function getLabel()
+    public function getLabel ()
     {
         $value = parent::getLabel();
-
+        
         if (null === $value) {
             $value = $this->getName();
         }
-
+        
         if (null !== ($translator = $this->getTranslator())) {
             return $translator->translate($value);
         }
-
+        
         return $value;
     }
 
@@ -85,17 +94,17 @@ class Zend_Dojo_Form_Element_Button extends Zend_Dojo_Form_Element_Dijit
      *
      * @return bool
      */
-    public function isChecked()
+    public function isChecked ()
     {
         $value = $this->getValue();
-
+        
         if (empty($value)) {
             return false;
         }
         if ($value != $this->getLabel()) {
             return false;
         }
-
+        
         return true;
     }
 
@@ -106,16 +115,15 @@ class Zend_Dojo_Form_Element_Button extends Zend_Dojo_Form_Element_Dijit
      *
      * @return void
      */
-    public function loadDefaultDecorators()
+    public function loadDefaultDecorators ()
     {
         if ($this->loadDefaultDecoratorsIsDisabled()) {
             return;
         }
-
+        
         $decorators = $this->getDecorators();
         if (empty($decorators)) {
-            $this->addDecorator('DijitElement')
-                 ->addDecorator('DtDdWrapper');
+            $this->addDecorator('DijitElement')->addDecorator('DtDdWrapper');
         }
     }
 }

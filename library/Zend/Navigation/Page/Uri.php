@@ -21,6 +21,7 @@
  */
 
 /**
+ *
  * @see Zend_Navigation_Page_Abstract
  */
 require_once 'Zend/Navigation/Page.php';
@@ -28,14 +29,16 @@ require_once 'Zend/Navigation/Page.php';
 /**
  * Represents a page that is defined by specifying a URI
  *
- * @category   Zend
- * @package    Zend_Navigation
+ * @category Zend
+ * @package Zend_Navigation
  * @subpackage Page
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Navigation_Page_Uri extends Zend_Navigation_Page
 {
+
     /**
      * Page URI
      *
@@ -46,18 +49,19 @@ class Zend_Navigation_Page_Uri extends Zend_Navigation_Page
     /**
      * Sets page URI
      *
-     * @param  string $uri                page URI, must a string or null
-     * @return Zend_Navigation_Page_Uri   fluent interface, returns self
-     * @throws Zend_Navigation_Exception  if $uri is invalid
+     * @param string $uri
+     *            page URI, must a string or null
+     * @return Zend_Navigation_Page_Uri fluent interface, returns self
+     * @throws Zend_Navigation_Exception if $uri is invalid
      */
-    public function setUri($uri)
+    public function setUri ($uri)
     {
-        if (null !== $uri && !is_string($uri)) {
+        if (null !== $uri && ! is_string($uri)) {
             require_once 'Zend/Navigation/Exception.php';
             throw new Zend_Navigation_Exception(
                     'Invalid argument: $uri must be a string or null');
         }
-
+        
         $this->_uri = $uri;
         return $this;
     }
@@ -67,7 +71,7 @@ class Zend_Navigation_Page_Uri extends Zend_Navigation_Page
      *
      * @return string
      */
-    public function getUri()
+    public function getUri ()
     {
         return $this->_uri;
     }
@@ -77,35 +81,34 @@ class Zend_Navigation_Page_Uri extends Zend_Navigation_Page
      *
      * @return string
      */
-    public function getHref()
+    public function getHref ()
     {
         $uri = $this->getUri();
         
-        $fragment = $this->getFragment();       
+        $fragment = $this->getFragment();
         if (null !== $fragment) {
-            if ('#' == substr($uri, -1)) {
+            if ('#' == substr($uri, - 1)) {
                 return $uri . $fragment;
-            } else {                
+            } else {
                 return $uri . '#' . $fragment;
             }
         }
         
         return $uri;
     }
-
+    
     // Public methods:
-
+    
     /**
      * Returns an array representation of the page
      *
      * @return array
      */
-    public function toArray()
+    public function toArray ()
     {
-        return array_merge(
-            parent::toArray(),
-            array(
-                'uri' => $this->getUri()
-            ));
+        return array_merge(parent::toArray(), 
+                array(
+                        'uri' => $this->getUri()
+                ));
     }
 }

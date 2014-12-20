@@ -21,20 +21,24 @@
  */
 
 /**
+ *
  * @see Zend_Service_Ebay_Finding_Abstract
  */
 require_once 'Zend/Service/Ebay/Finding/Abstract.php';
 
 /**
- * @category   Zend
- * @package    Zend_Service
+ *
+ * @category Zend
+ * @package Zend_Service
  * @subpackage Ebay
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @uses       Zend_Service_Ebay_Finding_Abstract
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
+ * @uses Zend_Service_Ebay_Finding_Abstract
  */
 class Zend_Service_Ebay_Finding_Storefront extends Zend_Service_Ebay_Finding_Abstract
 {
+
     /**
      * The name of the seller's eBay Store.
      *
@@ -50,23 +54,25 @@ class Zend_Service_Ebay_Finding_Storefront extends Zend_Service_Ebay_Finding_Abs
     public $storeURL;
 
     /**
+     *
      * @return void
      */
-    protected function _init()
+    protected function _init ()
     {
         parent::_init();
         $ns = Zend_Service_Ebay_Finding::XMLNS_FINDING;
-
+        
         $this->storeName = $this->_query(".//$ns:storeName[1]", 'string');
-        $this->storeURL  = $this->_query(".//$ns:storeURL[1]", 'string');
+        $this->storeURL = $this->_query(".//$ns:storeURL[1]", 'string');
     }
 
     /**
-     * @param  Zend_Service_Ebay_Finding $proxy
-     * @param  Zend_Config|array         $options
+     *
+     * @param Zend_Service_Ebay_Finding $proxy            
+     * @param Zend_Config|array $options            
      * @return Zend_Service_Ebay_Finding_Response_Items
      */
-    public function findItems(Zend_Service_Ebay_Finding $proxy, $options = null)
+    public function findItems (Zend_Service_Ebay_Finding $proxy, $options = null)
     {
         return $proxy->findItemsInEbayStores($this->storeName, $options);
     }

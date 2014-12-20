@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <ldml>
 	<identity>
-		<version number="$Revision: 1.29 $"/>
-		<generation date="$Date: 2009/05/05 23:06:37 $"/>
-		<language type="kfo"/>
+		<version number="$Revision: 1.29 $" />
+		<generation date="$Date: 2009/05/05 23:06:37 $" />
+		<language type="kfo" />
 	</identity>
 	<characters>
 		<exemplarCharacters>[a ā b-e ē f g {gb} h-k {kh} l-p {pk} r-u w y z]</exemplarCharacters>

@@ -22,16 +22,19 @@
  */
 
 /**
+ *
  * @see Zend_Gdata_eed
  */
 require_once 'Zend/Gdata/Feed.php';
 
 /**
+ *
  * @see Zend_Gdata_Media
  */
 require_once 'Zend/Gdata/Media.php';
 
 /**
+ *
  * @see Zend_Gdata_Media_Entry
  */
 require_once 'Zend/Gdata/Media/Entry.php';
@@ -39,11 +42,12 @@ require_once 'Zend/Gdata/Media/Entry.php';
 /**
  * The Gdata flavor of an Atom Feed with media support
  *
- * @category   Zend
- * @package    Zend_Gdata
+ * @category Zend
+ * @package Zend_Gdata
  * @subpackage Media
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Gdata_Media_Feed extends Zend_Gdata_Feed
 {
@@ -58,13 +62,13 @@ class Zend_Gdata_Media_Feed extends Zend_Gdata_Feed
     /**
      * Create a new instance.
      *
-     * @param DOMElement $element (optional) DOMElement from which this
-     *          object should be constructed.
+     * @param DOMElement $element
+     *            (optional) DOMElement from which this
+     *            object should be constructed.
      */
-    public function __construct($element = null)
+    public function __construct ($element = null)
     {
         $this->registerAllNamespaces(Zend_Gdata_Media::$namespaces);
         parent::__construct($element);
     }
-
 }

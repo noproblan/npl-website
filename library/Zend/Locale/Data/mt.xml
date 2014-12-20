@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <ldml>
 	<identity>
-		<version number="$Revision: 1.91 $"/>
-		<generation date="$Date: 2009/06/15 03:46:25 $"/>
-		<language type="mt"/>
+		<version number="$Revision: 1.91 $" />
+		<generation date="$Date: 2009/06/15 03:46:25 $" />
+		<language type="mt" />
 	</identity>
 	<localeDisplayNames>
 		<languages>
@@ -94,7 +94,8 @@
 			<language type="cop">Koptiku</language>
 			<language type="cpe">Kreoli u Piġini, Bbażat fuq l-Ingliż (Oħra)</language>
 			<language type="cpf">Kreoli u Piġini, Bbażat fuq il-Franċiż (Oħra)</language>
-			<language type="cpp">Kreoli u Piġini, Bbażat fuq il-Portugiż (Oħra)</language>
+			<language type="cpp">Kreoli u Piġini, Bbażat fuq il-Portugiż
+				(Oħra)</language>
 			<language type="cr">Krij</language>
 			<language type="crh">Crimean Turkish; Crimean Tatar</language>
 			<language type="crp">Kreoli u Piġini (Oħra)</language>
@@ -615,7 +616,8 @@
 			<territory type="GP">Gwadelupe</territory>
 			<territory type="GQ">Ginea Ekwatorjali</territory>
 			<territory type="GR">Greċja</territory>
-			<territory type="GS">South Georgia and the South Sandwich Islands</territory>
+			<territory type="GS">South Georgia and the South Sandwich
+				Islands</territory>
 			<territory type="GT">Gwatemala</territory>
 			<territory type="GU">Gwam</territory>
 			<territory type="GW">Ginea-Bissaw</territory>
@@ -806,7 +808,8 @@
 		</codePatterns>
 	</localeDisplayNames>
 	<characters>
-		<exemplarCharacters>[a à b ċ d e è f ġ g {għ} h ħ i ì j-o ò p-u ù v-x ż z]</exemplarCharacters>
+		<exemplarCharacters>[a à b ċ d e è f ġ g {għ} h ħ i ì j-o ò p-u ù v-x
+			ż z]</exemplarCharacters>
 		<exemplarCharacters type="auxiliary">[c y]</exemplarCharacters>
 	</characters>
 	<dates>
@@ -1008,11 +1011,14 @@
 						</intervalFormatItem>
 						<intervalFormatItem id="MMMd">
 							<greatestDifference id="d">d 'ta'’-d 'ta'’ MMM</greatestDifference>
-							<greatestDifference id="M">d 'ta'’ MMM - d 'ta'’ MMM</greatestDifference>
+							<greatestDifference id="M">d 'ta'’ MMM - d 'ta'’
+								MMM</greatestDifference>
 						</intervalFormatItem>
 						<intervalFormatItem id="MMMEd">
-							<greatestDifference id="d">E, d 'ta'’ - E, d 'ta'’ MMM</greatestDifference>
-							<greatestDifference id="M">E, d 'ta'’ MMM - E, d 'ta'’ MMM</greatestDifference>
+							<greatestDifference id="d">E, d 'ta'’ - E, d 'ta'’
+								MMM</greatestDifference>
+							<greatestDifference id="M">E, d 'ta'’ MMM - E, d
+								'ta'’ MMM</greatestDifference>
 						</intervalFormatItem>
 						<intervalFormatItem id="y">
 							<greatestDifference id="y">y-y</greatestDifference>
@@ -1027,9 +1033,12 @@
 							<greatestDifference id="y">dd/MM/yyyy - dd/MM/yyyy</greatestDifference>
 						</intervalFormatItem>
 						<intervalFormatItem id="yMEd">
-							<greatestDifference id="d">E, dd/MM/yyyy - E, dd/MM/yyyy</greatestDifference>
-							<greatestDifference id="M">E, dd/MM/yyyy - E, dd/MM/yyyy</greatestDifference>
-							<greatestDifference id="y">E, dd/MM/yyyy - E, dd/MM/yyyy</greatestDifference>
+							<greatestDifference id="d">E, dd/MM/yyyy - E,
+								dd/MM/yyyy</greatestDifference>
+							<greatestDifference id="M">E, dd/MM/yyyy - E,
+								dd/MM/yyyy</greatestDifference>
+							<greatestDifference id="y">E, dd/MM/yyyy - E,
+								dd/MM/yyyy</greatestDifference>
 						</intervalFormatItem>
 						<intervalFormatItem id="yMMM">
 							<greatestDifference id="M">MMM-MMM y</greatestDifference>
@@ -1037,13 +1046,18 @@
 						</intervalFormatItem>
 						<intervalFormatItem id="yMMMd">
 							<greatestDifference id="d">d 'ta'’-d 'ta'’ MMM y</greatestDifference>
-							<greatestDifference id="M">d 'ta'’ MMM - d 'ta'’ MMM y</greatestDifference>
-							<greatestDifference id="y">d 'ta'’ MMM y - d 'ta'’ MMM y</greatestDifference>
+							<greatestDifference id="M">d 'ta'’ MMM - d 'ta'’
+								MMM y</greatestDifference>
+							<greatestDifference id="y">d 'ta'’ MMM y - d 'ta'’
+								MMM y</greatestDifference>
 						</intervalFormatItem>
 						<intervalFormatItem id="yMMMEd">
-							<greatestDifference id="d">E, d 'ta'’ - E, d 'ta'’ MMM y</greatestDifference>
-							<greatestDifference id="M">E, d 'ta'’ MMM - E, d 'ta'’ MMM y</greatestDifference>
-							<greatestDifference id="y">E, d 'ta'’ MMM y - E, d 'ta'’ MMM y</greatestDifference>
+							<greatestDifference id="d">E, d 'ta'’ - E, d 'ta'’
+								MMM y</greatestDifference>
+							<greatestDifference id="M">E, d 'ta'’ MMM - E, d
+								'ta'’ MMM y</greatestDifference>
+							<greatestDifference id="y">E, d 'ta'’ MMM y - E, d
+								'ta'’ MMM y</greatestDifference>
 						</intervalFormatItem>
 					</intervalFormats>
 				</dateTimeFormats>

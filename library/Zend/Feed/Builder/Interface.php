@@ -20,27 +20,28 @@
  * @version    $Id: Interface.php 23775 2011-03-01 17:25:24Z ralph $
  */
 
-
 /**
  * Input feed data interface
  *
  * Classes implementing this interface can be passe to Zend_Feed::importBuilder
  * as an input data source for the Zend_Feed construction
  *
- * @category   Zend
- * @package    Zend_Feed
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @category Zend
+ * @package Zend_Feed
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 interface Zend_Feed_Builder_Interface
 {
+
     /**
      * Returns an instance of Zend_Feed_Builder_Header
      * describing the header of the feed
      *
      * @return Zend_Feed_Builder_Header
      */
-    public function getHeader();
+    public function getHeader ();
 
     /**
      * Returns an array of Zend_Feed_Builder_Entry instances
@@ -48,5 +49,5 @@ interface Zend_Feed_Builder_Interface
      *
      * @return array of Zend_Feed_Builder_Entry
      */
-    public function getEntries();
+    public function getEntries ();
 }

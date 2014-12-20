@@ -24,11 +24,12 @@
 /**
  * A wrapper for strings for buffered reading.
  *
- * @category   Zend
- * @package    Zend_Gdata
+ * @category Zend
+ * @package Zend_Gdata
  * @subpackage Gdata
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Gdata_MimeBodyString
 {
@@ -42,6 +43,7 @@ class Zend_Gdata_MimeBodyString
 
     /**
      * The size of the MIME message.
+     * 
      * @var integer
      */
     protected $_bytesRead = 0;
@@ -49,9 +51,10 @@ class Zend_Gdata_MimeBodyString
     /**
      * Create a new MimeBodyString object.
      *
-     * @param string $sourceString The string we are wrapping.
+     * @param string $sourceString
+     *            The string we are wrapping.
      */
-    public function __construct($sourceString)
+    public function __construct ($sourceString)
     {
         $this->_sourceString = $sourceString;
         $this->_bytesRead = 0;
@@ -60,22 +63,25 @@ class Zend_Gdata_MimeBodyString
     /**
      * Read the next chunk of the string.
      *
-     * @param integer $bytesRequested The size of the chunk that is to be read.
+     * @param integer $bytesRequested
+     *            The size of the chunk that is to be read.
      * @return string A corresponding piece of the string.
      */
-    public function read($bytesRequested)
+    public function read ($bytesRequested)
     {
-      $len = strlen($this->_sourceString);
-      if($this->_bytesRead == $len) {
-          return FALSE;
-      } else if($bytesRequested > $len - $this->_bytesRead) {
-          $bytesRequested = $len - $this->_bytesRead;
-      }
-
-      $buffer = substr($this->_sourceString, $this->_bytesRead, $bytesRequested);
-      $this->_bytesRead += $bytesRequested;
-
-      return $buffer;
+        $len = strlen($this->_sourceString);
+        if ($this->_bytesRead == $len) {
+            return FALSE;
+        } else 
+            if ($bytesRequested > $len - $this->_bytesRead) {
+                $bytesRequested = $len - $this->_bytesRead;
+            }
+        
+        $buffer = substr($this->_sourceString, $this->_bytesRead, 
+                $bytesRequested);
+        $this->_bytesRead += $bytesRequested;
+        
+        return $buffer;
     }
 
     /**
@@ -83,10 +89,8 @@ class Zend_Gdata_MimeBodyString
      *
      * @return int The length of the string contained in the object.
      */
-    public function getSize()
+    public function getSize ()
     {
-      return strlen($this->_sourceString);
+        return strlen($this->_sourceString);
     }
-
-
 }

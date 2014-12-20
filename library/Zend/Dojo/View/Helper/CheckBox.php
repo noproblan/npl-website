@@ -20,34 +20,41 @@
  * @version    $Id: CheckBox.php 23775 2011-03-01 17:25:24Z ralph $
  */
 
-/** Zend_Dojo_View_Helper_Dijit */
+/**
+ * Zend_Dojo_View_Helper_Dijit
+ */
 require_once 'Zend/Dojo/View/Helper/Dijit.php';
 
 /**
  * Dojo CheckBox dijit
  *
- * @uses       Zend_Dojo_View_Helper_Dijit
- * @package    Zend_Dojo
+ * @uses Zend_Dojo_View_Helper_Dijit
+ * @package Zend_Dojo
  * @subpackage View
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
-  */
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
+ */
 class Zend_Dojo_View_Helper_CheckBox extends Zend_Dojo_View_Helper_Dijit
 {
+
     /**
      * Dijit being used
+     * 
      * @var string
      */
-    protected $_dijit  = 'dijit.form.CheckBox';
+    protected $_dijit = 'dijit.form.CheckBox';
 
     /**
      * Element type
+     * 
      * @var string
      */
     protected $_elementType = 'checkbox';
 
     /**
      * Dojo module to use
+     * 
      * @var string
      */
     protected $_module = 'dijit.form.CheckBox';
@@ -55,14 +62,19 @@ class Zend_Dojo_View_Helper_CheckBox extends Zend_Dojo_View_Helper_Dijit
     /**
      * dijit.form.CheckBox
      *
-     * @param  int $id
-     * @param  string $content
-     * @param  array $params  Parameters to use for dijit creation
-     * @param  array $attribs HTML attributes
-     * @param  array $checkedOptions Should contain either two items, or the keys checkedValue and uncheckedValue
+     * @param int $id            
+     * @param string $content            
+     * @param array $params
+     *            Parameters to use for dijit creation
+     * @param array $attribs
+     *            HTML attributes
+     * @param array $checkedOptions
+     *            Should contain either two items, or the keys checkedValue and
+     *            uncheckedValue
      * @return string
      */
-    public function checkBox($id, $value = null, array $params = array(), array $attribs = array(), array $checkedOptions = null)
+    public function checkBox ($id, $value = null, array $params = array(), 
+            array $attribs = array(), array $checkedOptions = null)
     {
         // Prepare the checkbox options
         require_once 'Zend/View/Helper/FormCheckbox.php';
@@ -72,29 +84,32 @@ class Zend_Dojo_View_Helper_CheckBox extends Zend_Dojo_View_Helper_Dijit
         } elseif (isset($attribs['checked'])) {
             $checked = false;
         }
-        $checkboxInfo = Zend_View_Helper_FormCheckbox::determineCheckboxInfo($value, $checked, $checkedOptions);
+        $checkboxInfo = Zend_View_Helper_FormCheckbox::determineCheckboxInfo(
+                $value, $checked, $checkedOptions);
         $attribs['checked'] = $checkboxInfo['checked'];
-        if (!array_key_exists('id', $attribs)) {
+        if (! array_key_exists('id', $attribs)) {
             $attribs['id'] = $id;
         }
-
+        
         $attribs = $this->_prepareDijit($attribs, $params, 'element');
-
+        
         // strip options so they don't show up in markup
         if (array_key_exists('options', $attribs)) {
             unset($attribs['options']);
         }
-
+        
         // and now we create it:
         $html = '';
-        if (!strstr($id, '[]')) {
+        if (! strstr($id, '[]')) {
             // hidden element for unchecked value
-            $html .= $this->_renderHiddenElement($id, $checkboxInfo['uncheckedValue']);
+            $html .= $this->_renderHiddenElement($id, 
+                    $checkboxInfo['uncheckedValue']);
         }
-
+        
         // and final element
-        $html .= $this->_createFormElement($id, $checkboxInfo['checkedValue'], $params, $attribs);
-
+        $html .= $this->_createFormElement($id, $checkboxInfo['checkedValue'], 
+                $params, $attribs);
+        
         return $html;
     }
 }

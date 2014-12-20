@@ -21,12 +21,14 @@
  */
 
 /**
+ *
  * @see Zend_Exception
  */
 require_once "Zend/Exception.php";
 
 /**
- * @package    Zend_Soap
+ *
+ * @package Zend_Soap
  * @subpackage AutoDiscover
  */
 class Zend_Soap_AutoDiscover_Exception extends Zend_Exception

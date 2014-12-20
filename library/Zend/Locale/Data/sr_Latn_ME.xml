@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <ldml>
 	<identity>
-		<version number="$Revision: 1.22 $"/>
-		<generation date="$Date: 2009/06/15 03:46:26 $"/>
-		<language type="sr"/>
-		<script type="Latn"/>
-		<territory type="ME"/>
+		<version number="$Revision: 1.22 $" />
+		<generation date="$Date: 2009/06/15 03:46:26 $" />
+		<language type="sr" />
+		<script type="Latn" />
+		<territory type="ME" />
 	</identity>
 	<dates>
 		<calendars>

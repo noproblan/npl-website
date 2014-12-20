@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <ldml>
 	<identity>
-		<version number="$Revision: 1.97 $"/>
-		<generation date="$Date: 2009/06/15 04:15:33 $"/>
-		<language type="lv"/>
+		<version number="$Revision: 1.97 $" />
+		<generation date="$Date: 2009/06/15 04:15:33 $" />
+		<language type="lv" />
 	</identity>
 	<localeDisplayNames>
 		<localeDisplayPattern>
@@ -97,8 +97,10 @@
 			<language type="co">korsikāņu</language>
 			<language type="cop">koptu</language>
 			<language type="cpe">angliskās kreoliskās valodas un pidžinvalodas</language>
-			<language type="cpf">franciskās kreoliskās valodas un pidžinvalodas</language>
-			<language type="cpp">portugāliskās kreoliskās valodas un pidžinvalodas</language>
+			<language type="cpf">franciskās kreoliskās valodas un
+				pidžinvalodas</language>
+			<language type="cpp">portugāliskās kreoliskās valodas un
+				pidžinvalodas</language>
 			<language type="cr">krī</language>
 			<language type="crh">Krimas tatāru</language>
 			<language type="crp">kreoliskās valodas un pidžinvalodas</language>
@@ -874,11 +876,13 @@
 			<key type="currency">valūta</key>
 		</keys>
 		<types>
-			<type type="big5han" key="collation">tradicionālās ķīniešu valodas kārtošanas secība - Big5</type>
+			<type type="big5han" key="collation">tradicionālās ķīniešu valodas
+				kārtošanas secība - Big5</type>
 			<type type="buddhist" key="calendar">budistu kalendārs</type>
 			<type type="chinese" key="calendar">ķīniešu kalendārs</type>
 			<type type="direct" key="collation">tiešā kārtošanas secība</type>
-			<type type="gb2312han" key="collation">vienkāršotās ķīniešu valodas kārtošanas secība - GB2312</type>
+			<type type="gb2312han" key="collation">vienkāršotās ķīniešu valodas
+				kārtošanas secība - GB2312</type>
 			<type type="gregorian" key="calendar">Gregora kalendārs</type>
 			<type type="hebrew" key="calendar">ebreju kalendārs</type>
 			<type type="indian" key="calendar">Indijas nacionālais kalendārs</type>
@@ -902,7 +906,8 @@
 		</codePatterns>
 	</localeDisplayNames>
 	<characters>
-		<exemplarCharacters>[a ā b c č d e ē f g ģ h i ī j k ķ l ļ m n ņ o p r s š t u ū v z ž]</exemplarCharacters>
+		<exemplarCharacters>[a ā b c č d e ē f g ģ h i ī j k ķ l ļ m n ņ o p r
+			s š t u ū v z ž]</exemplarCharacters>
 		<exemplarCharacters type="auxiliary">[y q w x]</exemplarCharacters>
 		<exemplarCharacters type="currencySymbol">[a-i y j-x z]</exemplarCharacters>
 	</characters>
@@ -1172,23 +1177,32 @@
 							<greatestDifference id="y">dd.mm.yy.–dd.mm.yy.</greatestDifference>
 						</intervalFormatItem>
 						<intervalFormatItem id="yMEd">
-							<greatestDifference id="d">EEE, dd.mm.yy. – EEE, dd.mm.yy.</greatestDifference>
-							<greatestDifference id="M">EEE, dd.mm.yy. – EEE, dd.mm.yy.</greatestDifference>
-							<greatestDifference id="y">EEE, dd.mm.yy. – EEE, dd.mm.yy.</greatestDifference>
+							<greatestDifference id="d">EEE, dd.mm.yy. – EEE,
+								dd.mm.yy.</greatestDifference>
+							<greatestDifference id="M">EEE, dd.mm.yy. – EEE,
+								dd.mm.yy.</greatestDifference>
+							<greatestDifference id="y">EEE, dd.mm.yy. – EEE,
+								dd.mm.yy.</greatestDifference>
 						</intervalFormatItem>
 						<intervalFormatItem id="yMMM">
 							<greatestDifference id="M">y. 'gada' MMM-MMM</greatestDifference>
-							<greatestDifference id="y">y. 'gada' MMM - y. 'gada' MMM</greatestDifference>
+							<greatestDifference id="y">y. 'gada' MMM - y.
+								'gada' MMM</greatestDifference>
 						</intervalFormatItem>
 						<intervalFormatItem id="yMMMd">
 							<greatestDifference id="d">y. 'gada' d.-d. MMM</greatestDifference>
-							<greatestDifference id="M">y. 'gada' d. MMM - d. MMM</greatestDifference>
-							<greatestDifference id="y">y. 'gada' d. MMM - y. 'gada' d. MMM</greatestDifference>
+							<greatestDifference id="M">y. 'gada' d. MMM - d.
+								MMM</greatestDifference>
+							<greatestDifference id="y">y. 'gada' d. MMM - y.
+								'gada' d. MMM</greatestDifference>
 						</intervalFormatItem>
 						<intervalFormatItem id="yMMMEd">
-							<greatestDifference id="d">E, y. 'gada' d. MMM - E, y. 'gada' d. MMM</greatestDifference>
-							<greatestDifference id="M">E, y. 'gada' d. MMM - E, y. 'gada' d. MMM</greatestDifference>
-							<greatestDifference id="y">E, y. 'gada' d. MMM - E, y. 'gada' d. MMM</greatestDifference>
+							<greatestDifference id="d">E, y. 'gada' d. MMM -
+								E, y. 'gada' d. MMM</greatestDifference>
+							<greatestDifference id="M">E, y. 'gada' d. MMM -
+								E, y. 'gada' d. MMM</greatestDifference>
+							<greatestDifference id="y">E, y. 'gada' d. MMM -
+								E, y. 'gada' d. MMM</greatestDifference>
 						</intervalFormatItem>
 						<intervalFormatItem id="yMMMM">
 							<greatestDifference id="M">mm.yyyy.–mm.yyyy.</greatestDifference>

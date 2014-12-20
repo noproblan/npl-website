@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <ldml>
 	<identity>
-		<version number="$Revision: 1.4 $"/>
-		<generation date="$Date: 2009/06/15 03:46:24 $"/>
-		<language type="nds"/>
+		<version number="$Revision: 1.4 $" />
+		<generation date="$Date: 2009/06/15 03:46:24 $" />
+		<language type="nds" />
 	</identity>
 	<localeDisplayNames>
 		<localeDisplayPattern>
@@ -768,7 +768,8 @@
 			<territory type="GP">Guadeloupe</territory>
 			<territory type="GQ">Äquatorialguinea</territory>
 			<territory type="GR">Grekenland</territory>
-			<territory type="GS">Süüdgeorgien un de Südlichen Sandwich-Eilannen</territory>
+			<territory type="GS">Süüdgeorgien un de Südlichen
+				Sandwich-Eilannen</territory>
 			<territory type="GT">Guatemala</territory>
 			<territory type="GU">Guam</territory>
 			<territory type="GW">Guinea-Bissau</territory>
@@ -965,11 +966,13 @@
 			<key type="currency">Geldteken</key>
 		</keys>
 		<types>
-			<type type="big5han" key="collation">Traditschonell Chineesch Sorteerregeln - Big5</type>
+			<type type="big5han" key="collation">Traditschonell Chineesch Sorteerregeln
+				- Big5</type>
 			<type type="buddhist" key="calendar">Buddhistisch Klenner</type>
 			<type type="chinese" key="calendar">Chineesch Klenner</type>
 			<type type="direct" key="collation">Direkte Sorteerregeln</type>
-			<type type="gb2312han" key="collation">Vereenfacht Chineesch Sorteerregeln - GB2312</type>
+			<type type="gb2312han" key="collation">Vereenfacht Chineesch Sorteerregeln -
+				GB2312</type>
 			<type type="gregorian" key="calendar">Gregoriaansch Klenner</type>
 			<type type="hebrew" key="calendar">Hebrääsch Klenner</type>
 			<type type="indian" key="calendar">Indsch Nationalklenner</type>
@@ -994,7 +997,8 @@
 	</localeDisplayNames>
 	<characters>
 		<exemplarCharacters>[a å ä b-o ö p-s ß t u ü v-z]</exemplarCharacters>
-		<exemplarCharacters type="auxiliary">[á à ă â ā æ ç é è ĕ ê ë ę ē í ì ĭ î ï ī ñ ó ò ŏ ô ø ō œ ú ù ŭ û ū ÿ]</exemplarCharacters>
+		<exemplarCharacters type="auxiliary">[á à ă â ā æ ç é è ĕ ê ë ę
+			ē í ì ĭ î ï ī ñ ó ò ŏ ô ø ō œ ú ù ŭ û ū ÿ]</exemplarCharacters>
 	</characters>
 	<delimiters>
 		<quotationStart>„</quotationStart>

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <ldml>
 	<identity>
-		<version number="$Revision: 1.61 $"/>
-		<generation date="$Date: 2009/06/15 03:46:25 $"/>
-		<language type="it"/>
-		<territory type="CH"/>
+		<version number="$Revision: 1.61 $" />
+		<generation date="$Date: 2009/06/15 03:46:25 $" />
+		<language type="it" />
+		<territory type="CH" />
 	</identity>
 	<delimiters>
 		<quotationStart>«</quotationStart>
@@ -80,9 +80,12 @@
 							<greatestDifference id="y">dd.MM.yy - dd.MM.yy</greatestDifference>
 						</intervalFormatItem>
 						<intervalFormatItem id="yMEd">
-							<greatestDifference id="d">E, dd.MM.yy - E, dd.MM.yy</greatestDifference>
-							<greatestDifference id="M">E, dd.MM.yy - E, dd.MM.yy</greatestDifference>
-							<greatestDifference id="y">E, dd.MM.yy - E, dd.MM.yy</greatestDifference>
+							<greatestDifference id="d">E, dd.MM.yy - E,
+								dd.MM.yy</greatestDifference>
+							<greatestDifference id="M">E, dd.MM.yy - E,
+								dd.MM.yy</greatestDifference>
+							<greatestDifference id="y">E, dd.MM.yy - E,
+								dd.MM.yy</greatestDifference>
 						</intervalFormatItem>
 						<intervalFormatItem id="yMMMd">
 							<greatestDifference id="d">d-d MMM y</greatestDifference>

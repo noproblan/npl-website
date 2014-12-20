@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <ldml>
 	<identity>
-		<version number="$Revision: 1.128 $"/>
-		<generation date="$Date: 2009/06/15 03:46:25 $"/>
-		<language type="es"/>
+		<version number="$Revision: 1.128 $" />
+		<generation date="$Date: 2009/06/15 03:46:25 $" />
+		<language type="es" />
 	</identity>
 	<localeDisplayNames>
 		<localeDisplayPattern>
@@ -99,7 +99,8 @@
 			<language type="cop">copto</language>
 			<language type="cpe">lengua criolla o pidgin basada en el inglés</language>
 			<language type="cpf">lengua criolla o pidgin basada en el francés</language>
-			<language type="cpp">lengua criolla o pidgin basada en el portugués</language>
+			<language type="cpp">lengua criolla o pidgin basada en el
+				portugués</language>
 			<language type="cr">cree</language>
 			<language type="crh">tártaro de Crimea</language>
 			<language type="crp">lengua criolla o pidgin</language>
@@ -766,7 +767,8 @@
 			<territory type="GU">Guam</territory>
 			<territory type="GW">Guinea-Bissau</territory>
 			<territory type="GY">Guyana</territory>
-			<territory type="HK">Región Administrativa Especial de Hong Kong de la República Popular China</territory>
+			<territory type="HK">Región Administrativa Especial de Hong Kong
+				de la República Popular China</territory>
 			<territory type="HM">Islas Heard y McDonald</territory>
 			<territory type="HN">Honduras</territory>
 			<territory type="HR">Croacia</territory>
@@ -819,7 +821,8 @@
 			<territory type="ML">Mali</territory>
 			<territory type="MM">Myanmar</territory>
 			<territory type="MN">Mongolia</territory>
-			<territory type="MO">Región Administrativa Especial de Macao de la República Popular China</territory>
+			<territory type="MO">Región Administrativa Especial de Macao de
+				la República Popular China</territory>
 			<territory type="MP">Islas Marianas del Norte</territory>
 			<territory type="MQ">Martinica</territory>
 			<territory type="MR">Mauritania</territory>
@@ -903,7 +906,8 @@
 			<territory type="TZ">Tanzania</territory>
 			<territory type="UA">Ucrania</territory>
 			<territory type="UG">Uganda</territory>
-			<territory type="UM">Islas menores alejadas de los Estados Unidos</territory>
+			<territory type="UM">Islas menores alejadas de los Estados
+				Unidos</territory>
 			<territory type="US">Estados Unidos</territory>
 			<territory type="UY">Uruguay</territory>
 			<territory type="UZ">Uzbekistán</territory>
@@ -981,7 +985,8 @@
 	</layout>
 	<characters>
 		<exemplarCharacters>[a á b-e é f-i í j-n ñ o ó p-u ú ü v-z]</exemplarCharacters>
-		<exemplarCharacters type="auxiliary">[à ă â å ä ã ā æ-è ĕ ê ë ē ì ĭ î ï ī º ò ŏ ô ö ø ō œ ß ù ŭ û ū ÿ]</exemplarCharacters>
+		<exemplarCharacters type="auxiliary">[à ă â å ä ã ā æ-è ĕ ê ë ē
+			ì ĭ î ï ī º ò ŏ ô ö ø ō œ ß ù ŭ û ū ÿ]</exemplarCharacters>
 		<exemplarCharacters type="currencySymbol">[a-z]</exemplarCharacters>
 	</characters>
 	<delimiters>
@@ -2604,8 +2609,10 @@
 			</currency>
 			<currency type="BAM">
 				<displayName>marco convertible de Bosnia-Herzegovina</displayName>
-				<displayName count="one">marco convertible de Bosnia-Herzegovina</displayName>
-				<displayName count="other">marcos convertibles de Bosnia-Herzegovina</displayName>
+				<displayName count="one">marco convertible de
+					Bosnia-Herzegovina</displayName>
+				<displayName count="other">marcos convertibles de
+					Bosnia-Herzegovina</displayName>
 			</currency>
 			<currency type="BBD">
 				<displayName>dólar de Barbados</displayName>
@@ -2828,8 +2835,10 @@
 			</currency>
 			<currency type="DDM">
 				<displayName>ostmark de Alemania del Este</displayName>
-				<displayName count="one">marco de la República Democrática Alemana</displayName>
-				<displayName count="other">marcos de la República Democrática Alemana</displayName>
+				<displayName count="one">marco de la República Democrática
+					Alemana</displayName>
+				<displayName count="other">marcos de la República Democrática
+					Alemana</displayName>
 			</currency>
 			<currency type="DEM">
 				<displayName>marco alemán</displayName>
@@ -2861,8 +2870,10 @@
 			</currency>
 			<currency type="ECV">
 				<displayName>unidad de valor constante (UVC) ecuatoriana</displayName>
-				<displayName count="one">unidad de valor constante (UVC) ecuatoriana</displayName>
-				<displayName count="other">unidades de valor constante (UVC) ecuatorianas</displayName>
+				<displayName count="one">unidad de valor constante (UVC)
+					ecuatoriana</displayName>
+				<displayName count="other">unidades de valor constante (UVC)
+					ecuatorianas</displayName>
 			</currency>
 			<currency type="EEK">
 				<displayName>corona estonia</displayName>
@@ -2885,7 +2896,8 @@
 			<currency type="ESB">
 				<displayName>peseta española (cuenta convertible)</displayName>
 				<displayName count="one">peseta española (cuenta convertible)</displayName>
-				<displayName count="other">pesetas españolas (cuenta convertible)</displayName>
+				<displayName count="other">pesetas españolas (cuenta
+					convertible)</displayName>
 			</currency>
 			<currency type="ESP">
 				<displayName>peseta española</displayName>
@@ -3510,7 +3522,8 @@
 			<currency type="USN">
 				<displayName>dólar estadounidense (día siguiente)</displayName>
 				<displayName count="one">dólar estadounidense (día siguiente)</displayName>
-				<displayName count="other">dólares estadounidenses (día siguiente)</displayName>
+				<displayName count="other">dólares estadounidenses (día
+					siguiente)</displayName>
 			</currency>
 			<currency type="USS">
 				<displayName>dólar estadounidense (mismo día)</displayName>

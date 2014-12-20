@@ -20,45 +20,55 @@
  */
 
 /**
+ *
  * @see Zend_Feed_Writer_Extension_RendererInterface
  */
 require_once 'Zend/Feed/Writer/Extension/RendererInterface.php';
 
- /**
- * @category   Zend
- * @package    Zend_Feed_Writer
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+/**
+ *
+ * @category Zend
+ * @package Zend_Feed_Writer
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
-abstract class Zend_Feed_Writer_Extension_RendererAbstract
-    implements Zend_Feed_Writer_Extension_RendererInterface
+abstract class Zend_Feed_Writer_Extension_RendererAbstract implements 
+        Zend_Feed_Writer_Extension_RendererInterface
 {
+
     /**
+     *
      * @var DOMDocument
      */
     protected $_dom = null;
 
     /**
+     *
      * @var mixed
      */
     protected $_entry = null;
 
     /**
+     *
      * @var DOMElement
      */
     protected $_base = null;
 
     /**
+     *
      * @var mixed
      */
     protected $_container = null;
 
     /**
+     *
      * @var string
      */
     protected $_type = null;
 
     /**
+     *
      * @var DOMElement
      */
     protected $_rootElement = null;
@@ -73,10 +83,10 @@ abstract class Zend_Feed_Writer_Extension_RendererAbstract
     /**
      * Constructor
      *
-     * @param  mixed $container
+     * @param mixed $container            
      * @return void
      */
-    public function __construct($container)
+    public function __construct ($container)
     {
         $this->_container = $container;
     }
@@ -84,10 +94,10 @@ abstract class Zend_Feed_Writer_Extension_RendererAbstract
     /**
      * Set feed encoding
      *
-     * @param  string $enc
+     * @param string $enc            
      * @return Zend_Feed_Writer_Extension_RendererAbstract
      */
-    public function setEncoding($enc)
+    public function setEncoding ($enc)
     {
         $this->_encoding = $enc;
         return $this;
@@ -98,7 +108,7 @@ abstract class Zend_Feed_Writer_Extension_RendererAbstract
      *
      * @return void
      */
-    public function getEncoding()
+    public function getEncoding ()
     {
         return $this->_encoding;
     }
@@ -106,13 +116,13 @@ abstract class Zend_Feed_Writer_Extension_RendererAbstract
     /**
      * Set DOMDocument and DOMElement on which to operate
      *
-     * @param  DOMDocument $dom
-     * @param  DOMElement $base
+     * @param DOMDocument $dom            
+     * @param DOMElement $base            
      * @return Zend_Feed_Writer_Extension_RendererAbstract
      */
-    public function setDomDocument(DOMDocument $dom, DOMElement $base)
+    public function setDomDocument (DOMDocument $dom, DOMElement $base)
     {
-        $this->_dom  = $dom;
+        $this->_dom = $dom;
         $this->_base = $base;
         return $this;
     }
@@ -122,7 +132,7 @@ abstract class Zend_Feed_Writer_Extension_RendererAbstract
      *
      * @return mixed
      */
-    public function getDataContainer()
+    public function getDataContainer ()
     {
         return $this->_container;
     }
@@ -130,10 +140,10 @@ abstract class Zend_Feed_Writer_Extension_RendererAbstract
     /**
      * Set feed type
      *
-     * @param  string $type
+     * @param string $type            
      * @return Zend_Feed_Writer_Extension_RendererAbstract
      */
-    public function setType($type)
+    public function setType ($type)
     {
         $this->_type = $type;
         return $this;
@@ -144,7 +154,7 @@ abstract class Zend_Feed_Writer_Extension_RendererAbstract
      *
      * @return string
      */
-    public function getType()
+    public function getType ()
     {
         return $this->_type;
     }
@@ -152,10 +162,10 @@ abstract class Zend_Feed_Writer_Extension_RendererAbstract
     /**
      * Set root element of document
      *
-     * @param  DOMElement $root
+     * @param DOMElement $root            
      * @return Zend_Feed_Writer_Extension_RendererAbstract
      */
-    public function setRootElement(DOMElement $root)
+    public function setRootElement (DOMElement $root)
     {
         $this->_rootElement = $root;
         return $this;
@@ -166,7 +176,7 @@ abstract class Zend_Feed_Writer_Extension_RendererAbstract
      *
      * @return DOMElement
      */
-    public function getRootElement()
+    public function getRootElement ()
     {
         return $this->_rootElement;
     }
@@ -176,5 +186,5 @@ abstract class Zend_Feed_Writer_Extension_RendererAbstract
      *
      * @return void
      */
-    abstract protected function _appendNamespaces();
+    abstract protected function _appendNamespaces ();
 }

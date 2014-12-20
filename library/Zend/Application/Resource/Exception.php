@@ -21,6 +21,7 @@
  */
 
 /**
+ *
  * @see Zend_Application_Exception
  */
 require_once 'Zend/Application/Exception.php';
@@ -28,12 +29,13 @@ require_once 'Zend/Application/Exception.php';
 /**
  * Exception class for Zend_Application
  *
- * @uses       Zend_Application_Exception
- * @category   Zend
- * @package    Zend_Application
+ * @uses Zend_Application_Exception
+ * @category Zend
+ * @package Zend_Application
  * @subpackage Resource
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Application_Resource_Exception extends Zend_Application_Exception
 {

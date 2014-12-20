@@ -20,29 +20,34 @@
  * @version    $Id: Abstract.php 24182 2011-07-03 13:43:05Z adamlundrigan $
  */
 
-
-/** Zend_Controller_Router_Interface */
+/**
+ * Zend_Controller_Router_Interface
+ */
 require_once 'Zend/Controller/Router/Interface.php';
 
 /**
  * Simple first implementation of a router, to be replaced
  * with rules-based URI processor.
  *
- * @category   Zend
- * @package    Zend_Controller
+ * @category Zend
+ * @package Zend_Controller
  * @subpackage Router
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
-abstract class Zend_Controller_Router_Abstract implements Zend_Controller_Router_Interface
+abstract class Zend_Controller_Router_Abstract implements 
+        Zend_Controller_Router_Interface
 {
+
     /**
      * URI delimiter
      */
     const URI_DELIMITER = '/';
-    
+
     /**
      * Front controller instance
+     * 
      * @var Zend_Controller_Front
      */
     protected $_frontController;
@@ -50,6 +55,7 @@ abstract class Zend_Controller_Router_Abstract implements Zend_Controller_Router
     /**
      * Array of invocation parameters to use when instantiating action
      * controllers
+     * 
      * @var array
      */
     protected $_invokeParams = array();
@@ -57,10 +63,10 @@ abstract class Zend_Controller_Router_Abstract implements Zend_Controller_Router
     /**
      * Constructor
      *
-     * @param array $params
+     * @param array $params            
      * @return void
      */
-    public function __construct(array $params = array())
+    public function __construct (array $params = array())
     {
         $this->setParams($params);
     }
@@ -68,11 +74,11 @@ abstract class Zend_Controller_Router_Abstract implements Zend_Controller_Router
     /**
      * Add or modify a parameter to use when instantiating an action controller
      *
-     * @param string $name
-     * @param mixed $value
+     * @param string $name            
+     * @param mixed $value            
      * @return Zend_Controller_Router
      */
-    public function setParam($name, $value)
+    public function setParam ($name, $value)
     {
         $name = (string) $name;
         $this->_invokeParams[$name] = $value;
@@ -82,10 +88,10 @@ abstract class Zend_Controller_Router_Abstract implements Zend_Controller_Router
     /**
      * Set parameters to pass to action controller constructors
      *
-     * @param array $params
+     * @param array $params            
      * @return Zend_Controller_Router
      */
-    public function setParams(array $params)
+    public function setParams (array $params)
     {
         $this->_invokeParams = array_merge($this->_invokeParams, $params);
         return $this;
@@ -94,15 +100,15 @@ abstract class Zend_Controller_Router_Abstract implements Zend_Controller_Router
     /**
      * Retrieve a single parameter from the controller parameter stack
      *
-     * @param string $name
+     * @param string $name            
      * @return mixed
      */
-    public function getParam($name)
+    public function getParam ($name)
     {
-        if(isset($this->_invokeParams[$name])) {
+        if (isset($this->_invokeParams[$name])) {
             return $this->_invokeParams[$name];
         }
-
+        
         return null;
     }
 
@@ -111,7 +117,7 @@ abstract class Zend_Controller_Router_Abstract implements Zend_Controller_Router
      *
      * @return array
      */
-    public function getParams()
+    public function getParams ()
     {
         return $this->_invokeParams;
     }
@@ -123,10 +129,12 @@ abstract class Zend_Controller_Router_Abstract implements Zend_Controller_Router
      * only that parameter; if an array of parameter names is provided, clears
      * each.
      *
-     * @param null|string|array single key or array of keys for params to clear
+     * @param
+     *            null|string|array single key or array of keys for params to
+     *            clear
      * @return Zend_Controller_Router
      */
-    public function clearParams($name = null)
+    public function clearParams ($name = null)
     {
         if (null === $name) {
             $this->_invokeParams = array();
@@ -139,7 +147,7 @@ abstract class Zend_Controller_Router_Abstract implements Zend_Controller_Router
                 }
             }
         }
-
+        
         return $this;
     }
 
@@ -148,13 +156,13 @@ abstract class Zend_Controller_Router_Abstract implements Zend_Controller_Router
      *
      * @return Zend_Controller_Front
      */
-    public function getFrontController()
+    public function getFrontController ()
     {
         // Used cache version if found
         if (null !== $this->_frontController) {
             return $this->_frontController;
         }
-
+        
         require_once 'Zend/Controller/Front.php';
         $this->_frontController = Zend_Controller_Front::getInstance();
         return $this->_frontController;
@@ -163,13 +171,12 @@ abstract class Zend_Controller_Router_Abstract implements Zend_Controller_Router
     /**
      * Set Front Controller
      *
-     * @param Zend_Controller_Front $controller
+     * @param Zend_Controller_Front $controller            
      * @return Zend_Controller_Router_Interface
      */
-    public function setFrontController(Zend_Controller_Front $controller)
+    public function setFrontController (Zend_Controller_Front $controller)
     {
         $this->_frontController = $controller;
         return $this;
     }
-
 }

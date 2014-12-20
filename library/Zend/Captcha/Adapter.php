@@ -19,7 +19,9 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
 
-/** @see Zend_Validate_Interface */
+/**
+ * @see Zend_Validate_Interface
+ */
 require_once 'Zend/Validate/Interface.php';
 
 /**
@@ -27,50 +29,52 @@ require_once 'Zend/Validate/Interface.php';
  *
  * Each specific captcha implementation should implement this interface
  *
- * @category   Zend
- * @package    Zend_Captcha
+ * @category Zend
+ * @package Zend_Captcha
  * @subpackage Adapter
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: Adapter.php 23775 2011-03-01 17:25:24Z ralph $
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
+ * @version $Id: Adapter.php 23775 2011-03-01 17:25:24Z ralph $
  */
 interface Zend_Captcha_Adapter extends Zend_Validate_Interface
 {
+
     /**
      * Generate a new captcha
      *
      * @return string new captcha ID
      */
-    public function generate();
+    public function generate ();
 
     /**
      * Display the captcha
      *
-     * @param  Zend_View_Interface $view
-     * @param  mixed $element
+     * @param Zend_View_Interface $view            
+     * @param mixed $element            
      * @return string
      */
-    public function render(Zend_View_Interface $view = null, $element = null);
+    public function render (Zend_View_Interface $view = null, $element = null);
 
     /**
      * Set captcha name
      *
-     * @param  string $name
+     * @param string $name            
      * @return Zend_Captcha_Adapter
      */
-    public function setName($name);
+    public function setName ($name);
 
     /**
      * Get captcha name
      *
      * @return string
      */
-    public function getName();
+    public function getName ();
 
     /**
      * Get optional private decorator for this captcha type
      *
      * @return Zend_Form_Decorator_Interface|string
      */
-    public function getDecorator();
+    public function getDecorator ();
 }

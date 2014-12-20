@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -20,74 +21,74 @@
  * @version    $Id: ServerProxy.php 23775 2011-03-01 17:25:24Z ralph $
  */
 
-
 /**
  * The namespace decorator enables object chaining to permit
  * calling XML-RPC namespaced functions like "foo.bar.baz()"
  * as "$remote->foo->bar->baz()".
  *
- * @category   Zend
- * @package    Zend_XmlRpc
+ * @category Zend
+ * @package Zend_XmlRpc
  * @subpackage Client
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_XmlRpc_Client_ServerProxy
 {
+
     /**
+     *
      * @var Zend_XmlRpc_Client
      */
     private $_client = null;
 
     /**
+     *
      * @var string
      */
     private $_namespace = '';
 
-
     /**
+     *
      * @var array of Zend_XmlRpc_Client_ServerProxy
      */
     private $_cache = array();
 
-
     /**
      * Class constructor
      *
-     * @param string             $namespace
-     * @param Zend_XmlRpc_Client $client
+     * @param string $namespace            
+     * @param Zend_XmlRpc_Client $client            
      */
-    public function __construct($client, $namespace = '')
+    public function __construct ($client, $namespace = '')
     {
         $this->_namespace = $namespace;
-        $this->_client    = $client;
+        $this->_client = $client;
     }
-
 
     /**
      * Get the next successive namespace
      *
-     * @param string $name
+     * @param string $name            
      * @return Zend_XmlRpc_Client_ServerProxy
      */
-    public function __get($namespace)
+    public function __get ($namespace)
     {
         $namespace = ltrim("$this->_namespace.$namespace", '.');
-        if (!isset($this->_cache[$namespace])) {
+        if (! isset($this->_cache[$namespace])) {
             $this->_cache[$namespace] = new $this($this->_client, $namespace);
         }
         return $this->_cache[$namespace];
     }
 
-
     /**
      * Call a method in this namespace.
      *
-     * @param  string $methodN
-     * @param  array $args
+     * @param string $methodN            
+     * @param array $args            
      * @return mixed
      */
-    public function __call($method, $args)
+    public function __call ($method, $args)
     {
         $method = ltrim("$this->_namespace.$method", '.');
         return $this->_client->call($method, $args);

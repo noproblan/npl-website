@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -20,60 +21,63 @@
  */
 
 /**
- * @category   Zend
- * @package    Zend_Oauth
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ *
+ * @category Zend
+ * @package Zend_Oauth
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 interface Zend_Oauth_Config_ConfigInterface
 {
-    public function setOptions(array $options);
 
-    public function setConsumerKey($key);
+    public function setOptions (array $options);
 
-    public function getConsumerKey();
+    public function setConsumerKey ($key);
 
-    public function setConsumerSecret($secret);
+    public function getConsumerKey ();
 
-    public function getConsumerSecret();
+    public function setConsumerSecret ($secret);
 
-    public function setSignatureMethod($method);
+    public function getConsumerSecret ();
 
-    public function getSignatureMethod();
+    public function setSignatureMethod ($method);
 
-    public function setRequestScheme($scheme);
+    public function getSignatureMethod ();
 
-    public function getRequestScheme();
+    public function setRequestScheme ($scheme);
 
-    public function setVersion($version);
+    public function getRequestScheme ();
 
-    public function getVersion();
+    public function setVersion ($version);
 
-    public function setCallbackUrl($url);
+    public function getVersion ();
 
-    public function getCallbackUrl();
+    public function setCallbackUrl ($url);
 
-    public function setRequestTokenUrl($url);
+    public function getCallbackUrl ();
 
-    public function getRequestTokenUrl();
+    public function setRequestTokenUrl ($url);
 
-    public function setRequestMethod($method);
+    public function getRequestTokenUrl ();
 
-    public function getRequestMethod();
+    public function setRequestMethod ($method);
 
-    public function setAccessTokenUrl($url);
+    public function getRequestMethod ();
 
-    public function getAccessTokenUrl();
+    public function setAccessTokenUrl ($url);
 
-    public function setUserAuthorizationUrl($url);
+    public function getAccessTokenUrl ();
 
-    public function getUserAuthorizationUrl();
+    public function setUserAuthorizationUrl ($url);
 
-    public function setToken(Zend_Oauth_Token $token);
+    public function getUserAuthorizationUrl ();
 
-    public function getToken();
+    public function setToken (Zend_Oauth_Token $token);
 
-    public function setRealm($realm);
+    public function getToken ();
 
-    public function getRealm();
+    public function setRealm ($realm);
+
+    public function getRealm ();
 }

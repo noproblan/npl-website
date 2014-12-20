@@ -20,23 +20,28 @@
  */
 
 /**
+ *
  * @see Zend_Config_Writer
  */
 require_once 'Zend/Config/Writer/FileAbstract.php';
 
 /**
+ *
  * @see Zend_Config_Json
  */
 require_once 'Zend/Config/Json.php';
 
 /**
- * @category   Zend
- * @package    Zend_Config
- * @copyright  Copyright (c) 2005-2009 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ *
+ * @category Zend
+ * @package Zend_Config
+ * @copyright Copyright (c) 2005-2009 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Config_Writer_Json extends Zend_Config_Writer_FileAbstract
 {
+
     /**
      * If we need to pretty-print JSON data
      *
@@ -49,7 +54,7 @@ class Zend_Config_Writer_Json extends Zend_Config_Writer_FileAbstract
      *
      * @return the prettyPrint flag
      */
-    public function prettyPrint()
+    public function prettyPrint ()
     {
         return $this->_prettyPrint;
     }
@@ -57,10 +62,11 @@ class Zend_Config_Writer_Json extends Zend_Config_Writer_FileAbstract
     /**
      * Set prettyPrint flag
      *
-     * @param  bool $prettyPrint PrettyPrint flag
+     * @param bool $prettyPrint
+     *            PrettyPrint flag
      * @return Zend_Config_Writer_Json
      */
-    public function setPrettyPrint($flag)
+    public function setPrettyPrint ($flag)
     {
         $this->_prettyPrint = (bool) $flag;
         return $this;
@@ -72,34 +78,37 @@ class Zend_Config_Writer_Json extends Zend_Config_Writer_FileAbstract
      * @since 1.10
      * @return string
      */
-    public function render()
+    public function render ()
     {
-        $data        = $this->_config->toArray();
+        $data = $this->_config->toArray();
         $sectionName = $this->_config->getSectionName();
-        $extends     = $this->_config->getExtends();
-
+        $extends = $this->_config->getExtends();
+        
         if (is_string($sectionName)) {
-            $data = array($sectionName => $data);
+            $data = array(
+                    $sectionName => $data
+            );
         }
-
+        
         foreach ($extends as $section => $parentSection) {
             $data[$section][Zend_Config_Json::EXTENDS_NAME] = $parentSection;
         }
-
+        
         // Ensure that each "extends" section actually exists
         foreach ($data as $section => $sectionData) {
-            if (is_array($sectionData) && isset($sectionData[Zend_Config_Json::EXTENDS_NAME])) {
+            if (is_array($sectionData) &&
+                     isset($sectionData[Zend_Config_Json::EXTENDS_NAME])) {
                 $sectionExtends = $sectionData[Zend_Config_Json::EXTENDS_NAME];
-                if (!isset($data[$sectionExtends])) {
+                if (! isset($data[$sectionExtends])) {
                     // Remove "extends" declaration if section does not exist
                     unset($data[$section][Zend_Config_Json::EXTENDS_NAME]);
                 }
             }
         }
-
+        
         $out = Zend_Json::encode($data);
         if ($this->prettyPrint()) {
-             $out = Zend_Json::prettyPrint($out);
+            $out = Zend_Json::prettyPrint($out);
         }
         return $out;
     }

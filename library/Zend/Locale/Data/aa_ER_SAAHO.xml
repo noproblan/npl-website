@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <ldml>
 	<identity>
-		<version number="$Revision: 1.36 $"/>
-		<generation date="$Date: 2009/05/05 23:06:33 $"/>
-		<language type="aa"/>
-		<territory type="ER"/>
-		<variant type="SAAHO"/>
+		<version number="$Revision: 1.36 $" />
+		<generation date="$Date: 2009/05/05 23:06:33 $" />
+		<language type="aa" />
+		<territory type="ER" />
+		<variant type="SAAHO" />
 	</identity>
 	<dates>
 		<calendars>

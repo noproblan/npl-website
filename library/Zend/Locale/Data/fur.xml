@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <ldml>
 	<identity>
-		<version number="$Revision: 1.41 $"/>
-		<generation date="$Date: 2009/06/15 20:34:50 $"/>
-		<language type="fur"/>
+		<version number="$Revision: 1.41 $" />
+		<generation date="$Date: 2009/06/15 20:34:50 $" />
+		<language type="fur" />
 	</identity>
 	<localeDisplayNames>
 		<localeDisplayPattern>
@@ -356,7 +356,8 @@
 			<territory type="GU">Guam</territory>
 			<territory type="GW">Guinea-Bissau</territory>
 			<territory type="GY">Guyana</territory>
-			<territory type="HK">Regjon aministrative speciâl de Cine di Hong Kong</territory>
+			<territory type="HK">Regjon aministrative speciâl de Cine di
+				Hong Kong</territory>
 			<territory type="HM">Isule Heard e Isulis McDonald</territory>
 			<territory type="HN">Honduras</territory>
 			<territory type="HR">Cravuazie</territory>
@@ -407,7 +408,8 @@
 			<territory type="ML">Mali</territory>
 			<territory type="MM">Birmanie</territory>
 			<territory type="MN">Mongolie</territory>
-			<territory type="MO">Regjon aministrative speciâl de Cine di Macao</territory>
+			<territory type="MO">Regjon aministrative speciâl de Cine di
+				Macao</territory>
 			<territory type="MP">Isulis Mariana dal Nord</territory>
 			<territory type="MQ">Martiniche</territory>
 			<territory type="MR">Mauritanie</territory>
@@ -805,7 +807,8 @@
 						</intervalFormatItem>
 						<intervalFormatItem id="MMMEd">
 							<greatestDifference id="d">E d - E d 'di' MMM</greatestDifference>
-							<greatestDifference id="M">E d 'di' MMM - E d 'di' MMM</greatestDifference>
+							<greatestDifference id="M">E d 'di' MMM - E d 'di'
+								MMM</greatestDifference>
 						</intervalFormatItem>
 						<intervalFormatItem id="MMMM">
 							<greatestDifference id="M">LLLL-LLLL</greatestDifference>
@@ -825,7 +828,8 @@
 						<intervalFormatItem id="yMEd">
 							<greatestDifference id="d">E dd/MM/yy - E dd/MM/yy</greatestDifference>
 							<greatestDifference id="M">E dd/MM/yy - E dd/MM/yy</greatestDifference>
-							<greatestDifference id="y">E dd/MM/yyyy - E dd/MM/yyyy</greatestDifference>
+							<greatestDifference id="y">E dd/MM/yyyy - E
+								dd/MM/yyyy</greatestDifference>
 						</intervalFormatItem>
 						<intervalFormatItem id="yMMM">
 							<greatestDifference id="M">MM - MM/yyyy</greatestDifference>
@@ -837,9 +841,12 @@
 							<greatestDifference id="y">dd/MM/yyyy - dd/MM/yyyy</greatestDifference>
 						</intervalFormatItem>
 						<intervalFormatItem id="yMMMEd">
-							<greatestDifference id="d">E dd/MM/yyyy - E dd/MM/yyyy</greatestDifference>
-							<greatestDifference id="M">E dd/MM/yyyy - E dd/MM/yyyy</greatestDifference>
-							<greatestDifference id="y">E dd/MM/yyyy - E dd/MM/yyyy</greatestDifference>
+							<greatestDifference id="d">E dd/MM/yyyy - E
+								dd/MM/yyyy</greatestDifference>
+							<greatestDifference id="M">E dd/MM/yyyy - E
+								dd/MM/yyyy</greatestDifference>
+							<greatestDifference id="y">E dd/MM/yyyy - E
+								dd/MM/yyyy</greatestDifference>
 						</intervalFormatItem>
 						<intervalFormatItem id="yMMMM">
 							<greatestDifference id="M">MM - MM/yyyy</greatestDifference>

@@ -5,7 +5,7 @@
     <testsuite name="Library Test Suite">
         <directory>./library</directory>
     </testsuite>
-    
+
     <filter>
         <whitelist>
             <directory suffix=".php">../../library/Zend</directory>

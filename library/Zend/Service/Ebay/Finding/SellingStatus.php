@@ -21,20 +21,24 @@
  */
 
 /**
+ *
  * @see Zend_Service_Ebay_Finding_Abstract
  */
 require_once 'Zend/Service/Ebay/Finding/Abstract.php';
 
 /**
- * @category   Zend
- * @package    Zend_Service
+ *
+ * @category Zend
+ * @package Zend_Service
  * @subpackage Ebay
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @uses       Zend_Service_Ebay_Finding_Abstract
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
+ * @uses Zend_Service_Ebay_Finding_Abstract
  */
 class Zend_Service_Ebay_Finding_SellingStatus extends Zend_Service_Ebay_Finding_Abstract
 {
+
     /**
      * The number of bids that have been placed on the item.
      *
@@ -77,17 +81,17 @@ class Zend_Service_Ebay_Finding_SellingStatus extends Zend_Service_Ebay_Finding_
      *
      * Applicable values:
      *
-     *     Active
-     *     The listing is still live. It is also possible that the auction has
-     *     recently ended, but eBay has not completed the final processing
-     *     (e.g., the high bidder is still being determined).
+     * Active
+     * The listing is still live. It is also possible that the auction has
+     * recently ended, but eBay has not completed the final processing
+     * (e.g., the high bidder is still being determined).
      *
-     *     Canceled
-     *     The listing has been canceled by either the seller or eBay.
+     * Canceled
+     * The listing has been canceled by either the seller or eBay.
      *
-     *     Ended
-     *     The listing has ended and eBay has completed the processing of the
-     *     sale (if any).
+     * Ended
+     * The listing has ended and eBay has completed the processing of the
+     * sale (if any).
      *
      * @var string
      */
@@ -106,25 +110,30 @@ class Zend_Service_Ebay_Finding_SellingStatus extends Zend_Service_Ebay_Finding_
     public $timeLeft;
 
     /**
+     *
      * @return void
      */
-    protected function _init()
+    protected function _init ()
     {
         parent::_init();
         $ns = Zend_Service_Ebay_Finding::XMLNS_FINDING;
-
-        $this->bidCount              = $this->_query(".//$ns:bidCount[1]", 'integer');
-        $this->convertedCurrentPrice = $this->_query(".//$ns:convertedCurrentPrice[1]", 'float');
-        $this->currentPrice          = $this->_query(".//$ns:currentPrice[1]", 'float');
-        $this->sellingState          = $this->_query(".//$ns:sellingState[1]", 'string');
-        $this->timeLeft              = $this->_query(".//$ns:timeLeft[1]", 'string');
-
+        
+        $this->bidCount = $this->_query(".//$ns:bidCount[1]", 'integer');
+        $this->convertedCurrentPrice = $this->_query(
+                ".//$ns:convertedCurrentPrice[1]", 'float');
+        $this->currentPrice = $this->_query(".//$ns:currentPrice[1]", 'float');
+        $this->sellingState = $this->_query(".//$ns:sellingState[1]", 'string');
+        $this->timeLeft = $this->_query(".//$ns:timeLeft[1]", 'string');
+        
         $this->_attributes['convertedCurrentPrice'] = array(
-            'currencyId' => $this->_query(".//$ns:convertedCurrentPrice[1]/@currencyId[1]", 'string')
+                'currencyId' => $this->_query(
+                        ".//$ns:convertedCurrentPrice[1]/@currencyId[1]", 
+                        'string')
         );
-
+        
         $this->_attributes['currentPrice'] = array(
-            'currencyId' => $this->_query(".//$ns:currentPrice[1]/@currencyId[1]", 'string')
+                'currencyId' => $this->_query(
+                        ".//$ns:currentPrice[1]/@currencyId[1]", 'string')
         );
     }
 }

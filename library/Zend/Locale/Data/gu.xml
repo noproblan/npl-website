@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <ldml>
 	<identity>
-		<version number="$Revision: 1.73 $"/>
-		<generation date="$Date: 2009/06/15 03:46:25 $"/>
-		<language type="gu"/>
+		<version number="$Revision: 1.73 $" />
+		<generation date="$Date: 2009/06/15 03:46:25 $" />
+		<language type="gu" />
 	</identity>
 	<localeDisplayNames>
 		<languages>
@@ -767,7 +767,8 @@
 			<territory type="GP">ગ્વાડેલોપ</territory>
 			<territory type="GQ">ઇક્વેટોરિયલ ગિની</territory>
 			<territory type="GR">ગ્રીસ</territory>
-			<territory type="GS">દક્ષિણ જ્યોર્જીયા અને દક્ષિણ સેન્ડવિચ આઇલેન્ડ</territory>
+			<territory type="GS">દક્ષિણ જ્યોર્જીયા અને દક્ષિણ સેન્ડવિચ
+				આઇલેન્ડ</territory>
 			<territory type="GT">ગ્વાટેમાલા</territory>
 			<territory type="GU">ગ્વામ</territory>
 			<territory type="GW">ગિની-બિસાઉ</territory>
@@ -936,7 +937,8 @@
 		</keys>
 	</localeDisplayNames>
 	<characters>
-		<exemplarCharacters>[૦-૯ ૐ અ-ઋ ૠ ઍ એ-ઑ ઓ-ન પ-ર લ ળ વ-હ ઼ ઁ-ઃ ઽ ્ ા-ૅ ે-ૉ ો ૌ]</exemplarCharacters>
+		<exemplarCharacters>[૦-૯ ૐ અ-ઋ ૠ ઍ એ-ઑ ઓ-ન પ-ર લ ળ વ-હ ઼ ઁ-ઃ ઽ ્ ા-ૅ
+			ે-ૉ ો ૌ]</exemplarCharacters>
 		<exemplarCharacters type="auxiliary">[\u200C \u200D]</exemplarCharacters>
 	</characters>
 	<delimiters>

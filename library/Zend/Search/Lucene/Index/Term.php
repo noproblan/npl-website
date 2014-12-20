@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -20,23 +21,25 @@
  * @version    $Id: Term.php 23775 2011-03-01 17:25:24Z ralph $
  */
 
-
 /**
- * A Term represents a word from text.  This is the unit of search.  It is
+ * A Term represents a word from text.
+ * This is the unit of search. It is
  * composed of two elements, the text of the word, as a string, and the name of
  * the field that the text occured in, an interned string.
  *
  * Note that terms may represent more than words from text fields, but also
  * things like dates, email addresses, urls, etc.
  *
- * @category   Zend
- * @package    Zend_Search_Lucene
+ * @category Zend
+ * @package Zend_Search_Lucene
  * @subpackage Index
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Search_Lucene_Index_Term
 {
+
     /**
      * Field name or field number (depending from context)
      *
@@ -51,23 +54,21 @@ class Zend_Search_Lucene_Index_Term
      */
     public $text;
 
-
     /**
      * Object constructor
      */
-    public function __construct($text, $field = null)
+    public function __construct ($text, $field = null)
     {
-        $this->field = ($field === null)?  Zend_Search_Lucene::getDefaultSearchField() : $field;
-        $this->text  = $text;
+        $this->field = ($field === null) ? Zend_Search_Lucene::getDefaultSearchField() : $field;
+        $this->text = $text;
     }
-
 
     /**
      * Returns term key
      *
      * @return string
      */
-    public function key()
+    public function key ()
     {
         return $this->field . chr(0) . $this->text;
     }
@@ -75,69 +76,69 @@ class Zend_Search_Lucene_Index_Term
     /**
      * Get term prefix
      *
-     * @param string $str
-     * @param integer $length
+     * @param string $str            
+     * @param integer $length            
      * @return string
      */
-    public static function getPrefix($str, $length)
+    public static function getPrefix ($str, $length)
     {
         $prefixBytes = 0;
         $prefixChars = 0;
-        while ($prefixBytes < strlen($str)  &&  $prefixChars < $length) {
+        while ($prefixBytes < strlen($str) && $prefixChars < $length) {
             $charBytes = 1;
             if ((ord($str[$prefixBytes]) & 0xC0) == 0xC0) {
-                $charBytes++;
-                if (ord($str[$prefixBytes]) & 0x20 ) {
-                    $charBytes++;
-                    if (ord($str[$prefixBytes]) & 0x10 ) {
-                        $charBytes++;
+                $charBytes ++;
+                if (ord($str[$prefixBytes]) & 0x20) {
+                    $charBytes ++;
+                    if (ord($str[$prefixBytes]) & 0x10) {
+                        $charBytes ++;
                     }
                 }
             }
-
+            
             if ($prefixBytes + $charBytes > strlen($str)) {
                 // wrong character
                 break;
             }
-
-            $prefixChars++;
+            
+            $prefixChars ++;
             $prefixBytes += $charBytes;
         }
-
+        
         return substr($str, 0, $prefixBytes);
     }
 
     /**
      * Get UTF-8 string length
      *
-     * @param string $str
+     * @param string $str            
      * @return string
      */
-    public static function getLength($str)
+    public static function getLength ($str)
     {
         $bytes = 0;
         $chars = 0;
         while ($bytes < strlen($str)) {
             $charBytes = 1;
             if ((ord($str[$bytes]) & 0xC0) == 0xC0) {
-                $charBytes++;
-                if (ord($str[$bytes]) & 0x20 ) {
-                    $charBytes++;
-                    if (ord($str[$bytes]) & 0x10 ) {
-                        $charBytes++;
+                $charBytes ++;
+                if (ord($str[$bytes]) & 0x20) {
+                    $charBytes ++;
+                    if (ord($str[$bytes]) & 0x10) {
+                        $charBytes ++;
                     }
                 }
             }
-
+            
             if ($bytes + $charBytes > strlen($str)) {
                 // wrong character
                 break;
             }
-
-            $chars++;
+            
+            $chars ++;
             $bytes += $charBytes;
         }
-
+        
         return $chars;
     }
 }

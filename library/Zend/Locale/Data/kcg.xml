@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <ldml>
 	<identity>
-		<version number="$Revision: 1.29 $"/>
-		<generation date="$Date: 2009/05/05 23:06:37 $"/>
-		<language type="kcg"/>
+		<version number="$Revision: 1.29 $" />
+		<generation date="$Date: 2009/05/05 23:06:37 $" />
+		<language type="kcg" />
 	</identity>
 	<characters>
-		<exemplarCharacters>[a {a\u0331} b {ch} {chy} d-g {gb} {gh} {ghw} {ghy} i {i\u0331} j {jhy} k {kh} {kp} l-n {ng} {ny} o p r s {sh} {shy} t {ts} u-w y z]</exemplarCharacters>
+		<exemplarCharacters>[a {a\u0331} b {ch} {chy} d-g {gb} {gh} {ghw}
+			{ghy} i {i\u0331} j {jhy} k {kh} {kp} l-n {ng} {ny} o p r s {sh}
+			{shy} t {ts} u-w y z]</exemplarCharacters>
 	</characters>
 	<dates>
 		<calendars>

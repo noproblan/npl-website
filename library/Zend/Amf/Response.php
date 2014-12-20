@@ -19,42 +19,54 @@
  * @version    $Id: Response.php 23775 2011-03-01 17:25:24Z ralph $
  */
 
-/** @see Zend_Amf_Constants */
+/**
+ * @see Zend_Amf_Constants
+ */
 require_once 'Zend/Amf/Constants.php';
 
-/** @see Zend_Amf_Parse_OutputStream */
+/**
+ * @see Zend_Amf_Parse_OutputStream
+ */
 require_once 'Zend/Amf/Parse/OutputStream.php';
 
-/** @see Zend_Amf_Parse_Amf0_Serializer */
+/**
+ * @see Zend_Amf_Parse_Amf0_Serializer
+ */
 require_once 'Zend/Amf/Parse/Amf0/Serializer.php';
 
 /**
  * Handles converting the PHP object ready for response back into AMF
  *
- * @package    Zend_Amf
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @package Zend_Amf
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Amf_Response
 {
+
     /**
+     *
      * @var int Object encoding for response
      */
     protected $_objectEncoding = 0;
 
     /**
      * Array of Zend_Amf_Value_MessageBody objects
+     * 
      * @var array
      */
     protected $_bodies = array();
 
     /**
      * Array of Zend_Amf_Value_MessageHeader objects
+     * 
      * @var array
      */
     protected $_headers = array();
 
     /**
+     *
      * @var Zend_Amf_Parse_OutputStream
      */
     protected $_outputStream;
@@ -64,7 +76,7 @@ class Zend_Amf_Response
      *
      * @return Zend_Amf_Response
      */
-    public function finalize()
+    public function finalize ()
     {
         $this->_outputStream = new Zend_Amf_Parse_OutputStream();
         $this->writeMessage($this->_outputStream);
@@ -75,17 +87,18 @@ class Zend_Amf_Response
      * Serialize the PHP data types back into Actionscript and
      * create and AMF stream.
      *
-     * @param  Zend_Amf_Parse_OutputStream $stream
+     * @param Zend_Amf_Parse_OutputStream $stream            
      * @return Zend_Amf_Response
      */
-    public function writeMessage(Zend_Amf_Parse_OutputStream $stream)
+    public function writeMessage (Zend_Amf_Parse_OutputStream $stream)
     {
         $objectEncoding = $this->_objectEncoding;
-
-        //Write encoding to start of stream. Preamble byte is written of two byte Unsigned Short
+        
+        // Write encoding to start of stream. Preamble byte is written of two
+        // byte Unsigned Short
         $stream->writeByte(0x00);
         $stream->writeByte($objectEncoding);
-
+        
         // Loop through the AMF Headers that need to be returned.
         $headerCount = count($this->_headers);
         $stream->writeInt($headerCount);
@@ -103,7 +116,7 @@ class Zend_Amf_Response
                 $serializer->writeTypeMarker($header->data);
             }
         }
-
+        
         // loop through the AMF bodies that need to be returned.
         $bodyCount = count($this->_bodies);
         $stream->writeInt($bodyCount);
@@ -113,17 +126,19 @@ class Zend_Amf_Response
             $stream->writeUTF($body->getResponseURI());
             $stream->writeLong(Zend_Amf_Constants::UNKNOWN_CONTENT_LENGTH);
             $bodyData = $body->getData();
-            $markerType = ($this->_objectEncoding == Zend_Amf_Constants::AMF0_OBJECT_ENCODING) ? null : Zend_Amf_Constants::AMF0_AMF3;
+            $markerType = ($this->_objectEncoding ==
+                     Zend_Amf_Constants::AMF0_OBJECT_ENCODING) ? null : Zend_Amf_Constants::AMF0_AMF3;
             if (is_object($bodyData)) {
                 // Workaround for PHP5 with E_STRICT enabled complaining about
                 // "Only variables should be passed by reference"
                 $placeholder = null;
-                $serializer->writeTypeMarker($placeholder, $markerType, $bodyData);
+                $serializer->writeTypeMarker($placeholder, $markerType, 
+                        $bodyData);
             } else {
                 $serializer->writeTypeMarker($bodyData, $markerType);
             }
         }
-
+        
         return $this;
     }
 
@@ -132,7 +147,7 @@ class Zend_Amf_Response
      *
      * @return string The contents of the output stream
      */
-    public function getResponse()
+    public function getResponse ()
     {
         return $this->_outputStream->getStream();
     }
@@ -142,7 +157,7 @@ class Zend_Amf_Response
      *
      * @return string
      */
-    public function __toString()
+    public function __toString ()
     {
         return $this->getResponse();
     }
@@ -150,10 +165,10 @@ class Zend_Amf_Response
     /**
      * Add an AMF body to be sent to the Flash Player
      *
-     * @param  Zend_Amf_Value_MessageBody $body
+     * @param Zend_Amf_Value_MessageBody $body            
      * @return Zend_Amf_Response
      */
-    public function addAmfBody(Zend_Amf_Value_MessageBody $body)
+    public function addAmfBody (Zend_Amf_Value_MessageBody $body)
     {
         $this->_bodies[] = $body;
         return $this;
@@ -164,7 +179,7 @@ class Zend_Amf_Response
      *
      * @return array
      */
-    public function getAmfBodies()
+    public function getAmfBodies ()
     {
         return $this->_bodies;
     }
@@ -172,10 +187,10 @@ class Zend_Amf_Response
     /**
      * Add an AMF Header to be sent back to the flash player
      *
-     * @param  Zend_Amf_Value_MessageHeader $header
+     * @param Zend_Amf_Value_MessageHeader $header            
      * @return Zend_Amf_Response
      */
-    public function addAmfHeader(Zend_Amf_Value_MessageHeader $header)
+    public function addAmfHeader (Zend_Amf_Value_MessageHeader $header)
     {
         $this->_headers[] = $header;
         return $this;
@@ -186,7 +201,7 @@ class Zend_Amf_Response
      *
      * @return array Array of Zend_Amf_Value_MessageHeader objects
      */
-    public function getAmfHeaders()
+    public function getAmfHeaders ()
     {
         return $this->_headers;
     }
@@ -194,10 +209,10 @@ class Zend_Amf_Response
     /**
      * Set the AMF encoding that will be used for serialization
      *
-     * @param  int $encoding
+     * @param int $encoding            
      * @return Zend_Amf_Response
      */
-    public function setObjectEncoding($encoding)
+    public function setObjectEncoding ($encoding)
     {
         $this->_objectEncoding = $encoding;
         return $this;

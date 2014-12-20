@@ -20,27 +20,33 @@
  * @version    $Id: Firebug.php 23775 2011-03-01 17:25:24Z ralph $
  */
 
-/** Zend_Log_Formatter_Abstract */
+/**
+ * Zend_Log_Formatter_Abstract
+ */
 require_once 'Zend/Log/Formatter/Abstract.php';
 
 /**
- * @category   Zend
- * @package    Zend_Log
+ *
+ * @category Zend
+ * @package Zend_Log
  * @subpackage Formatter
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Log_Formatter_Firebug extends Zend_Log_Formatter_Abstract
 {
+
     /**
-	 * Factory for Zend_Log_Formatter_Firebug classe
-	 *
-     * @param array|Zend_Config $options useless
-	 * @return Zend_Log_Formatter_Firebug
+     * Factory for Zend_Log_Formatter_Firebug classe
+     *
+     * @param array|Zend_Config $options
+     *            useless
+     * @return Zend_Log_Formatter_Firebug
      */
-    public static function factory($options)
+    public static function factory ($options)
     {
-        return new self;
+        return new self();
     }
 
     /**
@@ -51,10 +57,11 @@ class Zend_Log_Formatter_Firebug extends Zend_Log_Formatter_Abstract
      * {@see Zend_Log_Writer_Firebug::setFormatter()} method you can
      * pass as much of the event data as you are interested in.
      *
-     * @param  array    $event    event data
-     * @return mixed              event message
+     * @param array $event
+     *            event data
+     * @return mixed event message
      */
-    public function format($event)
+    public function format ($event)
     {
         return $event['message'];
     }

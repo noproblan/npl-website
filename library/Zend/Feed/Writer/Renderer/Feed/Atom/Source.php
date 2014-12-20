@@ -18,24 +18,24 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @version    $Id: Source.php 23775 2011-03-01 17:25:24Z ralph $
  */
-
 require_once 'Zend/Feed/Writer/Renderer/Feed/Atom/AtomAbstract.php';
 
 /**
- * @category   Zend
- * @package    Zend_Feed_Writer
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ *
+ * @category Zend
+ * @package Zend_Feed_Writer
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
-class Zend_Feed_Writer_Renderer_Feed_Atom_Source
-    extends Zend_Feed_Writer_Renderer_Feed_Atom_AtomAbstract
-    implements Zend_Feed_Writer_Renderer_RendererInterface
+class Zend_Feed_Writer_Renderer_Feed_Atom_Source extends Zend_Feed_Writer_Renderer_Feed_Atom_AtomAbstract implements 
+        Zend_Feed_Writer_Renderer_RendererInterface
 {
 
     /**
      * Constructor
      *
-     * @param  Zend_Feed_Writer_Feed_Source $container
+     * @param Zend_Feed_Writer_Feed_Source $container            
      * @return void
      */
     public function __construct (Zend_Feed_Writer_Source $container)
@@ -48,9 +48,9 @@ class Zend_Feed_Writer_Renderer_Feed_Atom_Source
      *
      * @return Zend_Feed_Writer_Renderer_Feed_Atom
      */
-    public function render()
+    public function render ()
     {
-        if (!$this->_container->getEncoding()) {
+        if (! $this->_container->getEncoding()) {
             $this->_container->setEncoding('UTF-8');
         }
         $this->_dom = new DOMDocument('1.0', $this->_container->getEncoding());
@@ -71,7 +71,7 @@ class Zend_Feed_Writer_Renderer_Feed_Atom_Source
         $this->_setAuthors($this->_dom, $root);
         $this->_setCopyright($this->_dom, $root);
         $this->_setCategories($this->_dom, $root);
-
+        
         foreach ($this->_extensions as $ext) {
             $ext->setType($this->getType());
             $ext->setRootElement($this->getRootElement());
@@ -84,16 +84,16 @@ class Zend_Feed_Writer_Renderer_Feed_Atom_Source
     /**
      * Set feed generator string
      *
-     * @param  DOMDocument $dom
-     * @param  DOMElement $root
+     * @param DOMDocument $dom            
+     * @param DOMElement $root            
      * @return void
      */
-    protected function _setGenerator(DOMDocument $dom, DOMElement $root)
+    protected function _setGenerator (DOMDocument $dom, DOMElement $root)
     {
-        if(!$this->getDataContainer()->getGenerator()) {
+        if (! $this->getDataContainer()->getGenerator()) {
             return;
         }
-
+        
         $gdata = $this->getDataContainer()->getGenerator();
         $generator = $dom->createElement('generator');
         $root->appendChild($generator);
@@ -106,5 +106,4 @@ class Zend_Feed_Writer_Renderer_Feed_Atom_Source
             $generator->setAttribute('version', $gdata['version']);
         }
     }
-
 }

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <ldml>
 	<identity>
-		<version number="$Revision: 1.81 $"/>
-		<generation date="$Date: 2009/06/15 03:46:26 $"/>
-		<language type="sq"/>
+		<version number="$Revision: 1.81 $" />
+		<generation date="$Date: 2009/06/15 03:46:26 $" />
+		<language type="sq" />
 	</identity>
 	<localeDisplayNames>
 		<languages>
@@ -281,7 +281,8 @@
 		</territories>
 	</localeDisplayNames>
 	<characters>
-		<exemplarCharacters>[a-c ç d {dh} e ë f g {gj} h-l {ll} m n {nj} o-r {rr} s {sh} t {th} u v x {xh} y z {zh}]</exemplarCharacters>
+		<exemplarCharacters>[a-c ç d {dh} e ë f g {gj} h-l {ll} m n {nj} o-r
+			{rr} s {sh} t {th} u v x {xh} y z {zh}]</exemplarCharacters>
 		<exemplarCharacters type="auxiliary">[w]</exemplarCharacters>
 	</characters>
 	<dates>
@@ -528,9 +529,12 @@
 							<greatestDifference id="y">yy-MM-dd - yy-MM-dd</greatestDifference>
 						</intervalFormatItem>
 						<intervalFormatItem id="yMEd">
-							<greatestDifference id="d">E, yy-MM-dd - E, yy-MM-dd</greatestDifference>
-							<greatestDifference id="M">E, yy-MM-dd - E, yy-MM-dd</greatestDifference>
-							<greatestDifference id="y">E, yy-MM-dd - E, yy-MM-dd</greatestDifference>
+							<greatestDifference id="d">E, yy-MM-dd - E,
+								yy-MM-dd</greatestDifference>
+							<greatestDifference id="M">E, yy-MM-dd - E,
+								yy-MM-dd</greatestDifference>
+							<greatestDifference id="y">E, yy-MM-dd - E,
+								yy-MM-dd</greatestDifference>
 						</intervalFormatItem>
 						<intervalFormatItem id="yMMM">
 							<greatestDifference id="M">yyyy-MM – MM</greatestDifference>
@@ -544,7 +548,8 @@
 						<intervalFormatItem id="yMMMEd">
 							<greatestDifference id="d">E, dd - E, dd MMM y</greatestDifference>
 							<greatestDifference id="M">E, dd MMM - E, dd MMM y</greatestDifference>
-							<greatestDifference id="y">E, dd MMM y - E, dd MMM y</greatestDifference>
+							<greatestDifference id="y">E, dd MMM y - E, dd MMM
+								y</greatestDifference>
 						</intervalFormatItem>
 					</intervalFormats>
 				</dateTimeFormats>

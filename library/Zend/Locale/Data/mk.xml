@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <ldml>
 	<identity>
-		<version number="$Revision: 1.90 $"/>
-		<generation date="$Date: 2009/06/15 03:46:25 $"/>
-		<language type="mk"/>
+		<version number="$Revision: 1.90 $" />
+		<generation date="$Date: 2009/06/15 03:46:25 $" />
+		<language type="mk" />
 	</identity>
 	<localeDisplayNames>
 		<languages>
@@ -1089,7 +1089,8 @@
 						<intervalFormatItem id="yMMMEd">
 							<greatestDifference id="d">E, dd - E, dd MMM y</greatestDifference>
 							<greatestDifference id="M">E, dd MMM - E, dd MMM y</greatestDifference>
-							<greatestDifference id="y">E, dd MMM y - E, dd MMM y</greatestDifference>
+							<greatestDifference id="y">E, dd MMM y - E, dd MMM
+								y</greatestDifference>
 						</intervalFormatItem>
 					</intervalFormats>
 				</dateTimeFormats>

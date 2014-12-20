@@ -21,21 +21,24 @@
  */
 
 /**
+ *
  * @see Zend_Service_DeveloperGarden_Response_BaseType
  */
 require_once 'Zend/Service/DeveloperGarden/Response/BaseType.php';
 
 /**
- * @category   Zend
- * @package    Zend_Service
+ *
+ * @category Zend
+ * @package Zend_Service
  * @subpackage DeveloperGarden
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @author     Marco Kaiser
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @author Marco Kaiser
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
-class Zend_Service_DeveloperGarden_Response_ConferenceCall_GetConferenceStatusResponseType
-    extends Zend_Service_DeveloperGarden_Response_BaseType
+class Zend_Service_DeveloperGarden_Response_ConferenceCall_GetConferenceStatusResponseType extends Zend_Service_DeveloperGarden_Response_BaseType
 {
+
     /**
      * details
      *
@@ -76,7 +79,7 @@ class Zend_Service_DeveloperGarden_Response_ConferenceCall_GetConferenceStatusRe
      *
      * @return Zend_Service_DeveloperGarden_ConferenceCall_ConferenceDetail
      */
-    public function getDetail()
+    public function getDetail ()
     {
         return $this->detail;
     }
@@ -86,7 +89,7 @@ class Zend_Service_DeveloperGarden_Response_ConferenceCall_GetConferenceStatusRe
      *
      * @return integer
      */
-    public function getStartTime()
+    public function getStartTime ()
     {
         return $this->startTime;
     }
@@ -96,7 +99,7 @@ class Zend_Service_DeveloperGarden_Response_ConferenceCall_GetConferenceStatusRe
      *
      * @return Zend_Service_DeveloperGarden_ConferenceCall_ConferenceSchedule
      */
-    public function getSchedule()
+    public function getSchedule ()
     {
         return $this->schedule;
     }
@@ -105,13 +108,14 @@ class Zend_Service_DeveloperGarden_Response_ConferenceCall_GetConferenceStatusRe
      * returns array with all participants
      * Zend_Service_DeveloperGarden_ConferenceCall_ParticipantDetail
      *
-     * @return array of Zend_Service_DeveloperGarden_ConferenceCall_ParticipantDetail
+     * @return array of
+     *         Zend_Service_DeveloperGarden_ConferenceCall_ParticipantDetail
      */
-    public function getParticipants()
+    public function getParticipants ()
     {
         if ($this->participants instanceof Zend_Service_DeveloperGarden_ConferenceCall_Participant) {
             $this->participants = array(
-                $this->participants
+                    $this->participants
             );
         }
         return $this->participants;
@@ -120,10 +124,10 @@ class Zend_Service_DeveloperGarden_Response_ConferenceCall_GetConferenceStatusRe
     /**
      * returns the participant object if found in the response
      *
-     * @param string $participantId
+     * @param string $participantId            
      * @return Zend_Service_DeveloperGarden_ConferenceCall_ParticipantDetail
      */
-    public function getParticipantById($participantId)
+    public function getParticipantById ($participantId)
     {
         $participants = $this->getParticipants();
         if ($participants !== null) {
@@ -141,7 +145,7 @@ class Zend_Service_DeveloperGarden_Response_ConferenceCall_GetConferenceStatusRe
      *
      * @return Zend_Service_DeveloperGarden_ConferenceCall_ConferenceAccount
      */
-    public function getAccount()
+    public function getAccount ()
     {
         return $this->acc;
     }

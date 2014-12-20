@@ -21,6 +21,7 @@
  */
 
 /**
+ *
  * @see Zend_Gdata_App_Exception
  */
 require_once 'Zend/Gdata/App/Exception.php';
@@ -30,11 +31,12 @@ require_once 'Zend/Gdata/App/Exception.php';
  *
  * Class to represent exceptions that occur during Gdata operations.
  *
- * @category   Zend
- * @package    Zend_Gdata
+ * @category Zend
+ * @package Zend_Gdata
  * @subpackage App
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Gdata_App_AuthException extends Zend_Gdata_App_Exception
 {

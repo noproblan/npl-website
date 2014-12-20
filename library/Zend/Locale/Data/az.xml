@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <ldml>
 	<identity>
-		<version number="$Revision: 1.77 $"/>
-		<generation date="$Date: 2009/06/15 03:46:25 $"/>
-		<language type="az"/>
+		<version number="$Revision: 1.77 $" />
+		<generation date="$Date: 2009/06/15 03:46:25 $" />
+		<language type="az" />
 	</identity>
 	<localeDisplayNames>
 		<languages>
@@ -941,7 +941,8 @@
 		</codePatterns>
 	</localeDisplayNames>
 	<characters>
-		<exemplarCharacters>[a-c ç d e ə f g ğ h x ı i İ {i\u0307} j k q l-o ö p r s ş t u ü v y z]</exemplarCharacters>
+		<exemplarCharacters>[a-c ç d e ə f g ğ h x ı i İ {i\u0307} j k q l-o ö
+			p r s ş t u ü v y z]</exemplarCharacters>
 		<exemplarCharacters type="auxiliary">[w]</exemplarCharacters>
 	</characters>
 	<delimiters>

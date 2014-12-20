@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <ldml>
 	<identity>
-		<version number="$Revision: 1.91 $"/>
-		<generation date="$Date: 2009/06/15 20:34:50 $"/>
-		<language type="sr"/>
-		<script type="Latn"/>
+		<version number="$Revision: 1.91 $" />
+		<generation date="$Date: 2009/06/15 20:34:50 $" />
+		<language type="sr" />
+		<script type="Latn" />
 	</identity>
 	<localeDisplayNames>
 		<languages>
@@ -995,7 +995,8 @@
 		</codePatterns>
 	</localeDisplayNames>
 	<characters>
-		<exemplarCharacters>[a-c č ć d đ {dž} e-l {lj} m n {nj} o p r s š t-v z ž]</exemplarCharacters>
+		<exemplarCharacters>[a-c č ć d đ {dž} e-l {lj} m n {nj} o p r s š t-v
+			z ž]</exemplarCharacters>
 		<exemplarCharacters type="auxiliary">[q w-y]</exemplarCharacters>
 	</characters>
 	<dates>
@@ -3566,10 +3567,14 @@
 			</currency>
 			<currency type="BAM">
 				<displayName>Bosansko-Hercegovačka konvertibilna marka</displayName>
-				<displayName count="few">Bosansko-Hercegovačke konvertibilne marke</displayName>
-				<displayName count="many">Bosansko-Hercegovačkih konvertibilnih maraka</displayName>
-				<displayName count="one">bosansko-hercegovačka konvertibilna marka</displayName>
-				<displayName count="other">bosansko-hercegovačkih konvertibilnih maraka</displayName>
+				<displayName count="few">Bosansko-Hercegovačke konvertibilne
+					marke</displayName>
+				<displayName count="many">Bosansko-Hercegovačkih konvertibilnih
+					maraka</displayName>
+				<displayName count="one">bosansko-hercegovačka konvertibilna
+					marka</displayName>
+				<displayName count="other">bosansko-hercegovačkih konvertibilnih
+					maraka</displayName>
 			</currency>
 			<currency type="BBD">
 				<displayName>Barbadoski dolar (BBD)</displayName>
@@ -3588,9 +3593,11 @@
 			<currency type="BEC">
 				<displayName>Belgijski frank (konvertibilni) (BEC)</displayName>
 				<displayName count="few">belgijska franka (konvertibilna)</displayName>
-				<displayName count="many">belgijskih franaka (BEC) (konvertibilnih)</displayName>
+				<displayName count="many">belgijskih franaka (BEC)
+					(konvertibilnih)</displayName>
 				<displayName count="one">belgijski franak (konvertibilni)</displayName>
-				<displayName count="other">belgijskih franaka BEC (konvertibilnih)</displayName>
+				<displayName count="other">belgijskih franaka BEC
+					(konvertibilnih)</displayName>
 			</currency>
 			<currency type="BEF">
 				<displayName>Belgijski franak</displayName>
@@ -3602,7 +3609,8 @@
 			<currency type="BEL">
 				<displayName>Belgijski frank (finansijski) (BEL)</displayName>
 				<displayName count="few">belgijska franka (BEL) (finansijska)</displayName>
-				<displayName count="many">belgijskih franaka (BEL) (finansijskih)</displayName>
+				<displayName count="many">belgijskih franaka (BEL)
+					(finansijskih)</displayName>
 				<displayName count="one">belgijski franak (finansijski)</displayName>
 				<displayName count="other">belgijskih franaka BEL (finansijskih)</displayName>
 			</currency>
@@ -3930,10 +3938,14 @@
 			</currency>
 			<currency type="ECV">
 				<displayName>Ekvadorski unidad de valor konstantin (UVC)</displayName>
-				<displayName count="few">ekvadorska unidad de valor constante (UVC)</displayName>
-				<displayName count="many">ekvadorskih unidad de valor constante (UVC)</displayName>
-				<displayName count="one">ekvadorski unidad de valor constante (UVC)</displayName>
-				<displayName count="other">ekvadorski unidad de valor constante (UVC)</displayName>
+				<displayName count="few">ekvadorska unidad de valor constante
+					(UVC)</displayName>
+				<displayName count="many">ekvadorskih unidad de valor constante
+					(UVC)</displayName>
+				<displayName count="one">ekvadorski unidad de valor constante
+					(UVC)</displayName>
+				<displayName count="other">ekvadorski unidad de valor constante
+					(UVC)</displayName>
 			</currency>
 			<currency type="EEK">
 				<displayName>Estonska kruna</displayName>
@@ -5051,10 +5063,14 @@
 			</currency>
 			<currency type="UYI">
 				<displayName>Urugvajski pezo en unidades indeksades (UYI)</displayName>
-				<displayName count="few">urugvajska pesosa en unidades indexadas</displayName>
-				<displayName count="many">urugvajskih pesosa en unidades indexadas</displayName>
-				<displayName count="one">urugvajski pesos en unidades indexadas</displayName>
-				<displayName count="other">urugvajski pesos en unidades indexadas</displayName>
+				<displayName count="few">urugvajska pesosa en unidades
+					indexadas</displayName>
+				<displayName count="many">urugvajskih pesosa en unidades
+					indexadas</displayName>
+				<displayName count="one">urugvajski pesos en unidades
+					indexadas</displayName>
+				<displayName count="other">urugvajski pesos en unidades
+					indexadas</displayName>
 			</currency>
 			<currency type="UYP">
 				<displayName>Urugvajski pezo (1975-1993) (UYP)</displayName>

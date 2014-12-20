@@ -24,26 +24,28 @@
 /**
  * Zend_Gdata_Query
  */
-require_once('Zend/Gdata/Query.php');
+require_once ('Zend/Gdata/Query.php');
 
 /**
  * Zend_Gdata_Gbase_Query
  */
-require_once('Zend/Gdata/Gbase/Query.php');
+require_once ('Zend/Gdata/Gbase/Query.php');
 
 /**
  * Assists in constructing queries for Google Base Snippets Feed
  *
  * @link http://code.google.com/apis/base/
- *
- * @category   Zend
- * @package    Zend_Gdata
+ *      
+ * @category Zend
+ * @package Zend_Gdata
  * @subpackage Gbase
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Gdata_Gbase_SnippetQuery extends Zend_Gdata_Gbase_Query
 {
+
     /**
      * Path to the snippets feeds on the Google Base server.
      */
@@ -61,7 +63,7 @@ class Zend_Gdata_Gbase_SnippetQuery extends Zend_Gdata_Gbase_Query
      *
      * @return string The query URL for this instance.
      */
-    public function getQueryUrl()
+    public function getQueryUrl ()
     {
         $uri = $this->_defaultFeedUri;
         if ($this->getCategory() !== null) {
@@ -70,5 +72,4 @@ class Zend_Gdata_Gbase_SnippetQuery extends Zend_Gdata_Gbase_Query
         $uri .= $this->getQueryString();
         return $uri;
     }
-
 }

@@ -2,84 +2,91 @@
 <?php $comingLans = $this->comingLans; ?>
 <?php $passedLans = $this->passedLans; ?>
 <div id="view-content">
-	<div id="title">
-		<h1>LAN-Parties</h1>
-	</div>
-	<?php if ($currentLans != null || $comingLans != null || $passedLans != null) { ?>
-	<div id="lans">
-		<?php if ($currentLans != null) { ?>
-		<div id="lans-current" class="lans">
-			<h2>Derzeitige LANs</h2>
-			<table>
-				<tr>
-					<th class="key">Name der LAN</th>
-					<th class="key">Türöffnung</th>
-					<th class="key">Türschliessung</th>
-					<th class="key">Anzahl Sitzplätze</th>
-					<th class="key">Anmeldungen</th>
-					<th class="key">Bezahlte Eintritte</th>
-				</tr>
-				<?php foreach ($currentLans as $currentLan) { ?>
-				<tr>
-					<td class="value"><a href="<?php echo $this->url(array('controller'=>'lan','action'=>'info','lanid'=>$currentLan->getId()),'default',true) ?>"><?php echo $this->escape($currentLan->getName()) ?></a></td>
-					<td class="value"><?php echo $this->escape($currentLan->getStartDatetime()) ?></td>
-					<td class="value"><?php echo $this->escape($currentLan->getEndDatetime()) ?></td>
-					<td class="value"><?php echo $this->escape($currentLan->getNumberOfSeats()) ?></td><td class="value"><?php echo $this->escape($currentLan->getNumberOfParticipantsWithoutTeam()) ?></td>
-					<td class="value"><?php echo $this->escape($currentLan->getNumberOfPrepaidParticipants() + $currentLan->getNumberOfPaidParticipants()) ?></td>
-				</tr>
-				<?php } ?>
-			</table>
-		</div>
-		<?php } ?>
-		<?php if ($comingLans != null) { ?>
-		<div id="lans-coming" class="lans">
-			<h2>Zukünftige LANs</h2>
-			<table>
-				<tr>
-					<th class="key">Name der LAN</th>
-					<th class="key">Türöffnung</th>
-					<th class="key">Türschliessung</th>
-					<th class="key">Anzahl Sitzplätze</th>
-					<th class="key">Anmeldungen</th>
-					<th class="key">Vorauszahlungen</th>
-				</tr>
-				<?php foreach ($comingLans as $comingLan) { ?>
-				<tr>
-					<td class="value"><a href="<?php echo $this->url(array('controller'=>'lan','action'=>'info','lanid'=>$comingLan->getId()),'default',true) ?>"><?php echo $this->escape($comingLan->getName()) ?></a></td>
-					<td class="value"><?php echo $this->escape($comingLan->getStartDatetime()) ?></td>
-					<td class="value"><?php echo $this->escape($comingLan->getEndDatetime()) ?></td>
-					<td class="value"><?php echo $this->escape($comingLan->getNumberOfSeats()) ?></td>
-					<td class="value"><?php echo $this->escape($comingLan->getNumberOfParticipantsWithoutTeam()) ?></td>
-					<td class="value"><?php echo $this->escape($comingLan->getNumberOfPrepaidParticipants()) ?></td>
-				</tr>
-				<?php } ?>
-			</table>
-		</div>
-		<?php } ?>
-		<?php if ($passedLans != null) { ?>
-		<div id="lans-passed" class="lans">
-			<h2>Vergangene LANs</h2>
-			<p><a href="<?php echo $this->url(array('controller'=>'gallery','action'=>'index')) ?>">Zur Galerie</a></p>
-			<table>
-				<tr>
-					<th class="key">Name der LAN</th>
-					<th class="key">Türöffnung</th>
-					<th class="key">Türschliessung</th>
-					<th class="key">Anzahl Sitzplätze</th>
-				</tr>
-				<?php foreach ($passedLans as $passedLan) { ?>
-				<tr>
-					<td class="value"><?php echo $this->escape($passedLan->getName()) ?></td>
-					<td class="value"><?php echo $this->escape($passedLan->getStartDatetime()) ?></td>
-					<td class="value"><?php echo $this->escape($passedLan->getEndDatetime()) ?></td>
-					<td class="value"><?php echo $this->escape($passedLan->getNumberOfSeats()) ?></td>
-				</tr>
-				<?php } ?>
-			</table>
-		</div>
-		<?php } ?>
-	</div>
-	<?php } else { ?>
-	<p>Derzeitig sind keine LAN-Parties eingetragen.</p>
-	<?php } ?>
+    <div id="title">
+        <h1>LAN-Parties</h1>
+    </div>
+    <?php if ($currentLans != null || $comingLans != null || $passedLans != null) { ?>
+    <div id="lans">
+        <?php if ($currentLans != null) { ?>
+        <div id="lans-current" class="lans">
+            <h2>Derzeitige LANs</h2>
+            <table>
+                <tr>
+                    <th class="key">Name der LAN</th>
+                    <th class="key">Türöffnung</th>
+                    <th class="key">Türschliessung</th>
+                    <th class="key">Anzahl Sitzplätze</th>
+                    <th class="key">Anmeldungen</th>
+                    <th class="key">Bezahlte Eintritte</th>
+                </tr>
+                <?php foreach ($currentLans as $currentLan) { ?>
+                <tr>
+                    <td class="value"><a
+                        href="<?php echo $this->url(array('controller'=>'lan','action'=>'info','lanid'=>$currentLan->getId()),'default',true) ?>"><?php echo $this->escape($currentLan->getName()) ?></a></td>
+                    <td class="value"><?php echo $this->escape($currentLan->getStartDatetime()) ?></td>
+                    <td class="value"><?php echo $this->escape($currentLan->getEndDatetime()) ?></td>
+                    <td class="value"><?php echo $this->escape($currentLan->getNumberOfSeats()) ?></td>
+                    <td class="value"><?php echo $this->escape($currentLan->getNumberOfParticipantsWithoutTeam()) ?></td>
+                    <td class="value"><?php echo $this->escape($currentLan->getNumberOfPrepaidParticipants() + $currentLan->getNumberOfPaidParticipants()) ?></td>
+                </tr>
+                <?php } ?>
+            </table>
+        </div>
+        <?php } ?>
+        <?php if ($comingLans != null) { ?>
+        <div id="lans-coming" class="lans">
+            <h2>Zukünftige LANs</h2>
+            <table>
+                <tr>
+                    <th class="key">Name der LAN</th>
+                    <th class="key">Türöffnung</th>
+                    <th class="key">Türschliessung</th>
+                    <th class="key">Anzahl Sitzplätze</th>
+                    <th class="key">Anmeldungen</th>
+                    <th class="key">Vorauszahlungen</th>
+                </tr>
+                <?php foreach ($comingLans as $comingLan) { ?>
+                <tr>
+                    <td class="value"><a
+                        href="<?php echo $this->url(array('controller'=>'lan','action'=>'info','lanid'=>$comingLan->getId()),'default',true) ?>"><?php echo $this->escape($comingLan->getName()) ?></a></td>
+                    <td class="value"><?php echo $this->escape($comingLan->getStartDatetime()) ?></td>
+                    <td class="value"><?php echo $this->escape($comingLan->getEndDatetime()) ?></td>
+                    <td class="value"><?php echo $this->escape($comingLan->getNumberOfSeats()) ?></td>
+                    <td class="value"><?php echo $this->escape($comingLan->getNumberOfParticipantsWithoutTeam()) ?></td>
+                    <td class="value"><?php echo $this->escape($comingLan->getNumberOfPrepaidParticipants()) ?></td>
+                </tr>
+                <?php } ?>
+            </table>
+        </div>
+        <?php } ?>
+        <?php if ($passedLans != null) { ?>
+        <div id="lans-passed" class="lans">
+            <h2>Vergangene LANs</h2>
+            <p>
+                <a
+                    href="<?php echo $this->url(array('controller'=>'gallery','action'=>'index')) ?>">Zur
+                    Galerie</a>
+            </p>
+            <table>
+                <tr>
+                    <th class="key">Name der LAN</th>
+                    <th class="key">Türöffnung</th>
+                    <th class="key">Türschliessung</th>
+                    <th class="key">Anzahl Sitzplätze</th>
+                </tr>
+                <?php foreach ($passedLans as $passedLan) { ?>
+                <tr>
+                    <td class="value"><?php echo $this->escape($passedLan->getName()) ?></td>
+                    <td class="value"><?php echo $this->escape($passedLan->getStartDatetime()) ?></td>
+                    <td class="value"><?php echo $this->escape($passedLan->getEndDatetime()) ?></td>
+                    <td class="value"><?php echo $this->escape($passedLan->getNumberOfSeats()) ?></td>
+                </tr>
+                <?php } ?>
+            </table>
+        </div>
+        <?php } ?>
+    </div>
+    <?php } else { ?>
+    <p>Derzeitig sind keine LAN-Parties eingetragen.</p>
+    <?php } ?>
 </div>

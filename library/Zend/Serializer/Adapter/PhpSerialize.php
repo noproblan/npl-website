@@ -20,33 +20,39 @@
  * @version    $Id: PhpSerialize.php 23775 2011-03-01 17:25:24Z ralph $
  */
 
-/** @see Zend_Serializer_Adapter_AdapterAbstract */
+/**
+ * @see Zend_Serializer_Adapter_AdapterAbstract
+ */
 require_once 'Zend/Serializer/Adapter/AdapterAbstract.php';
 
 /**
- * @category   Zend
- * @package    Zend_Serializer
+ *
+ * @category Zend
+ * @package Zend_Serializer
  * @subpackage Adapter
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Serializer_Adapter_PhpSerialize extends Zend_Serializer_Adapter_AdapterAbstract
 {
+
     /**
-     *  @var null|string Serialized boolean false value
+     *
+     * @var null|string Serialized boolean false value
      */
     private static $_serializedFalse = null;
 
     /**
      * Constructor
      *
-     * @param  array|Zend_Config $opts
+     * @param array|Zend_Config $opts            
      * @return void
      */
-    public function __construct($opts = array())
+    public function __construct ($opts = array())
     {
         parent::__construct($opts);
-
+        
         if (self::$_serializedFalse === null) {
             self::$_serializedFalse = serialize(false);
         }
@@ -55,12 +61,12 @@ class Zend_Serializer_Adapter_PhpSerialize extends Zend_Serializer_Adapter_Adapt
     /**
      * Serialize using serialize()
      *
-     * @param  mixed $value
-     * @param  array $opts
+     * @param mixed $value            
+     * @param array $opts            
      * @return string
      * @throws Zend_Serializer_Exception On serialize error
      */
-    public function serialize($value, array $opts = array())
+    public function serialize ($value, array $opts = array())
     {
         $ret = serialize($value);
         if ($ret === false) {
@@ -74,13 +80,13 @@ class Zend_Serializer_Adapter_PhpSerialize extends Zend_Serializer_Adapter_Adapt
     /**
      * Unserialize
      *
-     * @todo   Allow integration with unserialize_callback_func
-     * @param  string $serialized
-     * @param  array $opts
+     * @todo Allow integration with unserialize_callback_func
+     * @param string $serialized            
+     * @param array $opts            
      * @return mixed
      * @throws Zend_Serializer_Exception on unserialize error
      */
-    public function unserialize($serialized, array $opts = array())
+    public function unserialize ($serialized, array $opts = array())
     {
         // TODO: @see php.ini directive "unserialize_callback_func"
         $ret = @unserialize($serialized);

@@ -22,29 +22,32 @@
  */
 
 /**
+ *
  * @see Zend_Gdata_Query
  */
-require_once('Zend/Gdata/Query.php');
+require_once ('Zend/Gdata/Query.php');
 
 /**
+ *
  * @see Zend_Gdata_Gbase_Query
  */
-require_once('Zend/Gdata/Gbase/Query.php');
-
+require_once ('Zend/Gdata/Gbase/Query.php');
 
 /**
  * Assists in constructing queries for Google Base Customer Items Feed
  *
  * @link http://code.google.com/apis/base/
- *
- * @category   Zend
- * @package    Zend_Gdata
+ *      
+ * @category Zend
+ * @package Zend_Gdata
  * @subpackage Gbase
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Gdata_Gbase_ItemQuery extends Zend_Gdata_Gbase_Query
 {
+
     /**
      * Path to the customer items feeds on the Google Base server.
      */
@@ -65,19 +68,20 @@ class Zend_Gdata_Gbase_ItemQuery extends Zend_Gdata_Gbase_Query
     protected $_id = null;
 
     /**
-     * @param string $value
+     *
+     * @param string $value            
      * @return Zend_Gdata_Gbase_ItemQuery Provides a fluent interface
      */
-    public function setId($value)
+    public function setId ($value)
     {
         $this->_id = $value;
         return $this;
     }
-
+    
     /*
      * @return string id
      */
-    public function getId()
+    public function getId ()
     {
         return $this->_id;
     }
@@ -87,7 +91,7 @@ class Zend_Gdata_Gbase_ItemQuery extends Zend_Gdata_Gbase_Query
      *
      * @return string The query URL for this instance.
      */
-    public function getQueryUrl()
+    public function getQueryUrl ()
     {
         $uri = $this->_defaultFeedUri;
         if ($this->getId() !== null) {
@@ -97,5 +101,4 @@ class Zend_Gdata_Gbase_ItemQuery extends Zend_Gdata_Gbase_Query
         }
         return $uri;
     }
-
 }

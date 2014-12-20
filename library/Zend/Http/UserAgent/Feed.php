@@ -18,42 +18,46 @@
  * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
-
 require_once 'Zend/Http/UserAgent/AbstractDevice.php';
 
 /**
  * Feed browser type matcher
  *
- * @category   Zend
- * @package    Zend_Http
+ * @category Zend
+ * @package Zend_Http
  * @subpackage UserAgent
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Http_UserAgent_Feed extends Zend_Http_UserAgent_AbstractDevice
 {
+
     /**
      * User Agent Signatures
      *
      * @var array
      */
     protected static $_uaSignatures = array(
-        'bloglines',
-        'everyfeed',
-        'feedfetcher',
-        'gregarius',
+            'bloglines',
+            'everyfeed',
+            'feedfetcher',
+            'gregarius'
     );
 
     /**
      * Comparison of the UserAgent chain and User Agent signatures
      *
-     * @param  string $userAgent User Agent chain
-     * @param  array $server $_SERVER like param
+     * @param string $userAgent
+     *            User Agent chain
+     * @param array $server
+     *            $_SERVER like param
      * @return bool
      */
-    public static function match($userAgent, $server)
+    public static function match ($userAgent, $server)
     {
-        return self::_matchAgentAgainstSignatures($userAgent, self::$_uaSignatures);
+        return self::_matchAgentAgainstSignatures($userAgent, 
+                self::$_uaSignatures);
     }
 
     /**
@@ -61,7 +65,7 @@ class Zend_Http_UserAgent_Feed extends Zend_Http_UserAgent_AbstractDevice
      *
      * @return string
      */
-    public function getType()
+    public function getType ()
     {
         return 'feed';
     }
@@ -71,10 +75,10 @@ class Zend_Http_UserAgent_Feed extends Zend_Http_UserAgent_AbstractDevice
      *
      * @return string
      */
-    protected function _defineFeatures()
+    protected function _defineFeatures ()
     {
-        $this->setFeature('iframes',    false, 'product_capability');
-        $this->setFeature('frames',     false, 'product_capability');
+        $this->setFeature('iframes', false, 'product_capability');
+        $this->setFeature('frames', false, 'product_capability');
         $this->setFeature('javascript', false, 'product_capability');
         return parent::_defineFeatures();
     }

@@ -1,26 +1,22 @@
 <div id="view-content">
-	<div id="title">
-		<h1>Benutzerverwaltung</h1>
-	</div>
-	<?php echo $this->messages(); ?>
-	<div id="information">
-		<?= $this->partial('rights/submenu.phtml') ?>
-		Liste aller eingetragenen Benutzer (<?= $this->usercount ?>): 
-	</div>
-	
-	<script type="text/javascript" >
+    <div id="title">
+        <h1>Benutzerverwaltung</h1>
+    </div>
+    <?php echo $this->messages(); ?>
+    <div id="information">
+        <?= $this->partial('rights/submenu.phtml')?>
+        Liste aller eingetragenen Benutzer (<?= $this->usercount ?>): 
+    </div>
 
-	</script>
-	
-	<div id="resourcesContainer" class="simple-box">
-		Resourcen: 
-	</div>
-	
-	<div id="rolesContainer" class="simple-box">
-		<?= $this->createRoleForm ?>
-		Rollen:
-		<div id="rolesDetail">
-		
-		</div>
-	</div>
+    <script type="text/javascript">
+
+    </script>
+
+    <div id="resourcesContainer" class="simple-box">Resourcen:</div>
+
+    <div id="rolesContainer" class="simple-box">
+        <?= $this->createRoleForm?>
+        Rollen:
+        <div id="rolesDetail"></div>
+    </div>
 </div>

@@ -21,21 +21,24 @@
  */
 
 /**
+ *
  * @see Zend_Service_DeveloperGarden_Response_ResponseAbstract
  */
 require_once 'Zend/Service/DeveloperGarden/Response/ResponseAbstract.php';
 
 /**
- * @category   Zend
- * @package    Zend_Service
+ *
+ * @category Zend
+ * @package Zend_Service
  * @subpackage DeveloperGarden
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @author     Marco Kaiser
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @author Marco Kaiser
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
-class Zend_Service_DeveloperGarden_Response_BaseType
-    extends Zend_Service_DeveloperGarden_Response_ResponseAbstract
+class Zend_Service_DeveloperGarden_Response_BaseType extends Zend_Service_DeveloperGarden_Response_ResponseAbstract
 {
+
     /**
      * the status code
      *
@@ -56,15 +59,13 @@ class Zend_Service_DeveloperGarden_Response_BaseType
      * @throws Zend_Service_DeveloperGarden_Response_Exception
      * @return Zend_Service_DeveloperGarden_Response_ResponseAbstract
      */
-    public function parse()
+    public function parse ()
     {
         if ($this->hasError()) {
             throw new Zend_Service_DeveloperGarden_Response_Exception(
-                $this->getStatusMessage(),
-                $this->getStatusCode()
-            );
+                    $this->getStatusMessage(), $this->getStatusCode());
         }
-
+        
         return $this;
     }
 
@@ -73,7 +74,7 @@ class Zend_Service_DeveloperGarden_Response_BaseType
      *
      * @return string|null
      */
-    public function getStatusCode()
+    public function getStatusCode ()
     {
         return $this->statusCode;
     }
@@ -83,7 +84,7 @@ class Zend_Service_DeveloperGarden_Response_BaseType
      *
      * @return string
      */
-    public function getStatusMessage()
+    public function getStatusMessage ()
     {
         return $this->statusMessage;
     }
@@ -93,10 +94,9 @@ class Zend_Service_DeveloperGarden_Response_BaseType
      *
      * @return boolean
      */
-    public function isValid()
+    public function isValid ()
     {
-        return ($this->statusCode === null
-             || $this->statusCode == '0000');
+        return ($this->statusCode === null || $this->statusCode == '0000');
     }
 
     /**
@@ -104,10 +104,9 @@ class Zend_Service_DeveloperGarden_Response_BaseType
      *
      * @return boolean
      */
-    public function hasError()
+    public function hasError ()
     {
-        return ($this->statusCode !== null
-             && $this->statusCode != '0000');
+        return ($this->statusCode !== null && $this->statusCode != '0000');
     }
 
     /**
@@ -115,7 +114,7 @@ class Zend_Service_DeveloperGarden_Response_BaseType
      *
      * @return string|null
      */
-    public function getErrorCode()
+    public function getErrorCode ()
     {
         if (empty($this->errorCode)) {
             return $this->statusCode;
@@ -129,7 +128,7 @@ class Zend_Service_DeveloperGarden_Response_BaseType
      *
      * @return string
      */
-    public function getErrorMessage()
+    public function getErrorMessage ()
     {
         if (empty($this->errorMessage)) {
             return $this->statusMessage;

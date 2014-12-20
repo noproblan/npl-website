@@ -20,28 +20,30 @@
  * @version    $Id: InlinkDataResultSet.php 23775 2011-03-01 17:25:24Z ralph $
  */
 
-
 /**
+ *
  * @see Zend_Service_Yahoo_ResultSet
  */
 require_once 'Zend/Service/Yahoo/ResultSet.php';
 
-
 /**
+ *
  * @see Zend_Service_Yahoo_WebResult
  */
 require_once 'Zend/Service/Yahoo/InlinkDataResult.php';
 
-
 /**
- * @category   Zend
- * @package    Zend_Service
+ *
+ * @category Zend
+ * @package Zend_Service
  * @subpackage Yahoo
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Service_Yahoo_InlinkDataResultSet extends Zend_Service_Yahoo_ResultSet
 {
+
     /**
      * Web result set namespace
      *
@@ -49,14 +51,14 @@ class Zend_Service_Yahoo_InlinkDataResultSet extends Zend_Service_Yahoo_ResultSe
      */
     protected $_namespace = 'urn:yahoo:srch';
 
-
     /**
      * Overrides Zend_Service_Yahoo_ResultSet::current()
      *
      * @return Zend_Service_Yahoo_InlinkDataResult
      */
-    public function current()
+    public function current ()
     {
-        return new Zend_Service_Yahoo_InlinkDataResult($this->_results->item($this->_currentIndex));
+        return new Zend_Service_Yahoo_InlinkDataResult(
+                $this->_results->item($this->_currentIndex));
     }
 }

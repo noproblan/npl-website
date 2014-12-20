@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <ldml>
 	<identity>
-		<version number="$Revision: 1.37 $"/>
-		<generation date="$Date: 2009/06/15 03:46:25 $"/>
-		<language type="yo"/>
+		<version number="$Revision: 1.37 $" />
+		<generation date="$Date: 2009/06/15 03:46:25 $" />
+		<language type="yo" />
 	</identity>
 	<localeDisplayNames>
 		<languages>
@@ -123,7 +123,8 @@
 		</measurementSystemNames>
 	</localeDisplayNames>
 	<characters>
-		<exemplarCharacters>[a á à b d e é è ẹ {ẹ\u0301} {ẹ\u0300} f g {gb} h i í ì j-o ó ò ọ {ọ\u0301} {ọ\u0300} p r s ṣ t u ú ù w y]</exemplarCharacters>
+		<exemplarCharacters>[a á à b d e é è ẹ {ẹ\u0301} {ẹ\u0300} f g {gb} h
+			i í ì j-o ó ò ọ {ọ\u0301} {ọ\u0300} p r s ṣ t u ú ù w y]</exemplarCharacters>
 		<exemplarCharacters type="auxiliary">[c q v x z]</exemplarCharacters>
 	</characters>
 	<dates>

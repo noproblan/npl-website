@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -20,37 +21,40 @@
  * @version    $Id: DocsFilter.php 23775 2011-03-01 17:25:24Z ralph $
  */
 
-
 /**
- * A Zend_Search_Lucene_Index_DocsFilter is used to filter documents while searching.
+ * A Zend_Search_Lucene_Index_DocsFilter is used to filter documents while
+ * searching.
  *
- * It may or _may_not_ be used for actual filtering, so it's just a hint that upper query limits
+ * It may or _may_not_ be used for actual filtering, so it's just a hint that
+ * upper query limits
  * search result by specified list.
  *
- * @category   Zend
- * @package    Zend_Search_Lucene
+ * @category Zend
+ * @package Zend_Search_Lucene
  * @subpackage Index
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Search_Lucene_Index_DocsFilter
 {
+
     /**
      * Set of segment filters:
-     *  array( <segmentName> => array(<docId> => <undefined_value>,
-     *                                <docId> => <undefined_value>,
-     *                                <docId> => <undefined_value>,
-     *                                ...                          ),
-     *         <segmentName> => array(<docId> => <undefined_value>,
-     *                                <docId> => <undefined_value>,
-     *                                <docId> => <undefined_value>,
-     *                                ...                          ),
-     *         <segmentName> => array(<docId> => <undefined_value>,
-     *                                <docId> => <undefined_value>,
-     *                                <docId> => <undefined_value>,
-     *                                ...                          ),
-     *         ...
-     *       )
+     * array( <segmentName> => array(<docId> => <undefined_value>,
+     * <docId> => <undefined_value>,
+     * <docId> => <undefined_value>,
+     * ... ),
+     * <segmentName> => array(<docId> => <undefined_value>,
+     * <docId> => <undefined_value>,
+     * <docId> => <undefined_value>,
+     * ... ),
+     * <segmentName> => array(<docId> => <undefined_value>,
+     * <docId> => <undefined_value>,
+     * <docId> => <undefined_value>,
+     * ... ),
+     * ...
+     * )
      *
      * @var array
      */

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -22,17 +23,20 @@
 
 /**
  * This class decorates a SimpleXMLElement parsed from a Nirvanix web service
- * response.  It is primarily exists to provide a convenience feature that
+ * response.
+ * It is primarily exists to provide a convenience feature that
  * throws an exception when <ResponseCode> contains an error.
  *
- * @category   Zend
- * @package    Zend_Service
+ * @category Zend
+ * @package Zend_Service
  * @subpackage Nirvanix
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Service_Nirvanix_Response
 {
+
     /**
      * SimpleXMLElement parsed from Nirvanix web service response.
      *
@@ -41,28 +45,31 @@ class Zend_Service_Nirvanix_Response
     protected $_sxml;
 
     /**
-     * Class constructor.  Parse the XML response from a Nirvanix method
+     * Class constructor.
+     * Parse the XML response from a Nirvanix method
      * call into a decorated SimpleXMLElement element.
      *
-     * @param string $xml  XML response string from Nirvanix
+     * @param string $xml
+     *            XML response string from Nirvanix
      * @throws Zend_Service_Nirvanix_Exception
      */
-    public function __construct($xml)
+    public function __construct ($xml)
     {
         $this->_sxml = @simplexml_load_string($xml);
-
+        
         if (! $this->_sxml instanceof SimpleXMLElement) {
-            $this->_throwException("XML could not be parsed from response: $xml");
+            $this->_throwException(
+                    "XML could not be parsed from response: $xml");
         }
-
+        
         $name = $this->_sxml->getName();
         if ($name != 'Response') {
             $this->_throwException("Expected XML element Response, got $name");
         }
-
-        $code = (int)$this->_sxml->ResponseCode;
+        
+        $code = (int) $this->_sxml->ResponseCode;
         if ($code != 0) {
-            $msg = (string)$this->_sxml->ErrorMessage;
+            $msg = (string) $this->_sxml->ErrorMessage;
             $this->_throwException($msg, $code);
         }
     }
@@ -73,7 +80,7 @@ class Zend_Service_Nirvanix_Response
      *
      * @return SimpleXMLElement
      */
-    public function getSxml()
+    public function getSxml ()
     {
         return $this->_sxml;
     }
@@ -81,10 +88,11 @@ class Zend_Service_Nirvanix_Response
     /**
      * Delegate undefined properties to the decorated SimpleXMLElement.
      *
-     * @param  string  $offset  Undefined property name
+     * @param string $offset
+     *            Undefined property name
      * @return mixed
      */
-    public function __get($offset)
+    public function __get ($offset)
     {
         return $this->_sxml->$offset;
     }
@@ -92,32 +100,40 @@ class Zend_Service_Nirvanix_Response
     /**
      * Delegate undefined methods to the decorated SimpleXMLElement.
      *
-     * @param  string  $offset  Underfined method name
-     * @param  array   $args    Method arguments
+     * @param string $offset
+     *            Underfined method name
+     * @param array $args
+     *            Method arguments
      * @return mixed
      */
-    public function __call($method, $args)
+    public function __call ($method, $args)
     {
-        return call_user_func_array(array($this->_sxml, $method), $args);
+        return call_user_func_array(array(
+                $this->_sxml,
+                $method
+        ), $args);
     }
 
     /**
-     * Throw an exception.  This method exists to only contain the
+     * Throw an exception.
+     * This method exists to only contain the
      * lazy-require() of the exception class.
      *
-     * @param  string   $message  Error message
-     * @param  integer  $code     Error code
+     * @param string $message
+     *            Error message
+     * @param integer $code
+     *            Error code
      * @throws Zend_Service_Nirvanix_Exception
      * @return void
      */
-    protected function _throwException($message, $code = null)
+    protected function _throwException ($message, $code = null)
     {
         /**
+         *
          * @see Zend_Service_Nirvanix_Exception
          */
         require_once 'Zend/Service/Nirvanix/Exception.php';
-
+        
         throw new Zend_Service_Nirvanix_Exception($message, $code);
     }
-
 }

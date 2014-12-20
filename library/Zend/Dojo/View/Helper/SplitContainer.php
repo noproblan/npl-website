@@ -20,28 +20,34 @@
  * @version    $Id: SplitContainer.php 23775 2011-03-01 17:25:24Z ralph $
  */
 
-/** Zend_Dojo_View_Helper_DijitContainer */
+/**
+ * Zend_Dojo_View_Helper_DijitContainer
+ */
 require_once 'Zend/Dojo/View/Helper/DijitContainer.php';
 
 /**
  * Dojo SplitContainer dijit
  *
- * @uses       Zend_Dojo_View_Helper_DijitContainer
- * @package    Zend_Dojo
+ * @uses Zend_Dojo_View_Helper_DijitContainer
+ * @package Zend_Dojo
  * @subpackage View
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
-  */
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
+ */
 class Zend_Dojo_View_Helper_SplitContainer extends Zend_Dojo_View_Helper_DijitContainer
 {
+
     /**
      * Dijit being used
+     * 
      * @var string
      */
-    protected $_dijit  = 'dijit.layout.SplitContainer';
+    protected $_dijit = 'dijit.layout.SplitContainer';
 
     /**
      * Dojo module to use
+     * 
      * @var string
      */
     protected $_module = 'dijit.layout.SplitContainer';
@@ -49,18 +55,21 @@ class Zend_Dojo_View_Helper_SplitContainer extends Zend_Dojo_View_Helper_DijitCo
     /**
      * dijit.layout.SplitContainer
      *
-     * @param  string $id
-     * @param  string $content
-     * @param  array $params  Parameters to use for dijit creation
-     * @param  array $attribs HTML attributes
+     * @param string $id            
+     * @param string $content            
+     * @param array $params
+     *            Parameters to use for dijit creation
+     * @param array $attribs
+     *            HTML attributes
      * @return string
      */
-    public function splitContainer($id = null, $content = '', array $params = array(), array $attribs = array())
+    public function splitContainer ($id = null, $content = '', array $params = array(), 
+            array $attribs = array())
     {
         if (0 === func_num_args()) {
             return $this;
         }
-
+        
         return $this->_createLayoutContainer($id, $content, $params, $attribs);
     }
 }

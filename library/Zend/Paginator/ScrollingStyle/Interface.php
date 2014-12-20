@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -20,19 +21,23 @@
  */
 
 /**
- * @category   Zend
- * @package    Zend_Paginator
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ *
+ * @category Zend
+ * @package Zend_Paginator
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 interface Zend_Paginator_ScrollingStyle_Interface
 {
+
     /**
      * Returns an array of "local" pages given a page number and range.
      *
-     * @param  Zend_Paginator $paginator
-     * @param  integer $pageRange (Optional) Page range
+     * @param Zend_Paginator $paginator            
+     * @param integer $pageRange
+     *            (Optional) Page range
      * @return array
      */
-    public function getPages(Zend_Paginator $paginator, $pageRange = null);
+    public function getPages (Zend_Paginator $paginator, $pageRange = null);
 }

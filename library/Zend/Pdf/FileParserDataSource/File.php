@@ -20,9 +20,10 @@
  * @version    $Id: File.php 23775 2011-03-01 17:25:24Z ralph $
  */
 
-/** Zend_Pdf_FileParserDataSource */
+/**
+ * Zend_Pdf_FileParserDataSource
+ */
 require_once 'Zend/Pdf/FileParserDataSource.php';
-
 
 /**
  * Concrete subclass of {@link Zend_Pdf_FileParserDataSource} that provides an
@@ -32,35 +33,39 @@ require_once 'Zend/Pdf/FileParserDataSource.php';
  * by {@link fopen()} (through URL wrappers). It may be used for local
  * filesystem objects only.
  *
- * @package    Zend_Pdf
+ * @package Zend_Pdf
  * @subpackage FileParser
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Pdf_FileParserDataSource_File extends Zend_Pdf_FileParserDataSource
 {
-  /**** Instance Variables ****/
-
 
     /**
+     * ** Instance Variables ***
+     */
+    
+    /**
      * Fully-qualified path to the file.
+     * 
      * @var string
      */
     protected $_filePath = '';
 
     /**
      * File resource handle .
+     *
      * @var resource
      */
     protected $_fileResource = null;
 
-
-
-  /**** Public Interface ****/
-
-
-  /* Concrete Class Implementation */
-
+    /**
+     * ** Public Interface ***
+     */
+    
+    /* Concrete Class Implementation */
+    
     /**
      * Object constructor.
      *
@@ -69,30 +74,33 @@ class Zend_Pdf_FileParserDataSource_File extends Zend_Pdf_FileParserDataSource
      *
      * Throws an exception if the file is missing or cannot be opened.
      *
-     * @param string $filePath Fully-qualified path to the file.
+     * @param string $filePath
+     *            Fully-qualified path to the file.
      * @throws Zend_Pdf_Exception
      */
-    public function __construct($filePath)
+    public function __construct ($filePath)
     {
         if (! (is_file($filePath) || is_link($filePath))) {
             require_once 'Zend/Pdf/Exception.php';
-            throw new Zend_Pdf_Exception("Invalid file path: $filePath",
-                                         Zend_Pdf_Exception::BAD_FILE_PATH);
+            throw new Zend_Pdf_Exception("Invalid file path: $filePath", 
+                    Zend_Pdf_Exception::BAD_FILE_PATH);
         }
         if (! is_readable($filePath)) {
             require_once 'Zend/Pdf/Exception.php';
-            throw new Zend_Pdf_Exception("File is not readable: $filePath",
-                                         Zend_Pdf_Exception::NOT_READABLE);
+            throw new Zend_Pdf_Exception("File is not readable: $filePath", 
+                    Zend_Pdf_Exception::NOT_READABLE);
         }
         if (($this->_size = @filesize($filePath)) === false) {
             require_once 'Zend/Pdf/Exception.php';
-            throw new Zend_Pdf_Exception("Error while obtaining file size: $filePath",
-                                         Zend_Pdf_Exception::CANT_GET_FILE_SIZE);
+            throw new Zend_Pdf_Exception(
+                    "Error while obtaining file size: $filePath", 
+                    Zend_Pdf_Exception::CANT_GET_FILE_SIZE);
         }
         if (($this->_fileResource = @fopen($filePath, 'rb')) === false) {
             require_once 'Zend/Pdf/Exception.php';
-            throw new Zend_Pdf_Exception("Cannot open file for reading: $filePath",
-                                         Zend_Pdf_Exception::CANT_OPEN_FILE);
+            throw new Zend_Pdf_Exception(
+                    "Cannot open file for reading: $filePath", 
+                    Zend_Pdf_Exception::CANT_OPEN_FILE);
         }
         $this->_filePath = $filePath;
     }
@@ -102,7 +110,7 @@ class Zend_Pdf_FileParserDataSource_File extends Zend_Pdf_FileParserDataSource
      *
      * Closes the file if it had been successfully opened.
      */
-    public function __destruct()
+    public function __destruct ()
     {
         if (is_resource($this->_fileResource)) {
             @fclose($this->_fileResource);
@@ -118,22 +126,24 @@ class Zend_Pdf_FileParserDataSource_File extends Zend_Pdf_FileParserDataSource
      * Throws an exception if an error was encountered while reading the file or
      * if there is insufficient data to completely fulfill the request.
      *
-     * @param integer $byteCount Number of bytes to read.
+     * @param integer $byteCount
+     *            Number of bytes to read.
      * @return string
      * @throws Zend_Pdf_Exception
      */
-    public function readBytes($byteCount)
+    public function readBytes ($byteCount)
     {
         $bytes = @fread($this->_fileResource, $byteCount);
         if ($bytes === false) {
             require_once 'Zend/Pdf/Exception.php';
-            throw new Zend_Pdf_Exception('Unexpected error while reading file',
-                                         Zend_Pdf_Exception::ERROR_DURING_READ);
+            throw new Zend_Pdf_Exception('Unexpected error while reading file', 
+                    Zend_Pdf_Exception::ERROR_DURING_READ);
         }
         if (strlen($bytes) != $byteCount) {
             require_once 'Zend/Pdf/Exception.php';
-            throw new Zend_Pdf_Exception("Insufficient data to read $byteCount bytes",
-                                         Zend_Pdf_Exception::INSUFFICIENT_DATA);
+            throw new Zend_Pdf_Exception(
+                    "Insufficient data to read $byteCount bytes", 
+                    Zend_Pdf_Exception::INSUFFICIENT_DATA);
         }
         $this->_offset += $byteCount;
         return $bytes;
@@ -146,53 +156,51 @@ class Zend_Pdf_FileParserDataSource_File extends Zend_Pdf_FileParserDataSource
      *
      * @return string
      */
-    public function readAllBytes()
+    public function readAllBytes ()
     {
         return file_get_contents($this->_filePath);
     }
-
-
-  /* Object Magic Methods */
-
+    
+    /* Object Magic Methods */
+    
     /**
      * Returns the full filesystem path of the file.
      *
      * @return string
      */
-    public function __toString()
+    public function __toString ()
     {
         return $this->_filePath;
     }
-
-
-  /* Primitive Methods */
-
+    
+    /* Primitive Methods */
+    
     /**
      * Seeks the file read position to the specified byte offset.
      *
      * Throws an exception if the file pointer cannot be moved or if it is
      * moved beyond EOF (end of file).
      *
-     * @param integer $offset Destination byte offset.
+     * @param integer $offset
+     *            Destination byte offset.
      * @throws Zend_Pdf_Exception
      */
-    public function moveToOffset($offset)
+    public function moveToOffset ($offset)
     {
         if ($this->_offset == $offset) {
-            return;    // Not moving; do nothing.
+            return; // Not moving; do nothing.
         }
         parent::moveToOffset($offset);
         $result = @fseek($this->_fileResource, $offset, SEEK_SET);
         if ($result !== 0) {
             require_once 'Zend/Pdf/Exception.php';
-            throw new Zend_Pdf_Exception('Error while setting new file position',
-                                         Zend_Pdf_Exception::CANT_SET_FILE_POSITION);
+            throw new Zend_Pdf_Exception('Error while setting new file position', 
+                    Zend_Pdf_Exception::CANT_SET_FILE_POSITION);
         }
         if (feof($this->_fileResource)) {
             require_once 'Zend/Pdf/Exception.php';
-            throw new Zend_Pdf_Exception('Moved beyond the end of the file',
-                                         Zend_Pdf_Exception::MOVE_BEYOND_END_OF_FILE);
+            throw new Zend_Pdf_Exception('Moved beyond the end of the file', 
+                    Zend_Pdf_Exception::MOVE_BEYOND_END_OF_FILE);
         }
     }
-
 }

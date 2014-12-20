@@ -21,16 +21,18 @@
  * @version    $Id: Result.php 23775 2011-03-01 17:25:24Z ralph $
  */
 
-
 /**
- * @category   Zend
- * @package    Zend_Service
+ *
+ * @category Zend
+ * @package Zend_Service
  * @subpackage Yahoo
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Service_Yahoo_Result
 {
+
     /**
      * The title of the search entry
      *
@@ -73,26 +75,29 @@ class Zend_Service_Yahoo_Result
      */
     protected $_xpath;
 
-
     /**
      * Initializes the result
      *
-     * @param  DOMElement $result
+     * @param DOMElement $result            
      * @return void
      */
-    public function __construct(DOMElement $result)
+    public function __construct (DOMElement $result)
     {
         // default fields for all search results:
-        $fields = array('Title', 'Url', 'ClickUrl');
-
+        $fields = array(
+                'Title',
+                'Url',
+                'ClickUrl'
+        );
+        
         // merge w/ child's fields
         $this->_fields = array_merge($this->_fields, $fields);
-
+        
         $this->_xpath = new DOMXPath($result->ownerDocument);
         $this->_xpath->registerNamespace('yh', $this->_namespace);
-
+        
         // add search results to appropriate fields
-
+        
         foreach ($this->_fields as $f) {
             $query = "./yh:$f/text()";
             $node = $this->_xpath->query($query, $result);
@@ -100,25 +105,26 @@ class Zend_Service_Yahoo_Result
                 $this->{$f} = $node->item(0)->data;
             }
         }
-
+        
         $this->_result = $result;
     }
-
 
     /**
      * Sets the Thumbnail property
      *
      * @return void
      */
-    protected function _setThumbnail()
+    protected function _setThumbnail ()
     {
         $node = $this->_xpath->query('./yh:Thumbnail', $this->_result);
         if ($node->length == 1) {
             /**
+             *
              * @see Zend_Service_Yahoo_Image
              */
             require_once 'Zend/Service/Yahoo/Image.php';
-            $this->Thumbnail = new Zend_Service_Yahoo_Image($node->item(0), $this->_namespace);
+            $this->Thumbnail = new Zend_Service_Yahoo_Image($node->item(0), 
+                    $this->_namespace);
         } else {
             $this->Thumbnail = null;
         }

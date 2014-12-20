@@ -18,11 +18,13 @@
  */
 
 /**
+ *
  * @see Zend_Json
  */
 require_once 'Zend/Json.php';
 
 /**
+ *
  * @see Zend_ProgressBar_Adapter
  */
 require_once 'Zend/ProgressBar/Adapter.php';
@@ -31,14 +33,16 @@ require_once 'Zend/ProgressBar/Adapter.php';
  * Zend_ProgressBar_Adapter_JsPull offers a simple method for updating a
  * progressbar in a browser.
  *
- * @category  Zend
- * @package   Zend_ProgressBar
- * @uses      Zend_ProgressBar_Adapter_Interface
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license   http://framework.zend.com/license/new-bsd     New BSD License
+ * @category Zend
+ * @package Zend_ProgressBar
+ * @uses Zend_ProgressBar_Adapter_Interface
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_ProgressBar_Adapter_JsPull extends Zend_ProgressBar_Adapter
 {
+
     /**
      * Wether to exit after json data send or not
      *
@@ -49,10 +53,10 @@ class Zend_ProgressBar_Adapter_JsPull extends Zend_ProgressBar_Adapter
     /**
      * Set wether to exit after json data send or not
      *
-     * @param  boolean $exitAfterSend
+     * @param boolean $exitAfterSend            
      * @return Zend_ProgressBar_Adapter_JsPull
      */
-    public function setExitAfterSend($exitAfterSend)
+    public function setExitAfterSend ($exitAfterSend)
     {
         $this->_exitAfterSend = $exitAfterSend;
     }
@@ -60,28 +64,35 @@ class Zend_ProgressBar_Adapter_JsPull extends Zend_ProgressBar_Adapter
     /**
      * Defined by Zend_ProgressBar_Adapter_Interface
      *
-     * @param  float   $current       Current progress value
-     * @param  float   $max           Max progress value
-     * @param  float   $percent       Current percent value
-     * @param  integer $timeTaken     Taken time in seconds
-     * @param  integer $timeRemaining Remaining time in seconds
-     * @param  string  $text          Status text
+     * @param float $current
+     *            Current progress value
+     * @param float $max
+     *            Max progress value
+     * @param float $percent
+     *            Current percent value
+     * @param integer $timeTaken
+     *            Taken time in seconds
+     * @param integer $timeRemaining
+     *            Remaining time in seconds
+     * @param string $text
+     *            Status text
      * @return void
      */
-    public function notify($current, $max, $percent, $timeTaken, $timeRemaining, $text)
+    public function notify ($current, $max, $percent, $timeTaken, $timeRemaining, 
+            $text)
     {
         $arguments = array(
-            'current'       => $current,
-            'max'           => $max,
-            'percent'       => ($percent * 100),
-            'timeTaken'     => $timeTaken,
-            'timeRemaining' => $timeRemaining,
-            'text'          => $text,
-            'finished'      => false
+                'current' => $current,
+                'max' => $max,
+                'percent' => ($percent * 100),
+                'timeTaken' => $timeTaken,
+                'timeRemaining' => $timeRemaining,
+                'text' => $text,
+                'finished' => false
         );
-
+        
         $data = Zend_Json::encode($arguments);
-
+        
         // Output the data
         $this->_outputData($data);
     }
@@ -91,10 +102,12 @@ class Zend_ProgressBar_Adapter_JsPull extends Zend_ProgressBar_Adapter
      *
      * @return void
      */
-    public function finish()
+    public function finish ()
     {
-        $data = Zend_Json::encode(array('finished' => true));
-
+        $data = Zend_Json::encode(array(
+                'finished' => true
+        ));
+        
         $this->_outputData($data);
     }
 
@@ -103,15 +116,15 @@ class Zend_ProgressBar_Adapter_JsPull extends Zend_ProgressBar_Adapter
      *
      * This split-off is required for unit-testing.
      *
-     * @param  string $data
+     * @param string $data            
      * @return void
      */
-    protected function _outputData($data)
+    protected function _outputData ($data)
     {
         echo $data;
-
+        
         if ($this->_exitAfterSend) {
-            exit;
+            exit();
         }
     }
 }

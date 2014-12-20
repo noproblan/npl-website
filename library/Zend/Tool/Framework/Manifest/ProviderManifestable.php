@@ -21,17 +21,21 @@
  */
 
 /**
+ *
  * @see Zend_Tool_Framework_Manifest_Interface.php
  */
 require_once 'Zend/Tool/Framework/Manifest/Interface.php';
 
 /**
- * @category   Zend
- * @package    Zend_Tool
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ *
+ * @category Zend
+ * @package Zend_Tool
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
-interface Zend_Tool_Framework_Manifest_ProviderManifestable extends Zend_Tool_Framework_Manifest_Interface
+interface Zend_Tool_Framework_Manifest_ProviderManifestable extends 
+        Zend_Tool_Framework_Manifest_Interface
 {
 
     /**
@@ -42,6 +46,5 @@ interface Zend_Tool_Framework_Manifest_ProviderManifestable extends Zend_Tool_Fr
      *
      * @return array|string|Zend_Tool_Framework_Provider_Interface
      */
-    public function getProviders();
-
+    public function getProviders ();
 }

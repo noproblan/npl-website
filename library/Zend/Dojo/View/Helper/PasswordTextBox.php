@@ -20,22 +20,27 @@
  * @version    $Id: PasswordTextBox.php 23775 2011-03-01 17:25:24Z ralph $
  */
 
-/** Zend_Dojo_View_Helper_ValidationTextBox */
+/**
+ * Zend_Dojo_View_Helper_ValidationTextBox
+ */
 require_once 'Zend/Dojo/View/Helper/ValidationTextBox.php';
 
 /**
  * Dojo ValidationTextBox dijit tied to password input
  *
- * @uses       Zend_Dojo_View_Helper_Dijit
- * @package    Zend_Dojo
+ * @uses Zend_Dojo_View_Helper_Dijit
+ * @package Zend_Dojo
  * @subpackage View
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
-  */
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
+ */
 class Zend_Dojo_View_Helper_PasswordTextBox extends Zend_Dojo_View_Helper_ValidationTextBox
 {
+
     /**
      * HTML element type
+     * 
      * @var string
      */
     protected $_elementType = 'password';
@@ -43,13 +48,16 @@ class Zend_Dojo_View_Helper_PasswordTextBox extends Zend_Dojo_View_Helper_Valida
     /**
      * dijit.form.ValidationTextBox tied to password input
      *
-     * @param  string $id
-     * @param  mixed $value
-     * @param  array $params  Parameters to use for dijit creation
-     * @param  array $attribs HTML attributes
+     * @param string $id            
+     * @param mixed $value            
+     * @param array $params
+     *            Parameters to use for dijit creation
+     * @param array $attribs
+     *            HTML attributes
      * @return string
      */
-    public function passwordTextBox($id, $value = null, array $params = array(), array $attribs = array())
+    public function passwordTextBox ($id, $value = null, array $params = array(), 
+            array $attribs = array())
     {
         return $this->_createFormElement($id, $value, $params, $attribs);
     }

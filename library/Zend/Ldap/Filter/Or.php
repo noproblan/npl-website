@@ -21,6 +21,7 @@
  */
 
 /**
+ *
  * @see Zend_Ldap_Filter_Logical
  */
 require_once 'Zend/Ldap/Filter/Logical.php';
@@ -28,20 +29,22 @@ require_once 'Zend/Ldap/Filter/Logical.php';
 /**
  * Zend_Ldap_Filter_Or provides an 'or' filter.
  *
- * @category   Zend
- * @package    Zend_Ldap
+ * @category Zend
+ * @package Zend_Ldap
  * @subpackage Filter
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Ldap_Filter_Or extends Zend_Ldap_Filter_Logical
 {
+
     /**
      * Creates an 'or' grouping filter.
      *
-     * @param array $subfilters
+     * @param array $subfilters            
      */
-    public function __construct(array $subfilters)
+    public function __construct (array $subfilters)
     {
         parent::__construct($subfilters, self::TYPE_OR);
     }

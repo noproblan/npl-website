@@ -21,20 +21,24 @@
  */
 
 /**
+ *
  * @see Zend_Service_Ebay_Finding_Abstract
  */
 require_once 'Zend/Service/Ebay/Finding/Abstract.php';
 
 /**
- * @category   Zend
- * @package    Zend_Service
+ *
+ * @category Zend
+ * @package Zend_Service
  * @subpackage Ebay
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @uses       Zend_Service_Ebay_Finding_Abstract
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
+ * @uses Zend_Service_Ebay_Finding_Abstract
  */
 class Zend_Service_Ebay_Finding_Error_Message extends Zend_Service_Ebay_Finding_Abstract
 {
+
     /**
      * A container for error details.
      *
@@ -43,14 +47,16 @@ class Zend_Service_Ebay_Finding_Error_Message extends Zend_Service_Ebay_Finding_
     public $error;
 
     /**
+     *
      * @return void
      */
-    protected function _init()
+    protected function _init ()
     {
         $ns = Zend_Service_Ebay_Finding::XMLNS_FINDING;
         $nodes = $this->_xPath->query(".//$ns:error", $this->_dom);
         if ($nodes->length > 0) {
             /**
+             *
              * @see Zend_Service_Ebay_Finding_Error_Data_Set
              */
             require_once 'Zend/Service/Ebay/Finding/Error/Data/Set.php';

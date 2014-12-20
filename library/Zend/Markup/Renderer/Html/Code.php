@@ -21,6 +21,7 @@
  */
 
 /**
+ *
  * @see Zend_Markup_Renderer_Html_HtmlAbstract
  */
 require_once 'Zend/Markup/Renderer/Html/HtmlAbstract.php';
@@ -28,11 +29,12 @@ require_once 'Zend/Markup/Renderer/Html/HtmlAbstract.php';
 /**
  * Tag interface
  *
- * @category   Zend
- * @package    Zend_Markup
+ * @category Zend
+ * @package Zend_Markup
  * @subpackage Renderer_Html
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Markup_Renderer_Html_Code extends Zend_Markup_Renderer_Html_HtmlAbstract
 {
@@ -40,14 +42,13 @@ class Zend_Markup_Renderer_Html_Code extends Zend_Markup_Renderer_Html_HtmlAbstr
     /**
      * Convert the token
      *
-     * @param Zend_Markup_Token $token
-     * @param string $text
+     * @param Zend_Markup_Token $token            
+     * @param string $text            
      *
      * @return string
      */
-    public function convert(Zend_Markup_Token $token, $text)
+    public function convert (Zend_Markup_Token $token, $text)
     {
         return highlight_string($text, true);
     }
-
 }

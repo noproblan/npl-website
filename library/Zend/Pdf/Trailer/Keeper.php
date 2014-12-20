@@ -19,20 +19,23 @@
  * @version    $Id: Keeper.php 23775 2011-03-01 17:25:24Z ralph $
  */
 
-
-/** Zend_Pdf_Trailer */
+/**
+ * Zend_Pdf_Trailer
+ */
 require_once 'Zend/Pdf/Trailer.php';
 
 /**
  * PDF file trailer.
  * Stores and provides access to the trailer parced from a PDF file
  *
- * @package    Zend_Pdf
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @package Zend_Pdf
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Pdf_Trailer_Keeper extends Zend_Pdf_Trailer
 {
+
     /**
      * Reference context
      *
@@ -47,30 +50,29 @@ class Zend_Pdf_Trailer_Keeper extends Zend_Pdf_Trailer
      */
     private $_prev;
 
-
     /**
      * Object constructor
      *
-     * @param Zend_Pdf_Element_Dictionary $dict
-     * @param Zend_Pdf_Element_Reference_Context $context
-     * @param Zend_Pdf_Trailer $prev
+     * @param Zend_Pdf_Element_Dictionary $dict            
+     * @param Zend_Pdf_Element_Reference_Context $context            
+     * @param Zend_Pdf_Trailer $prev            
      */
-    public function __construct(Zend_Pdf_Element_Dictionary $dict,
-                                Zend_Pdf_Element_Reference_Context $context,
-                                Zend_Pdf_Trailer $prev = null)
+    public function __construct (Zend_Pdf_Element_Dictionary $dict, 
+            Zend_Pdf_Element_Reference_Context $context, 
+            Zend_Pdf_Trailer $prev = null)
     {
         parent::__construct($dict);
-
+        
         $this->_context = $context;
-        $this->_prev    = $prev;
+        $this->_prev = $prev;
     }
 
     /**
      * Setter for $this->_prev
      *
-     * @param Zend_Pdf_Trailer_Keeper $prev
+     * @param Zend_Pdf_Trailer_Keeper $prev            
      */
-    public function setPrev(Zend_Pdf_Trailer_Keeper $prev)
+    public function setPrev (Zend_Pdf_Trailer_Keeper $prev)
     {
         $this->_prev = $prev;
     }
@@ -80,7 +82,7 @@ class Zend_Pdf_Trailer_Keeper extends Zend_Pdf_Trailer
      *
      * @return Zend_Pdf_Trailer
      */
-    public function getPrev()
+    public function getPrev ()
     {
         return $this->_prev;
     }
@@ -90,7 +92,7 @@ class Zend_Pdf_Trailer_Keeper extends Zend_Pdf_Trailer
      *
      * @return string
      */
-    public function getPDFLength()
+    public function getPDFLength ()
     {
         return $this->_context->getParser()->getLength();
     }
@@ -100,7 +102,7 @@ class Zend_Pdf_Trailer_Keeper extends Zend_Pdf_Trailer
      *
      * @return string
      */
-    public function getPDFString()
+    public function getPDFString ()
     {
         return $this->_context->getParser()->getString();
     }
@@ -111,7 +113,7 @@ class Zend_Pdf_Trailer_Keeper extends Zend_Pdf_Trailer
      *
      * @return Zend_Pdf_Element_Reference_Context
      */
-    public function getRefTable()
+    public function getRefTable ()
     {
         return $this->_context->getRefTable();
     }
@@ -123,7 +125,7 @@ class Zend_Pdf_Trailer_Keeper extends Zend_Pdf_Trailer
      * @throws Zend_Pdf_Exception
      * @return integer
      */
-    public function getLastFreeObject()
+    public function getLastFreeObject ()
     {
         try {
             $this->_context->getRefTable()->getNextFree('0 65535 R');
@@ -131,12 +133,13 @@ class Zend_Pdf_Trailer_Keeper extends Zend_Pdf_Trailer
             if ($e->getMessage() == 'Object not found.') {
                 /**
                  * Here is work around for some wrong generated PDFs.
-                 * We have not found reference to the header of free object list,
+                 * We have not found reference to the header of free object
+                 * list,
                  * thus we treat it as there are no free objects.
                  */
                 return 0;
             }
-
+            
             throw new Zend_Pdf_Exception($e->getMessage(), $e->getCode(), $e);
         }
     }

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <ldml>
 	<identity>
-		<version number="$Revision: 1.74 $"/>
-		<generation date="$Date: 2009/05/05 23:06:40 $"/>
-		<language type="sw"/>
+		<version number="$Revision: 1.74 $" />
+		<generation date="$Date: 2009/05/05 23:06:40 $" />
+		<language type="sw" />
 	</identity>
 	<localeDisplayNames>
 		<languages>
@@ -197,7 +197,8 @@
 		</territories>
 	</localeDisplayNames>
 	<characters>
-		<exemplarCharacters>[a-d {dh} e-n {ng} {ng'} {ny} o p r s {sh} t {th} u-w y z]</exemplarCharacters>
+		<exemplarCharacters>[a-d {dh} e-n {ng} {ng'} {ny} o p r s {sh} t {th}
+			u-w y z]</exemplarCharacters>
 		<exemplarCharacters type="auxiliary">[q x]</exemplarCharacters>
 		<exemplarCharacters type="currencySymbol">[a-z]</exemplarCharacters>
 	</characters>

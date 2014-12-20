@@ -20,32 +20,39 @@
  * @version    $Id: SimpleTextarea.php 23925 2011-05-02 19:21:00Z matthew $
  */
 
-/** Zend_Dojo_View_Helper_Dijit */
+/**
+ * Zend_Dojo_View_Helper_Dijit
+ */
 require_once 'Zend/Dojo/View/Helper/Dijit.php';
 
 /**
  * dijit.form.SimpleTextarea view helper
  *
- * @uses       Zend_Dojo_View_Helper_Dijit
- * @package    Zend_Dojo
+ * @uses Zend_Dojo_View_Helper_Dijit
+ * @package Zend_Dojo
  * @subpackage View
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: SimpleTextarea.php 23925 2011-05-02 19:21:00Z matthew $
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
+ * @version $Id: SimpleTextarea.php 23925 2011-05-02 19:21:00Z matthew $
  */
 class Zend_Dojo_View_Helper_SimpleTextarea extends Zend_Dojo_View_Helper_Dijit
 {
-    /**
-     * @var string Dijit type
-     */
-    protected $_dijit  = 'dijit.form.SimpleTextarea';
 
     /**
+     *
+     * @var string Dijit type
+     */
+    protected $_dijit = 'dijit.form.SimpleTextarea';
+
+    /**
+     *
      * @var string HTML element type
      */
     protected $_elementType = 'textarea';
 
     /**
+     *
      * @var string Dojo module
      */
     protected $_module = 'dijit.form.SimpleTextarea';
@@ -53,25 +60,27 @@ class Zend_Dojo_View_Helper_SimpleTextarea extends Zend_Dojo_View_Helper_Dijit
     /**
      * dijit.form.SimpleTextarea
      *
-     * @param  string $id
-     * @param  string $value
-     * @param  array $params  Parameters to use for dijit creation
-     * @param  array $attribs HTML attributes
+     * @param string $id            
+     * @param string $value            
+     * @param array $params
+     *            Parameters to use for dijit creation
+     * @param array $attribs
+     *            HTML attributes
      * @return string
      */
-    public function simpleTextarea($id, $value = null, array $params = array(), array $attribs = array())
+    public function simpleTextarea ($id, $value = null, array $params = array(), 
+            array $attribs = array())
     {
-        if (!array_key_exists('id', $attribs)) {
-            $attribs['id']    = $id;
+        if (! array_key_exists('id', $attribs)) {
+            $attribs['id'] = $id;
         }
-        $attribs['name']  = $id;
-
+        $attribs['name'] = $id;
+        
         $attribs = $this->_prepareDijit($attribs, $params, 'textarea');
-
-        $html = '<textarea' . $this->_htmlAttribs($attribs) . '>'
-              . $this->view->escape($value)
-              . "</textarea>\n";
-
+        
+        $html = '<textarea' . $this->_htmlAttribs($attribs) . '>' .
+                 $this->view->escape($value) . "</textarea>\n";
+        
         return $html;
     }
 }

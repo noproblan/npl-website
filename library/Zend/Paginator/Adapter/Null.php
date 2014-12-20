@@ -20,18 +20,22 @@
  */
 
 /**
+ *
  * @see Zend_Paginator_Adapter_Interface
  */
 require_once 'Zend/Paginator/Adapter/Interface.php';
 
 /**
- * @category   Zend
- * @package    Zend_Paginator
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ *
+ * @category Zend
+ * @package Zend_Paginator
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Paginator_Adapter_Null implements Zend_Paginator_Adapter_Interface
 {
+
     /**
      * Item count
      *
@@ -42,9 +46,10 @@ class Zend_Paginator_Adapter_Null implements Zend_Paginator_Adapter_Interface
     /**
      * Constructor.
      *
-     * @param array $count Total item count
+     * @param array $count
+     *            Total item count
      */
-    public function __construct($count = 0)
+    public function __construct ($count = 0)
     {
         $this->_count = $count;
     }
@@ -52,19 +57,21 @@ class Zend_Paginator_Adapter_Null implements Zend_Paginator_Adapter_Interface
     /**
      * Returns an array of items for a page.
      *
-     * @param  integer $offset Page offset
-     * @param  integer $itemCountPerPage Number of items per page
+     * @param integer $offset
+     *            Page offset
+     * @param integer $itemCountPerPage
+     *            Number of items per page
      * @return array
      */
-    public function getItems($offset, $itemCountPerPage)
+    public function getItems ($offset, $itemCountPerPage)
     {
         if ($offset >= $this->count()) {
             return array();
         }
-
-        $remainItemCount  = $this->count() - $offset;
+        
+        $remainItemCount = $this->count() - $offset;
         $currentItemCount = $remainItemCount > $itemCountPerPage ? $itemCountPerPage : $remainItemCount;
-
+        
         return array_fill(0, $currentItemCount, null);
     }
 
@@ -73,7 +80,7 @@ class Zend_Paginator_Adapter_Null implements Zend_Paginator_Adapter_Interface
      *
      * @return integer
      */
-    public function count()
+    public function count ()
     {
         return $this->_count;
     }

@@ -20,6 +20,7 @@
  */
 
 /**
+ *
  * @see Zend_Validate_Db_Abstract
  */
 require_once 'Zend/Validate/Db/Abstract.php';
@@ -27,25 +28,27 @@ require_once 'Zend/Validate/Db/Abstract.php';
 /**
  * Confirms a record exists in a table.
  *
- * @category   Zend
- * @package    Zend_Validate
- * @uses       Zend_Validate_Db_Abstract
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @category Zend
+ * @package Zend_Validate
+ * @uses Zend_Validate_Db_Abstract
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Validate_Db_RecordExists extends Zend_Validate_Db_Abstract
 {
-    public function isValid($value)
+
+    public function isValid ($value)
     {
         $valid = true;
         $this->_setValue($value);
-
+        
         $result = $this->_query($value);
-        if (!$result) {
+        if (! $result) {
             $valid = false;
             $this->_error(self::ERROR_NO_RECORD_FOUND);
         }
-
+        
         return $valid;
     }
 }

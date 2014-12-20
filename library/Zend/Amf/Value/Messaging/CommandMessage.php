@@ -21,28 +21,32 @@
  */
 
 /**
+ *
  * @see Zend_Amf_Value_Messaging_AsyncMessage
  */
 require_once 'Zend/Amf/Value/Messaging/AsyncMessage.php';
 
 /**
  * A message that represents an infrastructure command passed between
- * client and server. Subscribe/unsubscribe operations result in
+ * client and server.
+ * Subscribe/unsubscribe operations result in
  * CommandMessage transmissions, as do polling operations.
  *
  * Corresponds to flex.messaging.messages.CommandMessage
  *
  * Note: THESE VALUES MUST BE THE SAME ON CLIENT AND SERVER
  *
- * @package    Zend_Amf
+ * @package Zend_Amf
  * @subpackage Value
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Amf_Value_Messaging_CommandMessage extends Zend_Amf_Value_Messaging_AsyncMessage
 {
+
     /**
-     *  This operation is used to subscribe to a remote destination.
+     * This operation is used to subscribe to a remote destination.
      */
     const SUBSCRIBE_OPERATION = 0;
 
@@ -58,7 +62,8 @@ class Zend_Amf_Value_Messaging_CommandMessage extends Zend_Amf_Value_Messaging_A
     const POLL_OPERATION = 2;
 
     /**
-     * This operation is used by a remote destination to sync missed or cached messages
+     * This operation is used by a remote destination to sync missed or cached
+     * messages
      * back to a client as a result of a client issued poll command.
      */
     const CLIENT_SYNC_OPERATION = 4;
@@ -78,7 +83,8 @@ class Zend_Amf_Value_Messaging_CommandMessage extends Zend_Amf_Value_Messaging_A
     /**
      * This operation is used to send credentials to the endpoint so that
      * the user can be logged in over the current channel.
-     * The credentials need to be Base64 encoded and stored in the <code>body</code>
+     * The credentials need to be Base64 encoded and stored in the
+     * <code>body</code>
      * of the message.
      */
     const LOGIN_OPERATION = 8;
@@ -113,6 +119,7 @@ class Zend_Amf_Value_Messaging_CommandMessage extends Zend_Amf_Value_Messaging_A
 
     /**
      * The operation to execute for messages of this type
+     * 
      * @var int
      */
     public $operation = self::UNKNOWN_OPERATION;

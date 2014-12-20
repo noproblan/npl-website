@@ -19,7 +19,9 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
 
-/** Zend_Form_Decorator_Abstract */
+/**
+ * Zend_Form_Decorator_Abstract
+ */
 require_once 'Zend/Form/Decorator/Abstract.php';
 
 /**
@@ -32,62 +34,65 @@ require_once 'Zend/Form/Decorator/Abstract.php';
  *
  * Any other options passed will be used as HTML attributes of the form tag.
  *
- * @category   Zend
- * @package    Zend_Form
+ * @category Zend
+ * @package Zend_Form
  * @subpackage Decorator
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: FormElements.php 24453 2011-09-09 15:14:24Z matthew $
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
+ * @version $Id: FormElements.php 24453 2011-09-09 15:14:24Z matthew $
  */
 class Zend_Form_Decorator_FormElements extends Zend_Form_Decorator_Abstract
 {
+
     /**
      * Merges given two belongsTo (array notation) strings
      *
-     * @param  string $baseBelongsTo
-     * @param  string $belongsTo
+     * @param string $baseBelongsTo            
+     * @param string $belongsTo            
      * @return string
      */
-    public function mergeBelongsTo($baseBelongsTo, $belongsTo)
+    public function mergeBelongsTo ($baseBelongsTo, $belongsTo)
     {
         $endOfArrayName = strpos($belongsTo, '[');
-
+        
         if ($endOfArrayName === false) {
             return $baseBelongsTo . '[' . $belongsTo . ']';
         }
-
+        
         $arrayName = substr($belongsTo, 0, $endOfArrayName);
-
-        return $baseBelongsTo . '[' . $arrayName . ']' . substr($belongsTo, $endOfArrayName);
+        
+        return $baseBelongsTo . '[' . $arrayName . ']' .
+                 substr($belongsTo, $endOfArrayName);
     }
 
     /**
      * Render form elements
      *
-     * @param  string $content
+     * @param string $content            
      * @return string
      */
-    public function render($content)
+    public function render ($content)
     {
-        $form    = $this->getElement();
-        if ((!$form instanceof Zend_Form) && (!$form instanceof Zend_Form_DisplayGroup)) {
+        $form = $this->getElement();
+        if ((! $form instanceof Zend_Form) &&
+                 (! $form instanceof Zend_Form_DisplayGroup)) {
             return $content;
         }
-
-        $belongsTo      = ($form instanceof Zend_Form) ? $form->getElementsBelongTo() : null;
+        
+        $belongsTo = ($form instanceof Zend_Form) ? $form->getElementsBelongTo() : null;
         $elementContent = '';
-        $displayGroups  = ($form instanceof Zend_Form) ? $form->getDisplayGroups() : array();
-        $separator      = $this->getSeparator();
-        $translator     = $form->getTranslator();
-        $items          = array();
-        $view           = $form->getView();
+        $displayGroups = ($form instanceof Zend_Form) ? $form->getDisplayGroups() : array();
+        $separator = $this->getSeparator();
+        $translator = $form->getTranslator();
+        $items = array();
+        $view = $form->getView();
         foreach ($form as $item) {
-            $item->setView($view)
-                 ->setTranslator($translator);
+            $item->setView($view)->setTranslator($translator);
             if ($item instanceof Zend_Form_Element) {
                 foreach ($displayGroups as $group) {
                     $elementName = $item->getName();
-                    $element     = $group->getElement($elementName);
+                    $element = $group->getElement($elementName);
                     if ($element) {
                         // Element belongs to display group; only render in that
                         // context.
@@ -95,27 +100,28 @@ class Zend_Form_Decorator_FormElements extends Zend_Form_Decorator_Abstract
                     }
                 }
                 $item->setBelongsTo($belongsTo);
-            } elseif (!empty($belongsTo) && ($item instanceof Zend_Form)) {
+            } elseif (! empty($belongsTo) && ($item instanceof Zend_Form)) {
                 if ($item->isArray()) {
-                    $name = $this->mergeBelongsTo($belongsTo, $item->getElementsBelongTo());
+                    $name = $this->mergeBelongsTo($belongsTo, 
+                            $item->getElementsBelongTo());
                     $item->setElementsBelongTo($name, true);
                 } else {
                     $item->setElementsBelongTo($belongsTo, true);
                 }
-            } elseif (!empty($belongsTo) && ($item instanceof Zend_Form_DisplayGroup)) {
+            } elseif (! empty($belongsTo) &&
+                     ($item instanceof Zend_Form_DisplayGroup)) {
                 foreach ($item as $element) {
                     $element->setBelongsTo($belongsTo);
                 }
             }
-
+            
             $items[] = $item->render();
-
-            if (($item instanceof Zend_Form_Element_File)
-                || (($item instanceof Zend_Form)
-                    && (Zend_Form::ENCTYPE_MULTIPART == $item->getEnctype()))
-                || (($item instanceof Zend_Form_DisplayGroup)
-                    && (Zend_Form::ENCTYPE_MULTIPART == $item->getAttrib('enctype')))
-            ) {
+            
+            if (($item instanceof Zend_Form_Element_File) || (($item instanceof Zend_Form) &&
+                     (Zend_Form::ENCTYPE_MULTIPART == $item->getEnctype())) ||
+                     (($item instanceof Zend_Form_DisplayGroup) &&
+                     (Zend_Form::ENCTYPE_MULTIPART == $item->getAttrib(
+                            'enctype')))) {
                 if ($form instanceof Zend_Form) {
                     $form->setEnctype(Zend_Form::ENCTYPE_MULTIPART);
                 } elseif ($form instanceof Zend_Form_DisplayGroup) {
@@ -124,7 +130,7 @@ class Zend_Form_Decorator_FormElements extends Zend_Form_Decorator_Abstract
             }
         }
         $elementContent = implode($separator, $items);
-
+        
         switch ($this->getPlacement()) {
             case self::PREPEND:
                 return $elementContent . $separator . $content;

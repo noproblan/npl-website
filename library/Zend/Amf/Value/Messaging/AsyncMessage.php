@@ -20,23 +20,27 @@
  * @version    $Id: AsyncMessage.php 23775 2011-03-01 17:25:24Z ralph $
  */
 
-
-/** Zend_Amf_Value_Messaging_AbstractMessage */
+/**
+ * Zend_Amf_Value_Messaging_AbstractMessage
+ */
 require_once 'Zend/Amf/Value/Messaging/AbstractMessage.php';
 
 /**
  * This type of message contains information necessary to perform
  * point-to-point or publish-subscribe messaging.
  *
- * @package    Zend_Amf
+ * @package Zend_Amf
  * @subpackage Value
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Amf_Value_Messaging_AsyncMessage extends Zend_Amf_Value_Messaging_AbstractMessage
 {
+
     /**
      * The message id to be responded to.
+     * 
      * @var String
      */
     public $correlationId;

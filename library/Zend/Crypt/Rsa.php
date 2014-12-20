@@ -21,25 +21,30 @@
  */
 
 /**
+ *
  * @see Zend_Crypt_Rsa_Key_Private
  */
 require_once 'Zend/Crypt/Rsa/Key/Private.php';
 
 /**
+ *
  * @see Zend_Crypt_Rsa_Key_Public
  */
 require_once 'Zend/Crypt/Rsa/Key/Public.php';
 
 /**
- * @category   Zend
- * @package    Zend_Crypt
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ *
+ * @category Zend
+ * @package Zend_Crypt
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Crypt_Rsa
 {
 
     const BINARY = 'binary';
+
     const BASE64 = 'base64';
 
     protected $_privateKey;
@@ -47,6 +52,7 @@ class Zend_Crypt_Rsa
     protected $_publicKey;
 
     /**
+     *
      * @var string
      */
     protected $_pemString;
@@ -64,31 +70,33 @@ class Zend_Crypt_Rsa
     /**
      * Class constructor
      *
-     * @param array $options
+     * @param array $options            
      * @throws Zend_Crypt_Rsa_Exception
      */
-    public function __construct(array $options = null)
+    public function __construct (array $options = null)
     {
-        if (!extension_loaded('openssl')) {
+        if (! extension_loaded('openssl')) {
             require_once 'Zend/Crypt/Rsa/Exception.php';
-            throw new Zend_Crypt_Rsa_Exception('Zend_Crypt_Rsa requires openssl extention to be loaded.');
+            throw new Zend_Crypt_Rsa_Exception(
+                    'Zend_Crypt_Rsa requires openssl extention to be loaded.');
         }
-
-        // Set _hashAlgorithm property when we are sure, that openssl extension is loaded
+        
+        // Set _hashAlgorithm property when we are sure, that openssl extension
+        // is loaded
         // and OPENSSL_ALGO_SHA1 constant is available
         $this->_hashAlgorithm = OPENSSL_ALGO_SHA1;
-
+        
         if (isset($options)) {
             $this->setOptions($options);
         }
     }
 
-    public function setOptions(array $options)
+    public function setOptions (array $options)
     {
         if (isset($options['passPhrase'])) {
             $this->_passPhrase = $options['passPhrase'];
         }
-        foreach ($options as $option=>$value) {
+        foreach ($options as $option => $value) {
             switch ($option) {
                 case 'pemString':
                     $this->setPemString($value);
@@ -109,23 +117,25 @@ class Zend_Crypt_Rsa
         }
     }
 
-    public function getPrivateKey()
+    public function getPrivateKey ()
     {
         return $this->_privateKey;
     }
 
-    public function getPublicKey()
+    public function getPublicKey ()
     {
         return $this->_publicKey;
     }
 
     /**
-     * @param string $data
-     * @param Zend_Crypt_Rsa_Key_Private $privateKey
-     * @param string $format
+     *
+     * @param string $data            
+     * @param Zend_Crypt_Rsa_Key_Private $privateKey            
+     * @param string $format            
      * @return string
      */
-    public function sign($data, Zend_Crypt_Rsa_Key_Private $privateKey = null, $format = null)
+    public function sign ($data, Zend_Crypt_Rsa_Key_Private $privateKey = null, 
+            $format = null)
     {
         $signature = '';
         if (isset($privateKey)) {
@@ -133,11 +143,8 @@ class Zend_Crypt_Rsa
         } else {
             $opensslKeyResource = $this->_privateKey->getOpensslKeyResource();
         }
-        $result = openssl_sign(
-            $data, $signature,
-            $opensslKeyResource,
-            $this->getHashAlgorithm()
-        );
+        $result = openssl_sign($data, $signature, $opensslKeyResource, 
+                $this->getHashAlgorithm());
         if ($format == self::BASE64) {
             return base64_encode($signature);
         }
@@ -145,29 +152,31 @@ class Zend_Crypt_Rsa
     }
 
     /**
-     * @param string $data
-     * @param string $signature
-     * @param string $format
+     *
+     * @param string $data            
+     * @param string $signature            
+     * @param string $format            
      * @return string
      */
-    public function verifySignature($data, $signature, $format = null)
+    public function verifySignature ($data, $signature, $format = null)
     {
         if ($format == self::BASE64) {
             $signature = base64_decode($signature);
         }
-        $result = openssl_verify($data, $signature,
-            $this->getPublicKey()->getOpensslKeyResource(),
-            $this->getHashAlgorithm());
+        $result = openssl_verify($data, $signature, 
+                $this->getPublicKey()->getOpensslKeyResource(), 
+                $this->getHashAlgorithm());
         return $result;
     }
 
     /**
-     * @param string $data
-     * @param Zend_Crypt_Rsa_Key $key
-     * @param string $format
+     *
+     * @param string $data            
+     * @param Zend_Crypt_Rsa_Key $key            
+     * @param string $format            
      * @return string
      */
-    public function encrypt($data, Zend_Crypt_Rsa_Key $key, $format = null)
+    public function encrypt ($data, Zend_Crypt_Rsa_Key $key, $format = null)
     {
         $encrypted = '';
         $function = 'openssl_public_encrypt';
@@ -182,12 +191,13 @@ class Zend_Crypt_Rsa
     }
 
     /**
-     * @param string $data
-     * @param Zend_Crypt_Rsa_Key $key
-     * @param string $format
+     *
+     * @param string $data            
+     * @param Zend_Crypt_Rsa_Key $key            
+     * @param string $format            
      * @return string
      */
-    public function decrypt($data, Zend_Crypt_Rsa_Key $key, $format = null)
+    public function decrypt ($data, Zend_Crypt_Rsa_Key $key, $format = null)
     {
         $decrypted = '';
         if ($format == self::BASE64) {
@@ -201,7 +211,7 @@ class Zend_Crypt_Rsa
         return $decrypted;
     }
 
-    public function generateKeys(array $configargs = null)
+    public function generateKeys (array $configargs = null)
     {
         $config = null;
         $passPhrase = null;
@@ -220,21 +230,24 @@ class Zend_Crypt_Rsa
         $privateKey = new Zend_Crypt_Rsa_Key_Private($private, $passPhrase);
         $details = openssl_pkey_get_details($resource);
         $publicKey = new Zend_Crypt_Rsa_Key_Public($details['key']);
-        $return = new ArrayObject(array(
-           'privateKey'=>$privateKey,
-           'publicKey'=>$publicKey
-        ), ArrayObject::ARRAY_AS_PROPS);
+        $return = new ArrayObject(
+                array(
+                        'privateKey' => $privateKey,
+                        'publicKey' => $publicKey
+                ), ArrayObject::ARRAY_AS_PROPS);
         return $return;
     }
 
     /**
-     * @param string $value
+     *
+     * @param string $value            
      */
-    public function setPemString($value)
+    public function setPemString ($value)
     {
         $this->_pemString = $value;
         try {
-            $this->_privateKey = new Zend_Crypt_Rsa_Key_Private($this->_pemString, $this->_passPhrase);
+            $this->_privateKey = new Zend_Crypt_Rsa_Key_Private(
+                    $this->_pemString, $this->_passPhrase);
             $this->_publicKey = $this->_privateKey->getPublicKey();
         } catch (Zend_Crypt_Exception $e) {
             $this->_privateKey = null;
@@ -242,25 +255,26 @@ class Zend_Crypt_Rsa
         }
     }
 
-    public function setPemPath($value)
+    public function setPemPath ($value)
     {
         $this->_pemPath = $value;
         $this->setPemString(file_get_contents($this->_pemPath));
     }
 
-    public function setCertificateString($value)
+    public function setCertificateString ($value)
     {
         $this->_certificateString = $value;
-        $this->_publicKey = new Zend_Crypt_Rsa_Key_Public($this->_certificateString, $this->_passPhrase);
+        $this->_publicKey = new Zend_Crypt_Rsa_Key_Public(
+                $this->_certificateString, $this->_passPhrase);
     }
 
-    public function setCertificatePath($value)
+    public function setCertificatePath ($value)
     {
         $this->_certificatePath = $value;
         $this->setCertificateString(file_get_contents($this->_certificatePath));
     }
 
-    public function setHashAlgorithm($name)
+    public function setHashAlgorithm ($name)
     {
         switch (strtolower($name)) {
             case 'md2':
@@ -282,43 +296,43 @@ class Zend_Crypt_Rsa
     }
 
     /**
+     *
      * @return string
      */
-    public function getPemString()
+    public function getPemString ()
     {
         return $this->_pemString;
     }
 
-    public function getPemPath()
+    public function getPemPath ()
     {
         return $this->_pemPath;
     }
 
-    public function getCertificateString()
+    public function getCertificateString ()
     {
         return $this->_certificateString;
     }
 
-    public function getCertificatePath()
+    public function getCertificatePath ()
     {
         return $this->_certificatePath;
     }
 
-    public function getHashAlgorithm()
+    public function getHashAlgorithm ()
     {
         return $this->_hashAlgorithm;
     }
 
-    protected function _parseConfigArgs(array $config = null)
+    protected function _parseConfigArgs (array $config = null)
     {
         $configs = array();
         if (isset($config['privateKeyBits'])) {
             $configs['private_key_bits'] = $config['privateKeyBits'];
         }
-        if (!empty($configs)) {
+        if (! empty($configs)) {
             return $configs;
         }
         return null;
     }
-
 }

@@ -24,18 +24,19 @@
 /**
  * Zend_Gdata_Query
  */
-require_once('Zend/Gdata/Query.php');
+require_once ('Zend/Gdata/Query.php');
 
 /**
  * Assists in constructing queries for Google Document List documents
  *
  * @link http://code.google.com/apis/gdata/spreadsheets/
- *
- * @category   Zend
- * @package    Zend_Gdata
+ *      
+ * @category Zend
+ * @package Zend_Gdata
  * @subpackage Docs
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Gdata_Docs_Query extends Zend_Gdata_Query
 {
@@ -55,7 +56,8 @@ class Zend_Gdata_Docs_Query extends Zend_Gdata_Query
     protected $_defaultFeedUri = self::DOCUMENTS_LIST_FEED_URI;
 
     /**
-     * The visibility to be used when querying for the feed. A request for a
+     * The visibility to be used when querying for the feed.
+     * A request for a
      * feed with private visbility requires the user to be authenricated.
      * Private is the only avilable visibility for the documents list.
      *
@@ -65,7 +67,8 @@ class Zend_Gdata_Docs_Query extends Zend_Gdata_Query
 
     /**
      * The projection determines how much detail should be given in the
-     * result of the query. Full is the only valid projection for the
+     * result of the query.
+     * Full is the only valid projection for the
      * documents list.
      *
      * @var string
@@ -75,31 +78,33 @@ class Zend_Gdata_Docs_Query extends Zend_Gdata_Query
     /**
      * Constructs a new instance of a Zend_Gdata_Docs_Query object.
      */
-    public function __construct()
+    public function __construct ()
     {
         parent::__construct();
     }
 
     /**
-     * Sets the projection for this query. Common values for projection
+     * Sets the projection for this query.
+     * Common values for projection
      * include 'full'.
      *
-     * @param string $value
+     * @param string $value            
      * @return Zend_Gdata_Docs_Query Provides a fluent interface
      */
-    public function setProjection($value)
+    public function setProjection ($value)
     {
         $this->_projection = $value;
         return $this;
     }
 
     /**
-     * Sets the visibility for this query. Common values for visibility
+     * Sets the visibility for this query.
+     * Common values for visibility
      * include 'private'.
      *
      * @return Zend_Gdata_Docs_Query Provides a fluent interface
      */
-    public function setVisibility($value)
+    public function setVisibility ($value)
     {
         $this->_visibility = $value;
         return $this;
@@ -110,7 +115,7 @@ class Zend_Gdata_Docs_Query extends Zend_Gdata_Query
      *
      * @return string projection
      */
-    public function getProjection()
+    public function getProjection ()
     {
         return $this->_projection;
     }
@@ -120,20 +125,21 @@ class Zend_Gdata_Docs_Query extends Zend_Gdata_Query
      *
      * @return string visibility
      */
-    public function getVisibility()
+    public function getVisibility ()
     {
         return $this->_visibility;
     }
 
     /**
-     * Sets the title attribute for this query. The title parameter is used
+     * Sets the title attribute for this query.
+     * The title parameter is used
      * to restrict the results to documents whose titles either contain or
      * completely match the title.
      *
-     * @param string $value
+     * @param string $value            
      * @return Zend_Gdata_Docs_Query Provides a fluent interface
      */
-    public function setTitle($value)
+    public function setTitle ($value)
     {
         if ($value !== null) {
             $this->_params['title'] = $value;
@@ -148,7 +154,7 @@ class Zend_Gdata_Docs_Query extends Zend_Gdata_Query
      *
      * @return string title
      */
-    public function getTitle()
+    public function getTitle ()
     {
         if (array_key_exists('title', $this->_params)) {
             return $this->_params['title'];
@@ -163,10 +169,11 @@ class Zend_Gdata_Docs_Query extends Zend_Gdata_Query
      * in an exact match. Only documents with a title identical to the
      * title parameter will be returned.
      *
-     * @param boolean $value Use either true or false
+     * @param boolean $value
+     *            Use either true or false
      * @return Zend_Gdata_Docs_Query Provides a fluent interface
      */
-    public function setTitleExact($value)
+    public function setTitleExact ($value)
     {
         if ($value) {
             $this->_params['title-exact'] = $value;
@@ -181,7 +188,7 @@ class Zend_Gdata_Docs_Query extends Zend_Gdata_Query
      *
      * @return string title-exact
      */
-    public function getTitleExact()
+    public function getTitleExact ()
     {
         if (array_key_exists('title-exact', $this->_params)) {
             return $this->_params['title-exact'];
@@ -195,28 +202,27 @@ class Zend_Gdata_Docs_Query extends Zend_Gdata_Query
      *
      * @return string url
      */
-    public function getQueryUrl()
+    public function getQueryUrl ()
     {
         $uri = $this->_defaultFeedUri;
-
+        
         if ($this->_visibility !== null) {
             $uri .= '/' . $this->_visibility;
         } else {
             require_once 'Zend/Gdata/App/Exception.php';
             throw new Zend_Gdata_App_Exception(
-                'A visibility must be provided for cell queries.');
+                    'A visibility must be provided for cell queries.');
         }
-
+        
         if ($this->_projection !== null) {
             $uri .= '/' . $this->_projection;
         } else {
             require_once 'Zend/Gdata/App/Exception.php';
             throw new Zend_Gdata_App_Exception(
-                'A projection must be provided for cell queries.');
+                    'A projection must be provided for cell queries.');
         }
-
+        
         $uri .= $this->getQueryString();
         return $uri;
     }
-
 }

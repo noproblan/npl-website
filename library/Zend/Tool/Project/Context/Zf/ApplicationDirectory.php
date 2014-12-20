@@ -21,6 +21,7 @@
  */
 
 /**
+ *
  * @see Zend_Tool_Project_Context_Filesystem_Directory
  */
 require_once 'Zend/Tool/Project/Context/Filesystem/Directory.php';
@@ -31,10 +32,11 @@ require_once 'Zend/Tool/Project/Context/Filesystem/Directory.php';
  * A profile is a hierarchical set of resources that keep track of
  * items within a specific project.
  *
- * @category   Zend
- * @package    Zend_Tool
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @category Zend
+ * @package Zend_Tool
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Tool_Project_Context_Zf_ApplicationDirectory extends Zend_Tool_Project_Context_Filesystem_Directory
 {
@@ -43,10 +45,11 @@ class Zend_Tool_Project_Context_Zf_ApplicationDirectory extends Zend_Tool_Projec
 
     protected $_classNamePrefix = 'Application_';
 
-    public function init()
+    public function init ()
     {
         if ($this->_resource->hasAttribute('classNamePrefix')) {
-            $this->_classNamePrefix = $this->_resource->getAttribute('classNamePrefix');
+            $this->_classNamePrefix = $this->_resource->getAttribute(
+                    'classNamePrefix');
         }
         parent::init();
     }
@@ -56,26 +59,25 @@ class Zend_Tool_Project_Context_Zf_ApplicationDirectory extends Zend_Tool_Projec
      *
      * @return array
      */
-    public function getPersistentAttributes()
+    public function getPersistentAttributes ()
     {
         return array(
-            'classNamePrefix' => $this->getClassNamePrefix()
-            );
+                'classNamePrefix' => $this->getClassNamePrefix()
+        );
     }
 
-    public function getName()
+    public function getName ()
     {
         return 'ApplicationDirectory';
     }
 
-    public function setClassNamePrefix($classNamePrefix)
+    public function setClassNamePrefix ($classNamePrefix)
     {
         $this->_classNamePrefix = $classNamePrefix;
     }
 
-    public function getClassNamePrefix()
+    public function getClassNamePrefix ()
     {
         return $this->_classNamePrefix;
     }
-
 }

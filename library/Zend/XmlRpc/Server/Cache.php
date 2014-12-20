@@ -20,27 +20,32 @@
  * @version    $Id: Cache.php 23775 2011-03-01 17:25:24Z ralph $
  */
 
-/** Zend_Server_Cache */
+/**
+ * Zend_Server_Cache
+ */
 require_once 'Zend/Server/Cache.php';
 
 /**
  * Zend_XmlRpc_Server_Cache: cache Zend_XmlRpc_Server server definition
  *
- * @category   Zend
- * @package    Zend_XmlRpc
+ * @category Zend
+ * @package Zend_XmlRpc
  * @subpackage Server
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_XmlRpc_Server_Cache extends Zend_Server_Cache
 {
+
     /**
+     *
      * @var array Skip system methods when caching XML-RPC server
      */
     protected static $_skipMethods = array(
-        'system.listMethods',
-        'system.methodHelp',
-        'system.methodSignature',
-        'system.multicall',
+            'system.listMethods',
+            'system.methodHelp',
+            'system.methodSignature',
+            'system.multicall'
     );
 }

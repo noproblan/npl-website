@@ -19,22 +19,25 @@
  * @version    $Id: Proxy.php 23775 2011-03-01 17:25:24Z ralph $
  */
 
-/** Zend_Search_Lucene_Interface */
+/**
+ * Zend_Search_Lucene_Interface
+ */
 require_once 'Zend/Search/Lucene/Interface.php';
-
 
 /**
  * Proxy class intended to be used in userland.
  *
  * It tracks, when index object goes out of scope and forces ndex closing
  *
- * @category   Zend
- * @package    Zend_Search_Lucene
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @category Zend
+ * @package Zend_Search_Lucene
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Search_Lucene_Proxy implements Zend_Search_Lucene_Interface
 {
+
     /**
      * Index object
      *
@@ -45,9 +48,9 @@ class Zend_Search_Lucene_Proxy implements Zend_Search_Lucene_Interface
     /**
      * Object constructor
      *
-     * @param Zend_Search_Lucene_Interface $index
+     * @param Zend_Search_Lucene_Interface $index            
      */
-    public function __construct(Zend_Search_Lucene_Interface $index)
+    public function __construct (Zend_Search_Lucene_Interface $index)
     {
         $this->_index = $index;
         $this->_index->addReference();
@@ -56,10 +59,11 @@ class Zend_Search_Lucene_Proxy implements Zend_Search_Lucene_Interface
     /**
      * Object destructor
      */
-    public function __destruct()
+    public function __destruct ()
     {
         if ($this->_index !== null) {
-            // This code is invoked if Zend_Search_Lucene_Interface object constructor throws an exception
+            // This code is invoked if Zend_Search_Lucene_Interface object
+            // constructor throws an exception
             $this->_index->removeReference();
         }
         $this->_index = null;
@@ -72,11 +76,12 @@ class Zend_Search_Lucene_Proxy implements Zend_Search_Lucene_Interface
      * 0 means pre-2.1 index format
      * -1 means there are no segments files.
      *
-     * @param Zend_Search_Lucene_Storage_Directory $directory
+     * @param Zend_Search_Lucene_Storage_Directory $directory            
      * @return integer
      * @throws Zend_Search_Lucene_Exception
      */
-    public static function getActualGeneration(Zend_Search_Lucene_Storage_Directory $directory)
+    public static function getActualGeneration (
+            Zend_Search_Lucene_Storage_Directory $directory)
     {
         Zend_Search_Lucene::getActualGeneration($directory);
     }
@@ -84,10 +89,10 @@ class Zend_Search_Lucene_Proxy implements Zend_Search_Lucene_Interface
     /**
      * Get segments file name
      *
-     * @param integer $generation
+     * @param integer $generation            
      * @return string
      */
-    public static function getSegmentFileName($generation)
+    public static function getSegmentFileName ($generation)
     {
         Zend_Search_Lucene::getSegmentFileName($generation);
     }
@@ -97,7 +102,7 @@ class Zend_Search_Lucene_Proxy implements Zend_Search_Lucene_Interface
      *
      * @return integer
      */
-    public function getFormatVersion()
+    public function getFormatVersion ()
     {
         return $this->_index->getFormatVersion();
     }
@@ -106,10 +111,10 @@ class Zend_Search_Lucene_Proxy implements Zend_Search_Lucene_Interface
      * Set index format version.
      * Index is converted to this format at the nearest upfdate time
      *
-     * @param int $formatVersion
+     * @param int $formatVersion            
      * @throws Zend_Search_Lucene_Exception
      */
-    public function setFormatVersion($formatVersion)
+    public function setFormatVersion ($formatVersion)
     {
         $this->_index->setFormatVersion($formatVersion);
     }
@@ -119,29 +124,31 @@ class Zend_Search_Lucene_Proxy implements Zend_Search_Lucene_Interface
      *
      * @return Zend_Search_Lucene_Storage_Directory
      */
-    public function getDirectory()
+    public function getDirectory ()
     {
         return $this->_index->getDirectory();
     }
 
     /**
-     * Returns the total number of documents in this index (including deleted documents).
+     * Returns the total number of documents in this index (including deleted
+     * documents).
      *
      * @return integer
      */
-    public function count()
+    public function count ()
     {
         return $this->_index->count();
     }
 
     /**
      * Returns one greater than the largest possible document number.
-     * This may be used to, e.g., determine how big to allocate a structure which will have
+     * This may be used to, e.g., determine how big to allocate a structure
+     * which will have
      * an element for every document number in an index.
      *
      * @return integer
      */
-    public function maxDoc()
+    public function maxDoc ()
     {
         return $this->_index->maxDoc();
     }
@@ -151,7 +158,7 @@ class Zend_Search_Lucene_Proxy implements Zend_Search_Lucene_Interface
      *
      * @return integer
      */
-    public function numDocs()
+    public function numDocs ()
     {
         return $this->_index->numDocs();
     }
@@ -159,11 +166,12 @@ class Zend_Search_Lucene_Proxy implements Zend_Search_Lucene_Interface
     /**
      * Checks, that document is deleted
      *
-     * @param integer $id
+     * @param integer $id            
      * @return boolean
-     * @throws Zend_Search_Lucene_Exception    Exception is thrown if $id is out of the range
+     * @throws Zend_Search_Lucene_Exception Exception is thrown if $id is out of
+     *         the range
      */
-    public function isDeleted($id)
+    public function isDeleted ($id)
     {
         return $this->_index->isDeleted($id);
     }
@@ -175,9 +183,9 @@ class Zend_Search_Lucene_Proxy implements Zend_Search_Lucene_Interface
      *
      * Default value is null
      *
-     * @param string $fieldName
+     * @param string $fieldName            
      */
-    public static function setDefaultSearchField($fieldName)
+    public static function setDefaultSearchField ($fieldName)
     {
         Zend_Search_Lucene::setDefaultSearchField($fieldName);
     }
@@ -189,7 +197,7 @@ class Zend_Search_Lucene_Proxy implements Zend_Search_Lucene_Interface
      *
      * @return string
      */
-    public static function getDefaultSearchField()
+    public static function getDefaultSearchField ()
     {
         return Zend_Search_Lucene::getDefaultSearchField();
     }
@@ -199,9 +207,9 @@ class Zend_Search_Lucene_Proxy implements Zend_Search_Lucene_Interface
      *
      * 0 (default) means no limit
      *
-     * @param integer $limit
+     * @param integer $limit            
      */
-    public static function setResultSetLimit($limit)
+    public static function setResultSetLimit ($limit)
     {
         Zend_Search_Lucene::setResultSetLimit($limit);
     }
@@ -213,7 +221,7 @@ class Zend_Search_Lucene_Proxy implements Zend_Search_Lucene_Interface
      *
      * @return integer
      */
-    public static function getResultSetLimit()
+    public static function getResultSetLimit ()
     {
         return Zend_Search_Lucene::getResultSetLimit();
     }
@@ -228,7 +236,7 @@ class Zend_Search_Lucene_Proxy implements Zend_Search_Lucene_Interface
      *
      * @return integer
      */
-    public function getMaxBufferedDocs()
+    public function getMaxBufferedDocs ()
     {
         return $this->_index->getMaxBufferedDocs();
     }
@@ -241,18 +249,18 @@ class Zend_Search_Lucene_Proxy implements Zend_Search_Lucene_Interface
      *
      * Default value is 10
      *
-     * @param integer $maxBufferedDocs
+     * @param integer $maxBufferedDocs            
      */
-    public function setMaxBufferedDocs($maxBufferedDocs)
+    public function setMaxBufferedDocs ($maxBufferedDocs)
     {
         $this->_index->setMaxBufferedDocs($maxBufferedDocs);
     }
 
-
     /**
      * Retrieve index maxMergeDocs option
      *
-     * maxMergeDocs is a largest number of documents ever merged by addDocument().
+     * maxMergeDocs is a largest number of documents ever merged by
+     * addDocument().
      * Small values (e.g., less than 10,000) are best for interactive indexing,
      * as this limits the length of pauses while indexing to a few seconds.
      * Larger values are best for batched indexing and speedier searches.
@@ -261,7 +269,7 @@ class Zend_Search_Lucene_Proxy implements Zend_Search_Lucene_Interface
      *
      * @return integer
      */
-    public function getMaxMergeDocs()
+    public function getMaxMergeDocs ()
     {
         return $this->_index->getMaxMergeDocs();
     }
@@ -269,25 +277,26 @@ class Zend_Search_Lucene_Proxy implements Zend_Search_Lucene_Interface
     /**
      * Set index maxMergeDocs option
      *
-     * maxMergeDocs is a largest number of documents ever merged by addDocument().
+     * maxMergeDocs is a largest number of documents ever merged by
+     * addDocument().
      * Small values (e.g., less than 10,000) are best for interactive indexing,
      * as this limits the length of pauses while indexing to a few seconds.
      * Larger values are best for batched indexing and speedier searches.
      *
      * Default value is PHP_INT_MAX
      *
-     * @param integer $maxMergeDocs
+     * @param integer $maxMergeDocs            
      */
-    public function setMaxMergeDocs($maxMergeDocs)
+    public function setMaxMergeDocs ($maxMergeDocs)
     {
         $this->_index->setMaxMergeDocs($maxMergeDocs);
     }
 
-
     /**
      * Retrieve index mergeFactor option
      *
-     * mergeFactor determines how often segment indices are merged by addDocument().
+     * mergeFactor determines how often segment indices are merged by
+     * addDocument().
      * With smaller values, less RAM is used while indexing,
      * and searches on unoptimized indices are faster,
      * but indexing speed is slower.
@@ -301,7 +310,7 @@ class Zend_Search_Lucene_Proxy implements Zend_Search_Lucene_Interface
      *
      * @return integer
      */
-    public function getMergeFactor()
+    public function getMergeFactor ()
     {
         return $this->_index->getMergeFactor();
     }
@@ -309,7 +318,8 @@ class Zend_Search_Lucene_Proxy implements Zend_Search_Lucene_Interface
     /**
      * Set index mergeFactor option
      *
-     * mergeFactor determines how often segment indices are merged by addDocument().
+     * mergeFactor determines how often segment indices are merged by
+     * addDocument().
      * With smaller values, less RAM is used while indexing,
      * and searches on unoptimized indices are faster,
      * but indexing speed is slower.
@@ -321,9 +331,9 @@ class Zend_Search_Lucene_Proxy implements Zend_Search_Lucene_Interface
      *
      * Default value is 10
      *
-     * @param integer $maxMergeDocs
+     * @param integer $maxMergeDocs            
      */
-    public function setMergeFactor($mergeFactor)
+    public function setMergeFactor ($mergeFactor)
     {
         $this->_index->setMergeFactor($mergeFactor);
     }
@@ -333,26 +343,29 @@ class Zend_Search_Lucene_Proxy implements Zend_Search_Lucene_Interface
      * of Zend_Search_Lucene_Search_QueryHit objects.
      * Input is a string or Zend_Search_Lucene_Search_Query.
      *
-     * @param mixed $query
+     * @param mixed $query            
      * @return array Zend_Search_Lucene_Search_QueryHit
      * @throws Zend_Search_Lucene_Exception
      */
-    public function find($query)
+    public function find ($query)
     {
         // actual parameter list
         $parameters = func_get_args();
-
+        
         // invoke $this->_index->find() method with specified parameters
-        return call_user_func_array(array(&$this->_index, 'find'), $parameters);
+        return call_user_func_array(array(
+                &$this->_index,
+                'find'
+        ), $parameters);
     }
 
     /**
      * Returns a list of all unique field names that exist in this index.
      *
-     * @param boolean $indexed
+     * @param boolean $indexed            
      * @return array
      */
-    public function getFieldNames($indexed = false)
+    public function getFieldNames ($indexed = false)
     {
         return $this->_index->getFieldNames($indexed);
     }
@@ -361,10 +374,10 @@ class Zend_Search_Lucene_Proxy implements Zend_Search_Lucene_Interface
      * Returns a Zend_Search_Lucene_Document object for the document
      * number $id in this index.
      *
-     * @param integer|Zend_Search_Lucene_Search_QueryHit $id
+     * @param integer|Zend_Search_Lucene_Search_QueryHit $id            
      * @return Zend_Search_Lucene_Document
      */
-    public function getDocument($id)
+    public function getDocument ($id)
     {
         return $this->_index->getDocument($id);
     }
@@ -374,10 +387,10 @@ class Zend_Search_Lucene_Proxy implements Zend_Search_Lucene_Interface
      *
      * Is used for query optimization.
      *
-     * @param Zend_Search_Lucene_Index_Term $term
+     * @param Zend_Search_Lucene_Index_Term $term            
      * @return boolean
      */
-    public function hasTerm(Zend_Search_Lucene_Index_Term $term)
+    public function hasTerm (Zend_Search_Lucene_Index_Term $term)
     {
         return $this->_index->hasTerm($term);
     }
@@ -385,11 +398,12 @@ class Zend_Search_Lucene_Proxy implements Zend_Search_Lucene_Interface
     /**
      * Returns IDs of all the documents containing term.
      *
-     * @param Zend_Search_Lucene_Index_Term $term
-     * @param Zend_Search_Lucene_Index_DocsFilter|null $docsFilter
+     * @param Zend_Search_Lucene_Index_Term $term            
+     * @param Zend_Search_Lucene_Index_DocsFilter|null $docsFilter            
      * @return array
      */
-    public function termDocs(Zend_Search_Lucene_Index_Term $term, $docsFilter = null)
+    public function termDocs (Zend_Search_Lucene_Index_Term $term, 
+            $docsFilter = null)
     {
         return $this->_index->termDocs($term, $docsFilter);
     }
@@ -400,11 +414,12 @@ class Zend_Search_Lucene_Proxy implements Zend_Search_Lucene_Interface
      * It performs the same operation as termDocs, but return result as
      * Zend_Search_Lucene_Index_DocsFilter object
      *
-     * @param Zend_Search_Lucene_Index_Term $term
-     * @param Zend_Search_Lucene_Index_DocsFilter|null $docsFilter
+     * @param Zend_Search_Lucene_Index_Term $term            
+     * @param Zend_Search_Lucene_Index_DocsFilter|null $docsFilter            
      * @return Zend_Search_Lucene_Index_DocsFilter
      */
-    public function termDocsFilter(Zend_Search_Lucene_Index_Term $term, $docsFilter = null)
+    public function termDocsFilter (Zend_Search_Lucene_Index_Term $term, 
+            $docsFilter = null)
     {
         return $this->_index->termDocsFilter($term, $docsFilter);
     }
@@ -413,11 +428,12 @@ class Zend_Search_Lucene_Proxy implements Zend_Search_Lucene_Interface
      * Returns an array of all term freqs.
      * Return array structure: array( docId => freq, ...)
      *
-     * @param Zend_Search_Lucene_Index_Term $term
-     * @param Zend_Search_Lucene_Index_DocsFilter|null $docsFilter
+     * @param Zend_Search_Lucene_Index_Term $term            
+     * @param Zend_Search_Lucene_Index_DocsFilter|null $docsFilter            
      * @return integer
      */
-    public function termFreqs(Zend_Search_Lucene_Index_Term $term, $docsFilter = null)
+    public function termFreqs (Zend_Search_Lucene_Index_Term $term, 
+            $docsFilter = null)
     {
         return $this->_index->termFreqs($term, $docsFilter);
     }
@@ -426,11 +442,12 @@ class Zend_Search_Lucene_Proxy implements Zend_Search_Lucene_Interface
      * Returns an array of all term positions in the documents.
      * Return array structure: array( docId => array( pos1, pos2, ...), ...)
      *
-     * @param Zend_Search_Lucene_Index_Term $term
-     * @param Zend_Search_Lucene_Index_DocsFilter|null $docsFilter
+     * @param Zend_Search_Lucene_Index_Term $term            
+     * @param Zend_Search_Lucene_Index_DocsFilter|null $docsFilter            
      * @return array
      */
-    public function termPositions(Zend_Search_Lucene_Index_Term $term, $docsFilter = null)
+    public function termPositions (Zend_Search_Lucene_Index_Term $term, 
+            $docsFilter = null)
     {
         return $this->_index->termPositions($term, $docsFilter);
     }
@@ -438,10 +455,10 @@ class Zend_Search_Lucene_Proxy implements Zend_Search_Lucene_Interface
     /**
      * Returns the number of documents in this index containing the $term.
      *
-     * @param Zend_Search_Lucene_Index_Term $term
+     * @param Zend_Search_Lucene_Index_Term $term            
      * @return integer
      */
-    public function docFreq(Zend_Search_Lucene_Index_Term $term)
+    public function docFreq (Zend_Search_Lucene_Index_Term $term)
     {
         return $this->_index->docFreq($term);
     }
@@ -451,7 +468,7 @@ class Zend_Search_Lucene_Proxy implements Zend_Search_Lucene_Interface
      *
      * @return Zend_Search_Lucene_Search_Similarity
      */
-    public function getSimilarity()
+    public function getSimilarity ()
     {
         return $this->_index->getSimilarity();
     }
@@ -459,11 +476,11 @@ class Zend_Search_Lucene_Proxy implements Zend_Search_Lucene_Interface
     /**
      * Returns a normalization factor for "field, document" pair.
      *
-     * @param integer $id
-     * @param string $fieldName
+     * @param integer $id            
+     * @param string $fieldName            
      * @return float
      */
-    public function norm($id, $fieldName)
+    public function norm ($id, $fieldName)
     {
         return $this->_index->norm($id, $fieldName);
     }
@@ -473,7 +490,7 @@ class Zend_Search_Lucene_Proxy implements Zend_Search_Lucene_Interface
      *
      * @return boolean
      */
-    public function hasDeletions()
+    public function hasDeletions ()
     {
         return $this->_index->hasDeletions();
     }
@@ -482,10 +499,10 @@ class Zend_Search_Lucene_Proxy implements Zend_Search_Lucene_Interface
      * Deletes a document from the index.
      * $id is an internal document id
      *
-     * @param integer|Zend_Search_Lucene_Search_QueryHit $id
+     * @param integer|Zend_Search_Lucene_Search_QueryHit $id            
      * @throws Zend_Search_Lucene_Exception
      */
-    public function delete($id)
+    public function delete ($id)
     {
         return $this->_index->delete($id);
     }
@@ -493,9 +510,9 @@ class Zend_Search_Lucene_Proxy implements Zend_Search_Lucene_Interface
     /**
      * Adds a document to this index.
      *
-     * @param Zend_Search_Lucene_Document $document
+     * @param Zend_Search_Lucene_Document $document            
      */
-    public function addDocument(Zend_Search_Lucene_Document $document)
+    public function addDocument (Zend_Search_Lucene_Document $document)
     {
         $this->_index->addDocument($document);
     }
@@ -503,7 +520,7 @@ class Zend_Search_Lucene_Proxy implements Zend_Search_Lucene_Interface
     /**
      * Commit changes resulting from delete() or undeleteAll() operations.
      */
-    public function commit()
+    public function commit ()
     {
         $this->_index->commit();
     }
@@ -513,7 +530,7 @@ class Zend_Search_Lucene_Proxy implements Zend_Search_Lucene_Interface
      *
      * Merges all segments into one
      */
-    public function optimize()
+    public function optimize ()
     {
         $this->_index->optimize();
     }
@@ -523,16 +540,15 @@ class Zend_Search_Lucene_Proxy implements Zend_Search_Lucene_Interface
      *
      * @return array
      */
-    public function terms()
+    public function terms ()
     {
         return $this->_index->terms();
     }
 
-
     /**
      * Reset terms stream.
      */
-    public function resetTermsStream()
+    public function resetTermsStream ()
     {
         $this->_index->resetTermsStream();
     }
@@ -542,9 +558,9 @@ class Zend_Search_Lucene_Proxy implements Zend_Search_Lucene_Interface
      *
      * Prefix contains fully specified field info and portion of searched term
      *
-     * @param Zend_Search_Lucene_Index_Term $prefix
+     * @param Zend_Search_Lucene_Index_Term $prefix            
      */
-    public function skipTo(Zend_Search_Lucene_Index_Term $prefix)
+    public function skipTo (Zend_Search_Lucene_Index_Term $prefix)
     {
         return $this->_index->skipTo($prefix);
     }
@@ -554,7 +570,7 @@ class Zend_Search_Lucene_Proxy implements Zend_Search_Lucene_Interface
      *
      * @return Zend_Search_Lucene_Index_Term|null
      */
-    public function nextTerm()
+    public function nextTerm ()
     {
         return $this->_index->nextTerm();
     }
@@ -564,7 +580,7 @@ class Zend_Search_Lucene_Proxy implements Zend_Search_Lucene_Interface
      *
      * @return Zend_Search_Lucene_Index_Term|null
      */
-    public function currentTerm()
+    public function currentTerm ()
     {
         return $this->_index->currentTerm();
     }
@@ -574,16 +590,15 @@ class Zend_Search_Lucene_Proxy implements Zend_Search_Lucene_Interface
      *
      * Should be used for resources clean up if stream is not read up to the end
      */
-    public function closeTermsStream()
+    public function closeTermsStream ()
     {
         $this->_index->closeTermsStream();
     }
 
-
     /**
      * Undeletes all documents currently marked as deleted in this index.
      */
-    public function undeleteAll()
+    public function undeleteAll ()
     {
         return $this->_index->undeleteAll();
     }
@@ -592,8 +607,9 @@ class Zend_Search_Lucene_Proxy implements Zend_Search_Lucene_Interface
      * Add reference to the index object
      *
      * @internal
+     *
      */
-    public function addReference()
+    public function addReference ()
     {
         return $this->_index->addReference();
     }
@@ -601,11 +617,13 @@ class Zend_Search_Lucene_Proxy implements Zend_Search_Lucene_Interface
     /**
      * Remove reference from the index object
      *
-     * When reference count becomes zero, index is closed and resources are cleaned up
+     * When reference count becomes zero, index is closed and resources are
+     * cleaned up
      *
      * @internal
+     *
      */
-    public function removeReference()
+    public function removeReference ()
     {
         return $this->_index->removeReference();
     }

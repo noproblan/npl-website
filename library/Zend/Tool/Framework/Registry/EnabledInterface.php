@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -27,14 +28,15 @@
  * as they are the more common things that will be needed by providers
  *
  *
- * @category   Zend
- * @package    Zend_Tool
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @category Zend
+ * @package Zend_Tool
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 interface Zend_Tool_Framework_Registry_EnabledInterface
 {
 
-    public function setRegistry(Zend_Tool_Framework_Registry_Interface $registry);
-
+    public function setRegistry (
+            Zend_Tool_Framework_Registry_Interface $registry);
 }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -20,27 +21,29 @@
  * @version    $Id: SlideShow.php 23775 2011-03-01 17:25:24Z ralph $
  */
 
-
 /**
  * The Zend_Service_SlideShare_SlideShow class represents a slide show on the
  * slideshare.net servers.
  *
- * @category   Zend
- * @package    Zend_Service
+ * @category Zend
+ * @package Zend_Service
  * @subpackage SlideShare
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Service_SlideShare_SlideShow
 {
 
     /**
      * Status constant mapping for web service
-     *
      */
     const STATUS_QUEUED = 0;
+
     const STATUS_PROCESSING = 1;
+
     const STATUS_READY = 2;
+
     const STATUS_FAILED = 3;
 
     /**
@@ -134,13 +137,12 @@ class Zend_Service_SlideShare_SlideShow
      */
     protected $_transcript;
 
-
     /**
      * Retrieves the location of the slide show
      *
      * @return string the Location
      */
-    public function getLocation()
+    public function getLocation ()
     {
         return $this->_location;
     }
@@ -148,12 +150,13 @@ class Zend_Service_SlideShare_SlideShow
     /**
      * Sets the location of the slide show
      *
-     * @param string $loc The location to use
+     * @param string $loc
+     *            The location to use
      * @return Zend_Service_SlideShare_SlideShow
      */
-    public function setLocation($loc)
+    public function setLocation ($loc)
     {
-        $this->_location = (string)$loc;
+        $this->_location = (string) $loc;
         return $this;
     }
 
@@ -162,7 +165,7 @@ class Zend_Service_SlideShare_SlideShow
      *
      * @return string the Transcript
      */
-    public function getTranscript()
+    public function getTranscript ()
     {
         return $this->_transcript;
     }
@@ -170,34 +173,37 @@ class Zend_Service_SlideShare_SlideShow
     /**
      * Sets the transcript for this slide show
      *
-     * @param string $t The transcript
+     * @param string $t
+     *            The transcript
      * @return Zend_Service_SlideShare_SlideShow
      */
-    public function setTranscript($t)
+    public function setTranscript ($t)
     {
-        $this->_transcript = (string)$t;
+        $this->_transcript = (string) $t;
         return $this;
     }
 
     /**
      * Adds a tag to the slide show
      *
-     * @param string $tag The tag to add
+     * @param string $tag
+     *            The tag to add
      * @return Zend_Service_SlideShare_SlideShow
      */
-    public function addTag($tag)
+    public function addTag ($tag)
     {
-        $this->_tags[] = (string)$tag;
+        $this->_tags[] = (string) $tag;
         return $this;
     }
 
     /**
      * Sets the tags for the slide show
      *
-     * @param array $tags An array of tags to set
+     * @param array $tags
+     *            An array of tags to set
      * @return Zend_Service_SlideShare_SlideShow
      */
-    public function setTags(Array $tags)
+    public function setTags (Array $tags)
     {
         $this->_tags = $tags;
         return $this;
@@ -208,7 +214,7 @@ class Zend_Service_SlideShare_SlideShow
      *
      * @return array An array of tags for the slide show
      */
-    public function getTags()
+    public function getTags ()
     {
         return $this->_tags;
     }
@@ -217,12 +223,13 @@ class Zend_Service_SlideShare_SlideShow
      * Sets the filename on the local filesystem of the slide show
      * (for uploading a new slide show)
      *
-     * @param string $file The full path & filename to the slide show
+     * @param string $file
+     *            The full path & filename to the slide show
      * @return Zend_Service_SlideShare_SlideShow
      */
-    public function setFilename($file)
+    public function setFilename ($file)
     {
-        $this->_slideShowFilename = (string)$file;
+        $this->_slideShowFilename = (string) $file;
         return $this;
     }
 
@@ -232,7 +239,7 @@ class Zend_Service_SlideShare_SlideShow
      *
      * @return string The full path & filename to the slide show
      */
-    public function getFilename()
+    public function getFilename ()
     {
         return $this->_slideShowFilename;
     }
@@ -240,12 +247,13 @@ class Zend_Service_SlideShare_SlideShow
     /**
      * Sets the ID for the slide show
      *
-     * @param int $id The slide show ID
+     * @param int $id
+     *            The slide show ID
      * @return Zend_Service_SlideShare_SlideShow
      */
-    public function setId($id)
+    public function setId ($id)
     {
-        $this->_slideShowId = (string)$id;
+        $this->_slideShowId = (string) $id;
         return $this;
     }
 
@@ -254,7 +262,7 @@ class Zend_Service_SlideShare_SlideShow
      *
      * @return int The slide show ID
      */
-    public function getId()
+    public function getId ()
     {
         return $this->_slideShowId;
     }
@@ -262,12 +270,13 @@ class Zend_Service_SlideShare_SlideShow
     /**
      * Sets the HTML embed code for the slide show
      *
-     * @param string $code The HTML embed code
+     * @param string $code
+     *            The HTML embed code
      * @return Zend_Service_SlideShare_SlideShow
      */
-    public function setEmbedCode($code)
+    public function setEmbedCode ($code)
     {
-        $this->_embedCode = (string)$code;
+        $this->_embedCode = (string) $code;
         return $this;
     }
 
@@ -276,7 +285,7 @@ class Zend_Service_SlideShare_SlideShow
      *
      * @return string the HTML embed code
      */
-    public function getEmbedCode()
+    public function getEmbedCode ()
     {
         return $this->_embedCode;
     }
@@ -284,10 +293,11 @@ class Zend_Service_SlideShare_SlideShow
     /**
      * Sets the Thumbnail URI for the slide show
      *
-     * @param string $url The URI for the thumbnail image
+     * @param string $url
+     *            The URI for the thumbnail image
      * @return Zend_Service_SlideShare_SlideShow
      */
-    public function setThumbnailUrl($url)
+    public function setThumbnailUrl ($url)
     {
         $this->_thumbnailUrl = (string) $url;
         return $this;
@@ -298,7 +308,7 @@ class Zend_Service_SlideShare_SlideShow
      *
      * @return string The URI for the thumbnail image
      */
-    public function getThumbnailUrl()
+    public function getThumbnailUrl ()
     {
         return $this->_thumbnailUrl;
     }
@@ -306,12 +316,13 @@ class Zend_Service_SlideShare_SlideShow
     /**
      * Sets the title for the Slide show
      *
-     * @param string $title The slide show title
+     * @param string $title
+     *            The slide show title
      * @return Zend_Service_SlideShare_SlideShow
      */
-    public function setTitle($title)
+    public function setTitle ($title)
     {
-        $this->_title = (string)$title;
+        $this->_title = (string) $title;
         return $this;
     }
 
@@ -320,7 +331,7 @@ class Zend_Service_SlideShare_SlideShow
      *
      * @return string the Slide show title
      */
-    public function getTitle()
+    public function getTitle ()
     {
         return $this->_title;
     }
@@ -328,12 +339,13 @@ class Zend_Service_SlideShare_SlideShow
     /**
      * Sets the description for the Slide show
      *
-     * @param strign $desc The description of the slide show
+     * @param strign $desc
+     *            The description of the slide show
      * @return Zend_Service_SlideShare_SlideShow
      */
-    public function setDescription($desc)
+    public function setDescription ($desc)
     {
-        $this->_description = (string)$desc;
+        $this->_description = (string) $desc;
         return $this;
     }
 
@@ -342,7 +354,7 @@ class Zend_Service_SlideShare_SlideShow
      *
      * @return string The slide show description
      */
-    public function getDescription()
+    public function getDescription ()
     {
         return $this->_description;
     }
@@ -350,12 +362,13 @@ class Zend_Service_SlideShare_SlideShow
     /**
      * Sets the numeric status of the slide show on the server
      *
-     * @param int $status The numeric status on the server
+     * @param int $status
+     *            The numeric status on the server
      * @return Zend_Service_SlideShare_SlideShow
      */
-    public function setStatus($status)
+    public function setStatus ($status)
     {
-        $this->_status = (int)$status;
+        $this->_status = (int) $status;
         return $this;
     }
 
@@ -364,29 +377,32 @@ class Zend_Service_SlideShare_SlideShow
      *
      * @return int A Zend_Service_SlideShare_SlideShow Status constant
      */
-    public function getStatus()
+    public function getStatus ()
     {
         return $this->_status;
     }
 
     /**
-     * Sets the textual description of the status of the slide show on the server
+     * Sets the textual description of the status of the slide show on the
+     * server
      *
-     * @param string $desc The textual description of the status of the slide show
+     * @param string $desc
+     *            The textual description of the status of the slide show
      * @return Zend_Service_SlideShare_SlideShow
      */
-    public function setStatusDescription($desc)
+    public function setStatusDescription ($desc)
     {
-        $this->_statusDescription = (string)$desc;
+        $this->_statusDescription = (string) $desc;
         return $this;
     }
 
     /**
-     * Gets the textual description of the status of the slide show on the server
+     * Gets the textual description of the status of the slide show on the
+     * server
      *
      * @return string the textual description of the service
      */
-    public function getStatusDescription()
+    public function getStatusDescription ()
     {
         return $this->_statusDescription;
     }
@@ -394,12 +410,13 @@ class Zend_Service_SlideShare_SlideShow
     /**
      * Sets the permanent link of the slide show
      *
-     * @param string $url The permanent URL for the slide show
+     * @param string $url
+     *            The permanent URL for the slide show
      * @return Zend_Service_SlideShare_SlideShow
      */
-    public function setPermaLink($url)
+    public function setPermaLink ($url)
     {
-        $this->_permalink = (string)$url;
+        $this->_permalink = (string) $url;
         return $this;
     }
 
@@ -408,7 +425,7 @@ class Zend_Service_SlideShare_SlideShow
      *
      * @return string the permanent URL for the slide show
      */
-    public function getPermaLink()
+    public function getPermaLink ()
     {
         return $this->_permalink;
     }
@@ -416,12 +433,13 @@ class Zend_Service_SlideShare_SlideShow
     /**
      * Sets the number of views the slide show has received
      *
-     * @param int $views The number of views
+     * @param int $views
+     *            The number of views
      * @return Zend_Service_SlideShare_SlideShow
      */
-    public function setNumViews($views)
+    public function setNumViews ($views)
     {
-        $this->_numViews = (int)$views;
+        $this->_numViews = (int) $views;
         return $this;
     }
 
@@ -430,7 +448,7 @@ class Zend_Service_SlideShare_SlideShow
      *
      * @return int The number of views
      */
-    public function getNumViews()
+    public function getNumViews ()
     {
         return $this->_numViews;
     }

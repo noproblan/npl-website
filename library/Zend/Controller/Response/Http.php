@@ -19,10 +19,10 @@
  * @version    $Id: Http.php 23775 2011-03-01 17:25:24Z ralph $
  */
 
-
-/** Zend_Controller_Response_Abstract */
+/**
+ * Zend_Controller_Response_Abstract
+ */
 require_once 'Zend/Controller/Response/Abstract.php';
-
 
 /**
  * Zend_Controller_Response_Http

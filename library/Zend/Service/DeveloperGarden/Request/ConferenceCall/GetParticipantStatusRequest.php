@@ -21,21 +21,24 @@
  */
 
 /**
+ *
  * @see Zend_Service_DeveloperGarden_Request_RequestAbstract
  */
 require_once 'Zend/Service/DeveloperGarden/Request/RequestAbstract.php';
 
 /**
- * @category   Zend
- * @package    Zend_Service
+ *
+ * @category Zend
+ * @package Zend_Service
  * @subpackage DeveloperGarden
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @author     Marco Kaiser
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @author Marco Kaiser
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
-class Zend_Service_DeveloperGarden_Request_ConferenceCall_GetParticipantStatusRequest
-    extends Zend_Service_DeveloperGarden_Request_RequestAbstract
+class Zend_Service_DeveloperGarden_Request_ConferenceCall_GetParticipantStatusRequest extends Zend_Service_DeveloperGarden_Request_RequestAbstract
 {
+
     /**
      * the conference id
      *
@@ -53,24 +56,23 @@ class Zend_Service_DeveloperGarden_Request_ConferenceCall_GetParticipantStatusRe
     /**
      * constructor
      *
-     * @param integer $environment
-     * @param string $conferenceId
-     * @param string $participantId
+     * @param integer $environment            
+     * @param string $conferenceId            
+     * @param string $participantId            
      */
-    public function __construct($environment, $conferenceId, $participantId)
+    public function __construct ($environment, $conferenceId, $participantId)
     {
         parent::__construct($environment);
-        $this->setConferenceId($conferenceId)
-             ->setParticipantId($participantId);
+        $this->setConferenceId($conferenceId)->setParticipantId($participantId);
     }
 
     /**
      * set the conference id
      *
-     * @param string $conferenceId
+     * @param string $conferenceId            
      * @return Zend_Service_DeveloperGarden_Request_ConferenceCall_GetParticipantStatusRequest
      */
-    public function setConferenceId($conferenceId)
+    public function setConferenceId ($conferenceId)
     {
         $this->conferenceId = $conferenceId;
         return $this;
@@ -79,10 +81,10 @@ class Zend_Service_DeveloperGarden_Request_ConferenceCall_GetParticipantStatusRe
     /**
      * set the participant id
      *
-     * @param string $participantId
+     * @param string $participantId            
      * @return Zend_Service_DeveloperGarden_Request_ConferenceCall_GetParticipantStatusRequest
      */
-    public function setParticipantId($participantId)
+    public function setParticipantId ($participantId)
     {
         $this->participantId = $participantId;
         return $this;

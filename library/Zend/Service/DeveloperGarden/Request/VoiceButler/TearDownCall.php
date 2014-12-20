@@ -21,21 +21,24 @@
  */
 
 /**
+ *
  * @see Zend_Service_DeveloperGarden_VoiceButler_VoiceButlerAbstract
  */
 require_once 'Zend/Service/DeveloperGarden/Request/VoiceButler/VoiceButlerAbstract.php';
 
 /**
- * @category   Zend
- * @package    Zend_Service
+ *
+ * @category Zend
+ * @package Zend_Service
  * @subpackage DeveloperGarden
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @author     Marco Kaiser
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @author Marco Kaiser
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
-class Zend_Service_DeveloperGarden_Request_VoiceButler_TearDownCall
-    extends Zend_Service_DeveloperGarden_Request_VoiceButler_VoiceButlerAbstract
+class Zend_Service_DeveloperGarden_Request_VoiceButler_TearDownCall extends Zend_Service_DeveloperGarden_Request_VoiceButler_VoiceButlerAbstract
 {
+
     /**
      * the session id
      *
@@ -46,20 +49,21 @@ class Zend_Service_DeveloperGarden_Request_VoiceButler_TearDownCall
     /**
      * constructor give them the environment and the sessionId
      *
-     * @param integer $environment
-     * @param string $sessionId
+     * @param integer $environment            
+     * @param string $sessionId            
      * @return Zend_Service_DeveloperGarden_Request_RequestAbstract
      */
-    public function __construct($environment, $sessionId)
+    public function __construct ($environment, $sessionId)
     {
         parent::__construct($environment);
         $this->setSessionId($sessionId);
     }
 
     /**
+     *
      * @return string
      */
-    public function getSessionId()
+    public function getSessionId ()
     {
         return $this->sessionId;
     }
@@ -67,10 +71,10 @@ class Zend_Service_DeveloperGarden_Request_VoiceButler_TearDownCall
     /**
      * sets new sessionId
      *
-     * @param string $sessionId
+     * @param string $sessionId            
      * @return Zend_Service_DeveloperGarden_Request_VoiceButler_TearDownCall
      */
-    public function setSessionId($sessionId)
+    public function setSessionId ($sessionId)
     {
         $this->sessionId = $sessionId;
         return $this;

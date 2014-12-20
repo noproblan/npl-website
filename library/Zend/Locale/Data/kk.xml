@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <ldml>
 	<identity>
-		<version number="$Revision: 1.67 $"/>
-		<generation date="$Date: 2009/06/15 03:46:23 $"/>
-		<language type="kk"/>
+		<version number="$Revision: 1.67 $" />
+		<generation date="$Date: 2009/06/15 03:46:23 $" />
+		<language type="kk" />
 	</identity>
 	<localeDisplayNames>
 		<languages>
@@ -332,9 +332,12 @@
 							<greatestDifference id="y">dd.MM.yy - dd.MM.yy</greatestDifference>
 						</intervalFormatItem>
 						<intervalFormatItem id="yMEd">
-							<greatestDifference id="d">E, dd.MM.yy - E, dd.MM.yy</greatestDifference>
-							<greatestDifference id="M">E, dd.MM.yy - E, dd.MM.yy</greatestDifference>
-							<greatestDifference id="y">E, dd.MM.yy - E, dd.MM.yy</greatestDifference>
+							<greatestDifference id="d">E, dd.MM.yy - E,
+								dd.MM.yy</greatestDifference>
+							<greatestDifference id="M">E, dd.MM.yy - E,
+								dd.MM.yy</greatestDifference>
+							<greatestDifference id="y">E, dd.MM.yy - E,
+								dd.MM.yy</greatestDifference>
 						</intervalFormatItem>
 						<intervalFormatItem id="yMMM">
 							<greatestDifference id="M">MMM-MMM y 'ж'.</greatestDifference>
@@ -343,12 +346,15 @@
 						<intervalFormatItem id="yMMMd">
 							<greatestDifference id="d">d-d MMM y 'ж'.</greatestDifference>
 							<greatestDifference id="M">d MMM - d MMM y 'ж'.</greatestDifference>
-							<greatestDifference id="y">d MMM y 'ж'. - d MMM y 'ж'.</greatestDifference>
+							<greatestDifference id="y">d MMM y 'ж'. - d MMM y
+								'ж'.</greatestDifference>
 						</intervalFormatItem>
 						<intervalFormatItem id="yMMMEd">
 							<greatestDifference id="d">E, d - E, d MMM y 'ж'.</greatestDifference>
-							<greatestDifference id="M">E, d MMM - E, d MMM y 'ж'.</greatestDifference>
-							<greatestDifference id="y">E, d MMM y 'ж'. - E, d MMM y 'ж'.</greatestDifference>
+							<greatestDifference id="M">E, d MMM - E, d MMM y
+								'ж'.</greatestDifference>
+							<greatestDifference id="y">E, d MMM y 'ж'. - E, d
+								MMM y 'ж'.</greatestDifference>
 						</intervalFormatItem>
 					</intervalFormats>
 				</dateTimeFormats>

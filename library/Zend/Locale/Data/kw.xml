@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <ldml>
 	<identity>
-		<version number="$Revision: 1.59 $"/>
-		<generation date="$Date: 2009/06/15 03:46:24 $"/>
-		<language type="kw"/>
+		<version number="$Revision: 1.59 $" />
+		<generation date="$Date: 2009/06/15 03:46:24 $" />
+		<language type="kw" />
 	</identity>
 	<localeDisplayNames>
 		<languages>

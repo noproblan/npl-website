@@ -21,33 +21,38 @@
  */
 
 /**
+ *
  * @see Zend_Ldap_Node_Schema_Item
  */
 require_once 'Zend/Ldap/Node/Schema/Item.php';
 /**
+ *
  * @see Zend_Ldap_Node_Schema_AttributeType_Interface
  */
 require_once 'Zend/Ldap/Node/Schema/AttributeType/Interface.php';
 
 /**
- * Zend_Ldap_Node_Schema_AttributeType_OpenLdap provides access to the attribute type
+ * Zend_Ldap_Node_Schema_AttributeType_OpenLdap provides access to the attribute
+ * type
  * schema information on an OpenLDAP server.
  *
- * @category   Zend
- * @package    Zend_Ldap
+ * @category Zend
+ * @package Zend_Ldap
  * @subpackage Schema
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
-class Zend_Ldap_Node_Schema_AttributeType_OpenLdap extends Zend_Ldap_Node_Schema_Item
-    implements Zend_Ldap_Node_Schema_AttributeType_Interface
+class Zend_Ldap_Node_Schema_AttributeType_OpenLdap extends Zend_Ldap_Node_Schema_Item implements 
+        Zend_Ldap_Node_Schema_AttributeType_Interface
 {
+
     /**
      * Gets the attribute name
      *
      * @return string
      */
-    public function getName()
+    public function getName ()
     {
         return $this->name;
     }
@@ -57,7 +62,7 @@ class Zend_Ldap_Node_Schema_AttributeType_OpenLdap extends Zend_Ldap_Node_Schema
      *
      * @return string
      */
-    public function getOid()
+    public function getOid ()
     {
         return $this->oid;
     }
@@ -67,12 +72,14 @@ class Zend_Ldap_Node_Schema_AttributeType_OpenLdap extends Zend_Ldap_Node_Schema
      *
      * @return string
      */
-    public function getSyntax()
+    public function getSyntax ()
     {
         if ($this->syntax === null) {
             $parent = $this->getParent();
-            if ($parent === null) return null;
-            else return $parent->getSyntax();
+            if ($parent === null)
+                return null;
+            else
+                return $parent->getSyntax();
         } else {
             return $this->syntax;
         }
@@ -83,15 +90,17 @@ class Zend_Ldap_Node_Schema_AttributeType_OpenLdap extends Zend_Ldap_Node_Schema
      *
      * @return int|null
      */
-    public function getMaxLength()
+    public function getMaxLength ()
     {
         $maxLength = $this->{'max-length'};
         if ($maxLength === null) {
             $parent = $this->getParent();
-            if ($parent === null) return null;
-            else return $parent->getMaxLength();
+            if ($parent === null)
+                return null;
+            else
+                return $parent->getMaxLength();
         } else {
-            return (int)$maxLength;
+            return (int) $maxLength;
         }
     }
 
@@ -100,7 +109,7 @@ class Zend_Ldap_Node_Schema_AttributeType_OpenLdap extends Zend_Ldap_Node_Schema
      *
      * @return boolean
      */
-    public function isSingleValued()
+    public function isSingleValued ()
     {
         return $this->{'single-value'};
     }
@@ -110,7 +119,7 @@ class Zend_Ldap_Node_Schema_AttributeType_OpenLdap extends Zend_Ldap_Node_Schema
      *
      * @return string
      */
-    public function getDescription()
+    public function getDescription ()
     {
         return $this->desc;
     }
@@ -120,7 +129,7 @@ class Zend_Ldap_Node_Schema_AttributeType_OpenLdap extends Zend_Ldap_Node_Schema
      *
      * @return Zend_Ldap_Node_Schema_AttributeType_OpenLdap|null
      */
-    public function getParent()
+    public function getParent ()
     {
         if (count($this->_parents) === 1) {
             return $this->_parents[0];

@@ -21,6 +21,7 @@
  */
 
 /**
+ *
  * @see Zend_Controller_Action_Helper_Abstract
  */
 require_once 'Zend/Controller/Action/Helper/Abstract.php';
@@ -28,45 +29,51 @@ require_once 'Zend/Controller/Action/Helper/Abstract.php';
 /**
  * Helper for creating URLs for redirects and other tasks
  *
- * @uses       Zend_Controller_Action_Helper_Abstract
- * @category   Zend
- * @package    Zend_Controller
+ * @uses Zend_Controller_Action_Helper_Abstract
+ * @category Zend
+ * @package Zend_Controller
  * @subpackage Zend_Controller_Action_Helper
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Controller_Action_Helper_Url extends Zend_Controller_Action_Helper_Abstract
 {
+
     /**
      * Create URL based on default route
      *
-     * @param  string $action
-     * @param  string $controller
-     * @param  string $module
-     * @param  array  $params
+     * @param string $action            
+     * @param string $controller            
+     * @param string $module            
+     * @param array $params            
      * @return string
      */
-    public function simple($action, $controller = null, $module = null, array $params = null)
+    public function simple ($action, $controller = null, $module = null, 
+            array $params = null)
     {
         $request = $this->getRequest();
-
+        
         if (null === $controller) {
             $controller = $request->getControllerName();
         }
-
+        
         if (null === $module) {
             $module = $request->getModuleName();
         }
-
+        
         $url = $controller . '/' . $action;
-        if ($module != $this->getFrontController()->getDispatcher()->getDefaultModule()) {
+        if ($module !=
+                 $this->getFrontController()
+                    ->getDispatcher()
+                    ->getDefaultModule()) {
             $url = $module . '/' . $url;
         }
-
+        
         if ('' !== ($baseUrl = $this->getFrontController()->getBaseUrl())) {
             $url = $baseUrl . '/' . $url;
         }
-
+        
         if (null !== $params) {
             $paramPairs = array();
             foreach ($params as $key => $value) {
@@ -75,9 +82,9 @@ class Zend_Controller_Action_Helper_Url extends Zend_Controller_Action_Helper_Ab
             $paramString = implode('/', $paramPairs);
             $url .= '/' . $paramString;
         }
-
+        
         $url = '/' . ltrim($url, '/');
-
+        
         return $url;
     }
 
@@ -87,30 +94,35 @@ class Zend_Controller_Action_Helper_Url extends Zend_Controller_Action_Helper_Ab
      * This method will typically be used for more complex operations, as it
      * ties into the route objects registered with the router.
      *
-     * @param  array   $urlOptions Options passed to the assemble method of the Route object.
-     * @param  mixed   $name       The name of a Route to use. If null it will use the current Route
-     * @param  boolean $reset
-     * @param  boolean $encode
+     * @param array $urlOptions
+     *            Options passed to the assemble method of the Route object.
+     * @param mixed $name
+     *            The name of a Route to use. If null it will use the current
+     *            Route
+     * @param boolean $reset            
+     * @param boolean $encode            
      * @return string Url for the link href attribute.
      */
-    public function url($urlOptions = array(), $name = null, $reset = false, $encode = true)
+    public function url ($urlOptions = array(), $name = null, $reset = false, $encode = true)
     {
         $router = $this->getFrontController()->getRouter();
         return $router->assemble($urlOptions, $name, $reset, $encode);
     }
 
     /**
-     * Perform helper when called as $this->_helper->url() from an action controller
+     * Perform helper when called as $this->_helper->url() from an action
+     * controller
      *
      * Proxies to {@link simple()}
      *
-     * @param  string $action
-     * @param  string $controller
-     * @param  string $module
-     * @param  array  $params
+     * @param string $action            
+     * @param string $controller            
+     * @param string $module            
+     * @param array $params            
      * @return string
      */
-    public function direct($action, $controller = null, $module = null, array $params = null)
+    public function direct ($action, $controller = null, $module = null, 
+            array $params = null)
     {
         return $this->simple($action, $controller, $module, $params);
     }

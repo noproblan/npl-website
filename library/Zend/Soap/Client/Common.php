@@ -19,58 +19,60 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @version    $Id: Common.php 23775 2011-03-01 17:25:24Z ralph $
  */
-
-
 if (extension_loaded('soap')) {
 
-/**
- * @category   Zend
- * @package    Zend_Soap
- * @subpackage Client
- */
-class Zend_Soap_Client_Common extends SoapClient
-{
     /**
-     * doRequest() pre-processing method
      *
-     * @var callback
+     * @category Zend
+     * @package Zend_Soap
+     * @subpackage Client
      */
-    protected $_doRequestCallback;
-
-    /**
-     * Common Soap Client constructor
-     *
-     * @param callback $doRequestMethod
-     * @param string $wsdl
-     * @param array $options
-     */
-    function __construct($doRequestCallback, $wsdl, $options)
+    class Zend_Soap_Client_Common extends SoapClient
     {
-        $this->_doRequestCallback = $doRequestCallback;
 
-        parent::__construct($wsdl, $options);
-    }
+        /**
+         * doRequest() pre-processing method
+         *
+         * @var callback
+         */
+        protected $_doRequestCallback;
 
-    /**
-     * Performs SOAP request over HTTP.
-     * Overridden to implement different transport layers, perform additional XML processing or other purpose.
-     *
-     * @param string $request
-     * @param string $location
-     * @param string $action
-     * @param int    $version
-     * @param int    $one_way
-     * @return mixed
-     */
-    function __doRequest($request, $location, $action, $version, $one_way = null)
-    {
-        if ($one_way === null) {
-            return call_user_func($this->_doRequestCallback, $this, $request, $location, $action, $version);
-        } else {
-            return call_user_func($this->_doRequestCallback, $this, $request, $location, $action, $version, $one_way);
+        /**
+         * Common Soap Client constructor
+         *
+         * @param callback $doRequestMethod            
+         * @param string $wsdl            
+         * @param array $options            
+         */
+        function __construct ($doRequestCallback, $wsdl, $options)
+        {
+            $this->_doRequestCallback = $doRequestCallback;
+            
+            parent::__construct($wsdl, $options);
+        }
+
+        /**
+         * Performs SOAP request over HTTP.
+         * Overridden to implement different transport layers, perform
+         * additional XML processing or other purpose.
+         *
+         * @param string $request            
+         * @param string $location            
+         * @param string $action            
+         * @param int $version            
+         * @param int $one_way            
+         * @return mixed
+         */
+        function __doRequest ($request, $location, $action, $version, 
+                $one_way = null)
+        {
+            if ($one_way === null) {
+                return call_user_func($this->_doRequestCallback, $this, 
+                        $request, $location, $action, $version);
+            } else {
+                return call_user_func($this->_doRequestCallback, $this, 
+                        $request, $location, $action, $version, $one_way);
+            }
         }
     }
-
-}
-
 } // end if (extension_loaded('soap')

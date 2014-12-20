@@ -20,74 +20,80 @@
  * @version    $Id: TagsResult.php 23775 2011-03-01 17:25:24Z ralph $
  */
 
-
 /**
+ *
  * @see Zend_Service_Technorati_Result
  */
 require_once 'Zend/Service/Technorati/Result.php';
 
-
 /**
  * Represents a single Technorati TopTags or BlogPostTags query result object.
  * It is never returned as a standalone object,
- * but it always belongs to a valid Zend_Service_Technorati_TagsResultSet object.
+ * but it always belongs to a valid Zend_Service_Technorati_TagsResultSet
+ * object.
  *
- * @category   Zend
- * @package    Zend_Service
+ * @category Zend
+ * @package Zend_Service
  * @subpackage Technorati
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Service_Technorati_TagsResult extends Zend_Service_Technorati_Result
 {
+
     /**
      * Name of the tag.
      *
-     * @var     string
-     * @access  protected
+     * @var string
+     * @access protected
      */
     protected $_tag;
 
     /**
      * Number of posts containing this tag.
      *
-     * @var     int
-     * @access  protected
+     * @var int
+     * @access protected
      */
     protected $_posts;
-
 
     /**
      * Constructs a new object object from DOM Document.
      *
-     * @param   DomElement $dom the ReST fragment for this object
+     * @param DomElement $dom
+     *            the ReST fragment for this object
      */
-    public function __construct(DomElement $dom)
+    public function __construct (DomElement $dom)
     {
-        $this->_fields = array( '_tag'   => 'tag',
-                                '_posts' => 'posts');
+        $this->_fields = array(
+                '_tag' => 'tag',
+                '_posts' => 'posts'
+        );
         parent::__construct($dom);
-
+        
         // filter fields
-        $this->_tag   = (string) $this->_tag;
+        $this->_tag = (string) $this->_tag;
         $this->_posts = (int) $this->_posts;
     }
 
     /**
      * Returns the tag name.
      *
-     * @return  string
+     * @return string
      */
-    public function getTag() {
+    public function getTag ()
+    {
         return $this->_tag;
     }
 
     /**
      * Returns the number of posts.
      *
-     * @return  int
+     * @return int
      */
-    public function getPosts() {
+    public function getPosts ()
+    {
         return $this->_posts;
     }
 }

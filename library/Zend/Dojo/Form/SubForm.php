@@ -19,23 +19,28 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
 
-/** Zend_Form_SubForm */
+/**
+ * Zend_Form_SubForm
+ */
 require_once 'Zend/Form/SubForm.php';
 
 /**
  * Dijit-enabled SubForm
  *
- * @uses       Zend_Form_SubForm
- * @package    Zend_Dojo
+ * @uses Zend_Form_SubForm
+ * @package Zend_Dojo
  * @subpackage Form
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: SubForm.php 23775 2011-03-01 17:25:24Z ralph $
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
+ * @version $Id: SubForm.php 23775 2011-03-01 17:25:24Z ralph $
  */
 class Zend_Dojo_Form_SubForm extends Zend_Form_SubForm
 {
+
     /**
      * Has the dojo view helper path been registered?
+     * 
      * @var bool
      */
     protected $_dojoViewPathRegistered = false;
@@ -43,16 +48,20 @@ class Zend_Dojo_Form_SubForm extends Zend_Form_SubForm
     /**
      * Constructor
      *
-     * @param  array|Zend_Config|null $options
+     * @param array|Zend_Config|null $options            
      * @return void
      */
-    public function __construct($options = null)
+    public function __construct ($options = null)
     {
-        $this->addPrefixPath('Zend_Dojo_Form_Decorator', 'Zend/Dojo/Form/Decorator', 'decorator')
-             ->addPrefixPath('Zend_Dojo_Form_Element', 'Zend/Dojo/Form/Element', 'element')
-             ->addElementPrefixPath('Zend_Dojo_Form_Decorator', 'Zend/Dojo/Form/Decorator', 'decorator')
-             ->addDisplayGroupPrefixPath('Zend_Dojo_Form_Decorator', 'Zend/Dojo/Form/Decorator')
-             ->setDefaultDisplayGroupClass('Zend_Dojo_Form_DisplayGroup');
+        $this->addPrefixPath('Zend_Dojo_Form_Decorator', 
+                'Zend/Dojo/Form/Decorator', 'decorator')
+            ->addPrefixPath('Zend_Dojo_Form_Element', 'Zend/Dojo/Form/Element', 
+                'element')
+            ->addElementPrefixPath('Zend_Dojo_Form_Decorator', 
+                'Zend/Dojo/Form/Decorator', 'decorator')
+            ->addDisplayGroupPrefixPath('Zend_Dojo_Form_Decorator', 
+                'Zend/Dojo/Form/Decorator')
+            ->setDefaultDisplayGroupClass('Zend_Dojo_Form_DisplayGroup');
         parent::__construct($options);
     }
 
@@ -61,17 +70,19 @@ class Zend_Dojo_Form_SubForm extends Zend_Form_SubForm
      *
      * @return void
      */
-    public function loadDefaultDecorators()
+    public function loadDefaultDecorators ()
     {
         if ($this->loadDefaultDecoratorsIsDisabled()) {
             return;
         }
-
+        
         $decorators = $this->getDecorators();
         if (empty($decorators)) {
             $this->addDecorator('FormElements')
-                 ->addDecorator('HtmlTag', array('tag' => 'dl'))
-                 ->addDecorator('ContentPane');
+                ->addDecorator('HtmlTag', array(
+                    'tag' => 'dl'
+            ))
+                ->addDecorator('ContentPane');
         }
     }
 
@@ -80,12 +91,15 @@ class Zend_Dojo_Form_SubForm extends Zend_Form_SubForm
      *
      * @return Zend_View_Interface
      */
-    public function getView()
+    public function getView ()
     {
         $view = parent::getView();
-        if (!$this->_dojoViewPathRegistered) {
-            if (false === $view->getPluginLoader('helper')->getPaths('Zend_Dojo_View_Helper')) {
-                $view->addHelperPath('Zend/Dojo/View/Helper', 'Zend_Dojo_View_Helper');
+        if (! $this->_dojoViewPathRegistered) {
+            if (false ===
+                     $view->getPluginLoader('helper')->getPaths(
+                            'Zend_Dojo_View_Helper')) {
+                $view->addHelperPath('Zend/Dojo/View/Helper', 
+                        'Zend_Dojo_View_Helper');
             }
             $this->_dojoViewPathRegistered = true;
         }

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <ldml>
 	<identity>
-		<version number="$Revision: 1.120 $"/>
-		<generation date="$Date: 2009/06/15 03:46:25 $"/>
-		<language type="nb"/>
+		<version number="$Revision: 1.120 $" />
+		<generation date="$Date: 2009/06/15 03:46:25 $" />
+		<language type="nb" />
 	</identity>
 	<fallback>nn da sv en</fallback>
 	<localeDisplayNames>
@@ -1008,7 +1008,8 @@
 	</layout>
 	<characters>
 		<exemplarCharacters>[a à b-e é f-o ó ò ô p-z æ ø å]</exemplarCharacters>
-		<exemplarCharacters type="auxiliary">[á ǎ ã č ç đ è ê í ń ñ ŋ š ŧ ü ž ä ö]</exemplarCharacters>
+		<exemplarCharacters type="auxiliary">[á ǎ ã č ç đ è ê í ń ñ ŋ š
+			ŧ ü ž ä ö]</exemplarCharacters>
 		<exemplarCharacters type="currencySymbol">[a-z]</exemplarCharacters>
 	</characters>
 	<delimiters>
@@ -1907,7 +1908,8 @@
 			</currency>
 			<currency type="AOR">
 				<displayName>angolanske kwanza reajustado (1995-1999)</displayName>
-				<displayName count="one">angolansk kwanza reajustado (1995-1999)</displayName>
+				<displayName count="one">angolansk kwanza reajustado
+					(1995-1999)</displayName>
 			</currency>
 			<currency type="ARA">
 				<displayName>argentinske australer</displayName>
@@ -1958,7 +1960,8 @@
 			</currency>
 			<currency type="BAM">
 				<displayName>bosnisk-hercegovinske mark (konvertible)</displayName>
-				<displayName count="one">bosnisk-hercegovinsk mark (konvertibel)</displayName>
+				<displayName count="one">bosnisk-hercegovinsk mark
+					(konvertibel)</displayName>
 				<symbol>BAM</symbol>
 			</currency>
 			<currency type="BBD">
@@ -2207,7 +2210,8 @@
 			</currency>
 			<currency type="ECV">
 				<displayName>ecuadorianske unidad de valor constante (UVC)</displayName>
-				<displayName count="one">ecuadoriansk unidad de valor constante (UVC)</displayName>
+				<displayName count="one">ecuadoriansk unidad de valor
+					constante (UVC)</displayName>
 			</currency>
 			<currency type="EEK">
 				<displayName>estiske kroon</displayName>

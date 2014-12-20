@@ -19,31 +19,36 @@
  * @version    $Id: Request.php 23775 2011-03-01 17:25:24Z ralph $
  */
 
-/** Zend_Oauth_Token */
+/**
+ * Zend_Oauth_Token
+ */
 require_once 'Zend/Oauth/Token.php';
 
 /**
- * @category   Zend
- * @package    Zend_Oauth
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ *
+ * @category Zend
+ * @package Zend_Oauth
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Oauth_Token_Request extends Zend_Oauth_Token
 {
+
     /**
      * Constructor
      *
-     * @param null|Zend_Http_Response $response
-     * @param null|Zend_Oauth_Http_Utility $utility
+     * @param null|Zend_Http_Response $response            
+     * @param null|Zend_Oauth_Http_Utility $utility            
      */
-    public function __construct(
-        Zend_Http_Response $response = null,
-        Zend_Oauth_Http_Utility $utility = null
-    ) {
+    public function __construct (Zend_Http_Response $response = null, 
+            Zend_Oauth_Http_Utility $utility = null)
+    {
         parent::__construct($response, $utility);
-
+        
         // detect if server supports OAuth 1.0a
-        if (isset($this->_params[Zend_Oauth_Token::TOKEN_PARAM_CALLBACK_CONFIRMED])) {
+        if (isset(
+                $this->_params[Zend_Oauth_Token::TOKEN_PARAM_CALLBACK_CONFIRMED])) {
             Zend_Oauth_Client::$supportsRevisionA = true;
         }
     }

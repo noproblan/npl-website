@@ -22,6 +22,7 @@
  */
 
 /**
+ *
  * @see Zend_Gdata_Entry
  */
 require_once 'Zend/Gdata/Entry.php';
@@ -29,11 +30,12 @@ require_once 'Zend/Gdata/Entry.php';
 /**
  * Concrete class for working with Atom entries.
  *
- * @category   Zend
- * @package    Zend_Gdata
+ * @category Zend
+ * @package Zend_Gdata
  * @subpackage Spreadsheets
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Gdata_Spreadsheets_SpreadsheetEntry extends Zend_Gdata_Entry
 {
@@ -42,9 +44,11 @@ class Zend_Gdata_Spreadsheets_SpreadsheetEntry extends Zend_Gdata_Entry
 
     /**
      * Constructs a new Zend_Gdata_Spreadsheets_SpreadsheetEntry object.
-     * @param DOMElement $element (optional) The DOMElement on which to base this object.
+     * 
+     * @param DOMElement $element
+     *            (optional) The DOMElement on which to base this object.
      */
-    public function __construct($element = null)
+    public function __construct ($element = null)
     {
         $this->registerAllNamespaces(Zend_Gdata_Spreadsheets::$namespaces);
         parent::__construct($element);
@@ -55,10 +59,9 @@ class Zend_Gdata_Spreadsheets_SpreadsheetEntry extends Zend_Gdata_Entry
      *
      * @return Zend_Gdata_Spreadsheets_WorksheetFeed The worksheets
      */
-    public function getWorksheets()
+    public function getWorksheets ()
     {
         $service = new Zend_Gdata_Spreadsheets($this->getHttpClient());
         return $service->getWorksheetFeed($this);
     }
-
 }

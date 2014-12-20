@@ -21,6 +21,7 @@
  */
 
 /**
+ *
  * @see Zend_Tool_Project_Context_Filesystem_File
  */
 require_once 'Zend/Tool/Project/Context/Filesystem/File.php';
@@ -31,15 +32,17 @@ require_once 'Zend/Tool/Project/Context/Filesystem/File.php';
  * A profile is a hierarchical set of resources that keep track of
  * items within a specific project.
  *
- * @category   Zend
- * @package    Zend_Tool
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @category Zend
+ * @package Zend_Tool
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Tool_Project_Context_Zf_TestPHPUnitBootstrapFile extends Zend_Tool_Project_Context_Filesystem_File
 {
 
     /**
+     *
      * @var string
      */
     protected $_filesystemName = 'bootstrap.php';
@@ -49,20 +52,21 @@ class Zend_Tool_Project_Context_Zf_TestPHPUnitBootstrapFile extends Zend_Tool_Pr
      *
      * @return string
      */
-    public function getName()
+    public function getName ()
     {
         return 'TestPHPUnitBootstrapFile';
     }
-    
+
     /**
      * getContents()
      *
      * @return string
      */
-    public function getContents()
+    public function getContents ()
     {
-        $codeGenerator = new Zend_CodeGenerator_Php_File(array(
-            'body' => <<<EOS
+        $codeGenerator = new Zend_CodeGenerator_Php_File(
+                array(
+                        'body' => <<<EOS
 // Define path to application directory
 defined('APPLICATION_PATH')
     || define('APPLICATION_PATH', realpath(dirname(__FILE__) . '/../application'));
@@ -81,8 +85,8 @@ require_once 'Zend/Loader/Autoloader.php';
 Zend_Loader_Autoloader::getInstance();
 
 EOS
-            ));
+
+                ));
         return $codeGenerator->generate();
     }
-
 }

@@ -21,28 +21,30 @@
  */
 
 /**
+ *
  * @see Zend_Application_Resource_ResourceAbstract
  */
 require_once 'Zend/Application/Resource/ResourceAbstract.php';
 
-
 /**
  * Resource for setting navigation structure
  *
- * @uses       Zend_Application_Resource_ResourceAbstract
- * @category   Zend
- * @package    Zend_Application
+ * @uses Zend_Application_Resource_ResourceAbstract
+ * @category Zend
+ * @package Zend_Application
  * @subpackage Resource
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @author     Dolf Schimmel
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @author Dolf Schimmel
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
-class Zend_Application_Resource_Navigation
-    extends Zend_Application_Resource_ResourceAbstract
+class Zend_Application_Resource_Navigation extends Zend_Application_Resource_ResourceAbstract
 {
+
     const DEFAULT_REGISTRY_KEY = 'Zend_Navigation';
 
     /**
+     *
      * @var Zend_Navigation
      */
     protected $_container;
@@ -52,19 +54,20 @@ class Zend_Application_Resource_Navigation
      *
      * @return Zend_Navigation
      */
-    public function init()
+    public function init ()
     {
-        if (!$this->_container) {
+        if (! $this->_container) {
             $options = $this->getOptions();
-
-            if(isset($options['defaultPageType'])) {
-                Zend_Navigation_Page::setDefaultPageType($options['defaultPageType']);
+            
+            if (isset($options['defaultPageType'])) {
+                Zend_Navigation_Page::setDefaultPageType(
+                        $options['defaultPageType']);
             }
             
             $pages = isset($options['pages']) ? $options['pages'] : array();
             $this->_container = new Zend_Navigation($pages);
         }
-
+        
         $this->store();
         return $this->_container;
     }
@@ -74,11 +77,11 @@ class Zend_Application_Resource_Navigation
      *
      * @return void
      */
-    public function store()
+    public function store ()
     {
         $options = $this->getOptions();
         if (isset($options['storage']['registry']) &&
-            $options['storage']['registry'] == true) {
+                 $options['storage']['registry'] == true) {
             $this->_storeRegistry();
         } else {
             $this->_storeHelper();
@@ -90,18 +93,19 @@ class Zend_Application_Resource_Navigation
      *
      * @return void
      */
-    protected function _storeRegistry()
+    protected function _storeRegistry ()
     {
         $options = $this->getOptions();
-        if(isset($options['storage']['registry']['key']) &&
-           !is_numeric($options['storage']['registry']['key'])) // see ZF-7461
-        {
-           $key = $options['storage']['registry']['key'];
+        if (isset($options['storage']['registry']['key']) &&
+                 ! is_numeric($options['storage']['registry']['key'])) // see
+                                                                     // ZF-7461
+{
+            $key = $options['storage']['registry']['key'];
         } else {
             $key = self::DEFAULT_REGISTRY_KEY;
         }
-
-        Zend_Registry::set($key,$this->getContainer());
+        
+        Zend_Registry::set($key, $this->getContainer());
     }
 
     /**
@@ -109,7 +113,7 @@ class Zend_Application_Resource_Navigation
      *
      * @return void
      */
-    protected function _storeHelper()
+    protected function _storeHelper ()
     {
         $this->getBootstrap()->bootstrap('view');
         $view = $this->getBootstrap()->view;
@@ -121,7 +125,7 @@ class Zend_Application_Resource_Navigation
      *
      * @return Zend_Navigation
      */
-    public function getContainer()
+    public function getContainer ()
     {
         return $this->_container;
     }

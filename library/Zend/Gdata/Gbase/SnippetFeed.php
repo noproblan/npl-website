@@ -22,6 +22,7 @@
  */
 
 /**
+ *
  * @see Zend_Gdata_Gbase_Feed
  */
 require_once 'Zend/Gdata/Gbase/Feed.php';
@@ -30,15 +31,17 @@ require_once 'Zend/Gdata/Gbase/Feed.php';
  * Represents the Google Base Snippets Feed
  *
  * @link http://code.google.com/apis/base/
- *
- * @category   Zend
- * @package    Zend_Gdata
+ *      
+ * @category Zend
+ * @package Zend_Gdata
  * @subpackage Gbase
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Gdata_Gbase_SnippetFeed extends Zend_Gdata_Feed
 {
+
     /**
      * The classname for individual snippet feed elements.
      *

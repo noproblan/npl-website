@@ -20,9 +20,10 @@
  * @version    $Id: Exception.php 23775 2011-03-01 17:25:24Z ralph $
  */
 
-/** Zend_Exception */
+/**
+ * Zend_Exception
+ */
 require_once 'Zend/Exception.php';
-
 
 /**
  * Exception class for Zend_Pdf.
@@ -31,8 +32,8 @@ require_once 'Zend/Exception.php';
  * caller, create a constant for it here and include it in the object being
  * thrown. Example:
  *
- *   throw new Zend_Pdf_Exception('foo() is not yet implemented',
- *                                Zend_Pdf_Exception::NOT_IMPLEMENTED);
+ * throw new Zend_Pdf_Exception('foo() is not yet implemented',
+ * Zend_Pdf_Exception::NOT_IMPLEMENTED);
  *
  * This allows the caller to determine the specific type of exception that was
  * thrown without resorting to parsing the descriptive text.
@@ -43,27 +44,32 @@ require_once 'Zend/Exception.php';
  * time. ALWAYS use the symbolic constant names, which are guaranteed never to
  * change, in logical checks! You have been warned.
  *
- * @package    Zend_Pdf
+ * @package Zend_Pdf
  * @subpackage Core
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Pdf_Exception extends Zend_Exception
 {
-  /**** Class Constants ****/
-
-
-  /* Generic Exceptions */
 
     /**
-     * The feature or option is planned but has not yet been implemented. It
+     * ** Class Constants ***
+     */
+    
+    /* Generic Exceptions */
+    
+    /**
+     * The feature or option is planned but has not yet been implemented.
+     * It
      * should be available in a future revision of the framework.
      */
     const NOT_IMPLEMENTED = 0x0001;
 
     /**
      * The feature or option has been deprecated and will be removed in a future
-     * revision of the framework. The descriptive text accompanying this
+     * revision of the framework.
+     * The descriptive text accompanying this
      * exception should explain how to use the replacement features or options.
      */
     const DEPRECATED = 0x0002;
@@ -98,11 +104,9 @@ class Zend_Pdf_Exception extends Zend_Exception
      * An array or string index was out of range.
      */
     const INDEX_OUT_OF_RANGE = 0x0008;
-
-
-
-  /* Filesystem I/O */
-
+    
+    /* Filesystem I/O */
+    
     /**
      * The file path was unusable or invalid.
      */
@@ -175,11 +179,9 @@ class Zend_Pdf_Exception extends Zend_Exception
      * There is insufficient data to fulfill the read request.
      */
     const INSUFFICIENT_DATA = 0x010e;
-
-
-
-  /* Zend_Pdf_FileParser */
-
+    
+    /* Zend_Pdf_FileParser */
+    
     /**
      * The file parser data source object was invalid or improperly initialized.
      */
@@ -210,11 +212,9 @@ class Zend_Pdf_Exception extends Zend_Exception
      * was called out-of-turn.
      */
     const PARSED_OUT_OF_ORDER = 0x0206;
-
-
-
-  /* Zend_Pdf_FileParser_Font and Subclasses */
-
+    
+    /* Zend_Pdf_FileParser_Font and Subclasses */
+    
     /**
      * The font file type is incorrect.
      */
@@ -244,11 +244,9 @@ class Zend_Pdf_Exception extends Zend_Exception
      * Could not locate a usable character map for this font.
      */
     const CANT_FIND_GOOD_CMAP = 0x0305;
-
-
-
-  /* Zend_Pdf_Cmap and Subclasses */
-
+    
+    /* Zend_Pdf_Cmap and Subclasses */
+    
     /**
      * The character map type is currently unsupported.
      */
@@ -275,7 +273,8 @@ class Zend_Pdf_Exception extends Zend_Exception
     const CMAP_WRONG_TABLE_LENGTH = 0x0405;
 
     /**
-     * This character map table is language-dependent. Character maps must be
+     * This character map table is language-dependent.
+     * Character maps must be
      * language-independent.
      */
     const CMAP_NOT_LANGUAGE_INDEPENDENT = 0x0406;
@@ -290,11 +289,9 @@ class Zend_Pdf_Exception extends Zend_Exception
      * The character map subtable entry count does not match the expected value.
      */
     const CMAP_WRONG_ENTRY_COUNT = 0x0408;
-
-
-
-  /* Zend_Pdf_Resource_Font and Subclasses */
-
+    
+    /* Zend_Pdf_Resource_Font and Subclasses */
+    
     /**
      * The specified glyph number is out of range for this font.
      */
@@ -302,15 +299,14 @@ class Zend_Pdf_Exception extends Zend_Exception
 
     /**
      * This font program has copyright bits set which prevent it from being
-     * embedded in the PDF file. You must specify the no-embed option to use
+     * embedded in the PDF file.
+     * You must specify the no-embed option to use
      * this font.
      */
     const FONT_CANT_BE_EMBEDDED = 0x0502;
-
-
-
-  /* Zend_Pdf_Font */
-
+    
+    /* Zend_Pdf_Font */
+    
     /**
      * The font name did not match any previously instantiated font and is not
      * one of the standard 14 PDF fonts.
@@ -321,23 +317,21 @@ class Zend_Pdf_Exception extends Zend_Exception
      * The factory method could not determine the type of the font file.
      */
     const CANT_DETERMINE_FONT_TYPE = 0x0602;
-
-
-  /* Text Layout System */
-
+    
+    /* Text Layout System */
+    
     /**
      * The specified attribute value for the text object cannot be used.
      */
     const BAD_ATTRIBUTE_VALUE = 0x0701;
-
-
-  /* Zend_Pdf_Image and Subclasses */
-
+    
+    /* Zend_Pdf_Image and Subclasses */
     const CANT_DETERMINE_IMAGE_TYPE = 0x0801;
+
     const WRONG_IMAGE_TYPE = 0x0802;
+
     const UNSUPPORTED_IMAGE_ENCODING_OPTIONS = 0x0803;
+
     const IMAGE_FILE_CORRUPT = 0x0804;
-
-
 }
 

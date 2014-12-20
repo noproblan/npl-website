@@ -21,20 +21,24 @@
  */
 
 /**
+ *
  * @see Zend_Service_Ebay_Finding_Response_Abstract
  */
 require_once 'Zend/Service/Ebay/Finding/Response/Abstract.php';
 
 /**
- * @category   Zend
- * @package    Zend_Service
+ *
+ * @category Zend
+ * @package Zend_Service
  * @subpackage Ebay
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @uses       Zend_Service_Ebay_Finding_Response_Abstract
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
+ * @uses Zend_Service_Ebay_Finding_Response_Abstract
  */
 class Zend_Service_Ebay_Finding_Response_Histograms extends Zend_Service_Ebay_Finding_Response_Abstract
 {
+
     /**
      * Response container for aspect histograms.
      *
@@ -57,30 +61,36 @@ class Zend_Service_Ebay_Finding_Response_Histograms extends Zend_Service_Ebay_Fi
     public $categoryHistogramContainer;
 
     /**
+     *
      * @return void
      */
-    protected function _init()
+    protected function _init ()
     {
         parent::_init();
         $ns = Zend_Service_Ebay_Finding::XMLNS_FINDING;
-
-
-        $node = $this->_xPath->query(".//$ns:aspectHistogramContainer[1]", $this->_dom)->item(0);
+        
+        $node = $this->_xPath->query(".//$ns:aspectHistogramContainer[1]", 
+                $this->_dom)->item(0);
         if ($node) {
             /**
+             *
              * @see Zend_Service_Ebay_Finding_Aspect_Histogram_Container
              */
             require_once 'Zend/Service/Ebay/Finding/Aspect/Histogram/Container.php';
-            $this->aspectHistogramContainer = new Zend_Service_Ebay_Finding_Aspect_Histogram_Container($node);
+            $this->aspectHistogramContainer = new Zend_Service_Ebay_Finding_Aspect_Histogram_Container(
+                    $node);
         }
-
-        $node = $this->_xPath->query(".//$ns:categoryHistogramContainer[1]", $this->_dom)->item(0);
+        
+        $node = $this->_xPath->query(".//$ns:categoryHistogramContainer[1]", 
+                $this->_dom)->item(0);
         if ($node) {
             /**
+             *
              * @see Zend_Service_Ebay_Finding_Category_Histogram_Container
              */
             require_once 'Zend/Service/Ebay/Finding/Category/Histogram/Container.php';
-            $this->categoryHistogramContainer = new Zend_Service_Ebay_Finding_Category_Histogram_Container($node);
+            $this->categoryHistogramContainer = new Zend_Service_Ebay_Finding_Category_Histogram_Container(
+                    $node);
         }
     }
 }

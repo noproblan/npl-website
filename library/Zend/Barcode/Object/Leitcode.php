@@ -21,11 +21,13 @@
  */
 
 /**
+ *
  * @see Zend_Barcode_Object_Identcode
  */
 require_once 'Zend/Barcode/Object/Identcode.php';
 
 /**
+ *
  * @see Zend_Validate_Barcode
  */
 require_once 'Zend/Validate/Barcode.php';
@@ -33,19 +35,21 @@ require_once 'Zend/Validate/Barcode.php';
 /**
  * Class for generate Identcode barcode
  *
- * @category   Zend
- * @package    Zend_Barcode
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @category Zend
+ * @package Zend_Barcode
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Barcode_Object_Leitcode extends Zend_Barcode_Object_Identcode
 {
 
     /**
      * Default options for Leitcode barcode
+     * 
      * @return void
      */
-    protected function _getDefaultOptions()
+    protected function _getDefaultOptions ()
     {
         $this->_barcodeLength = 14;
         $this->_mandatoryChecksum = true;
@@ -53,12 +57,12 @@ class Zend_Barcode_Object_Leitcode extends Zend_Barcode_Object_Identcode
 
     /**
      * Retrieve text to display
+     * 
      * @return string
      */
-    public function getTextToDisplay()
+    public function getTextToDisplay ()
     {
-        return preg_replace('/([0-9]{5})([0-9]{3})([0-9]{3})([0-9]{2})([0-9])/',
-                            '$1.$2.$3.$4 $5',
-                            $this->getText());
+        return preg_replace('/([0-9]{5})([0-9]{3})([0-9]{3})([0-9]{2})([0-9])/', 
+                '$1.$2.$3.$4 $5', $this->getText());
     }
 }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -21,20 +22,24 @@
  */
 
 /**
- * @category   Zend
- * @package    Zend_CodeGenerator
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ *
+ * @category Zend
+ * @package Zend_CodeGenerator
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 abstract class Zend_CodeGenerator_Abstract
 {
 
     /**
+     *
      * @var string
      */
     protected $_sourceContent = null;
 
     /**
+     *
      * @var bool
      */
     protected $_isSourceDirty = true;
@@ -42,9 +47,9 @@ abstract class Zend_CodeGenerator_Abstract
     /**
      * __construct()
      *
-     * @param array $options
+     * @param array $options            
      */
-    public function __construct($options = array())
+    public function __construct ($options = array())
     {
         $this->_init();
         if ($options != null) {
@@ -63,10 +68,10 @@ abstract class Zend_CodeGenerator_Abstract
     /**
      * setConfig()
      *
-     * @param Zend_Config $config
+     * @param Zend_Config $config            
      * @return Zend_CodeGenerator_Abstract
      */
-    public function setConfig(Zend_Config $config)
+    public function setConfig (Zend_Config $config)
     {
         $this->setOptions($config->toArray());
         return $this;
@@ -75,10 +80,10 @@ abstract class Zend_CodeGenerator_Abstract
     /**
      * setOptions()
      *
-     * @param array $options
+     * @param array $options            
      * @return Zend_CodeGenerator_Abstract
      */
-    public function setOptions(Array $options)
+    public function setOptions (Array $options)
     {
         foreach ($options as $optionName => $optionValue) {
             $methodName = 'set' . $optionName;
@@ -92,9 +97,9 @@ abstract class Zend_CodeGenerator_Abstract
     /**
      * setSourceContent()
      *
-     * @param string $sourceContent
+     * @param string $sourceContent            
      */
-    public function setSourceContent($sourceContent)
+    public function setSourceContent ($sourceContent)
     {
         $this->_sourceContent = $sourceContent;
         return;
@@ -105,43 +110,35 @@ abstract class Zend_CodeGenerator_Abstract
      *
      * @return string
      */
-    public function getSourceContent()
+    public function getSourceContent ()
     {
         return $this->_sourceContent;
     }
 
     /**
      * _init() - this is called before the constuctor
-     *
      */
-    protected function _init()
-    {
-
-    }
+    protected function _init ()
+    {}
 
     /**
      * _prepare() - this is called at construction completion
-     *
      */
-    protected function _prepare()
-    {
-
-    }
+    protected function _prepare ()
+    {}
 
     /**
      * generate() - must be implemented by the child
-     *
      */
-    abstract public function generate();
+    abstract public function generate ();
 
     /**
      * __toString() - casting to a string will in turn call generate()
      *
      * @return string
      */
-    final public function __toString()
+    final public function __toString ()
     {
         return $this->generate();
     }
-
 }

@@ -21,6 +21,7 @@
  */
 
 /**
+ *
  * @var Zend_XmlRpc_Generator_GeneratorAbstract
  */
 require_once 'Zend/XmlRpc/Generator/GeneratorAbstract.php';
@@ -30,12 +31,15 @@ require_once 'Zend/XmlRpc/Generator/GeneratorAbstract.php';
  */
 class Zend_XmlRpc_Generator_DomDocument extends Zend_XmlRpc_Generator_GeneratorAbstract
 {
+
     /**
+     *
      * @var DOMDocument
      */
     protected $_dom;
 
     /**
+     *
      * @var DOMNode
      */
     protected $_currentElement;
@@ -43,22 +47,23 @@ class Zend_XmlRpc_Generator_DomDocument extends Zend_XmlRpc_Generator_GeneratorA
     /**
      * Start XML element
      *
-     * @param string $name
+     * @param string $name            
      * @return void
      */
-    protected function _openElement($name)
+    protected function _openElement ($name)
     {
         $newElement = $this->_dom->createElement($name);
-
-        $this->_currentElement = $this->_currentElement->appendChild($newElement);
+        
+        $this->_currentElement = $this->_currentElement->appendChild(
+                $newElement);
     }
 
     /**
      * Write XML text data into the currently opened XML element
      *
-     * @param string $text
+     * @param string $text            
      */
-    protected function _writeTextData($text)
+    protected function _writeTextData ($text)
     {
         $this->_currentElement->appendChild($this->_dom->createTextNode($text));
     }
@@ -68,10 +73,10 @@ class Zend_XmlRpc_Generator_DomDocument extends Zend_XmlRpc_Generator_GeneratorA
      *
      * Resets $_currentElement to the next parent node in the hierarchy
      *
-     * @param string $name
+     * @param string $name            
      * @return void
      */
-    protected function _closeElement($name)
+    protected function _closeElement ($name)
     {
         if (isset($this->_currentElement->parentNode)) {
             $this->_currentElement = $this->_currentElement->parentNode;
@@ -83,7 +88,7 @@ class Zend_XmlRpc_Generator_DomDocument extends Zend_XmlRpc_Generator_GeneratorA
      *
      * @return string
      */
-    public function saveXml()
+    public function saveXml ()
     {
         return $this->_dom->saveXml();
     }
@@ -93,7 +98,7 @@ class Zend_XmlRpc_Generator_DomDocument extends Zend_XmlRpc_Generator_GeneratorA
      *
      * @return void
      */
-    protected function _init()
+    protected function _init ()
     {
         $this->_dom = new DOMDocument('1.0', $this->_encoding);
         $this->_currentElement = $this->_dom;

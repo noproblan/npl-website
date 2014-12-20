@@ -19,23 +19,30 @@
  * @version    $Id: Param.php 24405 2011-08-26 17:33:02Z ralph $
  */
 
-/** Zend_Reflection_Docblock_Tag */
+/**
+ * Zend_Reflection_Docblock_Tag
+ */
 require_once 'Zend/Reflection/Docblock/Tag.php';
 
 /**
- * @category   Zend
- * @package    Zend_Reflection
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ *
+ * @category Zend
+ * @package Zend_Reflection
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Reflection_Docblock_Tag_Param extends Zend_Reflection_Docblock_Tag
 {
+
     /**
+     *
      * @var string
      */
     protected $_type = null;
 
     /**
+     *
      * @var string
      */
     protected $_variableName = null;
@@ -43,29 +50,32 @@ class Zend_Reflection_Docblock_Tag_Param extends Zend_Reflection_Docblock_Tag
     /**
      * Constructor
      *
-     * @param string $tagDocblockLine
+     * @param string $tagDocblockLine            
      */
-    public function __construct($tagDocblockLine)
+    public function __construct ($tagDocblockLine)
     {
         $matches = array();
-
-        if (!preg_match('#^@(\w+)\s+([^\s]+)(?:\s+(\$\S+))?(?:\s+(.*))?#s', $tagDocblockLine, $matches)) {
+        
+        if (! preg_match('#^@(\w+)\s+([^\s]+)(?:\s+(\$\S+))?(?:\s+(.*))?#s', 
+                $tagDocblockLine, $matches)) {
             require_once 'Zend/Reflection/Exception.php';
-            throw new Zend_Reflection_Exception('Provided docblock line is does not contain a valid tag');
+            throw new Zend_Reflection_Exception(
+                    'Provided docblock line is does not contain a valid tag');
         }
-
+        
         if ($matches[1] != 'param') {
             require_once 'Zend/Reflection/Exception.php';
-            throw new Zend_Reflection_Exception('Provided docblock line is does not contain a valid @param tag');
+            throw new Zend_Reflection_Exception(
+                    'Provided docblock line is does not contain a valid @param tag');
         }
-
+        
         $this->_name = 'param';
         $this->_type = $matches[2];
-
+        
         if (isset($matches[3])) {
             $this->_variableName = $matches[3];
         }
-
+        
         if (isset($matches[4])) {
             $this->_description = preg_replace('#\s+#', ' ', $matches[4]);
         }
@@ -76,7 +86,7 @@ class Zend_Reflection_Docblock_Tag_Param extends Zend_Reflection_Docblock_Tag
      *
      * @return string
      */
-    public function getType()
+    public function getType ()
     {
         return $this->_type;
     }
@@ -86,7 +96,7 @@ class Zend_Reflection_Docblock_Tag_Param extends Zend_Reflection_Docblock_Tag
      *
      * @return string
      */
-    public function getVariableName()
+    public function getVariableName ()
     {
         return $this->_variableName;
     }

@@ -20,17 +20,19 @@
  * @version    $Id: GoToR.php 23775 2011-03-01 17:25:24Z ralph $
  */
 
-/** Zend_Pdf_Action */
+/**
+ * Zend_Pdf_Action
+ */
 require_once 'Zend/Pdf/Action.php';
-
 
 /**
  * PDF 'Go to a destination in another document' action
  *
- * @package    Zend_Pdf
+ * @package Zend_Pdf
  * @subpackage Actions
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Pdf_Action_GoToR extends Zend_Pdf_Action
 {

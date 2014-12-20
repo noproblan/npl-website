@@ -22,6 +22,7 @@
  */
 
 /**
+ *
  * @see Zend_Gdata_Extension
  */
 require_once 'Zend/Gdata/Extension.php';
@@ -29,25 +30,32 @@ require_once 'Zend/Gdata/Extension.php';
 /**
  * Data model for representing an atom:link element
  *
- * @category   Zend
- * @package    Zend_Gdata
+ * @category Zend
+ * @package Zend_Gdata
  * @subpackage App
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Gdata_App_Extension_Link extends Zend_Gdata_App_Extension
 {
 
     protected $_rootElement = 'link';
+
     protected $_href = null;
+
     protected $_rel = null;
+
     protected $_type = null;
+
     protected $_hrefLang = null;
+
     protected $_title = null;
+
     protected $_length = null;
 
-    public function __construct($href = null, $rel = null, $type = null,
-            $hrefLang = null, $title = null, $length = null)
+    public function __construct ($href = null, $rel = null, $type = null, $hrefLang = null, 
+            $title = null, $length = null)
     {
         parent::__construct();
         $this->_href = $href;
@@ -58,7 +66,7 @@ class Zend_Gdata_App_Extension_Link extends Zend_Gdata_App_Extension
         $this->_length = $length;
     }
 
-    public function getDOM($doc = null, $majorVersion = 1, $minorVersion = null)
+    public function getDOM ($doc = null, $majorVersion = 1, $minorVersion = null)
     {
         $element = parent::getDOM($doc, $majorVersion, $minorVersion);
         if ($this->_href !== null) {
@@ -82,138 +90,149 @@ class Zend_Gdata_App_Extension_Link extends Zend_Gdata_App_Extension
         return $element;
     }
 
-    protected function takeAttributeFromDOM($attribute)
+    protected function takeAttributeFromDOM ($attribute)
     {
         switch ($attribute->localName) {
-        case 'href':
-            $this->_href = $attribute->nodeValue;
-            break;
-        case 'rel':
-            $this->_rel = $attribute->nodeValue;
-            break;
-        case 'type':
-            $this->_type = $attribute->nodeValue;
-            break;
-        case 'hreflang':
-            $this->_hrefLang = $attribute->nodeValue;
-            break;
-        case 'title':
-            $this->_title = $attribute->nodeValue;
-            break;
-        case 'length':
-            $this->_length = $attribute->nodeValue;
-            break;
-        default:
-            parent::takeAttributeFromDOM($attribute);
+            case 'href':
+                $this->_href = $attribute->nodeValue;
+                break;
+            case 'rel':
+                $this->_rel = $attribute->nodeValue;
+                break;
+            case 'type':
+                $this->_type = $attribute->nodeValue;
+                break;
+            case 'hreflang':
+                $this->_hrefLang = $attribute->nodeValue;
+                break;
+            case 'title':
+                $this->_title = $attribute->nodeValue;
+                break;
+            case 'length':
+                $this->_length = $attribute->nodeValue;
+                break;
+            default:
+                parent::takeAttributeFromDOM($attribute);
         }
     }
 
     /**
+     *
      * @return string|null
      */
-    public function getHref()
+    public function getHref ()
     {
         return $this->_href;
     }
 
     /**
-     * @param string|null $value
+     *
+     * @param string|null $value            
      * @return Zend_Gdata_App_Entry Provides a fluent interface
      */
-    public function setHref($value)
+    public function setHref ($value)
     {
         $this->_href = $value;
         return $this;
     }
 
     /**
+     *
      * @return string|null
      */
-    public function getRel()
+    public function getRel ()
     {
         return $this->_rel;
     }
 
     /**
-     * @param string|null $value
+     *
+     * @param string|null $value            
      * @return Zend_Gdata_App_Entry Provides a fluent interface
      */
-    public function setRel($value)
+    public function setRel ($value)
     {
         $this->_rel = $value;
         return $this;
     }
 
     /**
+     *
      * @return string|null
      */
-    public function getType()
+    public function getType ()
     {
         return $this->_type;
     }
 
     /**
-     * @param string|null $value
+     *
+     * @param string|null $value            
      * @return Zend_Gdata_App_Entry Provides a fluent interface
      */
-    public function setType($value)
+    public function setType ($value)
     {
         $this->_type = $value;
         return $this;
     }
 
     /**
+     *
      * @return string|null
      */
-    public function getHrefLang()
+    public function getHrefLang ()
     {
         return $this->_hrefLang;
     }
 
     /**
-     * @param string|null $value
+     *
+     * @param string|null $value            
      * @return Zend_Gdata_App_Entry Provides a fluent interface
      */
-    public function setHrefLang($value)
+    public function setHrefLang ($value)
     {
         $this->_hrefLang = $value;
         return $this;
     }
 
     /**
+     *
      * @return string|null
      */
-    public function getTitle()
+    public function getTitle ()
     {
         return $this->_title;
     }
 
     /**
-     * @param string|null $value
+     *
+     * @param string|null $value            
      * @return Zend_Gdata_App_Entry Provides a fluent interface
      */
-    public function setTitle($value)
+    public function setTitle ($value)
     {
         $this->_title = $value;
         return $this;
     }
 
     /**
+     *
      * @return string|null
      */
-    public function getLength()
+    public function getLength ()
     {
         return $this->_length;
     }
 
     /**
-     * @param string|null $value
+     *
+     * @param string|null $value            
      * @return Zend_Gdata_App_Entry Provides a fluent interface
      */
-    public function setLength($value)
+    public function setLength ($value)
     {
         $this->_length = $value;
         return $this;
     }
-
 }

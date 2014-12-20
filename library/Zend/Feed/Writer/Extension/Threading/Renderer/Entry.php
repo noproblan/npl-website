@@ -20,22 +20,25 @@
  */
 
 /**
+ *
  * @see Zend_Feed_Writer_Extension_RendererAbstract
  */
 require_once 'Zend/Feed/Writer/Extension/RendererAbstract.php';
 
 /**
- * @category   Zend
- * @package    Zend_Feed_Writer
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ *
+ * @category Zend
+ * @package Zend_Feed_Writer
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
-class Zend_Feed_Writer_Extension_Threading_Renderer_Entry
-    extends Zend_Feed_Writer_Extension_RendererAbstract
+class Zend_Feed_Writer_Extension_Threading_Renderer_Entry extends Zend_Feed_Writer_Extension_RendererAbstract
 {
 
     /**
-     * Set to TRUE if a rendering method actually renders something. This
+     * Set to TRUE if a rendering method actually renders something.
+     * This
      * is used to prevent premature appending of a XML namespace declaration
      * until an element which requires it is actually appended.
      *
@@ -48,7 +51,7 @@ class Zend_Feed_Writer_Extension_Threading_Renderer_Entry
      *
      * @return void
      */
-    public function render()
+    public function render ()
     {
         if (strtolower($this->getType()) == 'rss') {
             return; // Atom 1.0 only
@@ -66,23 +69,23 @@ class Zend_Feed_Writer_Extension_Threading_Renderer_Entry
      *
      * @return void
      */
-    protected function _appendNamespaces()
+    protected function _appendNamespaces ()
     {
-        $this->getRootElement()->setAttribute('xmlns:thr',
-            'http://purl.org/syndication/thread/1.0');
+        $this->getRootElement()->setAttribute('xmlns:thr', 
+                'http://purl.org/syndication/thread/1.0');
     }
 
     /**
      * Set comment link
      *
-     * @param  DOMDocument $dom
-     * @param  DOMElement $root
+     * @param DOMDocument $dom            
+     * @param DOMElement $root            
      * @return void
      */
-    protected function _setCommentLink(DOMDocument $dom, DOMElement $root)
+    protected function _setCommentLink (DOMDocument $dom, DOMElement $root)
     {
         $link = $this->getDataContainer()->getCommentLink();
-        if (!$link) {
+        if (! $link) {
             return;
         }
         $clink = $this->_dom->createElement('link');
@@ -100,20 +103,20 @@ class Zend_Feed_Writer_Extension_Threading_Renderer_Entry
     /**
      * Set comment feed links
      *
-     * @param  DOMDocument $dom
-     * @param  DOMElement $root
+     * @param DOMDocument $dom            
+     * @param DOMElement $root            
      * @return void
      */
-    protected function _setCommentFeedLinks(DOMDocument $dom, DOMElement $root)
+    protected function _setCommentFeedLinks (DOMDocument $dom, DOMElement $root)
     {
         $links = $this->getDataContainer()->getCommentFeedLinks();
-        if (!$links || empty($links)) {
+        if (! $links || empty($links)) {
             return;
         }
         foreach ($links as $link) {
             $flink = $this->_dom->createElement('link');
             $flink->setAttribute('rel', 'replies');
-            $flink->setAttribute('type', 'application/'. $link['type'] .'+xml');
+            $flink->setAttribute('type', 'application/' . $link['type'] . '+xml');
             $flink->setAttribute('href', $link['uri']);
             $count = $this->getDataContainer()->getCommentCount();
             if ($count !== null) {
@@ -127,11 +130,11 @@ class Zend_Feed_Writer_Extension_Threading_Renderer_Entry
     /**
      * Set entry comment count
      *
-     * @param  DOMDocument $dom
-     * @param  DOMElement $root
+     * @param DOMDocument $dom            
+     * @param DOMElement $root            
      * @return void
      */
-    protected function _setCommentCount(DOMDocument $dom, DOMElement $root)
+    protected function _setCommentCount (DOMDocument $dom, DOMElement $root)
     {
         $count = $this->getDataContainer()->getCommentCount();
         if ($count === null) {

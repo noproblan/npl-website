@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <ldml>
 	<identity>
-		<version number="$Revision: 1.88 $"/>
-		<generation date="$Date: 2009/06/15 03:46:23 $"/>
-		<language type="am"/>
+		<version number="$Revision: 1.88 $" />
+		<generation date="$Date: 2009/06/15 03:46:23 $" />
+		<language type="am" />
 	</identity>
 	<localeDisplayNames>
 		<languages>
@@ -513,8 +513,11 @@
 		</measurementSystemNames>
 	</localeDisplayNames>
 	<characters>
-		<exemplarCharacters>[\u135F ሀ-ሆ ለ-ቆ ቈ ቊ-ቍ በ-ኆ ኈ ኊ-ኍ ነ-ኮ ኰ ኲ-ኵ ኸ-ኾ ወ-ዎ ዐ-ዖ ዘ-ዷ ጀ-ጎ ጐ ጒ-ጕ ጠ-ፚ]</exemplarCharacters>
-		<exemplarCharacters type="auxiliary">[᎐-᎙ ሇ ⶀ ᎀ-ᎃ ⶁ-ⶄ ቇ ቐ-ቖ ቘ ቚ-ቝ ᎄ-ᎇ ⶅ-ⶇ ኇ ⶈ-ⶊ ኯ ዀ ዂ-ዅ ዏ ⶋ ⶌ ዸ-ዿ ⶍ ⶎ ጏ ጘ-ጟ ⶓ-ⶖ ⶏ-ⶑ ᎈ-ᎏ ⶒ ⶠ-ⶦ ⶨ-ⶮ ⶰ-ⶶ ⶸ-ⶾ ⷀ-ⷆ ⷈ-ⷎ ⷐ-ⷖ ⷘ-ⷞ]</exemplarCharacters>
+		<exemplarCharacters>[\u135F ሀ-ሆ ለ-ቆ ቈ ቊ-ቍ በ-ኆ ኈ ኊ-ኍ ነ-ኮ ኰ ኲ-ኵ ኸ-ኾ ወ-ዎ
+			ዐ-ዖ ዘ-ዷ ጀ-ጎ ጐ ጒ-ጕ ጠ-ፚ]</exemplarCharacters>
+		<exemplarCharacters type="auxiliary">[᎐-᎙ ሇ ⶀ ᎀ-ᎃ ⶁ-ⶄ ቇ ቐ-ቖ ቘ
+			ቚ-ቝ ᎄ-ᎇ ⶅ-ⶇ ኇ ⶈ-ⶊ ኯ ዀ ዂ-ዅ ዏ ⶋ ⶌ ዸ-ዿ ⶍ ⶎ ጏ ጘ-ጟ ⶓ-ⶖ ⶏ-ⶑ ᎈ-ᎏ ⶒ ⶠ-ⶦ ⶨ-ⶮ
+			ⶰ-ⶶ ⶸ-ⶾ ⷀ-ⷆ ⷈ-ⷎ ⷐ-ⷖ ⷘ-ⷞ]</exemplarCharacters>
 	</characters>
 	<delimiters>
 		<quotationStart>«</quotationStart>
@@ -781,9 +784,12 @@
 							<greatestDifference id="y">yyyy-MM-dd - yyyy-MM-dd</greatestDifference>
 						</intervalFormatItem>
 						<intervalFormatItem id="yMEd">
-							<greatestDifference id="d">E, yyyy-MM-dd - E, yyyy-MM-dd</greatestDifference>
-							<greatestDifference id="M">E, yyyy-MM-dd - E, yyyy-MM-dd</greatestDifference>
-							<greatestDifference id="y">E, yyyy-MM-dd - E, yyyy-MM-dd</greatestDifference>
+							<greatestDifference id="d">E, yyyy-MM-dd - E,
+								yyyy-MM-dd</greatestDifference>
+							<greatestDifference id="M">E, yyyy-MM-dd - E,
+								yyyy-MM-dd</greatestDifference>
+							<greatestDifference id="y">E, yyyy-MM-dd - E,
+								yyyy-MM-dd</greatestDifference>
 						</intervalFormatItem>
 						<intervalFormatItem id="yMMM">
 							<greatestDifference id="M">y MMM-MMM</greatestDifference>
@@ -795,9 +801,12 @@
 							<greatestDifference id="y">y MMM d - y MMM d</greatestDifference>
 						</intervalFormatItem>
 						<intervalFormatItem id="yMMMEd">
-							<greatestDifference id="d">E, y MMM dd - E, y MMM dd</greatestDifference>
-							<greatestDifference id="M">E, y MMM dd - E, y MMM dd</greatestDifference>
-							<greatestDifference id="y">E, y MMM dd - E, y MMM dd</greatestDifference>
+							<greatestDifference id="d">E, y MMM dd - E, y MMM
+								dd</greatestDifference>
+							<greatestDifference id="M">E, y MMM dd - E, y MMM
+								dd</greatestDifference>
+							<greatestDifference id="y">E, y MMM dd - E, y MMM
+								dd</greatestDifference>
 						</intervalFormatItem>
 					</intervalFormats>
 				</dateTimeFormats>

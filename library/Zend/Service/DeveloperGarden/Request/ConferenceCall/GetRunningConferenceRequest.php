@@ -21,21 +21,24 @@
  */
 
 /**
+ *
  * @see Zend_Service_DeveloperGarden_Request_RequestAbstract
  */
 require_once 'Zend/Service/DeveloperGarden/Request/RequestAbstract.php';
 
 /**
- * @category   Zend
- * @package    Zend_Service
+ *
+ * @category Zend
+ * @package Zend_Service
  * @subpackage DeveloperGarden
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @author     Marco Kaiser
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @author Marco Kaiser
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
-class Zend_Service_DeveloperGarden_Request_ConferenceCall_GetRunningConferenceRequest
-    extends Zend_Service_DeveloperGarden_Request_RequestAbstract
+class Zend_Service_DeveloperGarden_Request_ConferenceCall_GetRunningConferenceRequest extends Zend_Service_DeveloperGarden_Request_RequestAbstract
 {
+
     /**
      * the conference id
      *
@@ -46,10 +49,10 @@ class Zend_Service_DeveloperGarden_Request_ConferenceCall_GetRunningConferenceRe
     /**
      * constructor
      *
-     * @param integer $environment
-     * @param string $conferenceId
+     * @param integer $environment            
+     * @param string $conferenceId            
      */
-    public function __construct($environment, $conferenceId)
+    public function __construct ($environment, $conferenceId)
     {
         parent::__construct($environment);
         $this->setConferenceId($conferenceId);
@@ -58,10 +61,10 @@ class Zend_Service_DeveloperGarden_Request_ConferenceCall_GetRunningConferenceRe
     /**
      * set the conference id
      *
-     * @param string $conferenceId
+     * @param string $conferenceId            
      * @return Zend_Service_DeveloperGarden_Request_ConferenceCall_GetRunningConferenceRequest
      */
-    public function setConferenceId($conferenceId)
+    public function setConferenceId ($conferenceId)
     {
         $this->conferenceId = $conferenceId;
         return $this;

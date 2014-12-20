@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -20,20 +21,23 @@
  */
 
 /**
- * @category   Zend
- * @package    Zend_Config
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ *
+ * @category Zend
+ * @package Zend_Config
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 abstract class Zend_Config_Writer
 {
+
     /**
      * Option keys to skip when calling setOptions()
      *
      * @var array
      */
     protected $_skipOptions = array(
-        'options'
+            'options'
     );
 
     /**
@@ -48,9 +52,9 @@ abstract class Zend_Config_Writer
      *
      * $options can only be passed as array or be omitted
      *
-     * @param null|array $options
+     * @param null|array $options            
      */
-    public function __construct(array $options = null)
+    public function __construct (array $options = null)
     {
         if (is_array($options)) {
             $this->setOptions($options);
@@ -60,35 +64,35 @@ abstract class Zend_Config_Writer
     /**
      * Set options via a Zend_Config instance
      *
-     * @param  Zend_Config $config
+     * @param Zend_Config $config            
      * @return Zend_Config_Writer
      */
-    public function setConfig(Zend_Config $config)
+    public function setConfig (Zend_Config $config)
     {
         $this->_config = $config;
-
+        
         return $this;
     }
 
     /**
      * Set options via an array
      *
-     * @param  array $options
+     * @param array $options            
      * @return Zend_Config_Writer
      */
-    public function setOptions(array $options)
+    public function setOptions (array $options)
     {
         foreach ($options as $key => $value) {
             if (in_array(strtolower($key), $this->_skipOptions)) {
                 continue;
             }
-
+            
             $method = 'set' . ucfirst($key);
             if (method_exists($this, $method)) {
                 $this->$method($value);
             }
         }
-
+        
         return $this;
     }
 
@@ -97,5 +101,5 @@ abstract class Zend_Config_Writer
      *
      * @return void
      */
-    abstract public function write();
+    abstract public function write ();
 }

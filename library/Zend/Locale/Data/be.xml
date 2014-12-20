@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <ldml>
 	<identity>
-		<version number="$Revision: 1.93 $"/>
-		<generation date="$Date: 2009/06/15 03:46:25 $"/>
-		<language type="be"/>
+		<version number="$Revision: 1.93 $" />
+		<generation date="$Date: 2009/06/15 03:46:25 $" />
+		<language type="be" />
 	</identity>
 	<localeDisplayNames>
 		<localeDisplayPattern>
@@ -318,7 +318,8 @@
 			<territory type="GP">Гвадэлупа</territory>
 			<territory type="GQ">Экватарыяльная Гвінея</territory>
 			<territory type="GR">Грэцыя</territory>
-			<territory type="GS">Паўднёвая Джорджыя і Паўднёвыя Сандвічавы астравы</territory>
+			<territory type="GS">Паўднёвая Джорджыя і Паўднёвыя Сандвічавы
+				астравы</territory>
 			<territory type="GT">Гватэмала</territory>
 			<territory type="GW">Гвінея-Бісаў</territory>
 			<territory type="GY">Гаяна</territory>
@@ -424,7 +425,8 @@
 			<territory type="SG">Сінгапур</territory>
 			<territory type="SH">Святой Алены, Востраў</territory>
 			<territory type="SI">Славенія</territory>
-			<territory type="SJ">Свальбард (Паўночна-Усходняя Зямля) і Ян-Маен</territory>
+			<territory type="SJ">Свальбард (Паўночна-Усходняя Зямля) і
+				Ян-Маен</territory>
 			<territory type="SK">Славакія</territory>
 			<territory type="SL">Сьера-Леонэ</territory>
 			<territory type="SN">Сенегал</territory>

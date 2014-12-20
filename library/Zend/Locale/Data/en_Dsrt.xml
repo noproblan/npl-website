@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <ldml>
 	<identity>
-		<version number="$Revision: 1.13 $"/>
-		<generation date="$Date: 2009/06/15 03:46:24 $"/>
-		<language type="en"/>
-		<script type="Dsrt"/>
+		<version number="$Revision: 1.13 $" />
+		<generation date="$Date: 2009/06/15 03:46:24 $" />
+		<language type="en" />
+		<script type="Dsrt" />
 	</identity>
 	<localeDisplayNames>
 		<languages>
@@ -23,8 +23,10 @@
 			<language type="chy">𐐟𐐴𐐰𐑌</language>
 			<language type="co">𐐗𐐬𐑉𐑅𐐮𐐿𐐲𐑌</language>
 			<language type="cop">𐐗𐐬𐐹𐐻𐐮𐐿</language>
-			<language type="cpe">𐐀𐑍𐑊𐐮𐑇-𐐺𐐩𐑅𐐻 𐐗𐑉𐐨𐐬𐑊 𐐬𐑉 𐐑𐐮𐐾𐐮𐑌</language>
-			<language type="cpf">𐐙𐑉𐐯𐑌𐐽-𐐺𐐩𐑅𐐻 𐐗𐑉𐐨𐐬𐑊 𐐬𐑉 𐐑𐐮𐐾𐐮𐑌</language>
+			<language type="cpe">𐐀𐑍𐑊𐐮𐑇-𐐺𐐩𐑅𐐻 𐐗𐑉𐐨𐐬𐑊 𐐬𐑉
+				𐐑𐐮𐐾𐐮𐑌</language>
+			<language type="cpf">𐐙𐑉𐐯𐑌𐐽-𐐺𐐩𐑅𐐻 𐐗𐑉𐐨𐐬𐑊 𐐬𐑉
+				𐐑𐐮𐐾𐐮𐑌</language>
 			<language type="cr">𐐗𐑉𐐨</language>
 			<language type="crp">𐐗𐑉𐐨𐐬𐑊 𐐬𐑉 𐐑𐐮𐐾𐐮𐑌</language>
 			<language type="cs">𐐕𐐯𐐿</language>
@@ -89,7 +91,8 @@
 			<language type="mus">𐐗𐑉𐐨𐐿</language>
 			<language type="my">𐐒𐐲𐑉𐑋𐐨𐑆</language>
 			<language type="myn">𐐣𐐴𐐲𐑌 𐐢𐐩𐑍𐐶𐐮𐐾</language>
-			<language type="nai">𐐤𐐬𐑉𐑃 𐐊𐑋𐐯𐑉𐐮𐐿𐐲𐑌 𐐆𐑌𐐼𐐨𐐲𐑌 𐐢𐐩𐑍𐐶𐐮𐐾</language>
+			<language type="nai">𐐤𐐬𐑉𐑃 𐐊𐑋𐐯𐑉𐐮𐐿𐐲𐑌 𐐆𐑌𐐼𐐨𐐲𐑌
+				𐐢𐐩𐑍𐐶𐐮𐐾</language>
 			<language type="nap">𐐤𐐨𐐲𐐹𐐱𐑊𐐮𐐻𐐲𐑌</language>
 			<language type="nds">𐐢𐐬 𐐖𐐯𐑉𐑋𐐲𐑌</language>
 			<language type="nl">𐐔𐐲𐐽</language>
@@ -114,7 +117,8 @@
 			<script type="Bugi">𐐒𐐭𐑀𐐮𐑌𐐨𐑆</script>
 			<script type="Buhd">𐐒𐐭𐐸𐐮𐐼</script>
 			<script type="Cakm">𐐕𐐪𐐿𐑋𐐲</script>
-			<script type="Cans">𐐏𐐭𐑌𐐮𐑁𐐴𐐼 𐐗𐐲𐑌𐐩𐐼𐐨𐐲𐑌 𐐈𐐺𐐬𐑉𐐮𐐾𐐲𐑊𐐲𐑊 𐐝𐐮𐑊𐐰𐐺𐐮𐐿𐑅</script>
+			<script type="Cans">𐐏𐐭𐑌𐐮𐑁𐐴𐐼 𐐗𐐲𐑌𐐩𐐼𐐨𐐲𐑌
+				𐐈𐐺𐐬𐑉𐐮𐐾𐐲𐑊𐐲𐑊 𐐝𐐮𐑊𐐰𐐺𐐮𐐿𐑅</script>
 			<script type="Cari">𐐗𐐱𐑉𐐨𐐲𐑌</script>
 			<script type="Cham">𐐗𐐰𐑋</script>
 			<script type="Cher">𐐕𐐯𐑉𐐬𐐿𐐨</script>
@@ -260,9 +264,11 @@
 			<territory type="151">𐐀𐑅𐐻𐐲𐑉𐑌 𐐏𐐲𐑉𐐲𐐹</territory>
 			<territory type="154">𐐤𐐱𐑉𐑄𐐲𐑉𐑌 𐐏𐐲𐑉𐐲𐐹</territory>
 			<territory type="155">𐐎𐐯𐑅𐐻𐐲𐑉𐑌 𐐏𐐲𐑉𐐲𐐹</territory>
-			<territory type="172">𐐗𐐪𐑋𐐲𐑌𐐶𐐯𐑊𐑃 𐐲𐑂 𐐆𐑌𐐼𐐲𐐹𐐯𐑌𐐼𐐲𐑌𐐻 𐐝𐐻𐐩𐐻𐑅</territory>
+			<territory type="172">𐐗𐐪𐑋𐐲𐑌𐐶𐐯𐑊𐑃 𐐲𐑂
+				𐐆𐑌𐐼𐐲𐐹𐐯𐑌𐐼𐐲𐑌𐐻 𐐝𐐻𐐩𐐻𐑅</territory>
 			<territory type="200">𐐕𐐯𐐿𐐬𐑅𐑊𐐬𐑂𐐪𐐿𐐨𐐲</territory>
-			<territory type="419">𐐢𐐰𐐻𐑌 𐐊𐑋𐐯𐑉𐐲𐐿𐐲 𐐰𐑌𐐼 𐑄 𐐗𐐯𐑉𐐲𐐺𐐨𐐲𐑌</territory>
+			<territory type="419">𐐢𐐰𐐻𐑌 𐐊𐑋𐐯𐑉𐐲𐐿𐐲 𐐰𐑌𐐼 𐑄
+				𐐗𐐯𐑉𐐲𐐺𐐨𐐲𐑌</territory>
 			<territory type="830">𐐕𐐰𐑌𐐲𐑊 𐐌𐑊𐐲𐑌𐐼𐑆</territory>
 			<territory type="AD">𐐈𐑌𐐼𐐱𐑉𐐲</territory>
 			<territory type="AE">𐐏𐐭𐑌𐐴𐐼𐐮𐐼 𐐇𐑉𐐲𐐺 𐐇𐑋𐐲𐑉𐐩𐐻𐑅</territory>
@@ -281,7 +287,8 @@
 			<territory type="AW">𐐊𐑉𐐭𐐺𐐲</territory>
 			<territory type="AX">𐐈𐑊𐐰𐑌𐐼 𐐌𐑊𐐲𐑌𐐼𐑆</territory>
 			<territory type="AZ">𐐈𐑆𐐲𐑉𐐺𐐴𐑈𐐪𐑌</territory>
-			<territory type="BA">𐐒𐐱𐑆𐑌𐐨𐐲 𐐰𐑌𐐼 𐐐𐐲𐑉𐐻𐑅𐐲𐑀𐐬𐑂𐐨𐑌𐐲</territory>
+			<territory type="BA">𐐒𐐱𐑆𐑌𐐨𐐲 𐐰𐑌𐐼
+				𐐐𐐲𐑉𐐻𐑅𐐲𐑀𐐬𐑂𐐨𐑌𐐲</territory>
 			<territory type="BB">𐐒𐐪𐑉𐐺𐐩𐐼𐐬𐑅</territory>
 			<territory type="BD">𐐒𐐪𐑍𐑀𐑊𐐲𐐼𐐯𐑇</territory>
 			<territory type="BE">𐐒𐐯𐑊𐐾𐐲𐑋</territory>
@@ -294,7 +301,8 @@
 			<territory type="BM">𐐒𐐲𐑉𐑋𐐷𐐭𐐼𐐲</territory>
 			<territory type="BN">𐐒𐑉𐐭𐑌𐐴</territory>
 			<territory type="BO">𐐒𐐬𐑊𐐮𐑂𐐨𐐲</territory>
-			<territory type="BQ">𐐒𐑉𐐮𐐼𐐮𐑇 𐐈𐑌𐐻𐐪𐑉𐐿𐐻𐐮𐐿 𐐓𐐯𐑉𐐲𐐻𐐱𐑉𐐨</territory>
+			<territory type="BQ">𐐒𐑉𐐮𐐼𐐮𐑇 𐐈𐑌𐐻𐐪𐑉𐐿𐐻𐐮𐐿
+				𐐓𐐯𐑉𐐲𐐻𐐱𐑉𐐨</territory>
 			<territory type="BR">𐐒𐑉𐐲𐑆𐐮𐑊</territory>
 			<territory type="BS">𐐒𐐲𐐸𐐪𐑋𐐲𐑅</territory>
 			<territory type="BT">𐐒𐐭𐐻𐐪𐑌</territory>
@@ -305,7 +313,8 @@
 			<territory type="CA">𐐗𐐰𐑌𐐲𐐼𐐲</territory>
 			<territory type="CC">𐐗𐐬𐐿𐐬𐑆 𐐌𐑊𐐲𐑌𐐼𐑆</territory>
 			<territory type="CD">𐐗𐐪𐑍𐑀𐐬 - 𐐗𐐲𐑌𐑇𐐪𐑅𐐲</territory>
-			<territory type="CF">𐐝𐐯𐑌𐐻𐑉𐐲𐑊 𐐈𐑁𐑉𐐲𐐿𐐲𐑌 𐐡𐐨𐐹𐐲𐐺𐑊𐐮𐐿</territory>
+			<territory type="CF">𐐝𐐯𐑌𐐻𐑉𐐲𐑊 𐐈𐑁𐑉𐐲𐐿𐐲𐑌
+				𐐡𐐨𐐹𐐲𐐺𐑊𐐮𐐿</territory>
 			<territory type="CG">𐐗𐐪𐑍𐑀𐐬 - 𐐒𐑉𐐪𐑆𐐲𐑂𐐮𐑊</territory>
 			<territory type="CH">𐐝𐐶𐐮𐐻𐑅𐐲𐑉𐑊𐐲𐑌𐐼</territory>
 			<territory type="CI">𐐌𐑂𐑉𐐨 𐐗𐐬𐑅𐐻</territory>
@@ -316,7 +325,8 @@
 			<territory type="CO">𐐗𐐲𐑊𐐲𐑋𐐺𐐨𐐲</territory>
 			<territory type="CR">𐐗𐐱𐑅𐐻𐐲 𐐡𐐨𐐿𐐲</territory>
 			<territory type="CS">𐐝𐐲𐑉𐐺𐐨𐐲 𐐰𐑌𐐼 𐐣𐐪𐑌𐐲𐑌𐐨𐑀𐑉𐐬</territory>
-			<territory type="CT">𐐗𐐰𐑌𐐻𐐪𐑌 𐐰𐑌𐐼 𐐇𐑌𐐼𐐲𐑉𐐺𐐯𐑉𐐨 𐐌𐑊𐐲𐑌𐐼𐑆</territory>
+			<territory type="CT">𐐗𐐰𐑌𐐻𐐪𐑌 𐐰𐑌𐐼 𐐇𐑌𐐼𐐲𐑉𐐺𐐯𐑉𐐨
+				𐐌𐑊𐐲𐑌𐐼𐑆</territory>
 			<territory type="CU">𐐗𐐷𐐭𐐺𐐲</territory>
 			<territory type="CV">𐐗𐐩𐐹 𐐚𐐯𐑉𐐼𐐨</territory>
 			<territory type="CX">𐐗𐑉𐐮𐑅𐑋𐐲𐑅 𐐌𐑊𐐲𐑌𐐼</territory>
@@ -341,7 +351,8 @@
 			<territory type="FK">𐐙𐐪𐑊𐐿𐑊𐐲𐑌𐐼 𐐌𐑊𐐲𐑌𐐼𐑆</territory>
 			<territory type="FM">𐐣𐐴𐐿𐑉𐐲𐑌𐐨𐑈𐐲</territory>
 			<territory type="FO">𐐙𐐯𐑉𐐬 𐐌𐑊𐐲𐑌𐐼𐑆</territory>
-			<territory type="FQ">𐐙𐑉𐐯𐑌𐐽 𐐝𐐲𐑄𐐲𐑉𐑌 𐐰𐑌𐐼 𐐈𐑌𐐻𐐪𐑉𐐿𐐻𐐮𐐿 𐐓𐐯𐑉𐐲𐐻𐐱𐑉𐐨𐑆</territory>
+			<territory type="FQ">𐐙𐑉𐐯𐑌𐐽 𐐝𐐲𐑄𐐲𐑉𐑌 𐐰𐑌𐐼
+				𐐈𐑌𐐻𐐪𐑉𐐿𐐻𐐮𐐿 𐐓𐐯𐑉𐐲𐐻𐐱𐑉𐐨𐑆</territory>
 			<territory type="FR">𐐙𐑉𐐰𐑌𐑅</territory>
 			<territory type="FX">𐐣𐐯𐐻𐑉𐐲𐐹𐐪𐑊𐐲𐐻𐐲𐑌 𐐙𐑉𐐰𐑌𐑅</territory>
 			<territory type="GA">𐐘𐐲𐐺𐐪𐑌</territory>
@@ -358,13 +369,15 @@
 			<territory type="GP">𐐘𐐶𐐪𐐼𐐲𐑊𐐭𐐹</territory>
 			<territory type="GQ">𐐇𐐿𐐶𐐲𐐻𐐱𐑉𐐨𐐲𐑊 𐐘𐐮𐑌𐐨</territory>
 			<territory type="GR">𐐘𐑉𐐨𐑅</territory>
-			<territory type="GS">𐐝𐐵𐑃 𐐖𐐱𐑉𐐾𐐲 𐐰𐑌𐐼 𐑄 𐐝𐐵𐑃 𐐝𐐰𐑌𐐼𐐶𐐮𐐽 𐐌𐑊𐐲𐑌𐐼𐑆</territory>
+			<territory type="GS">𐐝𐐵𐑃 𐐖𐐱𐑉𐐾𐐲 𐐰𐑌𐐼 𐑄 𐐝𐐵𐑃
+				𐐝𐐰𐑌𐐼𐐶𐐮𐐽 𐐌𐑊𐐲𐑌𐐼𐑆</territory>
 			<territory type="GT">𐐘𐐶𐐪𐐼𐐲𐑋𐐪𐑊𐐲</territory>
 			<territory type="GU">𐐘𐐶𐐪𐑋</territory>
 			<territory type="GW">𐐘𐐮𐑌𐐨-𐐒𐐮𐑅𐐵</territory>
 			<territory type="GY">𐐘𐐴𐐰𐑌𐐲</territory>
 			<territory type="HK">𐐐𐐬𐑍 𐐗𐐬𐑍 𐐝𐐈𐐡 𐐕𐐴𐑌𐐲</territory>
-			<territory type="HM">𐐐𐐲𐑉𐐼 𐐌𐑊𐐲𐑌𐐼 𐐰𐑌𐐼 𐐣𐐿𐐔𐐱𐑌𐐲𐑊𐐼 𐐌𐑊𐐲𐑌𐐼𐑆</territory>
+			<territory type="HM">𐐐𐐲𐑉𐐼 𐐌𐑊𐐲𐑌𐐼 𐐰𐑌𐐼 𐐣𐐿𐐔𐐱𐑌𐐲𐑊𐐼
+				𐐌𐑊𐐲𐑌𐐼𐑆</territory>
 			<territory type="HN">𐐐𐐪𐑌𐐼𐐭𐑉𐐲𐑅</territory>
 			<territory type="HR">𐐗𐑉𐐬𐐩𐑇𐐲</territory>
 			<territory type="HT">𐐐𐐩𐐻𐐨</territory>
@@ -374,7 +387,8 @@
 			<territory type="IL">𐐆𐑆𐑉𐐨𐐲𐑊</territory>
 			<territory type="IM">𐐌𐐲𐑊 𐐲𐑁 𐐣𐐰𐑌</territory>
 			<territory type="IN">𐐆𐑌𐐼𐐨𐐲</territory>
-			<territory type="IO">𐐒𐑉𐐮𐐼𐐮𐑇 𐐆𐑌𐐼𐐨𐐲𐑌 𐐄𐑇𐐲𐑌 𐐓𐐯𐑉𐐲𐐻𐐱𐑉𐐨</territory>
+			<territory type="IO">𐐒𐑉𐐮𐐼𐐮𐑇 𐐆𐑌𐐼𐐨𐐲𐑌 𐐄𐑇𐐲𐑌
+				𐐓𐐯𐑉𐐲𐐻𐐱𐑉𐐨</territory>
 			<territory type="IQ">𐐆𐑉𐐰𐐿</territory>
 			<territory type="IR">𐐆𐑉𐐪𐑌</territory>
 			<territory type="IS">𐐌𐑅𐑊𐐲𐑌𐐼</territory>
@@ -445,7 +459,8 @@
 			<territory type="NZ">𐐤𐐭 𐐞𐐨𐑊𐐲𐑌𐐼</territory>
 			<territory type="OM">𐐄𐑋𐐲𐑌</territory>
 			<territory type="PA">𐐑𐐰𐑌𐐲𐑋𐐪</territory>
-			<territory type="PC">𐐑𐐲𐑅𐐮𐑁𐐮𐐿 𐐌𐑊𐐲𐑌𐐼𐑆 𐐓𐑉𐐲𐑅𐐻 𐐓𐐯𐑉𐐲𐐻𐐱𐑉𐐨</territory>
+			<territory type="PC">𐐑𐐲𐑅𐐮𐑁𐐮𐐿 𐐌𐑊𐐲𐑌𐐼𐑆 𐐓𐑉𐐲𐑅𐐻
+				𐐓𐐯𐑉𐐲𐐻𐐱𐑉𐐨</territory>
 			<territory type="PE">𐐑𐐲𐑉𐐭</territory>
 			<territory type="PF">𐐙𐑉𐐯𐑌𐐽 𐐑𐐪𐑊𐐲𐑌𐐨𐑈𐐲</territory>
 			<territory type="PG">𐐑𐐰𐐹𐐷𐐳𐐲 𐐤𐐭 𐐘𐐮𐑌𐐨</territory>
@@ -457,7 +472,8 @@
 			<territory type="PR">𐐑𐐶𐐯𐑉𐐻𐐬 𐐡𐐨𐐿𐐬</territory>
 			<territory type="PS">𐐑𐐰𐑊𐐲𐑅𐐻𐐮𐑌𐐨𐐲𐑌 𐐓𐐯𐑉𐐲𐐻𐐱𐑉𐐨</territory>
 			<territory type="PT">𐐑𐐱𐑉𐐽𐐲𐑀𐐲𐑊</territory>
-			<territory type="PU">𐐏.𐐝. 𐐣𐐮𐑅𐐲𐑊𐐩𐑌𐐨𐐲𐑅 𐐑𐐲𐑅𐐮𐑁𐐮𐐿 𐐌𐑊𐐲𐑌𐐼𐑆</territory>
+			<territory type="PU">𐐏.𐐝. 𐐣𐐮𐑅𐐲𐑊𐐩𐑌𐐨𐐲𐑅 𐐑𐐲𐑅𐐮𐑁𐐮𐐿
+				𐐌𐑊𐐲𐑌𐐼𐑆</territory>
 			<territory type="PW">𐐑𐐲𐑊𐐵</territory>
 			<territory type="PY">𐐑𐐯𐑉𐐲𐑀𐐶𐐴</territory>
 			<territory type="PZ">𐐑𐐰𐑌𐐲𐑋𐐪 𐐗𐐲𐑌𐐰𐑊 𐐞𐐬𐑌</territory>
@@ -485,7 +501,8 @@
 			<territory type="SO">𐐝𐐲𐑋𐐪𐑊𐐨𐐲</territory>
 			<territory type="SR">𐐝𐐭𐑉𐐲𐑌𐐪𐑋</territory>
 			<territory type="ST">𐐝𐐵 𐐓𐐬𐑋 𐐰𐑌𐐼 𐐑𐑉𐐮𐑌𐐽𐐮𐐹𐐩</territory>
-			<territory type="SU">𐐏𐐭𐑌𐐷𐐲𐑌 𐐲𐑂 𐐝𐐬𐑂𐐨𐐯𐐻 𐐝𐐬𐑇𐐲𐑊𐐮𐑅𐐻 𐐡𐐨𐐹𐐲𐐺𐑊𐐮𐐿𐑅</territory>
+			<territory type="SU">𐐏𐐭𐑌𐐷𐐲𐑌 𐐲𐑂 𐐝𐐬𐑂𐐨𐐯𐐻
+				𐐝𐐬𐑇𐐲𐑊𐐮𐑅𐐻 𐐡𐐨𐐹𐐲𐐺𐑊𐐮𐐿𐑅</territory>
 			<territory type="SV">𐐇𐑊 𐐝𐐰𐑊𐑂𐐲𐐼𐐱𐑉</territory>
 			<territory type="SY">𐐝𐐮𐑉𐐨𐐲</territory>
 			<territory type="SZ">𐐝𐐶𐐪𐑆𐐨𐑊𐐰𐑌𐐼</territory>
@@ -505,12 +522,14 @@
 			<territory type="TW">𐐓𐐴𐐶𐐪𐑌</territory>
 			<territory type="TZ">𐐓𐐰𐑌𐑆𐐲𐑌𐐨𐐲</territory>
 			<territory type="UG">𐐏𐐭𐑀𐐰𐑌𐐼𐐲</territory>
-			<territory type="UM">𐐏𐐭𐑌𐐰𐐮𐐻𐐲𐐼 𐐝𐐻𐐩𐐻𐑅 𐐣𐐴𐑌𐐬𐑉 𐐍𐐻𐑊𐐴𐐨𐑍 𐐌𐑊𐐲𐑌𐐼𐑆</territory>
+			<territory type="UM">𐐏𐐭𐑌𐐰𐐮𐐻𐐲𐐼 𐐝𐐻𐐩𐐻𐑅 𐐣𐐴𐑌𐐬𐑉
+				𐐍𐐻𐑊𐐴𐐨𐑍 𐐌𐑊𐐲𐑌𐐼𐑆</territory>
 			<territory type="US">𐐏𐐭𐑌𐐴𐐻𐐲𐐼 𐐝𐐻𐐩𐐻𐑅</territory>
 			<territory type="UY">𐐏𐐳𐑉𐐲𐑀𐐶𐐴</territory>
 			<territory type="UZ">𐐅𐑆𐐺𐐯𐐿𐐲𐑅𐐻𐐰𐑌</territory>
 			<territory type="VA">𐐚𐐰𐐼𐐲𐐿𐐲𐑌</territory>
-			<territory type="VC">𐐝𐐩𐑌𐐻 𐐚𐐮𐑌𐑅𐐲𐑌𐐻 𐐰𐑌𐐼 𐑄 𐐘𐑉𐐯𐑌𐐲𐐼𐐨𐑌𐑆</territory>
+			<territory type="VC">𐐝𐐩𐑌𐐻 𐐚𐐮𐑌𐑅𐐲𐑌𐐻 𐐰𐑌𐐼 𐑄
+				𐐘𐑉𐐯𐑌𐐲𐐼𐐨𐑌𐑆</territory>
 			<territory type="VD">𐐤𐐱𐑉𐑃 𐐚𐐨𐐯𐐻𐑌𐐪𐑋</territory>
 			<territory type="VG">𐐒𐑉𐐮𐐼𐐮𐑇 𐐚𐐲𐑉𐐾𐐲𐑌 𐐌𐑊𐐲𐑌𐐼𐑆</territory>
 			<territory type="VI">𐐏.𐐝. 𐐚𐐲𐑉𐐾𐐲𐑌 𐐌𐑊𐐲𐑌𐐼𐑆</territory>
@@ -519,7 +538,8 @@
 			<territory type="WF">𐐎𐐪𐑊𐐮𐑅 𐐰𐑌𐐼 𐐙𐐭𐐻𐐭𐑌𐐲</territory>
 			<territory type="WK">𐐎𐐩𐐿 𐐌𐑊𐐲𐑌𐐼</territory>
 			<territory type="WS">𐐝𐐲𐑋𐐬𐐲</territory>
-			<territory type="YD">𐐑𐐨𐐹𐐲𐑊𐑆 𐐔𐐯𐑋𐐲𐐿𐑉𐐰𐐼𐐮𐐿 𐐡𐐨𐐹𐐲𐐺𐑊𐐮𐐿 𐐲𐑂 𐐏𐐯𐑋𐐲𐑌</territory>
+			<territory type="YD">𐐑𐐨𐐹𐐲𐑊𐑆 𐐔𐐯𐑋𐐲𐐿𐑉𐐰𐐼𐐮𐐿
+				𐐡𐐨𐐹𐐲𐐺𐑊𐐮𐐿 𐐲𐑂 𐐏𐐯𐑋𐐲𐑌</territory>
 			<territory type="YE">𐐏𐐯𐑋𐐲𐑌</territory>
 			<territory type="YT">𐐣𐐪𐐷𐐱𐐻</territory>
 			<territory type="ZA">𐐝𐐵𐑃 𐐈𐑁𐑉𐐲𐐿𐐲</territory>
@@ -528,13 +548,15 @@
 			<territory type="ZZ">𐐊𐑌𐐬𐑌 𐐬𐑉 𐐆𐑌𐑂𐐰𐑊𐐮𐐼 𐐡𐐨𐐾𐐲𐑌</territory>
 		</territories>
 		<variants>
-			<variant type="1901">𐐓𐑉𐐲𐐼𐐮𐑇𐐲𐑌𐑊 𐐖𐐲𐑉𐑋𐐲𐑌 𐐱𐑉𐑃𐐪𐑀𐑉𐐲𐑁𐐨</variant>
+			<variant type="1901">𐐓𐑉𐐲𐐼𐐮𐑇𐐲𐑌𐑊 𐐖𐐲𐑉𐑋𐐲𐑌
+				𐐱𐑉𐑃𐐪𐑀𐑉𐐲𐑁𐐨</variant>
 			<variant type="1996">𐐖𐐲𐑉𐑋𐐲𐑌 𐐱𐑉𐑃𐐪𐑀𐑉𐐲𐑁𐐨 𐐲𐑂 1996</variant>
 			<variant type="1606NICT">𐐢𐐩𐐻 𐐣𐐮𐐼𐑊 𐐙𐑉𐐯𐑌𐐽 𐐻𐐭 1606</variant>
 			<variant type="1694ACAD">𐐊𐑉𐑊𐐨 𐐣𐐪𐐼𐐲𐑉𐑌 𐐙𐑉𐐯𐑌𐐽</variant>
 			<variant type="AREVELA">𐐀𐑅𐐻𐐲𐑉𐑌 𐐂𐑉𐑋𐐨𐑌𐐨𐐲𐑌</variant>
 			<variant type="AREVMDA">𐐎𐐯𐑅𐐻𐐲𐑉𐑌 𐐂𐑉𐑋𐐨𐑌𐐨𐐲𐑌</variant>
-			<variant type="BAKU1926">𐐏𐐭𐑌𐐲𐑁𐐴𐐼 𐐓𐐲𐑉𐐿𐐮𐐿 𐐢𐐰𐐻𐑌 𐐈𐑊𐑁𐐲𐐺𐐲𐐻</variant>
+			<variant type="BAKU1926">𐐏𐐭𐑌𐐲𐑁𐐴𐐼 𐐓𐐲𐑉𐐿𐐮𐐿 𐐢𐐰𐐻𐑌
+				𐐈𐑊𐑁𐐲𐐺𐐲𐐻</variant>
 			<variant type="FONIPA">𐐆𐐙𐐈 𐐙𐐬𐑌𐐯𐐻𐐮𐐿𐑅</variant>
 			<variant type="MONOTON">𐐣𐐪𐑌𐐲𐐻𐐪𐑌𐐮𐐿</variant>
 			<variant type="POLYTON">𐐑𐐱𐑊𐐨𐐻𐐱𐑌𐐮𐐿</variant>

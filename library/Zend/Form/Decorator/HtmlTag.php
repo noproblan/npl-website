@@ -20,6 +20,7 @@
  */
 
 /**
+ *
  * @see Zend_Form_Decorator_Abstract
  */
 require_once 'Zend/Form/Decorator/Abstract.php';
@@ -33,41 +34,47 @@ require_once 'Zend/Form/Decorator/Abstract.php';
  * - tag: tag to use in decorator
  * - noAttribs: do not render attributes in the opening tag
  * - placement: 'append' or 'prepend'. If 'append', renders opening and
- *   closing tag after content; if prepend, renders opening and closing tag
- *   before content.
+ * closing tag after content; if prepend, renders opening and closing tag
+ * before content.
  * - openOnly: render opening tag only
  * - closeOnly: render closing tag only
  *
  * Any other options passed are processed as HTML attributes of the tag.
  *
- * @category   Zend
- * @package    Zend_Form
+ * @category Zend
+ * @package Zend_Form
  * @subpackage Decorator
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @version    $Id: HtmlTag.php 24428 2011-09-02 14:10:03Z matthew $
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
+ * @version $Id: HtmlTag.php 24428 2011-09-02 14:10:03Z matthew $
  */
 class Zend_Form_Decorator_HtmlTag extends Zend_Form_Decorator_Abstract
 {
+
     /**
      * Character encoding to use when escaping attributes
+     * 
      * @var string
      */
     protected $_encoding;
 
     /**
      * Placement; default to surround content
+     * 
      * @var string
      */
     protected $_placement = null;
 
     /**
      * HTML tag to use
+     * 
      * @var string
      */
     protected $_tag;
 
     /**
+     *
      * @var Zend_Filter
      */
     protected $_tagFilter;
@@ -77,22 +84,21 @@ class Zend_Form_Decorator_HtmlTag extends Zend_Form_Decorator_Abstract
      *
      * @return string
      */
-    protected function _htmlAttribs(array $attribs)
+    protected function _htmlAttribs (array $attribs)
     {
         $xhtml = '';
-        $enc   = $this->_getEncoding();
+        $enc = $this->_getEncoding();
         foreach ((array) $attribs as $key => $val) {
             $key = htmlspecialchars($key, ENT_COMPAT, $enc);
             if (is_array($val)) {
-                if (array_key_exists('callback', $val)
-                    && is_callable($val['callback'])
-                ) {
+                if (array_key_exists('callback', $val) &&
+                         is_callable($val['callback'])) {
                     $val = call_user_func($val['callback'], $this);
                 } else {
                     $val = implode(' ', $val);
                 }
             }
-            $val    = htmlspecialchars($val, ENT_COMPAT, $enc);
+            $val = htmlspecialchars($val, ENT_COMPAT, $enc);
             $xhtml .= " $key=\"$val\"";
         }
         return $xhtml;
@@ -103,18 +109,18 @@ class Zend_Form_Decorator_HtmlTag extends Zend_Form_Decorator_Abstract
      *
      * Ensures tag is alphanumeric characters only, and all lowercase.
      *
-     * @param  string $tag
+     * @param string $tag            
      * @return string
      */
-    public function normalizeTag($tag)
+    public function normalizeTag ($tag)
     {
-        if (!isset($this->_tagFilter)) {
+        if (! isset($this->_tagFilter)) {
             require_once 'Zend/Filter.php';
             require_once 'Zend/Filter/Alnum.php';
             require_once 'Zend/Filter/StringToLower.php';
             $this->_tagFilter = new Zend_Filter();
-            $this->_tagFilter->addFilter(new Zend_Filter_Alnum())
-                             ->addFilter(new Zend_Filter_StringToLower());
+            $this->_tagFilter->addFilter(new Zend_Filter_Alnum())->addFilter(
+                    new Zend_Filter_StringToLower());
         }
         return $this->_tagFilter->filter($tag);
     }
@@ -122,10 +128,10 @@ class Zend_Form_Decorator_HtmlTag extends Zend_Form_Decorator_Abstract
     /**
      * Set tag to use
      *
-     * @param  string $tag
+     * @param string $tag            
      * @return Zend_Form_Decorator_HtmlTag
      */
-    public function setTag($tag)
+    public function setTag ($tag)
     {
         $this->_tag = $this->normalizeTag($tag);
         return $this;
@@ -138,7 +144,7 @@ class Zend_Form_Decorator_HtmlTag extends Zend_Form_Decorator_Abstract
      *
      * @return string
      */
-    public function getTag()
+    public function getTag ()
     {
         if (null === $this->_tag) {
             if (null === ($tag = $this->getOption('tag'))) {
@@ -148,18 +154,18 @@ class Zend_Form_Decorator_HtmlTag extends Zend_Form_Decorator_Abstract
                 $this->removeOption('tag');
             }
         }
-
+        
         return $this->_tag;
     }
 
     /**
      * Get the formatted open tag
      *
-     * @param  string $tag
-     * @param  array $attribs
+     * @param string $tag            
+     * @param array $attribs            
      * @return string
      */
-    protected function _getOpenTag($tag, array $attribs = null)
+    protected function _getOpenTag ($tag, array $attribs = null)
     {
         $html = '<' . $tag;
         if (null !== $attribs) {
@@ -172,10 +178,10 @@ class Zend_Form_Decorator_HtmlTag extends Zend_Form_Decorator_Abstract
     /**
      * Get formatted closing tag
      *
-     * @param  string $tag
+     * @param string $tag            
      * @return string
      */
-    protected function _getCloseTag($tag)
+    protected function _getCloseTag ($tag)
     {
         return '</' . $tag . '>';
     }
@@ -183,25 +189,25 @@ class Zend_Form_Decorator_HtmlTag extends Zend_Form_Decorator_Abstract
     /**
      * Render content wrapped in an HTML tag
      *
-     * @param  string $content
+     * @param string $content            
      * @return string
      */
-    public function render($content)
+    public function render ($content)
     {
-        $tag       = $this->getTag();
+        $tag = $this->getTag();
         $placement = $this->getPlacement();
         $noAttribs = $this->getOption('noAttribs');
-        $openOnly  = $this->getOption('openOnly');
+        $openOnly = $this->getOption('openOnly');
         $closeOnly = $this->getOption('closeOnly');
         $this->removeOption('noAttribs');
         $this->removeOption('openOnly');
         $this->removeOption('closeOnly');
-
+        
         $attribs = null;
-        if (!$noAttribs) {
+        if (! $noAttribs) {
             $attribs = $this->getOptions();
         }
-
+        
         switch ($placement) {
             case self::APPEND:
                 if ($closeOnly) {
@@ -210,9 +216,8 @@ class Zend_Form_Decorator_HtmlTag extends Zend_Form_Decorator_Abstract
                 if ($openOnly) {
                     return $content . $this->_getOpenTag($tag, $attribs);
                 }
-                return $content
-                     . $this->_getOpenTag($tag, $attribs)
-                     . $this->_getCloseTag($tag);
+                return $content . $this->_getOpenTag($tag, $attribs) .
+                         $this->_getCloseTag($tag);
             case self::PREPEND:
                 if ($closeOnly) {
                     return $this->_getCloseTag($tag) . $content;
@@ -220,13 +225,13 @@ class Zend_Form_Decorator_HtmlTag extends Zend_Form_Decorator_Abstract
                 if ($openOnly) {
                     return $this->_getOpenTag($tag, $attribs) . $content;
                 }
-                return $this->_getOpenTag($tag, $attribs)
-                     . $this->_getCloseTag($tag)
-                     . $content;
+                return $this->_getOpenTag($tag, $attribs) .
+                         $this->_getCloseTag($tag) . $content;
             default:
-                return (($openOnly || !$closeOnly) ? $this->_getOpenTag($tag, $attribs) : '')
-                     . $content
-                     . (($closeOnly || !$openOnly) ? $this->_getCloseTag($tag) : '');
+                return (($openOnly || ! $closeOnly) ? $this->_getOpenTag($tag, 
+                        $attribs) : '') . $content .
+                         (($closeOnly || ! $openOnly) ? $this->_getCloseTag(
+                                $tag) : '');
         }
     }
 
@@ -235,19 +240,18 @@ class Zend_Form_Decorator_HtmlTag extends Zend_Form_Decorator_Abstract
      *
      * @return string
      */
-    protected function _getEncoding()
+    protected function _getEncoding ()
     {
         if (null !== $this->_encoding) {
             return $this->_encoding;
         }
-
+        
         if (null === ($element = $this->getElement())) {
             $this->_encoding = 'UTF-8';
         } elseif (null === ($view = $element->getView())) {
             $this->_encoding = 'UTF-8';
-        } elseif (!$view instanceof Zend_View_Abstract
-            && !method_exists($view, 'getEncoding')
-        ) {
+        } elseif (! $view instanceof Zend_View_Abstract &&
+                 ! method_exists($view, 'getEncoding')) {
             $this->_encoding = 'UTF-8';
         } else {
             $this->_encoding = $view->getEncoding();

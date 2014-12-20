@@ -26,33 +26,37 @@
 require_once 'Zend/Db/Statement/Exception.php';
 
 /**
- * @package    Zend_Db
+ *
+ * @package Zend_Db
  * @subpackage Statement
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
-
 class Zend_Db_Statement_Db2_Exception extends Zend_Db_Statement_Exception
 {
+
     /**
+     *
      * @var string
      */
     protected $code = '00000';
 
     /**
+     *
      * @var string
      */
     protected $message = 'unknown exception';
 
     /**
-     * @param string $msg
-     * @param string $state
+     *
+     * @param string $msg            
+     * @param string $state            
      */
-    function __construct($msg = 'unknown exception', $state = '00000')
+    function __construct ($msg = 'unknown exception', $state = '00000')
     {
         $this->message = $msg;
         $this->code = $state;
     }
-
 }
 

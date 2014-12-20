@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -20,23 +21,25 @@
  * @version    $Id: Field.php 24168 2011-06-29 23:16:48Z adamlundrigan $
  */
 
-
 /**
- * A field is a section of a Document.  Each field has two parts,
+ * A field is a section of a Document.
+ * Each field has two parts,
  * a name and a value. Values may be free text or they may be atomic
  * keywords, which are not further processed. Such keywords may
- * be used to represent dates, urls, etc.  Fields are optionally
+ * be used to represent dates, urls, etc. Fields are optionally
  * stored in the index, so that they may be returned with hits
  * on the document.
  *
- * @category   Zend
- * @package    Zend_Search_Lucene
+ * @category Zend
+ * @package Zend_Search_Lucene
  * @subpackage Document
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Search_Lucene_Field
 {
+
     /**
      * Field name
      *
@@ -56,14 +59,14 @@ class Zend_Search_Lucene_Field
      *
      * @var boolean
      */
-    public $isStored    = false;
+    public $isStored = false;
 
     /**
      * Field is to be indexed, so that it may be searched on.
      *
      * @var boolean
      */
-    public $isIndexed   = true;
+    public $isIndexed = true;
 
     /**
      * Field should be tokenized as text prior to indexing.
@@ -71,12 +74,13 @@ class Zend_Search_Lucene_Field
      * @var boolean
      */
     public $isTokenized = true;
+
     /**
      * Field is stored as binary.
      *
      * @var boolean
      */
-    public $isBinary    = false;
+    public $isBinary = false;
 
     /**
      * Field are stored as a term vector
@@ -87,7 +91,8 @@ class Zend_Search_Lucene_Field
 
     /**
      * Field boost factor
-     * It's not stored directly in the index, but affects on normalization factor
+     * It's not stored directly in the index, but affects on normalization
+     * factor
      *
      * @var float
      */
@@ -103,106 +108,107 @@ class Zend_Search_Lucene_Field
     /**
      * Object constructor
      *
-     * @param string $name
-     * @param string $value
-     * @param string $encoding
-     * @param boolean $isStored
-     * @param boolean $isIndexed
-     * @param boolean $isTokenized
-     * @param boolean $isBinary
+     * @param string $name            
+     * @param string $value            
+     * @param string $encoding            
+     * @param boolean $isStored            
+     * @param boolean $isIndexed            
+     * @param boolean $isTokenized            
+     * @param boolean $isBinary            
      */
-    public function __construct($name, $value, $encoding, $isStored, $isIndexed, $isTokenized, $isBinary = false)
+    public function __construct ($name, $value, $encoding, $isStored, $isIndexed, 
+            $isTokenized, $isBinary = false)
     {
-        $this->name  = $name;
+        $this->name = $name;
         $this->value = $value;
-
-        if (!$isBinary) {
-            $this->encoding    = $encoding;
+        
+        if (! $isBinary) {
+            $this->encoding = $encoding;
             $this->isTokenized = $isTokenized;
         } else {
-            $this->encoding    = '';
+            $this->encoding = '';
             $this->isTokenized = false;
         }
-
-        $this->isStored  = $isStored;
+        
+        $this->isStored = $isStored;
         $this->isIndexed = $isIndexed;
-        $this->isBinary  = $isBinary;
-
+        $this->isBinary = $isBinary;
+        
         $this->storeTermVector = false;
-        $this->boost           = 1.0;
+        $this->boost = 1.0;
     }
-
 
     /**
      * Constructs a String-valued Field that is not tokenized, but is indexed
-     * and stored.  Useful for non-text fields, e.g. date or url.
+     * and stored.
+     * Useful for non-text fields, e.g. date or url.
      *
-     * @param string $name
-     * @param string $value
-     * @param string $encoding
+     * @param string $name            
+     * @param string $value            
+     * @param string $encoding            
      * @return Zend_Search_Lucene_Field
      */
-    public static function keyword($name, $value, $encoding = '')
+    public static function keyword ($name, $value, $encoding = '')
     {
         return new self($name, $value, $encoding, true, true, false);
     }
-
 
     /**
      * Constructs a String-valued Field that is not tokenized nor indexed,
      * but is stored in the index, for return with hits.
      *
-     * @param string $name
-     * @param string $value
-     * @param string $encoding
+     * @param string $name            
+     * @param string $value            
+     * @param string $encoding            
      * @return Zend_Search_Lucene_Field
      */
-    public static function unIndexed($name, $value, $encoding = '')
+    public static function unIndexed ($name, $value, $encoding = '')
     {
         return new self($name, $value, $encoding, true, false, false);
     }
 
-
     /**
-     * Constructs a Binary String valued Field that is not tokenized nor indexed,
+     * Constructs a Binary String valued Field that is not tokenized nor
+     * indexed,
      * but is stored in the index, for return with hits.
      *
-     * @param string $name
-     * @param string $value
-     * @param string $encoding
+     * @param string $name            
+     * @param string $value            
+     * @param string $encoding            
      * @return Zend_Search_Lucene_Field
      */
-    public static function binary($name, $value)
+    public static function binary ($name, $value)
     {
         return new self($name, $value, '', true, false, false, true);
     }
 
     /**
      * Constructs a String-valued Field that is tokenized and indexed,
-     * and is stored in the index, for return with hits.  Useful for short text
-     * fields, like "title" or "subject". Term vector will not be stored for this field.
+     * and is stored in the index, for return with hits.
+     * Useful for short text
+     * fields, like "title" or "subject". Term vector will not be stored for
+     * this field.
      *
-     * @param string $name
-     * @param string $value
-     * @param string $encoding
+     * @param string $name            
+     * @param string $value            
+     * @param string $encoding            
      * @return Zend_Search_Lucene_Field
      */
-    public static function text($name, $value, $encoding = '')
+    public static function text ($name, $value, $encoding = '')
     {
         return new self($name, $value, $encoding, true, true, true);
     }
-
 
     /**
      * Constructs a String-valued Field that is tokenized and indexed,
      * but that is not stored in the index.
      *
-     * @param string $name
-     * @param string $value
-     * @param string $encoding
+     * @param string $name            
+     * @param string $value            
+     * @param string $encoding            
      * @return Zend_Search_Lucene_Field
      */
-    public static function unStored($name, $value, $encoding = '')
+    public static function unStored ($name, $value, $encoding = '')
     {
         return new self($name, $value, $encoding, false, true, true);
     }
@@ -212,14 +218,15 @@ class Zend_Search_Lucene_Field
      *
      * @return string
      */
-    public function getUtf8Value()
+    public function getUtf8Value ()
     {
-        if (strcasecmp($this->encoding, 'utf8' ) == 0  ||
-            strcasecmp($this->encoding, 'utf-8') == 0 ) {
-                return $this->value;
+        if (strcasecmp($this->encoding, 'utf8') == 0 ||
+                 strcasecmp($this->encoding, 'utf-8') == 0) {
+            return $this->value;
         } else {
-
-            return (PHP_OS != 'AIX') ? iconv($this->encoding, 'UTF-8', $this->value) : iconv('ISO8859-1', 'UTF-8', $this->value);
+            
+            return (PHP_OS != 'AIX') ? iconv($this->encoding, 'UTF-8', 
+                    $this->value) : iconv('ISO8859-1', 'UTF-8', $this->value);
         }
     }
 }

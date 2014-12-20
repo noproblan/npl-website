@@ -19,18 +19,19 @@
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
 
-
 /**
+ *
  * @see Zend_Http_UserAgent_Exception
  */
 require_once 'Zend/Http/UserAgent/Exception.php';
 
-
 /**
- * @package    Zend_Http
+ *
+ * @package Zend_Http
  * @subpackage UserAgent
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Http_UserAgent_Storage_Exception extends Zend_Http_UserAgent_Exception
 {

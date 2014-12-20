@@ -21,24 +21,27 @@
  */
 
 /**
+ *
  * @see Zend_Gdata_Entry
  */
 require_once 'Zend/Gdata/App/Extension/Link.php';
 
 /**
+ *
  * @see Zend_Gdata_Entry
  */
 require_once 'Zend/Gdata/Calendar/Extension/WebContent.php';
 
-
 /**
- * Specialized Link class for use with Calendar. Enables use of gCal extension elements.
+ * Specialized Link class for use with Calendar.
+ * Enables use of gCal extension elements.
  *
- * @category   Zend
- * @package    Zend_Gdata
+ * @category Zend
+ * @package Zend_Gdata
  * @subpackage Calendar
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Gdata_Calendar_Extension_Link extends Zend_Gdata_App_Extension_Link
 {
@@ -47,11 +50,12 @@ class Zend_Gdata_Calendar_Extension_Link extends Zend_Gdata_App_Extension_Link
 
     /**
      * Constructs a new Zend_Gdata_Calendar_Extension_Link object.
+     * 
      * @see Zend_Gdata_App_Extension_Link#__construct
-     * @param Zend_Gdata_Calendar_Extension_Webcontent $webContent
+     * @param Zend_Gdata_Calendar_Extension_Webcontent $webContent            
      */
-    public function __construct($href = null, $rel = null, $type = null,
-            $hrefLang = null, $title = null, $length = null, $webContent = null)
+    public function __construct ($href = null, $rel = null, $type = null, $hrefLang = null, 
+            $title = null, $length = null, $webContent = null)
     {
         $this->registerAllNamespaces(Zend_Gdata_Calendar::$namespaces);
         parent::__construct($href, $rel, $type, $hrefLang, $title, $length);
@@ -60,19 +64,22 @@ class Zend_Gdata_Calendar_Extension_Link extends Zend_Gdata_App_Extension_Link
 
     /**
      * Retrieves a DOMElement which corresponds to this element and all
-     * child properties.  This is used to build an entry back into a DOM
+     * child properties.
+     * This is used to build an entry back into a DOM
      * and eventually XML text for sending to the server upon updates, or
      * for application storage/persistence.
      *
-     * @param DOMDocument $doc The DOMDocument used to construct DOMElements
+     * @param DOMDocument $doc
+     *            The DOMDocument used to construct DOMElements
      * @return DOMElement The DOMElement representing this element and all
-     * child properties.
+     *         child properties.
      */
-    public function getDOM($doc = null, $majorVersion = 1, $minorVersion = null)
+    public function getDOM ($doc = null, $majorVersion = 1, $minorVersion = null)
     {
         $element = parent::getDOM($doc, $majorVersion, $minorVersion);
         if ($this->_webContent != null) {
-            $element->appendChild($this->_webContent->getDOM($element->ownerDocument));
+            $element->appendChild(
+                    $this->_webContent->getDOM($element->ownerDocument));
         }
         return $element;
     }
@@ -81,20 +88,21 @@ class Zend_Gdata_Calendar_Extension_Link extends Zend_Gdata_App_Extension_Link
      * Creates individual Entry objects of the appropriate type and
      * stores them as members of this entry based upon DOM data.
      *
-     * @param DOMNode $child The DOMNode to process
+     * @param DOMNode $child
+     *            The DOMNode to process
      */
-    protected function takeChildFromDOM($child)
+    protected function takeChildFromDOM ($child)
     {
         $absoluteNodeName = $child->namespaceURI . ':' . $child->localName;
         switch ($absoluteNodeName) {
-        case $this->lookupNamespace('gCal') . ':' . 'webContent':
-            $webContent = new Zend_Gdata_Calendar_Extension_WebContent();
-            $webContent->transferFromDOM($child);
-            $this->_webContent = $webContent;
-            break;
-        default:
-            parent::takeChildFromDOM($child);
-            break;
+            case $this->lookupNamespace('gCal') . ':' . 'webContent':
+                $webContent = new Zend_Gdata_Calendar_Extension_WebContent();
+                $webContent->transferFromDOM($child);
+                $this->_webContent = $webContent;
+                break;
+            default:
+                parent::takeChildFromDOM($child);
+                break;
         }
     }
 
@@ -103,7 +111,7 @@ class Zend_Gdata_Calendar_Extension_Link extends Zend_Gdata_App_Extension_Link
      *
      * @return Zend_Gdata_Calendar_Extension_Webcontent The WebContent value
      */
-    public function getWebContent()
+    public function getWebContent ()
     {
         return $this->_webContent;
     }
@@ -111,15 +119,15 @@ class Zend_Gdata_Calendar_Extension_Link extends Zend_Gdata_App_Extension_Link
     /**
      * Set the value for this element's WebContent attribute.
      *
-     * @param Zend_Gdata_Calendar_Extension_WebContent $value The desired value for this attribute.
-     * @return Zend_Calendar_Extension_Link The element being modified.  Provides a fluent interface.
+     * @param Zend_Gdata_Calendar_Extension_WebContent $value
+     *            The desired value for this attribute.
+     * @return Zend_Calendar_Extension_Link The element being modified. Provides
+     *         a fluent interface.
      */
-    public function setWebContent($value)
+    public function setWebContent ($value)
     {
         $this->_webContent = $value;
         return $this;
     }
-
-
 }
 

@@ -21,34 +21,35 @@
  */
 
 /**
+ *
  * @see Zend_Tool_Project_Provider_Abstract
  */
 require_once 'Zend/Tool/Project/Provider/Abstract.php';
 
 /**
- * @category   Zend
- * @package    Zend_Tool
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ *
+ * @category Zend
+ * @package Zend_Tool
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Tool_Project_Provider_Profile extends Zend_Tool_Project_Provider_Abstract
 {
 
     /**
      * show()
-     *
      */
-    public function show()
+    public function show ()
     {
         $this->_loadProfile();
-
+        
         $profileIterator = $this->_loadedProfile->getIterator();
-
+        
         foreach ($profileIterator as $profileItem) {
             $this->_registry->getResponse()->appendContent(
-                str_repeat('    ', $profileIterator->getDepth()) . $profileItem
-            );
+                    str_repeat('    ', $profileIterator->getDepth()) .
+                             $profileItem);
         }
-
     }
 }

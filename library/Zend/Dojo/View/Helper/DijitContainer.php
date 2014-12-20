@@ -20,28 +20,34 @@
  * @version    $Id: DijitContainer.php 23775 2011-03-01 17:25:24Z ralph $
  */
 
-/** Zend_Dojo_View_Helper_Dijit */
+/**
+ * Zend_Dojo_View_Helper_Dijit
+ */
 require_once 'Zend/Dojo/View/Helper/Dijit.php';
 
 /**
  * Dijit layout container base class
  *
- * @uses       Zend_Dojo_View_Helper_Dijit
- * @package    Zend_Dojo
+ * @uses Zend_Dojo_View_Helper_Dijit
+ * @package Zend_Dojo
  * @subpackage View
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
-  */
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
+ */
 abstract class Zend_Dojo_View_Helper_DijitContainer extends Zend_Dojo_View_Helper_Dijit
 {
+
     /**
      * Capture locks
+     * 
      * @var array
      */
     protected $_captureLock = array();
 
     /**
      * Metadata information to use with captured content
+     * 
      * @var array
      */
     protected $_captureInfo = array();
@@ -49,24 +55,26 @@ abstract class Zend_Dojo_View_Helper_DijitContainer extends Zend_Dojo_View_Helpe
     /**
      * Begin capturing content for layout container
      *
-     * @param  string $id
-     * @param  array $params
-     * @param  array $attribs
+     * @param string $id            
+     * @param array $params            
+     * @param array $attribs            
      * @return void
      */
-    public function captureStart($id, array $params = array(), array $attribs = array())
+    public function captureStart ($id, array $params = array(), 
+            array $attribs = array())
     {
         if (array_key_exists($id, $this->_captureLock)) {
             require_once 'Zend/Dojo/View/Exception.php';
-            throw new Zend_Dojo_View_Exception(sprintf('Lock already exists for id "%s"', $id));
+            throw new Zend_Dojo_View_Exception(
+                    sprintf('Lock already exists for id "%s"', $id));
         }
-
+        
         $this->_captureLock[$id] = true;
         $this->_captureInfo[$id] = array(
-            'params'  => $params,
-            'attribs' => $attribs,
+                'params' => $params,
+                'attribs' => $attribs
         );
-
+        
         ob_start();
         return;
     }
@@ -74,16 +82,19 @@ abstract class Zend_Dojo_View_Helper_DijitContainer extends Zend_Dojo_View_Helpe
     /**
      * Finish capturing content for layout container
      *
-     * @param  string $id
+     * @param string $id            
      * @return string
      */
-    public function captureEnd($id)
+    public function captureEnd ($id)
     {
-        if (!array_key_exists($id, $this->_captureLock)) {
+        if (! array_key_exists($id, $this->_captureLock)) {
             require_once 'Zend/Dojo/View/Exception.php';
-            throw new Zend_Dojo_View_Exception(sprintf('No capture lock exists for id "%s"; nothing to capture', $id));
+            throw new Zend_Dojo_View_Exception(
+                    sprintf(
+                            'No capture lock exists for id "%s"; nothing to capture', 
+                            $id));
         }
-
+        
         $content = ob_get_clean();
         extract($this->_captureInfo[$id]);
         unset($this->_captureLock[$id], $this->_captureInfo[$id]);

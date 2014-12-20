@@ -22,11 +22,13 @@
  */
 
 /**
+ *
  * @see Zend_Gdata_Feed
  */
 require_once 'Zend/Gdata/Feed.php';
 
 /**
+ *
  * @see Zend_Gdata_Gapps_OwnerEntry
  */
 require_once 'Zend/Gdata/Gapps/OwnerEntry.php';
@@ -38,16 +40,17 @@ require_once 'Zend/Gdata/Gapps/OwnerEntry.php';
  * For information on requesting this feed from a server, see the Google
  * Apps service class, Zend_Gdata_Gapps.
  *
- * @category   Zend
- * @package    Zend_Gdata
+ * @category Zend
+ * @package Zend_Gdata
  * @subpackage Gapps
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Gdata_Gapps_OwnerFeed extends Zend_Gdata_Feed
 {
 
     protected $_entryClassName = 'Zend_Gdata_Gapps_OwnerEntry';
-    protected $_feedClassName = 'Zend_Gdata_Gapps_OwnerFeed';
 
+    protected $_feedClassName = 'Zend_Gdata_Gapps_OwnerFeed';
 }

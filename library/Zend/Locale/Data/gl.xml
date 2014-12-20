@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <ldml>
 	<identity>
-		<version number="$Revision: 1.68 $"/>
-		<generation date="$Date: 2009/06/15 03:46:24 $"/>
-		<language type="gl"/>
+		<version number="$Revision: 1.68 $" />
+		<generation date="$Date: 2009/06/15 03:46:24 $" />
+		<language type="gl" />
 	</identity>
 	<localeDisplayNames>
 		<localeDisplayPattern>
@@ -492,7 +492,8 @@
 	</localeDisplayNames>
 	<characters>
 		<exemplarCharacters>[a á b-e é f-i í j-n ñ o ó p-u ú ü v-z]</exemplarCharacters>
-		<exemplarCharacters type="auxiliary">[ª à â ä ã ç è ê-ì î ï º ò ô ö õ ù û]</exemplarCharacters>
+		<exemplarCharacters type="auxiliary">[ª à â ä ã ç è ê-ì î ï º ò
+			ô ö õ ù û]</exemplarCharacters>
 		<exemplarCharacters type="currencySymbol">[a-z]</exemplarCharacters>
 	</characters>
 	<delimiters>
@@ -1313,8 +1314,10 @@
 			</currency>
 			<currency type="XXX">
 				<displayName>Unidade monetaria descoñecida ou non válida</displayName>
-				<displayName count="one">unidade monetaria descoñecida ou non válida</displayName>
-				<displayName count="other">unidades monetarias descoñecidas ou non válidas</displayName>
+				<displayName count="one">unidade monetaria descoñecida ou non
+					válida</displayName>
+				<displayName count="other">unidades monetarias descoñecidas ou
+					non válidas</displayName>
 			</currency>
 			<currency type="ZAR">
 				<displayName>Rand sudafricano</displayName>

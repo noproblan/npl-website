@@ -24,11 +24,12 @@
 /**
  * A wrapper for strings for buffered reading.
  *
- * @category   Zend
- * @package    Zend_Gdata
+ * @category Zend
+ * @package Zend_Gdata
  * @subpackage Gdata
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Gdata_MimeFile
 {
@@ -43,10 +44,11 @@ class Zend_Gdata_MimeFile
     /**
      * Create a new MimeFile object.
      *
-     * @param string $fileHandle An open file handle to the file being
-     *               read.
+     * @param string $fileHandle
+     *            An open file handle to the file being
+     *            read.
      */
-    public function __construct($fileHandle)
+    public function __construct ($fileHandle)
     {
         $this->_fileHandle = $fileHandle;
     }
@@ -54,13 +56,13 @@ class Zend_Gdata_MimeFile
     /**
      * Read the next chunk of the file.
      *
-     * @param integer $bytesRequested The size of the chunk that is to be read.
+     * @param integer $bytesRequested
+     *            The size of the chunk that is to be read.
      * @return string A corresponding piece of the message. This could be
-     *                binary or regular text.
+     *         binary or regular text.
      */
-    public function read($bytesRequested)
+    public function read ($bytesRequested)
     {
-      return fread($this->_fileHandle, $bytesRequested);
+        return fread($this->_fileHandle, $bytesRequested);
     }
-
 }

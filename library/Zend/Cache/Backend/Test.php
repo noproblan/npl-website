@@ -20,25 +20,30 @@
  * @version    $Id: Test.php 23775 2011-03-01 17:25:24Z ralph $
  */
 
-
 /**
+ *
  * @see Zend_Cache_Backend_Interface
  */
 require_once 'Zend/Cache/Backend/ExtendedInterface.php';
 
 /**
+ *
  * @see Zend_Cache_Backend
  */
 require_once 'Zend/Cache/Backend.php';
 
 /**
- * @package    Zend_Cache
+ *
+ * @package Zend_Cache
  * @subpackage Zend_Cache_Backend
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
-class Zend_Cache_Backend_Test extends Zend_Cache_Backend implements Zend_Cache_Backend_ExtendedInterface
+class Zend_Cache_Backend_Test extends Zend_Cache_Backend implements 
+        Zend_Cache_Backend_ExtendedInterface
 {
+
     /**
      * Available options
      *
@@ -70,60 +75,81 @@ class Zend_Cache_Backend_Test extends Zend_Cache_Backend implements Zend_Cache_B
     /**
      * Constructor
      *
-     * @param  array $options associative array of options
+     * @param array $options
+     *            associative array of options
      * @return void
      */
-    public function __construct($options = array())
+    public function __construct ($options = array())
     {
-        $this->_addLog('construct', array($options));
+        $this->_addLog('construct', array(
+                $options
+        ));
     }
 
     /**
      * Set the frontend directives
      *
-     * @param  array $directives assoc of directives
+     * @param array $directives
+     *            assoc of directives
      * @return void
      */
-    public function setDirectives($directives)
+    public function setDirectives ($directives)
     {
-        $this->_addLog('setDirectives', array($directives));
+        $this->_addLog('setDirectives', array(
+                $directives
+        ));
     }
 
     /**
-     * Test if a cache is available for the given id and (if yes) return it (false else)
+     * Test if a cache is available for the given id and (if yes) return it
+     * (false else)
      *
-     * For this test backend only, if $id == 'false', then the method will return false
+     * For this test backend only, if $id == 'false', then the method will
+     * return false
      * if $id == 'serialized', the method will return a serialized array
      * ('foo' else)
      *
-     * @param  string  $id                     Cache id
-     * @param  boolean $doNotTestCacheValidity If set to true, the cache validity won't be tested
+     * @param string $id
+     *            Cache id
+     * @param boolean $doNotTestCacheValidity
+     *            If set to true, the cache validity won't be tested
      * @return string Cached datas (or false)
      */
-    public function load($id, $doNotTestCacheValidity = false)
+    public function load ($id, $doNotTestCacheValidity = false)
     {
-        $this->_addLog('get', array($id, $doNotTestCacheValidity));
-
-        if ( $id == 'false'
-          || $id == 'd8523b3ee441006261eeffa5c3d3a0a7'
-          || $id == 'e83249ea22178277d5befc2c5e2e9ace'
-          || $id == '40f649b94977c0a6e76902e2a0b43587'
-          || $id == '88161989b73a4cbfd0b701c446115a99'
-          || $id == '205fc79cba24f0f0018eb92c7c8b3ba4'
-          || $id == '170720e35f38150b811f68a937fb042d')
-        {
+        $this->_addLog('get', array(
+                $id,
+                $doNotTestCacheValidity
+        ));
+        
+        if ($id == 'false' || $id == 'd8523b3ee441006261eeffa5c3d3a0a7' ||
+                 $id == 'e83249ea22178277d5befc2c5e2e9ace' ||
+                 $id == '40f649b94977c0a6e76902e2a0b43587' ||
+                 $id == '88161989b73a4cbfd0b701c446115a99' ||
+                 $id == '205fc79cba24f0f0018eb92c7c8b3ba4' ||
+                 $id == '170720e35f38150b811f68a937fb042d') {
             return false;
         }
-        if ($id=='serialized') {
-            return serialize(array('foo'));
+        if ($id == 'serialized') {
+            return serialize(array(
+                    'foo'
+            ));
         }
-        if ($id=='serialized2') {
-            return serialize(array('headers' => array(), 'data' => 'foo'));
+        if ($id == 'serialized2') {
+            return serialize(array(
+                    'headers' => array(),
+                    'data' => 'foo'
+            ));
         }
-        if ( $id == '71769f39054f75894288e397df04e445' || $id == '615d222619fb20b527168340cebd0578'
-          || $id == '8a02d218a5165c467e7a5747cc6bd4b6' || $id == '648aca1366211d17cbf48e65dc570bee'
-          || $id == '4a923ef02d7f997ca14d56dfeae25ea7') {
-            return serialize(array('foo', 'bar'));
+        if ($id == '71769f39054f75894288e397df04e445' ||
+                 $id == '615d222619fb20b527168340cebd0578' ||
+                 $id == '8a02d218a5165c467e7a5747cc6bd4b6' ||
+                 $id == '648aca1366211d17cbf48e65dc570bee' ||
+                 $id == '4a923ef02d7f997ca14d56dfeae25ea7') {
+            return serialize(array(
+                    'foo',
+                    'bar'
+            ));
         }
         return 'foo';
     }
@@ -131,19 +157,24 @@ class Zend_Cache_Backend_Test extends Zend_Cache_Backend implements Zend_Cache_B
     /**
      * Test if a cache is available or not (for the given id)
      *
-     * For this test backend only, if $id == 'false', then the method will return false
+     * For this test backend only, if $id == 'false', then the method will
+     * return false
      * (123456 else)
      *
-     * @param  string $id Cache id
-     * @return mixed|false false (a cache is not available) or "last modified" timestamp (int) of the available cache record
+     * @param string $id
+     *            Cache id
+     * @return mixed|false false (a cache is not available) or "last modified"
+     *         timestamp (int) of the available cache record
      */
-    public function test($id)
+    public function test ($id)
     {
-        $this->_addLog('test', array($id));
-        if ($id=='false') {
+        $this->_addLog('test', array(
+                $id
+        ));
+        if ($id == 'false') {
             return false;
         }
-        if (($id=='3c439c922209e2cb0b54d6deffccd75a')) {
+        if (($id == '3c439c922209e2cb0b54d6deffccd75a')) {
             return false;
         }
         return 123456;
@@ -152,19 +183,30 @@ class Zend_Cache_Backend_Test extends Zend_Cache_Backend implements Zend_Cache_B
     /**
      * Save some string datas into a cache record
      *
-     * For this test backend only, if $id == 'false', then the method will return false
+     * For this test backend only, if $id == 'false', then the method will
+     * return false
      * (true else)
      *
-     * @param  string $data             Datas to cache
-     * @param  string $id               Cache id
-     * @param  array  $tags             Array of strings, the cache record will be tagged by each string entry
-     * @param  int    $specificLifetime If != false, set a specific lifetime for this cache record (null => infinite lifetime)
+     * @param string $data
+     *            Datas to cache
+     * @param string $id
+     *            Cache id
+     * @param array $tags
+     *            Array of strings, the cache record will be tagged by each
+     *            string entry
+     * @param int $specificLifetime
+     *            If != false, set a specific lifetime for this cache record
+     *            (null => infinite lifetime)
      * @return boolean True if no problem
      */
-    public function save($data, $id, $tags = array(), $specificLifetime = false)
+    public function save ($data, $id, $tags = array(), $specificLifetime = false)
     {
-        $this->_addLog('save', array($data, $id, $tags));
-        if (substr($id,-5)=='false') {
+        $this->_addLog('save', array(
+                $data,
+                $id,
+                $tags
+        ));
+        if (substr($id, - 5) == 'false') {
             return false;
         }
         return true;
@@ -173,16 +215,20 @@ class Zend_Cache_Backend_Test extends Zend_Cache_Backend implements Zend_Cache_B
     /**
      * Remove a cache record
      *
-     * For this test backend only, if $id == 'false', then the method will return false
+     * For this test backend only, if $id == 'false', then the method will
+     * return false
      * (true else)
      *
-     * @param  string $id Cache id
+     * @param string $id
+     *            Cache id
      * @return boolean True if no problem
      */
-    public function remove($id)
+    public function remove ($id)
     {
-        $this->_addLog('remove', array($id));
-        if (substr($id,-5)=='false') {
+        $this->_addLog('remove', array(
+                $id
+        ));
+        if (substr($id, - 5) == 'false') {
             return false;
         }
         return true;
@@ -191,25 +237,35 @@ class Zend_Cache_Backend_Test extends Zend_Cache_Backend implements Zend_Cache_B
     /**
      * Clean some cache records
      *
-     * For this test backend only, if $mode == 'false', then the method will return false
+     * For this test backend only, if $mode == 'false', then the method will
+     * return false
      * (true else)
      *
      * Available modes are :
-     * Zend_Cache::CLEANING_MODE_ALL (default)    => remove all cache entries ($tags is not used)
-     * Zend_Cache::CLEANING_MODE_OLD              => remove too old cache entries ($tags is not used)
-     * Zend_Cache::CLEANING_MODE_MATCHING_TAG     => remove cache entries matching all given tags
-     *                                               ($tags can be an array of strings or a single string)
-     * Zend_Cache::CLEANING_MODE_NOT_MATCHING_TAG => remove cache entries not {matching one of the given tags}
-     *                                               ($tags can be an array of strings or a single string)
+     * Zend_Cache::CLEANING_MODE_ALL (default) => remove all cache entries
+     * ($tags is not used)
+     * Zend_Cache::CLEANING_MODE_OLD => remove too old cache entries ($tags is
+     * not used)
+     * Zend_Cache::CLEANING_MODE_MATCHING_TAG => remove cache entries matching
+     * all given tags
+     * ($tags can be an array of strings or a single string)
+     * Zend_Cache::CLEANING_MODE_NOT_MATCHING_TAG => remove cache entries not
+     * {matching one of the given tags}
+     * ($tags can be an array of strings or a single string)
      *
-     * @param  string $mode Clean mode
-     * @param  array  $tags Array of tags
+     * @param string $mode
+     *            Clean mode
+     * @param array $tags
+     *            Array of tags
      * @return boolean True if no problem
      */
-    public function clean($mode = Zend_Cache::CLEANING_MODE_ALL, $tags = array())
+    public function clean ($mode = Zend_Cache::CLEANING_MODE_ALL, $tags = array())
     {
-        $this->_addLog('clean', array($mode, $tags));
-        if ($mode=='false') {
+        $this->_addLog('clean', array(
+                $mode,
+                $tags
+        ));
+        if ($mode == 'false') {
             return false;
         }
         return true;
@@ -220,7 +276,7 @@ class Zend_Cache_Backend_Test extends Zend_Cache_Backend implements Zend_Cache_B
      *
      * @return string The last log
      */
-    public function getLastLog()
+    public function getLastLog ()
     {
         return $this->_log[$this->_index - 1];
     }
@@ -230,7 +286,7 @@ class Zend_Cache_Backend_Test extends Zend_Cache_Backend implements Zend_Cache_B
      *
      * @return int Log index
      */
-    public function getLogIndex()
+    public function getLogIndex ()
     {
         return $this->_index;
     }
@@ -240,7 +296,7 @@ class Zend_Cache_Backend_Test extends Zend_Cache_Backend implements Zend_Cache_B
      *
      * @return array Complete log array
      */
-    public function getAllLogs()
+    public function getAllLogs ()
     {
         return $this->_log;
     }
@@ -250,7 +306,7 @@ class Zend_Cache_Backend_Test extends Zend_Cache_Backend implements Zend_Cache_B
      *
      * @return boolean
      */
-    public function isAutomaticCleaningAvailable()
+    public function isAutomaticCleaningAvailable ()
     {
         return true;
     }
@@ -260,10 +316,11 @@ class Zend_Cache_Backend_Test extends Zend_Cache_Backend implements Zend_Cache_B
      *
      * @return array array of stored cache ids (string)
      */
-    public function getIds()
+    public function getIds ()
     {
         return array(
-            'prefix_id1', 'prefix_id2'
+                'prefix_id1',
+                'prefix_id2'
         );
     }
 
@@ -272,10 +329,11 @@ class Zend_Cache_Backend_Test extends Zend_Cache_Backend implements Zend_Cache_B
      *
      * @return array array of stored tags (string)
      */
-    public function getTags()
+    public function getTags ()
     {
         return array(
-            'tag1', 'tag2'
+                'tag1',
+                'tag2'
         );
     }
 
@@ -284,15 +342,22 @@ class Zend_Cache_Backend_Test extends Zend_Cache_Backend implements Zend_Cache_B
      *
      * In case of multiple tags, a logical AND is made between tags
      *
-     * @param array $tags array of tags
+     * @param array $tags
+     *            array of tags
      * @return array array of matching cache ids (string)
      */
-    public function getIdsMatchingTags($tags = array())
+    public function getIdsMatchingTags ($tags = array())
     {
-        if ($tags == array('tag1', 'tag2')) {
-            return array('prefix_id1', 'prefix_id2');
+        if ($tags == array(
+                'tag1',
+                'tag2'
+        )) {
+            return array(
+                    'prefix_id1',
+                    'prefix_id2'
+            );
         }
-
+        
         return array();
     }
 
@@ -301,15 +366,22 @@ class Zend_Cache_Backend_Test extends Zend_Cache_Backend implements Zend_Cache_B
      *
      * In case of multiple tags, a logical OR is made between tags
      *
-     * @param array $tags array of tags
+     * @param array $tags
+     *            array of tags
      * @return array array of not matching cache ids (string)
      */
-    public function getIdsNotMatchingTags($tags = array())
+    public function getIdsNotMatchingTags ($tags = array())
     {
-        if ($tags == array('tag3', 'tag4')) {
-            return array('prefix_id3', 'prefix_id4');
+        if ($tags == array(
+                'tag3',
+                'tag4'
+        )) {
+            return array(
+                    'prefix_id3',
+                    'prefix_id4'
+            );
         }
-
+        
         return array();
     }
 
@@ -318,15 +390,22 @@ class Zend_Cache_Backend_Test extends Zend_Cache_Backend implements Zend_Cache_B
      *
      * In case of multiple tags, a logical AND is made between tags
      *
-     * @param array $tags array of tags
+     * @param array $tags
+     *            array of tags
      * @return array array of any matching cache ids (string)
      */
-    public function getIdsMatchingAnyTags($tags = array())
+    public function getIdsMatchingAnyTags ($tags = array())
     {
-        if ($tags == array('tag5', 'tag6')) {
-            return array('prefix_id5', 'prefix_id6');
+        if ($tags == array(
+                'tag5',
+                'tag6'
+        )) {
+            return array(
+                    'prefix_id5',
+                    'prefix_id6'
+            );
         }
-
+        
         return array();
     }
 
@@ -335,7 +414,7 @@ class Zend_Cache_Backend_Test extends Zend_Cache_Backend implements Zend_Cache_B
      *
      * @return int integer between 0 and 100
      */
-    public function getFillingPercentage()
+    public function getFillingPercentage ()
     {
         return 50;
     }
@@ -348,10 +427,11 @@ class Zend_Cache_Backend_Test extends Zend_Cache_Backend implements Zend_Cache_B
      * - tags : a string array of tags
      * - mtime : timestamp of last modification time
      *
-     * @param string $id cache id
+     * @param string $id
+     *            cache id
      * @return array array of metadatas (false if the cache id is not found)
      */
-    public function getMetadatas($id)
+    public function getMetadatas ($id)
     {
         return false;
     }
@@ -359,11 +439,12 @@ class Zend_Cache_Backend_Test extends Zend_Cache_Backend implements Zend_Cache_B
     /**
      * Give (if possible) an extra lifetime to the given cache id
      *
-     * @param string $id cache id
-     * @param int $extraLifetime
+     * @param string $id
+     *            cache id
+     * @param int $extraLifetime            
      * @return boolean true if ok
      */
-    public function touch($id, $extraLifetime)
+    public function touch ($id, $extraLifetime)
     {
         return true;
     }
@@ -375,39 +456,41 @@ class Zend_Cache_Backend_Test extends Zend_Cache_Backend implements Zend_Cache_B
      * - automatic_cleaning (is automating cleaning necessary)
      * - tags (are tags supported)
      * - expired_read (is it possible to read expired cache records
-     *                 (for doNotTestCacheValidity option for example))
+     * (for doNotTestCacheValidity option for example))
      * - priority does the backend deal with priority when saving
      * - infinite_lifetime (is infinite lifetime can work with this backend)
-     * - get_list (is it possible to get the list of cache ids and the complete list of tags)
+     * - get_list (is it possible to get the list of cache ids and the complete
+     * list of tags)
      *
      * @return array associative of with capabilities
      */
-    public function getCapabilities()
+    public function getCapabilities ()
     {
         return array(
-            'automatic_cleaning' => true,
-            'tags'               => true,
-            'expired_read'       => false,
-            'priority'           => true,
-            'infinite_lifetime'  => true,
-            'get_list'           => true
+                'automatic_cleaning' => true,
+                'tags' => true,
+                'expired_read' => false,
+                'priority' => true,
+                'infinite_lifetime' => true,
+                'get_list' => true
         );
     }
 
     /**
      * Add an event to the log array
      *
-     * @param  string $methodName MethodName
-     * @param  array  $args       Arguments
+     * @param string $methodName
+     *            MethodName
+     * @param array $args
+     *            Arguments
      * @return void
      */
-    private function _addLog($methodName, $args)
+    private function _addLog ($methodName, $args)
     {
         $this->_log[$this->_index] = array(
-            'methodName' => $methodName,
-            'args' => $args
+                'methodName' => $methodName,
+                'args' => $args
         );
         $this->_index = $this->_index + 1;
     }
-
 }

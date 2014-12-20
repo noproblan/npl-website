@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <ldml>
 	<identity>
-		<version number="$Revision: 1.144 $"/>
-		<generation date="$Date: 2009/06/15 03:46:23 $"/>
-		<language type="ru"/>
+		<version number="$Revision: 1.144 $" />
+		<generation date="$Date: 2009/06/15 03:46:23 $" />
+		<language type="ru" />
 	</identity>
 	<localeDisplayNames>
 		<localeDisplayPattern>
@@ -772,7 +772,8 @@
 			<territory type="GU">Гуам</territory>
 			<territory type="GW">Гвинея-Биссау</territory>
 			<territory type="GY">Гайана</territory>
-			<territory type="HK">Гонконг, Особый Административный Район Китая</territory>
+			<territory type="HK">Гонконг, Особый Административный Район
+				Китая</territory>
 			<territory type="HM">Острова Херд и Макдональд</territory>
 			<territory type="HN">Гондурас</territory>
 			<territory type="HR">Хорватия</territory>
@@ -798,7 +799,8 @@
 			<territory type="KI">Кирибати</territory>
 			<territory type="KM">Коморские Острова</territory>
 			<territory type="KN">Сент-Киттс и Невис</territory>
-			<territory type="KP">Корейская Народно-Демократическая Республика</territory>
+			<territory type="KP">Корейская Народно-Демократическая
+				Республика</territory>
 			<territory type="KR">Республика Корея</territory>
 			<territory type="KW">Кувейт</territory>
 			<territory type="KY">Каймановы острова</territory>
@@ -932,7 +934,8 @@
 		<variants>
 			<variant type="1901">Традиционная немецкая орфография</variant>
 			<variant type="1994">Стандартизированная резьянская орфография</variant>
-			<variant type="1996">Правила немецкой орфографии установленные с 1996 года</variant>
+			<variant type="1996">Правила немецкой орфографии установленные с
+				1996 года</variant>
 			<variant type="1606NICT">Поздне-средневековый французский до 1606 г.</variant>
 			<variant type="AREVELA">Восточно-армянский</variant>
 			<variant type="AREVMDA">Западно-армянский</variant>
@@ -3101,7 +3104,8 @@
 			</currency>
 			<currency type="AOR">
 				<displayName>Ангольская кванза реюстадо (1995-1999)</displayName>
-				<displayName count="few">ангольские кванзы реюстадо (1995-1999)</displayName>
+				<displayName count="few">ангольские кванзы реюстадо
+					(1995-1999)</displayName>
 				<displayName count="other">ангольских кванз реюстадо (1995-1999)</displayName>
 			</currency>
 			<currency type="ARA">
@@ -3819,10 +3823,12 @@
 				<displayName>Европейская денежная единица</displayName>
 			</currency>
 			<currency type="XBC">
-				<displayName>расчетная единица европейского валютного соглашения (XBC)</displayName>
+				<displayName>расчетная единица европейского валютного соглашения
+					(XBC)</displayName>
 			</currency>
 			<currency type="XBD">
-				<displayName>расчетная единица европейского валютного соглашения (XBD)</displayName>
+				<displayName>расчетная единица европейского валютного соглашения
+					(XBD)</displayName>
 			</currency>
 			<currency type="XCD">
 				<displayName>Восточно-карибский доллар</displayName>

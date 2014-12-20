@@ -20,32 +20,40 @@
  * @version    $Id: ShMem.php 23775 2011-03-01 17:25:24Z ralph $
  */
 
-
-/** @see Zend_Cache_Backend_Interface */
+/**
+ * @see Zend_Cache_Backend_Interface
+ */
 require_once 'Zend/Cache/Backend/Interface.php';
 
-/** @see Zend_Cache_Backend_ZendServer */
+/**
+ * @see Zend_Cache_Backend_ZendServer
+ */
 require_once 'Zend/Cache/Backend/ZendServer.php';
 
-
 /**
- * @package    Zend_Cache
+ *
+ * @package Zend_Cache
  * @subpackage Zend_Cache_Backend
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
-class Zend_Cache_Backend_ZendServer_ShMem extends Zend_Cache_Backend_ZendServer implements Zend_Cache_Backend_Interface
+class Zend_Cache_Backend_ZendServer_ShMem extends Zend_Cache_Backend_ZendServer implements 
+        Zend_Cache_Backend_Interface
 {
+
     /**
      * Constructor
      *
-     * @param  array $options associative array of options
+     * @param array $options
+     *            associative array of options
      * @throws Zend_Cache_Exception
      */
-    public function __construct(array $options = array())
+    public function __construct (array $options = array())
     {
-        if (!function_exists('zend_shm_cache_store')) {
-            Zend_Cache::throwException('Zend_Cache_ZendServer_ShMem backend has to be used within Zend Server environment.');
+        if (! function_exists('zend_shm_cache_store')) {
+            Zend_Cache::throwException(
+                    'Zend_Cache_ZendServer_ShMem backend has to be used within Zend Server environment.');
         }
         parent::__construct($options);
     }
@@ -53,16 +61,18 @@ class Zend_Cache_Backend_ZendServer_ShMem extends Zend_Cache_Backend_ZendServer 
     /**
      * Store data
      *
-     * @param mixed  $data        Object to store
-     * @param string $id          Cache id
-     * @param int    $timeToLive  Time to live in seconds
-     *
+     * @param mixed $data
+     *            Object to store
+     * @param string $id
+     *            Cache id
+     * @param int $timeToLive
+     *            Time to live in seconds
+     *            
      */
-    protected function _store($data, $id, $timeToLive)
+    protected function _store ($data, $id, $timeToLive)
     {
-        if (zend_shm_cache_store($this->_options['namespace'] . '::' . $id,
-                                  $data,
-                                  $timeToLive) === false) {
+        if (zend_shm_cache_store($this->_options['namespace'] . '::' . $id, 
+                $data, $timeToLive) === false) {
             $this->_log('Store operation failed.');
             return false;
         }
@@ -72,9 +82,10 @@ class Zend_Cache_Backend_ZendServer_ShMem extends Zend_Cache_Backend_ZendServer 
     /**
      * Fetch data
      *
-     * @param string $id          Cache id
+     * @param string $id
+     *            Cache id
      */
-    protected function _fetch($id)
+    protected function _fetch ($id)
     {
         return zend_shm_cache_fetch($this->_options['namespace'] . '::' . $id);
     }
@@ -82,10 +93,11 @@ class Zend_Cache_Backend_ZendServer_ShMem extends Zend_Cache_Backend_ZendServer 
     /**
      * Unset data
      *
-     * @param string $id          Cache id
+     * @param string $id
+     *            Cache id
      * @return boolean true if no problem
      */
-    protected function _unset($id)
+    protected function _unset ($id)
     {
         return zend_shm_cache_delete($this->_options['namespace'] . '::' . $id);
     }
@@ -93,7 +105,7 @@ class Zend_Cache_Backend_ZendServer_ShMem extends Zend_Cache_Backend_ZendServer 
     /**
      * Clear cache
      */
-    protected function _clear()
+    protected function _clear ()
     {
         zend_shm_cache_clear($this->_options['namespace']);
     }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -26,10 +27,11 @@
  * A profile is a hierarchical set of resources that keep track of
  * items within a specific project.
  *
- * @category   Zend
- * @package    Zend_Tool
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @category Zend
+ * @package Zend_Tool
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Tool_Project_Context_Zf_DbTableFile extends Zend_Tool_Project_Context_Zf_AbstractClassFile
 {
@@ -43,50 +45,55 @@ class Zend_Tool_Project_Context_Zf_DbTableFile extends Zend_Tool_Project_Context
      *
      * @return string
      */
-    public function getName()
+    public function getName ()
     {
         return 'DbTableFile';
     }
 
     /**
      * init()
-     *
      */
-    public function init()
+    public function init ()
     {
         $this->_dbTableName = $this->_resource->getAttribute('dbTableName');
-        $this->_actualTableName = $this->_resource->getAttribute('actualTableName');
+        $this->_actualTableName = $this->_resource->getAttribute(
+                'actualTableName');
         $this->_filesystemName = ucfirst($this->_dbTableName) . '.php';
         parent::init();
     }
 
-    public function getPersistentAttributes()
+    public function getPersistentAttributes ()
     {
-        return array('dbTableName' => $this->_dbTableName);
+        return array(
+                'dbTableName' => $this->_dbTableName
+        );
     }
 
-    public function getContents()
+    public function getContents ()
     {
-        $className = $this->getFullClassName($this->_dbTableName, 'Model_DbTable');
-
-        $codeGenFile = new Zend_CodeGenerator_Php_File(array(
-            'fileName' => $this->getPath(),
-            'classes' => array(
-                new Zend_CodeGenerator_Php_Class(array(
-                    'name' => $className,
-                    'extendedClass' => 'Zend_Db_Table_Abstract',
-                    'properties' => array(
-                        new Zend_CodeGenerator_Php_Property(array(
-                            'name' => '_name',
-                            'visibility' => Zend_CodeGenerator_Php_Property::VISIBILITY_PROTECTED,
-                            'defaultValue' => $this->_actualTableName
-                            ))
-                        ),
-
-                    ))
-                )
-            ));
+        $className = $this->getFullClassName($this->_dbTableName, 
+                'Model_DbTable');
+        
+        $codeGenFile = new Zend_CodeGenerator_Php_File(
+                array(
+                        'fileName' => $this->getPath(),
+                        'classes' => array(
+                                new Zend_CodeGenerator_Php_Class(
+                                        array(
+                                                'name' => $className,
+                                                'extendedClass' => 'Zend_Db_Table_Abstract',
+                                                'properties' => array(
+                                                        new Zend_CodeGenerator_Php_Property(
+                                                                array(
+                                                                        'name' => '_name',
+                                                                        'visibility' => Zend_CodeGenerator_Php_Property::VISIBILITY_PROTECTED,
+                                                                        'defaultValue' => $this->_actualTableName
+                                                                ))
+                                                )
+                                        )
+                                        )
+                        )
+                ));
         return $codeGenFile->generate();
     }
-
 }

@@ -21,6 +21,7 @@
  */
 
 /**
+ *
  * @see Zend_Markup_Renderer_TokenConverterInterface
  */
 require_once 'Zend/Markup/Renderer/TokenConverterInterface.php';
@@ -28,13 +29,15 @@ require_once 'Zend/Markup/Renderer/TokenConverterInterface.php';
 /**
  * Tag interface
  *
- * @category   Zend
- * @package    Zend_Markup
+ * @category Zend
+ * @package Zend_Markup
  * @subpackage Renderer_Html
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
-abstract class Zend_Markup_Renderer_Html_HtmlAbstract implements Zend_Markup_Renderer_TokenConverterInterface
+abstract class Zend_Markup_Renderer_Html_HtmlAbstract implements 
+        Zend_Markup_Renderer_TokenConverterInterface
 {
 
     /**
@@ -44,15 +47,14 @@ abstract class Zend_Markup_Renderer_Html_HtmlAbstract implements Zend_Markup_Ren
      */
     protected $_renderer;
 
-
     /**
      * Set the HTML renderer instance
      *
-     * @param Zend_Markup_Renderer_Html $renderer
+     * @param Zend_Markup_Renderer_Html $renderer            
      *
      * @return Zend_Markup_Renderer_Html_HtmlAbstract
      */
-    public function setRenderer(Zend_Markup_Renderer_Html $renderer)
+    public function setRenderer (Zend_Markup_Renderer_Html $renderer)
     {
         $this->_renderer = $renderer;
     }
@@ -62,7 +64,7 @@ abstract class Zend_Markup_Renderer_Html_HtmlAbstract implements Zend_Markup_Ren
      *
      * @return Zend_Markup_Renderer_Html
      */
-    public function getRenderer()
+    public function getRenderer ()
     {
         return $this->_renderer;
     }

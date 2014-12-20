@@ -22,11 +22,13 @@
  */
 
 /**
+ *
  * @see Zend_Gdata_Media_Feed
  */
 require_once 'Zend/Gdata/Media/Feed.php';
 
 /**
+ *
  * @see Zend_Gdata_YouTube_InboxEntry
  */
 require_once 'Zend/Gdata/YouTube/InboxEntry.php';
@@ -36,11 +38,12 @@ require_once 'Zend/Gdata/YouTube/InboxEntry.php';
  * Represents a list of individual inbox entries, where each contained entry is
  * a message.
  *
- * @category   Zend
- * @package    Zend_Gdata
+ * @category Zend
+ * @package Zend_Gdata
  * @subpackage YouTube
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Gdata_YouTube_InboxFeed extends Zend_Gdata_Media_Feed
 {
@@ -56,13 +59,13 @@ class Zend_Gdata_YouTube_InboxFeed extends Zend_Gdata_Media_Feed
      * Creates an Inbox feed, representing a list of messages,
      * associated with an individual user.
      *
-     * @param DOMElement $element (optional) DOMElement from which this
-     *          object should be constructed.
+     * @param DOMElement $element
+     *            (optional) DOMElement from which this
+     *            object should be constructed.
      */
-    public function __construct($element = null)
+    public function __construct ($element = null)
     {
         $this->registerAllNamespaces(Zend_Gdata_YouTube::$namespaces);
         parent::__construct($element);
     }
-
 }

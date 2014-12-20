@@ -22,6 +22,7 @@
  */
 
 /**
+ *
  * @see Zend_Gdata_Extension
  */
 require_once 'Zend/Gdata/Extension.php';
@@ -29,22 +30,23 @@ require_once 'Zend/Gdata/Extension.php';
 /**
  * Represents the openSeach:startIndex element
  *
- * @category   Zend
- * @package    Zend_Gdata
+ * @category Zend
+ * @package Zend_Gdata
  * @subpackage Gdata
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Gdata_Extension_OpenSearchStartIndex extends Zend_Gdata_Extension
 {
 
     protected $_rootElement = 'startIndex';
+
     protected $_rootNamespace = 'openSearch';
 
-    public function __construct($text = null)
+    public function __construct ($text = null)
     {
         parent::__construct();
         $this->_text = $text;
     }
-
 }

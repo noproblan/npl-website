@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -19,17 +20,29 @@
  * @version    $Id: Trailer.php 23775 2011-03-01 17:25:24Z ralph $
  */
 
-
 /**
  * PDF file trailer
  *
- * @package    Zend_Pdf
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @package Zend_Pdf
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 abstract class Zend_Pdf_Trailer
 {
-    private static $_allowedKeys = array('Size', 'Prev', 'Root', 'Encrypt', 'Info', 'ID', 'Index', 'W', 'XRefStm', 'DocChecksum');
+
+    private static $_allowedKeys = array(
+            'Size',
+            'Prev',
+            'Root',
+            'Encrypt',
+            'Info',
+            'ID',
+            'Index',
+            'W',
+            'XRefStm',
+            'DocChecksum'
+    );
 
     /**
      * Trailer dictionary.
@@ -41,28 +54,30 @@ abstract class Zend_Pdf_Trailer
     /**
      * Check if key is correct
      *
-     * @param string $key
+     * @param string $key            
      * @throws Zend_Pdf_Exception
      */
-    private function _checkDictKey($key)
+    private function _checkDictKey ($key)
     {
-        if ( !in_array($key, self::$_allowedKeys) ) {
-            /** @todo Make warning (log entry) instead of an exception */
+        if (! in_array($key, self::$_allowedKeys)) {
+            /**
+             * @todo Make warning (log entry) instead of an exception
+             */
             require_once 'Zend/Pdf/Exception.php';
-            throw new Zend_Pdf_Exception("Unknown trailer dictionary key: '$key'.");
+            throw new Zend_Pdf_Exception(
+                    "Unknown trailer dictionary key: '$key'.");
         }
     }
-
 
     /**
      * Object constructor
      *
-     * @param Zend_Pdf_Element_Dictionary $dict
+     * @param Zend_Pdf_Element_Dictionary $dict            
      */
-    public function __construct(Zend_Pdf_Element_Dictionary $dict)
+    public function __construct (Zend_Pdf_Element_Dictionary $dict)
     {
-        $this->_dict   = $dict;
-
+        $this->_dict = $dict;
+        
         foreach ($this->_dict->getKeys() as $dictKey) {
             $this->_checkDictKey($dictKey);
         }
@@ -71,10 +86,10 @@ abstract class Zend_Pdf_Trailer
     /**
      * Get handler
      *
-     * @param string $property
+     * @param string $property            
      * @return mixed
      */
-    public function __get($property)
+    public function __get ($property)
     {
         return $this->_dict->$property;
     }
@@ -82,10 +97,10 @@ abstract class Zend_Pdf_Trailer
     /**
      * Set handler
      *
-     * @param string $property
-     * @param  mixed $value
+     * @param string $property            
+     * @param mixed $value            
      */
-    public function __set($property, $value)
+    public function __set ($property, $value)
     {
         $this->_checkDictKey($property);
         $this->_dict->$property = $value;
@@ -96,25 +111,24 @@ abstract class Zend_Pdf_Trailer
      *
      * @return string
      */
-    public function toString()
+    public function toString ()
     {
         return "trailer\n" . $this->_dict->toString() . "\n";
     }
-
 
     /**
      * Get length of source PDF
      *
      * @return string
      */
-    abstract public function getPDFLength();
+    abstract public function getPDFLength ();
 
     /**
      * Get PDF String
      *
      * @return string
      */
-    abstract public function getPDFString();
+    abstract public function getPDFString ();
 
     /**
      * Get header of free objects list
@@ -122,5 +136,5 @@ abstract class Zend_Pdf_Trailer
      *
      * @return integer
      */
-    abstract public function getLastFreeObject();
+    abstract public function getLastFreeObject ();
 }

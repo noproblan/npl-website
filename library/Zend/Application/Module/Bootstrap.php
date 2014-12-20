@@ -21,6 +21,7 @@
  */
 
 /**
+ *
  * @see Zend_Application_Bootstrap_Bootstrap
  */
 require_once 'Zend/Application/Bootstrap/Bootstrap.php';
@@ -28,19 +29,21 @@ require_once 'Zend/Application/Bootstrap/Bootstrap.php';
 /**
  * Base bootstrap class for modules
  *
- * @uses       Zend_Loader_Autoloader_Resource
- * @uses       Zend_Application_Bootstrap_Bootstrap
- * @category   Zend
- * @package    Zend_Application
+ * @uses Zend_Loader_Autoloader_Resource
+ * @uses Zend_Application_Bootstrap_Bootstrap
+ * @category Zend
+ * @package Zend_Application
  * @subpackage Module
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
-abstract class Zend_Application_Module_Bootstrap
-    extends Zend_Application_Bootstrap_Bootstrap
+abstract class Zend_Application_Module_Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 {
+
     /**
      * Set this explicitly to reduce impact of determining module name
+     * 
      * @var string
      */
     protected $_moduleName;
@@ -48,36 +51,38 @@ abstract class Zend_Application_Module_Bootstrap
     /**
      * Constructor
      *
-     * @param  Zend_Application|Zend_Application_Bootstrap_Bootstrapper $application
+     * @param Zend_Application|Zend_Application_Bootstrap_Bootstrapper $application            
      * @return void
      */
-    public function __construct($application)
+    public function __construct ($application)
     {
         $this->setApplication($application);
-
+        
         // Use same plugin loader as parent bootstrap
         if ($application instanceof Zend_Application_Bootstrap_ResourceBootstrapper) {
             $this->setPluginLoader($application->getPluginLoader());
         }
-
+        
         $key = strtolower($this->getModuleName());
         if ($application->hasOption($key)) {
             // Don't run via setOptions() to prevent duplicate initialization
             $this->setOptions($application->getOption($key));
         }
-
+        
         if ($application->hasOption('resourceloader')) {
-            $this->setOptions(array(
-                'resourceloader' => $application->getOption('resourceloader')
-            ));
+            $this->setOptions(
+                    array(
+                            'resourceloader' => $application->getOption(
+                                    'resourceloader')
+                    ));
         }
         $this->initResourceLoader();
-
+        
         // ZF-6545: ensure front controller resource is loaded
-        if (!$this->hasPluginResource('FrontController')) {
+        if (! $this->hasPluginResource('FrontController')) {
             $this->registerPluginResource('FrontController');
         }
-
+        
         // ZF-6545: prevent recursive registration of modules
         if ($this->hasPluginResource('modules')) {
             $this->unregisterPluginResource('modules');
@@ -89,7 +94,7 @@ abstract class Zend_Application_Module_Bootstrap
      *
      * @return void
      */
-    public function initResourceLoader()
+    public function initResourceLoader ()
     {
         $this->getResourceLoader();
     }
@@ -102,7 +107,7 @@ abstract class Zend_Application_Module_Bootstrap
      *
      * @return string
      */
-    public function getAppNamespace()
+    public function getAppNamespace ()
     {
         return $this->getModuleName();
     }
@@ -112,7 +117,7 @@ abstract class Zend_Application_Module_Bootstrap
      *
      * @return string
      */
-    public function getModuleName()
+    public function getModuleName ()
     {
         if (empty($this->_moduleName)) {
             $class = get_class($this);

@@ -31,15 +31,17 @@ require_once 'Zend/Server/Reflection/Class.php';
 /**
  * Reflection for determining method signatures to use with server classes
  *
- * @category   Zend
- * @package    Zend_Server
+ * @category Zend
+ * @package Zend_Server
  * @subpackage Reflection
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  * @version $Id: Reflection.php 23775 2011-03-01 17:25:24Z ralph $
  */
 class Zend_Server_Reflection
 {
+
     /**
      * Perform class reflection to create dispatch signatures
      *
@@ -49,15 +51,19 @@ class Zend_Server_Reflection
      * If extra arguments should be passed to dispatchable methods, these may
      * be provided as an array to $argv.
      *
-     * @param string|object $class Class name or object
-     * @param null|array $argv Optional arguments to be used during the method call
-     * @param string $namespace Optional namespace with which to prefix the
-     * method name (used for the signature key). Primarily to avoid collisions,
-     * also for XmlRpc namespacing
+     * @param string|object $class
+     *            Class name or object
+     * @param null|array $argv
+     *            Optional arguments to be used during the method call
+     * @param string $namespace
+     *            Optional namespace with which to prefix the
+     *            method name (used for the signature key). Primarily to avoid
+     *            collisions,
+     *            also for XmlRpc namespacing
      * @return Zend_Server_Reflection_Class
      * @throws Zend_Server_Reflection_Exception
      */
-    public static function reflectClass($class, $argv = false, $namespace = '')
+    public static function reflectClass ($class, $argv = false, $namespace = '')
     {
         if (is_object($class)) {
             $reflection = new ReflectionObject($class);
@@ -65,14 +71,16 @@ class Zend_Server_Reflection
             $reflection = new ReflectionClass($class);
         } else {
             require_once 'Zend/Server/Reflection/Exception.php';
-            throw new Zend_Server_Reflection_Exception('Invalid class or object passed to attachClass()');
+            throw new Zend_Server_Reflection_Exception(
+                    'Invalid class or object passed to attachClass()');
         }
-
-        if ($argv && !is_array($argv)) {
+        
+        if ($argv && ! is_array($argv)) {
             require_once 'Zend/Server/Reflection/Exception.php';
-            throw new Zend_Server_Reflection_Exception('Invalid argv argument passed to reflectClass');
+            throw new Zend_Server_Reflection_Exception(
+                    'Invalid argv argument passed to reflectClass');
         }
-
+        
         return new Zend_Server_Reflection_Class($reflection, $namespace, $argv);
     }
 
@@ -85,27 +93,33 @@ class Zend_Server_Reflection
      * If extra arguments should be passed to the dispatchable function, these
      * may be provided as an array to $argv.
      *
-     * @param string $function Function name
-     * @param null|array $argv Optional arguments to be used during the method call
-     * @param string $namespace Optional namespace with which to prefix the
-     * function name (used for the signature key). Primarily to avoid
-     * collisions, also for XmlRpc namespacing
+     * @param string $function
+     *            Function name
+     * @param null|array $argv
+     *            Optional arguments to be used during the method call
+     * @param string $namespace
+     *            Optional namespace with which to prefix the
+     *            function name (used for the signature key). Primarily to avoid
+     *            collisions, also for XmlRpc namespacing
      * @return Zend_Server_Reflection_Function
      * @throws Zend_Server_Reflection_Exception
      */
-    public static function reflectFunction($function, $argv = false, $namespace = '')
+    public static function reflectFunction ($function, $argv = false, $namespace = '')
     {
-        if (!is_string($function) || !function_exists($function)) {
+        if (! is_string($function) || ! function_exists($function)) {
             require_once 'Zend/Server/Reflection/Exception.php';
-            throw new Zend_Server_Reflection_Exception('Invalid function "' . $function . '" passed to reflectFunction');
+            throw new Zend_Server_Reflection_Exception(
+                    'Invalid function "' . $function .
+                             '" passed to reflectFunction');
         }
-
-
-        if ($argv && !is_array($argv)) {
+        
+        if ($argv && ! is_array($argv)) {
             require_once 'Zend/Server/Reflection/Exception.php';
-            throw new Zend_Server_Reflection_Exception('Invalid argv argument passed to reflectClass');
+            throw new Zend_Server_Reflection_Exception(
+                    'Invalid argv argument passed to reflectClass');
         }
-
-        return new Zend_Server_Reflection_Function(new ReflectionFunction($function), $namespace, $argv);
+        
+        return new Zend_Server_Reflection_Function(
+                new ReflectionFunction($function), $namespace, $argv);
     }
 }

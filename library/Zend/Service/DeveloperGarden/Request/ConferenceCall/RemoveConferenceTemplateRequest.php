@@ -21,21 +21,24 @@
  */
 
 /**
+ *
  * @see Zend_Service_DeveloperGarden_Request_RequestAbstract
  */
 require_once 'Zend/Service/DeveloperGarden/Request/RequestAbstract.php';
 
 /**
- * @category   Zend
- * @package    Zend_Service
+ *
+ * @category Zend
+ * @package Zend_Service
  * @subpackage DeveloperGarden
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @author     Marco Kaiser
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @author Marco Kaiser
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
-class Zend_Service_DeveloperGarden_Request_ConferenceCall_RemoveConferenceTemplateRequest
-    extends Zend_Service_DeveloperGarden_Request_RequestAbstract
+class Zend_Service_DeveloperGarden_Request_ConferenceCall_RemoveConferenceTemplateRequest extends Zend_Service_DeveloperGarden_Request_RequestAbstract
 {
+
     /**
      * the template id
      *
@@ -46,10 +49,10 @@ class Zend_Service_DeveloperGarden_Request_ConferenceCall_RemoveConferenceTempla
     /**
      * constructor
      *
-     * @param integer $environment
-     * @param string $templateId
+     * @param integer $environment            
+     * @param string $templateId            
      */
-    public function __construct($environment, $templateId)
+    public function __construct ($environment, $templateId)
     {
         parent::__construct($environment);
         $this->setTemplateId($templateId);
@@ -58,10 +61,10 @@ class Zend_Service_DeveloperGarden_Request_ConferenceCall_RemoveConferenceTempla
     /**
      * set the template id
      *
-     * @param string $templateId
+     * @param string $templateId            
      * @return Zend_Service_DeveloperGarden_Request_ConferenceCall_RemoveConferenceTemplateRequest
      */
-    public function setTemplateId($templateId)
+    public function setTemplateId ($templateId)
     {
         $this->templateId = $templateId;
         return $this;

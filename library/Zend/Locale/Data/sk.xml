@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <ldml>
 	<identity>
-		<version number="$Revision: 1.101 $"/>
-		<generation date="$Date: 2009/06/15 20:34:50 $"/>
-		<language type="sk"/>
+		<version number="$Revision: 1.101 $" />
+		<generation date="$Date: 2009/06/15 20:34:50 $" />
+		<language type="sk" />
 	</identity>
 	<localeDisplayNames>
 		<languages>
@@ -637,8 +637,10 @@
 		<inList>titlecase-firstword</inList>
 	</layout>
 	<characters>
-		<exemplarCharacters>[a á ä b c č d ď e é f-h {ch} i í j-l ĺ ľ m n ň o ó ô p-r ŕ s š t ť u ú v-y ý z ž]</exemplarCharacters>
-		<exemplarCharacters type="auxiliary">[à ă â å ā æ ç è ĕ ê ë ē ì ĭ î ï ī ñ ò ŏ ö ø ō œ ß ù ŭ û ü ū ÿ]</exemplarCharacters>
+		<exemplarCharacters>[a á ä b c č d ď e é f-h {ch} i í j-l ĺ ľ m n ň o
+			ó ô p-r ŕ s š t ť u ú v-y ý z ž]</exemplarCharacters>
+		<exemplarCharacters type="auxiliary">[à ă â å ā æ ç è ĕ ê ë ē ì
+			ĭ î ï ī ñ ò ŏ ö ø ō œ ß ù ŭ û ü ū ÿ]</exemplarCharacters>
 	</characters>
 	<delimiters>
 		<quotationStart>‚</quotationStart>
@@ -913,7 +915,8 @@
 						<intervalFormatItem id="yMMMEd">
 							<greatestDifference id="d">E, d. - E, d. MMM y</greatestDifference>
 							<greatestDifference id="M">E, d. MMM - E, d. MMM y</greatestDifference>
-							<greatestDifference id="y">E, d. MMM y - E, d. MMM y</greatestDifference>
+							<greatestDifference id="y">E, d. MMM y - E, d. MMM
+								y</greatestDifference>
 						</intervalFormatItem>
 						<intervalFormatItem id="yMMMM">
 							<greatestDifference id="y">MM-yyyy – MM-yyyy</greatestDifference>

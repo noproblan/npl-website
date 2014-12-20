@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -20,26 +21,31 @@
  */
 
 /**
- * @category   Zend
- * @package    Zend_Service_ShortUrl
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ *
+ * @category Zend
+ * @package Zend_Service_ShortUrl
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 interface Zend_Service_ShortUrl_Shortener
 {
+
     /**
      * This function shortens long url
      *
-     * @param  string $url URL to Shorten
+     * @param string $url
+     *            URL to Shorten
      * @return string Shortened Url
      */
-    public function shorten($shortenedUrl);
+    public function shorten ($shortenedUrl);
 
     /**
      * Reveals target for short URL
      *
-     * @param  string $shortenedUrl URL to reveal target of
+     * @param string $shortenedUrl
+     *            URL to reveal target of
      * @return string Unshortened Url
      */
-    public function unshorten($shortenedUrl);
+    public function unshorten ($shortenedUrl);
 }

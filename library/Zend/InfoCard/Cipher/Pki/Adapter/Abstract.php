@@ -28,14 +28,17 @@ require_once 'Zend/InfoCard/Cipher/Pki/Interface.php';
 /**
  * An abstract class for public-key ciphers
  *
- * @category   Zend
- * @package    Zend_InfoCard
+ * @category Zend
+ * @package Zend_InfoCard
  * @subpackage Zend_InfoCard_Cipher
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
-abstract class Zend_InfoCard_Cipher_Pki_Adapter_Abstract implements Zend_InfoCard_Cipher_Pki_Interface
+abstract class Zend_InfoCard_Cipher_Pki_Adapter_Abstract implements 
+        Zend_InfoCard_Cipher_Pki_Interface
 {
+
     /**
      * OAEP Padding public key encryption
      */
@@ -57,22 +60,24 @@ abstract class Zend_InfoCard_Cipher_Pki_Adapter_Abstract implements Zend_InfoCar
      * Set the padding of the public key encryption
      *
      * @throws Zend_InfoCard_Cipher_Exception
-     * @param integer $padding One of the constnats in this class
+     * @param integer $padding
+     *            One of the constnats in this class
      * @return Zend_InfoCard_Pki_Adapter_Abstract
      */
-    public function setPadding($padding)
+    public function setPadding ($padding)
     {
-        switch($padding) {
+        switch ($padding) {
             case self::OAEP_PADDING:
             case self::NO_PADDING:
                 $this->_padding = $padding;
                 break;
             default:
                 require_once 'Zend/InfoCard/Cipher/Exception.php';
-                throw new Zend_InfoCard_Cipher_Exception("Invalid Padding Type Provided");
+                throw new Zend_InfoCard_Cipher_Exception(
+                        "Invalid Padding Type Provided");
                 break;
         }
-
+        
         return $this;
     }
 
@@ -81,7 +86,7 @@ abstract class Zend_InfoCard_Cipher_Pki_Adapter_Abstract implements Zend_InfoCar
      *
      * @return integer One of the padding constants in this class
      */
-    public function getPadding()
+    public function getPadding ()
     {
         return $this->_padding;
     }

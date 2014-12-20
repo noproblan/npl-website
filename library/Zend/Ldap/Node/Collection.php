@@ -21,31 +21,34 @@
  */
 
 /**
+ *
  * @see Zend_Ldap_Collection
  */
 require_once 'Zend/Ldap/Collection.php';
 
-
 /**
  * Zend_Ldap_Node_Collection provides a collecion of nodes.
  *
- * @category   Zend
- * @package    Zend_Ldap
+ * @category Zend
+ * @package Zend_Ldap
  * @subpackage Node
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Ldap_Node_Collection extends Zend_Ldap_Collection
 {
+
     /**
      * Creates the data structure for the given entry data
      *
-     * @param  array $data
+     * @param array $data            
      * @return Zend_Ldap_Node
      */
-    protected function _createEntry(array $data)
+    protected function _createEntry (array $data)
     {
         /**
+         *
          * @see Zend_Ldap_Node
          */
         require_once 'Zend/Ldap/Node.php';
@@ -60,7 +63,7 @@ class Zend_Ldap_Node_Collection extends Zend_Ldap_Collection
      *
      * @return string
      */
-    public function key()
+    public function key ()
     {
         return $this->_iterator->key();
     }

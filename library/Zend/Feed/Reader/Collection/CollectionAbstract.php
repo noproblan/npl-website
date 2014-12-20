@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -20,22 +21,24 @@
  */
 
 /**
- * @category   Zend
- * @package    Zend_Feed_Reader
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ *
+ * @category Zend
+ * @package Zend_Feed_Reader
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 abstract class Zend_Feed_Reader_Collection_CollectionAbstract extends ArrayObject
 {
 
     /**
      * Return a simple array of the most relevant slice of
-     * the collection values. For example, feed categories contain
+     * the collection values.
+     * For example, feed categories contain
      * the category name, domain/URI, and other data. This method would
      * merely return the most useful data - i.e. the category names.
      *
      * @return array
      */
-    public abstract function getValues();
-
+    public abstract function getValues ();
 }

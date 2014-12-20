@@ -22,6 +22,7 @@
  */
 
 /**
+ *
  * @see Zend_Gdata_App_Extension
  */
 require_once 'Zend/Gdata/App/Extension.php';
@@ -30,16 +31,19 @@ require_once 'Zend/Gdata/App/Extension.php';
  * Class that represents elements which were not handled by other parsing
  * code in the library.
  *
- * @category   Zend
- * @package    Zend_Gdata
+ * @category Zend
+ * @package Zend_Gdata
  * @subpackage App
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Gdata_App_Extension_Element extends Zend_Gdata_App_Extension
 {
 
-    public function __construct($rootElement=null, $rootNamespace=null, $rootNamespaceURI=null, $text=null){
+    public function __construct ($rootElement = null, $rootNamespace = null, 
+            $rootNamespaceURI = null, $text = null)
+    {
         parent::__construct();
         $this->_rootElement = $rootElement;
         $this->_rootNamespace = $rootNamespace;
@@ -47,12 +51,11 @@ class Zend_Gdata_App_Extension_Element extends Zend_Gdata_App_Extension
         $this->_text = $text;
     }
 
-    public function transferFromDOM($node)
+    public function transferFromDOM ($node)
     {
         parent::transferFromDOM($node);
         $this->_rootNamespace = null;
         $this->_rootNamespaceURI = $node->namespaceURI;
         $this->_rootElement = $node->localName;
     }
-
 }

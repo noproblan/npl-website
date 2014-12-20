@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Zend Framework
  *
@@ -19,18 +20,19 @@
  * @version    $Id: FSMAction.php 23775 2011-03-01 17:25:24Z ralph $
  */
 
-
 /**
  * Abstract Finite State Machine
  *
  *
- * @category   Zend
- * @package    Zend_Search_Lucene
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @category Zend
+ * @package Zend_Search_Lucene
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Search_Lucene_FSMAction
 {
+
     /**
      * Object reference
      *
@@ -48,16 +50,16 @@ class Zend_Search_Lucene_FSMAction
     /**
      * Object constructor
      *
-     * @param object $object
-     * @param string $method
+     * @param object $object            
+     * @param string $method            
      */
-    public function __construct($object, $method)
+    public function __construct ($object, $method)
     {
         $this->_object = $object;
         $this->_method = $method;
     }
 
-    public function doAction()
+    public function doAction ()
     {
         $methodName = $this->_method;
         $this->_object->$methodName();

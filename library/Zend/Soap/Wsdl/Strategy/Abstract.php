@@ -21,6 +21,7 @@
  */
 
 /**
+ *
  * @see Zend_Soap_Wsdl_Strategy_Interface
  */
 require_once "Zend/Soap/Wsdl/Strategy/Interface.php";
@@ -28,14 +29,17 @@ require_once "Zend/Soap/Wsdl/Strategy/Interface.php";
 /**
  * Abstract class for Zend_Soap_Wsdl_Strategy.
  *
- * @category   Zend
- * @package    Zend_Soap
+ * @category Zend
+ * @package Zend_Soap
  * @subpackage Wsdl
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
-abstract class Zend_Soap_Wsdl_Strategy_Abstract implements Zend_Soap_Wsdl_Strategy_Interface
+abstract class Zend_Soap_Wsdl_Strategy_Abstract implements 
+        Zend_Soap_Wsdl_Strategy_Interface
 {
+
     /**
      * Context object
      *
@@ -46,10 +50,10 @@ abstract class Zend_Soap_Wsdl_Strategy_Abstract implements Zend_Soap_Wsdl_Strate
     /**
      * Set the Zend_Soap_Wsdl Context object this strategy resides in.
      *
-     * @param Zend_Soap_Wsdl $context
+     * @param Zend_Soap_Wsdl $context            
      * @return void
      */
-    public function setContext(Zend_Soap_Wsdl $context)
+    public function setContext (Zend_Soap_Wsdl $context)
     {
         $this->_context = $context;
     }
@@ -59,7 +63,7 @@ abstract class Zend_Soap_Wsdl_Strategy_Abstract implements Zend_Soap_Wsdl_Strate
      *
      * @return Zend_Soap_Wsdl
      */
-    public function getContext()
+    public function getContext ()
     {
         return $this->_context;
     }

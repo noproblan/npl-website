@@ -20,30 +20,36 @@
  * @version    $Id: TermsPriorityQueue.php 23775 2011-03-01 17:25:24Z ralph $
  */
 
-/** Zend_Search_Lucene_PriorityQueue */
+/**
+ * Zend_Search_Lucene_PriorityQueue
+ */
 require_once 'Zend/Search/Lucene/PriorityQueue.php';
 
 /**
- * @category   Zend
- * @package    Zend_Search_Lucene
+ *
+ * @category Zend
+ * @package Zend_Search_Lucene
  * @subpackage Index
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Search_Lucene_Index_TermsPriorityQueue extends Zend_Search_Lucene_PriorityQueue
 {
+
     /**
      * Compare elements
      *
-     * Returns true, if $termsStream1 is "less" than $termsStream2; else otherwise
+     * Returns true, if $termsStream1 is "less" than $termsStream2; else
+     * otherwise
      *
-     * @param mixed $termsStream1
-     * @param mixed $termsStream2
+     * @param mixed $termsStream1            
+     * @param mixed $termsStream2            
      * @return boolean
      */
-    protected function _less($termsStream1, $termsStream2)
+    protected function _less ($termsStream1, $termsStream2)
     {
-        return strcmp($termsStream1->currentTerm()->key(), $termsStream2->currentTerm()->key()) < 0;
+        return strcmp($termsStream1->currentTerm()->key(), 
+                $termsStream2->currentTerm()->key()) < 0;
     }
-
 }

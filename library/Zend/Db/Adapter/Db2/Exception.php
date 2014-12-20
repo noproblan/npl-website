@@ -28,18 +28,21 @@ require_once 'Zend/Db/Adapter/Exception.php';
 /**
  * Zend_Db_Adapter_Db2_Exception
  *
- * @package    Zend_Db
+ * @package Zend_Db
  * @subpackage Adapter
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Db_Adapter_Db2_Exception extends Zend_Db_Adapter_Exception
 {
-   protected $code = '00000';
-   protected $message = 'unknown exception';
 
-   function __construct($message = 'unknown exception', $code = '00000', Exception $e = null)
-   {
-       parent::__construct($message, $code, $e);
-   }
+    protected $code = '00000';
+
+    protected $message = 'unknown exception';
+
+    function __construct ($message = 'unknown exception', $code = '00000', Exception $e = null)
+    {
+        parent::__construct($message, $code, $e);
+    }
 }

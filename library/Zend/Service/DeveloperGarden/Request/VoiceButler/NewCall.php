@@ -21,21 +21,24 @@
  */
 
 /**
+ *
  * @see Zend_Service_DeveloperGarden_VoiceButler_VoiceButlerAbstract
  */
 require_once 'Zend/Service/DeveloperGarden/Request/VoiceButler/VoiceButlerAbstract.php';
 
 /**
- * @category   Zend
- * @package    Zend_Service
+ *
+ * @category Zend
+ * @package Zend_Service
  * @subpackage DeveloperGarden
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @author     Marco Kaiser
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @author Marco Kaiser
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
-class Zend_Service_DeveloperGarden_Request_VoiceButler_NewCall
-    extends Zend_Service_DeveloperGarden_Request_VoiceButler_VoiceButlerAbstract
+class Zend_Service_DeveloperGarden_Request_VoiceButler_NewCall extends Zend_Service_DeveloperGarden_Request_VoiceButler_VoiceButlerAbstract
 {
+
     /**
      * the first number to be called
      *
@@ -93,144 +96,160 @@ class Zend_Service_DeveloperGarden_Request_VoiceButler_NewCall
     public $account = null;
 
     /**
+     *
      * @return string
      */
-    public function getANumber()
+    public function getANumber ()
     {
         return $this->aNumber;
     }
 
     /**
-     * @param string $aNumber
+     *
+     * @param string $aNumber            
      * @return Zend_Service_DeveloperGarden_Request_VoiceButler_NewCall
      */
-    public function setANumber($aNumber)
+    public function setANumber ($aNumber)
     {
         $this->aNumber = $aNumber;
         return $this;
     }
 
     /**
+     *
      * @return string
      */
-    public function getBNumber()
+    public function getBNumber ()
     {
         return $this->bNumber;
     }
 
     /**
-     * @param string $bNumber
+     *
+     * @param string $bNumber            
      * @return Zend_Service_DeveloperGarden_Request_VoiceButler_NewCall
      */
-    public function setBNumber($bNumber)
+    public function setBNumber ($bNumber)
     {
         $this->bNumber = $bNumber;
         return $this;
     }
 
     /**
+     *
      * @return boolean
      */
-    public function getPrivacyA()
+    public function getPrivacyA ()
     {
         return $this->privacyA;
     }
 
     /**
-     * @param boolean $privacyA
+     *
+     * @param boolean $privacyA            
      * @return Zend_Service_DeveloperGarden_Request_VoiceButler_NewCall
      */
-    public function setPrivacyA($privacyA)
+    public function setPrivacyA ($privacyA)
     {
         $this->privacyA = $privacyA;
         return $this;
     }
 
     /**
+     *
      * @return boolean
      */
-    public function getPrivacyB()
+    public function getPrivacyB ()
     {
         return $this->privacyB;
     }
 
     /**
-     * @param boolean $privacyB
+     *
+     * @param boolean $privacyB            
      * @return Zend_Service_DeveloperGarden_Request_VoiceButler_NewCall
      */
-    public function setPrivacyB($privacyB)
+    public function setPrivacyB ($privacyB)
     {
         $this->privacyB = $privacyB;
         return $this;
     }
 
     /**
+     *
      * @return integer
      */
-    public function getExpiration()
+    public function getExpiration ()
     {
         return $this->expiration;
     }
 
     /**
-     * @param integer $expiration
+     *
+     * @param integer $expiration            
      * @return Zend_Service_DeveloperGarden_Request_VoiceButler_NewCall
      */
-    public function setExpiration($expiration)
+    public function setExpiration ($expiration)
     {
         $this->expiration = $expiration;
         return $this;
     }
 
     /**
+     *
      * @return integer
      */
-    public function getMaxDuration()
+    public function getMaxDuration ()
     {
         return $this->maxDuration;
     }
 
     /**
-     * @param integer $maxDuration
+     *
+     * @param integer $maxDuration            
      * @return Zend_Service_DeveloperGarden_Request_VoiceButler_NewCall
      */
-    public function setMaxDuration($maxDuration)
+    public function setMaxDuration ($maxDuration)
     {
         $this->maxDuration = $maxDuration;
         return $this;
     }
 
     /**
+     *
      * @return string
      */
-    public function getGreeter()
+    public function getGreeter ()
     {
         return $this->greeter;
     }
 
     /**
-     * @param string $greeter
+     *
+     * @param string $greeter            
      * @return Zend_Service_DeveloperGarden_Request_VoiceButler_NewCall
      */
-    public function setGreeter($greeter)
+    public function setGreeter ($greeter)
     {
         $this->greeter = $greeter;
         return $this;
     }
 
     /**
+     *
      * @return string
      */
-    public function getAccount()
+    public function getAccount ()
     {
         return $this->account;
     }
 
     /**
-     * @param integer $account
+     *
+     * @param integer $account            
      * @return Zend_Service_DeveloperGarden_Request_VoiceButler_NewCall
      */
-    public function setAccount($account)
+    public function setAccount ($account)
     {
         $this->account = $account;
         return $this;

@@ -21,30 +21,33 @@
  * @version    $Id: LocalResultSet.php 23775 2011-03-01 17:25:24Z ralph $
  */
 
-
 /**
+ *
  * @see Zend_Service_Yahoo_ResultSet
  */
 require_once 'Zend/Service/Yahoo/ResultSet.php';
 
-
 /**
+ *
  * @see Zend_Service_Yahoo_LocalResult
  */
 require_once 'Zend/Service/Yahoo/LocalResult.php';
 
-
 /**
- * @category   Zend
- * @package    Zend_Service
+ *
+ * @category Zend
+ * @package Zend_Service
  * @subpackage Yahoo
- * @copyright  Copyright (c) 2005-2011 Zend Technologies USA Inc. (http://www.zend.com)
- * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @copyright Copyright (c) 2005-2011 Zend Technologies USA Inc.
+ *            (http://www.zend.com)
+ * @license http://framework.zend.com/license/new-bsd New BSD License
  */
 class Zend_Service_Yahoo_LocalResultSet extends Zend_Service_Yahoo_ResultSet
 {
+
     /**
-     * The URL of a webpage containing a map graphic with all returned results plotted on it.
+     * The URL of a webpage containing a map graphic with all returned results
+     * plotted on it.
      *
      * @var string
      */
@@ -57,28 +60,28 @@ class Zend_Service_Yahoo_LocalResultSet extends Zend_Service_Yahoo_ResultSet
      */
     protected $_namespace = 'urn:yahoo:lcl';
 
-
     /**
      * Initializes the local result set
      *
-     * @param  DOMDocument $dom
+     * @param DOMDocument $dom            
      * @return void
      */
-    public function __construct(DOMDocument $dom)
+    public function __construct (DOMDocument $dom)
     {
         parent::__construct($dom);
-
-        $this->resultSetMapURL = $this->_xpath->query('//yh:ResultSetMapUrl/text()')->item(0)->data;
+        
+        $this->resultSetMapURL = $this->_xpath->query(
+                '//yh:ResultSetMapUrl/text()')->item(0)->data;
     }
-
 
     /**
      * Overrides Zend_Service_Yahoo_ResultSet::current()
      *
      * @return Zend_Service_Yahoo_LocalResult
      */
-    public function current()
+    public function current ()
     {
-        return new Zend_Service_Yahoo_LocalResult($this->_results->item($this->_currentIndex));
+        return new Zend_Service_Yahoo_LocalResult(
+                $this->_results->item($this->_currentIndex));
     }
 }
