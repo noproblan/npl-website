@@ -57,12 +57,12 @@ var updateDeskList = function(kineticsLayer) {
 window.onload = function() {
     var stage = new Kinetic.Stage({
         container: "canvas-container",
-        width: 1000,
-        height: 500
+        width: 1200,
+        height: 1200
     });
     var deskLayer = new Kinetic.Layer();
     stage.add(deskLayer);
-    stage.setScale(0.5);
+    stage.setScale(0.4);
     
     /* EVENTS *******************************************************************/
     stage.on("click dragend", function(e) {
