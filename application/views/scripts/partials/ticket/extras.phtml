@@ -83,9 +83,9 @@ foreach ($this->lans as $attendingLan) {
 <br />
 <br />
 <a id="ezTarget"
-    href="/img/einzahlungsschein.php?z1=<?= $lanname ?>&z2=ID%20<?= $ticket->getId() ?>&a=<?= $price ?>"
+    href="<?php echo $this->url(array('controller'=>'ticket','action'=>'showpayment'),'default',true) ?>?event=<?= $lanname ?>&id=ID%20<?= $ticket->getId() ?>&amount=<?= $price ?>"
     target="_blank" class="ezs"> <img id="ezPic"
-    src="/img/einzahlungsschein.php?z1=<?= $lanname ?>&z2=ID%20<?= $ticket->getId() ?>&a=<?= $price ?>"
+    src="<?php echo $this->url(array('controller'=>'ticket','action'=>'showpayment'),'default',true) ?>?event=<?= $lanname ?>&id=ID%20<?= $ticket->getId() ?>&amount=<?= $price ?>"
     alt="Einzahlungsschein" width="400px" />
 </a>
 <?php
