@@ -210,4 +210,46 @@ class TicketController extends Zend_Controller_Action
                         'lanid' => $ticket->getLanId()
                 ));
     }
+
+    /**
+     * Description:   Shows the einzahlunsschein
+     * Access:        Members
+     */
+    public function showpaymentAction ()
+    {
+        $event = $this->getRequest()->getParam('event', null);
+        $ticketId = $this->getRequest()->getParam('id', null);
+        $amount = $this->getRequest()->getParam('amount', null);
+
+        if (is_null($event) || is_null($ticketId) || is_null($amount)) {
+            return;
+        } else {
+            header('Content-Type: image/jpeg');
+            $img = $this->loadJpeg('img/einzahlungsschein.jpg');
+            $black = imagecolorallocate($img, 0, 0, 0);
+            $font = 'img/arial.ttf';
+
+            // Add the text
+            imagettftext($img, 10, 0, 270, 70, $black, $font, $event);
+            imagettftext($img, 10, 0, 270, 88, $black, $font, $ticketId);
+            imagettftext($img, 10, 0, 70, 252, $black, $font, $amount);
+
+            imagejpeg($img);
+            imagedestroy($img);
+            return;
+        }
+    }
+
+    private function loadJpeg($imgname)
+    {
+        $im = @imagecreatefromjpeg($imgname);
+        if (! $im) {
+            $im = imagecreatetruecolor(150, 30);
+            $bgc = imagecolorallocate($im, 255, 255, 255);
+            $tc = imagecolorallocate($im, 0, 0, 0);
+            imagefilledrectangle($im, 0, 0, 150, 30, $bgc);
+            imagestring($im, 1, 5, 5, 'Error loading ' . $imgname, $tc);
+        }
+        return $im;
+    }
 }
