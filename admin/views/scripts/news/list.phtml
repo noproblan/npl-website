@@ -13,7 +13,7 @@
             </header>
             <p><?php echo $newsEntry->getDescription(); ?></p>
             <footer>
-                Written by <?php echo $newsEntry->getAuthorId(); ?>
+                Written by <?php echo $this->usernameById($newsEntry->getAuthorId()); ?>
             </footer>
             <aside>
                 <a href="<?php echo $this->baseUrl('/news/edit/id/') . $newsEntry->getId() ?>">Edit</a>
