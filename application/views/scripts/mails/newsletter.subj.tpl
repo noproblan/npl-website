@@ -1,1 +1,1 @@
-noprobLAN v47.1 - Wichtige Infos und letzte Plätze
+noprobLAN v50.6 - Infos zum Event
