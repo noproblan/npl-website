@@ -9,7 +9,7 @@ class Zend_View_Helper_RandomGalleryPics extends Zend_View_Helper_Abstract
             'jpg' => 'image/jpeg'
     );
 
-    const GALLERY_PATH = "img/gallery/";
+    const GALLERIES_PATH = "img/gallery/";
 
     /**
      * Holt zufällig aus der Gallerie ein paar Bilder
@@ -19,41 +19,33 @@ class Zend_View_Helper_RandomGalleryPics extends Zend_View_Helper_Abstract
      * @param $count Anzahl
      *            der Bilder
      */
-    public function randomGalleryPics ($count)
+    public function randomGalleryPics($count)
     {
-        $randPics = array();
-        if (file_exists(self::GALLERY_PATH)) {
-            $galleries = scandir(self::GALLERY_PATH);
-            unset($galleries[0]); // "."
-            unset($galleries[1]); // ".."
+        $randomPictures = array();
+        if (file_exists(self::GALLERIES_PATH)) {
+            $galleries = scandir(self::GALLERIES_PATH);
+            unset($galleries[0]); unset($galleries[1]);
+            $galleries = array_values($galleries); // reindex to be sure
+
+            if (empty($galleries)) break; // break if no subfolders are present
             
-            $counter = 0;
-            while ($counter <= $count) {
-                // wähle eine Galerie zufällig aus
-                $galleryDir = $galleries[array_rand($galleries)];
-                if (! empty($galleryDir)) {
-                    // liste alle Bilder mit gewissem Typ
-                    $fileNames = array();
-                    foreach ($this->imageTypes as $imgType => $mimeType) {
-                        $fileNamesWithType = glob(
-                                self::GALLERY_PATH . $galleryDir . "/*." .
-                                         $imgType);
-                        if (! empty($fileNamesWithType)) {
-                            $fileNames = array_merge($fileNames, 
-                                    $fileNamesWithType);
-                        }
-                    }
-                    // wähle eines zufällig aus
-                    if (! empty($fileNames)) {
-                        $randPic = $fileNames[array_rand($fileNames)];
-                    }
-                    if (! empty($randPic)) {
-                        $randPics[] = $randPic;
-                    }
-                }
-                $counter ++;
+            $i = 0;
+            while ($i++ < $count) {
+                $randomIndex = mt_rand(0, count($galleries) - 1);
+                $randomGalleryPath = $galleries[$randomIndex];
+                $randomPicture = $this->_chooseRandomImage($randomGalleryPath);
+                if ($randomPicture) $randomPictures[] = $randomPicture;
             }
         }
-        return $randPics;
+        return $randomPictures;
+    }
+
+    private function _chooseRandomImage($galleryPath) {
+        $path = self::GALLERIES_PATH . "$galleryPath/*.{jpeg,jpg,gif,png,JPEG,JPG,GIF,PNG}";
+        $pictures = glob($path, GLOB_BRACE);
+        if (empty($pictures)) return null;
+        $randomIndex = mt_rand(0, count($pictures) - 1);
+        return $pictures[$randomIndex];
     }
 }
+
