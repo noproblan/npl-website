@@ -15,7 +15,7 @@ class Npl_Form_Element_Password extends Zend_Form_Element_Password
                         new Zend_Validate_StringLength(
                                 array(
                                         'min' => 6,
-                                        'max' => 20
+                                        'max' => 250
                                 ))
                 ));
         $this->setLabel('Passwort:');
