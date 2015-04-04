@@ -1,26 +1,43 @@
 <p>
     Hey <?= $this->username ?><br />
     <br />
-    Es ist Halbzeit! In weniger als 3 Monaten findet die 15. noprobLAN statt, diesmal mit 200 Gamern :D<br />
-    Und zwar am Wochenende vom 10. - 12. April 2015.<br />
+    Zuerst: Wir bitten um Entschuldigung für die doppelten Mails, die du erhalten hast. Unser Admin hat sich da etwas vertan. Dies ist natürlich unabsichtlich geschehen und wird nicht wieder vorkommen, versprochen ;-)<br />
     <br />
-    Falls du noch nicht angemeldet bist und Bock auf ein gemütliches Wochenende vor dem Computer hast (oder vor der Konsole auf unseren Sofas), dann melde Dich doch auf der Website für die LAN-Party an:<br />
+    Dann: Nächstes Wochenende ist es soweit. Wir werden unsere 15. LAN-Party in der MZH Neuwies Berg TG veranstalten. Dazu möchten wir noch ein paar Dinge sagen.<br />
     <br />
-    <a href="https://noproblan.ch/lan/info/lanid/15">https://noproblan.ch/lan/info/lanid/15</a><br />
+    <b>Vorauszahlung:</b><br />
+    Von 199 angemeldeten Personen haben bis jetzt 163 vorausbezahlt. Die Anmeldung wird erst geschlossen, wenn 200 Personen vorausbezahlt haben. Ihr könnt euch also immernoch anmelden, bis am Mittwochabend vorauszahlen und einen sicheren Sitzplatz ergattern.<br />
+    Danach heisst es first-come-first-serve, sprich wer sich zwar angemeldet aber nicht vorausbezahlt hat, hat das Risiko wieder nach Hause gehen zu müssen, wenn andere schneller sind. Nebst dem etwas höheren Eintrittspreis versteht sich ;-)<br />
+    <br />
+    <b>Schlafgelegenheit:</b><br />
+    In vergangenen noprobLANs hatten wir euch Turnmatten zum Schlafen zur Verfügung gestellt. Bei 200 Gamerinnen und Gamern können wir diesen Service leider nicht mehr bieten.<br />
+    Wir raten Dir daher eine eigene Matte mitzunehmen (oder die Nächte durchzumachen).<br />
     <br />
     Sobald wir Deine Vorauszahlung erhalten haben, kannst Du einen Sitzplatz reservieren.
     Normalerweise sind wir etwa einen Monat im Voraus ausverkauft. Deshalb wird es vermutlich keine Abendkasse geben.<br />
     <br />
-    Wichtig:<br />
+    <b>Turniere:</b><br />
     <ul>
-        <li>Die Turniere werden bald auf der Website veröffentlicht</li>
-        <li>Wir stellen euch einen Schlafraum und Duschen zur Verfügung. Nehmt bitte selbst eine Schlafunterlage mit. Die Matten der Turnhalle werden diesmal nicht zur Verfügung stehen.</li>
-        <li>Es gibt mehrere warme Mahlzeiten - wie immer deliziös und günstig</li>
-        <li>Weibliche Gamer können zum halben Preis an der LAN teilnehmen, müssen aber trotzdem den vollen Preis vorausbezahlen. Das restliche Geld wird an der LAN auf den Badge gutgeschrieben.</li>
+        <li>StarCraft II 1on1 ab Freitag 22:00 Uhr</li>
+        <li>CS GO 5on5 ab Freitag 22:00 Uhr</li>
+        <li>UT2k4 2on2 ab Samstag 10:00 Uhr</li>
+        <li>Blobby Volley 1on1 ab Samstag 14:00 Uhr (Funturnier und sowieso das Beste [Anmerkung der Redaktion])</li>
+        <li>League of Legends 5on5 ab Samstag 20:00 Uhr</li>
     </ul>
-    Weitere Informationen folgen in einem weiteren Mail kurz vor der LAN. Konkrete Fragen kannst du gerne an sadi@noproblan.ch schicken. Da solch ein Event mit viel Aufwand verbunden ist, sind wir froh um jede helfende Hand. Helfer geniessen selbstverständlich verschiedene Vorzüge. Falls du interessiert bist, melde dich bitte bei abiria@noproblan.ch<br />
+    <b>Essen:</b><br />
+    <ul>
+        <li>Freitag ab ca. 20:30 Uhr Spaghetti mit 3erlei Saucen oder Riz Casimir</li>
+        <li>Samstag ab ca. 18:00 Uhr Lasagne oder Älplermagronen</li>
+        <li>Wie üblich gibt es am Samstag- und Sonntagmorgen ab 09:00 Uhr z'Morgen</li>
+    </ul>
+    <b>Strom:</b><br />
+    Ein kleines Anliegen, welches wir noch an euch haben ist, dass ihr bitte abgesehen von euren Computern und Bildschirmen keine anderen Elektrogeräte anschliesst.<br />
+    Es ist in der Vergangenheit vorgekommen, dass aufgrund sonstiger elektrischen Geräte eine ganze Sitzreihe keinen Strom mehr hatte.<br />
+    Gerade während Turnierspielen ist das alles andere als lässig.
+    <b>Helfer:</b><br />
+    Wir suchen immernoch 2 Helfer. Bei Interesse bitte bei abiria@noproblan.ch melden. Helfer geniessen selbstverständlich verschiedene Vorzüge.<br />
     <br />
-    Viele Grüsse und bis bald,<br />
+    Beste Grüsse und bis bald,<br />
     <br />
     Das noprobLAN Team
 </p>
