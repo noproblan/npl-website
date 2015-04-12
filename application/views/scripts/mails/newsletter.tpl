@@ -1,43 +1,26 @@
 <p>
     Hey <?= $this->username ?><br />
     <br />
-    Zuerst: Wir bitten um Entschuldigung für die doppelten Mails, die du erhalten hast. Unser Admin hat sich da etwas vertan. Dies ist natürlich unabsichtlich geschehen und wird nicht wieder vorkommen, versprochen ;-)<br />
+    Die noprobLAN v50.6 ist vorbei und es hat riesig Spass gemacht so viele Gamer zu sehen!<br />
+    Danke nochmals an alle, die Teil dieses Erlebnisses waren.<br />
     <br />
-    Dann: Nächstes Wochenende ist es soweit. Wir werden unsere 15. LAN-Party in der MZH Neuwies Berg TG veranstalten. Dazu möchten wir noch ein paar Dinge sagen.<br />
+    Nun aber eine kleine Herausforderung: Die nächste LAN im Oktober bietet lediglich Platz für 50 Leute!<br />
+    Wir haben beschlossen nach einer solch grossen noprobLAN wieder etwas den Ursprung auf der Bühne aufleben zu lassen.<br />
     <br />
     <b>Vorauszahlung:</b><br />
-    Von 199 angemeldeten Personen haben bis jetzt 163 vorausbezahlt. Die Anmeldung wird erst geschlossen, wenn 200 Personen vorausbezahlt haben. Ihr könnt euch also immernoch anmelden, bis am Mittwochabend vorauszahlen und einen sicheren Sitzplatz ergattern.<br />
-    Danach heisst es first-come-first-serve, sprich wer sich zwar angemeldet aber nicht vorausbezahlt hat, hat das Risiko wieder nach Hause gehen zu müssen, wenn andere schneller sind. Nebst dem etwas höheren Eintrittspreis versteht sich ;-)<br />
+    Aus Fairness gegenüber all denjenigen, die nicht an dieser npL teilgenommen hatten, konnten die anwesenden Gamer nicht bereits an der LAN für die nächste npL vorauszahlen.<br />
+    Jeder von euch hat somit die Chance eine der wenigen Plätze zu ergatten.<br />
+    Mit diesem Schritt möchten wir das Wort "Gemütlich" wieder etwas in den Fokus setzen.<br />
     <br />
-    <b>Schlafgelegenheit:</b><br />
-    In vergangenen noprobLANs hatten wir euch Turnmatten zum Schlafen zur Verfügung gestellt. Bei 200 Gamerinnen und Gamern können wir diesen Service leider nicht mehr bieten.<br />
-    Wir raten Dir daher eine eigene Matte mitzunehmen (oder die Nächte durchzumachen).<br />
-    <br />
-    Sobald wir Deine Vorauszahlung erhalten haben, kannst Du einen Sitzplatz reservieren.
-    Normalerweise sind wir etwa einen Monat im Voraus ausverkauft. Deshalb wird es vermutlich keine Abendkasse geben.<br />
+    Sobald wir Deine Vorauszahlung erhalten und den Sitzplan aufgeschaltet haben, kannst Du einen Sitzplatz reservieren.
+    Normalerweise sind wir etwa einen Monat im Voraus ausverkauft. Wir rechnen aber damit, dass es auf Grund der eher kleineren LAN wesentlich schneller gehen wird.<br />
+    Wenn du also gerne teilnehmen möchtest melde dich am besten jetzt gleich an und zahle voraus!<br />
     <br />
     <b>Turniere:</b><br />
-    <ul>
-        <li>StarCraft II 1on1 ab Freitag 22:00 Uhr</li>
-        <li>CS GO 5on5 ab Freitag 22:00 Uhr</li>
-        <li>UT2k4 2on2 ab Samstag 10:00 Uhr</li>
-        <li>Blobby Volley 1on1 ab Samstag 14:00 Uhr (Funturnier und sowieso das Beste [Anmerkung der Redaktion])</li>
-        <li>League of Legends 5on5 ab Samstag 20:00 Uhr</li>
-    </ul>
-    <b>Essen:</b><br />
-    <ul>
-        <li>Freitag ab ca. 20:30 Uhr Spaghetti mit 3erlei Saucen oder Riz Casimir</li>
-        <li>Samstag ab ca. 18:00 Uhr Lasagne oder Älplermagronen</li>
-        <li>Wie üblich gibt es am Samstag- und Sonntagmorgen ab 09:00 Uhr z'Morgen</li>
-    </ul>
-    <b>Strom:</b><br />
-    Ein kleines Anliegen, welches wir noch an euch haben ist, dass ihr bitte abgesehen von euren Computern und Bildschirmen keine anderen Elektrogeräte anschliesst.<br />
-    Es ist in der Vergangenheit vorgekommen, dass aufgrund sonstiger elektrischen Geräte eine ganze Sitzreihe keinen Strom mehr hatte.<br />
-    Gerade während Turnierspielen ist das alles andere als lässig.
-    <b>Helfer:</b><br />
-    Wir suchen immernoch 2 Helfer. Bei Interesse bitte bei abiria@noproblan.ch melden. Helfer geniessen selbstverständlich verschiedene Vorzüge.<br />
+    Die Turniere sind derzeit noch nicht bekannt und stellen nicht den Fokus der nächsten npL dar.<br />
+    Es wird aber sicherlich Turniere geben.<br />
     <br />
-    Beste Grüsse und bis bald,<br />
+    Beste Grüsse und wir freuen uns schon jetzt auf den Oktober,<br />
     <br />
     Das noprobLAN Team
 </p>
