@@ -66,9 +66,11 @@ if (! empty($userTickets)) {
         <?php
     if (empty($participants)) {
         ?>
-                Noch keine Teilnehmer! <a class="button"
+                Noch keine Teilnehmer!
+                <?php if (true === $registrationPossible) : ?><a class="button"
                     href="<?php echo $this->url(array('controller'=>'lan','action'=>'participate','lanid'=>$lan->getId(),'participate'=>'yes','prevcont'=>'lan'),'default',true) ?>">Ich
                     bin der Erste!</a>
+                <?php endif; ?>
         <?php
     } else {
         $links = array();
