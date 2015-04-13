@@ -88,6 +88,12 @@ foreach ($this->lans as $attendingLan) {
     src="<?php echo $this->url(array('controller'=>'ticket','action'=>'showpayment'),'default',true) ?>?event=<?= $lanname ?>&id=ID%20<?= $ticket->getId() ?>&amount=<?= $price ?>"
     alt="Einzahlungsschein" width="400px" />
 </a>
+                    IBAN: CH87 8137 9000 0025 7424 4
+                    Empfänger: noprobLAN, Löwenstrasse 1, 8585 Birwinken
+                    Konto-Nr: 85-1858-3
+                    Preis: <?php echo $price ?>
+                    Zahlungszweck: <?php echo $lanname ?> ID <?php echo $ticket->getId() ?>
+
 <?php
                 }
             }
