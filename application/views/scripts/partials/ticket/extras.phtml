@@ -87,13 +87,29 @@ foreach ($this->lans as $attendingLan) {
     target="_blank" class="ezs"> <img id="ezPic"
     src="<?php echo $this->url(array('controller'=>'ticket','action'=>'showpayment'),'default',true) ?>?event=<?= $lanname ?>&id=ID%20<?= $ticket->getId() ?>&amount=<?= $price ?>"
     alt="Einzahlungsschein" width="400px" />
-</a>
-                    IBAN: CH87 8137 9000 0025 7424 4
-                    Empfänger: noprobLAN, Löwenstrasse 1, 8585 Birwinken
-                    Konto-Nr: 85-1858-3
-                    Preis: <?php echo $price ?>
-                    Zahlungszweck: <?php echo $lanname ?> ID <?php echo $ticket->getId() ?>
-
+</a><br /><br />
+                    <table>
+                        <tr>
+                            <th>IBAN</th>
+                            <td>CH87 8137 9000 0025 7424 4</td>
+                        </tr>
+                        <tr>
+                            <th>Empfänger</th>
+                            <td>noprobLAN<br />Löwenstrasse 1<br />8585 Birwinken</td>
+                        </tr>
+                        <tr>
+                            <th>Konto-Nr</th>
+                            <td>85-1858-3</td>
+                        </tr>
+                        <tr>
+                            <th>Preis</th>
+                            <td><?php echo $price ?></td>
+                        </tr>
+                        <tr>
+                            <th>Zahlungszweck</th>
+                            <td><?php echo $lanname ?><br />ID <?php echo $ticket->getId() ?></td>
+                        </tr>
+                    </table>
 <?php
                 }
             }
