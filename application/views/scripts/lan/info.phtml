@@ -50,15 +50,6 @@ echo $this->partial('partials/lan/buttons.phtml',
             <p>Keine Informationen vorhanden</p>
             <?php } ?>
         </div>
-        <?php
-    
-if (! empty($userTickets)) {
-        echo $this->partial('partials/ticket/extras.phtml', 
-                array(
-                        'tickets' => $userTickets
-                ));
-    }
-    ?>
         <hr />
         <h2>Teilnehmer</h2>
         <div class="participants">
