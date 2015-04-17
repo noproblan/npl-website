@@ -39,51 +39,17 @@ if (is_null($lan->getRegistrationEndDateTime())) {
                     ));
                 ?>
             </p>
+            <?php echo $this->partial('lan/partials/infos.phtml',
+                array(
+                    'infos' => $infos
+                )); ?>
 
-            <div id="infos">
-                <?php if ($infos != null) { ?>
-                    <?php foreach ($infos as $info) { ?>
-                        <hr/>
-                        <h3><?php echo $this->escape($info->getName()) ?></h3>
-                        <p class="lan-info"><?php echo $info->getInfo() ?></p>
-                    <?php } ?>
-                <?php } else { ?>
-                    <p>Keine Informationen vorhanden</p>
-                <?php } ?>
-            </div>
-            <hr/>
-            <h2>Teilnehmer</h2>
-
-            <div class="participants">
-                <p>
-                    <?php
-                    if (empty($participants)) {
-                        ?>
-                        Noch keine Teilnehmer!
-                        <?php if (true === $registrationPossible) : ?><a class="button"
-                                                                         href="<?php echo $this->url(array('controller' => 'lan', 'action' => 'participate', 'lanid' => $lan->getId(), 'participate' => 'yes', 'prevcont' => 'lan'), 'default', true) ?>">
-                                Ich
-                                bin der Erste!</a>
-                        <?php endif; ?>
-                    <?php
-                    } else {
-                        $links = array();
-                        foreach ($participants as $participant) {
-                            $link = '<a href="' . $this->url(
-                                    array(
-                                        "controller" => "user",
-                                        "action" => "profile",
-                                        "id" => $participant['id']
-                                    ), "default", true) . '">
-                            ' .
-                                $this->escape($participant['user']) . '</a>';
-                            $links[] = $link;
-                        }
-                        echo implode(", ", $links);
-                    }
-                    ?>
-                </p>
-            </div>
+            <?php echo $this->partial('lan/partials/participants.phtml',
+                array(
+                    'participants' => $participants,
+                    'registrationPossible' => $registrationPossible,
+                    'lan' => $lan
+                )); ?>
         </div>
     <?php } else { ?>
         <div id="title">
