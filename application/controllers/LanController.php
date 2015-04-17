@@ -229,21 +229,45 @@ class LanController extends Zend_Controller_Action
                     // return $this->_helper->redirector('reservation', 'lan',
                 // 'default', array('lanid' => $lanId));
                 } else {
-                    $ticket = new Application_Model_Ticket();
-                    $ticketMapper = new Application_Model_Mapper_TicketsMapper();
-                    $ticket->setLanId($lanId);
-                    $ticket->setUserId($this->_currentUser->getId());
-                    $ticketMapper->save($ticket);
-                    $this->_flashMessenger->setNamespace('success')->addMessage(
-                            'Du wurdest zur LAN angemeldet');
-                    if ($prevController == 'lan') {
-                        return $this->_helper->redirector('info', 'lan', 
-                                'default', array(
-                                        'lanid' => $lanId
-                                ));
+                    $lanMapper = new Application_Model_Mapper_LansMapper();
+                    $lan = new Application_Model_Lan();
+                    $lanMapper->find($lanId, $lan);
+                    if (is_null($lan->getRegistrationEndDateTime())) {
+                        $registrationPossible = true;
+                    } else {
+                        $regEndDateTime = new DateTime($lan->getRegistrationEndDateTime());
+                        if ($regEndDateTime > new DateTime()) {
+                            $registrationPossible = true;
+                        } else {
+                            $registrationPossible = false;
+                        }
                     }
-                    return $this->_helper->redirector('account', 'user');
-                    // return $this->_helper->redirector('index', 'shop');
+                    if ($registrationPossible) {
+                        $ticket = new Application_Model_Ticket();
+                        $ticketMapper = new Application_Model_Mapper_TicketsMapper();
+                        $ticket->setLanId($lanId);
+                        $ticket->setUserId($this->_currentUser->getId());
+                        $ticketMapper->save($ticket);
+                        $this->_flashMessenger->setNamespace('success')->addMessage(
+                                'Du wurdest zur LAN angemeldet');
+                        if ($prevController == 'lan') {
+                            return $this->_helper->redirector('info', 'lan',
+                                    'default', array(
+                                            'lanid' => $lanId
+                                    ));
+                        }
+                        return $this->_helper->redirector('account', 'user');
+                        // return $this->_helper->redirector('index', 'shop');
+                    } else {
+                        $this->_flashMessenger->setNamespace('error')->addMessage('Anmeldung zur LAN derzeit nicht möglich');
+                        if ($prevController == 'lan') {
+                            return $this->_helper->redirector('info', 'lan',
+                                'default', array(
+                                    'lanid' => $lanId
+                                ));
+                        }
+                        return $this->_helper->redirector('account', 'user');
+                    }
                 }
             } else {
                 $this->_flashMessenger->setNamespace('error')->addMessage(
