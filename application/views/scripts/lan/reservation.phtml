@@ -3,10 +3,6 @@
 
 <div id="view-content">
     <h1>Sitzplatzreservation</h1>
-    <p>
-        Eingang ist auf der rechten Seite ca. in der Mitte.<br /> Die Bühne
-        ist oberhalb.
-    </p>
 
     <!-- SITZPLATZ-RESERVATION ------------------------------------------------------------>
     <script type="text/javascript"
@@ -84,6 +80,13 @@
         deskLayer.draw();
     };
     </script>
+
+<?php
+$additionalInfo = $this->maps->getAdditionalInfo();
+if (!empty($additionalInfo)) {
+    echo "<p>" . $additionalInfo . "</p>";
+?>
+<?php } ?>
 
     <div id="seatres">
         <div id="seatres-container"></div>
