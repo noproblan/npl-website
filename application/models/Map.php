@@ -15,6 +15,8 @@ class Application_Model_Map
 
     protected $_width;
 
+    protected $_additionalInfo = null;
+
     protected $_writtenDatetime;
 
     public function __construct (array $options = null)
@@ -122,9 +124,20 @@ class Application_Model_Map
         return $this->_width;
     }
 
+    public function setAdditionalInfo($additionalInfo)
+    {
+        $this->_additionalInfo = (string) $additionalInfo;
+        return $this;
+    }
+
+    public function getAdditionalInfo()
+    {
+        return $this->_additionalInfo;
+    }
+
     public function setWrittenDatetime ($writtenDatetime)
     {
-        $this->_writtenDatetime = date("d.m.Y H:i:s", 
+        $this->_writtenDatetime = date("d.m.Y H:i:s",
                 strtotime($writtenDatetime));
         return $this;
     }
@@ -136,7 +149,7 @@ class Application_Model_Map
 
     /**
      * Returns all desks of this map
-     * 
+     *
      * @return Application_Model_Desk[]
      */
     public function getDesks ()
