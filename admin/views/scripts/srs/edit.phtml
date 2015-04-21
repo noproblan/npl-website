@@ -228,7 +228,8 @@ window.onload = function() {
             data: {
                   map: {
                       id: <?= (int)$this->map->getId() ?>, 
-                      name: document.getElementById('map-name').value
+                      name: document.getElementById('map-name').value,
+                      additionalInfo: document.getElementById('map-additional-info').value
                 }, 
                   desks: collectedDesks
               },
@@ -285,6 +286,8 @@ window.onload = function() {
     <?php endforeach; ?>
     </select> Name: <input type="text" id="map-name" name="mapName"
                 value="<?= $this->map->getName() ?>" />
+            Zusätzliche Infos: <textarea id="map-additional-info"
+                                         name="mapAdditionalInfo"><?= $this->map->getAdditionalInfo() ?></textarea>
         </div>
 
         <div id="menu-container">
