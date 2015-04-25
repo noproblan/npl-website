@@ -1,0 +1,15 @@
+<?php
+$infos = $this->infos;
+?>
+<div id="infos">
+    <?php if ($infos != null) { ?>
+        <?php foreach ($infos as $info) { ?>
+            <hr/>
+            <h3><?php echo $this->escape($info->getName()) ?></h3>
+            <p class="lan-info"><?php echo $info->getInfo() ?></p>
+        <?php } ?>
+    <?php } else { ?>
+        <p>Keine Informationen vorhanden</p>
+    <?php } ?>
+</div>
+<hr/>

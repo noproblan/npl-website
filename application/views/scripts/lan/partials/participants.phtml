@@ -1,0 +1,37 @@
+<?php
+$participant = $this->participants;
+$registrationPossible = $this->registrationPossible;
+$lan = $this->lan;
+?>
+
+<h2>Teilnehmer</h2>
+<div class="participants">
+    <p>
+        <?php
+        if (empty($participants)) {
+            ?>
+            Noch keine Teilnehmer!
+            <?php if (true === $registrationPossible) : ?><a class="button"
+                                                             href="<?php echo $this->url(array('controller' => 'lan', 'action' => 'participate', 'lanid' => $lan->getId(), 'participate' => 'yes', 'prevcont' => 'lan'), 'default', true) ?>">
+                    Ich
+                    bin der Erste!</a>
+            <?php endif; ?>
+        <?php
+        } else {
+            $links = array();
+            foreach ($participants as $participant) {
+                $link = '<a href="' . $this->url(
+                        array(
+                            "controller" => "user",
+                            "action" => "profile",
+                            "id" => $participant['id']
+                        ), "default", true) . '">
+                            ' .
+                    $this->escape($participant['user']) . '</a>';
+                $links[] = $link;
+            }
+            echo implode(", ", $links);
+        }
+        ?>
+    </p>
+</div>
