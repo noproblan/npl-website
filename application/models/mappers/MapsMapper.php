@@ -33,7 +33,8 @@ class Application_Model_Mapper_MapsMapper
                 'name' => $map->getName(),
                 'color' => $map->getColor(),
                 'height' => $map->getHeight(),
-                'width' => $map->getWidth()
+                'width' => $map->getWidth(),
+                'additional_info' => $map->getAdditionalInfo()
         );
         
         if (null === ($id = $map->getId())) {
@@ -88,6 +89,7 @@ class Application_Model_Mapper_MapsMapper
         $map->setColor($row->color);
         $map->setHeight($row->height);
         $map->setWidth($row->width);
+        $map->setAdditionalInfo($row->additional_info);
         $map->setWrittenDatetime($row->written_datetime);
     }
 }

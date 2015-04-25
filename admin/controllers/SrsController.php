@@ -58,6 +58,7 @@ class SrsController extends Zend_Controller_Action
         
         $mapsMapper->find($mapToSave["id"], $mapModel);
         $mapModel->setName($mapToSave["name"]);
+        $mapModel->setAdditionalInfo($mapToSave["additionalInfo"]);
         $mapsMapper->save($mapModel);
         
         $desksMapper = new Application_Model_Mapper_DesksMapper();
