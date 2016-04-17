@@ -264,6 +264,25 @@ class Application_Model_User
         }
     }
 
+    public function sendLanNewsMail ()
+    {
+        $mail = new Npl_Mail("utf-8");
+        $mail->setRecipient($this->getMail(), $this->getUsername());
+        $mail->setTemplate("lannews");
+        $mail->setTemplatePath(APPLICATION_PATH . "/views/scripts/mails");
+        $mail->username = $this->getUsername();
+        try {
+            $mail->send();
+            $this->_flashMessenger->setNamespace('success')->addMessage(
+                'Die Lan News wurde erfolgreich an ' . $this->getUsername() .
+                ' verschickt.');
+        } catch (Zend_Mail_Transport_Exception $e) {
+            $this->_flashMessenger->setNamespace('error')->addMessage(
+                'Die Lan News konnte nicht an ' . $this->getUsername() .
+                ' (' . $this->getMail() . ') versendet werden.');
+        }
+    }
+
     public function sendTeamMail ()
     {
         $mail = new Npl_Mail("utf-8");
