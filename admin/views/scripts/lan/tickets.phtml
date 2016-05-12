@@ -30,7 +30,13 @@
                         <td><?= $ticket['userid'] ?></td>
                         <td><?= $ticket['username'] ?></td>
                         <td><?= $ticket['email'] ?></td>
-                        <td><?= $ticket['extras'] ?></td>
+                        <td>
+                            <select>
+                                <option value="breakfast" <?php if ('breakfast' === $ticket['extras']) echo 'selected="selected' ?>>Breakfast</option>
+                                <option value="dinner" <?php if ('dinner' === $ticket['extras']) echo 'selected="selected' ?>>Dinner</option>
+                                <option value="both" <?php if ('breakfast,dinner' === $ticket['extras']) echo 'selected="selected' ?>>Breakfast & Dinner</option>
+                            </select>
+                        </td>
                         <td><?= $ticket['bill'] ?></td>
                         <td><input type="checkbox"
                             id="ticketstatus-button-<?= $ticket['id'] ?>"
@@ -49,6 +55,32 @@
 
     <script type="text/javascript">
       $(document).ready(function() {
+          $('.extras').on('change', function(event) {
+              event.preventDefault();
+              var newextras = this.value;
+              var dropdown = this;
+              $.ajax({
+                  type: 'GET',
+                  url: '<?= $this->baseUrl('lan/ajaxextras') ?>',
+                  data: "id="+$(this).attr('data-id')+"&newextras="+newextras,
+                  success: function(data) {
+                      var el = document.createElement('span');
+                      el.style.color = "green";
+                      el.style.fontWeight = "bold";
+                      $(el).html("OK! Reload for updated prices")
+                          .insertAfter($(dropdown))
+                          .delay(1000)
+                          .fadeOut(1500)
+                          .queue(function(){
+                              $(this).remove();
+                          });
+                  },
+                  error: function () {
+                      alert("Fehler! Hast du Netz? Ist der Server erreichbar?");
+                  }
+              });
+          });
+
           $(".ticketstatus").click(function(event) {
               event.preventDefault();
               var newstatus = 'notpaid';
@@ -69,7 +101,7 @@
                       var el = document.createElement('span');
                       el.style.color = "green";
                       el.style.fontWeight = "bold";
-                      $(el).html("ok")
+                      $(el).html("OK!")
                           .insertAfter($(checkbox))
                           .delay(1000)
                           .fadeOut(1500)
