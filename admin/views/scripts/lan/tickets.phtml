@@ -31,8 +31,7 @@
                         <td><?= $ticket['username'] ?></td>
                         <td><?= $ticket['email'] ?></td>
                         <td>
-                            <?= $ticket['extras'] ?>
-                            <select>
+                            <select class="extras" data-id="<?= $ticket['id'] ?>">
                                 <option value="none" <?php if ('none' === $ticket['extras']) echo 'selected="selected"' ?>>Ohne Extras</option>
                                 <option value="breakfast" <?php if ('breakfast' === $ticket['extras']) echo 'selected="selected"' ?>>Breakfast</option>
                                 <option value="dinner" <?php if ('dinner' === $ticket['extras']) echo 'selected="selected"' ?>>Dinner</option>
