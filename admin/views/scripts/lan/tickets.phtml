@@ -39,7 +39,7 @@
                                 <option value="both" <?php if ('breakfast,dinner' === $ticket['extras']) echo 'selected="selected"' ?>>Breakfast & Dinner</option>
                             </select>
                         </td>
-                        <td><?= $ticket['bill'] ?></td>
+                        <td class="price" data-id="<?= $ticket['id'] ?>"><?= $ticket['bill'] ?></td>
                         <td><input type="checkbox"
                             id="ticketstatus-button-<?= $ticket['id'] ?>"
                             class="ticketstatus" name="prepaid[]"
