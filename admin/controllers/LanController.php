@@ -194,6 +194,7 @@ class LanController extends Zend_Controller_Action
     private function _mapExtras($extra)
     {
         $map = array(
+            'none'              => 'none',
             'breakfast'         => 'breakfast',
             'dinner'            => 'dinner',
             'both'              => 'breakfast,dinner',
