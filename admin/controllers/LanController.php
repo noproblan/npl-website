@@ -178,7 +178,8 @@ class LanController extends Zend_Controller_Action
                     'success' => 'true',
                     'ticket_id' => $ticket->getId(),
                     'extras' => $ticket->getExtras(),
-                    'mapped_extras' => $this->_mapExtras($ticket->getExtras())
+                    'mapped_extras' => $this->_mapExtras($ticket->getExtras()),
+                    'updated_price' => $this->_getCalculatedExtras($ticket->getExtrasSplitted()),
                 );
             } catch (UnexpectedValueException $e) {
                 $this->getResponse()->setHttpResponseCode(400);
