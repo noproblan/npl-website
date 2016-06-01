@@ -158,6 +158,57 @@ class LanController extends Zend_Controller_Action
         echo json_encode($answer);
     }
 
+    public function ajaxextrasAction()
+    {
+        // Ändern von Ticketextras
+        $this->_helper->viewRenderer->setNoRender();
+        $this->_helper->layout()->disableLayout();
+        $ticketId = $this->getRequest()->getParam('id', null);
+        $newExtras = $this->getRequest()->getParam('newextras', null);
+        if (isset($newExtras) && is_numeric($ticketId)) {
+            try {
+                $newExtras = $this->_mapExtras($newExtras);
+                $ticketId = (int) $ticketId;
+                $ticketsModel = new Application_Model_Mapper_TicketsMapper();
+                $ticket = new Application_Model_Ticket();
+                $ticketsModel->find($ticketId, $ticket);
+                $ticket->setExtras($newExtras);
+                $ticketsModel->save($ticket);
+                $answer = array(
+                    'success' => 'true',
+                    'ticket_id' => $ticket->getId(),
+                    'extras' => $ticket->getExtras(),
+                    'mapped_extras' => $this->_mapExtras($ticket->getExtras()),
+                    'updated_price' => $this->_getCalculatedExtras($ticket->getExtrasSplitted()),
+                );
+            } catch (UnexpectedValueException $e) {
+                $this->getResponse()->setHttpResponseCode(400);
+                $answer = -1;
+            }
+        } else {
+            $this->getResponse()->setHttpResponseCode(400);
+            $answer = -1;
+        }
+        echo json_encode($answer);
+    }
+
+    private function _mapExtras($extra)
+    {
+        $map = array(
+            'none'              => 'none',
+            'breakfast'         => 'breakfast',
+            'dinner'            => 'dinner',
+            'both'              => 'breakfast,dinner',
+            'breakfast,dinner'  => 'both'
+        );
+
+        if (!array_key_exists($extra, $map)) {
+            throw new UnexpectedValueException($extra . ' not found in map');
+        }
+
+        return $map[$extra];
+    }
+
     private function _getCalculatedExtras ($extrasArray)
     {
         $result = 40;
