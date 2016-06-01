@@ -30,8 +30,15 @@
                         <td><?= $ticket['userid'] ?></td>
                         <td><?= $ticket['username'] ?></td>
                         <td><?= $ticket['email'] ?></td>
-                        <td><?= $ticket['extras'] ?></td>
-                        <td><?= $ticket['bill'] ?></td>
+                        <td>
+                            <select class="extras" data-id="<?= $ticket['id'] ?>">
+                                <option value="none" <?php if ('none' === $ticket['extras']) echo 'selected="selected"' ?>>Ohne Extras</option>
+                                <option value="breakfast" <?php if ('breakfast' === $ticket['extras']) echo 'selected="selected"' ?>>Breakfast</option>
+                                <option value="dinner" <?php if ('dinner' === $ticket['extras']) echo 'selected="selected"' ?>>Dinner</option>
+                                <option value="both" <?php if ('breakfast,dinner' === $ticket['extras']) echo 'selected="selected"' ?>>Breakfast & Dinner</option>
+                            </select>
+                        </td>
+                        <td class="price" data-id="<?= $ticket['id'] ?>"><?= $ticket['bill'] ?></td>
                         <td><input type="checkbox"
                             id="ticketstatus-button-<?= $ticket['id'] ?>"
                             class="ticketstatus" name="prepaid[]"
@@ -48,41 +55,79 @@
     </div>
 
     <script type="text/javascript">
-      $(document).ready(function() {
-          $(".ticketstatus").click(function(event) {
-              event.preventDefault();
-              var newstatus = 'notpaid';
-              if (this.checked) {
-                newstatus = 'prepaid';
-              }
-              var checkbox = this;
-              $.ajax({
-                  type: 'GET',
-                  url: '<?= $this->baseUrl('lan/ajaxticket/') ?>',
-                  data: "id="+this.value+"&newstatus="+newstatus,
-                  success: function (data) {
-                      if (newstatus == 'notpaid') {
-                          checkbox.checked = false;
-                      } else {
-                         checkbox.checked = true;
-                      }
-                      var el = document.createElement('span');
-                      el.style.color = "green";
-                      el.style.fontWeight = "bold";
-                      $(el).html("ok")
-                          .insertAfter($(checkbox))
-                          .delay(1000)
-                          .fadeOut(1500)
-                            .queue(function(){
-                            $(this).remove();
-                          });
-                  },
-                  error: function () {
-                      alert("Fehler! Hast du Netz? Ist der Server erreichbar?");
-                  }
-              });
-          });
+        $(document).ready(function() {
+            $('.extras').on('change', function(event) {
+                event.preventDefault();
+                var dropdown = $(this),
+                    newextras = this.value,
+                    dataId = dropdown.attr('data-id'),
+                    price = $('.price[data-id="'+dataId+'"]:first');
+                $.ajax({
+                    type: 'GET',
+                    url: '<?= $this->baseUrl('lan/ajaxextras') ?>',
+                    data: "id="+dataId+"&newextras="+newextras,
+                    success: function(data) {
+                        var response = JSON.parse(data);
+                        if (response.hasOwnProperty('mapped_extras')) {
+                            dropdown.children().removeAttr('selected');
+                            dropdown.find('[value="'+newextras+'"]').first().attr('selected','selected');
+                        }
+                        if (response.hasOwnProperty('updated_price')) {
+                            price.text(response.updated_price);
+                        }
+                        if (response.hasOwnProperty('success')) {
+                            var el = document.createElement('span');
+                            el.style.color = "green";
+                            el.style.fontWeight = "bold";
+                            $(el).html("OK!")
+                                .insertAfter($(dropdown))
+                                .delay(1000)
+                                .fadeOut(1500)
+                                .queue(function(){
+                                    $(this).remove();
+                                });
+                        }
+                    },
+                    error: function () {
+                        alert("Fehler! Hast du Netz? Ist der Server erreichbar?");
+                    }
+                });
+            });
 
-      });
+              $(".ticketstatus").click(function(event) {
+                  event.preventDefault();
+                  var newstatus = 'notpaid';
+                  if (this.checked) {
+                    newstatus = 'prepaid';
+                  }
+                  var checkbox = this;
+                  $.ajax({
+                      type: 'GET',
+                      url: '<?= $this->baseUrl('lan/ajaxticket/') ?>',
+                      data: "id="+this.value+"&newstatus="+newstatus,
+                      success: function (data) {
+                          if (newstatus == 'notpaid') {
+                              checkbox.checked = false;
+                          } else {
+                             checkbox.checked = true;
+                          }
+                          var el = document.createElement('span');
+                          el.style.color = "green";
+                          el.style.fontWeight = "bold";
+                          $(el).html("OK!")
+                              .insertAfter($(checkbox))
+                              .delay(1000)
+                              .fadeOut(1500)
+                                .queue(function(){
+                                $(this).remove();
+                              });
+                      },
+                      error: function () {
+                          alert("Fehler! Hast du Netz? Ist der Server erreichbar?");
+                      }
+                  });
+              });
+
+        });
     </script>
 </div>
