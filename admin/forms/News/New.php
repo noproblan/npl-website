@@ -13,7 +13,7 @@ class Admin_Form_News_New extends Zend_Form
         // TODO: Check filters
         $title->addFilters(
             array(
-                new Zend_Filter_Alnum(),
+                new Zend_Filter_Alnum(true),
                 new Zend_Filter_HtmlEntities(),
                 new Zend_Filter_StringTrim(),
                 new Zend_Filter_StripNewlines(),
