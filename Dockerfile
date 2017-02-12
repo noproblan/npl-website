@@ -7,7 +7,6 @@ RUN docker-php-ext-install mysqli pdo_mysql
 # Setup Database
 COPY ./db/ /tmp/db/
 WORKDIR /tmp/db/
-RUN ls
 RUN service mysql start && \
     cat setup.sql | mysql --password= && \
     cat migrations/*.sql seeds.sql | mysql --database=npl --password=
