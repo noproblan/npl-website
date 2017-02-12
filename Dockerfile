@@ -20,7 +20,7 @@ ENV APACHE_DOC_ROOT /var/www/html
 RUN a2enmod rewrite
 
 # Start Services
-CMD service mysql start && apache2-foreground
+CMD service mysql start && service apache2 start && /bin/bash
 
 EXPOSE 80 80
 
