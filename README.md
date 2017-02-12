@@ -39,6 +39,8 @@ Run the container like that:
 
     bin/run
 
+Then you can open the webpage under http://localhost/public/www
+
 
 ## Deployment
 For deploying the master branch to production use `bash scripts/deploy_prod.sh USER@HOST` from your developer machine.
