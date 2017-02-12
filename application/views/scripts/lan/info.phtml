@@ -37,7 +37,13 @@ if (is_null($lan->getRegistrationEndDateTime())) {
                         'hasTicket' => $hasTicket,
                         'registrationPossible' => $registrationPossible
                     ));
+
+                if (!$hasPaid && $registrationPossible && $hasTicket) {
+                    $accountUrl = $this->url(array('controller'=>'user','action'=>'account'),'default',true);
+                    ?><a class="button" href="<?php echo $accountUrl ?>">Anmeldung konfigurieren</a><?php
+                }
                 ?>
+
             </p>
             <?php echo $this->partial('lan/partials/infos.phtml',
                 array(
