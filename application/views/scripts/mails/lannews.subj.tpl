@@ -1,1 +1,1 @@
-May the Games begin
+Weekend of Games
