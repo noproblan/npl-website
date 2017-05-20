@@ -1,26 +1,24 @@
 <p>
-    Hey <?= $this->username ?><br />
+    Hi <?= $this->username ?><br />
     <br />
-    Die noprobLAN v50.6 ist vorbei und es hat riesig Spass gemacht so viele Gamer zu sehen!<br />
-    Danke nochmals an alle, die Teil dieses Erlebnisses waren.<br />
+    Das Pfingst-Wochenende steht schon fast vor der Tür und wir haben noch ein paar Infos, bevor die noprobLAN v64.7
+    startet.<br />
     <br />
-    Nun aber eine kleine Herausforderung: Die nächste LAN im Oktober bietet lediglich Platz für 50 Leute!<br />
-    Wir haben beschlossen nach einer solch grossen noprobLAN wieder etwas den Ursprung auf der Bühne aufleben zu lassen.<br />
+    <b>Helfer</b><br />
+    Wir sind wie immer auf die Mithilfe durch Gamer angewiesen, sei es für den Auf- und Abbau, wie auch für einzelne
+    Schichten während der LAN.<br />
+    Melde dich am besten direkt bei Abiria, wenn du helfen möchtest:
+    <a href="mailto:abiria@outlook.com">abiria@outlook.com</a><br />
     <br />
-    <b>Vorauszahlung:</b><br />
-    Aus Fairness gegenüber all denjenigen, die nicht an dieser npL teilgenommen hatten, konnten die anwesenden Gamer nicht bereits an der LAN für die nächste npL vorauszahlen.<br />
-    Jeder von euch hat somit die Chance eine der wenigen Plätze zu ergatten.<br />
-    Mit diesem Schritt möchten wir das Wort "Gemütlich" wieder etwas in den Fokus setzen.<br />
+    <b>Discord</b><br />
+    Wir haben uns einen Discord-Server eingerichtet und du kannst uns jederzeit joinen:
+    <a href="https://discord.gg/Wkjar7N">https://discord.gg/Wkjar7N</a><br />
     <br />
-    Sobald wir Deine Vorauszahlung erhalten und den Sitzplan aufgeschaltet haben, kannst Du einen Sitzplatz reservieren.
-    Normalerweise sind wir etwa einen Monat im Voraus ausverkauft. Wir rechnen aber damit, dass es auf Grund der eher kleineren LAN wesentlich schneller gehen wird.<br />
-    Wenn du also gerne teilnehmen möchtest melde dich am besten jetzt gleich an und zahle voraus!<br />
+    <b>Letzte Sitzplätze</b><br />
+    Gemäss letztem Stand gibt es noch genau 6 Plätze, die zu vergeben sind, aber 33 Leute, die sich vorangemeldet haben.<br />
+    Die ersten sechs, die vorausbezahlen, haben somit einen Sitzplatz! Also zahl sofort ein und hoffe, dass du schneller
+    warst als der Rest.<br />
     <br />
-    <b>Turniere:</b><br />
-    Die Turniere sind derzeit noch nicht bekannt und stellen nicht den Fokus der nächsten npL dar.<br />
-    Es wird aber sicherlich Turniere geben.<br />
-    <br />
-    Beste Grüsse und wir freuen uns schon jetzt auf den Oktober,<br />
-    <br />
+    Wir freuen uns auf das gemeinsame Wochenende.<br />
     Das noprobLAN Team
 </p>
