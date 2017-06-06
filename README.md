@@ -28,6 +28,20 @@ GRANT ALL PRIVILEGES ON npl.* TO 'npl'@'localhost';</pre>
 ### Manual setup of AMPP on Mac OS X Yosemite
 There is already a lot of documentation on the internet, I recommend to use [this guide](http://coolestguidesontheplanet.com/get-apache-mysql-php-phpmyadmin-working-osx-10-10-yosemite/)
 
+### Docker
+
+Install docker and then run
+
+    bin/setup
+
+This copies the INIs if necessary and builds the container.
+Run the container like that:
+
+    bin/run
+
+Then you can open the webpage under http://localhost/public/www
+
+
 ## Deployment
 For deploying the master branch to production use `bash scripts/deploy_prod.sh USER@HOST` from your developer machine.
 
