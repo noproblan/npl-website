@@ -21,7 +21,8 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 --
 INSERT INTO `npl_users` (`id`, `username`, `password`, `salt`, `mail`, `active`, `mail_verified`, `register_datetime`, `written_datetime`) VALUES
 (1, 'admin', SHA1(CONCAT('banane', SHA1('banane'))), SHA1('banane'), 'admin@noproblan.ch', 1, 1, '2012-01-01 00:00:00', '2012-01-01 00:00:00'),
-(2, 'guest', SHA1(CONCAT('banane', SHA1('banane'))), SHA1('banane'), 'noreply@noproblan.ch', 1, 1, '2012-01-01 00:00:00', '2012-01-01 00:00:00');
+(2, 'guest', SHA1(CONCAT('banane', SHA1('banane'))), SHA1('banane'), 'noreply@noproblan.ch', 1, 1, '2012-01-01 00:00:00', '2012-01-01 00:00:00'),
+(3, 'sadi', SHA1(CONCAT('banane', SHA1('banane'))), SHA1('banane'), 'sadi@noproblan.ch', 1, 1, '2017-01-01 00:00:00', '2017-01-01 00:00:00');
 
 --
 -- Dumping data for table `npl_users_log`
@@ -33,7 +34,10 @@ INSERT INTO `npl_users` (`id`, `username`, `password`, `salt`, `mail`, `active`,
 
 INSERT INTO `npl_userroles` (`id`, `user_id`, `role_id`, `written_datetime`) VALUES
 (1, 1, 1, '2012-01-01 00:00:00'),
-(2, 2, 2, '2012-01-01 00:00:00');
+(2, 2, 2, '2012-01-01 00:00:00'),
+(3, 3, 2, '2017-01-01 00:00:00'),
+(4, 3, 3, '2017-01-01 00:00:00'),
+(5, 3, 5, '2017-01-01 00:00:00');
 
 --
 -- Dumping data for table `npl_userroles_log`
