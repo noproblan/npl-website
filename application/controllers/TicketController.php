@@ -20,7 +20,7 @@ class TicketController extends Zend_Controller_Action
     /**
      * Current user.
      *
-     * @var Application_Model_currentUser
+     * @var Application_Model_User
      */
     protected $_currentUser = null;
 
@@ -121,6 +121,7 @@ class TicketController extends Zend_Controller_Action
             return $this->_helper->redirector('list', 'lan');
 
         $extras = array();
+        $hasHelpingStatusChanged = false;
         foreach ($form->getValues() as $key => $value) {
             if ($key != "ticketId" && $key != "submit" && $key != "helping") {
                 if ($value == "1") {
@@ -130,14 +131,19 @@ class TicketController extends Zend_Controller_Action
                     $value = false;
                     $extras[$key] = $value;
                 }
-            } elseif ($key == "helping" && $ticket->getHelping() != $value) {
+            } elseif ($key == "helping") {
+                $hasHelpingStatusChanged = $ticket->getHelping() != $value;
                 $ticket->setHelping($value == "1");
-                // TODO: Send mail to helping organiser
             }
         }
 
         $ticket->setExtrasSplitted($extras);
         $this->_mapperTickets->save($ticket);
+
+        if ($hasHelpingStatusChanged) {
+            $this->sendHelpingMail($ticket);
+        }
+
         $this->_flashMessenger->setNamespace('success')->addMessage(
                 'Die Optionen für die LAN wurden gespeichert.'); //
         return $this->_helper->redirector('account', 'user');
@@ -254,5 +260,29 @@ class TicketController extends Zend_Controller_Action
             imagestring($im, 1, 5, 5, 'Error loading ' . $imgname, $tc);
         }
         return $im;
+    }
+
+    private function sendHelpingMail(Application_Model_Ticket $ticket) {
+        $isHelping = (bool) $ticket->getHelping();
+        $isHelpingTemplatePart = $isHelping ? 'new' : 'removed';
+        $helpingAdminMail = 'helper@noproblan.ch';
+
+        $mail = new Npl_Mail("utf-8");
+        $mail->setRecipient($helpingAdminMail);
+        $mail->setTemplate('helping-' . $isHelpingTemplatePart);
+        $mail->setTemplatePath(APPLICATION_PATH . "/views/scripts/mails");
+        $mail->username = $this->_currentUser->getUsername();
+        $mail->email = $this->_currentUser->getMail();
+        try {
+            $mail->send();
+            $this->_flashMessenger->setNamespace('success')->addMessage(
+                'Wir haben unseren Ressortleiter für Helfer informiert'
+            );
+        } catch (Zend_Mail_Transport_Exception $e) {
+            $this->_flashMessenger->setNamespace('error')->addMessage(
+                'Unser Ressortleiter für Helfer konnte nicht informiert werden. Bitte melde dich direkt bei '
+                . $helpingAdminMail
+            );
+        }
     }
 }
