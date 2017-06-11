@@ -122,7 +122,7 @@ class TicketController extends Zend_Controller_Action
         
         $extras = array();
         foreach ($form->getValues() as $key => $value) {
-            if ($key != "ticketId" && $key != "submit") {
+            if ($key != "ticketId" && $key != "submit" && $key != "helping") {
                 if ($value == "1") {
                     $value = true;
                     $extras[$key] = $value;
@@ -130,6 +130,9 @@ class TicketController extends Zend_Controller_Action
                     $value = false;
                     $extras[$key] = $value;
                 }
+            } elseif ($key == "helping" && $ticket->getHelping() != $value) {
+                $ticket->setHelping($value == "1");
+                // TODO: Send mail to helping organiser
             }
         }
         

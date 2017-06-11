@@ -15,6 +15,8 @@ class Application_Model_Ticket
 
     protected $_status;
 
+    protected $_helping;
+
     protected $_writtenDatetime;
 
     const STATUS_NOTPAID = "notpaid";
@@ -136,6 +138,17 @@ class Application_Model_Ticket
     public function getWrittenDatetime ()
     {
         return $this->_writtenDatetime;
+    }
+
+    public function getHelping ()
+    {
+        return $this->_helping;
+    }
+
+    public function setHelping ($isHelping)
+    {
+        $this->_helping = $isHelping;
+        return $this;
     }
 
     /**
