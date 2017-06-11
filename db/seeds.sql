@@ -36,7 +36,8 @@ INSERT INTO `npl_userroles` (`id`, `user_id`, `role_id`, `written_datetime`) VAL
 (1, 1, 1, '2012-01-01 00:00:00'),
 (2, 2, 2, '2012-01-01 00:00:00'),
 (3, 3, 3, '2012-01-01 00:00:00'),
-(4, 3, 4, '2012-01-01 00:00:00');
+(4, 3, 4, '2012-01-01 00:00:00'),
+(5, 3, 5, '2012-01-01 00:00:00');
 
 --
 -- Dumping data for table `npl_userroles_log`
@@ -204,7 +205,8 @@ INSERT INTO `npl_roles` (`id`, `name`, `written_datetime`) VALUES
 (1, 'Administrator', '2012-01-01 00:00:00'),
 (2, 'Guest', '2012-01-01 00:00:00'),
 (3, 'User', '2012-01-01 00:00:00'),
-(4, 'Team', '2012-09-25 00:00:00');
+(4, 'Team', '2012-09-25 00:00:00'),
+(5, 'Helfer', '2012-09-25 00:00:00');
 
 --
 -- Dumping data for table `npl_roles_log`
