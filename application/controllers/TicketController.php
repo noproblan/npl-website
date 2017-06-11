@@ -5,21 +5,21 @@ class TicketController extends Zend_Controller_Action
 
     /**
      * Mapper instance of tickets.
-     * 
+     *
      * @var Application_Model_Mapper_TicketsMapper
      */
     protected $_mapperTickets = null;
 
     /**
      * Mapper instance of users.
-     * 
+     *
      * @var Application_Model_Mapper_UsersMapper
      */
     protected $_mapperUsers = null;
 
     /**
      * Current user.
-     * 
+     *
      * @var Application_Model_currentUser
      */
     protected $_currentUser = null;
@@ -32,21 +32,21 @@ class TicketController extends Zend_Controller_Action
 
     /**
      * Validator instance for digits.
-     * 
+     *
      * @var Zend_Validate_Digits
      */
     protected $_digitValidator = null;
 
     /**
      * Validator instance for ids of tickets.
-     * 
+     *
      * @var Zend_Validate_Db_RecordExists
      */
     protected $_ticketIDValidator = null;
 
     /**
      * Validator instance for ids of seats.
-     * 
+     *
      * @var Zend_Validate_Db_RecordExists
      */
     protected $_seatIDValidator = null;
@@ -72,15 +72,15 @@ class TicketController extends Zend_Controller_Action
         $this->_mapperTickets = new Application_Model_Mapper_TicketsMapper();
         $this->_mapperUsers = new Application_Model_Mapper_UsersMapper();
         $this->_currentUser = new Application_Model_User();
-        
+
         if (Zend_Auth::getInstance()->hasIdentity()) {
             $this->_mapperUsers->find(
-                    Zend_Auth::getInstance()->getIdentity()->id, 
+                    Zend_Auth::getInstance()->getIdentity()->id,
                     $this->_currentUser);
         }
-        
+
         $this->_flashMessenger = $this->_helper->getHelper('FlashMessenger');
-        
+
         $this->_digitValidator = new Zend_Validate_Digits();
         $this->_ticketIDValidator = new Zend_Validate_Db_RecordExists(
                 array(
@@ -101,7 +101,7 @@ class TicketController extends Zend_Controller_Action
     public function changeextrasAction ()
     {
         $form = new Application_Form_TicketExtras();
-        
+
         if (! $this->getRequest()->isPost())
             return $this->_helper->redirector('list', 'lan');
         if (! $form->isValid($this->getRequest()
@@ -111,15 +111,15 @@ class TicketController extends Zend_Controller_Action
             return $this->_helper->redirector('list', 'lan');
         if (! $this->_ticketIDValidator->isValid($form->getValue('ticketId')))
             return $this->_helper->redirector('list', 'lan');
-        
+
         $ticketId = (int) $form->getValue('ticketId');
-        
+
         $ticket = new Application_Model_Ticket();
         $this->_mapperTickets->find($ticketId, $ticket);
-        
+
         if ($this->_currentUser->getId() != $ticket->getUserId())
             return $this->_helper->redirector('list', 'lan');
-        
+
         $extras = array();
         foreach ($form->getValues() as $key => $value) {
             if ($key != "ticketId" && $key != "submit" && $key != "helping") {
@@ -135,7 +135,7 @@ class TicketController extends Zend_Controller_Action
                 // TODO: Send mail to helping organiser
             }
         }
-        
+
         $ticket->setExtrasSplitted($extras);
         $this->_mapperTickets->save($ticket);
         $this->_flashMessenger->setNamespace('success')->addMessage(
@@ -151,10 +151,10 @@ class TicketController extends Zend_Controller_Action
     {
         if (! $this->getRequest()->isPost())
             return $this->_helper->redirector('list', 'lan');
-        
+
         $ticketId = $this->getRequest()->getParam('ticket', null);
         $seatId = $this->getRequest()->getParam('seat', null);
-        
+
         if (is_null($ticketId) || is_null($seatId))
             return $this->_helper->redirector('list', 'lan');
         if (! $this->_digitValidator->isValid($ticketId) ||
@@ -168,47 +168,47 @@ class TicketController extends Zend_Controller_Action
                     self::MSG_TICKETID_INVALID);
             return $this->_helper->redirector('list', 'lan');
         }
-        
+
         $ticketsMapper = new Application_Model_Mapper_TicketsMapper();
         $ticket = new Application_Model_Ticket();
         $ticketsMapper->find($ticketId, $ticket);
-        
+
         if (! $this->_seatIDValidator->isValid($seatId)) {
             $this->_flashMessenger->setNamespace('error')->addMessage(
                     self::MSG_SEATID_INVALID);
-            return $this->_helper->redirector('reservation', 'lan', null, 
+            return $this->_helper->redirector('reservation', 'lan', null,
                     array(
                             'lanid' => $ticket->getLanId()
                     ));
         }
-        
+
         if ($ticket->getStatus() == Application_Model_Ticket::STATUS_NOTPAID) {
             $this->_flashMessenger->setNamespace('error')->addMessage(
                     self::MSG_ONLY_PAID);
-            return $this->_helper->redirector('reservation', 'lan', null, 
+            return $this->_helper->redirector('reservation', 'lan', null,
                     array(
                             'lanid' => $ticket->getLanId()
                     ));
         }
-        
+
         $seatsMapper = new Application_Model_Mapper_SeatsMapper();
         $seat = new Application_Model_Seat();
         $seatsMapper->find($seatId, $seat);
-        
+
         if (! $seat->isAvailable()) {
             $this->_flashMessenger->setNamespace('error')->addMessage(
                     self::MSG_SEAT_TAKEN);
-            return $this->_helper->redirector('reservation', 'lan', null, 
+            return $this->_helper->redirector('reservation', 'lan', null,
                     array(
                             'lanid' => $ticket->getLanId()
                     ));
         }
-        
+
         $ticket->setSeatId($seatId);
         $ticketsMapper->save($ticket);
         $this->_flashMessenger->setNamespace('success')->addMessage(
                 self::MSG_SEAT_RESERVED);
-        return $this->_helper->redirector('reservation', 'lan', null, 
+        return $this->_helper->redirector('reservation', 'lan', null,
                 array(
                         'lanid' => $ticket->getLanId()
                 ));

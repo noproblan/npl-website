@@ -130,7 +130,7 @@ class Application_Model_Ticket
 
     public function setWrittenDatetime ($writtenDatetime)
     {
-        $this->_writtenDatetime = date("d.m.Y H:i:s", 
+        $this->_writtenDatetime = date("d.m.Y H:i:s",
                 strtotime($writtenDatetime));
         return $this;
     }
@@ -153,7 +153,7 @@ class Application_Model_Ticket
 
     /**
      * Get extras and explode it into an array to separate extras.
-     * 
+     *
      * @return string
      */
     public function getExtrasSplitted ()
@@ -170,8 +170,8 @@ class Application_Model_Ticket
 
     /**
      * Combines an array to a string and set it as extras.
-     * 
-     * @param string $array            
+     *
+     * @param string $array
      */
     public function setExtrasSplitted ($array)
     {
