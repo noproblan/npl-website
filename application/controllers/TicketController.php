@@ -265,7 +265,7 @@ class TicketController extends Zend_Controller_Action
     private function sendHelpingMail(Application_Model_Ticket $ticket) {
         $isHelping = (bool) $ticket->getHelping();
         $isHelpingTemplatePart = $isHelping ? 'new' : 'removed';
-        $helpingAdminMail = 'helper@noproblan.ch';
+        $helpingAdminMail = $this->_getMailOfChiefOfHelper();
 
         $mail = new Npl_Mail("utf-8");
         $mail->setRecipient($helpingAdminMail);
@@ -284,5 +284,35 @@ class TicketController extends Zend_Controller_Action
                 . $helpingAdminMail
             );
         }
+    }
+
+    private function _getMailOfChiefOfHelper() {
+        $fallbackMail = 'admin@noproblan.ch';
+        $adminUserRolesMapper = new Application_Model_Mapper_UserRolesMapper();
+        $adminRolesMapper = new Application_Model_Mapper_RolesMapper();
+
+        $helferRole = $adminRolesMapper->findByRoleName('Helfer');
+
+        if (count($helferRole) > 0) {
+            $role = $helferRole[0];
+            $roleId = $role->getId();
+
+            if (isset($roleId)) {
+                $helfers = $adminUserRolesMapper->findByRoleId($roleId);
+
+                if (count($helfers) > 0) {
+                    $helfer = $helfers[0];
+                    $helferObject = new Application_Model_User();
+                    $this->_mapperUsers->find($helfer->getUserId(), $helferObject);
+                    $helferId = $helferObject->getId();
+
+                    if (isset($helferId)) {
+                        return $helferObject->getMail();
+                    }
+                }
+            }
+        }
+
+        return $fallbackMail;
     }
 }
