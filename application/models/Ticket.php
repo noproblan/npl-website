@@ -15,7 +15,7 @@ class Application_Model_Ticket
 
     protected $_status;
 
-    protected $_helping;
+    protected $_helping = 0;
 
     protected $_writtenDatetime;
 
