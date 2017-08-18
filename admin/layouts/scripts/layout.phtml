@@ -18,23 +18,26 @@
 			<br />
 			<div id="header-navigation" style="float: left">
 			    <a href="<?php echo $this->url(
-            		array('controller'=>'index'), 'default', true) 
+            		array('controller'=>'index'), 'default', true)
             	?>">Home</a>
                 <a href="<?php echo $this->url(
                     array('controller'=>'news'), 'default', true)
                 ?>">News</a>
         		<a href="<?php echo $this->url(
-            		array('controller'=>'user'), 'default', true) 
+            		array('controller'=>'user'), 'default', true)
             	?>">User</a>
             	<a href="<?php echo $this->url(
-            		array('controller'=>'rights'), 'default', true) 
+            		array('controller'=>'rights'), 'default', true)
             	?>">Rechte</a>
 			    <a href="<?php echo $this->url(
-            		array('controller'=>'lan'), 'default', true) 
+            		array('controller'=>'lan'), 'default', true)
             	?>">LAN</a>
             	<a href="<?php echo $this->url(
-            		array('controller'=>'srs'), 'default', true) 
+            		array('controller'=>'srs'), 'default', true)
             	?>">Seats</a>
+            	<a href="<?php echo $this->url(
+            		array('controller'=>'helper'), 'default', true)
+            	?>">Helfer</a>
     		</div>
 		</div>
 		<?php echo $this->layout()->content; ?>

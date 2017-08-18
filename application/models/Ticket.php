@@ -15,6 +15,8 @@ class Application_Model_Ticket
 
     protected $_status;
 
+    protected $_helping = 0;
+
     protected $_writtenDatetime;
 
     const STATUS_NOTPAID = "notpaid";
@@ -128,7 +130,7 @@ class Application_Model_Ticket
 
     public function setWrittenDatetime ($writtenDatetime)
     {
-        $this->_writtenDatetime = date("d.m.Y H:i:s", 
+        $this->_writtenDatetime = date("d.m.Y H:i:s",
                 strtotime($writtenDatetime));
         return $this;
     }
@@ -138,9 +140,20 @@ class Application_Model_Ticket
         return $this->_writtenDatetime;
     }
 
+    public function getHelping ()
+    {
+        return $this->_helping;
+    }
+
+    public function setHelping ($isHelping)
+    {
+        $this->_helping = $isHelping;
+        return $this;
+    }
+
     /**
      * Get extras and explode it into an array to separate extras.
-     * 
+     *
      * @return string
      */
     public function getExtrasSplitted ()
@@ -157,8 +170,8 @@ class Application_Model_Ticket
 
     /**
      * Combines an array to a string and set it as extras.
-     * 
-     * @param string $array            
+     *
+     * @param string $array
      */
     public function setExtrasSplitted ($array)
     {

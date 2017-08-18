@@ -19,6 +19,7 @@ foreach ($this->lans as $attendingLan) {
                     $lanname = str_replace(" ", "_", $lanname);
                     $username = $user->getUsername();
                     $extras = $ticket->getExtrasSplitted();
+                    $extras['helping'] = $ticket->getHelping();
                     $form = new Application_Form_TicketExtras();
                     foreach ($extras as $key => $value) {
                         $element = $form->getElement($key);
@@ -66,6 +67,13 @@ foreach ($this->lans as $attendingLan) {
     <li>Bezahlen und auf Bestätigung warten</li>
     <li>Sitzplatz reservieren&sup2;</li>
 </ol>
+                    <b>Helfer</b>
+                    <ul>
+                        <li>Gib bei den Optionen an, dass du helfen möchtest. Wir sind froh um helfende Hände :-)</li>
+                        <li>Du wirst dann von uns kontaktiert</li>
+                        <li>Grundsätzlich kannst du beim Auf- oder Abbau oder während der LAN helfen</li>
+                        <li>Je nach Anzahl der Schichten erhälst du Vergünstigungen (Gratis Eintritt, Gratis Essen, ...)</li>
+                    </ul>
 <small>&sup1; Vorauszahlung gilt auch für weibliche Gamer (wird an der
     LAN zurückerstattet).</small>
 <br />
@@ -75,7 +83,7 @@ foreach ($this->lans as $attendingLan) {
 <b>Optionen</b>
 <br />
 <br />
-<?= $form?>
+<?= $form ?>
 <br />
 <b>Einzahlungsschein</b>
 <br />

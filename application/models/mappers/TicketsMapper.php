@@ -33,7 +33,8 @@ class Application_Model_Mapper_TicketsMapper
                 'user_id' => $ticket->getUserId(),
                 'seat_id' => $ticket->getSeatId(),
                 'extras' => $ticket->getExtras(),
-                'status' => $ticket->getStatus()
+                'status' => $ticket->getStatus(),
+                'helping' => $ticket->getHelping()
         );
         if ($data['seat_id'] == 0)
             unset($data['seat_id']);
@@ -119,6 +120,7 @@ class Application_Model_Mapper_TicketsMapper
         $ticket->setSeatId($row->seat_id);
         $ticket->setExtras($row->extras);
         $ticket->setStatus($row->status);
+        $ticket->setHelping($row->helping);
         $ticket->setWrittenDatetime($row->written_datetime);
     }
 }
