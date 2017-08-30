@@ -191,14 +191,6 @@ noscript .infobox {
     padding: 5px;
 }
 
-#sidebar {
-    float: left;
-    padding: 5px;
-    width: 20px;
-    /*width: 190px;*/
-    min-height: 250px;
-}
-
 #content {
     padding: 15px;
 }
