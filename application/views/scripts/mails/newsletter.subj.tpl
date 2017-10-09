@@ -1,1 +1,1 @@
-May the Games begin
+LAN-Parties, LAN-Parties everywhere
