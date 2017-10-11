@@ -21,7 +21,8 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 --
 INSERT INTO `npl_users` (`id`, `username`, `password`, `salt`, `mail`, `active`, `mail_verified`, `register_datetime`, `written_datetime`) VALUES
 (1, 'admin', SHA1(CONCAT('banane', SHA1('banane'))), SHA1('banane'), 'admin@noproblan.ch', 1, 1, '2012-01-01 00:00:00', '2012-01-01 00:00:00'),
-(2, 'guest', SHA1(CONCAT('banane', SHA1('banane'))), SHA1('banane'), 'noreply@noproblan.ch', 1, 1, '2012-01-01 00:00:00', '2012-01-01 00:00:00');
+(2, 'guest', SHA1(CONCAT('banane', SHA1('banane'))), SHA1('banane'), 'noreply@noproblan.ch', 1, 1, '2012-01-01 00:00:00', '2012-01-01 00:00:00'),
+(3, 'dev-user', SHA1(CONCAT('banane', SHA1('banane'))), SHA1('banane'), 'dev-user@noproblan.ch', 1, 1, '2012-01-01 00:00:00', '2012-01-01 00:00:00');
 
 --
 -- Dumping data for table `npl_users_log`
@@ -33,7 +34,10 @@ INSERT INTO `npl_users` (`id`, `username`, `password`, `salt`, `mail`, `active`,
 
 INSERT INTO `npl_userroles` (`id`, `user_id`, `role_id`, `written_datetime`) VALUES
 (1, 1, 1, '2012-01-01 00:00:00'),
-(2, 2, 2, '2012-01-01 00:00:00');
+(2, 2, 2, '2012-01-01 00:00:00'),
+(3, 3, 3, '2012-01-01 00:00:00'),
+(4, 3, 4, '2012-01-01 00:00:00'),
+(5, 3, 5, '2012-01-01 00:00:00');
 
 --
 -- Dumping data for table `npl_userroles_log`
@@ -58,7 +62,8 @@ INSERT INTO `npl_admin_resources` (`id`, `controller_name`, `action_name`, `writ
 (13, 'srs', 'edit', '2013-02-04 21:54:55'),
 (14, 'srs', 'ajaxsave', '2013-02-04 21:54:55'),
 (15, 'srs', 'index', '2013-02-04 22:12:36'),
-(16, 'lan', 'newticket', '2013-04-04 13:02:22');
+(16, 'lan', 'newticket', '2013-04-04 13:02:22'),
+(17, 'helper', 'index', '2013-04-04 13:02:22');
 
 --
 -- Dumping data for table `npl_admin_rights`
@@ -81,7 +86,8 @@ INSERT INTO `npl_admin_rights` (`id`, `admin_role_id`, `admin_resource_id`, `wri
 (22, 3, 6, '2013-02-04 22:00:00'),
 (23, 3, 11, '2013-02-04 22:00:40'),
 (24, 5, 15, '2013-02-04 22:14:49'),
-(26, 3, 16, '2013-04-04 13:02:41');
+(26, 3, 16, '2013-04-04 13:02:41'),
+(27, 6, 17, '2013-04-04 13:02:41');
 
 --
 -- Dumping data for table `npl_admin_roles`
@@ -91,14 +97,19 @@ INSERT INTO `npl_admin_roles` (`id`, `name`, `written_datetime`) VALUES
 (2, 'Guest', '2012-09-07 23:28:13'),
 (3, 'Team', '2012-09-07 23:38:50'),
 (4, 'Finanzen', '2013-02-04 21:24:17'),
-(5, 'Sitzplan', '2013-02-04 21:24:17');
+(5, 'Sitzplan', '2013-02-04 21:24:17'),
+(6, 'Helfer', '2013-02-04 21:24:17');
 
 --
 -- Dumping data for table `npl_admin_userroles`
 --
 INSERT INTO `npl_admin_userroles` (`id`, `user_id`, `role_id`, `written_datetime`) VALUES
 (1, 1, 1, '2012-09-07 00:00:00'),
-(2, 2, 2, '2012-09-07 00:00:00');
+(2, 2, 2, '2012-09-07 00:00:00'),
+(3, 3, 3, '2012-09-07 00:00:00'),
+(4, 3, 4, '2012-09-07 00:00:00'),
+(5, 3, 5, '2012-09-07 00:00:00'),
+(6, 3, 6, '2012-09-07 00:00:00');
 
 --
 -- Dumping data for table `npl_gal_albums`
@@ -178,7 +189,8 @@ INSERT INTO `npl_resources` (`id`, `controller_name`, `action_name`, `written_da
 (31, 'sponsor', 'index', '2012-09-30 18:24:09'),
 (32, 'sponsor', 'list', '2012-09-30 18:24:09'),
 (33, 'ticket', 'reserveseat', '2012-09-30 18:24:09'),
-(34, 'lan', 'reservation', '2012-09-30 18:24:09');
+(34, 'lan', 'reservation', '2012-09-30 18:24:09'),
+(35, 'news', 'list', '2012-09-30 18:24:09');
 
 --
 -- Dumping data for table `npl_resources_log`
@@ -193,7 +205,8 @@ INSERT INTO `npl_roles` (`id`, `name`, `written_datetime`) VALUES
 (1, 'Administrator', '2012-01-01 00:00:00'),
 (2, 'Guest', '2012-01-01 00:00:00'),
 (3, 'User', '2012-01-01 00:00:00'),
-(4, 'Team', '2012-09-25 00:00:00');
+(4, 'Team', '2012-09-25 00:00:00'),
+(5, 'Helfer', '2012-09-25 00:00:00');
 
 --
 -- Dumping data for table `npl_roles_log`
@@ -277,7 +290,8 @@ INSERT INTO `npl_rights` (`id`, `role_id`, `resource_id`, `written_datetime`) VA
 (72, 4, 31, '2012-09-25 00:00:00'),
 (73, 4, 32, '2012-09-25 00:00:00'),
 (81, 3, 33, '2012-09-30 18:24:09'),
-(82, 3, 34, '2012-09-30 18:24:09');
+(82, 3, 34, '2012-09-30 18:24:09'),
+(83, 2, 35, '2012-09-30 18:24:09');
 
 --
 -- Dumping data for table `npl_rights_log`

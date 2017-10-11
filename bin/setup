@@ -1,0 +1,10 @@
+#!/bin/sh
+
+cp -i application/configs/application.example.ini application/configs/application.ini
+cp -i admin/configs/application.example.ini admin/configs/application.ini
+
+cp -i public/www/.htaccess.example public/www/.htaccess
+cp -i public/admin/.htaccess.example public/admin/.htaccess
+
+docker build -t npl-website .
+

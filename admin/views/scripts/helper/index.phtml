@@ -1,0 +1,38 @@
+<div id="view-content">
+    <div id="title">
+        <h1>Helfer-Verwaltung → Helfer verwalten</h1>
+    </div>
+    <?php echo $this->messages(); ?>
+    <div id="information">
+        <?php foreach($this->lanTickets as $lans): ?>
+
+            <h2><?= $lans['name'] ?></h2>
+
+            <div class="ticketview">
+                <form action="" method="POST">
+                    <div>
+                        <?= count($lans['tickets']) ?> Helfer
+                    </div>
+                    <table>
+                        <tr>
+                            <th>Username</th>
+                            <th>Email</th>
+                            <th>Bezahlt</th>
+                            <th>TicketID</th>
+                        </tr>
+                        <?php foreach($lans['tickets'] as $ticket): ?>
+                            <tr>
+                                <td><?= $ticket['username'] ?></td>
+                                <td><?= $ticket['email'] ?></td>
+                                <td><?php echo $ticket['status'] != 'notpaid' ? 'Ja' : 'Nein'; ?></td>
+                                <td><?= $ticket['id'] ?></td>
+                            </tr>
+                        <?php endforeach; ?>
+                    </table>
+                </form>
+            </div>
+
+        <?php endforeach; ?>
+    </div>
+
+</div>
