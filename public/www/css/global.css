@@ -106,7 +106,7 @@ body input.button:hover {
 }
 
 #front-card {
-    width: 1000px;
+    max-width: 1000px;
     margin: 0px auto;
     text-align: left;
     -webkit-box-shadow: 0 1px 0 rgba(0, 0, 0, .2), 0 0 125px
@@ -191,20 +191,8 @@ noscript .infobox {
     padding: 5px;
 }
 
-#sidebar {
-    float: left;
-    padding: 5px;
-    width: 20px;
-    /*width: 190px;*/
-    min-height: 250px;
-}
-
 #content {
-    float: left;
-    width: 930px;
-    /*width: 790px;*/
-    padding: 5px;
-    padding-bottom: 15px;
+    padding: 15px;
 }
 
 #messages {
