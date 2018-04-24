@@ -1,19 +1,16 @@
 <p>
     Hi <?= $this->username ?><br />
     <br />
-    Dieses Wochenende steigt die letzte noprobLAN!<br />
-    Zumindest für dieses Jahr ;-)<br />
+    10 Jahre gibt es uns schon, unglaublich oder?<br />
+    Stell dir vor du müsstest noch einen <a href="https://npl.ch//img/gallery/noprobLAN4_5/lan_4_5_2.jpg">alten Röhrenmonitor</a> an die LAN mitnehmen!<br />
+    Zum Glück sind heute die Bildschirme leichter geworden (was man von den Wasser-gekühlten Computern aber nicht behaupten kann).<br />
     <br />
-    Noch hat es einige Plätze und wir würden uns natürlich freuen, wenn Du mit uns unser kleines Jubiläum feiern würden.<br />
-    Immerhin ist es unsere 20te noprobLAN!<br />
-    Also melde dich gleich jetzt an und mach noch heute die Vorauszahlung.<br />
+    Noch hat es ein paar Plätze frei und wir freuen uns natürlich, wenn wir zusammen mit dir das Jubiläum feiern können.<br />
+    Feuerwerk haben wir zwar keines vorbereitet aber ein Kuchen sollte schon drin liegen ;-)<br />
+    Also melde dich gleich jetzt an und mach noch heute die Vorauszahlung und sag es am Besten gleich noch weiter.<br />
     <br />
-    <b>Helfer</b><br />
-    Wir sind immer auf die Mithilfe durch Gamer angewiesen, sei es für den Auf- und Abbau, wie auch für einzelne
-    Schichten während der LAN.<br />
-    Wenn Du also eine Hand oder zwei Hände hast, die etwas aushelfen können, dann melde dich bei Abiria:
-    <a href="mailto:abiria@outlook.com">abiria@outlook.com</a><br />
+    Wir freuen uns mit dir 10 Jahre noprobLAN zu feiern und auf ein gemütliches Wochenende.<br />
+    Das noprobLAN Team<br />
     <br />
-    Wir freuen uns auf das gemeinsame Wochenende.<br />
-    Das noprobLAN Team
+    P.S. "The cake is a lie"
 </p>
