@@ -1371,7 +1371,6 @@ if (count($args) > count($keyNames)) {
 $whereList = array();
 $numberTerms = 0;
 foreach ($args as $keyPosition => $keyValues) {
-    $keyValuesCount = count($keyValues);
     // Coerce the values to an array.
     // Don't simply typecast to array, because the values
     // might be Zend_Db_Expr objects.
@@ -1380,6 +1379,7 @@ foreach ($args as $keyPosition => $keyValues) {
                 $keyValues
         );
     }
+    $keyValuesCount = count($keyValues);
     if ($numberTerms == 0) {
         $numberTerms = $keyValuesCount;
     } else 

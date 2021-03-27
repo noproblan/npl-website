@@ -53,18 +53,14 @@ class Admin_Model_Mapper_ResourcesMapper
         $this->_setValues($row, $resource);
     }
 
-    public function fetchResources ()
+    public function findByControllerAction($controller, $action, Admin_Model_Resource $resource)
     {
-        // Notice: Can't be simplified by _fetch because it has not all columns
-        $resultSet = $this->getDbTable()->fetchResources();
-        $roles = array();
-        foreach ($resultSet as $row) {
-            $role = new Admin_Model_Resource();
-            $role->setId($row->id);
-            $role->setControllerName($row->controller_name);
-            $roles[] = $role;
+        $result = $this->getDbTable()->findByControllerAction($controller, $action);
+        if (0 == count($result)) {
+            return;
         }
-        return $roles;
+        $row = $result->current();
+        $this->_setValues($row, $resource);
     }
 
     public function fetchAll ()
