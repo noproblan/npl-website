@@ -48,10 +48,15 @@ class Application_Plugin_Auth_Acl extends Zend_Acl
         $loginResource = new Application_Model_Resource();
         $mapperResources->findByControllerAction('auth', 'login', $loginResource);
 
-        // Allow everthing to administrator except login (Login not needed
-        // 'cause of already logged in)
-        $this->allow(1);
-        $this->deny(1, $loginResource);
+        $adminRole = new Application_Model_Role();
+        $mapperRoles->findByRoleName('Administrator', $adminRole);
+
+        if ($adminRoleId = $adminRole->getRoleId()) {
+            // Allow everything to administrator except login (Login not needed
+            // 'cause of already logged in)
+            $this->allow($adminRoleId);
+            $this->deny($adminRoleId, $loginResource);
+        }
 
         $errorResource = new Application_Model_Resource();
         $mapperResources->findByControllerAction('error', '', $errorResource);
