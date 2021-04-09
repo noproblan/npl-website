@@ -1,6 +1,6 @@
 <?php
 
-class Admin_Model_Role
+class Admin_Model_Role implements Zend_Acl_Role_Interface
 {
 
     protected $_id;
@@ -55,6 +55,11 @@ class Admin_Model_Role
     public function getId ()
     {
         return $this->_id;
+    }
+
+    public function getRoleId()
+    {
+        return $this->getId();
     }
 
     public function setName ($name)

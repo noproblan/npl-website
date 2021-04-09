@@ -27,7 +27,7 @@ class Zend_View_Helper_RandomGalleryPics extends Zend_View_Helper_Abstract
             unset($galleries[0]); unset($galleries[1]);
             $galleries = array_values($galleries); // reindex to be sure
 
-            if (empty($galleries)) break; // break if no subfolders are present
+            if (empty($galleries)) return []; // break if no subfolders are present
             
             $i = 0;
             while ($i++ < $count) {

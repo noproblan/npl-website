@@ -29,15 +29,16 @@ class Admin_Plugin_Auth_AccessControll extends Zend_Controller_Plugin_Abstract
         
         $controller = $request->getControllerName();
         $action = $request->getActionName();
-        
-        $this->_acl->has($controller) == true ? $resource = $controller : $resource = null;
-        $privilege = $action;
+
+        $resource = new Admin_Model_Resource();
+        $resourceMapper = new Admin_Model_Mapper_ResourcesMapper();
+        $resourceMapper->findByControllerAction($controller, $action, $resource);
         
         $allowed = false;
         foreach ($userroles as $userrole) {
             $role = new Admin_Model_Role();
             $roleMapper->find($userrole->getRoleId(), $role);
-            if ($this->_acl->isAllowed($role->getName(), $resource, $privilege)) {
+            if ($this->_acl->isAllowed($role, $resource)) {
                 $allowed = true;
             }
         }

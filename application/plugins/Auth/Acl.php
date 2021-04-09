@@ -13,11 +13,10 @@ class Application_Plugin_Auth_Acl extends Zend_Acl
     private function initResources ()
     {
         $mapper = new Application_Model_Mapper_ResourcesMapper();
-        $resources = $mapper->fetchResources();
+        $resources = $mapper->fetchAll();
         
         foreach ($resources as $resource) {
-            $this->addResource(
-                    new Zend_Acl_Resource($resource->getControllerName()));
+            $this->addResource($resource);
         }
     }
 
@@ -27,7 +26,7 @@ class Application_Plugin_Auth_Acl extends Zend_Acl
         $roles = $mapper->fetchAll();
         
         foreach ($roles as $role) {
-            $this->addRole(new Zend_Acl_Role($role->getName()));
+            $this->addRole($role);
         }
     }
 
@@ -43,16 +42,26 @@ class Application_Plugin_Auth_Acl extends Zend_Acl
             $role = new Application_Model_Role();
             $mapperResources->find($right->getResourceId(), $resource);
             $mapperRoles->find($right->getRoleId(), $role);
-            $this->allow($role->getName(), $resource->getControllerName(), 
-                    $resource->getActionName());
+            $this->allow($right->getRoleId(), $right->getResourceId());
         }
-        
-        // Allow everthing to administrator except login (Login not needed
-        // 'cause of already logged in)
-        $this->allow('Administrator');
-        $this->deny('Administrator', 'auth', 'login');
-        
+
+        $loginResource = new Application_Model_Resource();
+        $mapperResources->findByControllerAction('auth', 'login', $loginResource);
+
+        $adminRole = new Application_Model_Role();
+        $mapperRoles->findByRoleName('Administrator', $adminRole);
+
+        if ($adminRoleId = $adminRole->getRoleId()) {
+            // Allow everything to administrator except login (Login not needed
+            // 'cause of already logged in)
+            $this->allow($adminRoleId);
+            $this->deny($adminRoleId, $loginResource);
+        }
+
+        $errorResource = new Application_Model_Resource();
+        $mapperResources->findByControllerAction('error', '', $errorResource);
+
         // Allow Error-Controller (all Actions) for everyone
-        $this->allow(null, 'error');
+        $this->allow(null, $errorResource);
     }
 }

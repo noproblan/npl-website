@@ -1,6 +1,6 @@
 <?php
 
-class Application_Model_Resource
+class Application_Model_Resource implements Zend_Acl_Resource_Interface
 {
 
     protected $_id;
@@ -57,6 +57,11 @@ class Application_Model_Resource
     public function getId ()
     {
         return $this->_id;
+    }
+
+    public function getResourceId()
+    {
+        return $this->getId();
     }
 
     public function setControllerName ($controllerName)
