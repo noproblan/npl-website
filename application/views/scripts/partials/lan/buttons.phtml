@@ -1,21 +1,21 @@
-<?php $controller = Zend_Controller_Front::getInstance()->getRequest()->getControllerName(); ?>
+<?php
+$controller = Zend_Controller_Front::getInstance()->getRequest()->getControllerName();
 
-<?php if ($this->hasPaid == true) { ?>
-<a class="button"
-    href="<?php echo $this->url(array('controller'=>'lan','action'=>'reservation','lanid'=>$this->lanId),'default',true) ?>">Zur
-    Sitzplatzreservation</a>
-<?php } else { ?>
-    <?php if ($this->registrationPossible == true) { ?>
-        <?php if ($this->hasTicket == true) { ?>
-<a class="button"
-    href="<?php echo $this->url(array('controller'=>'lan','action'=>'participate','lanid'=>$this->lanId,'participate'=>'no','prevcont'=>$controller),'default',true) ?>">Von
-    der LAN abmelden</a>
-<?php } else { ?>
-<a class="button"
-    href="<?php echo $this->url(array('controller'=>'lan','action'=>'participate','lanid'=>$this->lanId,'participate'=>'yes','prevcont'=>$controller),'default',true) ?>">An
-    der LAN teilnehmen</a>
-<?php } ?>
-    <?php } else { ?>
-        Anmeldung geschlossen
-    <?php } ?>
-<?php } ?>
+if ($this->hasPaid == true):
+  $url = $this->url(array('controller'=>'lan','action'=>'reservation','lanid'=>$this->lanId),'default',true);
+  ?><a class="button" href="<?php echo $url ?>">Zur Sitzplatzreservation</a><?php
+else:
+  if ($this->registrationPossible == true) {
+    if ($this->hasTicket == true) {
+      $url = $this->url(array('controller'=>'lan','action'=>'participate','lanid'=>$this->lanId,'participate'=>'no','prevcont'=>$controller),'default',true);
+      ?><a class="button" href="<?php echo $url ?>">Von der LAN abmelden</a><?php
+    } else {
+      $url = $this->url(array('controller'=>'lan','action'=>'participate','lanid'=>$this->lanId,'participate'=>'yes','prevcont'=>$controller),'default',true);
+      ?><a class="button" href="<?php echo $url ?>">An der LAN teilnehmen</a><?php
+    }
+  } else {
+    ?>Anmeldung geschlossen<?php
+  }
+endif;
+?>
+
