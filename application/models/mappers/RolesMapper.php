@@ -52,9 +52,13 @@ class Application_Model_Mapper_RolesMapper
         $this->_setValues($row, $role);
     }
 
-    public function findByRoleName($roleName) {
-        return $this->_fetch($this->getDbTable()
-            ->findByRoleName($roleName));
+    public function findByRoleName($roleName, Application_Model_Role $role) {
+        $result = $this->getDbTable()->findByRoleName($roleName);
+        if (0 == count($result)) {
+            return;
+        }
+        $row = $result->current();
+        $this->_setValues($row, $role);
     }
 
     public function fetchAll ()
