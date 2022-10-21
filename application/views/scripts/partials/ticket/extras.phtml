@@ -85,17 +85,11 @@ foreach ($this->lans as $attendingLan) {
 <br />
 <?= $form ?>
 <br />
-<b>Einzahlungsschein</b>
+<b>QR Einzahlungsschein</b>
 <br />
 <small>Hast du auch wirklich gespeichert?</small>
 <br />
 <br />
-<a id="ezTarget"
-    href="<?php echo $this->url(array('controller'=>'ticket','action'=>'showpayment'),'default',true) ?>?event=<?= $lanname ?>&id=ID%20<?= $ticket->getId() ?>&amount=<?= $price ?>"
-    target="_blank" class="ezs"> <img id="ezPic"
-    src="<?php echo $this->url(array('controller'=>'ticket','action'=>'showpayment'),'default',true) ?>?event=<?= $lanname ?>&id=ID%20<?= $ticket->getId() ?>&amount=<?= $price ?>"
-    alt="Einzahlungsschein" width="400px" />
-</a><br /><br />
                     <table>
                         <tr>
                             <th>IBAN</th>
@@ -116,6 +110,16 @@ foreach ($this->lans as $attendingLan) {
                         <tr>
                             <th>Zahlungszweck</th>
                             <td><?php echo $lanname ?><br />ID <?php echo $ticket->getId() ?></td>
+                        </tr>
+                        <tr>
+                            <th>QR Rechnung</th>
+                            <td>
+                                <img
+                                    src="<?php echo $this->url(array('controller'=>'ticket','action'=>'showpayment'),'default',true) ?>?event=<?= $lanname ?>&id=ID%20<?= $ticket->getId() ?>&amount=<?= $price ?>"
+                                    alt="Zahlteil QR Code"
+                                    width="200px"
+                                />
+                            </td>
                         </tr>
                     </table>
 <?php

@@ -22,6 +22,8 @@ require_once 'Zend/Loader/Autoloader.php';
 $autoloader = Zend_Loader_Autoloader::getInstance();
 $autoloader->registerNamespace('Npl_');
 
+require_once '../../vendor/autoload.php';
+
 /**
  * Zend_Application
  */
