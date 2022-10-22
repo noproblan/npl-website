@@ -128,7 +128,8 @@ INSERT INTO `npl_gal_albums` (`id`, `name`, `folder`, `written_datetime`) VALUES
 -- Dumping data for table `npl_lans`
 --
 INSERT INTO `npl_lans` (`id`, `name`, `start_datetime`, `end_datetime`, `registration_end_datetime`, `planned_seats`, `written_datetime`) VALUES
-(15, 'noprobLAN v50.6', '2020-04-10 18:00:00', '2020-04-12 16:00:00', NULL, 200, '2014-11-08 11:40:39');
+(15, 'noprobLAN v50.6', '2020-04-10 18:00:00', '2020-04-12 16:00:00', NULL, 200, '2014-11-08 11:40:39'),
+(99, 'noprobLAN vXY.Z', DATE_FORMAT(CURRENT_DATE() + 1, "%Y-%m-%d 18:00:00"), DATE_FORMAT(CURRENT_DATE() + 3, "%Y-%m-%d 16:00:00"), NULL, 60, '2014-11-08 11:40:39');
 
 --
 -- Dumping data for table `npl_lans_log`
