@@ -23,7 +23,7 @@
     Anzahl Plätze beschränkt ist.<br>
     Also am Besten gleich anmelden und vorauszahlen, damit du sicher deinen eigenen Tisch hast!<br>
     <br />
-    !!! Wichtige Info !!!<br>
+    <b>!!! Wichtige Info !!!</b><br>
     Falls du dich bereits angemeldet und gar vorausbezahlt hattest, so ist dir dein Status erhalten geblieben!<br>
     Sprich diejenigen, die vorausbezahlt hatten, sind nach wie vor vorausbezahlt. Angemeldete nach wie vor angemeldet.<br>
     <br>
