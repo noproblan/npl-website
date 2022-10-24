@@ -299,27 +299,24 @@ class TicketController extends Zend_Controller_Action
 
     private function _getMailOfChiefOfHelper() {
         $fallbackMail = 'admin@noproblan.ch';
-        $adminUserRolesMapper = new Application_Model_Mapper_UserRolesMapper();
-        $adminRolesMapper = new Application_Model_Mapper_RolesMapper();
+        $adminUserRolesMapper = new Admin_Model_Mapper_UserRolesMapper();
+        $adminRolesMapper = new Admin_Model_Mapper_RolesMapper();
+        $adminRole = new Admin_Model_Role();
 
-        $helferRole = $adminRolesMapper->findByRoleName('Helfer');
+        $adminRolesMapper->findByRoleName('Helfer', $adminRole);
+        $adminRoleId = $adminRole->getId();
 
-        if (count($helferRole) > 0) {
-            $role = $helferRole[0];
-            $roleId = $role->getId();
+        if (isset($adminRoleId)) {
+            $helperManagerUserRoles = $adminUserRolesMapper->findByRoleId($adminRoleId);
 
-            if (isset($roleId)) {
-                $helfers = $adminUserRolesMapper->findByRoleId($roleId);
+            if (count($helperManagerUserRoles) > 0) {
+                $helperManagerUserRole = $helperManagerUserRoles[0];
+                $helperManager = new Application_Model_User();
+                $this->_mapperUsers->find($helperManagerUserRole->getUserId(), $helperManager);
+                $helperManagerId = $helperManager->getId();
 
-                if (count($helfers) > 0) {
-                    $helfer = $helfers[0];
-                    $helferObject = new Application_Model_User();
-                    $this->_mapperUsers->find($helfer->getUserId(), $helferObject);
-                    $helferId = $helferObject->getId();
-
-                    if (isset($helferId)) {
-                        return $helferObject->getMail();
-                    }
+                if (isset($helperManagerId)) {
+                    return $helperManager->getMail();
                 }
             }
         }

@@ -22,6 +22,24 @@ require_once 'Zend/Loader/Autoloader.php';
 $autoloader = Zend_Loader_Autoloader::getInstance();
 $autoloader->registerNamespace('Npl_');
 
+// Erlaube das Laden von Models und Plugins aus der Adminapplikation
+$externResLoader = new Zend_Loader_Autoloader_Resource(
+    array(
+        'basePath' => APPLICATION_PATH . '/../admin',
+        'namespace' => 'Admin_'
+    ));
+$externResLoader->addResourceTypes(
+    array(
+        'model' => array(
+            'namespace' => 'Model',
+            'path' => 'models'
+        ),
+        'mapper' => array(
+            'namespace' => 'Model_Mapper',
+            'path' => 'models/mappers'
+        )
+    ));
+
 require_once '../../vendor/autoload.php';
 
 /**
