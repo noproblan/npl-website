@@ -143,7 +143,8 @@ class TicketController extends Zend_Controller_Action
         $ticket->setExtrasSplitted($extras);
         $this->_mapperTickets->save($ticket);
 
-        if ($hasHelpingStatusChanged) {            $this->sendHelpingMail($ticket);
+        if ($hasHelpingStatusChanged) {
+            $this->sendHelpingMail($ticket);
         }
 
         $this->_flashMessenger->setNamespace('success')->addMessage(
