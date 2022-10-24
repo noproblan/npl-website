@@ -134,16 +134,16 @@ class TicketController extends Zend_Controller_Action
                     $extras[$key] = $value;
                 }
             } elseif ($key == "helping") {
-                $hasHelpingStatusChanged = $ticket->getHelping() != $value;
-                $ticket->setHelping($value == "1");
+                $isHelping = $value === "1" ? "1" : "0";
+                $hasHelpingStatusChanged = $ticket->getHelping() !== $isHelping;
+                $ticket->setHelping($isHelping);
             }
         }
 
         $ticket->setExtrasSplitted($extras);
         $this->_mapperTickets->save($ticket);
 
-        if ($hasHelpingStatusChanged) {
-            $this->sendHelpingMail($ticket);
+        if ($hasHelpingStatusChanged) {            $this->sendHelpingMail($ticket);
         }
 
         $this->_flashMessenger->setNamespace('success')->addMessage(
