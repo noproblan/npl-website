@@ -1,5 +1,10 @@
 {
     "require": {
         "sprain/swiss-qr-bill": "^3.2"
+    },
+    "config": {
+        "platform": {
+            "php": "7.4.32"
+        }
     }
 }
