@@ -1,0 +1,11 @@
+{
+    "require": {
+        "sprain/swiss-qr-bill": "^3.2",
+        "fpdf/fpdf": "^1.84"
+    },
+    "config": {
+        "platform": {
+            "php": "7.4.32"
+        }
+    }
+}
