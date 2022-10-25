@@ -17,8 +17,8 @@ class Application_Form_TicketExtras extends Npl_TableForm
          * $checkCable = new Zend_Form_Element_Checkbox('cable');
          * $checkCable->setLabel('Zusätzliches LAN-Kabel (10 CHF)');
          */
-        $checkHelping = new Zend_Form_Element_Checkbox('helping');
-        $checkHelping->setLabel('Ich möchte gerne helfen');
+//        $checkHelping = new Zend_Form_Element_Checkbox('helping');
+//        $checkHelping->setLabel('Ich möchte gerne helfen');
         $ticketId = new Zend_Form_Element_Hidden('ticketId');
         $save = new Zend_Form_Element_Submit('submit',
                 array(
@@ -31,7 +31,7 @@ class Application_Form_TicketExtras extends Npl_TableForm
         $this->addElement($checkBreakfast);
         $this->addElement($checkDinner);
         // $this->addElement($checkCable);
-        $this->addElement($checkHelping);
+//        $this->addElement($checkHelping);
         $this->addElement($ticketId);
         $this->addElement($save);
     }

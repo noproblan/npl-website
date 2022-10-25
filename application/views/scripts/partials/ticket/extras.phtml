@@ -19,7 +19,7 @@ foreach ($this->lans as $attendingLan) {
                     $lanname = str_replace(" ", "_", $lanname);
                     $username = $user->getUsername();
                     $extras = $ticket->getExtrasSplitted();
-                    $extras['helping'] = $ticket->getHelping();
+//                    $extras['helping'] = $ticket->getHelping();
                     $form = new Application_Form_TicketExtras();
                     foreach ($extras as $key => $value) {
                         $element = $form->getElement($key);
