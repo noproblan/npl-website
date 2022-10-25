@@ -1,5 +1,7 @@
 <?php
 
+use Sprain\SwissQrBill as QrBill;
+
 class TicketController extends Zend_Controller_Action
 {
 
@@ -132,8 +134,9 @@ class TicketController extends Zend_Controller_Action
                     $extras[$key] = $value;
                 }
             } elseif ($key == "helping") {
-                $hasHelpingStatusChanged = $ticket->getHelping() != $value;
-                $ticket->setHelping($value == "1");
+                $isHelping = $value === "1" ? "1" : "0";
+                $hasHelpingStatusChanged = $ticket->getHelping() !== $isHelping;
+                $ticket->setHelping($isHelping);
             }
         }
 
@@ -233,33 +236,48 @@ class TicketController extends Zend_Controller_Action
         if (is_null($event) || is_null($ticketId) || is_null($amount)) {
             return;
         } else {
-            header('Content-Type: image/jpeg');
-            $img = $this->loadJpeg('img/einzahlungsschein.jpg');
-            $black = imagecolorallocate($img, 0, 0, 0);
-            $font = 'img/arial.ttf';
+            $qrBill = QrBill\QrBill::create();
+            $qrBill->setCreditor(
+                QrBill\DataGroup\Element\CombinedAddress::create(
+                    'noprobLAN',
+                    'Löwenstrasse 1',
+                    '8585 Birwinken',
+                    'CH'
+                )
+            );
+            $qrBill->setCreditorInformation(
+                QrBill\DataGroup\Element\CreditorInformation::create(
+                    'CH0880808004923870407'
+                )
+            );
+            $qrBill->setPaymentAmountInformation(
+                QrBill\DataGroup\Element\PaymentAmountInformation::create(
+                    'CHF',
+                    $amount
+                )
+            );
+            $qrBill->setPaymentReference(
+                QrBill\DataGroup\Element\PaymentReference::create(
+                    QrBill\DataGroup\Element\PaymentReference::TYPE_NON
+                )
+            );
+            $qrBill->setAdditionalInformation(
+                QrBill\DataGroup\Element\AdditionalInformation::create(
+                    "$event - $ticketId"
+                )
+            );
 
-            // Add the text
-            imagettftext($img, 10, 0, 270, 70, $black, $font, $event);
-            imagettftext($img, 10, 0, 270, 88, $black, $font, $ticketId);
-            imagettftext($img, 10, 0, 70, 252, $black, $font, $amount);
+            $fpdf = new Fpdf\Fpdf('P', 'mm', 'A4');
+            $fpdf->AddPage();
 
-            imagejpeg($img);
-            imagedestroy($img);
-            return;
+            $output = new QRBill\PaymentPart\Output\FpdfOutput\FpdfOutput($qrBill, 'de', $fpdf);
+            $output
+                ->setPrintable(false)
+                ->getPaymentPart();
+
+            header('Content-Type: application/pdf');
+            $fpdf->Output('I', 'QR_Rechnung.pdf', true);
         }
-    }
-
-    private function loadJpeg($imgname)
-    {
-        $im = @imagecreatefromjpeg($imgname);
-        if (! $im) {
-            $im = imagecreatetruecolor(150, 30);
-            $bgc = imagecolorallocate($im, 255, 255, 255);
-            $tc = imagecolorallocate($im, 0, 0, 0);
-            imagefilledrectangle($im, 0, 0, 150, 30, $bgc);
-            imagestring($im, 1, 5, 5, 'Error loading ' . $imgname, $tc);
-        }
-        return $im;
     }
 
     private function sendHelpingMail(Application_Model_Ticket $ticket) {
@@ -288,27 +306,24 @@ class TicketController extends Zend_Controller_Action
 
     private function _getMailOfChiefOfHelper() {
         $fallbackMail = 'admin@noproblan.ch';
-        $adminUserRolesMapper = new Application_Model_Mapper_UserRolesMapper();
-        $adminRolesMapper = new Application_Model_Mapper_RolesMapper();
+        $adminUserRolesMapper = new Admin_Model_Mapper_UserRolesMapper();
+        $adminRolesMapper = new Admin_Model_Mapper_RolesMapper();
+        $adminRole = new Admin_Model_Role();
 
-        $helferRole = $adminRolesMapper->findByRoleName('Helfer');
+        $adminRolesMapper->findByRoleName('Helfer', $adminRole);
+        $adminRoleId = $adminRole->getId();
 
-        if (count($helferRole) > 0) {
-            $role = $helferRole[0];
-            $roleId = $role->getId();
+        if (isset($adminRoleId)) {
+            $helperManagerUserRoles = $adminUserRolesMapper->findByRoleId($adminRoleId);
 
-            if (isset($roleId)) {
-                $helfers = $adminUserRolesMapper->findByRoleId($roleId);
+            if (count($helperManagerUserRoles) > 0) {
+                $helperManagerUserRole = $helperManagerUserRoles[0];
+                $helperManager = new Application_Model_User();
+                $this->_mapperUsers->find($helperManagerUserRole->getUserId(), $helperManager);
+                $helperManagerId = $helperManager->getId();
 
-                if (count($helfers) > 0) {
-                    $helfer = $helfers[0];
-                    $helferObject = new Application_Model_User();
-                    $this->_mapperUsers->find($helfer->getUserId(), $helferObject);
-                    $helferId = $helferObject->getId();
-
-                    if (isset($helferId)) {
-                        return $helferObject->getMail();
-                    }
+                if (isset($helperManagerId)) {
+                    return $helperManager->getMail();
                 }
             }
         }
