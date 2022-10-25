@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "08175d3ef85aa765c235b53322d7e04e",
+    "content-hash": "3fa13faa986daa4199a87e84914c2d8c",
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -181,6 +181,52 @@
                 }
             ],
             "time": "2021-04-20T19:10:54+00:00"
+        },
+        {
+            "name": "fpdf/fpdf",
+            "version": "1.84.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/coreydoughty/Fpdf.git",
+                "reference": "cfafa307947f7c646b87045d0decc67bdc423209"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/coreydoughty/Fpdf/zipball/cfafa307947f7c646b87045d0decc67bdc423209",
+                "reference": "cfafa307947f7c646b87045d0decc67bdc423209",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.6.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Fpdf\\": "src/Fpdf"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Corey Doughty",
+                    "email": "corey@doughty.ca"
+                }
+            ],
+            "description": "FPDF Composer Wrapper",
+            "homepage": "https://github.com/coreydoughty/Fpdf",
+            "keywords": [
+                "fpdf",
+                "pdf",
+                "wrapper"
+            ],
+            "support": {
+                "issues": "https://github.com/coreydoughty/Fpdf/issues",
+                "source": "https://github.com/coreydoughty/Fpdf/tree/1.84.1"
+            },
+            "time": "2022-09-02T14:13:29+00:00"
         },
         {
             "name": "khanamiryan/qrcode-detector-decoder",
@@ -1753,5 +1799,8 @@
     "prefer-lowest": false,
     "platform": [],
     "platform-dev": [],
+    "platform-overrides": {
+        "php": "7.4.32"
+    },
     "plugin-api-version": "2.3.0"
 }
