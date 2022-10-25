@@ -267,10 +267,16 @@ class TicketController extends Zend_Controller_Action
                 )
             );
 
-            $img = $qrBill->getQrCode('png');
-            header('Content-Type: image/png');
-            imagepng($img);
-            imagedestroy($img);
+            $fpdf = new Fpdf\Fpdf('P', 'mm', 'A4');
+            $fpdf->AddPage();
+
+            $output = new QRBill\PaymentPart\Output\FpdfOutput\FpdfOutput($qrBill, 'de', $fpdf);
+            $output
+                ->setPrintable(false)
+                ->getPaymentPart();
+
+            header('Content-Type: application/pdf');
+            $fpdf->Output('I', 'QR_Rechnung.pdf', true);
         }
     }
 

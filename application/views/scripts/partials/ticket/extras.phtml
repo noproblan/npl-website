@@ -85,7 +85,7 @@ foreach ($this->lans as $attendingLan) {
 <br />
 <?= $form ?>
 <br />
-<b>QR Einzahlungsschein</b>
+<b>Einzahlung</b>
 <br />
 <small>Hast du auch wirklich gespeichert?</small>
 <br />
@@ -111,17 +111,12 @@ foreach ($this->lans as $attendingLan) {
                             <th>Zahlungszweck</th>
                             <td><?php echo $lanname ?><br />ID <?php echo $ticket->getId() ?></td>
                         </tr>
-                        <tr>
-                            <th>QR Rechnung</th>
-                            <td>
-                                <img
-                                    src="<?php echo $this->url(array('controller'=>'ticket','action'=>'showpayment'),'default',true) ?>?event=<?= $lanname ?>&id=ID%20<?= $ticket->getId() ?>&amount=<?= $price ?>"
-                                    alt="Zahlteil QR Code"
-                                    width="200px"
-                                />
-                            </td>
-                        </tr>
                     </table>
+                    <br />
+                    <a class="button" target="_blank" href="<?php echo $this->url(array('controller'=>'ticket','action'=>'showpayment'),'default',true) ?>?event=<?= $lanname ?>&id=ID%20<?= $ticket->getId() ?>&amount=<?= $price ?>">
+                        <img src="<?php echo $this->baseUrl('img/pdf.png') ?>" width="16px" alt="PDF Icon" />
+                        QR Rechnung
+                    </a>
 <?php
                 }
             }
