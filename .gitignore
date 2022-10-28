@@ -6,3 +6,6 @@ application.ini
 public/www/img/gallery/*
 .htaccess
 /vendor
+/var/
+/.phpunit.cache
+/tests/phpmd.html

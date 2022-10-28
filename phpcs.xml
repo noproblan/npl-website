@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ruleset name="npL Ruleset">
+    <description>This rule set is recommended by npL.</description>
+
+    <file>config</file>
+    <file>src</file>
+    <file>tests</file>
+
+    <arg name="extensions" value="php" />
+    <arg name="report" value="summary" />
+    <arg name="colors" />
+    <arg value="p"/>
+
+    <autoload>/vendor/autoload.php</autoload>
+
+    <rule ref="Generic"/>
+    <rule ref="MySource"/>
+    <rule ref="PEAR"/>
+    <rule ref="PSR1"/>
+    <rule ref="PSR12"/>
+    <rule ref="PSR2"/>
+    <rule ref="Squiz"/>
+    <rule ref="Zend"/>
+</ruleset>
