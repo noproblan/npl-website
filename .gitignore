@@ -8,5 +8,4 @@ public/www/img/gallery/*
 /vendor
 /var/
 /.phpunit.cache
-/tests/phpmd.html
 /reports
