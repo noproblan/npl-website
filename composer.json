@@ -10,6 +10,7 @@
         "vimeo/psalm": "^4.29",
         "psalm/plugin-phpunit": "^0.18.3",
         "php-standard-library/psalm-plugin": "^2.0",
+        "dg/bypass-finals": "^1.4"
     },
     "license": "ISC",
     "autoload": {
@@ -41,5 +42,6 @@
         "lambdish/phunctional": "^2.1",
         "ext-pdo": "*",
         "aura/sqlquery": "4.x-dev",
+        "symfony/dependency-injection": "^6.1"
     }
 }
