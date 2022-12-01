@@ -9,3 +9,4 @@ public/www/img/gallery/*
 /var/
 /.phpunit.cache
 /reports
+/config/config.php
