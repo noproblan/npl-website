@@ -6,7 +6,9 @@
         "squizlabs/php_codesniffer": "^3.7",
         "phpmd/phpmd": "^2.13",
         "phploc/phploc": "^7.0",
-        "phan/phan": "^5.4"
+        "vimeo/psalm": "^4.29",
+        "psalm/plugin-phpunit": "^0.18.3",
+        "php-standard-library/psalm-plugin": "^2.0",
     },
     "license": "ISC",
     "autoload": {
