@@ -14,7 +14,7 @@
          failOnWarning="true"
          verbose="true">
     <testsuites>
-        <testsuite name="default">
+        <testsuite name="All">
             <directory>./tests</directory>
         </testsuite>
     </testsuites>
@@ -30,6 +30,6 @@
     </coverage>
 
     <php>
-        <env name="APP_ENV" value="test" force="true"></env>
+        <env name="APP_ENV" value="test" force="true" />
     </php>
 </phpunit>
