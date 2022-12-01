@@ -1,35 +1,99 @@
-version: '3'
+version: '3.4'
+
+volumes:
+  phpmyadmin_data:
+
 services:
   composer:
     image: composer:2.4.3
+    container_name: composer
+    restart: "no"
     environment:
-      - COMPOSER_CACHE_DIR=/app/var/cache/composer
+      COMPOSER_CACHE_DIR: /app/var/cache/composer
     volumes:
       - .:/app
+  php:
+    image: php:8.1-cli
+    container_name: php
     restart: "no"
-#  php:
-#    image: php:7.4.32-cli
-#    restart: "no"
-#    volumes:
-#      - .:/app
-#    working_dir: /app
+    volumes:
+      - .:/app
+    working_dir: /app
   phpunit:
-    image: php:7.4.32-cli
+    build:
+      context: .docker/phpunit
+      target: phpunit-pcov
+    container_name: phpunit
     restart: "no"
     volumes:
       - .:/app
     working_dir: /app
     entrypoint: vendor/bin/phpunit
-#  fpm:
-#    image: php:7.4-fpm
-#    restart: always
-#    volumes:
-#      - .:/app
-#  nginx:
-#    image: nginx:1.17.8-alpine
-#    ports:
-#      - 8080:80
-#    volumes:
-#      - .:/app
+  phpunit-xdebug:
+    build:
+      context: .docker/phpunit
+      target: phpunit-xdebug
+    container_name: phpunit-xdebug
+    restart: "no"
+    environment:
+      PHP_IDE_CONFIG: "serverName=Docker"
+    volumes:
+      - .:/app
+    working_dir: /app
+    entrypoint: vendor/bin/phpunit
+  phpcs:
+    image: php:8.1-cli
+    container_name: phpcs
+    restart: "no"
+    volumes:
+      - .:/app
+    working_dir: /app
+    entrypoint: vendor/bin/phpcs --report=full --report-file=reports/phpcs.txt -q
+  phpmd:
+    image: php:8.1-cli
+    container_name: phpmd
+    restart: "no"
+    volumes:
+      - .:/app
+    working_dir: /app
+    entrypoint: vendor/bin/phpmd config,src,tests html phpmd.xml --reportfile reports/phpmd/index.html
+  mariadb:
+    image: mariadb:10.9.3
+    container_name: mariadb
+    restart: always
+    environment:
+      MARIADB_RANDOM_ROOT_PASSWORD: true
+    volumes:
+      - .docker/mariadb:/docker-entrypoint-initdb.d
+  phpmyadmin:
+    image: phpmyadmin:5.2.0-fpm-alpine
+    container_name: phpmyadmin
+    restart: always
+    environment:
+      PMA_USER: npl
+      PMA_PASSWORD: XXXXXXXXXXXXX
+      PMA_HOST: mariadb
+    volumes:
+      - phpmyadmin_data:/var/www/html/
+    depends_on:
+      - mariadb
+  fpm:
+    image: php:8.1-fpm
+    container_name: fpm
+    restart: always
+    volumes:
+      - .:/app
+  nginx:
+    image: nginx:1.17.8-alpine
+    container_name: nginx
+    restart: always
+    ports:
+      - "80:80"
+    volumes:
+      - .:/app:ro
+      - phpmyadmin_data:/var/www/html/:ro
+      - .docker/nginx/site.conf:/etc/nginx/conf.d/default.conf:ro
 #      - ./var/log/nginx:/var/log/nginx
-#      - .conf/nginx/site.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - fpm
+      - phpmyadmin
