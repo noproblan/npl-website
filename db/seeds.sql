@@ -1,5 +1,5 @@
 -- --------------------------------------------------------
--- Use the follwoing command in the shell to generate
+-- Use the following command in the shell to generate
 -- new migration file names:
 --
 -- date "+%Y%m%d%H%M%S"

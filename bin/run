@@ -1,4 +1,4 @@
 #!/bin/sh
 
-docker run -p 80:80 -v $(pwd):/var/www/html --rm -t -i npl-website
+docker run -p 80:80 -v "$(pwd)":/var/www/html --rm -t -i npl-website
 
