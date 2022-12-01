@@ -1,5 +1,6 @@
 {
     "name": "npl/website",
+    "description": "The npL website",
     "type": "project",
     "require-dev": {
         "phpunit/phpunit": "^9.5",
@@ -13,7 +14,7 @@
     "license": "ISC",
     "autoload": {
         "psr-4": {
-            "Npl\\": "src/"
+            "Npl\\": "src/Npl/"
         }
     },
     "autoload-dev": {
@@ -34,6 +35,11 @@
     },
     "require": {
         "sprain/swiss-qr-bill": "^4.6",
-        "fpdf/fpdf": "^1.84"
+        "fpdf/fpdf": "^1.84",
+        "ramsey/uuid": "^4.5",
+        "egulias/email-validator": "^3.2",
+        "lambdish/phunctional": "^2.1",
+        "ext-pdo": "*",
+        "aura/sqlquery": "4.x-dev",
     }
 }
