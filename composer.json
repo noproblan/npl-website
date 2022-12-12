@@ -10,7 +10,8 @@
         "vimeo/psalm": "^4.29",
         "psalm/plugin-phpunit": "^0.18.3",
         "php-standard-library/psalm-plugin": "^2.0",
-        "dg/bypass-finals": "^1.4"
+        "dg/bypass-finals": "^1.4",
+        "psalm/plugin-symfony": "^4.0"
     },
     "license": "ISC",
     "autoload": {
