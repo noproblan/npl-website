@@ -15,7 +15,8 @@
     "license": "ISC",
     "autoload": {
         "psr-4": {
-            "Npl\\": "src/Npl/"
+            "Npl\\Apps\\Website\\Backend\\": "apps/website/backend/src",
+            "Npl\\": ["src/Npl/"]
         }
     },
     "autoload-dev": {
@@ -42,6 +43,9 @@
         "lambdish/phunctional": "^2.1",
         "ext-pdo": "*",
         "aura/sqlquery": "4.x-dev",
-        "symfony/dependency-injection": "^6.1"
+        "symfony/dependency-injection": "^6.2",
+        "symfony/http-kernel": "^6.2",
+        "symfony/framework-bundle": "^6.2",
+        "symfony/dotenv": "^6.2",
     }
 }

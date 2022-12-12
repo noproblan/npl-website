@@ -3,6 +3,7 @@
     <description>This rule set is recommended by npL.</description>
 
 <!--    <file>config</file>-->
+    <file>apps</file>
     <file>src</file>
     <file>tests</file>
 

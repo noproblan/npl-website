@@ -7,6 +7,7 @@
         autoloader="vendor/autoload.php"
 >
     <projectFiles>
+        <directory name="apps"/>
         <directory name="src"/>
         <ignoreFiles>
             <directory name="vendor"/>

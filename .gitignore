@@ -10,3 +10,4 @@ public/www/img/gallery/*
 /.phpunit.cache
 /reports
 /config/config.php
+/apps/website/backend/var/
