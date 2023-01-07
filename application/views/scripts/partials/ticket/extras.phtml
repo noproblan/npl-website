@@ -11,7 +11,7 @@ foreach ($this->lans as $attendingLan) {
                 $mapperUsers = new Application_Model_Mapper_UsersMapper();
                 $lan = new Application_Model_Lan();
                 $user = new Application_Model_User();
-                $price = 40;
+                $price = 60;
                 if ($status == Application_Model_Ticket::STATUS_NOTPAID) {
                     $mapperLans->find($lanId, $lan);
                     $mapperUsers->find($userId, $user);

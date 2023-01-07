@@ -211,7 +211,7 @@ class LanController extends Zend_Controller_Action
 
     private function _getCalculatedExtras ($extrasArray)
     {
-        $result = 40;
+        $result = 60;
         if (isset($extrasArray['breakfast']))
             $result += 5;
         if (isset($extrasArray['dinner']))
