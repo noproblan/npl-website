@@ -24,7 +24,7 @@ class FilterToWhereConverterTest extends TestCase
     public function testFromUnspecifiedFilterThrowsException(): void
     {
         static::expectException(UnexpectedValueException::class);
-        static::expectDeprecationMessage('No mapping for filter of type ');
+        static::expectExceptionMessage('No mapping for filter of type ');
 
         $filter = $this->createStub(Filter::class);
         FilterToWhereConverter::from($filter);
