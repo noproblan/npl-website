@@ -1,4 +1,4 @@
-FROM php:8.1-apache
+FROM php:8.2-apache
 
 # Install MySQL and PHP extensions
 RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y mariadb-server mariadb-client libpng-dev

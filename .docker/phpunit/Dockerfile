@@ -1,4 +1,4 @@
-FROM php:8.1-cli as base
+FROM php:8.2-cli as base
 RUN apt update; \
     apt install -y libicu-dev; \
     docker-php-ext-install intl;

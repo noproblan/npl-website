@@ -5,7 +5,7 @@ volumes:
 
 services:
   composer:
-    image: composer:2.4.3
+    image: composer:lts
     container_name: composer
     restart: "no"
     environment:
@@ -13,7 +13,7 @@ services:
     volumes:
       - .:/app
   php:
-    image: php:8.1-cli
+    image: php:8.2-cli-alpine
     container_name: php
     restart: "no"
     volumes:
@@ -42,7 +42,7 @@ services:
     working_dir: /app
     entrypoint: vendor/bin/phpunit
   phpcs:
-    image: php:8.1-cli
+    image: php:8.2-cli-alpine
     container_name: phpcs
     restart: "no"
     volumes:
@@ -50,7 +50,7 @@ services:
     working_dir: /app
     entrypoint: vendor/bin/phpcs --report=full --report-file=reports/phpcs.txt -q
   phpmd:
-    image: php:8.1-cli
+    image: php:8.2-cli-alpine
     container_name: phpmd
     restart: "no"
     volumes:
@@ -78,13 +78,13 @@ services:
     depends_on:
       - mariadb
   fpm:
-    image: php:8.1-fpm
+    image: php:8.2-fpm
     container_name: fpm
     restart: always
     volumes:
       - .:/app
   nginx:
-    image: nginx:1.17.8-alpine
+    image: nginx:1.25-alpine
     container_name: nginx
     restart: always
     ports:
