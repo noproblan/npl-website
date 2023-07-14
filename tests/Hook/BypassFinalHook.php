@@ -7,7 +7,7 @@ namespace Tests\Hook;
 use DG\BypassFinals;
 use PHPUnit\Runner\BeforeTestHook;
 
-final class BypassFinalHook implements BeforeTestHook
+class BypassFinalHook implements BeforeTestHook
 {
     /**
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)

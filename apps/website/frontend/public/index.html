@@ -1,0 +1,34 @@
+<!--
+  ~ This file is part of the noprobLAN Website.
+  ~
+  ~ Copyright (c) 2023 Fabian Schweizer <fa.schweizer@gmail.com>
+  ~
+  ~ For the full copyright and license information, please view the LICENSE
+  ~ file that was distributed with this source code.
+  -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Great</title>
+</head>
+<body>
+<h1>Test</h1>
+<div id="app">{{ message }}</div>
+<script type="module">
+    import { createApp } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js'
+
+    createApp({
+        data() {
+            return {
+                message: 'Hello Vue!'
+            }
+        }
+    }).mount('#app')
+
+    app.config.errorHandler = (err) => {
+        console.log(err);
+    }
+</script>
+</body>
+</html>

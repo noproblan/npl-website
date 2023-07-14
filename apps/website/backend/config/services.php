@@ -10,7 +10,7 @@ return function (ContainerConfigurator $configurator) {
         ->autowire()
         ->autoconfigure();
 
-    $services->load('Npl\\', '../../../../src/Npl');
+    $services->load('Npl\\', '../../../../src');
     $services
         ->load('Npl\\Apps\\Website\\Backend\\', '../src')
         ->exclude('../src/WebsiteBackendKernel.php');

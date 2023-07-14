@@ -17,17 +17,11 @@
         <testsuite name="All">
             <directory>./tests</directory>
         </testsuite>
-        <testsuite name="Domain Shared">
-            <directory>./tests/Domain/Shared</directory>
+        <testsuite name="Common">
+            <directory>./tests/Common</directory>
         </testsuite>
-        <testsuite name="Domain Ticket">
-            <directory>./tests/Domain/Ticket</directory>
-        </testsuite>
-        <testsuite name="Infrastructure Configuration">
-            <directory>./tests/Infrastructure/Configuration</directory>
-        </testsuite>
-        <testsuite name="Infrastructure Validator">
-            <directory>./tests/Infrastructure/Validator</directory>
+        <testsuite name="Shared">
+            <directory>./tests/Shared</directory>
         </testsuite>
     </testsuites>
 

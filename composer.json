@@ -2,31 +2,27 @@
     "name": "npl/website",
     "description": "The npL website",
     "type": "project",
-    "require-dev": {
-        "phpunit/phpunit": "^9.5",
-        "squizlabs/php_codesniffer": "^3.7",
-        "phpmd/phpmd": "^2.13",
-        "vimeo/psalm": "^4.29",
-        "psalm/plugin-phpunit": "^0.18.3",
-        "php-standard-library/psalm-plugin": "^2.0",
-        "dg/bypass-finals": "^1.4",
-        "psalm/plugin-symfony": "^4.0"
-    },
-    "license": "ISC",
+    "license": "AGPLv3",
     "autoload": {
         "psr-4": {
             "Npl\\Apps\\Website\\Backend\\": "apps/website/backend/src",
-            "Npl\\": ["src/Npl/"]
+            "Npl\\Accounting\\": "src/Accounting",
+            "Npl\\Common\\": "src/Common",
+            "Npl\\Editorial\\": "src/Editorial",
+            "Npl\\LanOrganisation\\": "src/LanOrganisation",
+            "Npl\\Marketing\\": "src/Marketing",
+            "Npl\\Shared\\": "src/Shared",
+            "Npl\\IAM\\": "src/IAM"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Tests\\": "tests/"
+            "Tests\\": "tests"
         }
     },
     "authors": [
         {
-            "name": "Fabian Schweizer",
+            "name": "Fabian \"Shadow\" Schweizer",
             "email": "fa.schweizer@gmail.com"
         }
     ],
@@ -49,6 +45,21 @@
         "symfony/dependency-injection": "^6.2",
         "symfony/http-kernel": "^6.2",
         "symfony/framework-bundle": "^6.2",
-        "symfony/dotenv": "^6.2"
+        "symfony/dotenv": "^6.2",
+        "symfony/config": "^6.2",
+        "symfony/symfony": "^6.2",
+        "monolog/monolog": "^3.3",
+        "symfony/console": "^6.2"
+    },
+    "require-dev": {
+        "composer/composer": "^2.5",
+        "phpunit/phpunit": "^9.6",
+        "squizlabs/php_codesniffer": "^3.7",
+        "phpmd/phpmd": "^2.13",
+        "vimeo/psalm": "^5.13.1",
+        "psalm/plugin-phpunit": "^0.18.4",
+        "php-standard-library/psalm-plugin": "^2.2.1",
+        "dg/bypass-finals": "^1.4",
+        "psalm/plugin-symfony": "^v5.0.3"
     }
 }

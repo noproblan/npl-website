@@ -7,7 +7,7 @@ namespace Npl\Apps\Website\Backend;
 use Symfony\Bundle\FrameworkBundle\Kernel\MicroKernelTrait;
 use Symfony\Component\HttpKernel\Kernel;
 
-final class WebsiteBackendKernel extends Kernel
+class WebsiteBackendKernel extends Kernel
 {
     use MicroKernelTrait;
 
